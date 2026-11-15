@@ -98,8 +98,10 @@ export type ReviewState = { stage: number; nextReviewOn: string | null };
 /**
  * 答えたあとの復習の段階と次の復習日。
  * 正解なら間隔を1段階延ばし（1日→3日→7日→14日→30日）、不正解なら1日に戻す。
+ * 復習日より前に正解しても間隔は延ばさない（同じ日に何度も正解して30日先まで飛ぶのを防ぐ）。
  */
 export function nextReview(before: ReviewState | null, correct: boolean, today: string = localDate()): ReviewState {
+  if (correct && before?.nextReviewOn && before.nextReviewOn > today) return before;
   const max = REVIEW_INTERVALS.length;
   const stage = correct ? Math.min((before?.stage ?? 0) + 1, max) : 1;
   return { stage, nextReviewOn: addDays(today, REVIEW_INTERVALS[stage - 1]) };
