@@ -1,0 +1,73 @@
+/**
+ * AI採点の呼び出し。画面側から採点を頼む処理はこのファイルにまとめる。
+ * 実際のAIサービスへの依頼は Edge Function（supabase/functions/grade）が行い、利用キーもそちらにある。
+ */
+import { requireSupabase } from './supabase';
+
+export type Rating = 'good' | 'close' | 'bad';
+
+export const RATING_LABELS: Record<Rating, string> = {
+  good: '通じる',
+  close: '惜しい',
+  bad: '通じない',
+};
+
+export type GradeResult = {
+  provider: string;
+  model: string;
+  ms: number;
+} & ({ ok: true; rating: Rating; advice: string; better: string } | { ok: false; error: string });
+
+export type ProviderStatus = { provider: string; model: string; available: boolean };
+
+const TIMEOUT_MS = 45_000;
+
+async function invoke<T>(body: Record<string, unknown>): Promise<T> {
+  const timeout = new Promise<never>((_, reject) =>
+    setTimeout(() => reject(new Error('採点に時間がかかりすぎています')), TIMEOUT_MS),
+  );
+  const call = requireSupabase().functions.invoke<T>('grade', { body });
+  const { data, error } = await Promise.race([call, timeout]);
+  if (error) {
+    // Edge Function が返した日本語のエラー文があれば、それを使う
+    let message = /failed to send/i.test(error.message)
+      ? '採点の仕組みにつながりませんでした。通信できる場所で、もう一度試してください'
+      : error.message;
+    const ctx = (error as { context?: unknown }).context;
+    if (ctx instanceof Response) {
+      try {
+        const j = (await ctx.json()) as { error?: string };
+        if (j.error) message = j.error;
+      } catch {
+        // そのまま
+      }
+    }
+    throw new Error(message);
+  }
+  if (!data) throw new Error('採点の結果が空でした');
+  return data;
+}
+
+/** ふだんのサービスで採点する。失敗したら例外（画面は自己採点に切り替える） */
+export async function gradeAnswer(input: { questionId: string; answer: string; spoken?: boolean }): Promise<GradeResult & { ok: true }> {
+  const { results } = await invoke<{ results: GradeResult[] }>(input);
+  const r = results[0];
+  if (!r) throw new Error('採点の結果が空でした');
+  if (!r.ok) throw new Error(r.error);
+  return r;
+}
+
+/** 指定したサービスで同時に採点する（AIサービスを比べる用） */
+export async function compareGraders(input: {
+  questionId: string;
+  answer: string;
+  providers: string[];
+}): Promise<GradeResult[]> {
+  const { results } = await invoke<{ results: GradeResult[] }>(input);
+  return results;
+}
+
+/** どのサービスが使えるか（利用キーが設定されているか） */
+export async function fetchGraderStatus(): Promise<{ defaultProvider: string; providers: ProviderStatus[] }> {
+  return invoke({ mode: 'status' });
+}

@@ -6,11 +6,13 @@ import { fetchIsAdmin } from '../lib/content';
 export function SettingsScreen({
   isAdmin,
   onImport,
+  onCompare,
   onMicTest,
   onBack,
 }: {
   isAdmin: boolean;
   onImport: () => void;
+  onCompare: () => void;
   onMicTest: () => void;
   onBack: () => void;
 }) {
@@ -32,6 +34,11 @@ export function SettingsScreen({
         {admin && (
           <button className="command command--plain" type="button" onClick={onImport}>
             ▶ 教材の取り込み
+          </button>
+        )}
+        {admin && (
+          <button className="command command--plain" type="button" onClick={onCompare}>
+            ▶ AI採点を比べる
           </button>
         )}
         <button className="command command--plain" type="button" onClick={onMicTest}>

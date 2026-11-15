@@ -5,6 +5,7 @@ import { loadPlayer, type Player } from './lib/game/player';
 import type { MonsterRow } from './lib/questionFile';
 import { isSupabaseConfigured } from './lib/supabase';
 import { BattleScreen, type BattleResult } from './screens/BattleScreen';
+import { CompareScreen } from './screens/CompareScreen';
 import { FieldScreen } from './screens/FieldScreen';
 import { ImportScreen } from './screens/ImportScreen';
 import { LoginScreen } from './screens/LoginScreen';
@@ -25,6 +26,7 @@ type Route =
   | { name: 'result'; result: BattleResult; before: Player }
   | { name: 'settings' }
   | { name: 'import' }
+  | { name: 'compare' }
   | { name: 'mic-test' };
 
 export function App() {
@@ -142,10 +144,13 @@ function Game() {
         <SettingsScreen
           isAdmin={isAdmin}
           onImport={() => go({ name: 'import' })}
+          onCompare={() => go({ name: 'compare' })}
           onMicTest={() => go({ name: 'mic-test' })}
           onBack={() => go({ name: 'town' })}
         />
       );
+    case 'compare':
+      return <CompareScreen townId={player.currentTownId} onBack={() => go({ name: 'settings' })} />;
     case 'import':
       return <ImportScreen onBack={() => go({ name: 'settings' })} />;
     case 'mic-test':

@@ -688,3 +688,84 @@ code {
 .stats td {
   overflow-wrap: anywhere;
 }
+
+/* ---------- ライティング ---------- */
+.battle__sentence--ja {
+  font-family: inherit;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.write {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.write textarea {
+  font: inherit;
+  font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+  font-size: 18px;
+  padding: 10px 12px;
+  color: var(--fg);
+  background: #111;
+  border: 2px solid var(--muted);
+  border-radius: 4px;
+  resize: vertical;
+}
+
+.write textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.write .command {
+  text-align: center;
+}
+
+.rating {
+  margin: 0;
+  font-size: 24px;
+}
+
+.rating--good {
+  color: #8ff0a4;
+}
+
+.rating--close {
+  color: var(--accent);
+}
+
+.rating--bad {
+  color: var(--error);
+}
+
+.models {
+  margin: 0;
+  padding-left: 1.2em;
+  font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+  overflow-wrap: anywhere;
+}
+
+/* ---------- AI採点を比べる ---------- */
+.select {
+  font: inherit;
+  font-size: 16px;
+  width: 100%;
+  padding: 10px 12px;
+  color: var(--fg);
+  background: #111;
+  border: 2px solid var(--muted);
+  border-radius: 4px;
+}
+
+.compare {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.compare .window__title .note {
+  font-size: 14px;
+}

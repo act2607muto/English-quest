@@ -5,8 +5,8 @@ import type { QuestionRow } from '../questionFile';
 import type { Skill } from '../skills';
 import { isDue, localDate, type ReviewState } from './growth';
 
-/** 第1段階の手順2で戦えるのは4択の能力値だけ（AI採点は手順4・5で足す） */
-export const PLAYABLE_SKILLS: readonly Skill[] = ['vocabulary', 'grammar', 'listening'];
+/** 今戦える能力値（スピーキングは録音と文字起こしができたら足す） */
+export const PLAYABLE_SKILLS: readonly Skill[] = ['vocabulary', 'grammar', 'listening', 'writing'];
 
 export type Rng = () => number;
 

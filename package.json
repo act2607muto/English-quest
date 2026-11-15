@@ -7,7 +7,9 @@
     "dev": "vite --host",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview --host",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "deploy:grade": "npx -y supabase@2.122.0 functions deploy grade --project-ref vjesfbengdyecwhnwtfv --no-verify-jwt --use-api",
+    "supabase:login": "npx -y supabase@2.122.0 login"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.119.0",

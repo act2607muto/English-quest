@@ -1,19 +1,23 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { MonsterArt } from '../components/MonsterArt';
 import { fetchPlayableQuestions, flagQuestion } from '../lib/content';
-import { pickQuestions, shuffleChoices, fillNames } from '../lib/game/battle';
+import { fillNames, pickQuestions, shuffleChoices } from '../lib/game/battle';
 import { withExpBonus } from '../lib/game/equipment';
 import { isDue } from '../lib/game/growth';
 import type { Player } from '../lib/game/player';
-import { EXP_CORRECT, EXP_CORRECT_REVIEW, EXP_FLAWLESS_BONUS } from '../lib/game/rules';
+import { EXP_CORRECT, EXP_CORRECT_REVIEW, EXP_FLAWLESS_BONUS, EXP_HALF } from '../lib/game/rules';
+import { gradeAnswer, RATING_LABELS, type Rating } from '../lib/grading';
 import type { MonsterRow, QuestionRow } from '../lib/questionFile';
 import { addSkillExp, fetchProgress, finishBattle, saveAnswer, type QuestionProgress } from '../lib/records';
 import type { Skill } from '../lib/skills';
 import { canSpeak, speakEnglish, stopSpeaking } from '../lib/speech';
 
 /**
- * 戦闘。正解すると相手に1ダメージ、不正解なら自分が1ダメージ。
+ * 戦闘。正解（AI採点で「通じる」「惜しい」）なら相手に1ダメージ、不正解（「通じない」）なら自分が1ダメージ。
  * 答えるたびに、問題の学習状態と経験値を保存する（途中で閉じても、正解した分は残る）。
+ *
+ * 4択（語彙・文法・リスニング）と、英文を書いてAIが採点する問題（ライティング）の両方を扱う。
+ * AI採点ができないとき（通信できない等）は、模範解答を見て自分で「書けた／書けなかった」を選ぶ。
  */
 
 export type BattleResult = {
@@ -29,9 +33,24 @@ export type BattleResult = {
   weaponBonus: boolean;
 };
 
-type Shown = { question: QuestionRow; choices: string[]; answerIndex: number; due: boolean };
+type Shown = {
+  question: QuestionRow;
+  choices: string[];
+  answerIndex: number;
+  due: boolean;
+};
 
-type Phase = 'loading' | 'error' | 'question' | 'feedback' | 'finishing';
+/** 1問の答えの結果 */
+type Outcome = {
+  rating: Rating; // 4択は good（正解）か bad（不正解）
+  answer: string;
+  picked?: number;
+  advice?: string;
+  better?: string;
+  selfGraded?: boolean;
+};
+
+type Phase = 'loading' | 'error' | 'question' | 'grading' | 'self-grade' | 'feedback' | 'finishing';
 
 export function BattleScreen({
   monster,
@@ -52,7 +71,9 @@ export function BattleScreen({
   const [queue, setQueue] = useState<QuestionRow[]>([]);
   const [index, setIndex] = useState(0);
   const [shown, setShown] = useState<Shown | null>(null);
-  const [picked, setPicked] = useState<number | null>(null);
+  const [outcome, setOutcome] = useState<Outcome | null>(null);
+  const [draft, setDraft] = useState('');
+  const [gradeError, setGradeError] = useState<string | null>(null);
   const [monsterHp, setMonsterHp] = useState(monster.hp);
   const [playerHp, setPlayerHp] = useState(player.maxHp);
   const [correctCount, setCorrectCount] = useState(0);
@@ -94,8 +115,13 @@ export function BattleScreen({
   }, [monster, skill, player.maxHp]);
 
   function present(q: QuestionRow, progress: Map<string, QuestionProgress>): Shown {
-    const { choices, answerIndex } = shuffleChoices(q);
-    return { question: q, choices: choices.map((c) => fillNames(c)), answerIndex, due: isDue(progress.get(q.id) ?? null) };
+    const { choices, answerIndex } = q.format === 'choice4' ? shuffleChoices(q) : { choices: [], answerIndex: -1 };
+    return {
+      question: q,
+      choices: choices.map((c) => fillNames(c)),
+      answerIndex,
+      due: isDue(progress.get(q.id) ?? null),
+    };
   }
 
   function queueSave(task: () => Promise<unknown>) {
@@ -108,14 +134,16 @@ export function BattleScreen({
     );
   }
 
-  function handlePick(i: number) {
-    if (!shown || phase !== 'question') return;
-    const correct = i === shown.answerIndex;
-    const gained = withExpBonus(correct ? (shown.due ? EXP_CORRECT_REVIEW : EXP_CORRECT) : 0, skill, player.mods);
-    setPicked(i);
+  /** 答えの結果を反映する（ダメージ、経験値、保存） */
+  function resolve(o: Outcome) {
+    if (!shown) return;
+    const hit = o.rating !== 'bad';
+    const base = o.rating === 'good' ? (shown.due ? EXP_CORRECT_REVIEW : EXP_CORRECT) : o.rating === 'close' ? EXP_HALF : 0;
+    const gained = withExpBonus(base, skill, player.mods);
+    setOutcome(o);
     setPhase('feedback');
     setAnswered((n) => n + 1);
-    if (correct) {
+    if (hit) {
       setMonsterHp((hp) => hp - 1);
       setCorrectCount((n) => n + 1);
       setExp((e) => e + gained);
@@ -126,13 +154,43 @@ export function BattleScreen({
     queueSave(async () => {
       const next = await saveAnswer({
         questionId: q.id,
-        correct,
-        answer: shown.choices[i],
+        // 「惜しい」は攻撃にはなるが、復習の間隔は延ばさない（また近いうちに出す）
+        correct: o.rating === 'good',
+        answer: o.answer,
         before: progressRef.current.get(q.id) ?? null,
+        feedback:
+          o.advice || o.selfGraded
+            ? { rating: o.rating, advice: o.advice ?? null, better: o.better ?? null, self_graded: o.selfGraded ?? false }
+            : null,
       });
       progressRef.current.set(q.id, next);
       await addSkillExp(skill, gained, player.mods.graceDays);
     });
+  }
+
+  function handlePick(i: number) {
+    if (!shown || phase !== 'question') return;
+    resolve({ rating: i === shown.answerIndex ? 'good' : 'bad', answer: shown.choices[i], picked: i });
+  }
+
+  async function handleWrite(e: FormEvent) {
+    e.preventDefault();
+    if (!shown || phase !== 'question') return;
+    const answer = draft.trim();
+    if (!answer) return;
+    setPhase('grading');
+    setGradeError(null);
+    try {
+      const r = await gradeAnswer({ questionId: shown.question.id, answer });
+      resolve({ rating: r.rating, answer, advice: r.advice, better: r.better });
+    } catch (err) {
+      setGradeError(err instanceof Error ? err.message : String(err));
+      setPhase('self-grade');
+    }
+  }
+
+  function handleSelfGrade(ok: boolean) {
+    resolve({ rating: ok ? 'good' : 'bad', answer: draft.trim(), selfGraded: true });
   }
 
   function handleNext() {
@@ -144,8 +202,11 @@ export function BattleScreen({
     const q = queue[nextIndex % queue.length];
     setIndex(nextIndex);
     setShown(present(q, progressRef.current));
-    setPicked(null);
+    setOutcome(null);
+    setDraft('');
+    setGradeError(null);
     setPhase('question');
+    window.scrollTo(0, 0);
     // ボタンを押した処理の中で読み上げると、iPhone でも音が出る
     if (skill === 'listening' && q.audio_text) speakEnglish(q.audio_text);
   }
@@ -212,13 +273,15 @@ export function BattleScreen({
   }
 
   const q = shown!.question;
-  const isCorrect = picked !== null && picked === shown!.answerIndex;
+  const isChoice = q.format === 'choice4';
   const over = monsterHp <= 0 || playerHp <= 0;
+  const hit = outcome ? outcome.rating !== 'bad' : false;
+  const models = (q.model_answers ?? []).map((m) => fillNames(m));
 
   return (
     <main className="screen battle">
       <section className="battle__enemy">
-        <MonsterArt skill={skill} image={monster.image} hurt={phase === 'feedback' && isCorrect} />
+        <MonsterArt skill={skill} image={monster.image} hurt={phase === 'feedback' && hit} />
         <div className="battle__enemy-info">
           <p className="battle__enemy-name">{monster.name}</p>
           <HpBar label="HP" value={monsterHp} max={monster.hp} />
@@ -228,6 +291,12 @@ export function BattleScreen({
       <section className="window battle__question">
         <p className="battle__prompt">{fillNames(q.prompt)}</p>
         {skill === 'grammar' && q.sentence && <p className="battle__sentence">{fillNames(q.sentence)}</p>}
+        {!isChoice && q.sentence && (
+          <p className="battle__sentence battle__sentence--ja">
+            {q.sentence_ja && <small className="note">{fillNames(q.sentence_ja)}</small>}
+            {fillNames(q.sentence)}
+          </p>
+        )}
         {skill === 'listening' && q.audio_text && (
           <>
             {canSpeak ? (
@@ -242,36 +311,109 @@ export function BattleScreen({
         )}
       </section>
 
-      <div className="choices">
-        {shown!.choices.map((c, i) => {
-          const state =
-            phase === 'feedback' && i === shown!.answerIndex ? 'right' : phase === 'feedback' && i === picked ? 'wrong' : '';
-          return (
-            <button
-              key={i}
-              type="button"
-              className={`choice ${state ? `choice--${state}` : ''}`}
+      {isChoice ? (
+        <div className="choices">
+          {shown!.choices.map((c, i) => {
+            const state =
+              phase === 'feedback' && i === shown!.answerIndex
+                ? 'right'
+                : phase === 'feedback' && i === outcome?.picked
+                  ? 'wrong'
+                  : '';
+            return (
+              <button
+                key={i}
+                type="button"
+                className={`choice ${state ? `choice--${state}` : ''}`}
+                disabled={phase !== 'question'}
+                onClick={() => handlePick(i)}
+              >
+                {state === 'right' ? '◯ ' : state === 'wrong' ? '✕ ' : ''}
+                {c}
+              </button>
+            );
+          })}
+        </div>
+      ) : (
+        <form className="write" onSubmit={(e) => void handleWrite(e)}>
+          <label className="field">
+            <span className="note">英語で入力</span>
+            <textarea
+              value={draft}
+              onChange={(e) => setDraft(e.target.value)}
               disabled={phase !== 'question'}
-              onClick={() => handlePick(i)}
-            >
-              {state === 'right' ? '◯ ' : state === 'wrong' ? '✕ ' : ''}
-              {c}
+              rows={3}
+              maxLength={300}
+              lang="en"
+              autoCapitalize="sentences"
+              autoCorrect="off"
+              spellCheck={false}
+              placeholder="ここに英文を書く"
+            />
+          </label>
+          {phase === 'question' && (
+            <button className="command" type="submit" disabled={!draft.trim()}>
+              ▶ こたえる
             </button>
-          );
-        })}
-      </div>
+          )}
+          {phase === 'grading' && <p className="note">採点しています…</p>}
+        </form>
+      )}
 
-      {phase === 'feedback' && (
+      {phase === 'self-grade' && (
+        <section className="window" aria-live="polite">
+          <p className="message message--error">AIの採点ができませんでした（{gradeError}）。</p>
+          <p>模範解答と比べて、自分で選んでください。</p>
+          <p className="note">あなたの答え</p>
+          <p className="battle__sentence">{draft.trim()}</p>
+          <p className="note">模範解答</p>
+          <ul className="models">
+            {models.map((m) => (
+              <li key={m}>{m}</li>
+            ))}
+          </ul>
+          <div className="shop-item__actions">
+            <button className="command" type="button" onClick={() => handleSelfGrade(true)}>
+              ▶ 書けた
+            </button>
+            <button className="command" type="button" onClick={() => handleSelfGrade(false)}>
+              ▶ 書けなかった
+            </button>
+          </div>
+        </section>
+      )}
+
+      {phase === 'feedback' && outcome && (
         <section className="window battle__message" aria-live="polite">
+          {!isChoice && !outcome.selfGraded && (
+            <p className={`rating rating--${outcome.rating}`}>{RATING_LABELS[outcome.rating]}</p>
+          )}
           <p>
-            {isCorrect
-              ? `せいかい！ ${monster.name}に 1 のダメージ！${shown!.due ? '（復習ボーナス）' : ''}`
+            {hit
+              ? `${outcome.rating === 'close' ? 'おしい！ ' : 'せいかい！ '}${monster.name}に 1 のダメージ！${shown!.due && outcome.rating === 'good' ? '（復習ボーナス）' : ''}`
               : `ざんねん… 1 のダメージを うけた！`}
           </p>
+          {outcome.advice && <p>{outcome.advice}</p>}
+          {outcome.better && outcome.better.trim() !== outcome.answer.trim() && (
+            <div>
+              <p className="note">より自然な言い方</p>
+              <p className="battle__sentence">{outcome.better}</p>
+            </div>
+          )}
+          {!isChoice && (
+            <div>
+              <p className="note">模範解答</p>
+              <ul className="models">
+                {models.map((m) => (
+                  <li key={m}>{m}</li>
+                ))}
+              </ul>
+            </div>
+          )}
           {q.explanation && <p className="note">{fillNames(q.explanation)}</p>}
           {monsterHp <= 0 && <p>{monster.name}を たおした！</p>}
           {playerHp <= 0 && <p>ちからつきた…</p>}
-          <button className="command" type="button" onClick={handleNext} autoFocus>
+          <button className="command" type="button" onClick={handleNext} autoFocus={isChoice}>
             {over ? '▶ 戦闘をおえる' : '▶ つぎへ'}
           </button>
           {isAdmin &&

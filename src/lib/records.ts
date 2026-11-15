@@ -104,6 +104,8 @@ export async function saveAnswer(input: {
   correct: boolean;
   answer: string;
   before: QuestionProgress | null;
+  /** AI採点の評価と助言（4択では空） */
+  feedback?: Record<string, unknown> | null;
 }): Promise<QuestionProgress> {
   const today = localDate();
   const review = nextReview(input.before, input.correct, today);
@@ -129,6 +131,7 @@ export async function saveAnswer(input: {
         wrong_count: next.wrongCount,
         last_answered_at: now,
         last_answer: input.answer,
+        last_feedback: input.feedback ?? null,
       },
       { onConflict: 'user_id,question_id' },
     );
