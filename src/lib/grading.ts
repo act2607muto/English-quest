@@ -71,3 +71,34 @@ export async function compareGraders(input: {
 export async function fetchGraderStatus(): Promise<{ defaultProvider: string; providers: ProviderStatus[] }> {
   return invoke({ mode: 'status' });
 }
+
+/**
+ * 録音を英語の文字にする（Edge Function の transcribe が文字起こしのサービスに送る）。
+ * 録音は保存しない。
+ */
+export async function transcribeAudio(recording: { blob: Blob; mimeType: string }): Promise<string> {
+  const form = new FormData();
+  const type = recording.mimeType || recording.blob.type || 'audio/mp4';
+  form.append('audio', new File([recording.blob], 'answer', { type }));
+  const timeout = new Promise<never>((_, reject) =>
+    setTimeout(() => reject(new Error('文字起こしに時間がかかりすぎています')), TIMEOUT_MS),
+  );
+  const call = requireSupabase().functions.invoke<{ text?: string; error?: string }>('transcribe', { body: form });
+  const { data, error } = await Promise.race([call, timeout]);
+  if (error) {
+    let message = /failed to send/i.test(error.message)
+      ? '文字起こしの仕組みにつながりませんでした。通信できる場所で、もう一度試してください'
+      : error.message;
+    const ctx = (error as { context?: unknown }).context;
+    if (ctx instanceof Response) {
+      try {
+        const j = (await ctx.json()) as { error?: string };
+        if (j.error) message = j.error;
+      } catch {
+        // そのまま
+      }
+    }
+    throw new Error(message);
+  }
+  return (data?.text ?? '').trim();
+}

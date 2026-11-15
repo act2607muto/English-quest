@@ -5,8 +5,8 @@ import type { QuestionRow } from '../questionFile';
 import type { Skill } from '../skills';
 import { isDue, localDate, type ReviewState } from './growth';
 
-/** 今戦える能力値（スピーキングは録音と文字起こしができたら足す） */
-export const PLAYABLE_SKILLS: readonly Skill[] = ['vocabulary', 'grammar', 'listening', 'writing'];
+/** 今戦える能力値（リーディングは第2段階で足す） */
+export const PLAYABLE_SKILLS: readonly Skill[] = ['vocabulary', 'grammar', 'listening', 'writing', 'speaking'];
 
 export type Rng = () => number;
 

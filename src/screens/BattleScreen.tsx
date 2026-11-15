@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { MonsterArt } from '../components/MonsterArt';
+import { SpeakAnswer } from '../components/SpeakAnswer';
 import { fetchPlayableQuestions, flagQuestion } from '../lib/content';
 import { fillNames, pickQuestions, shuffleChoices } from '../lib/game/battle';
 import { withExpBonus } from '../lib/game/equipment';
@@ -173,15 +174,19 @@ export function BattleScreen({
     resolve({ rating: i === shown.answerIndex ? 'good' : 'bad', answer: shown.choices[i], picked: i });
   }
 
-  async function handleWrite(e: FormEvent) {
+  function handleWrite(e: FormEvent) {
     e.preventDefault();
-    if (!shown || phase !== 'question') return;
-    const answer = draft.trim();
-    if (!answer) return;
+    void submitText(draft.trim(), false);
+  }
+
+  /** 書いた答え・声の答え（文字起こし後）をAIに採点させる */
+  async function submitText(answer: string, spoken: boolean) {
+    if (!shown || phase !== 'question' || !answer) return;
+    setDraft(answer);
     setPhase('grading');
     setGradeError(null);
     try {
-      const r = await gradeAnswer({ questionId: shown.question.id, answer });
+      const r = await gradeAnswer({ questionId: shown.question.id, answer, spoken });
       resolve({ rating: r.rating, answer, advice: r.advice, better: r.better });
     } catch (err) {
       setGradeError(err instanceof Error ? err.message : String(err));
@@ -277,6 +282,7 @@ export function BattleScreen({
   const over = monsterHp <= 0 || playerHp <= 0;
   const hit = outcome ? outcome.rating !== 'bad' : false;
   const models = (q.model_answers ?? []).map((m) => fillNames(m));
+  const isSpeaking = !isChoice && skill === 'speaking';
 
   return (
     <main className="screen battle">
@@ -296,6 +302,11 @@ export function BattleScreen({
             {q.sentence_ja && <small className="note">{fillNames(q.sentence_ja)}</small>}
             {fillNames(q.sentence)}
           </p>
+        )}
+        {q.format === 'respond' && q.sentence && canSpeak && (
+          <button className="command command--listen" type="button" onClick={() => speakEnglish(fillNames(q.sentence!))}>
+            ▶ 質問を聞く
+          </button>
         )}
         {skill === 'listening' && q.audio_text && (
           <>
@@ -334,8 +345,29 @@ export function BattleScreen({
             );
           })}
         </div>
+      ) : isSpeaking ? (
+        phase === 'question' ? (
+          <SpeakAnswer
+            key={`${q.id}-${index}`}
+            onSubmit={(text) => void submitText(text, true)}
+            onFail={(message) => {
+              setGradeError(message);
+              setPhase('self-grade');
+            }}
+          />
+        ) : (
+          <>
+            {draft && (
+              <div>
+                <p className="note">あなたの答え</p>
+                <p className="battle__sentence">{draft}</p>
+              </div>
+            )}
+            {phase === 'grading' && <p className="note">採点しています…</p>}
+          </>
+        )
       ) : (
-        <form className="write" onSubmit={(e) => void handleWrite(e)}>
+        <form className="write" onSubmit={handleWrite}>
           <label className="field">
             <span className="note">英語で入力</span>
             <textarea
@@ -362,10 +394,16 @@ export function BattleScreen({
 
       {phase === 'self-grade' && (
         <section className="window" aria-live="polite">
-          <p className="message message--error">AIの採点ができませんでした（{gradeError}）。</p>
+          <p className="message message--error">
+            {isSpeaking ? '録音か採点ができませんでした' : 'AIの採点ができませんでした'}（{gradeError}）。
+          </p>
           <p>模範解答と比べて、自分で選んでください。</p>
-          <p className="note">あなたの答え</p>
-          <p className="battle__sentence">{draft.trim()}</p>
+          {!isSpeaking && draft.trim() && (
+            <>
+              <p className="note">あなたの答え</p>
+              <p className="battle__sentence">{draft.trim()}</p>
+            </>
+          )}
           <p className="note">模範解答</p>
           <ul className="models">
             {models.map((m) => (
@@ -374,10 +412,10 @@ export function BattleScreen({
           </ul>
           <div className="shop-item__actions">
             <button className="command" type="button" onClick={() => handleSelfGrade(true)}>
-              ▶ 書けた
+              {isSpeaking ? '▶ 言えた' : '▶ 書けた'}
             </button>
             <button className="command" type="button" onClick={() => handleSelfGrade(false)}>
-              ▶ 書けなかった
+              {isSpeaking ? '▶ 言えなかった' : '▶ 書けなかった'}
             </button>
           </div>
         </section>

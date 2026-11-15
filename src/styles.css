@@ -769,3 +769,26 @@ code {
 .compare .window__title .note {
   font-size: 14px;
 }
+
+/* ---------- スピーキング ---------- */
+.speak {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.speak .command {
+  text-align: center;
+}
+
+.command--record {
+  min-height: 64px;
+  font-size: 20px;
+  border-color: var(--error);
+  color: var(--error);
+}
+
+.command--recording {
+  min-height: 64px;
+  font-size: 20px;
+}

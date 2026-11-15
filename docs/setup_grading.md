@@ -1,12 +1,16 @@
-# AI採点の準備手順
+# AI採点と文字起こしの準備手順
 
-第1段階の手順4。ライティング（とあとのスピーキング）の答えをAIが採点する仕組みを動かす。
+第1段階の手順4・5。ライティングとスピーキングの答えをAIが採点し、スピーキングの録音を文字にする仕組みを動かす。
 
-採点は Supabase の Edge Function（`supabase/functions/grade`）が行う。AIサービスの利用キーは Supabase の中にだけ置き、画面側やGitHubには置かない。
+採点は Supabase の Edge Function（`supabase/functions/grade`）、文字起こしは `supabase/functions/transcribe` が行う。AIサービスの利用キーは Supabase の中にだけ置き、画面側やGitHubには置かない。
 
 ## 1. AIサービスの利用キーを用意する
 
-比べたいサービスのキーを用意する。どれも使った分だけ料金がかかる。1つだけでも動く（その1つで採点する）。
+採点は、比べたいサービスのキーを用意する。1つだけでも動く（その1つで採点する）。
+
+文字起こし（スピーキング）には **OpenAI のキーが必要**（モデルは `gpt-transcribe`）。Claude には文字起こしの機能がない。
+
+どれも使った分だけ料金がかかる。
 
 **利用キーはパスワードと同じ。チャットやファイル、GitHubに貼らない。** 次の手順2で Supabase に直接入れる。
 
@@ -37,13 +41,15 @@
 | Name | Value |
 | --- | --- |
 | `ANTHROPIC_API_KEY` | Claude のキー（`sk-ant-...`） |
-| `OPENAI_API_KEY` | OpenAI のキー |
+| `OPENAI_API_KEY` | OpenAI のキー（採点の比較と、スピーキングの文字起こしに使う） |
 | `GEMINI_API_KEY` | Gemini のキー |
 | `GRADER_PROVIDER` | ふだんの採点に使うサービス。`claude`・`openai`・`gemini` のどれか（比べ終わるまでは `claude`） |
 
-使うモデルは、Claude が `claude-haiku-5-5`、OpenAI が `gpt-6-luna`、Gemini が `gemini-3.5-flash-lite`（どれも各社の安いモデル）。変えたいときは `CLAUDE_MODEL`・`OPENAI_MODEL`・`GEMINI_MODEL` を足す。
+文字起こしに使うモデルは `gpt-transcribe`。変えたいときは `TRANSCRIBE_MODEL` を足す。
 
-## 3. 採点の仕組みを Supabase に送る
+採点に使うモデルは、Claude が `claude-haiku-5-5`、OpenAI が `gpt-6-luna`、Gemini が `gemini-3.5-flash-lite`（どれも各社の安いモデル）。変えたいときは `CLAUDE_MODEL`・`OPENAI_MODEL`・`GEMINI_MODEL` を足す。
+
+## 3. 採点と文字起こしの仕組みを Supabase に送る
 
 PC のターミナルで、このフォルダ（`handoff`）にいる状態で次を実行する。
 
@@ -53,15 +59,15 @@ PC のターミナルで、このフォルダ（`handoff`）にいる状態で�
 npm run supabase:login
 ```
 
-2. 採点の仕組みを送る。
+2. 採点と文字起こしの仕組みを送る。
 
 ```bash
-npm run deploy:grade
+npm run deploy:functions
 ```
 
-「Deployed Functions on project ...: grade」と出れば完了。管理画面の「Edge Functions」に `grade` が出る。
+「Deployed Functions.」と出れば完了。管理画面の「Edge Functions」に `grade` と `transcribe` が出る。
 
-採点の仕組み（`supabase/functions/` の中）を直したときは、2 をもう一度実行する。
+`supabase/functions/` の中を直したときは、2 をもう一度実行する。
 
 ## 4. 試す
 
@@ -70,7 +76,9 @@ npm run deploy:grade
 3. 問題を選び、答えを書いて「採点する」を押す。わざと間違えた答えでも試す。
 4. 日本語の助言がいちばんわかりやすいサービスを選び、手順2の `GRADER_PROVIDER` をそのサービスにする（送り直しは要らない）。
 
-ライティングの戦闘は「街の外」→「インクつぼ」。採点できないとき（キーが未設定、通信できない等）は、模範解答を見て自分で「書けた／書けなかった」を選ぶ形に切り替わる。
+ライティングの戦闘は「街の外」→「インクつぼ」、スピーキングは「おしゃべりどり」。スピーキングでは、録音した声を文字にしたあと、聞き取りが違っていれば手で直してから採点に回せる。録音や文字起こしができないときは「言えた／言えなかった」を自分で選ぶ。
+
+採点できないとき（キーが未設定、通信できない等）は、模範解答を見て自分で「書けた／書けなかった」を選ぶ形に切り替わる。
 
 ## 料金の目安
 
