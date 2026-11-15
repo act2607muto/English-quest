@@ -1,0 +1,67 @@
+{
+  "format_version": 1,
+  "town": {
+    "id": "town01",
+    "scene": "あいさつと自己紹介",
+    "difficulty": "基本",
+    "order": 1
+  },
+  "equipment": [
+    {
+      "id": "town01-wpn-voc",
+      "name": "ことのはのナイフ",
+      "slot": "weapon",
+      "effect": { "type": "exp_bonus", "skill": "vocabulary", "rate": 0.1 },
+      "price": 100,
+      "image": "/equipment/town01-wpn-voc.png"
+    },
+    {
+      "id": "town01-wpn-gra",
+      "name": "くみたてハンマー",
+      "slot": "weapon",
+      "effect": { "type": "exp_bonus", "skill": "grammar", "rate": 0.1 },
+      "price": 100,
+      "image": "/equipment/town01-wpn-gra.png"
+    },
+    {
+      "id": "town01-wpn-lis",
+      "name": "みみすましの弓",
+      "slot": "weapon",
+      "effect": { "type": "exp_bonus", "skill": "listening", "rate": 0.1 },
+      "price": 100,
+      "image": "/equipment/town01-wpn-lis.png"
+    },
+    {
+      "id": "town01-wpn-wri",
+      "name": "はねペンのつるぎ",
+      "slot": "weapon",
+      "effect": { "type": "exp_bonus", "skill": "writing", "rate": 0.1 },
+      "price": 100,
+      "image": "/equipment/town01-wpn-wri.png"
+    },
+    {
+      "id": "town01-wpn-spe",
+      "name": "よびかけの杖",
+      "slot": "weapon",
+      "effect": { "type": "exp_bonus", "skill": "speaking", "rate": 0.1 },
+      "price": 100,
+      "image": "/equipment/town01-wpn-spe.png"
+    },
+    {
+      "id": "town01-arm-hp",
+      "name": "たびびとのマント",
+      "slot": "armor",
+      "effect": { "type": "max_hp", "amount": 1 },
+      "price": 150,
+      "image": "/equipment/town01-arm-hp.png"
+    },
+    {
+      "id": "town01-arm-grace",
+      "name": "わすれずのかぶと",
+      "slot": "armor",
+      "effect": { "type": "decay_grace", "days": 1 },
+      "price": 150,
+      "image": "/equipment/town01-arm-grace.png"
+    }
+  ]
+}

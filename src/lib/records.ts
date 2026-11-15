@@ -8,6 +8,7 @@
 import { requireSupabase } from './supabase';
 import type { Skill } from './skills';
 import { effectiveExp, localDate, nextReview, type ReviewState } from './game/growth';
+import { DECAY_GRACE_DAYS } from './game/rules';
 
 export type SkillStat = {
   skill: Skill;
@@ -139,7 +140,11 @@ export async function saveAnswer(input: {
  * 能力値に経験値を足す。低下を反映した今の値に足して保存し、最後に練習した日を今日にする。
  * 不正解（gained = 0）でも、練習したことになる。
  */
-export async function addSkillExp(skill: Skill, gained: number): Promise<{ before: number; after: number }> {
+export async function addSkillExp(
+  skill: Skill,
+  gained: number,
+  graceDays: number = DECAY_GRACE_DAYS,
+): Promise<{ before: number; after: number }> {
   const client = requireSupabase();
   const userId = await currentUserId();
   const { data, error } = await client
@@ -149,7 +154,11 @@ export async function addSkillExp(skill: Skill, gained: number): Promise<{ befor
     .eq('skill', skill)
     .single();
   if (error) throw error;
-  const before = effectiveExp({ exp: data.exp, maxExp: data.max_exp, lastPracticedAt: data.last_practiced_at });
+  const before = effectiveExp(
+    { exp: data.exp, maxExp: data.max_exp, lastPracticedAt: data.last_practiced_at },
+    localDate(),
+    graceDays,
+  );
   const after = before + Math.max(0, Math.round(gained));
   const update = await client
     .from('skill_stats')
@@ -194,4 +203,48 @@ export async function finishBattle(input: {
       .eq('user_id', userId);
     if (update.error) throw update.error;
   }
+}
+
+/**
+ * 装備品を買う。おかねが足りない、すでに持っている場合は買わない。
+ * おかねと持ち物は同じ1行にあるので、1回の更新でまとめて変える。
+ */
+export async function buyEquipment(item: { id: string; price: number }): Promise<AdventureState> {
+  const client = requireSupabase();
+  const userId = await currentUserId();
+  const { data, error } = await client
+    .from('adventure_state')
+    .select('gold, owned_equipment')
+    .eq('user_id', userId)
+    .single();
+  if (error) throw error;
+  if ((data.owned_equipment as string[]).includes(item.id)) throw new Error('もう持っています');
+  if (data.gold < item.price) throw new Error('おかねが足りません');
+  const update = await client
+    .from('adventure_state')
+    .update({ gold: data.gold - item.price, owned_equipment: [...data.owned_equipment, item.id] })
+    .eq('user_id', userId)
+    .eq('gold', data.gold); // 別の端末で同時に変わっていたら更新しない
+  if (update.error) throw update.error;
+  const after = await fetchAdventureState();
+  if (!after || !after.ownedEquipment.includes(item.id)) {
+    throw new Error('ほかの端末で同時に変わったため、買えませんでした。もう一度試してください。');
+  }
+  return after;
+}
+
+/** 武器か防具を付け替える。null ならはずす。持っている物しか装備できない */
+export async function equip(slot: 'weapon' | 'armor', itemId: string | null): Promise<void> {
+  const client = requireSupabase();
+  const userId = await currentUserId();
+  if (itemId) {
+    const now = await fetchAdventureState();
+    if (!now?.ownedEquipment.includes(itemId)) throw new Error('持っていない装備です');
+  }
+  const column = slot === 'weapon' ? 'equipped_weapon_id' : 'equipped_armor_id';
+  const { error } = await client
+    .from('adventure_state')
+    .update({ [column]: itemId })
+    .eq('user_id', userId);
+  if (error) throw error;
 }

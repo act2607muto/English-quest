@@ -5,12 +5,33 @@
  * 書き換えは管理者だけができる（データベースの RLS で制限している）。
  */
 import { requireSupabase } from './supabase';
-import type { MonsterRow, QuestionRow, TownRow } from './questionFile';
+import type { EquipmentRow, MonsterRow, QuestionRow, TownRow } from './questionFile';
 import type { Skill } from './skills';
 
 const QUESTION_COLUMNS =
   'id, town_id, skill, format, prompt, sentence, sentence_ja, audio_text, choices, answer, model_answers, explanation, difficulty, tags';
 const MONSTER_COLUMNS = 'id, name, town_id, skill, hp, gold, is_boss, image';
+const EQUIPMENT_COLUMNS = 'id, name, slot, effect, price, town_id, image';
+
+/** 街の店の品ぞろえ（武器が先、安い順） */
+export async function fetchEquipmentOfTown(townId: string): Promise<EquipmentRow[]> {
+  const { data, error } = await requireSupabase()
+    .from('equipment')
+    .select(EQUIPMENT_COLUMNS)
+    .eq('town_id', townId)
+    .order('slot', { ascending: false })
+    .order('price')
+    .order('id');
+  if (error) throw error;
+  return data as EquipmentRow[];
+}
+
+export async function fetchEquipmentByIds(ids: string[]): Promise<EquipmentRow[]> {
+  if (ids.length === 0) return [];
+  const { data, error } = await requireSupabase().from('equipment').select(EQUIPMENT_COLUMNS).in('id', ids);
+  if (error) throw error;
+  return data as EquipmentRow[];
+}
 
 /** URL が長くなりすぎないよう、まとめて読む件数 */
 const READ_CHUNK = 100;
@@ -117,6 +138,7 @@ export async function importTownFile(
   town: TownRow,
   questions: QuestionRow[],
   monsters: MonsterRow[],
+  equipment: EquipmentRow[] = [],
 ): Promise<void> {
   const client = requireSupabase();
   const townResult = await client.from('towns').upsert(town, { onConflict: 'id' });
@@ -130,6 +152,10 @@ export async function importTownFile(
   }
   if (monsters.length > 0) {
     const { error } = await client.from('monsters').upsert(monsters, { onConflict: 'id', defaultToNull: false });
+    if (error) throw error;
+  }
+  if (equipment.length > 0) {
+    const { error } = await client.from('equipment').upsert(equipment, { onConflict: 'id', defaultToNull: false });
     if (error) throw error;
   }
 }

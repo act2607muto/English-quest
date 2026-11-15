@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { MonsterArt } from '../components/MonsterArt';
 import { fetchPlayableQuestions, flagQuestion } from '../lib/content';
 import { pickQuestions, shuffleChoices, fillNames } from '../lib/game/battle';
+import { withExpBonus } from '../lib/game/equipment';
 import { isDue } from '../lib/game/growth';
 import type { Player } from '../lib/game/player';
 import { EXP_CORRECT, EXP_CORRECT_REVIEW, EXP_FLAWLESS_BONUS } from '../lib/game/rules';
@@ -24,6 +25,8 @@ export type BattleResult = {
   exp: number;
   gold: number;
   saveFailed: boolean;
+  /** 武器の上乗せが効いたか */
+  weaponBonus: boolean;
 };
 
 type Shown = { question: QuestionRow; choices: string[]; answerIndex: number; due: boolean };
@@ -108,7 +111,7 @@ export function BattleScreen({
   function handlePick(i: number) {
     if (!shown || phase !== 'question') return;
     const correct = i === shown.answerIndex;
-    const gained = correct ? (shown.due ? EXP_CORRECT_REVIEW : EXP_CORRECT) : 0;
+    const gained = withExpBonus(correct ? (shown.due ? EXP_CORRECT_REVIEW : EXP_CORRECT) : 0, skill, player.mods);
     setPicked(i);
     setPhase('feedback');
     setAnswered((n) => n + 1);
@@ -128,7 +131,7 @@ export function BattleScreen({
         before: progressRef.current.get(q.id) ?? null,
       });
       progressRef.current.set(q.id, next);
-      await addSkillExp(skill, gained);
+      await addSkillExp(skill, gained, player.mods.graceDays);
     });
   }
 
@@ -151,9 +154,9 @@ export function BattleScreen({
     setPhase('finishing');
     stopSpeaking();
     const flawless = won && correctCount === answered;
-    const bonus = flawless ? EXP_FLAWLESS_BONUS : 0;
+    const bonus = flawless ? withExpBonus(EXP_FLAWLESS_BONUS, skill, player.mods) : 0;
     const gold = won ? monster.gold : 0;
-    if (bonus > 0) queueSave(() => addSkillExp(skill, bonus));
+    if (bonus > 0) queueSave(() => addSkillExp(skill, bonus, player.mods.graceDays));
     queueSave(() =>
       finishBattle({
         townId: monster.town_id,
@@ -175,6 +178,7 @@ export function BattleScreen({
       exp: exp + bonus,
       gold,
       saveFailed: saveFailedRef.current,
+      weaponBonus: player.mods.expBonus?.skill === skill,
     });
   }
 

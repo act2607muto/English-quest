@@ -1,5 +1,7 @@
 import { useState, type ChangeEvent } from 'react';
 import {
+  fetchEquipmentByIds,
+  fetchEquipmentOfTown,
   fetchMonstersByIds,
   fetchMonstersOfTown,
   fetchQuestionsByIds,
@@ -9,8 +11,10 @@ import {
 } from '../lib/content';
 import {
   parseQuestionFile,
+  sameEquipment,
   sameMonster,
   sameQuestion,
+  type EquipmentRow,
   type MonsterRow,
   type QuestionRow,
   type TownRow,
@@ -41,8 +45,10 @@ type Plan = {
   townChanged: boolean;
   questions: QuestionRow[];
   monsters: MonsterRow[];
+  equipment: EquipmentRow[];
   q: Diff;
   m: Diff;
+  e: Diff;
 };
 
 type State =
@@ -94,10 +100,12 @@ export function ImportScreen({ onBack }: { onBack: () => void }) {
     try {
       const qWrite = new Set([...plan.q.added, ...plan.q.changed]);
       const mWrite = new Set([...plan.m.added, ...plan.m.changed]);
+      const eWrite = new Set([...plan.e.added, ...plan.e.changed]);
       await importTownFile(
         plan.town,
         plan.questions.filter((q) => qWrite.has(q.id)),
         plan.monsters.filter((m) => mWrite.has(m.id)),
+        plan.equipment.filter((e) => eWrite.has(e.id)),
       );
       setState({ kind: 'done', plan });
     } catch (err) {
@@ -111,7 +119,7 @@ export function ImportScreen({ onBack }: { onBack: () => void }) {
     <main className="screen">
       <section className="window">
         <h2 className="window__title">教材の取り込み</h2>
-        <p>街のファイル（問題・モンスター）を読んで中身を確かめてから、データベースに登録します。同じIDのものは上書きします。</p>
+        <p>街のファイル（問題・モンスター・装備品）を読んで中身を確かめてから、データベースに登録します。同じIDのものは上書きします。</p>
       </section>
 
       {state.kind === 'idle' || state.kind === 'invalid' ? (
@@ -191,6 +199,8 @@ export function ImportScreen({ onBack }: { onBack: () => void }) {
               ` 問題は新しく ${state.plan.q.added.length} 問、更新 ${state.plan.q.changed.length} 問。`}
             {state.plan.monsters.length > 0 &&
               ` モンスターは新しく ${state.plan.m.added.length} 体、更新 ${state.plan.m.changed.length} 体。`}
+            {state.plan.equipment.length > 0 &&
+              ` 装備品は新しく ${state.plan.e.added.length} 個、更新 ${state.plan.e.changed.length} 個。`}
           </p>
         </section>
       )}
@@ -211,7 +221,13 @@ function hasWork(plan: Plan): boolean {
   return (
     plan.townIsNew ||
     plan.townChanged ||
-    plan.q.added.length + plan.q.changed.length + plan.m.added.length + plan.m.changed.length > 0
+    plan.q.added.length +
+      plan.q.changed.length +
+      plan.m.added.length +
+      plan.m.changed.length +
+      plan.e.added.length +
+      plan.e.changed.length >
+      0
   );
 }
 
@@ -251,6 +267,15 @@ function PlanView({ plan }: { plan: Plan }) {
                 <td>{plan.monsters.map((m) => m.name).join('、')}</td>
               </tr>
               <DiffRows label="モンスター" unit="体" diff={plan.m} />
+            </>
+          )}
+          {plan.equipment.length > 0 && (
+            <>
+              <tr>
+                <th>装備品</th>
+                <td>{plan.equipment.map((e) => e.name).join('、')}</td>
+              </tr>
+              <DiffRows label="装備品" unit="個" diff={plan.e} />
             </>
           )}
         </tbody>
@@ -312,12 +337,14 @@ async function makePlan(fileName: string, text: string): Promise<Plan | { errors
   if (parsed.errors.length > 0 || !parsed.town) return { errors: parsed.errors };
   const town = parsed.town;
 
-  const [towns, qInTown, qSameIds, mInTown, mSameIds] = await Promise.all([
+  const [towns, qInTown, qSameIds, mInTown, mSameIds, eInTown, eSameIds] = await Promise.all([
     fetchTowns(),
     parsed.questions.length > 0 ? fetchQuestionsOfTown(town.id) : Promise.resolve([]),
     fetchQuestionsByIds(parsed.questions.map((q) => q.id)),
     parsed.monsters.length > 0 ? fetchMonstersOfTown(town.id) : Promise.resolve([]),
     fetchMonstersByIds(parsed.monsters.map((m) => m.id)),
+    parsed.equipment.length > 0 ? fetchEquipmentOfTown(town.id) : Promise.resolve([]),
+    fetchEquipmentByIds(parsed.equipment.map((e) => e.id)),
   ]);
 
   const errors: string[] = [];
@@ -325,7 +352,7 @@ async function makePlan(fileName: string, text: string): Promise<Plan | { errors
   if (orderTaken) {
     errors.push(`順番 ${town.sort_order} は、すでに街「${orderTaken.scene}」（${orderTaken.id}）が使っています`);
   }
-  for (const r of [...qSameIds, ...mSameIds]) {
+  for (const r of [...qSameIds, ...mSameIds, ...eSameIds]) {
     if (r.town_id !== town.id) errors.push(`${r.id}：同じIDのものが、ほかの街（${r.town_id}）にあります`);
   }
   if (errors.length > 0) return { errors };
@@ -340,8 +367,10 @@ async function makePlan(fileName: string, text: string): Promise<Plan | { errors
       (townNow.scene !== town.scene || townNow.difficulty !== town.difficulty || townNow.sort_order !== town.sort_order),
     questions: parsed.questions,
     monsters: parsed.monsters,
+    equipment: parsed.equipment,
     q: diffRows(parsed.questions, qInTown, sameQuestion),
     m: diffRows(parsed.monsters, mInTown, sameMonster),
+    e: diffRows(parsed.equipment, eInTown, sameEquipment),
   };
 }
 

@@ -37,7 +37,10 @@ export function ResultScreen({
           <tbody>
             <tr>
               <th>{SKILL_LABELS[skill]}の経験値</th>
-              <td>+{result.exp}</td>
+              <td>
+                +{result.exp}
+                {result.weaponBonus && result.exp > 0 && <span className="note">（ぶきの効果つき）</span>}
+              </td>
             </tr>
             <tr>
               <th>おかね</th>

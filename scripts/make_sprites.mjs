@@ -1,8 +1,9 @@
-// モンスターの仮のドット絵（16×16マス、3〜4色＋黒い輪郭）を PNG にする。外部のライブラリは使わない。
+// モンスターと装備品の仮のドット絵（16×16マス、3〜4色＋黒い輪郭）を PNG にする。外部のライブラリは使わない。
 //
-//   node scripts/make_monster_sprites.mjs
+//   node scripts/make_sprites.mjs
 //
-// public/monsters/<モンスターID>.png に書き出す（透明な背景、1マス=1ピクセル）。
+// public/monsters/<モンスターID>.png、public/equipment/<装備品ID>.png に書き出す
+// （透明な背景、1マス=1ピクセル）。
 // 画面では image-rendering: pixelated で拡大して表示する。
 // 本番の絵ができたら、同じ名前の PNG を置き換えればよい。
 //
@@ -13,13 +14,13 @@ import path from 'node:path';
 import zlib from 'node:zlib';
 import { fileURLToPath } from 'node:url';
 
-const OUT_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'public', 'monsters');
+const OUT_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'public');
 
 const OUTLINE = '#1a1a1a';
 
 const SPRITES = {
   // 語彙：開いた本のモンスター（しおりのひもが舌）
-  'town01-mon-voc': {
+  'monsters/town01-mon-voc': {
     palette: { k: OUTLINE, c: '#f4e6c4', l: '#b59a6a', o: '#c8642a', r: '#d83a3a', w: '#ffffff' },
     rows: [
       '................',
@@ -41,7 +42,7 @@ const SPRITES = {
     ],
   },
   // 文法：積み木を積んだゴーレム
-  'town01-mon-gra': {
+  'monsters/town01-mon-gra': {
     palette: { k: OUTLINE, b: '#3d7be0', l: '#8fc4ff', y: '#ffd84a', w: '#ffffff' },
     rows: [
       '................',
@@ -63,7 +64,7 @@ const SPRITES = {
     ],
   },
   // リスニング：耳の大きな生き物
-  'town01-mon-lis': {
+  'monsters/town01-mon-lis': {
     palette: { k: OUTLINE, p: '#9b6bd6', n: '#ffb3d1', v: '#e0ccff', w: '#ffffff' },
     rows: [
       '.kk..........kk.',
@@ -85,7 +86,7 @@ const SPRITES = {
     ],
   },
   // ライティング：羽ペンのささったインクつぼ
-  'town01-mon-wri': {
+  'monsters/town01-mon-wri': {
     palette: { k: OUTLINE, d: '#2b3a67', i: '#5a78c8', g: '#d9a62e', w: '#ffffff' },
     rows: [
       '...........kk...',
@@ -107,7 +108,7 @@ const SPRITES = {
     ],
   },
   // スピーキング：くちばしの大きな鳥
-  'town01-mon-spe': {
+  'monsters/town01-mon-spe': {
     palette: { k: OUTLINE, e: '#4caf6a', l: '#bff0c8', a: '#ff9a2e', w: '#ffffff' },
     rows: [
       '................',
@@ -126,6 +127,162 @@ const SPRITES = {
       '....kkkkk.......',
       '....ka..ka......',
       '....kk..kk......',
+    ],
+  },
+
+  // ---------- 装備品 ----------
+  // 語彙の武器：ことのはのナイフ
+  'equipment/town01-wpn-voc': {
+    palette: { k: OUTLINE, s: '#c9d1dc', w: '#ffffff', g: '#e0b33a', b: '#8a5a2b' },
+    rows: [
+      '.......kk.......',
+      '......kswk......',
+      '......kswk......',
+      '......kswk......',
+      '......kswk......',
+      '......kswk......',
+      '......kswk......',
+      '....kkkkkkkk....',
+      '....kggggggk....',
+      '....kkkbbkkk....',
+      '......kbbk......',
+      '......kbbk......',
+      '......kbbk......',
+      '.....kggggk.....',
+      '.....kkkkkk.....',
+      '................',
+    ],
+  },
+  // 文法の武器：くみたてハンマー
+  'equipment/town01-wpn-gra': {
+    palette: { k: OUTLINE, l: '#8fc4ff', b: '#3d7be0', d: '#8a5a2b' },
+    rows: [
+      '................',
+      '..kkkkkkkkkkkk..',
+      '..kllllllllllk..',
+      '..kbbbbbbbbbbk..',
+      '..kbbbbbbbbbbk..',
+      '..kkkkkkkkkkkk..',
+      '......kddk......',
+      '......kddk......',
+      '......kddk......',
+      '......kddk......',
+      '......kddk......',
+      '......kddk......',
+      '......kddk......',
+      '......kddk......',
+      '......kkkk......',
+      '................',
+    ],
+  },
+  // リスニングの武器：みみすましの弓
+  'equipment/town01-wpn-lis': {
+    palette: { k: OUTLINE, d: '#8a5a2b', s: '#e8e8e8', g: '#9b6bd6' },
+    rows: [
+      '....kkk.........',
+      '....kddkk.......',
+      '....ks.kdk......',
+      '....ks..kdk.....',
+      '....ks...kdk....',
+      '....ks...kdk....',
+      '....ks....kdk...',
+      '....ks....kgk...',
+      '....ks....kgk...',
+      '....ks....kdk...',
+      '....ks...kdk....',
+      '....ks...kdk....',
+      '....ks..kdk.....',
+      '....ks.kdk......',
+      '....kddkk.......',
+      '....kkk.........',
+    ],
+  },
+  // ライティングの武器：はねペンのつるぎ
+  'equipment/town01-wpn-wri': {
+    palette: { k: OUTLINE, w: '#ffffff', p: '#ff8fb1', g: '#e0b33a' },
+    rows: [
+      '........kk......',
+      '.......kwwk.....',
+      '......kwwpk.....',
+      '......kwwpk.....',
+      '.....kwwppk.....',
+      '.....kwwpk......',
+      '.....kwwpk......',
+      '....kwwpk.......',
+      '....kwwpk.......',
+      '....kwpk........',
+      '....kwk.........',
+      '...kgk..........',
+      '...kgk..........',
+      '..kgk...........',
+      '..kk............',
+      '................',
+    ],
+  },
+  // スピーキングの武器：よびかけの杖（先に吹き出し）
+  'equipment/town01-wpn-spe': {
+    palette: { k: OUTLINE, w: '#ffffff', a: '#c58b4a', e: '#4caf6a' },
+    rows: [
+      '...kkkkkkkk.....',
+      '..kwwwwwwwwk....',
+      '..kwkwkwkwwk....',
+      '..kwwwwwwwwk....',
+      '...kkkkwkkk.....',
+      '......kak.......',
+      '......kek.......',
+      '......kak.......',
+      '......kak.......',
+      '......kak.......',
+      '......kak.......',
+      '......kak.......',
+      '......kek.......',
+      '......kak.......',
+      '......kkk.......',
+      '................',
+    ],
+  },
+  // 防具（HP+1）：たびびとのマント
+  'equipment/town01-arm-hp': {
+    palette: { k: OUTLINE, r: '#d83a3a', d: '#8f1f2a', y: '#e0b33a' },
+    rows: [
+      '................',
+      '.....kkkkkk.....',
+      '....kyyyyyyk....',
+      '...kkrrrrrrkk...',
+      '...krrrrrrrrk...',
+      '..krrrrrrrrrrk..',
+      '..krrdrrrrdrrk..',
+      '..krrdrrrrdrrk..',
+      '.krrrdrrrrdrrrk.',
+      '.krrrdrrrrdrrrk.',
+      '.krrdrrrrrrdrrk.',
+      'krrrdrrrrrrdrrrk',
+      'krrrdrrrrrrdrrrk',
+      'kkrrkkrrrrkkrrkk',
+      '..kk..kkkk..kk..',
+      '................',
+    ],
+  },
+  // 防具（低下の猶予+1日）：わすれずのかぶと
+  'equipment/town01-arm-grace': {
+    palette: { k: OUTLINE, s: '#b8c2cc', w: '#ffffff', b: '#3d7be0' },
+    rows: [
+      '......kkkk......',
+      '.....kbbbbk.....',
+      '......kbbk......',
+      '....kkkkkkkk....',
+      '...kssswwsssk...',
+      '..ksssswwssssk..',
+      '..kssssssssssk..',
+      '..kssssssssssk..',
+      '..kkkkkkkkkkkk..',
+      '..ksk......ksk..',
+      '..ksk......ksk..',
+      '..ksk......ksk..',
+      '..kssk....kssk..',
+      '...kkk....kkk...',
+      '................',
+      '................',
     ],
   },
 };
@@ -191,11 +348,11 @@ function encodePng(width, height, raw) {
   ]);
 }
 
-fs.mkdirSync(OUT_DIR, { recursive: true });
 for (const [id, sprite] of Object.entries(SPRITES)) {
   const colors = Object.keys(sprite.palette).filter((k) => k !== 'k' && k !== 'w');
   if (colors.length > 4) throw new Error(`${id}: 色が多すぎます（輪郭と白を除いて4色まで）`);
   const file = path.join(OUT_DIR, `${id}.png`);
+  fs.mkdirSync(path.dirname(file), { recursive: true });
   fs.writeFileSync(file, render(sprite, id));
   console.log(file);
 }

@@ -1,4 +1,5 @@
 import { Hexagon } from '../components/Hexagon';
+import { describeEffect } from '../lib/game/equipment';
 import { expForLevel } from '../lib/game/growth';
 import type { Player } from '../lib/game/player';
 import { MAX_LEVEL } from '../lib/game/rules';
@@ -27,11 +28,11 @@ export function StatusScreen({ player, onBack }: { player: Player; onBack: () =>
             </tr>
             <tr>
               <th>ぶき</th>
-              <td>なし</td>
+              <td>{player.weapon ? `${player.weapon.name}（${describeEffect(player.weapon.effect)}）` : 'なし'}</td>
             </tr>
             <tr>
               <th>ぼうぐ</th>
-              <td>なし</td>
+              <td>{player.armor ? `${player.armor.name}（${describeEffect(player.armor.effect)}）` : 'なし'}</td>
             </tr>
           </tbody>
         </table>

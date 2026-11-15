@@ -11,12 +11,14 @@ export function TownScreen({
   townScene,
   onField,
   onStatus,
+  onShop,
   onSettings,
 }: {
   player: Player;
   townScene: string;
   onField: () => void;
   onStatus: () => void;
+  onShop: () => void;
   onSettings: () => void;
 }) {
   const advice = recommendation(player.skills.filter((s) => s.unlocked && PLAYABLE_SKILLS.includes(s.skill)));
@@ -60,8 +62,8 @@ export function TownScreen({
         <button className="command command--plain" type="button" onClick={onStatus}>
           ▶ ステータス
         </button>
-        <button className="command command--plain" type="button" disabled>
-          ▶ 店（準備中）
+        <button className="command command--plain" type="button" onClick={onShop}>
+          ▶ 店
         </button>
         <button className="command command--plain" type="button" disabled>
           ▶ ボス（準備中）

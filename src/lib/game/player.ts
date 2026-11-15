@@ -1,9 +1,12 @@
 /**
- * 自分の今の状態（能力値・レベル・HP・お金）をまとめて読む。
+ * 自分の今の状態（能力値・レベル・HP・お金・装備）をまとめて読む。
  */
+import { fetchEquipmentByIds } from '../content';
+import type { EquipmentRow } from '../questionFile';
 import { fetchAdventureState, fetchSkillStats } from '../records';
 import { SKILLS, type Skill } from '../skills';
-import { daysUntilDecay, effectiveExp, levelFromExp, overallLevel, playerMaxHp, type SkillLevel } from './growth';
+import { modifiersOf, type Modifiers } from './equipment';
+import { daysUntilDecay, effectiveExp, levelFromExp, localDate, overallLevel, playerMaxHp, type SkillLevel } from './growth';
 import { EXP_PER_LEVEL_SQUARED, MAX_LEVEL } from './rules';
 
 export type PlayerSkill = SkillLevel & {
@@ -17,30 +20,45 @@ export type Player = {
   maxHp: number;
   gold: number;
   currentTownId: string;
+  ownedEquipment: string[];
+  weapon: EquipmentRow | null;
+  armor: EquipmentRow | null;
+  mods: Modifiers;
 };
 
 export async function loadPlayer(): Promise<Player> {
   const [stats, adventure] = await Promise.all([fetchSkillStats(), fetchAdventureState()]);
+  const equippedIds = [adventure?.equippedWeaponId, adventure?.equippedArmorId].filter((x): x is string => !!x);
+  const equipped = await fetchEquipmentByIds(equippedIds);
+  const weapon = equipped.find((e) => e.id === adventure?.equippedWeaponId) ?? null;
+  const armor = equipped.find((e) => e.id === adventure?.equippedArmorId) ?? null;
+  const mods = modifiersOf(weapon, armor);
+
+  const today = localDate();
   const bySkill = new Map(stats.map((s) => [s.skill, s]));
   const skills: PlayerSkill[] = SKILLS.map((skill) => {
     const s = bySkill.get(skill);
-    const exp = s ? effectiveExp(s) : 0;
+    const exp = s ? effectiveExp(s, today, mods.graceDays) : 0;
     return {
       skill,
       unlocked: s?.unlocked ?? false,
       exp,
       level: levelFromExp(exp),
       maxLevel: levelFromExp(s?.maxExp ?? 0),
-      daysUntilDecay: s ? daysUntilDecay(s.lastPracticedAt) : null,
+      daysUntilDecay: s ? daysUntilDecay(s.lastPracticedAt, today, mods.graceDays) : null,
     };
   });
   const overall = overallLevel(skills);
   return {
     skills,
     overall,
-    maxHp: playerMaxHp(overall),
+    maxHp: playerMaxHp(overall, mods.hpBonus),
     gold: adventure?.gold ?? 0,
     currentTownId: adventure?.currentTownId ?? 'town01',
+    ownedEquipment: adventure?.ownedEquipment ?? [],
+    weapon,
+    armor,
+    mods,
   };
 }
 

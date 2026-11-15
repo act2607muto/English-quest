@@ -11,6 +11,7 @@ import { LoginScreen } from './screens/LoginScreen';
 import { MicTestScreen } from './screens/MicTestScreen';
 import { ResultScreen } from './screens/ResultScreen';
 import { SettingsScreen } from './screens/SettingsScreen';
+import { ShopScreen } from './screens/ShopScreen';
 import { StatusScreen } from './screens/StatusScreen';
 import { TownScreen } from './screens/TownScreen';
 
@@ -19,6 +20,7 @@ type Route =
   | { name: 'town' }
   | { name: 'status' }
   | { name: 'field' }
+  | { name: 'shop' }
   | { name: 'battle'; monster: MonsterRow; before: Player; key: number }
   | { name: 'result'; result: BattleResult; before: Player }
   | { name: 'settings' }
@@ -59,7 +61,9 @@ function Game() {
       .then((p) => fetchTown(p.currentTownId))
       .then((t) => setTownScene(t?.scene ?? ''))
       .catch((err) => setError(err instanceof Error ? err.message : String(err)));
+    // 起動直後はログインの更新と重なって失敗することがあるので、失敗したら少し待って1回だけやり直す
     fetchIsAdmin()
+      .catch(() => new Promise<boolean>((resolve) => setTimeout(() => resolve(fetchIsAdmin()), 2000)))
       .then(setIsAdmin)
       .catch(() => setIsAdmin(false));
   }, [reload]);
@@ -100,6 +104,8 @@ function Game() {
   switch (route.name) {
     case 'status':
       return <StatusScreen player={player} onBack={() => go({ name: 'town' })} />;
+    case 'shop':
+      return <ShopScreen player={player} onChanged={reload} onBack={() => go({ name: 'town' })} />;
     case 'field':
       return <FieldScreen player={player} onFight={fight} onBack={() => go({ name: 'town' })} />;
     case 'battle':
@@ -151,6 +157,7 @@ function Game() {
           townScene={townScene}
           onField={() => go({ name: 'field' })}
           onStatus={() => go({ name: 'status' })}
+          onShop={() => go({ name: 'shop' })}
           onSettings={() => go({ name: 'settings' })}
         />
       );

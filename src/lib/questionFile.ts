@@ -47,10 +47,33 @@ export type MonsterRow = {
   image: string | null;
 };
 
+/**
+ * 装備品の効果。英語の正誤を変える効果（ヒント、選択肢を減らす等）は作らない。
+ *   exp_bonus   : その能力値の獲得経験値が rate 倍だけ増える（0.1 で 10%）
+ *   max_hp      : 自分のHPが amount 増える
+ *   decay_grace : 能力値が下がり始めるまでの猶予が days 日延びる
+ */
+export type EquipmentEffect =
+  | { type: 'exp_bonus'; skill: Skill; rate: number }
+  | { type: 'max_hp'; amount: number }
+  | { type: 'decay_grace'; days: number };
+
+/** equipment テーブルの1行 */
+export type EquipmentRow = {
+  id: string;
+  name: string;
+  slot: 'weapon' | 'armor';
+  effect: EquipmentEffect;
+  price: number;
+  town_id: string;
+  image: string | null;
+};
+
 export type ParsedFile = {
   town: TownRow | null;
   questions: QuestionRow[];
   monsters: MonsterRow[];
+  equipment: EquipmentRow[];
   /** 取り込めない理由。1つでもあれば取り込まない */
   errors: string[];
 };
@@ -63,10 +86,10 @@ export function parseQuestionFile(text: string): ParsedFile {
   try {
     data = JSON.parse(text);
   } catch (err) {
-    return { town: null, questions: [], monsters: [], errors: [`JSONとして読めません（${(err as Error).message}）`] };
+    return { ...EMPTY, errors: [`JSONとして読めません（${(err as Error).message}）`] };
   }
   if (!isObject(data)) {
-    return { town: null, questions: [], monsters: [], errors: ['ファイルの中身が {…} の形ではありません'] };
+    return { ...EMPTY, errors: ['ファイルの中身が {…} の形ではありません'] };
   }
   if (data.format_version !== 1) {
     errors.push(`format_version が 1 ではありません（${JSON.stringify(data.format_version)}）`);
@@ -76,12 +99,28 @@ export function parseQuestionFile(text: string): ParsedFile {
 
   const hasQuestions = Array.isArray(data.questions) && data.questions.length > 0;
   const hasMonsters = Array.isArray(data.monsters) && data.monsters.length > 0;
-  if (!hasQuestions && !hasMonsters) {
-    errors.push('questions（問題）か monsters（モンスター）のどちらかが必要です');
-    return { town, questions: [], monsters: [], errors };
+  const hasEquipment = Array.isArray(data.equipment) && data.equipment.length > 0;
+  if (!hasQuestions && !hasMonsters && !hasEquipment) {
+    errors.push('questions（問題）・monsters（モンスター）・equipment（装備品）のどれかが必要です');
+    return { ...EMPTY, town, errors };
   }
   if (data.questions !== undefined && !Array.isArray(data.questions)) errors.push('questions が [ … ] の形ではありません');
   if (data.monsters !== undefined && !Array.isArray(data.monsters)) errors.push('monsters が [ … ] の形ではありません');
+  if (data.equipment !== undefined && !Array.isArray(data.equipment)) errors.push('equipment が [ … ] の形ではありません');
+
+  const equipment: EquipmentRow[] = [];
+  const seenEquipment = new Set<string>();
+  (hasEquipment ? (data.equipment as unknown[]) : []).forEach((raw, index) => {
+    const label = isObject(raw) && typeof raw.id === 'string' ? raw.id : `${index + 1}個目`;
+    const problems: string[] = [];
+    const row = parseEquipment(raw, town?.id ?? null, problems);
+    if (row) {
+      if (seenEquipment.has(row.id)) problems.push('同じIDの装備品がほかにもあります');
+      seenEquipment.add(row.id);
+    }
+    if (problems.length > 0) errors.push(...problems.map((p) => `${label}：${p}`));
+    else if (row) equipment.push(row);
+  });
 
   const monsters: MonsterRow[] = [];
   const seenMonsters = new Set<string>();
@@ -114,7 +153,85 @@ export function parseQuestionFile(text: string): ParsedFile {
     }
   });
 
-  return { town, questions, monsters, errors };
+  return { town, questions, monsters, equipment, errors };
+}
+
+const EMPTY: ParsedFile = { town: null, questions: [], monsters: [], equipment: [], errors: [] };
+
+function parseEquipment(raw: unknown, townId: string | null, problems: string[]): EquipmentRow | null {
+  if (!isObject(raw)) {
+    problems.push('装備品が {…} の形ではありません');
+    return null;
+  }
+  if (!isId(raw.id)) problems.push('id がないか、使えない文字が入っています（英数字・ハイフン・下線のみ）');
+  if (!nonEmpty(raw.name)) problems.push('name（名前）がありません');
+  if (townId && raw.town !== undefined && raw.town !== townId) {
+    problems.push(`town が「${townId}」ではありません（${JSON.stringify(raw.town)}）`);
+  }
+  const slot = raw.slot;
+  if (slot !== 'weapon' && slot !== 'armor') problems.push(`slot は weapon（武器）か armor（防具）にしてください（${JSON.stringify(slot)}）`);
+  if (!Number.isInteger(raw.price) || (raw.price as number) < 0) problems.push(`price は0以上の整数にしてください（${JSON.stringify(raw.price)}）`);
+  const effect = parseEffect(raw.effect, problems);
+  if (effect && slot === 'weapon' && effect.type !== 'exp_bonus') problems.push('武器の効果は exp_bonus（経験値の上乗せ）にしてください');
+  if (effect && slot === 'armor' && effect.type === 'exp_bonus') problems.push('防具の効果は max_hp か decay_grace にしてください');
+  const image = optionalText(raw.image, 'image', problems);
+  if (problems.length > 0 || !townId || !effect) return null;
+  return {
+    id: raw.id as string,
+    name: (raw.name as string).trim(),
+    slot: slot as 'weapon' | 'armor',
+    effect,
+    price: raw.price as number,
+    town_id: townId,
+    image,
+  };
+}
+
+function parseEffect(raw: unknown, problems: string[]): EquipmentEffect | null {
+  if (!isObject(raw)) {
+    problems.push('effect（効果）がありません');
+    return null;
+  }
+  switch (raw.type) {
+    case 'exp_bonus': {
+      const skill = raw.skill as Skill;
+      if (!SKILLS.includes(skill)) problems.push(`effect.skill が正しくありません（${JSON.stringify(raw.skill)}）`);
+      if (typeof raw.rate !== 'number' || raw.rate <= 0 || raw.rate > 1) {
+        problems.push(`effect.rate は 0 より大きく 1 以下にしてください（0.1 で 10%）（${JSON.stringify(raw.rate)}）`);
+      }
+      return problems.length > 0 ? null : { type: 'exp_bonus', skill, rate: raw.rate as number };
+    }
+    case 'max_hp':
+      if (!Number.isInteger(raw.amount) || (raw.amount as number) < 1) {
+        problems.push(`effect.amount は1以上の整数にしてください（${JSON.stringify(raw.amount)}）`);
+        return null;
+      }
+      return { type: 'max_hp', amount: raw.amount as number };
+    case 'decay_grace':
+      if (!Number.isInteger(raw.days) || (raw.days as number) < 1) {
+        problems.push(`effect.days は1以上の整数にしてください（${JSON.stringify(raw.days)}）`);
+        return null;
+      }
+      return { type: 'decay_grace', days: raw.days as number };
+    default:
+      problems.push(`effect.type は exp_bonus・max_hp・decay_grace のどれかにしてください（${JSON.stringify(raw.type)}）`);
+      return null;
+  }
+}
+
+export function sameEquipment(a: EquipmentRow, b: EquipmentRow): boolean {
+  return (
+    a.name === b.name &&
+    a.slot === b.slot &&
+    a.price === b.price &&
+    a.town_id === b.town_id &&
+    (a.image ?? null) === (b.image ?? null) &&
+    JSON.stringify(sortKeys(a.effect)) === JSON.stringify(sortKeys(b.effect))
+  );
+}
+
+function sortKeys(o: object): object {
+  return Object.fromEntries(Object.entries(o).sort(([x], [y]) => x.localeCompare(y)));
 }
 
 function parseMonster(raw: unknown, townId: string | null, problems: string[]): MonsterRow | null {
