@@ -36,7 +36,7 @@
 ## ファイル
 
 - `docs/spec.md`：仕様書（2026-11-15 時点）
-- `data/town01_questions.json`：最初の街「あいさつと自己紹介」の教材150問（各能力値30問）。まだ本人の確認前
+- `data/town01_questions.json`：最初の街「あいさつと自己紹介」の教材150問（各能力値30問）。2026-11-16に本人が確認済み
 - `scripts/build_town01.py`：上の教材ファイルを作ったスクリプト。問題の修正はここを直して作り直す（`python3 scripts/build_town01.py data/town01_questions.json`）
 
 ## 未決

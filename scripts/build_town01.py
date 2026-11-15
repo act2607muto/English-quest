@@ -2,6 +2,10 @@
 
 使い方: python3 build_town01.py 出力先.json
 選択肢は「正解を先頭」に書き、ここで並びを混ぜて正解の位置を記録する。
+並びは問題IDと選択肢の数だけで決まるので、選択肢の文字を直しても並びは変わらない。
+
+文中の {{name_ja}} {{given_ja}} {{name_en}} {{given_en}} は、アプリが出題するときに
+本人の名前（フルネーム・下の名前、日本語・英語）に置き換える。
 """
 import json
 import random
@@ -24,7 +28,7 @@ VOCAB = [
     ("I'm a big fan of soccer.", "a big fan of", "〜が大好きだ", ["〜が苦手だ", "〜に詳しい", "〜を習っている"]),
     ("How do you spell your name?", "spell", "つづる", ["呼ぶ", "発音する", "覚える"]),
     ("I'm in my thirties.", "in my thirties", "30代だ", ["30歳だ", "30年間", "30人で"]),
-    ("What brings you here?", None, "どうしてここに来たのですか", ["何を持ってきましたか", "ここは何ですか", "いつ来ましたか"]),
+    ("What brought you here?", None, "どうしてここに来たのですか", ["何を持ってきましたか", "ここは何ですか", "いつ来ましたか"]),
     ("I'm glad to be here.", "glad", "うれしい", ["疲れた", "驚いた", "緊張した"]),
     ("I grew up in a small town.", "grew up", "育った", ["引っ越した", "生まれた", "訪れた"]),
     ("I'm an office worker.", "office worker", "会社員", ["公務員", "店員", "学生"]),
@@ -38,7 +42,7 @@ VOCAB = [
     ("It was nice talking to you.", None, "お話しできてよかったです", ["はじめまして", "お待たせしました", "お世話になります"]),
     ("I'm on vacation.", "on vacation", "休暇中", ["出張中", "勤務中", "留学中"]),
     ("I'm here on business.", "on business", "仕事で", ["観光で", "留学で", "偶然"]),
-    ("What's your favorite food?", "favorite", "いちばん好きな", ["いちばん高い", "苦手な", "珍しい"]),
+    ("What's your favorite food?", "favorite", "お気に入りの",["いちばん高い", "苦手な", "珍しい"]),
     ("I've been learning English for two years.", "for two years", "2年間", ["2年前に", "2年後に", "2回"]),
     ("See you around.", None, "またね", ["お大事に", "ようこそ", "失礼しました"]),
 ]
@@ -106,7 +110,7 @@ LISTENING = [
     ("Are you here on vacation?", "休暇でこちらに来ているのですか", ["ここで休んでもいいですか", "休暇はいつですか", "ここは休みですか"]),
     ("I work from home.", "在宅で働いています", ["家の近くで働いています", "仕事から家に帰ります", "家で仕事を探しています"]),
     ("What's your job like?", "お仕事はどんな感じですか", ["どんな仕事が好きですか", "お仕事は何ですか", "仕事は好きですか"]),
-    ("I'll see you later.", "またあとで", ["お先に失礼します", "あとで見ておきます", "遅れてすみません"]),
+    ("I'll see you later.", "またあとで", ["お先にどうぞ","あとで見ておきます", "遅れてすみません"]),
     ("Take care.", "気をつけてね（お元気で）", ["任せてください", "持っていってください", "落ち着いてください"]),
     ("Let's keep in touch.", "これからも連絡を取り合いましょう", ["そのまま触らないでください", "また今度会いましょう", "少し休憩しましょう"]),
 ]
@@ -114,25 +118,25 @@ LISTENING = [
 # ---------- ライティング（AI採点）: (日本語, 模範解答のリスト) ----------
 WRITING = [
     ("はじめまして。", ["Nice to meet you."]),
-    ("私の名前は田中ユキです。", ["My name is Yuki Tanaka.", "I'm Yuki Tanaka."]),
+    ("私の名前は{{name_ja}}です。", ["My name is {{name_en}}.", "I'm {{name_en}}."]),
     ("日本の出身です。", ["I'm from Japan.", "I come from Japan."]),
     ("東京に住んでいます。", ["I live in Tokyo."]),
-    ("会社員です。", ["I'm an office worker.", "I work for a company.", "I work at a company."]),
+    ("会社員です。", ["I'm an office worker.", "I work for a company."]),
     ("お仕事は何ですか。", ["What do you do?", "What do you do for a living?"]),
     ("ご出身はどちらですか。", ["Where are you from?"]),
     ("趣味は料理です。", ["My hobby is cooking.", "I like cooking."]),
     ("兄が1人います。", ["I have an older brother.", "I have one older brother."]),
-    ("ユキと呼んでください。", ["Please call me Yuki."]),
+    ("{{given_ja}}と呼んでください。", ["Please call me {{given_en}}."]),
     ("お会いできてうれしいです。", ["I'm glad to meet you.", "I'm happy to meet you.", "It's nice to meet you."]),
     ("英語を勉強しています。", ["I'm studying English.", "I'm learning English."]),
     ("ここに3年住んでいます。", ["I've lived here for three years.", "I have lived here for three years.", "I've been living here for three years."]),
     ("週末は何をしていますか。", ["What do you do on weekends?", "What do you do on the weekend?"]),
     ("映画を見るのが好きです。", ["I like watching movies.", "I like to watch movies."]),
-    ("こちらは友人のケンです。", ["This is my friend, Ken.", "This is my friend Ken."]),
+    ("こちらは友人のケンです。", ["This is my friend, Ken."]),
     ("大阪で生まれました。", ["I was born in Osaka."]),
     ("もう一度言ってもらえますか。", ["Could you say that again?", "Can you say that again?"]),
     ("病院で働いています。", ["I work at a hospital.", "I work in a hospital."]),
-    ("元気ですか。", ["How are you?", "How are you doing?"]),
+    ("元気ですか。", ["How are you?", "How are you doing?", "How's it going?"]),
     ("元気です。あなたは？", ["I'm good. How about you?", "I'm fine. And you?", "I'm doing well. How about you?"]),
     ("家族は4人です。", ["There are four people in my family.", "I have a family of four."]),
     ("音楽に興味があります。", ["I'm interested in music."]),
@@ -166,7 +170,7 @@ SPEAK_SAY = [
 ]
 # 英語の質問に自分の言葉で答える: (英語の質問, 質問の意味, 答えの例のリスト)
 SPEAK_ANSWER = [
-    ("What's your name?", "お名前は何ですか。", ["My name is Yuki.", "I'm Yuki."]),
+    ("What's your name?", "お名前は何ですか。", ["My name is {{given_en}}.", "I'm {{given_en}}."]),
     ("Where are you from?", "ご出身はどちらですか。", ["I'm from Japan."]),
     ("What do you do?", "お仕事は何ですか。", ["I'm an office worker.", "I work at a hospital."]),
     ("How are you today?", "今日の調子はどうですか。", ["I'm good, thank you.", "I'm doing well, thanks."]),
@@ -180,7 +184,7 @@ SPEAK_ANSWER = [
     ("What do you like about your town?", "自分の町のどこが好きですか。", ["I like the food there.", "It's quiet, and the people are kind."]),
     ("Have you ever been abroad?", "海外に行ったことはありますか。", ["Yes, I've been to Korea.", "No, I haven't."]),
     ("What are you going to do this weekend?", "今週末は何をする予定ですか。", ["I'm going to see my friends.", "I'm going to stay home and relax."]),
-    ("Could you tell me a little about yourself?", "少し自己紹介をしていただけますか。", ["My name is Yuki. I'm from Japan, and I work at a hospital.", "I'm Yuki. I live in Tokyo, and I like cooking."]),
+    ("Could you tell me a little about yourself?", "少し自己紹介をしていただけますか。", ["My name is {{given_en}}. I'm from Japan, and I work at a hospital.", "I'm {{given_en}}. I live in Tokyo, and I like cooking."]),
 ]
 
 

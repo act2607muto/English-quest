@@ -246,8 +246,8 @@
       "town": "town01",
       "skill": "vocabulary",
       "format": "choice4",
-      "prompt": "「What brings you here?」の意味は？",
-      "sentence": "What brings you here?",
+      "prompt": "「What brought you here?」の意味は？",
+      "sentence": "What brought you here?",
       "choices": [
         "いつ来ましたか",
         "ここは何ですか",
@@ -255,7 +255,7 @@
         "何を持ってきましたか"
       ],
       "answer": 2,
-      "explanation": "What brings you here? = どうしてここに来たのですか",
+      "explanation": "What brought you here? = どうしてここに来たのですか",
       "difficulty": 1,
       "needs_fix": false
     },
@@ -501,13 +501,13 @@
       "prompt": "「What's your favorite food?」の favorite の意味は？",
       "sentence": "What's your favorite food?",
       "choices": [
-        "いちばん好きな",
+        "お気に入りの",
         "珍しい",
         "苦手な",
         "いちばん高い"
       ],
       "answer": 0,
-      "explanation": "favorite = いちばん好きな",
+      "explanation": "favorite = お気に入りの",
       "difficulty": 1,
       "needs_fix": false
     },
@@ -1584,7 +1584,7 @@
         "遅れてすみません",
         "またあとで",
         "あとで見ておきます",
-        "お先に失礼します"
+        "お先にどうぞ"
       ],
       "answer": 1,
       "explanation": "I'll see you later. = またあとで",
@@ -1646,10 +1646,10 @@
       "skill": "writing",
       "format": "translate",
       "prompt": "英語で書こう",
-      "sentence": "私の名前は田中ユキです。",
+      "sentence": "私の名前は{{name_ja}}です。",
       "model_answers": [
-        "My name is Yuki Tanaka.",
-        "I'm Yuki Tanaka."
+        "My name is {{name_en}}.",
+        "I'm {{name_en}}."
       ],
       "difficulty": 1,
       "needs_fix": false
@@ -1690,8 +1690,7 @@
       "sentence": "会社員です。",
       "model_answers": [
         "I'm an office worker.",
-        "I work for a company.",
-        "I work at a company."
+        "I work for a company."
       ],
       "difficulty": 1,
       "needs_fix": false
@@ -1757,9 +1756,9 @@
       "skill": "writing",
       "format": "translate",
       "prompt": "英語で書こう",
-      "sentence": "ユキと呼んでください。",
+      "sentence": "{{given_ja}}と呼んでください。",
       "model_answers": [
-        "Please call me Yuki."
+        "Please call me {{given_en}}."
       ],
       "difficulty": 1,
       "needs_fix": false
@@ -1844,8 +1843,7 @@
       "prompt": "英語で書こう",
       "sentence": "こちらは友人のケンです。",
       "model_answers": [
-        "This is my friend, Ken.",
-        "This is my friend Ken."
+        "This is my friend, Ken."
       ],
       "difficulty": 1,
       "needs_fix": false
@@ -1900,7 +1898,8 @@
       "sentence": "元気ですか。",
       "model_answers": [
         "How are you?",
-        "How are you doing?"
+        "How are you doing?",
+        "How's it going?"
       ],
       "difficulty": 1,
       "needs_fix": false
@@ -2263,8 +2262,8 @@
       "sentence": "What's your name?",
       "sentence_ja": "お名前は何ですか。",
       "model_answers": [
-        "My name is Yuki.",
-        "I'm Yuki."
+        "My name is {{given_en}}.",
+        "I'm {{given_en}}."
       ],
       "difficulty": 1,
       "needs_fix": false
@@ -2471,8 +2470,8 @@
       "sentence": "Could you tell me a little about yourself?",
       "sentence_ja": "少し自己紹介をしていただけますか。",
       "model_answers": [
-        "My name is Yuki. I'm from Japan, and I work at a hospital.",
-        "I'm Yuki. I live in Tokyo, and I like cooking."
+        "My name is {{given_en}}. I'm from Japan, and I work at a hospital.",
+        "I'm {{given_en}}. I live in Tokyo, and I like cooking."
       ],
       "difficulty": 1,
       "needs_fix": false
