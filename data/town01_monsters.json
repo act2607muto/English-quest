@@ -1,0 +1,56 @@
+{
+  "format_version": 1,
+  "town": {
+    "id": "town01",
+    "scene": "あいさつと自己紹介",
+    "difficulty": "基本",
+    "order": 1
+  },
+  "monsters": [
+    {
+      "id": "town01-mon-voc",
+      "name": "ページムシ",
+      "skill": "vocabulary",
+      "hp": 5,
+      "gold": 10,
+      "is_boss": false,
+      "image": "/monsters/town01-mon-voc.png"
+    },
+    {
+      "id": "town01-mon-gra",
+      "name": "つみきゴーレム",
+      "skill": "grammar",
+      "hp": 5,
+      "gold": 10,
+      "is_boss": false,
+      "image": "/monsters/town01-mon-gra.png"
+    },
+    {
+      "id": "town01-mon-lis",
+      "name": "おおみみ",
+      "skill": "listening",
+      "hp": 5,
+      "gold": 10,
+      "is_boss": false,
+      "image": "/monsters/town01-mon-lis.png"
+    },
+    {
+      "id": "town01-mon-wri",
+      "name": "インクつぼ",
+      "skill": "writing",
+      "hp": 3,
+      "gold": 10,
+      "is_boss": false,
+      "image": "/monsters/town01-mon-wri.png"
+    },
+    {
+      "id": "town01-mon-spe",
+      "name": "おしゃべりどり",
+      "skill": "speaking",
+      "hp": 3,
+      "gold": 10,
+      "is_boss": false,
+      "image": "/monsters/town01-mon-spe.png"
+    }
+  ]
+}

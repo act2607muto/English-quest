@@ -1,21 +1,30 @@
 import { useState, type ChangeEvent } from 'react';
 import {
+  fetchMonstersByIds,
+  fetchMonstersOfTown,
   fetchQuestionsByIds,
   fetchQuestionsOfTown,
   fetchTowns,
-  importTownAndQuestions,
+  importTownFile,
 } from '../lib/content';
-import { parseQuestionFile, sameQuestion, type QuestionRow, type TownRow } from '../lib/questionFile';
+import {
+  parseQuestionFile,
+  sameMonster,
+  sameQuestion,
+  type MonsterRow,
+  type QuestionRow,
+  type TownRow,
+} from '../lib/questionFile';
 import { SKILLS, SKILL_LABELS } from '../lib/skills';
 
 /**
  * 教材の取り込み（第1段階の手順4）。
- * 問題ファイルを読んで点検し、何が増えて何が変わるかを見せてから登録する。
- * アプリに同梱した data/ の教材と、端末で選んだファイルのどちらでも取り込める。
+ * 街のファイル（問題・モンスター）を読んで点検し、何が増えて何が変わるかを見せてから登録する。
+ * アプリに同梱した data/ のファイルと、端末で選んだファイルのどちらでも取り込める。
  */
 
-// data/ にある問題ファイル。中身は選んだときに読み込む
-const BUNDLED = import.meta.glob('../../data/*_questions.json', {
+// data/ にある街のファイル。中身は選んだときに読み込む
+const BUNDLED = import.meta.glob('../../data/town*.json', {
   query: '?raw',
   import: 'default',
 }) as Record<string, () => Promise<string>>;
@@ -23,16 +32,17 @@ const BUNDLED = import.meta.glob('../../data/*_questions.json', {
 const DIFFICULTY_LABEL = ['', '基本', '標準', '目標'];
 const MAX_ERRORS_SHOWN = 30;
 
+type Diff = { added: string[]; changed: string[]; unchanged: number; notInFile: string[] };
+
 type Plan = {
   fileName: string;
   town: TownRow;
   townIsNew: boolean;
   townChanged: boolean;
   questions: QuestionRow[];
-  added: string[];
-  changed: string[];
-  unchanged: number;
-  notInFile: string[];
+  monsters: MonsterRow[];
+  q: Diff;
+  m: Diff;
 };
 
 type State =
@@ -82,8 +92,13 @@ export function ImportScreen({ onBack }: { onBack: () => void }) {
   async function handleImport(plan: Plan) {
     setState({ kind: 'importing', plan });
     try {
-      const toWrite = new Set([...plan.added, ...plan.changed]);
-      await importTownAndQuestions(plan.town, plan.questions.filter((q) => toWrite.has(q.id)));
+      const qWrite = new Set([...plan.q.added, ...plan.q.changed]);
+      const mWrite = new Set([...plan.m.added, ...plan.m.changed]);
+      await importTownFile(
+        plan.town,
+        plan.questions.filter((q) => qWrite.has(q.id)),
+        plan.monsters.filter((m) => mWrite.has(m.id)),
+      );
       setState({ kind: 'done', plan });
     } catch (err) {
       setState({ kind: 'failed', plan, message: errorMessage(err) });
@@ -96,7 +111,7 @@ export function ImportScreen({ onBack }: { onBack: () => void }) {
     <main className="screen">
       <section className="window">
         <h2 className="window__title">教材の取り込み</h2>
-        <p>問題ファイルを読んで中身を確かめてから、データベースに登録します。同じIDの問題は上書きします。</p>
+        <p>街のファイル（問題・モンスター）を読んで中身を確かめてから、データベースに登録します。同じIDのものは上書きします。</p>
       </section>
 
       {state.kind === 'idle' || state.kind === 'invalid' ? (
@@ -142,9 +157,9 @@ export function ImportScreen({ onBack }: { onBack: () => void }) {
       )}
 
       {state.kind === 'ready' &&
-        (state.plan.added.length + state.plan.changed.length > 0 || state.plan.townIsNew || state.plan.townChanged ? (
+        (hasWork(state.plan) ? (
           <button className="command" type="button" onClick={() => void handleImport(state.plan)}>
-            ▶ 取り込む（新しい問題 {state.plan.added.length}・変わる問題 {state.plan.changed.length}）
+            ▶ 取り込む
           </button>
         ) : (
           <section className="window">
@@ -171,8 +186,11 @@ export function ImportScreen({ onBack }: { onBack: () => void }) {
         <section className="window">
           <h2 className="window__title">取り込みました</h2>
           <p>
-            街「{state.plan.town.scene}」に、新しい問題 {state.plan.added.length} 問を足し、
-            {state.plan.changed.length} 問を更新しました。
+            街「{state.plan.town.scene}」に登録しました。
+            {state.plan.questions.length > 0 &&
+              ` 問題は新しく ${state.plan.q.added.length} 問、更新 ${state.plan.q.changed.length} 問。`}
+            {state.plan.monsters.length > 0 &&
+              ` モンスターは新しく ${state.plan.m.added.length} 体、更新 ${state.plan.m.changed.length} 体。`}
           </p>
         </section>
       )}
@@ -186,6 +204,14 @@ export function ImportScreen({ onBack }: { onBack: () => void }) {
         ▶ もどる
       </button>
     </main>
+  );
+}
+
+function hasWork(plan: Plan): boolean {
+  return (
+    plan.townIsNew ||
+    plan.townChanged ||
+    plan.q.added.length + plan.q.changed.length + plan.m.added.length + plan.m.changed.length > 0
   );
 }
 
@@ -217,29 +243,68 @@ function PlanView({ plan }: { plan: Plan }) {
               <td>{n}問</td>
             </tr>
           ))}
-          <tr>
-            <th>新しい問題</th>
-            <td>{plan.added.length}問</td>
-          </tr>
-          <tr>
-            <th>変わる問題</th>
-            <td>{plan.changed.length}問</td>
-          </tr>
-          <tr>
-            <th>変わらない問題</th>
-            <td>{plan.unchanged}問</td>
-          </tr>
+          {plan.questions.length > 0 && <DiffRows label="問題" unit="問" diff={plan.q} />}
+          {plan.monsters.length > 0 && (
+            <>
+              <tr>
+                <th>モンスター</th>
+                <td>{plan.monsters.map((m) => m.name).join('、')}</td>
+              </tr>
+              <DiffRows label="モンスター" unit="体" diff={plan.m} />
+            </>
+          )}
         </tbody>
       </table>
-      {plan.changed.length > 0 && plan.changed.length <= 30 && <p>変わる問題：{plan.changed.join('、')}</p>}
-      {plan.notInFile.length > 0 && (
-        <p>
-          データベースにあってファイルにない問題が {plan.notInFile.length} 問あります。これらは消さずに残します。
-        </p>
+      {plan.q.changed.length > 0 && plan.q.changed.length <= 30 && <p>変わる問題：{plan.q.changed.join('、')}</p>}
+      {plan.q.notInFile.length > 0 && (
+        <p>データベースにあってファイルにない問題が {plan.q.notInFile.length} 問あります。消さずに残します。</p>
       )}
-      <p className="note">要修正の印は、取り込みでは変わりません。</p>
+      {plan.questions.length > 0 && <p className="note">要修正の印は、取り込みでは変わりません。</p>}
     </section>
   );
+}
+
+function DiffRows({ label, unit, diff }: { label: string; unit: string; diff: Diff }) {
+  return (
+    <>
+      <tr>
+        <th>新しい{label}</th>
+        <td>
+          {diff.added.length}
+          {unit}
+        </td>
+      </tr>
+      <tr>
+        <th>変わる{label}</th>
+        <td>
+          {diff.changed.length}
+          {unit}
+        </td>
+      </tr>
+      <tr>
+        <th>変わらない{label}</th>
+        <td>
+          {diff.unchanged}
+          {unit}
+        </td>
+      </tr>
+    </>
+  );
+}
+
+function diffRows<T extends { id: string }>(fileRows: T[], dbRows: T[], same: (a: T, b: T) => boolean): Diff {
+  const existing = new Map(dbRows.map((r) => [r.id, r]));
+  const fileIds = new Set(fileRows.map((r) => r.id));
+  const added: string[] = [];
+  const changed: string[] = [];
+  let unchanged = 0;
+  for (const r of fileRows) {
+    const now = existing.get(r.id);
+    if (!now) added.push(r.id);
+    else if (!same(now, r)) changed.push(r.id);
+    else unchanged++;
+  }
+  return { added, changed, unchanged, notInFile: dbRows.filter((r) => !fileIds.has(r.id)).map((r) => r.id) };
 }
 
 async function makePlan(fileName: string, text: string): Promise<Plan | { errors: string[] }> {
@@ -247,10 +312,12 @@ async function makePlan(fileName: string, text: string): Promise<Plan | { errors
   if (parsed.errors.length > 0 || !parsed.town) return { errors: parsed.errors };
   const town = parsed.town;
 
-  const [towns, inTown, sameIds] = await Promise.all([
+  const [towns, qInTown, qSameIds, mInTown, mSameIds] = await Promise.all([
     fetchTowns(),
-    fetchQuestionsOfTown(town.id),
+    parsed.questions.length > 0 ? fetchQuestionsOfTown(town.id) : Promise.resolve([]),
     fetchQuestionsByIds(parsed.questions.map((q) => q.id)),
+    parsed.monsters.length > 0 ? fetchMonstersOfTown(town.id) : Promise.resolve([]),
+    fetchMonstersByIds(parsed.monsters.map((m) => m.id)),
   ]);
 
   const errors: string[] = [];
@@ -258,37 +325,23 @@ async function makePlan(fileName: string, text: string): Promise<Plan | { errors
   if (orderTaken) {
     errors.push(`順番 ${town.sort_order} は、すでに街「${orderTaken.scene}」（${orderTaken.id}）が使っています`);
   }
-  for (const q of sameIds) {
-    if (q.town_id !== town.id) errors.push(`${q.id}：同じIDの問題が、ほかの街（${q.town_id}）にあります`);
+  for (const r of [...qSameIds, ...mSameIds]) {
+    if (r.town_id !== town.id) errors.push(`${r.id}：同じIDのものが、ほかの街（${r.town_id}）にあります`);
   }
   if (errors.length > 0) return { errors };
 
-  const existing = new Map(inTown.map((q) => [q.id, q]));
-  const fileIds = new Set(parsed.questions.map((q) => q.id));
-  const added: string[] = [];
-  const changed: string[] = [];
-  let unchanged = 0;
-  for (const q of parsed.questions) {
-    const now = existing.get(q.id);
-    if (!now) added.push(q.id);
-    else if (!sameQuestion(now, q)) changed.push(q.id);
-    else unchanged++;
-  }
   const townNow = towns.find((t) => t.id === town.id);
-  const townChanged =
-    !!townNow &&
-    (townNow.scene !== town.scene || townNow.difficulty !== town.difficulty || townNow.sort_order !== town.sort_order);
-
   return {
     fileName,
     town,
     townIsNew: !townNow,
-    townChanged,
+    townChanged:
+      !!townNow &&
+      (townNow.scene !== town.scene || townNow.difficulty !== town.difficulty || townNow.sort_order !== town.sort_order),
     questions: parsed.questions,
-    added,
-    changed,
-    unchanged,
-    notInFile: inTown.filter((q) => !fileIds.has(q.id)).map((q) => q.id),
+    monsters: parsed.monsters,
+    q: diffRows(parsed.questions, qInTown, sameQuestion),
+    m: diffRows(parsed.monsters, mInTown, sameMonster),
   };
 }
 

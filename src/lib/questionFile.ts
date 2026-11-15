@@ -35,9 +35,22 @@ export type QuestionRow = {
   tags: string[];
 };
 
+/** monsters テーブルの1行 */
+export type MonsterRow = {
+  id: string;
+  name: string;
+  town_id: string;
+  skill: Skill | null;
+  hp: number;
+  gold: number;
+  is_boss: boolean;
+  image: string | null;
+};
+
 export type ParsedFile = {
   town: TownRow | null;
   questions: QuestionRow[];
+  monsters: MonsterRow[];
   /** 取り込めない理由。1つでもあれば取り込まない */
   errors: string[];
 };
@@ -50,10 +63,10 @@ export function parseQuestionFile(text: string): ParsedFile {
   try {
     data = JSON.parse(text);
   } catch (err) {
-    return { town: null, questions: [], errors: [`JSONとして読めません（${(err as Error).message}）`] };
+    return { town: null, questions: [], monsters: [], errors: [`JSONとして読めません（${(err as Error).message}）`] };
   }
   if (!isObject(data)) {
-    return { town: null, questions: [], errors: ['ファイルの中身が {…} の形ではありません'] };
+    return { town: null, questions: [], monsters: [], errors: ['ファイルの中身が {…} の形ではありません'] };
   }
   if (data.format_version !== 1) {
     errors.push(`format_version が 1 ではありません（${JSON.stringify(data.format_version)}）`);
@@ -61,14 +74,32 @@ export function parseQuestionFile(text: string): ParsedFile {
 
   const town = parseTown(data.town, errors);
 
-  if (!Array.isArray(data.questions) || data.questions.length === 0) {
-    errors.push('questions に問題が入っていません');
-    return { town, questions: [], errors };
+  const hasQuestions = Array.isArray(data.questions) && data.questions.length > 0;
+  const hasMonsters = Array.isArray(data.monsters) && data.monsters.length > 0;
+  if (!hasQuestions && !hasMonsters) {
+    errors.push('questions（問題）か monsters（モンスター）のどちらかが必要です');
+    return { town, questions: [], monsters: [], errors };
   }
+  if (data.questions !== undefined && !Array.isArray(data.questions)) errors.push('questions が [ … ] の形ではありません');
+  if (data.monsters !== undefined && !Array.isArray(data.monsters)) errors.push('monsters が [ … ] の形ではありません');
+
+  const monsters: MonsterRow[] = [];
+  const seenMonsters = new Set<string>();
+  (hasMonsters ? (data.monsters as unknown[]) : []).forEach((raw, index) => {
+    const label = isObject(raw) && typeof raw.id === 'string' ? raw.id : `${index + 1}体目`;
+    const problems: string[] = [];
+    const row = parseMonster(raw, town?.id ?? null, problems);
+    if (row) {
+      if (seenMonsters.has(row.id)) problems.push('同じIDのモンスターがほかにもいます');
+      seenMonsters.add(row.id);
+    }
+    if (problems.length > 0) errors.push(...problems.map((p) => `${label}：${p}`));
+    else if (row) monsters.push(row);
+  });
 
   const questions: QuestionRow[] = [];
   const seen = new Set<string>();
-  data.questions.forEach((raw: unknown, index: number) => {
+  (hasQuestions ? (data.questions as unknown[]) : []).forEach((raw: unknown, index: number) => {
     const label = isObject(raw) && typeof raw.id === 'string' ? raw.id : `${index + 1}問目`;
     const problems: string[] = [];
     const row = parseQuestion(raw, town?.id ?? null, problems);
@@ -83,7 +114,44 @@ export function parseQuestionFile(text: string): ParsedFile {
     }
   });
 
-  return { town, questions, errors };
+  return { town, questions, monsters, errors };
+}
+
+function parseMonster(raw: unknown, townId: string | null, problems: string[]): MonsterRow | null {
+  if (!isObject(raw)) {
+    problems.push('モンスターが {…} の形ではありません');
+    return null;
+  }
+  if (!isId(raw.id)) problems.push('id がないか、使えない文字が入っています（英数字・ハイフン・下線のみ）');
+  if (!nonEmpty(raw.name)) problems.push('name（名前）がありません');
+  if (townId && raw.town !== undefined && raw.town !== townId) {
+    problems.push(`town が「${townId}」ではありません（${JSON.stringify(raw.town)}）`);
+  }
+  const isBoss = raw.is_boss === true;
+  if (raw.is_boss !== undefined && typeof raw.is_boss !== 'boolean') problems.push('is_boss は true か false にしてください');
+  const skill = raw.skill === undefined || raw.skill === null ? null : (raw.skill as Skill);
+  if (skill !== null && !SKILLS.includes(skill)) problems.push(`skill が正しくありません（${JSON.stringify(raw.skill)}）`);
+  if (!isBoss && skill === null) problems.push('ボスでないモンスターには skill が必要です');
+  if (!Number.isInteger(raw.hp) || (raw.hp as number) < 1) problems.push(`hp は1以上の整数にしてください（${JSON.stringify(raw.hp)}）`);
+  const gold = raw.gold ?? 0;
+  if (!Number.isInteger(gold) || (gold as number) < 0) problems.push(`gold は0以上の整数にしてください（${JSON.stringify(raw.gold)}）`);
+  const image = optionalText(raw.image, 'image', problems);
+  if (problems.length > 0 || !townId) return null;
+  return {
+    id: raw.id as string,
+    name: (raw.name as string).trim(),
+    town_id: townId,
+    skill,
+    hp: raw.hp as number,
+    gold: gold as number,
+    is_boss: isBoss,
+    image,
+  };
+}
+
+export function sameMonster(a: MonsterRow, b: MonsterRow): boolean {
+  const keys: (keyof MonsterRow)[] = ['name', 'town_id', 'skill', 'hp', 'gold', 'is_boss', 'image'];
+  return keys.every((k) => (a[k] ?? null) === (b[k] ?? null));
 }
 
 function parseTown(raw: unknown, errors: string[]): TownRow | null {

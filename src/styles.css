@@ -196,3 +196,385 @@ code {
   font-size: 0.85em;
   color: var(--accent);
 }
+
+/* ---------- 街 ---------- */
+.town-banner {
+  padding: 20px 16px;
+  border: 3px solid var(--border);
+  border-radius: 8px;
+  text-align: center;
+  background:
+    linear-gradient(to bottom, transparent 62%, #1d2b16 62%),
+    linear-gradient(to bottom, #0b1730, #1b2f55 62%);
+}
+
+.town-banner__sub {
+  margin: 0;
+  color: var(--accent);
+  font-size: 16px;
+}
+
+.town-banner__name {
+  margin: 4px 0 0;
+  font-size: 24px;
+  font-weight: normal;
+}
+
+.commands {
+  gap: 4px;
+  padding: 8px;
+}
+
+.command--plain {
+  border: none;
+  min-height: 44px;
+  padding: 8px;
+}
+
+.command--quiet {
+  border-color: var(--muted);
+  color: var(--muted);
+  font-size: 16px;
+}
+
+.decay {
+  color: var(--error);
+}
+
+.levelup {
+  margin: 0;
+  color: var(--accent);
+}
+
+/* ---------- 六角形 ---------- */
+.hexagon {
+  margin: 0;
+}
+
+.hexagon svg {
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  margin: 0 auto;
+  overflow: visible;
+}
+
+.hexagon__grid {
+  fill: none;
+  stroke: #3a3a3a;
+  stroke-width: 1;
+}
+
+.hexagon__best {
+  fill: none;
+  stroke: var(--fg);
+  stroke-width: 1.5;
+  stroke-dasharray: 4 4;
+}
+
+.hexagon__before {
+  fill: rgba(255, 255, 255, 0.12);
+  stroke: rgba(255, 255, 255, 0.4);
+  stroke-width: 1;
+}
+
+.hexagon__now {
+  fill: rgba(255, 216, 74, 0.35);
+  stroke: var(--accent);
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+}
+
+.hexagon__label {
+  fill: var(--fg);
+  font-family: inherit;
+  font-size: 15px;
+}
+
+.hexagon__label--locked {
+  fill: var(--muted);
+}
+
+.hexagon__value {
+  fill: var(--accent);
+}
+
+.hexagon__label--locked .hexagon__value {
+  fill: var(--muted);
+}
+
+.hexagon__caption {
+  text-align: center;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.hexagon__key-now {
+  color: var(--accent);
+}
+
+.hexagon__key-best {
+  color: var(--fg);
+}
+
+/* ---------- モンスター ---------- */
+.monster-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.monster-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 10px 12px;
+  font: inherit;
+  color: var(--fg);
+  background: var(--bg);
+  border: 3px solid var(--border);
+  border-radius: 8px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.monster-card:active,
+.monster-card:focus-visible {
+  border-color: var(--accent);
+  outline: none;
+}
+
+.monster-card:disabled {
+  color: var(--muted);
+  border-color: #444;
+  cursor: default;
+}
+
+.monster-card__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.monster-card__meta {
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.monster-card__status {
+  font-size: 15px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.monster-art {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  border: 2px solid currentColor;
+  border-radius: 6px;
+  color: var(--art, var(--fg));
+  background: #111;
+  line-height: 1;
+}
+
+.monster-art--small {
+  width: 44px;
+  height: 44px;
+  font-size: 26px;
+}
+
+.monster-art--large {
+  width: 96px;
+  height: 96px;
+  font-size: 60px;
+  border-width: 3px;
+}
+
+.monster-art--vocabulary { --art: #ffb86b; }
+.monster-art--grammar { --art: #8fd0ff; }
+.monster-art--listening { --art: #c4a1ff; }
+.monster-art--reading { --art: #9aa0a6; }
+.monster-art--speaking { --art: #7fe3a5; }
+.monster-art--writing { --art: #ff8fb1; }
+.monster-art--boss { --art: #ff6b6b; }
+
+.monster-card:disabled .monster-art {
+  color: #555;
+}
+
+/* ドット絵：枠や背景なしで、マスをぼかさずに拡大する */
+.monster-art--sprite {
+  border: none;
+  background: none;
+}
+
+.monster-art--sprite img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.monster-art--large.monster-art--sprite {
+  width: 112px;
+  height: 112px;
+}
+
+.monster-art--dim img {
+  filter: grayscale(1) brightness(0.45);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .monster-art--hurt {
+    animation: hurt 0.4s steps(2) 2;
+  }
+}
+
+@keyframes hurt {
+  50% {
+    opacity: 0.2;
+    transform: translateX(4px);
+  }
+}
+
+/* ---------- 戦闘 ---------- */
+.battle {
+  gap: 12px;
+}
+
+.battle__enemy {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.battle__enemy-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.battle__enemy-name {
+  margin: 0 0 4px;
+  font-size: 20px;
+}
+
+.battle__prompt {
+  font-size: 18px;
+}
+
+.battle__sentence {
+  font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+  font-size: 22px;
+  color: var(--accent);
+  overflow-wrap: anywhere;
+}
+
+.command--listen {
+  text-align: center;
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.choices {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+
+.choice {
+  font: inherit;
+  min-height: 52px;
+  padding: 10px 14px;
+  color: var(--fg);
+  background: var(--bg);
+  border: 3px solid var(--border);
+  border-radius: 8px;
+  text-align: left;
+  cursor: pointer;
+  overflow-wrap: anywhere;
+}
+
+.choice:not(:disabled):active,
+.choice:focus-visible {
+  border-color: var(--accent);
+  color: var(--accent);
+  outline: none;
+}
+
+.choice:disabled {
+  cursor: default;
+  color: var(--muted);
+  border-color: #444;
+}
+
+.choice--right:disabled {
+  color: #8ff0a4;
+  border-color: #8ff0a4;
+}
+
+.choice--wrong:disabled {
+  color: var(--error);
+  border-color: var(--error);
+}
+
+.battle__message .command {
+  text-align: center;
+}
+
+.flag {
+  align-self: flex-start;
+  font: inherit;
+  font-size: 15px;
+  padding: 4px 0;
+  color: var(--muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.hp {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hp__label {
+  min-width: 3em;
+}
+
+.hp__cells {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  flex: 1;
+}
+
+.hp__cell {
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--fg);
+  background: transparent;
+}
+
+.hp__cell--on {
+  background: #8ff0a4;
+  border-color: #8ff0a4;
+}
+
+.hp__num {
+  font-variant-numeric: tabular-nums;
+  color: var(--muted);
+}
+
+.battle__player {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-top: 4px;
+  border-top: 2px solid #333;
+}

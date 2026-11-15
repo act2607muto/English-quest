@@ -5,10 +5,12 @@
  * 書き換えは管理者だけができる（データベースの RLS で制限している）。
  */
 import { requireSupabase } from './supabase';
-import type { QuestionRow, TownRow } from './questionFile';
+import type { MonsterRow, QuestionRow, TownRow } from './questionFile';
+import type { Skill } from './skills';
 
 const QUESTION_COLUMNS =
   'id, town_id, skill, format, prompt, sentence, sentence_ja, audio_text, choices, answer, model_answers, explanation, difficulty, tags';
+const MONSTER_COLUMNS = 'id, name, town_id, skill, hp, gold, is_boss, image';
 
 /** URL が長くなりすぎないよう、まとめて読む件数 */
 const READ_CHUNK = 100;
@@ -58,11 +60,64 @@ export async function fetchTowns(): Promise<TownRow[]> {
   return data as TownRow[];
 }
 
+export async function fetchTown(townId: string): Promise<TownRow | null> {
+  const { data, error } = await requireSupabase()
+    .from('towns')
+    .select('id, scene, difficulty, sort_order')
+    .eq('id', townId)
+    .maybeSingle();
+  if (error) throw error;
+  return data as TownRow | null;
+}
+
+export async function fetchMonstersOfTown(townId: string): Promise<MonsterRow[]> {
+  const { data, error } = await requireSupabase()
+    .from('monsters')
+    .select(MONSTER_COLUMNS)
+    .eq('town_id', townId)
+    .order('id');
+  if (error) throw error;
+  return data as MonsterRow[];
+}
+
+export async function fetchMonstersByIds(ids: string[]): Promise<MonsterRow[]> {
+  if (ids.length === 0) return [];
+  const { data, error } = await requireSupabase().from('monsters').select(MONSTER_COLUMNS).in('id', ids);
+  if (error) throw error;
+  return data as MonsterRow[];
+}
+
+/** 出題に使う問題（要修正の印がついたものは除く） */
+export async function fetchPlayableQuestions(townId: string, skill: Skill): Promise<QuestionRow[]> {
+  const { data, error } = await requireSupabase()
+    .from('questions')
+    .select(QUESTION_COLUMNS)
+    .eq('town_id', townId)
+    .eq('skill', skill)
+    .eq('needs_fix', false)
+    .order('id');
+  if (error) throw error;
+  return data as QuestionRow[];
+}
+
+/** 練習中に見つけたおかしい問題に印をつける（管理者だけ） */
+export async function flagQuestion(id: string, note: string): Promise<void> {
+  const { error } = await requireSupabase()
+    .from('questions')
+    .update({ needs_fix: true, fix_note: note || null })
+    .eq('id', id);
+  if (error) throw error;
+}
+
 /**
- * 街と問題を登録する。同じIDがあれば上書きし、なければ足す。
+ * 街と、問題・モンスターを登録する。同じIDがあれば上書きし、なければ足す。
  * 要修正の印（needs_fix）と街の名前・背景は送らないので、今の値のまま残る。
  */
-export async function importTownAndQuestions(town: TownRow, questions: QuestionRow[]): Promise<void> {
+export async function importTownFile(
+  town: TownRow,
+  questions: QuestionRow[],
+  monsters: MonsterRow[],
+): Promise<void> {
   const client = requireSupabase();
   const townResult = await client.from('towns').upsert(town, { onConflict: 'id' });
   if (townResult.error) throw townResult.error;
@@ -71,6 +126,10 @@ export async function importTownAndQuestions(town: TownRow, questions: QuestionR
     const { error } = await client
       .from('questions')
       .upsert(questions.slice(i, i + 500), { onConflict: 'id', defaultToNull: false });
+    if (error) throw error;
+  }
+  if (monsters.length > 0) {
+    const { error } = await client.from('monsters').upsert(monsters, { onConflict: 'id', defaultToNull: false });
     if (error) throw error;
   }
 }
