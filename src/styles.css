@@ -1,0 +1,162 @@
+:root {
+  --bg: #000;
+  --fg: #fff;
+  --border: #fff;
+  --accent: #ffd84a;
+  --error: #ff7b7b;
+  --muted: #9a9a9a;
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: 'DotGothic16', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+#root {
+  min-height: 100dvh;
+}
+
+/* iPhone の切り欠きやホームバーにかからないように余白を取る */
+.screen {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: calc(16px + env(safe-area-inset-top)) calc(16px + env(safe-area-inset-right))
+    calc(16px + env(safe-area-inset-bottom)) calc(16px + env(safe-area-inset-left));
+}
+
+.screen--center {
+  min-height: 100dvh;
+  justify-content: center;
+}
+
+.title {
+  margin: 0 0 8px;
+  text-align: center;
+  font-size: 32px;
+  font-weight: normal;
+  letter-spacing: 0.1em;
+}
+
+/* 白い枠のウインドウ */
+.window {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  border: 3px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+}
+
+.window p {
+  margin: 0;
+}
+
+.window__title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: normal;
+  color: var(--accent);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* 16px 未満だと iPhone が入力時に画面を拡大してしまう */
+.field input {
+  font: inherit;
+  font-size: 18px;
+  padding: 10px 12px;
+  color: var(--fg);
+  background: #111;
+  border: 2px solid var(--muted);
+  border-radius: 4px;
+}
+
+.field input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.command {
+  font: inherit;
+  padding: 12px 16px;
+  min-height: 48px;
+  color: var(--fg);
+  background: var(--bg);
+  border: 3px solid var(--border);
+  border-radius: 8px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.command:active,
+.command:focus-visible {
+  color: var(--accent);
+  border-color: var(--accent);
+  outline: none;
+}
+
+.command:disabled {
+  color: var(--muted);
+  border-color: var(--muted);
+}
+
+.command--recording {
+  color: var(--error);
+  border-color: var(--error);
+}
+
+.attempt {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.attempt audio {
+  width: 100%;
+}
+
+.message--error {
+  color: var(--error);
+}
+
+.stats {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.stats th,
+.stats td {
+  padding: 4px 0;
+  font-weight: normal;
+  text-align: left;
+}
+
+.stats td {
+  text-align: right;
+}
+
+code {
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 0.85em;
+  color: var(--accent);
+}

@@ -1,0 +1,2481 @@
+{
+  "format_version": 1,
+  "town": {
+    "id": "town01",
+    "scene": "あいさつと自己紹介",
+    "difficulty": "基本",
+    "order": 1
+  },
+  "questions": [
+    {
+      "id": "town01-voc-001",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「Nice to meet you.」の meet の意味は？",
+      "sentence": "Nice to meet you.",
+      "choices": [
+        "待つ",
+        "食べる",
+        "話す",
+        "会う"
+      ],
+      "answer": 3,
+      "explanation": "meet = 会う",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-voc-002",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「Where are you from?」の from の意味は？",
+      "sentence": "Where are you from?",
+      "choices": [
+        "〜から（出身）",
+        "〜まで",
+        "〜の上に",
+        "〜と一緒に"
+      ],
+      "answer": 0,
+      "explanation": "from = 〜から（出身）",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-voc-003",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「What do you do for a living?」の for a living の意味は？",
+      "sentence": "What do you do for a living?",
+      "choices": [
+        "休みの日に",
+        "趣味として",
+        "仕事として",
+        "生まれつき"
+      ],
+      "answer": 2,
+      "explanation": "for a living = 仕事として",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-voc-004",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「I work at a hospital.」の hospital の意味は？",
+      "sentence": "I work at a hospital.",
+      "choices": [
+        "学校",
+        "郵便局",
+        "病院",
+        "銀行"
+      ],
+      "answer": 2,
+      "explanation": "hospital = 病院",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-voc-005",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「This is my coworker, Ken.」の coworker の意味は？",
+      "sentence": "This is my coworker, Ken.",
+      "choices": [
+        "同僚",
+        "親戚",
+        "上司",
+        "隣人"
+      ],
+      "answer": 0,
+      "explanation": "coworker = 同僚",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-voc-006",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「I'm originally from Osaka.」の originally の意味は？",
+      "sentence": "I'm originally from Osaka.",
+      "choices": [
+        "たぶん",
+        "すぐに",
+        "ときどき",
+        "もともとは"
+      ],
+      "answer": 3,
+      "explanation": "originally = もともとは",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-voc-007",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「What are your hobbies?」の hobbies の意味は？",
+      "sentence": "What are your hobbies?",
+      "choices": [
+        "家族",
+        "予定",
+        "仕事",
+        "趣味"
+      ],
+      "answer": 3,
+      "explanation": "hobbies = 趣味",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-voc-008",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「I live with my family.」の live の意味は？",
+      "sentence": "I live with my family.",
+      "choices": [
+        "遊ぶ",
+        "去る",
+        "住む",
+        "働く"
+      ],
+      "answer": 2,
+      "explanation": "live = 住む",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-voc-009",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「Let me introduce myself.」の introduce の意味は？",
+      "sentence": "Let me introduce myself.",
+      "choices": [
+        "招待する",
+        "案内する",
+        "紹介する",
+        "説明する"
+      ],
+      "answer": 2,
+      "explanation": "introduce = 紹介する",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-voc-010",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「Have we met before?」の before の意味は？",
+      "sentence": "Have we met before?",
+      "choices": [
+        "あとで",
+        "以前に",
+        "一緒に",
+        "すぐに"
+      ],
+      "answer": 1,
+      "explanation": "before = 以前に",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-voc-011",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「I'm a big fan of soccer.」の a big fan of の意味は？",
+      "sentence": "I'm a big fan of soccer.",
+      "choices": [
+        "〜を習っている",
+        "〜が大好きだ",
+        "〜が苦手だ",
+        "〜に詳しい"
+      ],
+      "answer": 1,
+      "explanation": "a big fan of = 〜が大好きだ",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-voc-012",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「How do you spell your name?」の spell の意味は？",
+      "sentence": "How do you spell your name?",
+      "choices": [
+        "発音する",
+        "呼ぶ",
+        "覚える",
+        "つづる"
+      ],
+      "answer": 3,
+      "explanation": "spell = つづる",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-voc-013",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「I'm in my thirties.」の in my thirties の意味は？",
+      "sentence": "I'm in my thirties.",
+      "choices": [
+        "30年間",
+        "30代だ",
+        "30人で",
+        "30歳だ"
+      ],
+      "answer": 1,
+      "explanation": "in my thirties = 30代だ",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-voc-014",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「What brings you here?」の意味は？",
+      "sentence": "What brings you here?",
+      "choices": [
+        "いつ来ましたか",
+        "ここは何ですか",
+        "どうしてここに来たのですか",
+        "何を持ってきましたか"
+      ],
+      "answer": 2,
+      "explanation": "What brings you here? = どうしてここに来たのですか",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-voc-015",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「I'm glad to be here.」の glad の意味は？",
+      "sentence": "I'm glad to be here.",
+      "choices": [
+        "疲れた",
+        "驚いた",
+        "うれしい",
+        "緊張した"
+      ],
+      "answer": 2,
+      "explanation": "glad = うれしい",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-voc-016",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「I grew up in a small town.」の grew up の意味は？",
+      "sentence": "I grew up in a small town.",
+      "choices": [
+        "訪れた",
+        "育った",
+        "生まれた",
+        "引っ越した"
+      ],
+      "answer": 1,
+      "explanation": "grew up = 育った",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-voc-017",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「I'm an office worker.」の office worker の意味は？",
+      "sentence": "I'm an office worker.",
+      "choices": [
+        "会社員",
+        "公務員",
+        "店員",
+        "学生"
+      ],
+      "answer": 0,
+      "explanation": "office worker = 会社員",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-voc-018",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「My nickname is Taka.」の nickname の意味は？",
+      "sentence": "My nickname is Taka.",
+      "choices": [
+        "名字",
+        "本名",
+        "肩書き",
+        "あだ名"
+      ],
+      "answer": 3,
+      "explanation": "nickname = あだ名",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-voc-019",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「I moved here last year.」の moved の意味は？",
+      "sentence": "I moved here last year.",
+      "choices": [
+        "泊まった",
+        "旅行した",
+        "引っ越した",
+        "働いた"
+      ],
+      "answer": 2,
+      "explanation": "moved = 引っ越した",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-voc-020",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「How's it going?」の意味は？",
+      "sentence": "How's it going?",
+      "choices": [
+        "調子はどう？",
+        "いつ始まるの？",
+        "どこへ行くの？",
+        "何をしているの？"
+      ],
+      "answer": 0,
+      "explanation": "How's it going? = 調子はどう？",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-voc-021",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「Long time no see.」の意味は？",
+      "sentence": "Long time no see.",
+      "choices": [
+        "はじめまして",
+        "お先にどうぞ",
+        "また明日",
+        "久しぶり"
+      ],
+      "answer": 3,
+      "explanation": "Long time no see. = 久しぶり",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-voc-022",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「I'm married and have two kids.」の married の意味は？",
+      "sentence": "I'm married and have two kids.",
+      "choices": [
+        "引退している",
+        "結婚している",
+        "独身だ",
+        "忙しい"
+      ],
+      "answer": 1,
+      "explanation": "married = 結婚している",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-voc-023",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「I'm interested in cooking.」の interested in の意味は？",
+      "sentence": "I'm interested in cooking.",
+      "choices": [
+        "〜が得意だ",
+        "〜に興味がある",
+        "〜を心配している",
+        "〜に飽きた"
+      ],
+      "answer": 1,
+      "explanation": "interested in = 〜に興味がある",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-voc-024",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「Please call me Yuki.」の call の意味は？",
+      "sentence": "Please call me Yuki.",
+      "choices": [
+        "呼ぶ",
+        "探す",
+        "待つ",
+        "電話を切る"
+      ],
+      "answer": 0,
+      "explanation": "call = 呼ぶ",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-voc-025",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「It was nice talking to you.」の意味は？",
+      "sentence": "It was nice talking to you.",
+      "choices": [
+        "はじめまして",
+        "お世話になります",
+        "お話しできてよかったです",
+        "お待たせしました"
+      ],
+      "answer": 2,
+      "explanation": "It was nice talking to you. = お話しできてよかったです",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-voc-026",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「I'm on vacation.」の on vacation の意味は？",
+      "sentence": "I'm on vacation.",
+      "choices": [
+        "留学中",
+        "休暇中",
+        "出張中",
+        "勤務中"
+      ],
+      "answer": 1,
+      "explanation": "on vacation = 休暇中",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-voc-027",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「I'm here on business.」の on business の意味は？",
+      "sentence": "I'm here on business.",
+      "choices": [
+        "仕事で",
+        "偶然",
+        "観光で",
+        "留学で"
+      ],
+      "answer": 0,
+      "explanation": "on business = 仕事で",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-voc-028",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「What's your favorite food?」の favorite の意味は？",
+      "sentence": "What's your favorite food?",
+      "choices": [
+        "いちばん好きな",
+        "珍しい",
+        "苦手な",
+        "いちばん高い"
+      ],
+      "answer": 0,
+      "explanation": "favorite = いちばん好きな",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-voc-029",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「I've been learning English for two years.」の for two years の意味は？",
+      "sentence": "I've been learning English for two years.",
+      "choices": [
+        "2年後に",
+        "2回",
+        "2年間",
+        "2年前に"
+      ],
+      "answer": 2,
+      "explanation": "for two years = 2年間",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-voc-030",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「See you around.」の意味は？",
+      "sentence": "See you around.",
+      "choices": [
+        "失礼しました",
+        "お大事に",
+        "ようこそ",
+        "またね"
+      ],
+      "answer": 3,
+      "explanation": "See you around. = またね",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-gra-001",
+      "town": "town01",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "I ___ from Japan.",
+      "choices": [
+        "am",
+        "are",
+        "is",
+        "be"
+      ],
+      "answer": 0,
+      "explanation": "主語が I のとき、be動詞は am。",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-gra-002",
+      "town": "town01",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "She ___ a teacher.",
+      "choices": [
+        "are",
+        "am",
+        "be",
+        "is"
+      ],
+      "answer": 3,
+      "explanation": "主語が she / he / it のとき、be動詞は is。",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-gra-003",
+      "town": "town01",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "Where ___ you from?",
+      "choices": [
+        "am",
+        "are",
+        "do",
+        "is"
+      ],
+      "answer": 1,
+      "explanation": "主語が you のとき、be動詞は are。",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-gra-004",
+      "town": "town01",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "What ___ you do?",
+      "choices": [
+        "are",
+        "is",
+        "does",
+        "do"
+      ],
+      "answer": 3,
+      "explanation": "一般動詞の疑問文は do を使う。主語が you なので do。",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-gra-005",
+      "town": "town01",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "He ___ in Tokyo.",
+      "choices": [
+        "live",
+        "is live",
+        "living",
+        "lives"
+      ],
+      "answer": 3,
+      "explanation": "主語が he で現在のことなので、動詞に s がつく。",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-gra-006",
+      "town": "town01",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "Nice ___ meet you.",
+      "choices": [
+        "in",
+        "to",
+        "for",
+        "at"
+      ],
+      "answer": 1,
+      "explanation": "Nice to meet you. は決まった言い方。to + 動詞の原形。",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-gra-007",
+      "town": "town01",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "I ___ two brothers.",
+      "choices": [
+        "am",
+        "have",
+        "has",
+        "having"
+      ],
+      "answer": 1,
+      "explanation": "主語が I なので have。has は he / she のとき。",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-gra-008",
+      "town": "town01",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "___ you like sports?",
+      "choices": [
+        "Do",
+        "Does",
+        "Is",
+        "Are"
+      ],
+      "answer": 0,
+      "explanation": "like は一般動詞なので Do で始める。",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-gra-009",
+      "town": "town01",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "This is ___ friend, Mika.",
+      "choices": [
+        "I",
+        "mine",
+        "my",
+        "me"
+      ],
+      "answer": 2,
+      "explanation": "名詞の前に置く「私の」は my。",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-gra-010",
+      "town": "town01",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "I'm interested ___ music.",
+      "choices": [
+        "in",
+        "at",
+        "for",
+        "on"
+      ],
+      "answer": 0,
+      "explanation": "be interested in 〜 で「〜に興味がある」。",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-gra-011",
+      "town": "town01",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "How long ___ you lived here?",
+      "choices": [
+        "did",
+        "do",
+        "are",
+        "have"
+      ],
+      "answer": 3,
+      "explanation": "今まで続いている期間をたずねるときは have + 過去分詞。",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-gra-012",
+      "town": "town01",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "I've lived here ___ 2020.",
+      "choices": [
+        "in",
+        "from",
+        "for",
+        "since"
+      ],
+      "answer": 3,
+      "explanation": "始まった時点を言うときは since。",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-gra-013",
+      "town": "town01",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "I've worked here ___ three years.",
+      "choices": [
+        "for",
+        "since",
+        "in",
+        "during"
+      ],
+      "answer": 0,
+      "explanation": "期間の長さを言うときは for。",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-gra-014",
+      "town": "town01",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "What does your father ___?",
+      "choices": [
+        "doing",
+        "do",
+        "does",
+        "did"
+      ],
+      "answer": 1,
+      "explanation": "does のあとの動詞は原形。",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-gra-015",
+      "town": "town01",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "I enjoy ___ movies.",
+      "choices": [
+        "watching",
+        "to watch",
+        "watch",
+        "watched"
+      ],
+      "answer": 0,
+      "explanation": "enjoy のあとは動詞の ing 形。",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-gra-016",
+      "town": "town01",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "I ___ born in Osaka.",
+      "choices": [
+        "am",
+        "was",
+        "did",
+        "were"
+      ],
+      "answer": 1,
+      "explanation": "「生まれた」は was born。主語が I なので was。",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-gra-017",
+      "town": "town01",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "My sister ___ at a bank.",
+      "choices": [
+        "working",
+        "work",
+        "is work",
+        "works"
+      ],
+      "answer": 3,
+      "explanation": "主語が my sister（3人称単数）なので works。",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-gra-018",
+      "town": "town01",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "I'm ___ engineer.",
+      "choices": [
+        "（何も入れない）",
+        "the",
+        "a",
+        "an"
+      ],
+      "answer": 3,
+      "explanation": "母音の音で始まる語の前は an。",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-gra-019",
+      "town": "town01",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "Are you a student? — Yes, I ___.",
+      "choices": [
+        "is",
+        "do",
+        "am",
+        "are"
+      ],
+      "answer": 2,
+      "explanation": "Are you 〜? には Yes, I am. で答える。",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-gra-020",
+      "town": "town01",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "Do you live near here? — No, I ___.",
+      "choices": [
+        "am not",
+        "don't",
+        "doesn't",
+        "not"
+      ],
+      "answer": 1,
+      "explanation": "Do you 〜? には No, I don't. で答える。",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-gra-021",
+      "town": "town01",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "I ___ speak English very well.",
+      "choices": [
+        "am not",
+        "not",
+        "don't can",
+        "can't"
+      ],
+      "answer": 3,
+      "explanation": "「〜できない」は can't + 動詞の原形。",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-gra-022",
+      "town": "town01",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "I'd like ___ introduce my wife.",
+      "choices": [
+        "of",
+        "for",
+        "to",
+        "at"
+      ],
+      "answer": 2,
+      "explanation": "I'd like to + 動詞の原形 で「〜したいのですが」。",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-gra-023",
+      "town": "town01",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "What's ___ name?",
+      "choices": [
+        "your",
+        "you're",
+        "yours",
+        "you"
+      ],
+      "answer": 0,
+      "explanation": "名詞の前に置く「あなたの」は your。",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-gra-024",
+      "town": "town01",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "I'm looking forward to ___ with you.",
+      "choices": [
+        "work",
+        "worked",
+        "working",
+        "be work"
+      ],
+      "answer": 2,
+      "explanation": "look forward to のあとは動詞の ing 形。",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-gra-025",
+      "town": "town01",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "I ___ here last month.",
+      "choices": [
+        "comes",
+        "came",
+        "coming",
+        "come"
+      ],
+      "answer": 1,
+      "explanation": "last month は過去なので、come の過去形 came。",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-gra-026",
+      "town": "town01",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "___ is your birthday?",
+      "choices": [
+        "What time",
+        "Where",
+        "Who",
+        "When"
+      ],
+      "answer": 3,
+      "explanation": "日付をたずねるときは When。",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-gra-027",
+      "town": "town01",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "I'm good ___ cooking.",
+      "choices": [
+        "on",
+        "with",
+        "in",
+        "at"
+      ],
+      "answer": 3,
+      "explanation": "be good at 〜 で「〜が得意だ」。",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-gra-028",
+      "town": "town01",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "She ___ like coffee.",
+      "choices": [
+        "don't",
+        "not",
+        "doesn't",
+        "isn't"
+      ],
+      "answer": 2,
+      "explanation": "主語が she のときの否定は doesn't + 動詞の原形。",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-gra-029",
+      "town": "town01",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "We ___ classmates ten years ago.",
+      "choices": [
+        "was",
+        "are",
+        "did",
+        "were"
+      ],
+      "answer": 3,
+      "explanation": "ten years ago は過去。主語が we なので were。",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-gra-030",
+      "town": "town01",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "There ___ four people in my family.",
+      "choices": [
+        "has",
+        "have",
+        "is",
+        "are"
+      ],
+      "answer": 3,
+      "explanation": "あとに続く名詞が複数（four people）なので There are。",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-lis-001",
+      "town": "town01",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "Nice to meet you.",
+      "choices": [
+        "はじめまして",
+        "また会いましょう",
+        "お元気ですか",
+        "お久しぶりです"
+      ],
+      "answer": 0,
+      "explanation": "Nice to meet you. = はじめまして",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-lis-002",
+      "town": "town01",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "How are you doing?",
+      "choices": [
+        "どうやって来ましたか",
+        "調子はどうですか",
+        "どこへ行きますか",
+        "何をしていますか"
+      ],
+      "answer": 1,
+      "explanation": "How are you doing? = 調子はどうですか",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-lis-003",
+      "town": "town01",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "Where are you from?",
+      "choices": [
+        "ご出身はどちらですか",
+        "どこに住んでいますか",
+        "どこで働いていますか",
+        "どこへ行きますか"
+      ],
+      "answer": 0,
+      "explanation": "Where are you from? = ご出身はどちらですか",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-lis-004",
+      "town": "town01",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "What do you do?",
+      "choices": [
+        "何が好きですか",
+        "今何をしていますか",
+        "何がしたいですか",
+        "お仕事は何ですか"
+      ],
+      "answer": 3,
+      "explanation": "What do you do? = お仕事は何ですか",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-lis-005",
+      "town": "town01",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "I work for a travel company.",
+      "choices": [
+        "旅行会社を探しています",
+        "旅行会社で働いています",
+        "仕事で旅行しています",
+        "旅行が好きです"
+      ],
+      "answer": 1,
+      "explanation": "I work for a travel company. = 旅行会社で働いています",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-lis-006",
+      "town": "town01",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "I've lived here for five years.",
+      "choices": [
+        "ここに5回来たことがあります",
+        "5歳までここに住んでいました",
+        "あと5年ここに住みます",
+        "ここに5年間住んでいます"
+      ],
+      "answer": 3,
+      "explanation": "I've lived here for five years. = ここに5年間住んでいます",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-lis-007",
+      "town": "town01",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "What do you do in your free time?",
+      "choices": [
+        "暇なときは何をしていますか",
+        "仕事は何時に終わりますか",
+        "いつ暇ですか",
+        "自由な時間はありますか"
+      ],
+      "answer": 0,
+      "explanation": "What do you do in your free time? = 暇なときは何をしていますか",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-lis-008",
+      "town": "town01",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "I'm sorry, I didn't catch your name.",
+      "choices": [
+        "すみません、名前を間違えました",
+        "すみません、お名前が聞き取れませんでした",
+        "すみません、お名前を忘れました",
+        "すみません、名乗るのを忘れました"
+      ],
+      "answer": 1,
+      "explanation": "I'm sorry, I didn't catch your name. = すみません、お名前が聞き取れませんでした",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-lis-009",
+      "town": "town01",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "Could you say that again?",
+      "choices": [
+        "それは本当ですか",
+        "もう一度言っていただけますか",
+        "それを書いていただけますか",
+        "もう少しゆっくり話していただけますか"
+      ],
+      "answer": 1,
+      "explanation": "Could you say that again? = もう一度言っていただけますか",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-lis-010",
+      "town": "town01",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "Please call me Ken.",
+      "choices": [
+        "ケンを呼んでください",
+        "ケンに電話してください",
+        "ケンと呼んでください",
+        "ケンと話してください"
+      ],
+      "answer": 2,
+      "explanation": "Please call me Ken. = ケンと呼んでください",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-lis-011",
+      "town": "town01",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "This is my wife, Emi.",
+      "choices": [
+        "これは妻のエミのものです",
+        "妻のエミはここにいます",
+        "妻のエミを探しています",
+        "こちらは妻のエミです"
+      ],
+      "answer": 3,
+      "explanation": "This is my wife, Emi. = こちらは妻のエミです",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-lis-012",
+      "town": "town01",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "How long have you been in Japan?",
+      "choices": [
+        "日本は何回目ですか",
+        "日本にはいつまでいますか",
+        "日本に来てどのくらいですか",
+        "日本のどこに行きましたか"
+      ],
+      "answer": 2,
+      "explanation": "How long have you been in Japan? = 日本に来てどのくらいですか",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-lis-013",
+      "town": "town01",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "I'm from a small town in the north.",
+      "choices": [
+        "北の小さな町へ行きます",
+        "小さな町の北側に住んでいます",
+        "北にある小さな町に住みたいです",
+        "北のほうの小さな町の出身です"
+      ],
+      "answer": 3,
+      "explanation": "I'm from a small town in the north. = 北のほうの小さな町の出身です",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-lis-014",
+      "town": "town01",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "Do you have any brothers or sisters?",
+      "choices": [
+        "ご両親はお元気ですか",
+        "お子さんはいますか",
+        "きょうだいはいますか",
+        "ご家族は何人ですか"
+      ],
+      "answer": 2,
+      "explanation": "Do you have any brothers or sisters? = きょうだいはいますか",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-lis-015",
+      "town": "town01",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "I have one older sister.",
+      "choices": [
+        "妹が1人います",
+        "姉が2人います",
+        "姉が1人います",
+        "兄が1人います"
+      ],
+      "answer": 2,
+      "explanation": "I have one older sister. = 姉が1人います",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-lis-016",
+      "town": "town01",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "What kind of music do you like?",
+      "choices": [
+        "誰の曲を聴いていますか",
+        "音楽は好きですか",
+        "楽器は弾けますか",
+        "どんな音楽が好きですか"
+      ],
+      "answer": 3,
+      "explanation": "What kind of music do you like? = どんな音楽が好きですか",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-lis-017",
+      "town": "town01",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "I like watching baseball.",
+      "choices": [
+        "野球は好きではありません",
+        "野球を見に行きました",
+        "野球を見るのが好きです",
+        "野球をするのが好きです"
+      ],
+      "answer": 2,
+      "explanation": "I like watching baseball. = 野球を見るのが好きです",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-lis-018",
+      "town": "town01",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "It's nice to finally meet you.",
+      "choices": [
+        "やっとお会いできてうれしいです",
+        "また会えてうれしいです",
+        "会うのは久しぶりですね",
+        "最後に会えてよかったです"
+      ],
+      "answer": 0,
+      "explanation": "It's nice to finally meet you. = やっとお会いできてうれしいです",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-lis-019",
+      "town": "town01",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "I've heard a lot about you.",
+      "choices": [
+        "あなたのことをよく知りません",
+        "お噂はかねがね伺っています",
+        "あなたに話したいことがたくさんあります",
+        "あなたから多くを学びました"
+      ],
+      "answer": 1,
+      "explanation": "I've heard a lot about you. = お噂はかねがね伺っています",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-lis-020",
+      "town": "town01",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "What do you think of Japan?",
+      "choices": [
+        "日本で何をしたいですか",
+        "日本について何を知っていますか",
+        "日本にはなぜ来たのですか",
+        "日本をどう思いますか"
+      ],
+      "answer": 3,
+      "explanation": "What do you think of Japan? = 日本をどう思いますか",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-lis-021",
+      "town": "town01",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "I'm still learning English.",
+      "choices": [
+        "英語の勉強を始めたいです",
+        "英語を教えています",
+        "英語はまだ勉強中です",
+        "英語はもう勉強していません"
+      ],
+      "answer": 2,
+      "explanation": "I'm still learning English. = 英語はまだ勉強中です",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-lis-022",
+      "town": "town01",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "Please speak a little more slowly.",
+      "choices": [
+        "少し待ってください",
+        "もう少しゆっくり話してください",
+        "もう少し大きな声で話してください",
+        "もう一度話してください"
+      ],
+      "answer": 1,
+      "explanation": "Please speak a little more slowly. = もう少しゆっくり話してください",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-lis-023",
+      "town": "town01",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "How was your weekend?",
+      "choices": [
+        "週末は何をしますか",
+        "週末はいつですか",
+        "週末はどうでしたか",
+        "週末は空いていますか"
+      ],
+      "answer": 2,
+      "explanation": "How was your weekend? = 週末はどうでしたか",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-lis-024",
+      "town": "town01",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "I'm doing great, thanks.",
+      "choices": [
+        "手伝ってくれてありがとう",
+        "元気です、ありがとう",
+        "よくできました、ありがとう",
+        "大丈夫です、結構です"
+      ],
+      "answer": 1,
+      "explanation": "I'm doing great, thanks. = 元気です、ありがとう",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-lis-025",
+      "town": "town01",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "Are you here on vacation?",
+      "choices": [
+        "休暇でこちらに来ているのですか",
+        "休暇はいつですか",
+        "ここで休んでもいいですか",
+        "ここは休みですか"
+      ],
+      "answer": 0,
+      "explanation": "Are you here on vacation? = 休暇でこちらに来ているのですか",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-lis-026",
+      "town": "town01",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "I work from home.",
+      "choices": [
+        "家の近くで働いています",
+        "在宅で働いています",
+        "仕事から家に帰ります",
+        "家で仕事を探しています"
+      ],
+      "answer": 1,
+      "explanation": "I work from home. = 在宅で働いています",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-lis-027",
+      "town": "town01",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "What's your job like?",
+      "choices": [
+        "どんな仕事が好きですか",
+        "仕事は好きですか",
+        "お仕事はどんな感じですか",
+        "お仕事は何ですか"
+      ],
+      "answer": 2,
+      "explanation": "What's your job like? = お仕事はどんな感じですか",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-lis-028",
+      "town": "town01",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "I'll see you later.",
+      "choices": [
+        "遅れてすみません",
+        "またあとで",
+        "あとで見ておきます",
+        "お先に失礼します"
+      ],
+      "answer": 1,
+      "explanation": "I'll see you later. = またあとで",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-lis-029",
+      "town": "town01",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "Take care.",
+      "choices": [
+        "気をつけてね（お元気で）",
+        "持っていってください",
+        "任せてください",
+        "落ち着いてください"
+      ],
+      "answer": 0,
+      "explanation": "Take care. = 気をつけてね（お元気で）",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-lis-030",
+      "town": "town01",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "Let's keep in touch.",
+      "choices": [
+        "これからも連絡を取り合いましょう",
+        "また今度会いましょう",
+        "少し休憩しましょう",
+        "そのまま触らないでください"
+      ],
+      "answer": 0,
+      "explanation": "Let's keep in touch. = これからも連絡を取り合いましょう",
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wri-001",
+      "town": "town01",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "はじめまして。",
+      "model_answers": [
+        "Nice to meet you."
+      ],
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wri-002",
+      "town": "town01",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "私の名前は田中ユキです。",
+      "model_answers": [
+        "My name is Yuki Tanaka.",
+        "I'm Yuki Tanaka."
+      ],
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wri-003",
+      "town": "town01",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "日本の出身です。",
+      "model_answers": [
+        "I'm from Japan.",
+        "I come from Japan."
+      ],
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wri-004",
+      "town": "town01",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "東京に住んでいます。",
+      "model_answers": [
+        "I live in Tokyo."
+      ],
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wri-005",
+      "town": "town01",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "会社員です。",
+      "model_answers": [
+        "I'm an office worker.",
+        "I work for a company.",
+        "I work at a company."
+      ],
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wri-006",
+      "town": "town01",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "お仕事は何ですか。",
+      "model_answers": [
+        "What do you do?",
+        "What do you do for a living?"
+      ],
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wri-007",
+      "town": "town01",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "ご出身はどちらですか。",
+      "model_answers": [
+        "Where are you from?"
+      ],
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wri-008",
+      "town": "town01",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "趣味は料理です。",
+      "model_answers": [
+        "My hobby is cooking.",
+        "I like cooking."
+      ],
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wri-009",
+      "town": "town01",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "兄が1人います。",
+      "model_answers": [
+        "I have an older brother.",
+        "I have one older brother."
+      ],
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wri-010",
+      "town": "town01",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "ユキと呼んでください。",
+      "model_answers": [
+        "Please call me Yuki."
+      ],
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wri-011",
+      "town": "town01",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "お会いできてうれしいです。",
+      "model_answers": [
+        "I'm glad to meet you.",
+        "I'm happy to meet you.",
+        "It's nice to meet you."
+      ],
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wri-012",
+      "town": "town01",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "英語を勉強しています。",
+      "model_answers": [
+        "I'm studying English.",
+        "I'm learning English."
+      ],
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wri-013",
+      "town": "town01",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "ここに3年住んでいます。",
+      "model_answers": [
+        "I've lived here for three years.",
+        "I have lived here for three years.",
+        "I've been living here for three years."
+      ],
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wri-014",
+      "town": "town01",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "週末は何をしていますか。",
+      "model_answers": [
+        "What do you do on weekends?",
+        "What do you do on the weekend?"
+      ],
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wri-015",
+      "town": "town01",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "映画を見るのが好きです。",
+      "model_answers": [
+        "I like watching movies.",
+        "I like to watch movies."
+      ],
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wri-016",
+      "town": "town01",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "こちらは友人のケンです。",
+      "model_answers": [
+        "This is my friend, Ken.",
+        "This is my friend Ken."
+      ],
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wri-017",
+      "town": "town01",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "大阪で生まれました。",
+      "model_answers": [
+        "I was born in Osaka."
+      ],
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wri-018",
+      "town": "town01",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "もう一度言ってもらえますか。",
+      "model_answers": [
+        "Could you say that again?",
+        "Can you say that again?"
+      ],
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wri-019",
+      "town": "town01",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "病院で働いています。",
+      "model_answers": [
+        "I work at a hospital.",
+        "I work in a hospital."
+      ],
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wri-020",
+      "town": "town01",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "元気ですか。",
+      "model_answers": [
+        "How are you?",
+        "How are you doing?"
+      ],
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wri-021",
+      "town": "town01",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "元気です。あなたは？",
+      "model_answers": [
+        "I'm good. How about you?",
+        "I'm fine. And you?",
+        "I'm doing well. How about you?"
+      ],
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wri-022",
+      "town": "town01",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "家族は4人です。",
+      "model_answers": [
+        "There are four people in my family.",
+        "I have a family of four."
+      ],
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wri-023",
+      "town": "town01",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "音楽に興味があります。",
+      "model_answers": [
+        "I'm interested in music."
+      ],
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wri-024",
+      "town": "town01",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "去年ここに引っ越してきました。",
+      "model_answers": [
+        "I moved here last year."
+      ],
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wri-025",
+      "town": "town01",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "日本に来てどのくらいですか。",
+      "model_answers": [
+        "How long have you been in Japan?"
+      ],
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wri-026",
+      "town": "town01",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "お話しできてよかったです。",
+      "model_answers": [
+        "It was nice talking to you.",
+        "It was nice talking with you."
+      ],
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wri-027",
+      "town": "town01",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "また会いましょう。",
+      "model_answers": [
+        "See you again.",
+        "Let's meet again.",
+        "I hope to see you again."
+      ],
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wri-028",
+      "town": "town01",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "私は30代です。",
+      "model_answers": [
+        "I'm in my thirties.",
+        "I'm in my 30s."
+      ],
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wri-029",
+      "town": "town01",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "英語はあまり上手に話せません。",
+      "model_answers": [
+        "I can't speak English very well.",
+        "I don't speak English very well."
+      ],
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wri-030",
+      "town": "town01",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "お名前はどうつづりますか。",
+      "model_answers": [
+        "How do you spell your name?"
+      ],
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-spe-001",
+      "town": "town01",
+      "skill": "speaking",
+      "format": "translate",
+      "prompt": "英語で言おう",
+      "sentence": "こんにちは、はじめまして。",
+      "model_answers": [
+        "Hello, nice to meet you.",
+        "Hi, nice to meet you."
+      ],
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-spe-002",
+      "town": "town01",
+      "skill": "speaking",
+      "format": "translate",
+      "prompt": "英語で言おう",
+      "sentence": "こちらこそ、はじめまして。",
+      "model_answers": [
+        "Nice to meet you, too."
+      ],
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-spe-003",
+      "town": "town01",
+      "skill": "speaking",
+      "format": "translate",
+      "prompt": "英語で言おう",
+      "sentence": "調子はどうですか。",
+      "model_answers": [
+        "How are you doing?",
+        "How's it going?",
+        "How are you?"
+      ],
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-spe-004",
+      "town": "town01",
+      "skill": "speaking",
+      "format": "translate",
+      "prompt": "英語で言おう",
+      "sentence": "私は大阪の出身です。",
+      "model_answers": [
+        "I'm from Osaka."
+      ],
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-spe-005",
+      "town": "town01",
+      "skill": "speaking",
+      "format": "translate",
+      "prompt": "英語で言おう",
+      "sentence": "お名前をもう一度お願いします。",
+      "model_answers": [
+        "Could you tell me your name again?",
+        "Can I have your name again?",
+        "What was your name again?"
+      ],
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-spe-006",
+      "town": "town01",
+      "skill": "speaking",
+      "format": "translate",
+      "prompt": "英語で言おう",
+      "sentence": "私は教師をしています。",
+      "model_answers": [
+        "I'm a teacher.",
+        "I work as a teacher."
+      ],
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-spe-007",
+      "town": "town01",
+      "skill": "speaking",
+      "format": "translate",
+      "prompt": "英語で言おう",
+      "sentence": "暇なときは本を読みます。",
+      "model_answers": [
+        "I read books in my free time."
+      ],
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-spe-008",
+      "town": "town01",
+      "skill": "speaking",
+      "format": "translate",
+      "prompt": "英語で言おう",
+      "sentence": "妹が2人います。",
+      "model_answers": [
+        "I have two younger sisters."
+      ],
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-spe-009",
+      "town": "town01",
+      "skill": "speaking",
+      "format": "translate",
+      "prompt": "英語で言おう",
+      "sentence": "あなたの趣味は何ですか。",
+      "model_answers": [
+        "What are your hobbies?",
+        "What is your hobby?"
+      ],
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-spe-010",
+      "town": "town01",
+      "skill": "speaking",
+      "format": "translate",
+      "prompt": "英語で言おう",
+      "sentence": "もう少しゆっくり話してもらえますか。",
+      "model_answers": [
+        "Could you speak a little more slowly?",
+        "Can you speak more slowly?"
+      ],
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-spe-011",
+      "town": "town01",
+      "skill": "speaking",
+      "format": "translate",
+      "prompt": "英語で言おう",
+      "sentence": "仕事でここに来ています。",
+      "model_answers": [
+        "I'm here on business.",
+        "I'm here for work."
+      ],
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-spe-012",
+      "town": "town01",
+      "skill": "speaking",
+      "format": "translate",
+      "prompt": "英語で言おう",
+      "sentence": "英語はまだ勉強中です。",
+      "model_answers": [
+        "I'm still learning English.",
+        "I'm still studying English."
+      ],
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-spe-013",
+      "town": "town01",
+      "skill": "speaking",
+      "format": "translate",
+      "prompt": "英語で言おう",
+      "sentence": "お久しぶりです。",
+      "model_answers": [
+        "Long time no see.",
+        "It's been a while.",
+        "It's been a long time."
+      ],
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-spe-014",
+      "town": "town01",
+      "skill": "speaking",
+      "format": "translate",
+      "prompt": "英語で言おう",
+      "sentence": "お話しできて楽しかったです。",
+      "model_answers": [
+        "It was nice talking to you.",
+        "I enjoyed talking with you.",
+        "I enjoyed talking to you."
+      ],
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-spe-015",
+      "town": "town01",
+      "skill": "speaking",
+      "format": "translate",
+      "prompt": "英語で言おう",
+      "sentence": "また近いうちに会いましょう。",
+      "model_answers": [
+        "See you soon.",
+        "Let's meet again soon.",
+        "I hope to see you again soon."
+      ],
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-spe-016",
+      "town": "town01",
+      "skill": "speaking",
+      "format": "respond",
+      "prompt": "質問に英語で答えよう",
+      "sentence": "What's your name?",
+      "sentence_ja": "お名前は何ですか。",
+      "model_answers": [
+        "My name is Yuki.",
+        "I'm Yuki."
+      ],
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-spe-017",
+      "town": "town01",
+      "skill": "speaking",
+      "format": "respond",
+      "prompt": "質問に英語で答えよう",
+      "sentence": "Where are you from?",
+      "sentence_ja": "ご出身はどちらですか。",
+      "model_answers": [
+        "I'm from Japan."
+      ],
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-spe-018",
+      "town": "town01",
+      "skill": "speaking",
+      "format": "respond",
+      "prompt": "質問に英語で答えよう",
+      "sentence": "What do you do?",
+      "sentence_ja": "お仕事は何ですか。",
+      "model_answers": [
+        "I'm an office worker.",
+        "I work at a hospital."
+      ],
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-spe-019",
+      "town": "town01",
+      "skill": "speaking",
+      "format": "respond",
+      "prompt": "質問に英語で答えよう",
+      "sentence": "How are you today?",
+      "sentence_ja": "今日の調子はどうですか。",
+      "model_answers": [
+        "I'm good, thank you.",
+        "I'm doing well, thanks."
+      ],
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-spe-020",
+      "town": "town01",
+      "skill": "speaking",
+      "format": "respond",
+      "prompt": "質問に英語で答えよう",
+      "sentence": "Where do you live?",
+      "sentence_ja": "どこに住んでいますか。",
+      "model_answers": [
+        "I live in Tokyo."
+      ],
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-spe-021",
+      "town": "town01",
+      "skill": "speaking",
+      "format": "respond",
+      "prompt": "質問に英語で答えよう",
+      "sentence": "What do you do in your free time?",
+      "sentence_ja": "暇なときは何をしていますか。",
+      "model_answers": [
+        "I like watching movies.",
+        "I usually read books."
+      ],
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-spe-022",
+      "town": "town01",
+      "skill": "speaking",
+      "format": "respond",
+      "prompt": "質問に英語で答えよう",
+      "sentence": "Do you have any brothers or sisters?",
+      "sentence_ja": "きょうだいはいますか。",
+      "model_answers": [
+        "Yes, I have one older brother.",
+        "No, I'm an only child."
+      ],
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-spe-023",
+      "town": "town01",
+      "skill": "speaking",
+      "format": "respond",
+      "prompt": "質問に英語で答えよう",
+      "sentence": "What kind of food do you like?",
+      "sentence_ja": "どんな食べ物が好きですか。",
+      "model_answers": [
+        "I like Japanese food.",
+        "I love ramen."
+      ],
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-spe-024",
+      "town": "town01",
+      "skill": "speaking",
+      "format": "respond",
+      "prompt": "質問に英語で答えよう",
+      "sentence": "How long have you been studying English?",
+      "sentence_ja": "英語を勉強してどのくらいですか。",
+      "model_answers": [
+        "I've been studying English for two years.",
+        "For about a year."
+      ],
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-spe-025",
+      "town": "town01",
+      "skill": "speaking",
+      "format": "respond",
+      "prompt": "質問に英語で答えよう",
+      "sentence": "Why are you learning English?",
+      "sentence_ja": "なぜ英語を学んでいるのですか。",
+      "model_answers": [
+        "Because I want to talk with people from other countries.",
+        "I want to use English when I travel."
+      ],
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-spe-026",
+      "town": "town01",
+      "skill": "speaking",
+      "format": "respond",
+      "prompt": "質問に英語で答えよう",
+      "sentence": "What's your favorite season?",
+      "sentence_ja": "いちばん好きな季節は何ですか。",
+      "model_answers": [
+        "My favorite season is spring.",
+        "I like summer the best."
+      ],
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-spe-027",
+      "town": "town01",
+      "skill": "speaking",
+      "format": "respond",
+      "prompt": "質問に英語で答えよう",
+      "sentence": "What do you like about your town?",
+      "sentence_ja": "自分の町のどこが好きですか。",
+      "model_answers": [
+        "I like the food there.",
+        "It's quiet, and the people are kind."
+      ],
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-spe-028",
+      "town": "town01",
+      "skill": "speaking",
+      "format": "respond",
+      "prompt": "質問に英語で答えよう",
+      "sentence": "Have you ever been abroad?",
+      "sentence_ja": "海外に行ったことはありますか。",
+      "model_answers": [
+        "Yes, I've been to Korea.",
+        "No, I haven't."
+      ],
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-spe-029",
+      "town": "town01",
+      "skill": "speaking",
+      "format": "respond",
+      "prompt": "質問に英語で答えよう",
+      "sentence": "What are you going to do this weekend?",
+      "sentence_ja": "今週末は何をする予定ですか。",
+      "model_answers": [
+        "I'm going to see my friends.",
+        "I'm going to stay home and relax."
+      ],
+      "difficulty": 1,
+      "needs_fix": false
+    },
+    {
+      "id": "town01-spe-030",
+      "town": "town01",
+      "skill": "speaking",
+      "format": "respond",
+      "prompt": "質問に英語で答えよう",
+      "sentence": "Could you tell me a little about yourself?",
+      "sentence_ja": "少し自己紹介をしていただけますか。",
+      "model_answers": [
+        "My name is Yuki. I'm from Japan, and I work at a hospital.",
+        "I'm Yuki. I live in Tokyo, and I like cooking."
+      ],
+      "difficulty": 1,
+      "needs_fix": false
+    }
+  ]
+}
