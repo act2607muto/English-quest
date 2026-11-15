@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useAuth } from '../auth/AuthProvider';
+import { fetchIsAdmin } from '../lib/content';
 import { fetchAdventureState, fetchSkillStats, type AdventureState, type SkillStat } from '../lib/records';
 import { SKILLS, SKILL_LABELS } from '../lib/skills';
 
@@ -7,8 +8,15 @@ import { SKILLS, SKILL_LABELS } from '../lib/skills';
  * 仮のホーム画面。ログインと記録の読み込みがつながったことを確かめる。
  * 第1段階の手順2以降で、街の画面に置き換える。
  */
-export function HomeScreen({ onOpenMicTest }: { onOpenMicTest: () => void }) {
+export function HomeScreen({
+  onOpenMicTest,
+  onOpenImport,
+}: {
+  onOpenMicTest: () => void;
+  onOpenImport: () => void;
+}) {
   const { session, signOut } = useAuth();
+  const [isAdmin, setIsAdmin] = useState(false);
   const [stats, setStats] = useState<SkillStat[] | null>(null);
   const [adventure, setAdventure] = useState<AdventureState | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -20,6 +28,9 @@ export function HomeScreen({ onOpenMicTest }: { onOpenMicTest: () => void }) {
         setAdventure(a);
       })
       .catch((err) => setError(err instanceof Error ? err.message : String(err)));
+    fetchIsAdmin()
+      .then(setIsAdmin)
+      .catch(() => setIsAdmin(false));
   }, []);
 
   const bySkill = new Map(stats?.map((s) => [s.skill, s]));
@@ -56,6 +67,12 @@ export function HomeScreen({ onOpenMicTest }: { onOpenMicTest: () => void }) {
           </table>
         )}
       </section>
+
+      {isAdmin && (
+        <button className="command" type="button" onClick={onOpenImport}>
+          ▶ 教材の取り込み
+        </button>
+      )}
 
       <button className="command" type="button" onClick={onOpenMicTest}>
         ▶ マイクのテスト

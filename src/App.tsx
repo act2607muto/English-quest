@@ -3,9 +3,10 @@ import { AuthProvider, useAuth } from './auth/AuthProvider';
 import { isSupabaseConfigured } from './lib/supabase';
 import { HomeScreen } from './screens/HomeScreen';
 import { LoginScreen } from './screens/LoginScreen';
+import { ImportScreen } from './screens/ImportScreen';
 import { MicTestScreen } from './screens/MicTestScreen';
 
-type Screen = 'home' | 'mic-test';
+type Screen = 'home' | 'mic-test' | 'import';
 
 export function App() {
   if (!isSupabaseConfigured) return <SetupNeeded />;
@@ -28,7 +29,8 @@ function Router() {
   }
   if (!session) return <LoginScreen />;
   if (screen === 'mic-test') return <MicTestScreen onBack={() => setScreen('home')} />;
-  return <HomeScreen onOpenMicTest={() => setScreen('mic-test')} />;
+  if (screen === 'import') return <ImportScreen onBack={() => setScreen('home')} />;
+  return <HomeScreen onOpenMicTest={() => setScreen('mic-test')} onOpenImport={() => setScreen('import')} />;
 }
 
 function SetupNeeded() {
