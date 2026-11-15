@@ -20,12 +20,15 @@ export function MonsterArt({
   size = 'large',
   hurt = false,
   dim = false,
+  revival = false,
 }: {
   skill: Skill | null;
   image?: string | null;
-  size?: 'small' | 'large';
+  size?: 'small' | 'large' | 'huge';
   hurt?: boolean;
   dim?: boolean;
+  /** 復活モンスター（色違い） */
+  revival?: boolean;
 }) {
   const [broken, setBroken] = useState(false);
   const classes = [
@@ -34,6 +37,7 @@ export function MonsterArt({
     `monster-art--${skill ?? 'boss'}`,
     hurt ? 'monster-art--hurt' : '',
     dim ? 'monster-art--dim' : '',
+    revival ? 'monster-art--revival' : '',
   ].join(' ');
 
   if (image && !broken) {

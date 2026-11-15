@@ -792,3 +792,73 @@ code {
   min-height: 64px;
   font-size: 20px;
 }
+
+/* ---------- 復活モンスターとボス ---------- */
+/* 復活モンスターは色違い */
+.monster-art--revival img {
+  filter: hue-rotate(150deg) saturate(1.4);
+}
+
+.monster-art--huge.monster-art--sprite {
+  width: 160px;
+  height: 160px;
+}
+
+.battle__enemy:has(.monster-art--huge) {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.battle__enemy:has(.monster-art--huge) .monster-art {
+  align-self: center;
+}
+
+.revival {
+  border-color: #c4a1ff;
+}
+
+.monster-card--revival {
+  border-color: #c4a1ff;
+}
+
+.boss-gate {
+  align-items: center;
+  text-align: center;
+}
+
+.boss-gate__name {
+  margin: 0;
+  font-size: 24px;
+  font-weight: normal;
+  color: var(--accent);
+}
+
+.command--boss {
+  text-align: center;
+  border-color: var(--accent);
+  color: var(--accent);
+  min-height: 56px;
+}
+
+.meter-bar {
+  position: relative;
+  height: 14px;
+  border: 2px solid var(--fg);
+  border-radius: 3px;
+  background: #111;
+  overflow: visible;
+}
+
+.meter-bar > span:first-child {
+  display: block;
+  height: 100%;
+  background: #8ff0a4;
+}
+
+.meter-bar__goal {
+  position: absolute;
+  top: -5px;
+  bottom: -5px;
+  width: 2px;
+  background: var(--accent);
+}

@@ -2,14 +2,14 @@ import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { MonsterArt } from '../components/MonsterArt';
 import { SpeakAnswer } from '../components/SpeakAnswer';
 import { fetchPlayableQuestions, flagQuestion } from '../lib/content';
-import { fillNames, pickQuestions, shuffleChoices } from '../lib/game/battle';
+import { fillNames, pickQuestions, shuffle, shuffleChoices } from '../lib/game/battle';
 import { withExpBonus } from '../lib/game/equipment';
 import { isDue } from '../lib/game/growth';
 import type { Player } from '../lib/game/player';
 import { EXP_CORRECT, EXP_CORRECT_REVIEW, EXP_FLAWLESS_BONUS, EXP_HALF } from '../lib/game/rules';
 import { gradeAnswer, RATING_LABELS, type Rating } from '../lib/grading';
 import type { MonsterRow, QuestionRow } from '../lib/questionFile';
-import { addSkillExp, fetchProgress, finishBattle, saveAnswer, type QuestionProgress } from '../lib/records';
+import { addSkillExp, fetchProgress, finishBattle, markBossDefeated, saveAnswer, type QuestionProgress } from '../lib/records';
 import type { Skill } from '../lib/skills';
 import { canSpeak, speakEnglish, stopSpeaking } from '../lib/speech';
 
@@ -17,17 +17,24 @@ import { canSpeak, speakEnglish, stopSpeaking } from '../lib/speech';
  * 戦闘。正解（AI採点で「通じる」「惜しい」）なら相手に1ダメージ、不正解（「通じない」）なら自分が1ダメージ。
  * 答えるたびに、問題の学習状態と経験値を保存する（途中で閉じても、正解した分は残る）。
  *
- * 4択（語彙・文法・リスニング）と、英文を書いてAIが採点する問題（ライティング）の両方を扱う。
+ * 4択（語彙・文法・リスニング）と、AIが採点する問題（ライティング・スピーキング）の両方を扱う。
  * AI採点ができないとき（通信できない等）は、模範解答を見て自分で「書けた／書けなかった」を選ぶ。
+ *
+ * 相手は3種類：ふつうのモンスター、復活モンスター（復習の時期が来た問題を先に出す）、
+ * ボス（練習した能力値の問題を混ぜて出す）。経験値は、問題ごとにその能力値に入る。
  */
+
+export type BattleKind = 'normal' | 'revival' | 'boss';
 
 export type BattleResult = {
   monster: MonsterRow;
+  kind: BattleKind;
   won: boolean;
   correct: number;
   total: number;
   flawless: boolean;
-  exp: number;
+  /** 能力値ごとの獲得経験値 */
+  expBySkill: Partial<Record<Skill, number>>;
   gold: number;
   saveFailed: boolean;
   /** 武器の上乗せが効いたか */
@@ -55,18 +62,23 @@ type Phase = 'loading' | 'error' | 'question' | 'grading' | 'self-grade' | 'feed
 
 export function BattleScreen({
   monster,
+  kind,
+  skills,
   player,
   isAdmin,
   onEnd,
   onRunAway,
 }: {
+  /** 相手。復活モンスターやボスは、名前・HP・お金を呼び出し側で調整して渡す */
   monster: MonsterRow;
+  kind: BattleKind;
+  /** 出題する能力値。ふつうは1つ、ボスは練習した能力値すべて */
+  skills: Skill[];
   player: Player;
   isAdmin: boolean;
   onEnd: (result: BattleResult) => void;
   onRunAway: () => void;
 }) {
-  const skill = monster.skill as Skill;
   const [phase, setPhase] = useState<Phase>('loading');
   const [error, setError] = useState<string | null>(null);
   const [queue, setQueue] = useState<QuestionRow[]>([]);
@@ -79,7 +91,8 @@ export function BattleScreen({
   const [playerHp, setPlayerHp] = useState(player.maxHp);
   const [correctCount, setCorrectCount] = useState(0);
   const [answered, setAnswered] = useState(0);
-  const [exp, setExp] = useState(0);
+  const [expBySkill, setExpBySkill] = useState<Partial<Record<Skill, number>>>({});
+  const [askedSkills, setAskedSkills] = useState<Set<Skill>>(new Set());
   const [saveFailed, setSaveFailed] = useState(false);
   const [flagged, setFlagged] = useState<Set<string>>(new Set());
 
@@ -92,17 +105,27 @@ export function BattleScreen({
     let cancelled = false;
     (async () => {
       try {
-        const questions = await fetchPlayableQuestions(monster.town_id, skill);
+        const bySkill = await Promise.all(skills.map((sk) => fetchPlayableQuestions(monster.town_id, sk)));
+        const questions = bySkill.flat();
         if (questions.length === 0) throw new Error('この能力値の問題がありません。教材を取り込んでください。');
         const progress = await fetchProgress(questions.map((q) => q.id));
         if (cancelled) return;
         progressRef.current = progress;
         // いちばん長く続いても「相手のHP + 自分のHP - 1」問で終わる
-        const picked = pickQuestions(questions, progress, monster.hp + player.maxHp - 1);
+        const count = monster.hp + player.maxHp - 1;
+        let picked: QuestionRow[];
+        if (bySkill.length === 1) {
+          picked = pickQuestions(questions, progress, count);
+        } else {
+          // ボス：能力値ごとに選んでから、交互に並べる
+          const lists = shuffle(bySkill.filter((l) => l.length > 0).map((l) => pickQuestions(l, progress, count)));
+          picked = [];
+          for (let i = 0; picked.length < count; i++) picked.push(lists[i % lists.length][Math.floor(i / lists.length)]);
+        }
         setQueue(picked);
         setShown(present(picked[0], progress));
         setPhase('question');
-        if (skill === 'listening' && picked[0].audio_text) speakEnglish(picked[0].audio_text);
+        if (picked[0].skill === 'listening' && picked[0].audio_text) speakEnglish(picked[0].audio_text);
       } catch (err) {
         if (cancelled) return;
         setError(err instanceof Error ? err.message : String(err));
@@ -113,7 +136,9 @@ export function BattleScreen({
       cancelled = true;
       stopSpeaking();
     };
-  }, [monster, skill, player.maxHp]);
+    // skills は呼び出しごとに新しい配列になるので、中身の文字列で比べる
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [monster, skills.join(','), player.maxHp]);
 
   function present(q: QuestionRow, progress: Map<string, QuestionProgress>): Shown {
     const { choices, answerIndex } = q.format === 'choice4' ? shuffleChoices(q) : { choices: [], answerIndex: -1 };
@@ -139,15 +164,17 @@ export function BattleScreen({
   function resolve(o: Outcome) {
     if (!shown) return;
     const hit = o.rating !== 'bad';
+    const skill = shown.question.skill;
     const base = o.rating === 'good' ? (shown.due ? EXP_CORRECT_REVIEW : EXP_CORRECT) : o.rating === 'close' ? EXP_HALF : 0;
     const gained = withExpBonus(base, skill, player.mods);
     setOutcome(o);
     setPhase('feedback');
     setAnswered((n) => n + 1);
+    setAskedSkills((set) => new Set(set).add(skill));
     if (hit) {
       setMonsterHp((hp) => hp - 1);
       setCorrectCount((n) => n + 1);
-      setExp((e) => e + gained);
+      setExpBySkill((m) => ({ ...m, [skill]: (m[skill] ?? 0) + gained }));
     } else {
       setPlayerHp((hp) => hp - 1);
     }
@@ -213,16 +240,23 @@ export function BattleScreen({
     setPhase('question');
     window.scrollTo(0, 0);
     // ボタンを押した処理の中で読み上げると、iPhone でも音が出る
-    if (skill === 'listening' && q.audio_text) speakEnglish(q.audio_text);
+    if (q.skill === 'listening' && q.audio_text) speakEnglish(q.audio_text);
   }
 
   async function finish(won: boolean) {
     setPhase('finishing');
     stopSpeaking();
     const flawless = won && correctCount === answered;
-    const bonus = flawless ? withExpBonus(EXP_FLAWLESS_BONUS, skill, player.mods) : 0;
     const gold = won ? monster.gold : 0;
-    if (bonus > 0) queueSave(() => addSkillExp(skill, bonus, player.mods.graceDays));
+    // ミスなしのボーナスは、この戦闘で出た能力値それぞれに入る
+    const total: Partial<Record<Skill, number>> = { ...expBySkill };
+    if (flawless) {
+      for (const sk of askedSkills) {
+        const bonus = withExpBonus(EXP_FLAWLESS_BONUS, sk, player.mods);
+        total[sk] = (total[sk] ?? 0) + bonus;
+        queueSave(() => addSkillExp(sk, bonus, player.mods.graceDays));
+      }
+    }
     queueSave(() =>
       finishBattle({
         townId: monster.town_id,
@@ -230,21 +264,23 @@ export function BattleScreen({
         questionCount: answered,
         correctCount,
         won,
-        expBySkill: { [skill]: exp + bonus },
+        expBySkill: total,
         gold,
       }),
     );
+    if (won && kind === 'boss') queueSave(() => markBossDefeated(monster.id));
     await saveChain.current;
     onEnd({
       monster,
+      kind,
       won,
       correct: correctCount,
       total: answered,
       flawless,
-      exp: exp + bonus,
+      expBySkill: total,
       gold,
       saveFailed: saveFailedRef.current,
-      weaponBonus: player.mods.expBonus?.skill === skill,
+      weaponBonus: Boolean(player.mods.expBonus && askedSkills.has(player.mods.expBonus.skill)),
     });
   }
 
@@ -278,6 +314,7 @@ export function BattleScreen({
   }
 
   const q = shown!.question;
+  const skill = q.skill;
   const isChoice = q.format === 'choice4';
   const over = monsterHp <= 0 || playerHp <= 0;
   const hit = outcome ? outcome.rating !== 'bad' : false;
@@ -287,7 +324,13 @@ export function BattleScreen({
   return (
     <main className="screen battle">
       <section className="battle__enemy">
-        <MonsterArt skill={skill} image={monster.image} hurt={phase === 'feedback' && hit} />
+        <MonsterArt
+          skill={monster.skill}
+          image={monster.image}
+          hurt={phase === 'feedback' && hit}
+          revival={kind === 'revival'}
+          size={kind === 'boss' ? 'huge' : 'large'}
+        />
         <div className="battle__enemy-info">
           <p className="battle__enemy-name">{monster.name}</p>
           <HpBar label="HP" value={monsterHp} max={monster.hp} />

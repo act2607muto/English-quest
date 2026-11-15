@@ -236,6 +236,19 @@ export async function buyEquipment(item: { id: string; price: number }): Promise
   return after;
 }
 
+/** ボスを倒したことを記録する（すでに記録してあれば何もしない） */
+export async function markBossDefeated(bossId: string): Promise<void> {
+  const client = requireSupabase();
+  const userId = await currentUserId();
+  const now = await fetchAdventureState();
+  if (!now || now.defeatedBosses.includes(bossId)) return;
+  const { error } = await client
+    .from('adventure_state')
+    .update({ defeated_bosses: [...now.defeatedBosses, bossId] })
+    .eq('user_id', userId);
+  if (error) throw error;
+}
+
 /** 武器か防具を付け替える。null ならはずす。持っている物しか装備できない */
 export async function equip(slot: 'weapon' | 'armor', itemId: string | null): Promise<void> {
   const client = requireSupabase();

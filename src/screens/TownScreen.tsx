@@ -1,5 +1,6 @@
 import { PLAYABLE_SKILLS } from '../lib/game/battle';
 import type { Player, PlayerSkill } from '../lib/game/player';
+import type { TownStatus } from '../lib/game/town';
 import { SKILL_LABELS } from '../lib/skills';
 
 /**
@@ -12,16 +13,23 @@ export function TownScreen({
   onField,
   onStatus,
   onShop,
+  onBoss,
   onSettings,
+  status,
 }: {
   player: Player;
   townScene: string;
   onField: () => void;
   onStatus: () => void;
   onShop: () => void;
+  onBoss: () => void;
   onSettings: () => void;
+  status: TownStatus | null;
 }) {
-  const advice = recommendation(player.skills.filter((s) => s.unlocked && PLAYABLE_SKILLS.includes(s.skill)));
+  const playable = player.skills.filter((s) => s.unlocked && PLAYABLE_SKILLS.includes(s.skill));
+  const revivalSkills = playable.filter((s) => (status?.dueBySkill[s.skill] ?? 0) > 0);
+  const advice = recommendation(playable);
+  const bossDefeated = player.defeatedBosses.length > 0;
   return (
     <main className="screen">
       <section className="town-banner" aria-label="街">
@@ -48,10 +56,15 @@ export function TownScreen({
         </table>
       </section>
 
-      {advice && (
+      {(advice || revivalSkills.length > 0) && (
         <section className="window">
           <h2 className="window__title">今日のおすすめ</h2>
-          <p>{advice}</p>
+          {revivalSkills.length > 0 && (
+            <p>
+              街の外に{names(revivalSkills)}の復活モンスターが現れています。倒すと、おかねが多めに入ります。
+            </p>
+          )}
+          {advice && <p>{advice}</p>}
         </section>
       )}
 
@@ -65,8 +78,14 @@ export function TownScreen({
         <button className="command command--plain" type="button" onClick={onShop}>
           ▶ 店
         </button>
-        <button className="command command--plain" type="button" disabled>
-          ▶ ボス（準備中）
+        <button className="command command--plain" type="button" onClick={onBoss}>
+          ▶ ボス
+          {status &&
+            (bossDefeated
+              ? '（たおした）'
+              : status.bossUnlocked
+                ? '（挑める！）'
+                : `（あと ${Math.max(0, status.needed - status.correctOnce)} 問）`)}
         </button>
         <button className="command command--plain" type="button" onClick={onSettings}>
           ▶ 設定

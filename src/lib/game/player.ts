@@ -21,6 +21,8 @@ export type Player = {
   gold: number;
   currentTownId: string;
   ownedEquipment: string[];
+  /** 倒したボスの monsters.id */
+  defeatedBosses: string[];
   weapon: EquipmentRow | null;
   armor: EquipmentRow | null;
   mods: Modifiers;
@@ -56,6 +58,7 @@ export async function loadPlayer(): Promise<Player> {
     gold: adventure?.gold ?? 0,
     currentTownId: adventure?.currentTownId ?? 'town01',
     ownedEquipment: adventure?.ownedEquipment ?? [],
+    defeatedBosses: adventure?.defeatedBosses ?? [],
     weapon,
     armor,
     mods,

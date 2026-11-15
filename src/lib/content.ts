@@ -159,3 +159,15 @@ export async function importTownFile(
     if (error) throw error;
   }
 }
+
+/** 街の問題のIDと能力値だけ（ボスに挑めるかの判定や、復習の数を数えるため。要修正の印つきは除く） */
+export async function fetchTownQuestionIndex(townId: string): Promise<{ id: string; skill: Skill }[]> {
+  const { data, error } = await requireSupabase()
+    .from('questions')
+    .select('id, skill')
+    .eq('town_id', townId)
+    .eq('needs_fix', false)
+    .order('id');
+  if (error) throw error;
+  return data as { id: string; skill: Skill }[];
+}

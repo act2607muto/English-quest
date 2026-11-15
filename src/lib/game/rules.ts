@@ -25,5 +25,10 @@ export const REVIEW_INTERVALS = [1, 3, 7, 14, 30] as const;
 export const PLAYER_BASE_HP = 3;
 export const PLAYER_HP_PER_10_LEVELS = 1;
 
+/** ボスと復活モンスター */
+export const BOSS_UNLOCK_RATIO = 0.8; // 街の問題の8割に1回以上正解するとボスに挑める
+export const BOSS_REMATCH_GOLD = 10; // 2回目以降にボスを倒したときのお金（100Gは最初の1回だけ）
+export const REVIVAL_GOLD = 15; // 復活モンスターを倒したときのお金
+
 /** 六角形の目盛りの上限。いちばん高いレベルが収まる最小の段を使う */
 export const HEXAGON_SCALE_STEPS = [10, 25, 50, 99] as const;

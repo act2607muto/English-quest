@@ -1,22 +1,28 @@
 import { useEffect, useState } from 'react';
+import { MonsterArt } from '../components/MonsterArt';
 import { fetchMonstersOfTown } from '../lib/content';
 import { PLAYABLE_SKILLS } from '../lib/game/battle';
+import { revivalOf } from '../lib/game/foes';
 import type { Player } from '../lib/game/player';
+import type { TownStatus } from '../lib/game/town';
 import type { MonsterRow } from '../lib/questionFile';
 import { SKILLS, SKILL_LABELS } from '../lib/skills';
-import { MonsterArt } from '../components/MonsterArt';
+import type { BattleKind } from './BattleScreen';
 
 /**
  * 街の外。戦うモンスターを選ぶ。モンスターの種類が能力値に対応する。
- * まだ戦えない能力値（AI採点が要るもの）は「準備中」、未解放の能力値は鍵つきで出す。
+ * 復習の時期が来た問題があると、その能力値の「復活モンスター」（色違い）が現れる。
+ * 未解放の能力値は鍵つきで出す。
  */
 export function FieldScreen({
   player,
+  status,
   onFight,
   onBack,
 }: {
   player: Player;
-  onFight: (monster: MonsterRow) => void;
+  status: TownStatus | null;
+  onFight: (monster: MonsterRow, kind: BattleKind) => void;
   onBack: () => void;
 }) {
   const [monsters, setMonsters] = useState<MonsterRow[] | null>(null);
@@ -30,6 +36,12 @@ export function FieldScreen({
 
   const bySkill = new Map(monsters?.map((m) => [m.skill, m]));
   const unlocked = new Map(player.skills.map((s) => [s.skill, s.unlocked]));
+
+  const revivals = (monsters ?? [])
+    .filter((m) => m.skill && unlocked.get(m.skill) && PLAYABLE_SKILLS.includes(m.skill))
+    .map((m) => ({ base: m, due: status?.dueBySkill[m.skill!] ?? 0 }))
+    .filter((r) => r.due > 0)
+    .map((r) => ({ monster: revivalOf(r.base, r.due), due: r.due }));
 
   return (
     <main className="screen">
@@ -48,20 +60,46 @@ export function FieldScreen({
         </section>
       )}
 
+      {revivals.length > 0 && (
+        <section className="window revival">
+          <h2 className="window__title">復活モンスター</h2>
+          <p className="note">復習の時期が来た問題で現れます。倒すとおかねが多めに入ります。</p>
+          <div className="monster-list">
+            {revivals.map(({ monster, due }) => (
+              <button
+                key={monster.id}
+                type="button"
+                className="monster-card monster-card--revival"
+                onClick={() => onFight(monster, 'revival')}
+              >
+                <MonsterArt skill={monster.skill} image={monster.image} size="small" revival />
+                <span className="monster-card__body">
+                  <span className="monster-card__name">{monster.name}</span>
+                  <span className="monster-card__meta">
+                    {SKILL_LABELS[monster.skill!]}　HP {monster.hp}　{monster.gold} G
+                  </span>
+                </span>
+                <span className="monster-card__status">復習 {due}問</span>
+              </button>
+            ))}
+          </div>
+        </section>
+      )}
+
       {monsters && monsters.length > 0 && (
         <div className="monster-list">
           {SKILLS.map((skill) => {
             const m = bySkill.get(skill);
             const isUnlocked = unlocked.get(skill);
             const playable = Boolean(m && isUnlocked && PLAYABLE_SKILLS.includes(skill));
-            const status = !isUnlocked ? '🔒 未解放' : !m ? 'いない' : !PLAYABLE_SKILLS.includes(skill) ? '準備中' : null;
+            const label = !isUnlocked ? '🔒 未解放' : !m ? 'いない' : !PLAYABLE_SKILLS.includes(skill) ? '準備中' : null;
             return (
               <button
                 key={skill}
                 type="button"
                 className="monster-card"
                 disabled={!playable}
-                onClick={() => m && onFight(m)}
+                onClick={() => m && onFight(m, 'normal')}
               >
                 <MonsterArt skill={skill} image={isUnlocked ? m?.image : null} size="small" dim={!playable} />
                 <span className="monster-card__body">
@@ -71,7 +109,7 @@ export function FieldScreen({
                     {m && playable && `　HP ${m.hp}`}
                   </span>
                 </span>
-                {status && <span className="monster-card__status">{status}</span>}
+                {label && <span className="monster-card__status">{label}</span>}
               </button>
             );
           })}

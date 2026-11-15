@@ -51,6 +51,15 @@
       "gold": 10,
       "is_boss": false,
       "image": "/monsters/town01-mon-spe.png"
+    },
+    {
+      "id": "town01-boss",
+      "name": "ことだまの門番",
+      "skill": null,
+      "hp": 10,
+      "gold": 100,
+      "is_boss": true,
+      "image": "/monsters/town01-boss.png"
     }
   ]
 }

@@ -2,9 +2,12 @@ import { useCallback, useEffect, useState } from 'react';
 import { AuthProvider, useAuth } from './auth/AuthProvider';
 import { fetchIsAdmin, fetchTown } from './lib/content';
 import { loadPlayer, type Player } from './lib/game/player';
+import { loadTownStatus, type TownStatus } from './lib/game/town';
+import type { Skill } from './lib/skills';
 import type { MonsterRow } from './lib/questionFile';
 import { isSupabaseConfigured } from './lib/supabase';
-import { BattleScreen, type BattleResult } from './screens/BattleScreen';
+import { BattleScreen, type BattleKind, type BattleResult } from './screens/BattleScreen';
+import { BossScreen } from './screens/BossScreen';
 import { CompareScreen } from './screens/CompareScreen';
 import { FieldScreen } from './screens/FieldScreen';
 import { ImportScreen } from './screens/ImportScreen';
@@ -22,7 +25,8 @@ type Route =
   | { name: 'status' }
   | { name: 'field' }
   | { name: 'shop' }
-  | { name: 'battle'; monster: MonsterRow; before: Player; key: number }
+  | { name: 'boss' }
+  | { name: 'battle'; monster: MonsterRow; kind: BattleKind; skills: Skill[]; before: Player; key: number }
   | { name: 'result'; result: BattleResult; before: Player }
   | { name: 'settings' }
   | { name: 'import' }
@@ -49,12 +53,17 @@ function Game() {
   const [route, setRoute] = useState<Route>({ name: 'town' });
   const [player, setPlayer] = useState<Player | null>(null);
   const [townScene, setTownScene] = useState('');
+  const [townStatus, setTownStatus] = useState<TownStatus | null>(null);
   const [isAdmin, setIsAdmin] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const reload = useCallback(async () => {
     const p = await loadPlayer();
     setPlayer(p);
+    // 街の進み具合（ボスの条件、復習の数）は、読めなくても遊べるので失敗しても止めない
+    loadTownStatus(p.currentTownId)
+      .then(setTownStatus)
+      .catch(() => {});
     return p;
   }, []);
 
@@ -101,7 +110,15 @@ function Game() {
     void reload().catch(() => {});
     go({ name: 'town' });
   };
-  const fight = (monster: MonsterRow) => go({ name: 'battle', monster, before: player, key: Date.now() });
+  const fight = (monster: MonsterRow, kind: BattleKind = 'normal', skills?: Skill[]) =>
+    go({
+      name: 'battle',
+      monster,
+      kind,
+      skills: skills ?? (monster.skill ? [monster.skill] : []),
+      before: player,
+      key: Date.now(),
+    });
 
   switch (route.name) {
     case 'status':
@@ -109,12 +126,25 @@ function Game() {
     case 'shop':
       return <ShopScreen player={player} onChanged={reload} onBack={() => go({ name: 'town' })} />;
     case 'field':
-      return <FieldScreen player={player} onFight={fight} onBack={() => go({ name: 'town' })} />;
+      return (
+        <FieldScreen player={player} status={townStatus} onFight={(m, kind) => fight(m, kind)} onBack={toTown} />
+      );
+    case 'boss':
+      return (
+        <BossScreen
+          player={player}
+          status={townStatus}
+          onFight={(boss, skills) => fight(boss, 'boss', skills)}
+          onBack={toTown}
+        />
+      );
     case 'battle':
       return (
         <BattleScreen
           key={route.key}
           monster={route.monster}
+          kind={route.kind}
+          skills={route.skills}
           player={route.before}
           isAdmin={isAdmin}
           onEnd={(result) => {
@@ -134,7 +164,7 @@ function Game() {
           result={route.result}
           before={route.before}
           after={player}
-          onAgain={() => fight(route.result.monster)}
+          onAgain={route.result.kind === 'normal' ? () => fight(route.result.monster) : null}
           onField={() => go({ name: 'field' })}
           onTown={toTown}
         />
@@ -163,6 +193,8 @@ function Game() {
           onField={() => go({ name: 'field' })}
           onStatus={() => go({ name: 'status' })}
           onShop={() => go({ name: 'shop' })}
+          onBoss={() => go({ name: 'boss' })}
+          status={townStatus}
           onSettings={() => go({ name: 'settings' })}
         />
       );
