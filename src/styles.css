@@ -798,28 +798,6 @@ code {
   overflow-wrap: anywhere;
 }
 
-/* ---------- AI採点を比べる ---------- */
-.select {
-  font: inherit;
-  font-size: 16px;
-  width: 100%;
-  padding: 10px 12px;
-  color: var(--fg);
-  background: #111;
-  border: 2px solid var(--muted);
-  border-radius: 4px;
-}
-
-.compare {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.compare .window__title .note {
-  font-size: 14px;
-}
-
 /* ---------- スピーキング ---------- */
 .speak {
   display: flex;

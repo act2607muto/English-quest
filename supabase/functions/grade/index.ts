@@ -5,19 +5,11 @@
  * 画面側から採点の材料を書き換えることはできない。
  *
  * 受け取るもの（POST, JSON）:
- *   { mode: "status" }                                   → 使えるサービスの一覧
- *   { questionId, answer, spoken? }                      → ふだんのサービスで採点
- *   { questionId, answer, spoken?, providers: [...] }    → 指定したサービスで同時に採点（比べる用）
+ *   { questionId, answer, spoken? }  → ふだんのサービス（Secrets の GRADER_PROVIDER）で採点
+ * サービスを選ぶのはサーバー側だけ。画面からは選べない（1回の答えで何社にも送られないように）。
  */
 import { CORS_HEADERS, json, requireUser } from '../_shared/http.ts';
-import {
-  configuredProviders,
-  defaultProvider,
-  grade,
-  providerModel,
-  PROVIDERS,
-  type Provider,
-} from '../_shared/graders.ts';
+import { defaultProvider, grade, providerModel } from '../_shared/graders.ts';
 
 const MAX_ANSWER_LENGTH = 300;
 
@@ -41,19 +33,11 @@ Deno.serve(async (req) => {
   if (auth instanceof Response) return auth;
   const { supabase } = auth;
 
-  let body: { mode?: string; questionId?: string; answer?: string; spoken?: boolean; providers?: string[] };
+  let body: { questionId?: string; answer?: string; spoken?: boolean };
   try {
     body = await req.json();
   } catch {
     return json({ error: 'JSON で送ってください' }, 400);
-  }
-
-  if (body.mode === 'status') {
-    const available = configuredProviders();
-    return json({
-      defaultProvider: defaultProvider(),
-      providers: PROVIDERS.map((p) => ({ provider: p, model: providerModel(p), available: available.includes(p) })),
-    });
   }
 
   const answer = (body.answer ?? '').trim();
@@ -78,28 +62,23 @@ Deno.serve(async (req) => {
     spoken: body.spoken === true,
   };
 
-  const requested = (body.providers ?? [defaultProvider()]).filter((p): p is Provider =>
-    (PROVIDERS as readonly string[]).includes(p),
-  );
-  if (requested.length === 0) return json({ error: '使えるサービスが指定されていません' }, 400);
-
-  const results = await Promise.all(
-    requested.map(async (provider) => {
-      const started = Date.now();
-      try {
-        const result = await grade(provider, task);
-        return { provider, model: providerModel(provider), ok: true, ms: Date.now() - started, ...result };
-      } catch (err) {
-        console.error(provider, err);
-        return {
+  const provider = defaultProvider();
+  const started = Date.now();
+  try {
+    const result = await grade(provider, task);
+    return json({ results: [{ provider, model: providerModel(provider), ok: true, ms: Date.now() - started, ...result }] });
+  } catch (err) {
+    console.error(provider, err);
+    return json({
+      results: [
+        {
           provider,
           model: providerModel(provider),
           ok: false,
           ms: Date.now() - started,
           error: err instanceof Error ? err.message : String(err),
-        };
-      }
-    }),
-  );
-  return json({ results });
+        },
+      ],
+    });
+  }
 });

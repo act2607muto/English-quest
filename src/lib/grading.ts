@@ -18,8 +18,6 @@ export type GradeResult = {
   ms: number;
 } & ({ ok: true; rating: Rating; advice: string; better: string } | { ok: false; error: string });
 
-export type ProviderStatus = { provider: string; model: string; available: boolean };
-
 const TIMEOUT_MS = 45_000;
 
 async function invoke<T>(body: Record<string, unknown>): Promise<T> {
@@ -55,21 +53,6 @@ export async function gradeAnswer(input: { questionId: string; answer: string; s
   if (!r) throw new Error('採点の結果が空でした');
   if (!r.ok) throw new Error(r.error);
   return r;
-}
-
-/** 指定したサービスで同時に採点する（AIサービスを比べる用） */
-export async function compareGraders(input: {
-  questionId: string;
-  answer: string;
-  providers: string[];
-}): Promise<GradeResult[]> {
-  const { results } = await invoke<{ results: GradeResult[] }>(input);
-  return results;
-}
-
-/** どのサービスが使えるか（利用キーが設定されているか） */
-export async function fetchGraderStatus(): Promise<{ defaultProvider: string; providers: ProviderStatus[] }> {
-  return invoke({ mode: 'status' });
 }
 
 /**
