@@ -43,7 +43,7 @@ export function LoginScreen() {
 
   return (
     <main className="screen screen--center">
-      <h1 className="title">英語ステータス</h1>
+      <h1 className="title">English Quest</h1>
       <section className="window login-google">
         <button className="command" type="button" onClick={() => void handleGoogle()} disabled={busy}>
           ▶ Google でログイン

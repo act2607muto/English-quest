@@ -1,4 +1,4 @@
-# 英語ステータス育成アプリ
+# 英語ステータス育成アプリ（アプリ名：English Quest）
 
 仕様は [docs/spec.md](docs/spec.md)、Supabase の準備は [docs/setup_supabase.md](docs/setup_supabase.md)。
 
