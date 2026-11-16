@@ -1,6 +1,7 @@
 import { Hexagon } from '../components/Hexagon';
 import { heroNameOf, skillOf, type Player } from '../lib/game/player';
 import { SKILLS, SKILL_LABELS } from '../lib/skills';
+import { baseAttackOf } from '../lib/game/attack';
 import type { BattleResult } from './BattleScreen';
 
 /** 戦闘結果：もらった経験値とお金、レベルアップ、六角形の変化 */
@@ -46,10 +47,7 @@ export function ResultScreen({
             {gained.map((s) => (
               <tr key={s}>
                 <th>{SKILL_LABELS[s]}の経験値</th>
-                <td>
-                  +{result.expBySkill[s]}
-                  {result.weaponBonus && after.mods.expBonus?.skill === s && <span className="note">（ぶきの効果つき）</span>}
-                </td>
+                <td>+{result.expBySkill[s]}</td>
               </tr>
             ))}
             <tr>
@@ -70,7 +68,8 @@ export function ResultScreen({
           </p>
         ))}
         {overallUp && <p className="levelup">総合レベルが {after.overall} に上がった！</p>}
-        {after.maxHp > before.maxHp && <p className="levelup">HPが {after.maxHp} に増えた！</p>}
+        {baseAttackOf(after) > baseAttackOf(before) && <p className="levelup">こうげきが {baseAttackOf(after)} に上がった！</p>}
+        {after.maxHp > before.maxHp &&<p className="levelup">HPが {after.maxHp} に増えた！</p>}
         {result.saveFailed && (
           <p className="message message--error">通信できず、記録できなかった答えがあります。経験値が少なく見えるかもしれません。</p>
         )}

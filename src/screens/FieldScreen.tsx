@@ -41,7 +41,7 @@ export function FieldScreen({
     .filter((m) => m.skill && unlocked.get(m.skill) && PLAYABLE_SKILLS.includes(m.skill))
     .map((m) => ({ base: m, due: status?.dueBySkill[m.skill!] ?? 0 }))
     .filter((r) => r.due > 0)
-    .map((r) => ({ monster: revivalOf(r.base, r.due), due: r.due }));
+    .map((r) => ({ monster: revivalOf(r.base, r.due, player), due: r.due }));
 
   return (
     <main className="screen">

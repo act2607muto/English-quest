@@ -24,6 +24,11 @@ export const REVIEW_INTERVALS = [1, 3, 7, 14, 30] as const;
 /** 戦闘 */
 export const PLAYER_BASE_HP = 3;
 export const PLAYER_HP_PER_10_LEVELS = 1;
+/** 攻撃力：総合レベル1のとき6。総合レベルが1上がるごとに+3。武器は、その能力値の問題のときだけ上乗せ */
+export const ATTACK_BASE = 6;
+export const ATTACK_PER_LEVEL = 3;
+/** どんなに強くなっても、モンスターを倒すには最低この数の正解が要る（練習が減りすぎないように） */
+export const MIN_HITS_TO_DEFEAT = 2;
 
 /** ボスと復活モンスター */
 export const BOSS_UNLOCK_RATIO = 0.8; // 街の問題の8割に1回以上正解するとボスに挑める

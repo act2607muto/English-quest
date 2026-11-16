@@ -47,7 +47,7 @@ export function ShopScreen({
   }
 
   // 武器は能力値の並び（語彙・文法・リスニング…）にそろえる
-  const skillOrder = (i: EquipmentRow) => (i.effect.type === 'exp_bonus' ? SKILLS.indexOf(i.effect.skill) : 99);
+  const skillOrder = (i: EquipmentRow) => (i.effect.type === 'attack' ? SKILLS.indexOf(i.effect.skill) : 99);
   const weapons = (items?.filter((i) => i.slot === 'weapon') ?? []).sort(
     (a, b) => skillOrder(a) - skillOrder(b) || a.price - b.price,
   );
@@ -147,7 +147,7 @@ export function ShopScreen({
             </tr>
           </tbody>
         </table>
-        <p className="note">装備は英語の正解・不正解を変えません。経験値・HP・低下までの日数に効きます。</p>
+        <p className="note">装備は英語の正解・不正解を変えません。こうげき・HP・低下までの日数に効きます。</p>
       </section>
 
       {message && (

@@ -11,7 +11,7 @@
       "id": "town01-wpn-voc",
       "name": "ことのはのナイフ",
       "slot": "weapon",
-      "effect": { "type": "exp_bonus", "skill": "vocabulary", "rate": 0.1 },
+      "effect": { "type": "attack", "skill": "vocabulary", "amount": 3 },
       "price": 100,
       "image": "/equipment/town01-wpn-voc.png"
     },
@@ -19,7 +19,7 @@
       "id": "town01-wpn-gra",
       "name": "くみたてハンマー",
       "slot": "weapon",
-      "effect": { "type": "exp_bonus", "skill": "grammar", "rate": 0.1 },
+      "effect": { "type": "attack", "skill": "grammar", "amount": 3 },
       "price": 100,
       "image": "/equipment/town01-wpn-gra.png"
     },
@@ -27,7 +27,7 @@
       "id": "town01-wpn-lis",
       "name": "みみすましの弓",
       "slot": "weapon",
-      "effect": { "type": "exp_bonus", "skill": "listening", "rate": 0.1 },
+      "effect": { "type": "attack", "skill": "listening", "amount": 3 },
       "price": 100,
       "image": "/equipment/town01-wpn-lis.png"
     },
@@ -35,7 +35,7 @@
       "id": "town01-wpn-wri",
       "name": "はねペンのつるぎ",
       "slot": "weapon",
-      "effect": { "type": "exp_bonus", "skill": "writing", "rate": 0.1 },
+      "effect": { "type": "attack", "skill": "writing", "amount": 3 },
       "price": 100,
       "image": "/equipment/town01-wpn-wri.png"
     },
@@ -43,7 +43,7 @@
       "id": "town01-wpn-spe",
       "name": "よびかけの杖",
       "slot": "weapon",
-      "effect": { "type": "exp_bonus", "skill": "speaking", "rate": 0.1 },
+      "effect": { "type": "attack", "skill": "speaking", "amount": 3 },
       "price": 100,
       "image": "/equipment/town01-wpn-spe.png"
     },

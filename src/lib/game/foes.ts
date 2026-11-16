@@ -3,20 +3,22 @@
  */
 import type { MonsterRow } from '../questionFile';
 import type { Skill } from '../skills';
+import { attackOf, damageTo } from './attack';
 import { PLAYABLE_SKILLS } from './battle';
 import type { Player } from './player';
 import { BOSS_REMATCH_GOLD, REVIVAL_GOLD } from './rules';
 
 /**
  * 復活モンスター：復習の時期が来た問題で現れる色違い。
- * HP は「もとのHP」と「復習の問題の数」の小さいほう（復習の問題を先に出す）。
+ * HP は「もとのHP」と「復習の問題の数だけ正解すると倒せるHP」の小さいほう（復習の問題を先に出す）。
  */
-export function revivalOf(monster: MonsterRow, dueCount: number): MonsterRow {
+export function revivalOf(monster: MonsterRow, dueCount: number, player: Player): MonsterRow {
+  const perHit = monster.skill ? damageTo(monster, attackOf(player, monster.skill)) : 1;
   return {
     ...monster,
     id: `${monster.id}-revival`,
     name: `${monster.name}（復活）`,
-    hp: Math.max(1, Math.min(monster.hp, dueCount)),
+    hp: Math.max(1, Math.min(monster.hp, dueCount * perHit)),
     gold: REVIVAL_GOLD,
   };
 }

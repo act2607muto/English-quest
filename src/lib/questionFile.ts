@@ -51,12 +51,12 @@ export type MonsterRow = {
 
 /**
  * 装備品の効果。英語の正誤を変える効果（ヒント、選択肢を減らす等）は作らない。
- *   exp_bonus   : その能力値の獲得経験値が rate 倍だけ増える（0.1 で 10%）
+ *   attack      : その能力値の問題に正解したときの攻撃力が amount 増える（武器）
  *   max_hp      : 自分のHPが amount 増える
  *   decay_grace : 能力値が下がり始めるまでの猶予が days 日延びる
  */
 export type EquipmentEffect =
-  | { type: 'exp_bonus'; skill: Skill; rate: number }
+  | { type: 'attack'; skill: Skill; amount: number }
   | { type: 'max_hp'; amount: number }
   | { type: 'decay_grace'; days: number };
 
@@ -174,8 +174,8 @@ function parseEquipment(raw: unknown, townId: string | null, problems: string[])
   if (slot !== 'weapon' && slot !== 'armor') problems.push(`slot は weapon（武器）か armor（防具）にしてください（${JSON.stringify(slot)}）`);
   if (!Number.isInteger(raw.price) || (raw.price as number) < 0) problems.push(`price は0以上の整数にしてください（${JSON.stringify(raw.price)}）`);
   const effect = parseEffect(raw.effect, problems);
-  if (effect && slot === 'weapon' && effect.type !== 'exp_bonus') problems.push('武器の効果は exp_bonus（経験値の上乗せ）にしてください');
-  if (effect && slot === 'armor' && effect.type === 'exp_bonus') problems.push('防具の効果は max_hp か decay_grace にしてください');
+  if (effect && slot === 'weapon' && effect.type !== 'attack') problems.push('武器の効果は attack（攻撃力の上乗せ）にしてください');
+  if (effect && slot === 'armor' && effect.type === 'attack') problems.push('防具の効果は max_hp か decay_grace にしてください');
   const image = optionalText(raw.image, 'image', problems);
   if (problems.length > 0 || !townId || !effect) return null;
   return {
@@ -195,13 +195,13 @@ function parseEffect(raw: unknown, problems: string[]): EquipmentEffect | null {
     return null;
   }
   switch (raw.type) {
-    case 'exp_bonus': {
+    case 'attack': {
       const skill = raw.skill as Skill;
       if (!SKILLS.includes(skill)) problems.push(`effect.skill が正しくありません（${JSON.stringify(raw.skill)}）`);
-      if (typeof raw.rate !== 'number' || raw.rate <= 0 || raw.rate > 1) {
-        problems.push(`effect.rate は 0 より大きく 1 以下にしてください（0.1 で 10%）（${JSON.stringify(raw.rate)}）`);
+      if (!Number.isInteger(raw.amount) || (raw.amount as number) < 1) {
+        problems.push(`effect.amount は1以上の整数にしてください（${JSON.stringify(raw.amount)}）`);
       }
-      return problems.length > 0 ? null : { type: 'exp_bonus', skill, rate: raw.rate as number };
+      return problems.length > 0 ? null : { type: 'attack', skill, amount: raw.amount as number };
     }
     case 'max_hp':
       if (!Number.isInteger(raw.amount) || (raw.amount as number) < 1) {
@@ -216,7 +216,7 @@ function parseEffect(raw: unknown, problems: string[]): EquipmentEffect | null {
       }
       return { type: 'decay_grace', days: raw.days as number };
     default:
-      problems.push(`effect.type は exp_bonus・max_hp・decay_grace のどれかにしてください（${JSON.stringify(raw.type)}）`);
+      problems.push(`effect.type は attack・max_hp・decay_grace のどれかにしてください（${JSON.stringify(raw.type)}）`);
       return null;
   }
 }

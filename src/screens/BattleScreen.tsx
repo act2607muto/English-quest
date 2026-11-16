@@ -4,7 +4,7 @@ import { MonsterArt } from '../components/MonsterArt';
 import { SpeakAnswer } from '../components/SpeakAnswer';
 import { fetchPlayableQuestions, flagQuestion } from '../lib/content';
 import { fillNames, pickQuestions, shuffle, shuffleChoices } from '../lib/game/battle';
-import { withExpBonus } from '../lib/game/equipment';
+import { attackOf, damageTo, hitsToDefeat } from '../lib/game/attack';
 import { isDue } from '../lib/game/growth';
 import { heroNameOf, type Player } from '../lib/game/player';
 import { EXP_CORRECT, EXP_CORRECT_REVIEW, EXP_FLAWLESS_BONUS, EXP_HALF } from '../lib/game/rules';
@@ -30,7 +30,8 @@ function prefersReducedMotion(): boolean {
 const sleep = (ms: number) => new Promise<void>((resolve) => setTimeout(resolve, ms));
 
 /**
- * 戦闘。正解（AI採点で「通じる」「惜しい」）なら相手に1ダメージ、不正解（「通じない」）なら自分が1ダメージ。
+ * 戦闘。正解（AI採点で「通じる」「惜しい」）なら相手に攻撃力ぶんのダメージ、不正解（「通じない」）なら自分が1ダメージ。
+ * 攻撃力は、その問題の能力値のレベルと武器で決まる（lib/game/attack.ts）。
  * 答えるたびに、問題の学習状態と経験値を保存する（途中で閉じても、正解した分は残る）。
  *
  * 4択（語彙・文法・リスニング）と、AIが採点する問題（ライティング・スピーキング）の両方を扱う。
@@ -53,8 +54,6 @@ export type BattleResult = {
   expBySkill: Partial<Record<Skill, number>>;
   gold: number;
   saveFailed: boolean;
-  /** 武器の上乗せが効いたか */
-  weaponBonus: boolean;
 };
 
 type Shown = {
@@ -72,6 +71,8 @@ type Outcome = {
   advice?: string;
   better?: string;
   selfGraded?: boolean;
+  /** 相手に与えたダメージ（正解のときだけ） */
+  damage?: number;
 };
 
 type Phase = 'loading' | 'error' | 'question' | 'grading' | 'self-grade' | 'feedback' | 'finishing';
@@ -129,8 +130,8 @@ export function BattleScreen({
         const progress = await fetchProgress(questions.map((q) => q.id));
         if (cancelled) return;
         progressRef.current = progress;
-        // いちばん長く続いても「相手のHP + 自分のHP - 1」問で終わる
-        const count = monster.hp + player.maxHp - 1;
+        // いちばん長く続いても「倒すのに必要な正解の数 + 自分のHP - 1」問で終わる
+        const count = hitsToDefeat(monster, player, skills) + player.maxHp - 1;
         let picked: QuestionRow[];
         if (bySkill.length === 1) {
           picked = pickQuestions(questions, progress, count);
@@ -184,14 +185,15 @@ export function BattleScreen({
     const hit = o.rating !== 'bad';
     const skill = shown.question.skill;
     const base = o.rating === 'good' ? (shown.due ? EXP_CORRECT_REVIEW : EXP_CORRECT) : o.rating === 'close' ? EXP_HALF : 0;
-    const gained = withExpBonus(base, skill, player.mods);
-    setOutcome(o);
+    const gained = base;
+    const damage = hit ? damageTo(monster, attackOf(player, skill)) : 0;
+    setOutcome({ ...o, damage });
     setPhase('feedback');
     setAnswered((n) => n + 1);
     setAskedSkills((set) => new Set(set).add(skill));
-    if ((hit && monsterHp - 1 <= 0) || (!hit && playerHp - 1 <= 0)) endedAtRef.current = Date.now();
+    if ((hit && monsterHp - damage <= 0) || (!hit && playerHp - 1 <= 0)) endedAtRef.current = Date.now();
     if (hit) {
-      setMonsterHp((hp) => hp - 1);
+      setMonsterHp((hp) => hp - damage);
       setCorrectCount((n) => n + 1);
       setExpBySkill((m) => ({ ...m, [skill]: (m[skill] ?? 0) + gained }));
     } else {
@@ -273,7 +275,7 @@ export function BattleScreen({
     const total: Partial<Record<Skill, number>> = { ...expBySkill };
     if (flawless) {
       for (const sk of askedSkills) {
-        const bonus = withExpBonus(EXP_FLAWLESS_BONUS, sk, player.mods);
+        const bonus = EXP_FLAWLESS_BONUS;
         total[sk] = (total[sk] ?? 0) + bonus;
         queueSave(() => addSkillExp(sk, bonus, player.mods.graceDays));
       }
@@ -307,7 +309,6 @@ export function BattleScreen({
       expBySkill: total,
       gold,
       saveFailed: saveFailedRef.current,
-      weaponBonus: Boolean(player.mods.expBonus && askedSkills.has(player.mods.expBonus.skill)),
     });
   }
 
@@ -499,7 +500,7 @@ export function BattleScreen({
           )}
           <p>
             {hit
-              ? `${outcome.rating === 'close' ? 'おしい！ ' : 'せいかい！ '}${monster.name}に 1 のダメージ！${shown!.due && outcome.rating === 'good' ? '（復習ボーナス）' : ''}`
+              ? `${outcome.rating === 'close' ? 'おしい！ ' : 'せいかい！ '}${monster.name}に ${outcome.damage} のダメージ！${shown!.due && outcome.rating === 'good' ? '（復習ボーナス）' : ''}`
               : `ざんねん… ${heroNameOf(player)}は 1 のダメージを うけた！`}
           </p>
           {outcome.advice && <p>{outcome.advice}</p>}
@@ -566,15 +567,25 @@ export function BattleScreen({
   );
 }
 
+/** HP がこの数までなら1マスずつ、多ければゲージで出す */
+const HP_CELLS_MAX = 10;
+
 function HpBar({ label, value, max }: { label: string; value: number; max: number }) {
   return (
     <div className="hp" role="meter" aria-label={label} aria-valuemin={0} aria-valuemax={max} aria-valuenow={Math.max(0, value)}>
       <span className="hp__label">{label}</span>
-      <span className="hp__cells">
-        {Array.from({ length: max }, (_, i) => (
-          <span key={i} className={i < value ? 'hp__cell hp__cell--on' : 'hp__cell'} />
-        ))}
-      </span>
+      {max > HP_CELLS_MAX ? (
+        // HP が大きい（モンスター）ときは、1本のゲージで出す
+        <span className="hp__gauge">
+          <span className="hp__gauge-fill" style={{ width: `${(Math.max(0, value) / max) * 100}%` }} />
+        </span>
+      ) : (
+        <span className="hp__cells">
+          {Array.from({ length: max }, (_, i) => (
+            <span key={i} className={i < value ? 'hp__cell hp__cell--on' : 'hp__cell'} />
+          ))}
+        </span>
+      )}
       <span className="hp__num">
         {Math.max(0, value)}/{max}
       </span>

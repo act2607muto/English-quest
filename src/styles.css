@@ -597,6 +597,25 @@ code {
   border-color: #8ff0a4;
 }
 
+.hp__gauge {
+  flex: 1;
+  height: 16px;
+  border: 2px solid var(--fg);
+  background: transparent;
+}
+
+.hp__gauge-fill {
+  display: block;
+  height: 100%;
+  background: #8ff0a4;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hp__gauge-fill {
+    transition: width 0.4s ease-out;
+  }
+}
+
 .hp__num {
   font-variant-numeric: tabular-nums;
   color: var(--muted);

@@ -12,7 +12,7 @@
       "id": "town01-mon-voc",
       "name": "ページムシ",
       "skill": "vocabulary",
-      "hp": 4,
+      "hp": 40,
       "gold": 8,
       "is_boss": false,
       "image": "/monsters/town01-mon-voc.png"
@@ -21,7 +21,7 @@
       "id": "town01-mon-gra",
       "name": "つみきゴーレム",
       "skill": "grammar",
-      "hp": 6,
+      "hp": 60,
       "gold": 12,
       "is_boss": false,
       "image": "/monsters/town01-mon-gra.png"
@@ -30,7 +30,7 @@
       "id": "town01-mon-lis",
       "name": "おおみみ",
       "skill": "listening",
-      "hp": 5,
+      "hp": 50,
       "gold": 10,
       "is_boss": false,
       "image": "/monsters/town01-mon-lis.png"
@@ -39,7 +39,7 @@
       "id": "town01-mon-wri",
       "name": "インクつぼ",
       "skill": "writing",
-      "hp": 4,
+      "hp": 40,
       "gold": 12,
       "is_boss": false,
       "image": "/monsters/town01-mon-wri.png"
@@ -48,7 +48,7 @@
       "id": "town01-mon-spe",
       "name": "おしゃべりどり",
       "skill": "speaking",
-      "hp": 3,
+      "hp": 30,
       "gold": 10,
       "is_boss": false,
       "image": "/monsters/town01-mon-spe.png"
@@ -57,7 +57,7 @@
       "id": "town01-boss",
       "name": "ことだまの門番",
       "skill": null,
-      "hp": 10,
+      "hp": 100,
       "gold": 100,
       "is_boss": true,
       "image": "/monsters/town01-boss.png"

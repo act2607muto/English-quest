@@ -1,5 +1,6 @@
 import { HeroArt } from '../components/HeroArt';
 import { Hexagon } from '../components/Hexagon';
+import { baseAttackOf } from '../lib/game/attack';
 import { describeEffect } from '../lib/game/equipment';
 import { expForLevel } from '../lib/game/growth';
 import { heroNameOf, type Player } from '../lib/game/player';
@@ -15,7 +16,9 @@ export function StatusScreen({ player, onBack }: { player: Player; onBack: () =>
           <HeroArt size={64} />
           <div>
             <h2 className="window__title">{heroNameOf(player)}</h2>
-            <p>総合レベル {player.overall}　HP {player.maxHp}</p>
+            <p>
+              総合レベル {player.overall}　HP {player.maxHp}　こうげき {baseAttackOf(player)}
+            </p>
           </div>
         </div>
         <Hexagon skills={player.skills} />
@@ -28,6 +31,17 @@ export function StatusScreen({ player, onBack }: { player: Player; onBack: () =>
             <tr>
               <th>HP</th>
               <td>{player.maxHp}</td>
+            </tr>
+            <tr>
+              <th>こうげき</th>
+              <td>
+                {baseAttackOf(player)}
+                {player.mods.attackBonus && (
+                  <span className="note">
+                    （{SKILL_LABELS[player.mods.attackBonus.skill]}の問題は {baseAttackOf(player) + player.mods.attackBonus.amount}）
+                  </span>
+                )}
+              </td>
             </tr>
             <tr>
               <th>おかね</th>
