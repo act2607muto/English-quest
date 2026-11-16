@@ -2,7 +2,9 @@ import { useState } from 'react';
 import type { Skill } from '../lib/skills';
 
 /**
- * モンスターの絵。monsters.image のドット絵（16×16）を拡大して出す。
+ * モンスターの絵。monsters.image のドット絵（64×64、ボスは96×96）を拡大して出す。
+ * 同じ場所に「-breath」をつけた2コマ目（例：town01-mon-voc-breath.png）があれば、交互に出して呼吸に見せる。
+ * 2コマ目は scripts/make_breath_frames.ps1 で作る。ないときは止まった絵のまま。
  * 絵がないとき・読み込めないときは、能力値の1文字を枠に入れて代わりにする。
  */
 const GLYPH: Record<Skill, string> = {
@@ -31,6 +33,8 @@ export function MonsterArt({
   revival?: boolean;
 }) {
   const [broken, setBroken] = useState(false);
+  const [breathBroken, setBreathBroken] = useState(false);
+  const breathImage = image && /\.png$/.test(image) ? image.replace(/\.png$/, '-breath.png') : null;
   const classes = [
     'monster-art',
     `monster-art--${size}`,
@@ -43,7 +47,10 @@ export function MonsterArt({
   if (image && !broken) {
     return (
       <span className={`${classes} monster-art--sprite`} aria-hidden="true">
-        <img src={image} alt="" width={16} height={16} onError={() => setBroken(true)} />
+        <img src={image} alt="" onError={() => setBroken(true)} />
+        {breathImage && !breathBroken && (
+          <img className="monster-art__breath" src={breathImage} alt="" onError={() => setBreathBroken(true)} />
+        )}
       </span>
     );
   }

@@ -408,8 +408,33 @@ code {
 
 /* ドット絵：枠や背景なしで、マスをぼかさずに拡大する */
 .monster-art--sprite {
+  position: relative;
   border: none;
   background: none;
+}
+
+/* 2コマ目（息を吸った絵）を上に重ね、出したり消したりして呼吸に見せる。
+   主人公（1.6秒）と速さをずらして、動きがそろわないようにする */
+.monster-art--sprite .monster-art__breath {
+  position: absolute;
+  inset: 0;
+  visibility: hidden;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .monster-art--sprite .monster-art__breath {
+    animation: breath 1.2s steps(1) infinite;
+  }
+
+  /* ボスはゆっくり、重そうに */
+  .monster-art--boss.monster-art--sprite .monster-art__breath {
+    animation-duration: 2s;
+  }
+
+  /* 倒せない・選べないモンスター（暗い絵）は止めておく */
+  .monster-art--dim .monster-art__breath {
+    animation: none;
+  }
 }
 
 .monster-art--sprite img {
@@ -871,15 +896,45 @@ code {
 
 /* ---------- 主人公と街の背景 ---------- */
 .hero-art {
+  position: relative;
   display: block;
   flex: none;
+  width: var(--hero-size, 64px);
+}
+
+.hero-art img {
+  display: block;
+  width: 100%;
+  height: auto;
   image-rendering: pixelated;
   image-rendering: crisp-edges;
 }
 
+/* 2コマ目（息を吸った絵）を上に重ね、出したり消したりして呼吸に見せる */
+.hero-art__breath {
+  position: absolute;
+  inset: 0;
+  visibility: hidden;
+}
+
 @media (prefers-reduced-motion: no-preference) {
+  .hero-art__breath {
+    animation: breath 1.6s steps(1) infinite;
+  }
+
   .hero-art--hurt {
     animation: hurt 0.4s steps(2) 2;
+  }
+}
+
+@keyframes breath {
+  0%,
+  45% {
+    visibility: hidden;
+  }
+  50%,
+  95% {
+    visibility: visible;
   }
 }
 
