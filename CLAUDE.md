@@ -39,8 +39,12 @@
 - `data/town01_questions.json`：最初の街「あいさつと自己紹介」の教材150問（各能力値30問）。2026-11-16に本人が確認済み
 - `scripts/build_town01.py`：上の教材ファイルを作ったスクリプト。問題の修正はここを直して作り直す（`python3 scripts/build_town01.py data/town01_questions.json`）
 
+## 決まったこと（2026-11-16）
+
+- 採点は Claude（claude-haiku-5-5）、文字起こしは OpenAI（gpt-transcribe）。各社の比較はしない。
+- 絵と名前は、今のもの（`scripts/make_sprites.mjs` で作ったドット絵、ページムシ・ことだまの門番など）を当面そのまま使う。
+
 ## 未決
 
-- 採点と文字起こしに使うAIサービス
-- 世界観と各種の名前、残りのドット絵
-- 戦闘・経験値・低下の数値（第1段階を使ってから調整）
+- 戦闘・経験値・低下の数値（第1段階を使ってから調整。数値は `src/lib/game/rules.ts`）
+- 称号と職業の中身（第2段階以降）
