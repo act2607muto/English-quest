@@ -1019,18 +1019,22 @@ code {
   overflow-x: clip;
 }
 
-.monster-art--defeated {
+.monster-art--defeated,
+.hero-art--defeated {
   opacity: 0;
   transition: opacity 0.6s;
 }
 
-.monster-art--defeated .monster-art__breath {
+.monster-art--defeated .monster-art__breath,
+.hero-art--defeated .hero-art__breath {
   animation: none;
   visibility: hidden;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .monster-art--defeated {
+  /* 負けたときは、主人公も同じように倒れる */
+  .monster-art--defeated,
+  .hero-art--defeated {
     transform-origin: 50% 100%;
     transition: none;
     animation: monster-defeated 2s ease-in forwards;

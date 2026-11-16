@@ -16,14 +16,12 @@ import { canSpeak, speakEnglish, stopSpeaking } from '../lib/speech';
 
 /**
  * 決着がついてから戦闘結果へ移るまでの、最低限の待ち時間（ミリ秒）。
- * 倒れる動き（styles.css の monster-defeated：ふつう2秒、ボス2.6秒）が終わって、少し間をおいてから移る。
+ * 倒れる動き（styles.css の monster-defeated：ふつう2秒、ボス2.6秒。負けたときの主人公も2秒）が終わって、少し間をおいてから移る。
  * 動きを減らす設定のときは、すっと消える0.6秒だけ待つ。
  */
 const DEFEAT_MS = { normal: 2000, boss: 2600, reduced: 600 };
 /** 倒れたあと・ちからつきたあとに、結果へ移る前におく間 */
 const AFTER_END_PAUSE_MS = 600;
-/** ちからつきたときは、主人公がゆれる動き（0.8秒）を待つ */
-const LOSE_MS = 800;
 
 function prefersReducedMotion(): boolean {
   return typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -294,7 +292,8 @@ export function BattleScreen({
     if (won && kind === 'boss') queueSave(() => markBossDefeated(monster.id));
     await saveChain.current;
     // 倒れる動きが終わるまで待つ（記録の保存と同時に進むので、保存が遅いときは待ち足さない）
-    const animMs = won ? (prefersReducedMotion() ? DEFEAT_MS.reduced : kind === 'boss' ? DEFEAT_MS.boss : DEFEAT_MS.normal) : LOSE_MS;
+    // 負けたときは主人公が倒れる（ふつうのモンスターと同じ長さ）
+    const animMs = prefersReducedMotion() ? DEFEAT_MS.reduced : won && kind === 'boss' ? DEFEAT_MS.boss : DEFEAT_MS.normal;
     const elapsed = Date.now() - (endedAtRef.current ?? Date.now());
     const rest = animMs + AFTER_END_PAUSE_MS - elapsed;
     if (rest > 0) await sleep(rest);
@@ -549,7 +548,10 @@ export function BattleScreen({
 
       <section className="battle__player">
         <div className="battle__player-row">
-          <HeroArt size={64} className={phase === 'feedback' && !hit ? 'hero-art--hurt' : ''} />
+          <HeroArt
+            size={64}
+            className={playerHp <= 0 ? 'hero-art--defeated' : phase === 'feedback' && !hit ? 'hero-art--hurt' : ''}
+          />
           <HpBar label={heroNameOf(player)} value={playerHp} max={player.maxHp} />
         </div>
         {saveFailed && <p className="message message--error">通信できず、記録できなかった答えがあります。</p>}
