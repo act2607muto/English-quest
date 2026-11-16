@@ -21,6 +21,7 @@ export function MonsterArt({
   image,
   size = 'large',
   hurt = false,
+  defeated = false,
   dim = false,
   revival = false,
 }: {
@@ -28,6 +29,8 @@ export function MonsterArt({
   image?: string | null;
   size?: 'small' | 'large' | 'huge';
   hurt?: boolean;
+  /** 倒された（ゆれてから倒れて消える。消えたまま） */
+  defeated?: boolean;
   dim?: boolean;
   /** 復活モンスター（色違い） */
   revival?: boolean;
@@ -39,7 +42,8 @@ export function MonsterArt({
     'monster-art',
     `monster-art--${size}`,
     `monster-art--${skill ?? 'boss'}`,
-    hurt ? 'monster-art--hurt' : '',
+    hurt && !defeated ? 'monster-art--hurt' : '',
+    defeated ? 'monster-art--defeated' : '',
     dim ? 'monster-art--dim' : '',
     revival ? 'monster-art--revival' : '',
   ].join(' ');

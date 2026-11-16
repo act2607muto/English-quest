@@ -15,6 +15,23 @@ import type { Skill } from '../lib/skills';
 import { canSpeak, speakEnglish, stopSpeaking } from '../lib/speech';
 
 /**
+ * 決着がついてから戦闘結果へ移るまでの、最低限の待ち時間（ミリ秒）。
+ * 倒れる動き（styles.css の monster-defeated：ふつう2秒、ボス2.6秒）が終わって、少し間をおいてから移る。
+ * 動きを減らす設定のときは、すっと消える0.6秒だけ待つ。
+ */
+const DEFEAT_MS = { normal: 2000, boss: 2600, reduced: 600 };
+/** 倒れたあと・ちからつきたあとに、結果へ移る前におく間 */
+const AFTER_END_PAUSE_MS = 600;
+/** ちからつきたときは、主人公がゆれる動き（0.8秒）を待つ */
+const LOSE_MS = 800;
+
+function prefersReducedMotion(): boolean {
+  return typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
+
+const sleep = (ms: number) => new Promise<void>((resolve) => setTimeout(resolve, ms));
+
+/**
  * 戦闘。正解（AI採点で「通じる」「惜しい」）なら相手に1ダメージ、不正解（「通じない」）なら自分が1ダメージ。
  * 答えるたびに、問題の学習状態と経験値を保存する（途中で閉じても、正解した分は残る）。
  *
@@ -98,6 +115,8 @@ export function BattleScreen({
   const [flagged, setFlagged] = useState<Set<string>>(new Set());
 
   const progressRef = useRef(new Map<string, QuestionProgress>());
+  /** 決着がついた時刻（倒れる動きを最後まで見せてから結果へ移るため） */
+  const endedAtRef = useRef<number | null>(null);
   const saveChain = useRef<Promise<void>>(Promise.resolve());
   const saveFailedRef = useRef(false);
 
@@ -172,6 +191,7 @@ export function BattleScreen({
     setPhase('feedback');
     setAnswered((n) => n + 1);
     setAskedSkills((set) => new Set(set).add(skill));
+    if ((hit && monsterHp - 1 <= 0) || (!hit && playerHp - 1 <= 0)) endedAtRef.current = Date.now();
     if (hit) {
       setMonsterHp((hp) => hp - 1);
       setCorrectCount((n) => n + 1);
@@ -247,6 +267,8 @@ export function BattleScreen({
   async function finish(won: boolean) {
     setPhase('finishing');
     stopSpeaking();
+    // 答えの解説を読んで下のほうにいても、倒れるところが見えるように上へ戻す
+    window.scrollTo(0, 0);
     const flawless = won && correctCount === answered;
     const gold = won ? monster.gold : 0;
     // ミスなしのボーナスは、この戦闘で出た能力値それぞれに入る
@@ -271,6 +293,11 @@ export function BattleScreen({
     );
     if (won && kind === 'boss') queueSave(() => markBossDefeated(monster.id));
     await saveChain.current;
+    // 倒れる動きが終わるまで待つ（記録の保存と同時に進むので、保存が遅いときは待ち足さない）
+    const animMs = won ? (prefersReducedMotion() ? DEFEAT_MS.reduced : kind === 'boss' ? DEFEAT_MS.boss : DEFEAT_MS.normal) : LOSE_MS;
+    const elapsed = Date.now() - (endedAtRef.current ?? Date.now());
+    const rest = animMs + AFTER_END_PAUSE_MS - elapsed;
+    if (rest > 0) await sleep(rest);
     onEnd({
       monster,
       kind,
@@ -329,6 +356,7 @@ export function BattleScreen({
           skill={monster.skill}
           image={monster.image}
           hurt={phase === 'feedback' && hit}
+          defeated={monsterHp <= 0}
           revival={kind === 'revival'}
           size={kind === 'boss' ? 'huge' : 'large'}
         />
