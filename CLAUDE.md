@@ -44,7 +44,7 @@
 - 採点は Claude（claude-haiku-5-5）、文字起こしは OpenAI（gpt-transcribe）。各社の比較はしない。
 - 名前は、今のもの（ページムシ・ことだまの門番など）を当面そのまま使う。
 - 絵は Pixellab（Claude Code に MCP でつないである）で作る。モンスター 64×64、ボス 96×96、主人公 64×64、装備品 32×32、街の背景 256×112。指示文に既存ゲームの名前は入れない。差し替えは `public/` の同じ名前の PNG を置き換える（2026-11-16 に15枚を差し替え済み）。
-- `scripts/make_sprites.mjs` は前の仮の絵を作るスクリプト。実行すると Pixellab の絵が上書きされるので使わない。
+- `scripts/make_sprites.mjs` は前の仮の絵を作るスクリプト。実行すると Pixellab の絵が上書きされるので使わない。前の絵そのものは `art/old-sprites/` に残してある（`art/README.md`）。
 
 ## 未決
 
