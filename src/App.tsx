@@ -14,6 +14,7 @@ import { ImportScreen } from './screens/ImportScreen';
 import { LoginScreen } from './screens/LoginScreen';
 import { MicTestScreen } from './screens/MicTestScreen';
 import { NameScreen } from './screens/NameScreen';
+import { PasswordScreen } from './screens/PasswordScreen';
 import { ResultScreen } from './screens/ResultScreen';
 import { SettingsScreen } from './screens/SettingsScreen';
 import { ShopScreen } from './screens/ShopScreen';
@@ -31,6 +32,7 @@ type Route =
   | { name: 'result'; result: BattleResult; before: Player }
   | { name: 'settings' }
   | { name: 'hero-name' }
+  | { name: 'password' }
   | { name: 'import' }
   | { name: 'compare' }
   | { name: 'mic-test' };
@@ -182,9 +184,12 @@ function Game() {
           onCompare={() => go({ name: 'compare' })}
           onMicTest={() => go({ name: 'mic-test' })}
           onHeroName={() => go({ name: 'hero-name' })}
+          onPassword={() => go({ name: 'password' })}
           onBack={() => go({ name: 'town' })}
         />
       );
+    case 'password':
+      return <PasswordScreen onDone={() => go({ name: 'settings' })} onBack={() => go({ name: 'settings' })} />;
     case 'hero-name':
       return (
         <NameScreen

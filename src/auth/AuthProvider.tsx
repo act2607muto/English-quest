@@ -8,6 +8,8 @@ type AuthState = {
   session: Session | null;
   signIn: (email: string, password: string) => Promise<void>;
   signOut: () => Promise<void>;
+  /** 今のパスワードを確かめてから、新しいパスワードに変える */
+  changePassword: (current: string, next: string) => Promise<void>;
 };
 
 const AuthContext = createContext<AuthState | null>(null);
@@ -48,13 +50,35 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     if (error) throw new Error(toJapaneseMessage(error.message));
   }
 
+  async function changePassword(current: string, next: string) {
+    if (!supabase) throw new Error('Supabase の設定がありません');
+    const email = session?.user.email;
+    if (!email) throw new Error('ログインが切れました。ログインし直してください。');
+    const timeout = new Promise<never>((_, reject) =>
+      setTimeout(() => reject(new Error('timeout')), LOGIN_TIMEOUT_MS),
+    );
+    const run = async () => {
+      // 端末を他の人に使われても変えられないように、今のパスワードを確かめる
+      const check = await supabase!.auth.signInWithPassword({ email, password: current });
+      if (check.error) {
+        throw new Error(/invalid login credentials/i.test(check.error.message) ? '今のパスワードが違います。' : check.error.message);
+      }
+      const { error } = await supabase!.auth.updateUser({ password: next });
+      if (error) throw new Error(toPasswordMessage(error.message));
+    };
+    await Promise.race([run(), timeout]).catch((err: unknown) => {
+      const message = err instanceof Error ? err.message : String(err);
+      throw new Error(/failed to fetch|network|load failed|timeout/i.test(message) ? toJapaneseMessage(message) : message);
+    });
+  }
+
   async function signOut() {
     if (!supabase) return;
     await supabase.auth.signOut();
   }
 
   return (
-    <AuthContext.Provider value={{ loading, session, signIn, signOut }}>
+    <AuthContext.Provider value={{ loading, session, signIn, signOut, changePassword }}>
       {children}
     </AuthContext.Provider>
   );
@@ -77,4 +101,11 @@ function toJapaneseMessage(message: string): string {
     return '通信できませんでした。電波の届く場所でもう一度試してください。';
   }
   return `ログインできませんでした（${message}）`;
+}
+
+function toPasswordMessage(message: string): string {
+  if (/same/i.test(message)) return '今と同じパスワードです。別のパスワードにしてください。';
+  if (/at least|weak|short/i.test(message)) return 'パスワードが短すぎるか、簡単すぎます。もっと長くしてください。';
+  if (/reauthentication|nonce/i.test(message)) return 'Supabase の設定で、パスワードの変更に確認が要るようになっています（Secure password change）。';
+  return `パスワードを変えられませんでした（${message}）`;
 }

@@ -9,6 +9,7 @@ export function SettingsScreen({
   onCompare,
   onMicTest,
   onHeroName,
+  onPassword,
   onBack,
 }: {
   isAdmin: boolean;
@@ -16,6 +17,7 @@ export function SettingsScreen({
   onCompare: () => void;
   onMicTest: () => void;
   onHeroName: () => void;
+  onPassword: () => void;
   onBack: () => void;
 }) {
   const { session, signOut } = useAuth();
@@ -45,6 +47,9 @@ export function SettingsScreen({
         )}
         <button className="command command--plain" type="button" onClick={onHeroName}>
           ▶ 主人公の名前を変える
+        </button>
+        <button className="command command--plain" type="button" onClick={onPassword}>
+          ▶ パスワードを変える
         </button>
         <button className="command command--plain" type="button" onClick={onMicTest}>
           ▶ マイクのテスト
