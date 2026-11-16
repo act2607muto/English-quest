@@ -420,9 +420,15 @@ code {
   image-rendering: crisp-edges;
 }
 
+/* 絵は 64×64（ボスは 96×96）。マスがそろって見えるよう、元の大きさの整数倍で出す */
+.monster-art--small.monster-art--sprite {
+  width: 64px;
+  height: 64px;
+}
+
 .monster-art--large.monster-art--sprite {
-  width: 112px;
-  height: 112px;
+  width: 128px;
+  height: 128px;
 }
 
 .monster-art--dim img {
@@ -800,8 +806,8 @@ code {
 }
 
 .monster-art--huge.monster-art--sprite {
-  width: 160px;
-  height: 160px;
+  width: 192px;
+  height: 192px;
 }
 
 .battle__enemy:has(.monster-art--huge) {
