@@ -12,14 +12,16 @@ export const isSupabaseConfigured = Boolean(url && key);
 
 /**
  * Supabase への接続。画面側に置いてよいのは URL と publishable key だけ。
- * ログインはパスワードで行うので、URL からログイン情報を読み取る機能は切っておく。
+ * ログインはパスワードか Google。Google から戻ってきたときの URL（?code=...）を読んでログインを終えるため、
+ * detectSessionInUrl を入れ、より安全な PKCE の方式を使う。
  */
 export const supabase: SupabaseClient | null = isSupabaseConfigured
   ? createClient(url!, key!, {
       auth: {
         persistSession: true,
         autoRefreshToken: true,
-        detectSessionInUrl: false,
+        detectSessionInUrl: true,
+        flowType: 'pkce',
       },
     })
   : null;

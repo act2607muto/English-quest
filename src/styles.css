@@ -1082,3 +1082,19 @@ code {
     transform: perspective(400px) rotateX(88deg);
   }
 }
+
+/* ---------- ログイン（Google） ---------- */
+.login-google {
+  width: 100%;
+  max-width: 420px;
+}
+
+.login-google a {
+  color: var(--accent);
+}
+
+.login-or {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+}
