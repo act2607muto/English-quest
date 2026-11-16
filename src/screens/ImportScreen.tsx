@@ -364,7 +364,10 @@ async function makePlan(fileName: string, text: string): Promise<Plan | { errors
     townIsNew: !townNow,
     townChanged:
       !!townNow &&
-      (townNow.scene !== town.scene || townNow.difficulty !== town.difficulty || townNow.sort_order !== town.sort_order),
+      (townNow.scene !== town.scene ||
+        townNow.difficulty !== town.difficulty ||
+        townNow.sort_order !== town.sort_order ||
+        (town.background_image !== undefined && (townNow.background_image ?? null) !== town.background_image)),
     questions: parsed.questions,
     monsters: parsed.monsters,
     equipment: parsed.equipment,

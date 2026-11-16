@@ -75,7 +75,7 @@ export async function fetchQuestionsByIds(ids: string[]): Promise<QuestionRow[]>
 export async function fetchTowns(): Promise<TownRow[]> {
   const { data, error } = await requireSupabase()
     .from('towns')
-    .select('id, scene, difficulty, sort_order')
+    .select('id, scene, difficulty, sort_order, background_image')
     .order('sort_order');
   if (error) throw error;
   return data as TownRow[];
@@ -84,7 +84,7 @@ export async function fetchTowns(): Promise<TownRow[]> {
 export async function fetchTown(townId: string): Promise<TownRow | null> {
   const { data, error } = await requireSupabase()
     .from('towns')
-    .select('id, scene, difficulty, sort_order')
+    .select('id, scene, difficulty, sort_order, background_image')
     .eq('id', townId)
     .maybeSingle();
   if (error) throw error;

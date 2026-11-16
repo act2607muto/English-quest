@@ -15,6 +15,8 @@ export type TownRow = {
   scene: string;
   difficulty: number;
   sort_order: number;
+  /** 街の背景の絵。ファイルに書いてあるときだけ入る（書いていないファイルを取り込んでも消さない） */
+  background_image?: string | null;
 };
 
 /** questions テーブルの1行（要修正の印は取り込みで変えないので含めない） */
@@ -288,8 +290,13 @@ function parseTown(raw: unknown, errors: string[]): TownRow | null {
   if (!difficulty || difficulty < 1 || difficulty > 3) {
     errors.push(`town.difficulty は「基本」「標準」「目標」か 1〜3 にしてください（${JSON.stringify(raw.difficulty)}）`);
   }
+  if (raw.background_image !== undefined && raw.background_image !== null && typeof raw.background_image !== 'string') {
+    errors.push('town.background_image（背景の絵）は文字にしてください');
+  }
   if (errors.length > before) return null;
-  return { id: id as string, scene: (scene as string).trim(), difficulty: difficulty!, sort_order: order as number };
+  const row: TownRow = { id: id as string, scene: (scene as string).trim(), difficulty: difficulty!, sort_order: order as number };
+  if (raw.background_image !== undefined) row.background_image = (raw.background_image as string | null) || null;
+  return row;
 }
 
 function parseQuestion(raw: unknown, townId: string | null, problems: string[]): QuestionRow | null {

@@ -1,5 +1,7 @@
 import { PLAYABLE_SKILLS } from '../lib/game/battle';
+import { HeroArt } from '../components/HeroArt';
 import type { Player, PlayerSkill } from '../lib/game/player';
+import type { TownRow } from '../lib/questionFile';
 import type { TownStatus } from '../lib/game/town';
 import { SKILL_LABELS } from '../lib/skills';
 
@@ -9,7 +11,7 @@ import { SKILL_LABELS } from '../lib/skills';
  */
 export function TownScreen({
   player,
-  townScene,
+  town,
   onField,
   onStatus,
   onShop,
@@ -18,7 +20,7 @@ export function TownScreen({
   status,
 }: {
   player: Player;
-  townScene: string;
+  town: TownRow | null;
   onField: () => void;
   onStatus: () => void;
   onShop: () => void;
@@ -33,8 +35,16 @@ export function TownScreen({
   return (
     <main className="screen">
       <section className="town-banner" aria-label="街">
-        <p className="town-banner__sub">はじまりの街</p>
-        <h1 className="town-banner__name">{townScene}</h1>
+        {town?.background_image && (
+          <div className="town-banner__scene">
+            <img className="town-banner__bg" src={town.background_image} alt="" aria-hidden="true" />
+            <HeroArt size={64} className="town-banner__hero" />
+          </div>
+        )}
+        <div className="town-banner__text">
+          <p className="town-banner__sub">はじまりの街</p>
+          <h1 className="town-banner__name">{town?.scene ?? ''}</h1>
+        </div>
       </section>
 
       <section className="window">

@@ -862,3 +862,71 @@ code {
   width: 2px;
   background: var(--accent);
 }
+
+/* ---------- 主人公と街の背景 ---------- */
+.hero-art {
+  display: block;
+  flex: none;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-art--hurt {
+    animation: hurt 0.4s steps(2) 2;
+  }
+}
+
+.town-banner {
+  padding: 0;
+  overflow: hidden;
+  background: #0b1730;
+}
+
+.town-banner__scene {
+  position: relative;
+  border-bottom: 3px solid var(--border);
+}
+
+.town-banner__bg {
+  display: block;
+  width: 100%;
+  height: auto;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+/* 主人公は道の上に立たせる */
+.town-banner__hero {
+  position: absolute;
+  left: 50%;
+  bottom: 4%;
+  width: 22%;
+  height: auto;
+  transform: translateX(-50%);
+}
+
+.town-banner__text {
+  padding: 10px 16px 14px;
+}
+
+.status-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.status-head p {
+  margin: 0;
+}
+
+.battle__player-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.battle__player-row .hp {
+  flex: 1;
+  min-width: 0;
+}

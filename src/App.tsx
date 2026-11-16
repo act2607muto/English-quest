@@ -4,7 +4,7 @@ import { fetchIsAdmin, fetchTown } from './lib/content';
 import { loadPlayer, type Player } from './lib/game/player';
 import { loadTownStatus, type TownStatus } from './lib/game/town';
 import type { Skill } from './lib/skills';
-import type { MonsterRow } from './lib/questionFile';
+import type { MonsterRow, TownRow } from './lib/questionFile';
 import { isSupabaseConfigured } from './lib/supabase';
 import { BattleScreen, type BattleKind, type BattleResult } from './screens/BattleScreen';
 import { BossScreen } from './screens/BossScreen';
@@ -52,7 +52,7 @@ function Gate() {
 function Game() {
   const [route, setRoute] = useState<Route>({ name: 'town' });
   const [player, setPlayer] = useState<Player | null>(null);
-  const [townScene, setTownScene] = useState('');
+  const [town, setTown] = useState<TownRow | null>(null);
   const [townStatus, setTownStatus] = useState<TownStatus | null>(null);
   const [isAdmin, setIsAdmin] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -70,7 +70,7 @@ function Game() {
   useEffect(() => {
     reload()
       .then((p) => fetchTown(p.currentTownId))
-      .then((t) => setTownScene(t?.scene ?? ''))
+      .then((t) => setTown(t))
       .catch((err) => setError(err instanceof Error ? err.message : String(err)));
     // 起動直後はログインの更新と重なって失敗することがあるので、失敗したら少し待って1回だけやり直す
     fetchIsAdmin()
@@ -189,7 +189,7 @@ function Game() {
       return (
         <TownScreen
           player={player}
-          townScene={townScene}
+          town={town}
           onField={() => go({ name: 'field' })}
           onStatus={() => go({ name: 'status' })}
           onShop={() => go({ name: 'shop' })}

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, type FormEvent } from 'react';
+import { HeroArt } from '../components/HeroArt';
 import { MonsterArt } from '../components/MonsterArt';
 import { SpeakAnswer } from '../components/SpeakAnswer';
 import { fetchPlayableQuestions, flagQuestion } from '../lib/content';
@@ -515,7 +516,10 @@ export function BattleScreen({
       )}
 
       <section className="battle__player">
-        <HpBar label="じぶん" value={playerHp} max={player.maxHp} />
+        <div className="battle__player-row">
+          <HeroArt size={48} className={phase === 'feedback' && !hit ? 'hero-art--hurt' : ''} />
+          <HpBar label="じぶん" value={playerHp} max={player.maxHp} />
+        </div>
         {saveFailed && <p className="message message--error">通信できず、記録できなかった答えがあります。</p>}
       </section>
 

@@ -2,7 +2,8 @@
 //
 //   node scripts/make_sprites.mjs
 //
-// public/monsters/<モンスターID>.png、public/equipment/<装備品ID>.png に書き出す
+// public/monsters/<モンスターID>.png、public/equipment/<装備品ID>.png、public/hero/hero.png、
+// public/towns/<街ID>.png に書き出す
 // （透明な背景、1マス=1ピクセル）。
 // 画面では image-rendering: pixelated で拡大して表示する。
 // 本番の絵ができたら、同じ名前の PNG を置き換えればよい。
@@ -292,12 +293,14 @@ function hex(c) {
 }
 
 function render({ palette, rows }, id) {
-  const n = rows.length;
-  if (n !== 16 && n !== 32) throw new Error(`${id}: 16行か32行にしてください（${n}行）`);
-  const raw = Buffer.alloc(n * (1 + n * 4));
+  // モンスター・装備品は 16×16、ボスと主人公は 32×32、街の背景は横長
+  const h = rows.length;
+  const w = rows[0]?.length ?? 0;
+  if (h === 0 || w === 0) throw new Error(`${id}: 絵が空です`);
+  const raw = Buffer.alloc(h * (1 + w * 4));
   rows.forEach((row, y) => {
-    if (row.length !== n) throw new Error(`${id}: ${y}行目が${n}文字ではありません（${row.length}文字）`);
-    const base = y * (1 + n * 4);
+    if (row.length !== w) throw new Error(`${id}: ${y}行目が${w}文字ではありません（${row.length}文字）`);
+    const base = y * (1 + w * 4);
     raw[base] = 0;
     [...row].forEach((ch, x) => {
       const o = base + 1 + x * 4;
@@ -311,7 +314,7 @@ function render({ palette, rows }, id) {
       raw[o + 3] = 255;
     });
   });
-  return encodePng(n, n, raw);
+  return encodePng(w, h, raw);
 }
 
 const CRC_TABLE = Array.from({ length: 256 }, (_, n) => {
@@ -444,6 +447,188 @@ function drawBoss() {
   };
 }
 SPRITES['monsters/town01-boss'] = drawBoss();
+
+// ---------- 主人公（32×32） ----------
+// ニット帽と青いマフラーの旅人。肩かけかばんに単語帳を入れている。
+function drawHero() {
+  const W = 32;
+  const H = 32;
+  const g = Array.from({ length: H }, () => Array(W).fill('.'));
+  const set = (x, y, c) => {
+    if (x >= 0 && x < W && y >= 0 && y < H) g[y][x] = c;
+  };
+  const get = (x, y) => (x >= 0 && x < W && y >= 0 && y < H ? g[y][x] : '.');
+  const rect = (x0, y0, x1, y1, c) => {
+    for (let y = y0; y <= y1; y++) for (let x = x0; x <= x1; x++) set(x, y, c);
+  };
+  const ellipse = (cx, cy, rx, ry, c, yMin = -Infinity, yMax = Infinity) => {
+    for (let y = 0; y < H; y++) {
+      if (y < yMin || y > yMax) continue;
+      for (let x = 0; x < W; x++) if (((x - cx) / rx) ** 2 + ((y - cy) / ry) ** 2 <= 1) set(x, y, c);
+    }
+  };
+
+  // 足と靴
+  rect(11, 27, 14, 29, 'p');
+  rect(17, 27, 20, 29, 'p');
+  rect(10, 30, 14, 30, 'h');
+  rect(17, 30, 21, 30, 'h');
+  // 腕と手
+  rect(7, 20, 9, 25, 't');
+  rect(22, 20, 24, 25, 't');
+  rect(7, 26, 9, 26, 's');
+  rect(22, 26, 24, 26, 's');
+  // 服
+  rect(10, 20, 21, 26, 't');
+  rect(20, 20, 21, 26, 'd');
+  // かばんのひも（ななめ）とかばん
+  for (let i = 0; i <= 6; i++) set(11 + i, 20 + i, 'y');
+  rect(16, 25, 20, 27, 'p');
+  set(18, 26, 'y');
+  // 顔
+  ellipse(15.5, 13.5, 6.2, 5.2, 's');
+  // 髪（帽子の下からのぞく）
+  rect(10, 10, 21, 10, 'a');
+  rect(9, 10, 10, 13, 'a');
+  rect(21, 10, 22, 13, 'a');
+  // ニット帽
+  ellipse(15.5, 9, 7, 6, 'b', 2, 9);
+  rect(9, 8, 22, 9, 'e'); // 折り返し
+  for (const x of [11, 14, 17, 20]) set(x, 8, 'b');
+  ellipse(15.5, 2, 1.6, 1.4, 'w'); // ぼんぼん
+  // 目・ほお・口
+  rect(13, 13, 13, 14, 'k');
+  rect(18, 13, 18, 14, 'k');
+  set(13, 13, 'k');
+  set(12, 15, 'r');
+  set(19, 15, 'r');
+  set(15, 16, 'k');
+  set(16, 16, 'k');
+  // マフラー（首と、たれた端）
+  rect(9, 18, 22, 19, 'c');
+  rect(19, 20, 21, 23, 'c');
+  set(19, 23, 'f');
+  set(21, 23, 'f');
+
+  // 外側の輪郭
+  const out = g.map((row) => [...row]);
+  for (let y = 0; y < H; y++) {
+    for (let x = 0; x < W; x++) {
+      if (g[y][x] !== '.') continue;
+      if ([[1, 0], [-1, 0], [0, 1], [0, -1]].some(([dx, dy]) => get(x + dx, y + dy) !== '.')) out[y][x] = 'k';
+    }
+  }
+  return {
+    palette: {
+      k: OUTLINE,
+      s: '#f2c29b',
+      r: '#f28b82',
+      a: '#5a3a22',
+      b: '#d83a3a',
+      e: '#a52a2a',
+      w: '#ffffff',
+      c: '#3d7be0',
+      f: '#8fc4ff',
+      t: '#4caf6a',
+      d: '#2f7d4f',
+      p: '#8a5a2b',
+      h: '#4a3020',
+      y: '#e0b33a',
+    },
+    rows: out.map((row) => row.join('')),
+  };
+}
+
+// ---------- 街の背景（64×28） ----------
+// はじまりの街：丘の上の家々と、街の外へ続く道。道ばたに吹き出しの看板。
+function drawTown01() {
+  const W = 64;
+  const H = 28;
+  const g = Array.from({ length: H }, () => Array(W).fill('a'));
+  const set = (x, y, c) => {
+    if (x >= 0 && x < W && y >= 0 && y < H) g[y][x] = c;
+  };
+  const rect = (x0, y0, x1, y1, c) => {
+    for (let y = y0; y <= y1; y++) for (let x = x0; x <= x1; x++) set(x, y, c);
+  };
+  // 空（上が濃く、下が明るい）
+  rect(0, 9, W - 1, 17, 'b');
+  // 雲
+  for (const [cx, cy] of [[10, 4], [44, 3], [56, 7]]) {
+    rect(cx - 3, cy, cx + 3, cy + 1, 'w');
+    rect(cx - 1, cy - 1, cx + 2, cy - 1, 'w');
+  }
+  // 遠くの丘
+  for (let x = 0; x < W; x++) {
+    const top = Math.round(15 + 2.5 * Math.sin(x / 7) + 1.5 * Math.sin(x / 3.1 + 1));
+    for (let y = top; y < H; y++) set(x, y, 'm');
+  }
+  // 手前の草地
+  rect(0, 20, W - 1, H - 1, 'g');
+  for (let x = 1; x < W; x += 5) set(x, 22 + (x % 3), 'm');
+  // 道（手前に向かって広がる）
+  for (let y = 20; y < H; y++) {
+    const half = 2 + Math.floor((y - 20) * 0.9);
+    rect(31 - half, y, 32 + half, y, 'p');
+  }
+  // 家（壁・屋根・窓・戸口）
+  const house = (x0, w, h, roof) => {
+    const base = 20;
+    const top = base - h;
+    rect(x0, top, x0 + w - 1, base - 1, 'k');
+    rect(x0 + 1, top + 1, x0 + w - 2, base - 1, 'h');
+    // 屋根：軒（いちばん下）が広く、上に行くほどせまい三角
+    let apex = top;
+    for (let k = 0; ; k++) {
+      const y = top - k;
+      const left = x0 - 1 + k;
+      const right = x0 + w - k;
+      if (left > right) break;
+      rect(left, y, right, y, roof);
+      set(left, y, 'k');
+      set(right, y, 'k');
+      apex = y;
+    }
+    for (let x = 0; x < W; x++) if (g[apex][x] === roof) set(x, apex, 'k');
+    rect(x0 - 1, top, x0 + w, top, 'k');
+    rect(x0 + Math.floor(w / 2) - 1, base - 3, x0 + Math.floor(w / 2), base - 1, 'd');
+    if (w >= 8) {
+      set(x0 + 2, top + 2, 'y');
+      set(x0 + w - 3, top + 2, 'y');
+    }
+  };
+  house(3, 9, 6, 'r');
+  house(14, 7, 5, 'R');
+  house(42, 8, 6, 'R');
+  house(53, 9, 5, 'r');
+  // 吹き出しの看板（言葉の街のしるし）
+  rect(26, 16, 26, 21, 'd');
+  rect(22, 11, 30, 15, 'k');
+  rect(23, 12, 29, 14, 'w');
+  for (const x of [24, 26, 28]) set(x, 13, 'k');
+  set(25, 16, 'k');
+  set(25, 15, 'w');
+  return {
+    palette: {
+      k: OUTLINE,
+      a: '#6fb6e8',
+      b: '#a9dbf7',
+      w: '#ffffff',
+      m: '#4f9a5a',
+      g: '#73c063',
+      p: '#d9c08c',
+      h: '#f4e6c4',
+      r: '#c8642a',
+      R: '#3d7be0',
+      d: '#8a5a2b',
+      y: '#ffd84a',
+    },
+    rows: g.map((row) => row.join('')),
+  };
+}
+
+SPRITES['hero/hero'] = drawHero();
+SPRITES['towns/town01'] = drawTown01();
 
 for (const [id, sprite] of Object.entries(SPRITES)) {
   const colors = Object.keys(sprite.palette).filter((k) => k !== 'k' && k !== 'w');

@@ -4,7 +4,8 @@
     "id": "town01",
     "scene": "あいさつと自己紹介",
     "difficulty": "基本",
-    "order": 1
+    "order": 1,
+    "background_image": "/towns/town01.png"
   },
   "monsters": [
     {

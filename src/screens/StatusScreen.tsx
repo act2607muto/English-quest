@@ -1,3 +1,4 @@
+import { HeroArt } from '../components/HeroArt';
 import { Hexagon } from '../components/Hexagon';
 import { describeEffect } from '../lib/game/equipment';
 import { expForLevel } from '../lib/game/growth';
@@ -10,7 +11,13 @@ export function StatusScreen({ player, onBack }: { player: Player; onBack: () =>
   return (
     <main className="screen">
       <section className="window">
-        <h2 className="window__title">ステータス</h2>
+        <div className="status-head">
+          <HeroArt size={64} />
+          <div>
+            <h2 className="window__title">ステータス</h2>
+            <p>総合レベル {player.overall}　HP {player.maxHp}</p>
+          </div>
+        </div>
         <Hexagon skills={player.skills} />
         <table className="stats">
           <tbody>
