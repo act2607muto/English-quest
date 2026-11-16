@@ -10,7 +10,7 @@ import { SKILLS, SKILL_LABELS } from '../lib/skills';
 import type { BattleKind } from './BattleScreen';
 
 /**
- * 街の外。戦うモンスターを選ぶ。モンスターの種類が能力値に対応する。
+ * モンスターを選んで戦う（マップの「モンスターを選んで戦う」から開く）。モンスターの種類が能力値に対応する。
  * 復習の時期が来た問題があると、その能力値の「復活モンスター」（色違い）が現れる。
  * 未解放の能力値は鍵つきで出す。
  */
@@ -46,8 +46,8 @@ export function FieldScreen({
   return (
     <main className="screen">
       <section className="window">
-        <h2 className="window__title">街の外</h2>
-        <p>戦う相手を選んでください。倒すと、その能力値が伸びます。</p>
+        <h2 className="window__title">モンスターを選んで戦う</h2>
+        <p>練習したい能力値のモンスターを選んでください。倒すと、その能力値が伸びます。</p>
       </section>
 
       {error && <p className="message message--error">モンスターを読み込めませんでした（{error}）</p>}
@@ -117,7 +117,7 @@ export function FieldScreen({
       )}
 
       <button className="command" type="button" onClick={onBack}>
-        ▶ 街にもどる
+        ▶ マップにもどる
       </button>
     </main>
   );

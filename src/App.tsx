@@ -11,6 +11,7 @@ import { BossScreen } from './screens/BossScreen';
 import { FieldScreen } from './screens/FieldScreen';
 import { ImportScreen } from './screens/ImportScreen';
 import { LoginScreen } from './screens/LoginScreen';
+import { MapScreen, type MapPosition } from './screens/MapScreen';
 import { MicTestScreen } from './screens/MicTestScreen';
 import { NameScreen } from './screens/NameScreen';
 import { PasswordScreen } from './screens/PasswordScreen';
@@ -20,10 +21,11 @@ import { ShopScreen } from './screens/ShopScreen';
 import { StatusScreen } from './screens/StatusScreen';
 import { TownScreen } from './screens/TownScreen';
 
-/** 毎日の流れは「街 → 街の外 → 戦闘 → 戦闘結果 → 街」 */
+/** 毎日の流れは「街 → 街の外（マップを歩いて出会う。選んで戦うこともできる）→ 戦闘 → 戦闘結果 → 街」 */
 type Route =
   | { name: 'town' }
   | { name: 'status' }
+  | { name: 'map' }
   | { name: 'field' }
   | { name: 'shop' }
   | { name: 'boss' }
@@ -57,6 +59,8 @@ function Game() {
   const [town, setTown] = useState<TownRow | null>(null);
   const [townStatus, setTownStatus] = useState<TownStatus | null>(null);
   const [isAdmin, setIsAdmin] = useState(false);
+  /** マップの上の位置（戦闘から戻ったとき、同じ場所から歩く。街に入ると忘れる） */
+  const [mapPos, setMapPos] = useState<MapPosition | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   const reload = useCallback(async () => {
@@ -113,6 +117,7 @@ function Game() {
   };
   const toTown = () => {
     void reload().catch(() => {});
+    setMapPos(null);
     go({ name: 'town' });
   };
   const fight = (monster: MonsterRow, kind: BattleKind = 'normal', skills?: Skill[]) =>
@@ -130,9 +135,26 @@ function Game() {
       return <StatusScreen player={player} onBack={() => go({ name: 'town' })} />;
     case 'shop':
       return <ShopScreen player={player} onChanged={reload} onBack={() => go({ name: 'town' })} />;
+    case 'map':
+      return (
+        <MapScreen
+          player={player}
+          status={townStatus}
+          position={mapPos}
+          onMove={setMapPos}
+          onEncounter={(m, kind) => fight(m, kind)}
+          onChoose={() => go({ name: 'field' })}
+          onTown={toTown}
+        />
+      );
     case 'field':
       return (
-        <FieldScreen player={player} status={townStatus} onFight={(m, kind) => fight(m, kind)} onBack={toTown} />
+        <FieldScreen
+          player={player}
+          status={townStatus}
+          onFight={(m, kind) => fight(m, kind)}
+          onBack={() => go({ name: 'map' })}
+        />
       );
     case 'boss':
       return (
@@ -159,7 +181,7 @@ function Game() {
           }}
           onRunAway={() => {
             void reload().catch(() => {});
-            go({ name: 'field' });
+            go({ name: 'map' });
           }}
         />
       );
@@ -170,7 +192,7 @@ function Game() {
           before={route.before}
           after={player}
           onAgain={route.result.kind === 'normal' ? () => fight(route.result.monster) : null}
-          onField={() => go({ name: 'field' })}
+          onField={() => go({ name: 'map' })}
           onTown={toTown}
         />
       );
@@ -204,7 +226,7 @@ function Game() {
         <TownScreen
           player={player}
           town={town}
-          onField={() => go({ name: 'field' })}
+          onField={() => go({ name: 'map' })}
           onStatus={() => go({ name: 'status' })}
           onShop={() => go({ name: 'shop' })}
           onBoss={() => go({ name: 'boss' })}

@@ -1098,3 +1098,119 @@ code {
   color: var(--muted);
   font-size: 14px;
 }
+
+/* ---------- 街の外のマップ ---------- */
+.map-place {
+  gap: 2px;
+  padding: 8px 12px;
+}
+
+.map-place p {
+  margin: 0;
+}
+
+.map-place__name {
+  color: var(--accent);
+}
+
+.map-view {
+  position: relative;
+  align-self: center;
+  width: 100%;
+  max-width: 352px;
+  border: 3px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.map-view__canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  image-rendering: pixelated;
+}
+
+/* 出会ったとき：画面が点滅して「あらわれた！」 */
+.map-encounter {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  padding: 8px;
+  line-height: normal;
+}
+
+.map-encounter__text {
+  margin: 0;
+  width: 100%;
+  background: #000;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .map-encounter {
+    animation: map-encounter-flash 0.45s steps(1) 2;
+  }
+}
+
+@keyframes map-encounter-flash {
+  0% {
+    background: rgba(255, 255, 255, 0.85);
+  }
+  50% {
+    background: transparent;
+  }
+}
+
+/* 十字のボタン */
+.dpad {
+  align-self: center;
+  display: grid;
+  grid-template-columns: repeat(3, 64px);
+  grid-template-rows: repeat(3, 56px);
+  grid-template-areas:
+    '. up .'
+    'left . right'
+    '. down .';
+  gap: 6px;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+
+.dpad__button {
+  font: inherit;
+  font-size: 22px;
+  color: var(--fg);
+  background: #111;
+  border: 3px solid var(--border);
+  border-radius: 8px;
+  touch-action: none;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+}
+
+.dpad__button:active {
+  background: #333;
+}
+
+.dpad__button:disabled {
+  opacity: 0.4;
+}
+
+.dpad__button--up {
+  grid-area: up;
+}
+
+.dpad__button--down {
+  grid-area: down;
+}
+
+.dpad__button--left {
+  grid-area: left;
+}
+
+.dpad__button--right {
+  grid-area: right;
+}

@@ -48,6 +48,7 @@
 - `scripts/make_sprites.mjs` は前の仮の絵を作るスクリプト。実行すると Pixellab の絵が上書きされるので使わない。前の絵そのものは `art/old-sprites/` に残してある（`art/README.md`）。
 
 - だれでも参加できるようにする（2026-11-16）。ログイン画面に「Google でログイン」を置き、はじめての人はそのままアカウントができる。メールアドレス＋パスワードのログインも残す。設定は `docs/setup_google_login.md`。教材の取り込みは管理者（`app_admins`）だけ。AI の料金は参加した人の分もこのアプリのキーで払うので、各社の管理画面で上限を決めておく。
+- 街の外はマップを歩いてモンスターに出会う形（2026-11-16）。「モンスターを選んで戦う」入口も残す。マップは `public/maps/{街のID}.json`（地形・場所・出やすい能力値。街を足すときはファイルを足すだけ）、出会いの計算は `src/lib/game/fieldMap.ts`、数値は `rules.ts`。マップの絵は Pixellab で作った（32×32）。地面は `public/maps/terrain-water.png`・`terrain-path.png`（草とつながる Wang タイル。境目は角ごとに絵を選んでなめらかにつなぐ）、置く物は `public/maps/obj-*.png`（木・岩・草むら・花・街）、マップ用の小さい主人公は `public/hero/hero-map.png`。差し替えは同じ名前・同じ並びの PNG で上書きする。
 
 ## 未決
 
