@@ -6,8 +6,16 @@ import type { EquipmentRow } from '../questionFile';
 import { fetchAdventureState, fetchSkillStats } from '../records';
 import { SKILLS, type Skill } from '../skills';
 import { modifiersOf, type Modifiers } from './equipment';
-import { daysUntilDecay, effectiveExp, levelFromExp, localDate, overallLevel, playerMaxHp, type SkillLevel } from './growth';
-import { EXP_PER_LEVEL_SQUARED, MAX_LEVEL } from './rules';
+import {
+  daysUntilDecay,
+  effectiveExp,
+  levelFromExp,
+  localDate,
+  overallLevel,
+  playerMaxHp,
+  preciseLevelFromExp,
+  type SkillLevel,
+} from './growth';
 
 export type PlayerSkill = SkillLevel & {
   /** 低下が始まるまでの残り日数。まだ練習していなければ null */
@@ -70,7 +78,7 @@ export async function loadPlayer(): Promise<Player> {
 
 /** 六角形を滑らかに伸ばすための、小数のレベル */
 export function preciseLevel(exp: number): number {
-  return Math.min(MAX_LEVEL, Math.max(1, Math.sqrt(Math.max(0, exp) / EXP_PER_LEVEL_SQUARED)));
+  return preciseLevelFromExp(exp);
 }
 
 /** 画面で使う主人公の名前。まだつけていなければ「あなた」 */

@@ -6,7 +6,8 @@ import {
   DECAY_FLOOR_RATIO,
   DECAY_GRACE_DAYS,
   DECAY_RATE_PER_DAY,
-  EXP_PER_LEVEL_SQUARED,
+  EXP_LEVEL_FACTOR,
+  EXP_LEVEL_POWER,
   HEXAGON_SCALE_STEPS,
   MAX_LEVEL,
   PLAYER_BASE_HP,
@@ -14,15 +15,25 @@ import {
   REVIEW_INTERVALS,
 } from './rules';
 
+/** 経験値から、小数まで含めたレベル（六角形を滑らかに伸ばすため。1〜99） */
+export function preciseLevelFromExp(exp: number): number {
+  const level = 1 + Math.pow(Math.max(0, exp) / EXP_LEVEL_FACTOR, 1 / EXP_LEVEL_POWER);
+  return Math.min(MAX_LEVEL, level);
+}
+
 /** 経験値からレベル（1〜99） */
 export function levelFromExp(exp: number): number {
-  const level = Math.floor(Math.sqrt(Math.max(0, exp) / EXP_PER_LEVEL_SQUARED));
-  return Math.min(MAX_LEVEL, Math.max(1, level));
+  let level = Math.min(MAX_LEVEL, Math.max(1, Math.floor(preciseLevelFromExp(exp))));
+  // 小数の計算の誤差で境目がずれないように、必要経験値と比べて合わせる
+  while (level < MAX_LEVEL && expForLevel(level + 1) <= exp) level++;
+  while (level > 1 && expForLevel(level) > exp) level--;
+  return level;
 }
 
 /** そのレベルになるのに必要な累計経験値 */
 export function expForLevel(level: number): number {
-  return EXP_PER_LEVEL_SQUARED * level * level;
+  if (level <= 1) return 0;
+  return Math.round(EXP_LEVEL_FACTOR * Math.pow(level - 1, EXP_LEVEL_POWER));
 }
 
 /** 端末の暦での日付（YYYY-MM-DD） */

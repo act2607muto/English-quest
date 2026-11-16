@@ -9,8 +9,13 @@ export const EXP_CORRECT_REVIEW = 15; // 復習の時期が来ていた問題に
 export const EXP_HALF = 5; // AI採点で「惜しい」（手順4以降）
 export const EXP_FLAWLESS_BONUS = 10; // ミスなしで勝つ
 
-/** レベル：必要な累計経験値は「20 × レベルの2乗」 */
-export const EXP_PER_LEVEL_SQUARED = 20;
+/**
+ * レベル：必要な累計経験値は「30 ×（レベル − 1）の2.5乗」。
+ * 王道のRPGのように、レベル2はすぐ上がり、上がるほど次までの経験値が大きく増える。
+ * 正解（10）の数でいうと、レベル2が3問、5が96問、10が729問。
+ */
+export const EXP_LEVEL_FACTOR = 30;
+export const EXP_LEVEL_POWER = 2.5;
 export const MAX_LEVEL = 99;
 
 /** 能力値の低下 */
