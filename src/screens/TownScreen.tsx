@@ -1,6 +1,6 @@
 import { PLAYABLE_SKILLS } from '../lib/game/battle';
 import { HeroArt } from '../components/HeroArt';
-import type { Player, PlayerSkill } from '../lib/game/player';
+import { heroNameOf, type Player, type PlayerSkill } from '../lib/game/player';
 import type { TownRow } from '../lib/questionFile';
 import type { TownStatus } from '../lib/game/town';
 import { SKILL_LABELS } from '../lib/skills';
@@ -50,6 +50,10 @@ export function TownScreen({
       <section className="window">
         <table className="stats">
           <tbody>
+            <tr>
+              <th>なまえ</th>
+              <td>{heroNameOf(player)}</td>
+            </tr>
             <tr>
               <th>総合レベル</th>
               <td>Lv {player.overall}</td>

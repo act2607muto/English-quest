@@ -2,18 +2,20 @@ import { useEffect, useState } from 'react';
 import { useAuth } from '../auth/AuthProvider';
 import { fetchIsAdmin } from '../lib/content';
 
-/** 設定。自分の名前・音声の速さは、この後の手順で足す */
+/** 設定。問題文に使う自分の名前・音声の速さは、この後の手順で足す */
 export function SettingsScreen({
   isAdmin,
   onImport,
   onCompare,
   onMicTest,
+  onHeroName,
   onBack,
 }: {
   isAdmin: boolean;
   onImport: () => void;
   onCompare: () => void;
   onMicTest: () => void;
+  onHeroName: () => void;
   onBack: () => void;
 }) {
   const { session, signOut } = useAuth();
@@ -41,6 +43,9 @@ export function SettingsScreen({
             ▶ AI採点を比べる
           </button>
         )}
+        <button className="command command--plain" type="button" onClick={onHeroName}>
+          ▶ 主人公の名前を変える
+        </button>
         <button className="command command--plain" type="button" onClick={onMicTest}>
           ▶ マイクのテスト
         </button>

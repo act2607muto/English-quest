@@ -25,7 +25,12 @@ export type AdventureState = {
   equippedWeaponId: string | null;
   equippedArmorId: string | null;
   defeatedBosses: string[];
+  /** 主人公の名前。まだつけていなければ null */
+  heroName: string | null;
 };
+
+/** 主人公の名前の長さ（データベースの制約と同じ） */
+export const HERO_NAME_MAX = 8;
 
 export async function fetchSkillStats(): Promise<SkillStat[]> {
   const { data, error } = await requireSupabase()
@@ -45,7 +50,7 @@ export async function fetchAdventureState(): Promise<AdventureState | null> {
   const { data, error } = await requireSupabase()
     .from('adventure_state')
     .select(
-      'current_town_id, gold, owned_equipment, equipped_weapon_id, equipped_armor_id, defeated_bosses',
+      'current_town_id, gold, owned_equipment, equipped_weapon_id, equipped_armor_id, defeated_bosses, hero_name',
     )
     .maybeSingle();
   if (error) throw error;
@@ -57,6 +62,7 @@ export async function fetchAdventureState(): Promise<AdventureState | null> {
     equippedWeaponId: data.equipped_weapon_id,
     equippedArmorId: data.equipped_armor_id,
     defeatedBosses: data.defeated_bosses,
+    heroName: data.hero_name,
   };
 }
 
@@ -263,4 +269,31 @@ export async function equip(slot: 'weapon' | 'armor', itemId: string | null): Pr
     .update({ [column]: itemId })
     .eq('user_id', userId);
   if (error) throw error;
+}
+
+/**
+ * 名前の入力を整える。前後の空白を取り、長すぎるものや空のものは理由を返す。
+ * 文字数は、データベースの制約（char_length）と同じ数え方にする。
+ */
+export function normalizeHeroName(input: string): { name: string } | { error: string } {
+  const name = input.trim().replace(/\s+/g, ' ');
+  const length = [...name].length;
+  if (length === 0) return { error: '名前を入れてください。' };
+  if (length > HERO_NAME_MAX) return { error: `名前は${HERO_NAME_MAX}文字までです。` };
+  return { name };
+}
+
+/** 主人公の名前をつける・変える */
+export async function saveHeroName(input: string): Promise<void> {
+  const checked = normalizeHeroName(input);
+  if ('error' in checked) throw new Error(checked.error);
+  const client = requireSupabase();
+  const userId = await currentUserId();
+  const { data, error } = await client
+    .from('adventure_state')
+    .update({ hero_name: checked.name })
+    .eq('user_id', userId)
+    .select('hero_name');
+  if (error) throw error;
+  if (!data || data.length === 0) throw new Error('冒険の記録が見つからず、名前を保存できませんでした。');
 }

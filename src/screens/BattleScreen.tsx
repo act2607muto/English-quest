@@ -6,7 +6,7 @@ import { fetchPlayableQuestions, flagQuestion } from '../lib/content';
 import { fillNames, pickQuestions, shuffle, shuffleChoices } from '../lib/game/battle';
 import { withExpBonus } from '../lib/game/equipment';
 import { isDue } from '../lib/game/growth';
-import type { Player } from '../lib/game/player';
+import { heroNameOf, type Player } from '../lib/game/player';
 import { EXP_CORRECT, EXP_CORRECT_REVIEW, EXP_FLAWLESS_BONUS, EXP_HALF } from '../lib/game/rules';
 import { gradeAnswer, RATING_LABELS, type Rating } from '../lib/grading';
 import type { MonsterRow, QuestionRow } from '../lib/questionFile';
@@ -473,7 +473,7 @@ export function BattleScreen({
           <p>
             {hit
               ? `${outcome.rating === 'close' ? 'おしい！ ' : 'せいかい！ '}${monster.name}に 1 のダメージ！${shown!.due && outcome.rating === 'good' ? '（復習ボーナス）' : ''}`
-              : `ざんねん… 1 のダメージを うけた！`}
+              : `ざんねん… ${heroNameOf(player)}は 1 のダメージを うけた！`}
           </p>
           {outcome.advice && <p>{outcome.advice}</p>}
           {outcome.better && outcome.better.trim() !== outcome.answer.trim() && (
@@ -493,8 +493,12 @@ export function BattleScreen({
             </div>
           )}
           {q.explanation && <p className="note">{fillNames(q.explanation)}</p>}
-          {monsterHp <= 0 && <p>{monster.name}を たおした！</p>}
-          {playerHp <= 0 && <p>ちからつきた…</p>}
+          {monsterHp <= 0 && (
+            <p>
+              {heroNameOf(player)}は {monster.name}を たおした！
+            </p>
+          )}
+          {playerHp <= 0 && <p>{heroNameOf(player)}は ちからつきた…</p>}
           <button className="command" type="button" onClick={handleNext} autoFocus={isChoice}>
             {over ? '▶ 戦闘をおえる' : '▶ つぎへ'}
           </button>
@@ -517,8 +521,8 @@ export function BattleScreen({
 
       <section className="battle__player">
         <div className="battle__player-row">
-          <HeroArt size={64}className={phase === 'feedback' && !hit ? 'hero-art--hurt' : ''} />
-          <HpBar label="じぶん" value={playerHp} max={player.maxHp} />
+          <HeroArt size={64} className={phase === 'feedback' && !hit ? 'hero-art--hurt' : ''} />
+          <HpBar label={heroNameOf(player)} value={playerHp} max={player.maxHp} />
         </div>
         {saveFailed && <p className="message message--error">通信できず、記録できなかった答えがあります。</p>}
       </section>

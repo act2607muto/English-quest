@@ -15,6 +15,8 @@ export type PlayerSkill = SkillLevel & {
 };
 
 export type Player = {
+  /** 主人公の名前。まだつけていなければ null（名前をつける画面を出す） */
+  heroName: string | null;
   skills: PlayerSkill[];
   overall: number;
   maxHp: number;
@@ -52,6 +54,7 @@ export async function loadPlayer(): Promise<Player> {
   });
   const overall = overallLevel(skills);
   return {
+    heroName: adventure?.heroName ?? null,
     skills,
     overall,
     maxHp: playerMaxHp(overall, mods.hpBonus),
@@ -68,6 +71,11 @@ export async function loadPlayer(): Promise<Player> {
 /** 六角形を滑らかに伸ばすための、小数のレベル */
 export function preciseLevel(exp: number): number {
   return Math.min(MAX_LEVEL, Math.max(1, Math.sqrt(Math.max(0, exp) / EXP_PER_LEVEL_SQUARED)));
+}
+
+/** 画面で使う主人公の名前。まだつけていなければ「あなた」 */
+export function heroNameOf(player: Player): string {
+  return player.heroName ?? 'あなた';
 }
 
 export function skillOf(player: Player, skill: Skill): PlayerSkill {

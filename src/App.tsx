@@ -13,6 +13,7 @@ import { FieldScreen } from './screens/FieldScreen';
 import { ImportScreen } from './screens/ImportScreen';
 import { LoginScreen } from './screens/LoginScreen';
 import { MicTestScreen } from './screens/MicTestScreen';
+import { NameScreen } from './screens/NameScreen';
 import { ResultScreen } from './screens/ResultScreen';
 import { SettingsScreen } from './screens/SettingsScreen';
 import { ShopScreen } from './screens/ShopScreen';
@@ -29,6 +30,7 @@ type Route =
   | { name: 'battle'; monster: MonsterRow; kind: BattleKind; skills: Skill[]; before: Player; key: number }
   | { name: 'result'; result: BattleResult; before: Player }
   | { name: 'settings' }
+  | { name: 'hero-name' }
   | { name: 'import' }
   | { name: 'compare' }
   | { name: 'mic-test' };
@@ -101,6 +103,9 @@ function Game() {
     );
   }
   if (!player) return <Loading />;
+
+  // 主人公の名前がまだないとき（最初のログインのあと）は、先に名前をつけてもらう
+  if (player.heroName === null) return <NameScreen current={null} onSaved={reload} onBack={null} />;
 
   const go = (r: Route) => {
     window.scrollTo(0, 0);
@@ -176,7 +181,16 @@ function Game() {
           onImport={() => go({ name: 'import' })}
           onCompare={() => go({ name: 'compare' })}
           onMicTest={() => go({ name: 'mic-test' })}
+          onHeroName={() => go({ name: 'hero-name' })}
           onBack={() => go({ name: 'town' })}
+        />
+      );
+    case 'hero-name':
+      return (
+        <NameScreen
+          current={player.heroName}
+          onSaved={() => reload().then(() => go({ name: 'settings' }))}
+          onBack={() => go({ name: 'settings' })}
         />
       );
     case 'compare':

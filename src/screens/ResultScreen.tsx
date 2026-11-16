@@ -1,5 +1,5 @@
 import { Hexagon } from '../components/Hexagon';
-import { skillOf, type Player } from '../lib/game/player';
+import { heroNameOf, skillOf, type Player } from '../lib/game/player';
 import { SKILLS, SKILL_LABELS } from '../lib/skills';
 import type { BattleResult } from './BattleScreen';
 
@@ -30,7 +30,7 @@ export function ResultScreen({
   return (
     <main className="screen">
       <section className="window">
-        <h2 className="window__title">{result.won ? `${result.monster.name}を たおした！` : 'ちからつきた…'}</h2>
+        <h2 className="window__title">{heroNameOf(after)}は {result.won ? `${result.monster.name}を たおした！` : 'ちからつきた…'}</h2>
         <p>
           {result.total}問中 {result.correct}問 せいかい
           {result.flawless && '（ミスなし！）'}
