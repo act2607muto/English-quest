@@ -86,7 +86,7 @@ function loadImage(src: string): Promise<HTMLImageElement | null> {
 /**
  * 街の外のマップ。十字のボタン（PC は矢印キーでも）で歩き、草むらなどでモンスターに出会う。
  * 場所ごとに出やすい能力値が違い、苦手な能力値や下がり始めた能力値ほど出やすい（lib/game/fieldMap.ts）。
- * 選んで戦いたいときは「モンスターを選んで戦う」から、今までの一覧に行ける。
+ * 選んで戦いたいときは、街の「スキルダンジョン」から（マップのない街では、ここからも行ける）。
  */
 export function MapScreen({
   player,
@@ -421,7 +421,7 @@ export function MapScreen({
           <p className="message message--error">マップを読み込めませんでした（{error}）</p>
         </section>
         <button className="command" type="button" onClick={onChoose}>
-          ▶ モンスターを選んで戦う
+          ▶ スキルダンジョンへ
         </button>
         <button className="command" type="button" onClick={onTown}>
           ▶ 街にもどる
@@ -441,10 +441,10 @@ export function MapScreen({
       <main className="screen">
         <section className="window">
           <h2 className="window__title">街の外</h2>
-          <p>この街には、まだ歩けるマップがありません。モンスターを選んで戦ってください。</p>
+          <p>この街には、まだ歩けるマップがありません。スキルダンジョンで戦ってください。</p>
         </section>
         <button className="command" type="button" onClick={onChoose}>
-          ▶ モンスターを選んで戦う
+          ▶ スキルダンジョンへ
         </button>
         <button className="command" type="button" onClick={onTown}>
           ▶ 街にもどる
@@ -511,9 +511,6 @@ export function MapScreen({
       </div>
 
       <nav className="map-menu" aria-label="街の外の項目">
-        <button className="command" type="button" onClick={onChoose} disabled={!!encounter}>
-          ▶ 選んで戦う
-        </button>
         <button className="command" type="button" onClick={onTown} disabled={!!encounter}>
           ▶ 街にもどる
         </button>

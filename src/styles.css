@@ -1233,10 +1233,11 @@ code {
   grid-area: right;
 }
 
-/* マップの下のメニュー：2つを横に並べる */
+/* マップの下のメニュー：ボタンが2つなら横に並べる */
 .map-menu {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
   gap: 8px;
 }
 

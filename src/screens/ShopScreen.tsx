@@ -7,7 +7,7 @@ import { buyEquipment, equip } from '../lib/records';
 import { SKILLS } from '../lib/skills';
 
 /**
- * 店：武器と防具を買い、付け替える。
+ * 店（ことのは工房）：武器と防具を買い、付け替える。
  * 装備できるのは武器1つと防具1つ。装備は英語の正誤を変えない。ガチャはない。
  */
 export function ShopScreen({
@@ -129,7 +129,7 @@ export function ShopScreen({
   return (
     <main className="screen">
       <section className="window">
-        <h2 className="window__title">店</h2>
+        <h2 className="window__title">ことのは工房</h2>
         <p>いらっしゃい！ 武器は1つ、防具は1つまで装備できるよ。</p>
         <table className="stats">
           <tbody>

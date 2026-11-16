@@ -13,6 +13,7 @@ export function TownScreen({
   player,
   town,
   onField,
+  onDungeon,
   onStatus,
   onShop,
   onBoss,
@@ -22,6 +23,8 @@ export function TownScreen({
   player: Player;
   town: TownRow | null;
   onField: () => void;
+  /** スキルダンジョン（練習したい能力値のモンスターを選んで戦う） */
+  onDungeon: () => void;
   onStatus: () => void;
   onShop: () => void;
   onBoss: () => void;
@@ -75,7 +78,7 @@ export function TownScreen({
           <h2 className="window__title">今日のおすすめ</h2>
           {revivalSkills.length > 0 && (
             <p>
-              街の外に{names(revivalSkills)}の復活モンスターが現れています。倒すと、おかねが多めに入ります。
+              {names(revivalSkills)}の復活モンスターが現れています。スキルダンジョンで選べるほか、街の外でもときどき出会います。倒すと、おかねが多めに入ります。
             </p>
           )}
           {advice && <p>{advice}</p>}
@@ -86,11 +89,14 @@ export function TownScreen({
         <button className="command command--plain" type="button" onClick={onField}>
           ▶ 街の外へ
         </button>
+        <button className="command command--plain" type="button" onClick={onDungeon}>
+          ▶ スキルダンジョンへ
+        </button>
         <button className="command command--plain" type="button" onClick={onStatus}>
           ▶ ステータス
         </button>
         <button className="command command--plain" type="button" onClick={onShop}>
-          ▶ 店
+          ▶ ことのは工房
         </button>
         <button className="command command--plain" type="button" onClick={onBoss}>
           ▶ ボス

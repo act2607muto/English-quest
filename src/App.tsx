@@ -21,7 +21,14 @@ import { ShopScreen } from './screens/ShopScreen';
 import { StatusScreen } from './screens/StatusScreen';
 import { TownScreen } from './screens/TownScreen';
 
-/** 毎日の流れは「街 → 街の外（マップを歩いて出会う。選んで戦うこともできる）→ 戦闘 → 戦闘結果 → 街」 */
+/** 戦闘を始めた場所（戦闘のあと、そこへもどる） */
+type BattleFrom = 'map' | 'dungeon' | 'boss';
+
+/**
+ * 毎日の流れは「街 → 街の外（マップを歩いて出会う）→ 戦闘 → 戦闘結果 → 街」。
+ * 練習したい能力値を選んで戦うときは「街 → スキルダンジョン（field）→ 戦闘」。
+ */
+
 type Route =
   | { name: 'town' }
   | { name: 'status' }
@@ -29,8 +36,16 @@ type Route =
   | { name: 'field' }
   | { name: 'shop' }
   | { name: 'boss' }
-  | { name: 'battle'; monster: MonsterRow; kind: BattleKind; skills: Skill[]; before: Player; key: number }
-  | { name: 'result'; result: BattleResult; before: Player }
+  | {
+      name: 'battle';
+      monster: MonsterRow;
+      kind: BattleKind;
+      skills: Skill[];
+      before: Player;
+      key: number;
+      from: BattleFrom;
+    }
+  | { name: 'result'; result: BattleResult; before: Player; from: BattleFrom }
   | { name: 'settings' }
   | { name: 'hero-name' }
   | { name: 'password' }
@@ -120,7 +135,7 @@ function Game() {
     setMapPos(null);
     go({ name: 'town' });
   };
-  const fight = (monster: MonsterRow, kind: BattleKind = 'normal', skills?: Skill[]) =>
+  const fight = (monster: MonsterRow, kind: BattleKind, from: BattleFrom, skills?: Skill[]) =>
     go({
       name: 'battle',
       monster,
@@ -128,7 +143,13 @@ function Game() {
       skills: skills ?? (monster.skill ? [monster.skill] : []),
       before: player,
       key: Date.now(),
+      from,
     });
+  /** 戦闘を始めた場所へもどる（ボスは街へ） */
+  const backTo = (from: BattleFrom) => {
+    if (from === 'boss') toTown();
+    else go({ name: from === 'dungeon' ? 'field' : 'map' });
+  };
 
   switch (route.name) {
     case 'status':
@@ -142,7 +163,7 @@ function Game() {
           status={townStatus}
           position={mapPos}
           onMove={setMapPos}
-          onEncounter={(m, kind) => fight(m, kind)}
+          onEncounter={(m, kind) => fight(m, kind, 'map')}
           onChoose={() => go({ name: 'field' })}
           onTown={toTown}
         />
@@ -152,8 +173,8 @@ function Game() {
         <FieldScreen
           player={player}
           status={townStatus}
-          onFight={(m, kind) => fight(m, kind)}
-          onBack={() => go({ name: 'map' })}
+          onFight={(m, kind) => fight(m, kind, 'dungeon')}
+          onBack={toTown}
         />
       );
     case 'boss':
@@ -161,7 +182,7 @@ function Game() {
         <BossScreen
           player={player}
           status={townStatus}
-          onFight={(boss, skills) => fight(boss, 'boss', skills)}
+          onFight={(boss, skills) => fight(boss, 'boss', 'boss', skills)}
           onBack={toTown}
         />
       );
@@ -177,11 +198,11 @@ function Game() {
           onEnd={(result) => {
             void reload()
               .catch(() => player)
-              .then(() => go({ name: 'result', result, before: route.before }));
+              .then(() => go({ name: 'result', result, before: route.before, from: route.from }));
           }}
           onRunAway={() => {
             void reload().catch(() => {});
-            go({ name: 'map' });
+            backTo(route.from);
           }}
         />
       );
@@ -191,8 +212,13 @@ function Game() {
           result={route.result}
           before={route.before}
           after={player}
-          onAgain={route.result.kind === 'normal' ? () => fight(route.result.monster) : null}
-          onField={() => go({ name: 'map' })}
+          onAgain={
+            route.result.kind === 'normal'
+              ? () => fight(route.result.monster, 'normal', route.from === 'dungeon' ? 'dungeon' : 'map')
+              : null
+          }
+          onField={() => go({ name: route.from === 'dungeon' ? 'field' : 'map' })}
+          fieldLabel={route.from === 'dungeon' ? 'スキルダンジョンへ' : '街の外へ'}
           onTown={toTown}
         />
       );
@@ -227,6 +253,7 @@ function Game() {
           player={player}
           town={town}
           onField={() => go({ name: 'map' })}
+          onDungeon={() => go({ name: 'field' })}
           onStatus={() => go({ name: 'status' })}
           onShop={() => go({ name: 'shop' })}
           onBoss={() => go({ name: 'boss' })}

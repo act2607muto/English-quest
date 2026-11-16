@@ -11,6 +11,7 @@ export function ResultScreen({
   after,
   onAgain,
   onField,
+  fieldLabel,
   onTown,
 }: {
   result: BattleResult;
@@ -18,6 +19,8 @@ export function ResultScreen({
   after: Player;
   onAgain: (() => void) | null;
   onField: () => void;
+  /** 戦った場所にもどるボタンの文（街の外・スキルダンジョン） */
+  fieldLabel: string;
   onTown: () => void;
 }) {
   const gained = SKILLS.filter((s) => (result.expBySkill[s] ?? 0) > 0);
@@ -87,7 +90,7 @@ export function ResultScreen({
             </button>
           )}
           <button className="command" type="button" onClick={onField}>
-            ▶ 街の外へ
+            ▶ {fieldLabel}
           </button>
           <button className="command" type="button" onClick={onTown}>
             ▶ 街にもどる
@@ -99,7 +102,7 @@ export function ResultScreen({
             ▶ 街にもどる
           </button>
           <button className="command" type="button" onClick={onField}>
-            ▶ 街の外へ
+            ▶ {fieldLabel}
           </button>
         </>
       )}
