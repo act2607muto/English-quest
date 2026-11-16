@@ -25,10 +25,20 @@ import type { BattleKind } from './BattleScreen';
 /** マップの上の主人公の位置。戦闘から戻ったときに同じ場所から歩けるよう、呼び出し側で覚えておく */
 export type MapPosition = { x: number; y: number; steps: number; facing: 'left' | 'right' };
 
-/** 画面に見えるマスの数と、1マスの大きさ（画面上の点） */
-const VIEW_W = 11;
-const VIEW_H = 9;
-const CELL = 32;
+/**
+ * 1マスの大きさ（画面上の点）。マップの枠の幅に、だいたい CELLS_ACROSS マスが入る大きさにする。
+ * 絵の点がそろって見えるよう、4の倍数にする。
+ */
+const CELLS_ACROSS = 8.5;
+const CELL_MIN = 32;
+const CELL_MAX = 64;
+
+/** マップの枠が縦に長いときは、マップの外が見えないよう、縦がマップの高さに収まるまで大きくする */
+function cellFor(width: number, height: number, mapRows: number): number {
+  const byWidth = Math.floor(width / CELLS_ACROSS / 4) * 4;
+  const byHeight = mapRows > 0 ? Math.ceil(height / mapRows / 4) * 4 : 0;
+  return Math.min(CELL_MAX, Math.max(CELL_MIN, byWidth, byHeight));
+}
 /** マップで使う主人公の小さい絵（32×32、Pixellab）。ないときは戦闘の絵（64×64）を半分の大きさで使う */
 const HERO_MAP_IMAGE = '/hero/hero-map.png';
 /** 主人公の足の下の行が分からないときの値 */
@@ -101,6 +111,10 @@ export function MapScreen({
   const [encounter, setEncounter] = useState<Encounter | null>(null);
 
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const viewElRef = useRef<HTMLDivElement | null>(null);
+  /** マップの枠の大きさ（画面上の点）と、1マスの大きさ */
+  const viewRef = useRef({ w: 352, h: 288, cell: 32 });
+  const [viewSize, setViewSize] = useState(0);
   /** 読んだ絵（ファイル名ごと）。読めなかった絵は null */
   const imagesRef = useRef(new Map<string, HTMLImageElement | null>());
   /** 主人公の絵の、足の下の行（足元をマスの下にそろえるため） */
@@ -159,20 +173,26 @@ export function MapScreen({
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
     const dpr = window.devicePixelRatio || 1;
-    if (canvas.width !== VIEW_W * CELL * dpr) {
-      canvas.width = VIEW_W * CELL * dpr;
-      canvas.height = VIEW_H * CELL * dpr;
+    const { w: viewPxW, h: viewPxH, cell: CELL } = viewRef.current;
+    const VIEW_W = viewPxW / CELL;
+    const VIEW_H = viewPxH / CELL;
+    if (canvas.width !== Math.round(viewPxW * dpr) || canvas.height !== Math.round(viewPxH * dpr)) {
+      canvas.width = Math.round(viewPxW * dpr);
+      canvas.height = Math.round(viewPxH * dpr);
     }
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     ctx.imageSmoothingEnabled = false;
     ctx.fillStyle = '#000';
-    ctx.fillRect(0, 0, VIEW_W * CELL, VIEW_H * CELL);
+    ctx.fillRect(0, 0, viewPxW, viewPxH);
 
     const { x: hx, y: hy } = drawRef.current;
     const clamp = (v: number, size: number, view: number) =>
       size <= view ? (size - view) / 2 : Math.min(Math.max(v, 0), size - view);
     const camX = clamp(hx - (VIEW_W - 1) / 2, map.width, VIEW_W);
     const camY = clamp(hy - (VIEW_H - 1) / 2, map.height, VIEW_H);
+    // 画面の左上がマップのどこかを、整数の点で決める。マスごとに小数を丸めると、ときどき1点のすき間ができる
+    const ox = Math.round(-camX * CELL);
+    const oy = Math.round(-camY * CELL);
     const images = imagesRef.current;
     const scale = CELL / map.tileSize;
     const ts = map.tileSize;
@@ -186,8 +206,8 @@ export function MapScreen({
       for (let vx = x0 + 1; vx <= x1; vx++) {
         const g = groundAt(map, vx, vy);
         const sheet = g ? images.get(map.ground.terrains[g.terrain].sheet) : null;
-        const dx = Math.round((vx - 0.5 - camX) * CELL);
-        const dy = Math.round((vy - 0.5 - camY) * CELL);
+        const dx = ox + Math.round((vx - 0.5) * CELL);
+        const dy = oy + Math.round((vy - 0.5) * CELL);
         if (g && sheet) ctx.drawImage(sheet, g.sx, g.sy, ts, ts, dx, dy, CELL, CELL);
         else {
           ctx.fillStyle = '#4a9c3c';
@@ -205,8 +225,8 @@ export function MapScreen({
       if (!img) return;
       const w = img.width * scale;
       const h = img.height * scale;
-      const dx = Math.round((tx - camX) * CELL + (CELL - w) / 2);
-      const dy = Math.round((ty - camY + 1) * CELL - h);
+      const dx = ox + tx * CELL + Math.round((CELL - w) / 2);
+      const dy = oy + (ty + 1) * CELL - Math.round(h);
       ctx.drawImage(img, dx, dy, w, h);
     };
 
@@ -223,8 +243,8 @@ export function MapScreen({
       const frame = small ?? images.get(HERO_IMAGE) ?? null;
       const heroScale = small ? scale : scale / 2;
       const bob = p.steps % 2 === 1 ? heroScale : 0;
-      const cx = Math.round((hx - camX) * CELL + CELL / 2);
-      const feetY = Math.round((hy - camY + 1) * CELL - 2);
+      const cx = ox + Math.round(hx * CELL + CELL / 2);
+      const feetY = oy + Math.round((hy + 1) * CELL) - 2;
       if (!frame) {
         ctx.fillStyle = '#ffd84a';
         ctx.fillRect(cx - 8, feetY - 24, 16, 24);
@@ -247,7 +267,25 @@ export function MapScreen({
 
   useEffect(() => {
     draw();
-  }, [draw, pos]);
+  }, [draw, pos, viewSize]);
+
+  // マップの枠の大きさに合わせて描き直す（画面の向きや大きさが変わったとき）
+  useEffect(() => {
+    const el = viewElRef.current;
+    if (!el) return;
+    const measure = () => {
+      // 白い枠の内側の大きさ（枠を含めると、絵が少し縮んで縦の線が出る）
+      const w = el.clientWidth;
+      const h = el.clientHeight;
+      if (w < 1 || h < 1) return;
+      viewRef.current = { w, h, cell: cellFor(w, h, map?.height ?? 0) };
+      setViewSize((n) => n + 1);
+    };
+    measure();
+    const ro = new ResizeObserver(measure);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, [map]);
 
   const available = new Set<Skill>(
     monsters.map((m) => m.skill).filter((s): s is Skill => !!s && PLAYABLE_SKILLS.includes(s)),
@@ -424,12 +462,10 @@ export function MapScreen({
         <p className="note">{area ? `出やすい：${areaSkills.join('・')}` : 'ここではモンスターは出ません'}</p>
       </section>
 
-      <div className="map-view">
+      <div className="map-view" ref={viewElRef}>
         <canvas
           ref={canvasRef}
           className="map-view__canvas"
-          width={VIEW_W * CELL}
-          height={VIEW_H * CELL}
           role="img"
           aria-label={`マップ。${area ? area.name : '街のまわり'}にいます`}
         />
@@ -438,43 +474,44 @@ export function MapScreen({
             <p className="window map-encounter__text">{encounter.monster.name}が あらわれた！</p>
           </div>
         )}
+        {/* 十字のボタン：マップに重ねて、うすく出す（出会ったときは消す） */}
+        {!encounter && (
+          <div className="dpad" aria-label="歩く">
+            {(
+              [
+                ['up', '▲', '上へ'],
+                ['left', '◀', '左へ'],
+                ['right', '▶', '右へ'],
+                ['down', '▼', '下へ'],
+              ] as const
+            ).map(([dir, mark, label]) => (
+              <button
+                key={dir}
+                type="button"
+                className={`dpad__button dpad__button--${dir}`}
+                aria-label={label}
+                onPointerDown={(e) => {
+                  e.preventDefault();
+                  (e.currentTarget as HTMLElement).setPointerCapture?.(e.pointerId);
+                  press(dir);
+                }}
+                onPointerUp={release}
+                onPointerCancel={release}
+                onLostPointerCapture={release}
+                onContextMenu={(e) => e.preventDefault()}
+              >
+                {mark}
+              </button>
+            ))}
+          </div>
+        )}
       </div>
 
-      <div className="dpad" aria-label="歩く">
-        {(
-          [
-            ['up', '▲', '上へ'],
-            ['left', '◀', '左へ'],
-            ['right', '▶', '右へ'],
-            ['down', '▼', '下へ'],
-          ] as const
-        ).map(([dir, mark, label]) => (
-          <button
-            key={dir}
-            type="button"
-            className={`dpad__button dpad__button--${dir}`}
-            aria-label={label}
-            disabled={!!encounter}
-            onPointerDown={(e) => {
-              e.preventDefault();
-              (e.currentTarget as HTMLElement).setPointerCapture?.(e.pointerId);
-              press(dir);
-            }}
-            onPointerUp={release}
-            onPointerCancel={release}
-            onLostPointerCapture={release}
-            onContextMenu={(e) => e.preventDefault()}
-          >
-            {mark}
-          </button>
-        ))}
-      </div>
-
-      <nav className="window commands" aria-label="街の外の項目">
-        <button className="command command--plain" type="button" onClick={onChoose} disabled={!!encounter}>
-          ▶ モンスターを選んで戦う
+      <nav className="map-menu" aria-label="街の外の項目">
+        <button className="command" type="button" onClick={onChoose} disabled={!!encounter}>
+          ▶ 選んで戦う
         </button>
-        <button className="command command--plain" type="button" onClick={onTown} disabled={!!encounter}>
+        <button className="command" type="button" onClick={onTown} disabled={!!encounter}>
           ▶ 街にもどる
         </button>
       </nav>

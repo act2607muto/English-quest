@@ -1100,9 +1100,21 @@ code {
 }
 
 /* ---------- 街の外のマップ ---------- */
+/* 画面の高さいっぱいに、上から「場所の名前・マップ・メニュー」を並べ、マップを広く取る */
+.map-screen {
+  box-sizing: border-box;
+  height: 100dvh;
+  gap: 10px;
+  padding-top: calc(10px + env(safe-area-inset-top));
+  padding-bottom: calc(10px + env(safe-area-inset-bottom));
+}
+
 .map-place {
-  gap: 2px;
-  padding: 8px 12px;
+  flex-direction: row;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 2px 12px;
+  padding: 6px 12px;
 }
 
 .map-place p {
@@ -1115,9 +1127,9 @@ code {
 
 .map-view {
   position: relative;
-  align-self: center;
+  flex: 1;
+  min-height: 240px;
   width: 100%;
-  max-width: 352px;
   border: 3px solid var(--border);
   border-radius: 6px;
   overflow: hidden;
@@ -1127,7 +1139,7 @@ code {
 .map-view__canvas {
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
   image-rendering: pixelated;
 }
 
@@ -1162,17 +1174,20 @@ code {
   }
 }
 
-/* 十字のボタン */
+/* 十字のボタン：マップの右下に、うすく重ねる */
 .dpad {
-  align-self: center;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
   display: grid;
-  grid-template-columns: repeat(3, 64px);
-  grid-template-rows: repeat(3, 56px);
+  grid-template-columns: repeat(3, 52px);
+  grid-template-rows: repeat(3, 48px);
   grid-template-areas:
     '. up .'
     'left . right'
     '. down .';
-  gap: 6px;
+  gap: 4px;
+  line-height: normal;
   touch-action: none;
   user-select: none;
   -webkit-user-select: none;
@@ -1181,22 +1196,18 @@ code {
 
 .dpad__button {
   font: inherit;
-  font-size: 22px;
-  color: var(--fg);
-  background: #111;
-  border: 3px solid var(--border);
-  border-radius: 8px;
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.85);
+  background: rgba(0, 0, 0, 0.28);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
   touch-action: none;
   -webkit-tap-highlight-color: transparent;
   cursor: pointer;
 }
 
 .dpad__button:active {
-  background: #333;
-}
-
-.dpad__button:disabled {
-  opacity: 0.4;
+  background: rgba(255, 255, 255, 0.3);
 }
 
 .dpad__button--up {
@@ -1213,4 +1224,17 @@ code {
 
 .dpad__button--right {
   grid-area: right;
+}
+
+/* マップの下のメニュー：2つを横に並べる */
+.map-menu {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.map-menu .command {
+  min-height: 48px;
+  padding: 8px 10px;
+  font-size: 16px;
 }
