@@ -18,6 +18,7 @@ import {
 import { revivalOf } from '../lib/game/foes';
 import type { Player } from '../lib/game/player';
 import type { TownStatus } from '../lib/game/town';
+import { getDpadSide } from '../lib/preferences';
 import type { MonsterRow } from '../lib/questionFile';
 import { SKILL_LABELS, type Skill } from '../lib/skills';
 import type { BattleKind } from './BattleScreen';
@@ -109,6 +110,8 @@ export function MapScreen({
   const [error, setError] = useState<string | null>(null);
   const [pos, setPos] = useState<MapPosition | null>(position);
   const [encounter, setEncounter] = useState<Encounter | null>(null);
+  /** 十字ボタンを出す側（設定で選ぶ） */
+  const [dpadSide] = useState(getDpadSide);
 
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const viewElRef = useRef<HTMLDivElement | null>(null);
@@ -476,7 +479,7 @@ export function MapScreen({
         )}
         {/* 十字のボタン：マップに重ねて、うすく出す（出会ったときは消す） */}
         {!encounter && (
-          <div className="dpad" aria-label="歩く">
+          <div className={`dpad dpad--${dpadSide}`} aria-label="歩く">
             {(
               [
                 ['up', '▲', '上へ'],

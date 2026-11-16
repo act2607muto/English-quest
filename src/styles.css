@@ -1174,10 +1174,9 @@ code {
   }
 }
 
-/* 十字のボタン：マップの右下に、うすく重ねる */
+/* 十字のボタン：マップの右下（設定で左下）に、うすく重ねる */
 .dpad {
   position: absolute;
-  right: 10px;
   bottom: 10px;
   display: grid;
   grid-template-columns: repeat(3, 52px);
@@ -1192,6 +1191,14 @@ code {
   user-select: none;
   -webkit-user-select: none;
   -webkit-touch-callout: none;
+}
+
+.dpad--right {
+  right: 10px;
+}
+
+.dpad--left {
+  left: 10px;
 }
 
 .dpad__button {
@@ -1237,4 +1244,23 @@ code {
   min-height: 48px;
   padding: 8px 10px;
   font-size: 16px;
+}
+
+/* 2つから1つを選ぶボタン（設定） */
+.choice-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.choice-pair__button {
+  font-size: 16px;
+  padding: 10px 8px;
+  border-color: var(--muted);
+  color: var(--muted);
+}
+
+.choice-pair__button--on {
+  border-color: var(--accent);
+  color: var(--accent);
 }

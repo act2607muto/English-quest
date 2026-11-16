@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useAuth } from '../auth/AuthProvider';
 import { fetchIsAdmin } from '../lib/content';
+import { getDpadSide, setDpadSide, type DpadSide } from '../lib/preferences';
 
 /** 設定。問題文に使う自分の名前・音声の速さは、この後の手順で足す */
 export function SettingsScreen({
@@ -26,6 +27,11 @@ export function SettingsScreen({
       .then(setAdmin)
       .catch(() => {});
   }, []);
+  const [dpadSide, setSide] = useState<DpadSide>(getDpadSide);
+  const chooseSide = (side: DpadSide) => {
+    setDpadSide(side);
+    setSide(side);
+  };
   return (
     <main className="screen">
       <section className="window">
@@ -51,6 +57,31 @@ export function SettingsScreen({
           ▶ ログアウト
         </button>
       </nav>
+      <section className="window" aria-labelledby="dpad-side-title">
+        <h2 className="window__title" id="dpad-side-title">
+          十字ボタンの位置
+        </h2>
+        <p className="note">街の外のマップで、歩くボタンを出す側です。左手で持つときは「左」が押しやすくなります。この端末に覚えておきます。</p>
+        <div className="choice-pair" role="group" aria-labelledby="dpad-side-title">
+          {(
+            [
+              ['left', '左'],
+              ['right', '右'],
+            ] as const
+          ).map(([side, label]) => (
+            <button
+              key={side}
+              type="button"
+              className={`command choice-pair__button${dpadSide === side ? ' choice-pair__button--on' : ''}`}
+              aria-pressed={dpadSide === side}
+              onClick={() => chooseSide(side)}
+            >
+              {dpadSide === side ? '● ' : '○ '}
+              {label}
+            </button>
+          ))}
+        </div>
+      </section>
       <button className="command" type="button" onClick={onBack}>
         ▶ 街にもどる
       </button>
