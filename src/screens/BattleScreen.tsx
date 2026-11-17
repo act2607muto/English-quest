@@ -373,6 +373,29 @@ export function BattleScreen({
           {background && !bgBroken && (
             <img className="battle__bg" src={background} alt="" aria-hidden="true" onError={() => setBgBroken(true)} />
           )}
+          {/* 主人公（左下でモンスターと向き合う）。まちがえると、ひっかき傷と「-1」 */}
+          <span className="battle__hero">
+            <HeroArt
+              size={64}
+              className={
+                playerHp <= 0
+                  ? 'hero-art--defeated'
+                  : phase === 'feedback'
+                    ? hit
+                      ? 'hero-art--attack'
+                      : 'hero-art--hurt'
+                    : ''
+              }
+            />
+            {phase === 'feedback' && !hit && (
+              <>
+                <span key={`claw-${answered}`} className="battle-fx battle-fx--claw" aria-hidden="true" />
+                <span key={`hurt-${answered}`} className="damage-pop damage-pop--player" aria-hidden="true">
+                  -1
+                </span>
+              </>
+            )}
+          </span>
           {/* 攻撃の動き：正解なら斬る光とダメージの数、まちがいならモンスターが飛びかかる */}
           <span className={`battle__target${phase === 'feedback' && !hit ? ' battle__target--attack' : ''}`}>
             <MonsterArt
@@ -393,10 +416,18 @@ export function BattleScreen({
             )}
           </span>
         </div>
-        <div className="battle__enemy-info">
-          <p className="battle__enemy-name">{monster.name}</p>
-          <HpBar label="HP" value={monsterHp} max={monster.hp} />
+        {/* 自分とモンスターの HP を1列に（画面を下へ動かしても、背景といっしょに上に残る） */}
+        <div className="battle__status">
+          <div className="battle__status-side">
+            <p className="battle__status-name">{heroNameOf(player)}</p>
+            <HpBar label="HP" value={playerHp} max={player.maxHp} />
+          </div>
+          <div className="battle__status-side">
+            <p className="battle__status-name">{monster.name}</p>
+            <HpBar label="HP" value={monsterHp} max={monster.hp} />
+          </div>
         </div>
+        {saveFailed && <p className="message message--error">通信できず、記録できなかった答えがあります。</p>}
       </section>
 
       <section className="window battle__question">
@@ -579,35 +610,6 @@ export function BattleScreen({
           <p>記録しています…</p>
         </section>
       )}
-
-      <section className="battle__player">
-        <div className="battle__player-row">
-          <span className="battle__hero">
-            <HeroArt
-              size={64}
-              className={
-                playerHp <= 0
-                  ? 'hero-art--defeated'
-                  : phase === 'feedback'
-                    ? hit
-                      ? 'hero-art--attack'
-                      : 'hero-art--hurt'
-                    : ''
-              }
-            />
-            {phase === 'feedback' && !hit && (
-              <>
-                <span key={`claw-${answered}`} className="battle-fx battle-fx--claw" aria-hidden="true" />
-                <span key={`hurt-${answered}`} className="damage-pop damage-pop--player" aria-hidden="true">
-                  -1
-                </span>
-              </>
-            )}
-          </span>
-          <HpBar label={heroNameOf(player)} value={playerHp} max={player.maxHp} />
-        </div>
-        {saveFailed && <p className="message message--error">通信できず、記録できなかった答えがあります。</p>}
-      </section>
 
       {phase === 'question' && (
         <button className="command command--quiet" type="button" onClick={onRunAway}>

@@ -1528,3 +1528,56 @@ code {
     opacity: 0;
   }
 }
+
+/* 戦闘の上の帯：背景・主人公・モンスター・HP。画面を下へ動かしても上に残し、攻撃を受けたところが見えるようにする */
+.battle__enemy {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: var(--bg);
+  padding-bottom: 6px;
+}
+
+.battle__stage {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-evenly;
+  gap: 8px;
+}
+
+.battle__enemy--scene .battle__stage {
+  justify-content: space-evenly;
+}
+
+.battle__stage .battle__hero {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 2px;
+}
+
+.battle__status {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.battle__enemy:not(.battle__enemy--scene) {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.battle__status-side {
+  min-width: 0;
+}
+
+.battle__status-name {
+  margin: 0 0 2px;
+  font-size: 16px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.battle__status .hp__label {
+  min-width: 0;
+}
