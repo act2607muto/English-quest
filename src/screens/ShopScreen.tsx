@@ -7,7 +7,7 @@ import { buyEquipment, equip } from '../lib/records';
 import { SKILLS } from '../lib/skills';
 
 /**
- * 店（ことのは工房）：武器と防具を買い、付け替える。
+ * 店（ことのは工房）：武器と防具を買い、付け替える。上に工房の中の絵（public/shops/{街のID}.png）を出す。
  * 装備できるのは武器1つと防具1つ。装備は英語の正誤を変えない。ガチャはない。
  */
 export function ShopScreen({
@@ -130,8 +130,14 @@ export function ShopScreen({
 
   return (
     <main className="screen">
+      <section className="town-banner" aria-label="ことのは工房">
+        <ShopScene townId={player.currentTownId} />
+        <div className="town-banner__text">
+          <h1 className="town-banner__name">ことのは工房</h1>
+        </div>
+      </section>
+
       <section className="window">
-        <h2 className="window__title">ことのは工房</h2>
         <p>いらっしゃい！ 武器は1つ、防具は1つまで装備できるよ。</p>
         <table className="stats">
           <tbody>
@@ -185,6 +191,26 @@ export function ShopScreen({
         ▶ 街にもどる
       </button>
     </main>
+  );
+}
+
+/**
+ * 工房の中の絵。街ごとに public/shops/{街のID}.png を置く（街を足すときは絵を足すだけ）。
+ * 絵がない街では出さない。
+ */
+function ShopScene({ townId }: { townId: string }) {
+  const [broken, setBroken] = useState(false);
+  if (broken) return null;
+  return (
+    <div className="town-banner__scene">
+      <img
+        className="town-banner__bg"
+        src={`/shops/${townId}.png`}
+        alt=""
+        aria-hidden="true"
+        onError={() => setBroken(true)}
+      />
+    </div>
   );
 }
 
