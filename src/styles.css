@@ -1616,3 +1616,91 @@ code {
     1px -1px 0 #000,
     -1px -1px 0 #000;
 }
+
+/* ---------- ドット絵のわく（2026-11-17） ----------
+ * ウインドウ・ボタン・答えの選択肢・カード・マップのわくを、public/ui/frame-{色}.png（scripts/make_ui_frames.ps1）で描く。
+ * 絵の角（10点）はそのまま、辺は伸ばす。わくの色は、ふつうは白、選んでいるときは金、使えないときは灰色。
+ */
+.window,
+.town-banner,
+.command,
+.choice,
+.monster-card,
+.map-view,
+.battle__enemy--scene .battle__stage {
+  border: 10px solid transparent;
+  border-radius: 0;
+  border-image: url('/ui/frame-white.png') 10 stretch;
+  background-clip: padding-box;
+  image-rendering: pixelated;
+}
+
+/* ウインドウの中は深い青 */
+.window {
+  padding: 8px 10px;
+  background: linear-gradient(180deg, #1a2152, #0b0f2c);
+  background-clip: padding-box;
+}
+
+.command {
+  padding: 4px 10px;
+  background: #0d1232;
+  background-clip: padding-box;
+}
+
+.choice {
+  padding: 2px 8px;
+  background: #0d1232;
+  background-clip: padding-box;
+}
+
+.monster-card {
+  padding: 2px 6px;
+}
+
+/* ウインドウの中の一覧のボタンは、わくなし（今までどおり） */
+.command.command--plain {
+  border: none;
+  border-image: none;
+  padding: 8px;
+  background: transparent;
+}
+
+/* 金：選んでいるとき・強調したいボタン */
+.command:active,
+.command:focus-visible,
+.command--file:focus-within,
+.command--listen,
+.command--boss,
+.choice:not(:disabled):active,
+.choice:focus-visible,
+.choice-pair__button--on,
+.monster-card:active,
+.monster-card:focus-visible {
+  border-image-source: url('/ui/frame-gold.png');
+}
+
+/* 灰色：使えない・目立たせないボタン */
+.command:disabled,
+.command--quiet,
+.choice:disabled,
+.monster-card:disabled,
+.choice-pair__button:not(.choice-pair__button--on) {
+  border-image-source: url('/ui/frame-grey.png');
+}
+
+/* 色つき：正解・まちがい・録音中・復活モンスター */
+.choice--right:disabled {
+  border-image-source: url('/ui/frame-green.png');
+}
+
+.choice--wrong:disabled,
+.command--record,
+.command--recording {
+  border-image-source: url('/ui/frame-red.png');
+}
+
+.revival,
+.monster-card--revival {
+  border-image-source: url('/ui/frame-purple.png');
+}
