@@ -24,7 +24,9 @@ import { SKILL_LABELS, type Skill } from '../lib/skills';
 import type { BattleKind } from './BattleScreen';
 
 /** マップの上の主人公の位置。戦闘から戻ったときに同じ場所から歩けるよう、呼び出し側で覚えておく */
-export type MapPosition = { x: number; y: number; steps: number; facing: 'left' | 'right' };
+export type MapPosition = { x: number; y: number; steps: number; facing: Facing };
+/** 主人公の向き。上へ歩くと後ろ姿、下へ歩くと正面 */
+type Facing = 'left' | 'right' | 'up' | 'down';
 
 /**
  * 1マスの大きさ（画面上の点）。マップの枠の幅に、だいたい CELLS_ACROSS マスが入る大きさにする。
@@ -42,6 +44,9 @@ function cellFor(width: number, height: number, mapRows: number): number {
 }
 /** マップで使う主人公の小さい絵（32×32、Pixellab）。ないときは戦闘の絵（64×64）を半分の大きさで使う */
 const HERO_MAP_IMAGE = '/hero/hero-map.png';
+/** 上へ歩くときの後ろ姿と、下へ歩くときの正面（なければ横向きの絵で代わりにする） */
+const HERO_MAP_UP_IMAGE = '/hero/hero-map-up.png';
+const HERO_MAP_DOWN_IMAGE = '/hero/hero-map-down.png';
 /** 絵そのものが向いている向き。歩く向きと違うときだけ左右を反転して描く（マップ用の主人公は左向き、戦闘用は右向き） */
 const HERO_MAP_IMAGE_FACES = 'left';
 const HERO_IMAGE_FACES = 'right';
@@ -127,8 +132,8 @@ export function MapScreen({
   const [viewSize, setViewSize] = useState(0);
   /** 読んだ絵（ファイル名ごと）。読めなかった絵は null */
   const imagesRef = useRef(new Map<string, HTMLImageElement | null>());
-  /** 主人公の絵の、足の下の行（足元をマスの下にそろえるため） */
-  const heroFeetRef = useRef(HERO_FEET_DEFAULT);
+  /** 主人公の絵ごとの、足の下の行（足元をマスの下にそろえるため） */
+  const heroFeetRef = useRef(new Map<HTMLImageElement, number>());
   /** 今の位置（描くときは、歩いている途中の小数の位置を使う） */
   const posRef = useRef<MapPosition | null>(position);
   const drawRef = useRef<{ x: number; y: number }>({ x: position?.x ?? 0, y: position?.y ?? 0 });
@@ -149,6 +154,8 @@ export function MapScreen({
         if (cancelled) return;
         const sources = [
           HERO_MAP_IMAGE,
+          HERO_MAP_UP_IMAGE,
+          HERO_MAP_DOWN_IMAGE,
           HERO_IMAGE,
           ...(m ? Object.values(m.ground.terrains).map((t) => t.sheet) : []),
           ...(m ? Object.values(m.objects).map((o) => o.image) : []),
@@ -156,11 +163,13 @@ export function MapScreen({
         const loaded = await Promise.all(sources.map(loadImage));
         if (cancelled) return;
         imagesRef.current = new Map(sources.map((src, i) => [src, loaded[i]]));
-        const hero = imagesRef.current.get(HERO_MAP_IMAGE) ?? imagesRef.current.get(HERO_IMAGE);
-        if (hero) heroFeetRef.current = lowestOpaqueRow(hero);
+        for (const src of [HERO_MAP_IMAGE, HERO_MAP_UP_IMAGE, HERO_MAP_DOWN_IMAGE, HERO_IMAGE]) {
+          const img = imagesRef.current.get(src);
+          if (img) heroFeetRef.current.set(img, lowestOpaqueRow(img));
+        }
         setMonsters(list.filter((x) => !x.is_boss));
         if (m && !posRef.current) {
-          const start: MapPosition = { x: m.start.x, y: m.start.y, steps: 0, facing: 'right' };
+          const start: MapPosition = { x: m.start.x, y: m.start.y, steps: 0, facing: 'down' };
           posRef.current = start;
           drawRef.current = { x: start.x, y: start.y };
           setPos(start);
@@ -249,7 +258,9 @@ export function MapScreen({
       for (let tx = x0; tx <= x1; tx++) drawObject(tx, ty, false);
       if (ty !== heroRow) continue;
       // 主人公：歩くたびに1マス分だけ上下させて、足ぶみしているように見せる
-      const small = images.get(HERO_MAP_IMAGE) ?? null;
+      // 上下に歩くときは後ろ姿・正面の絵。なければ横向きの絵を使う
+      const front = p.facing === 'up' ? images.get(HERO_MAP_UP_IMAGE) : p.facing === 'down' ? images.get(HERO_MAP_DOWN_IMAGE) : null;
+      const small = front ?? images.get(HERO_MAP_IMAGE) ?? null;
       const frame = small ?? images.get(HERO_IMAGE) ?? null;
       const heroScale = small ? scale : scale / 2;
       const bob = p.steps % 2 === 1 ? heroScale : 0;
@@ -262,10 +273,12 @@ export function MapScreen({
       }
       const w = frame.width * heroScale;
       const h = frame.height * heroScale;
-      const top = feetY - (heroFeetRef.current + 1) * heroScale - bob;
+      const top = feetY - ((heroFeetRef.current.get(frame) ?? HERO_FEET_DEFAULT) + 1) * heroScale - bob;
       ctx.save();
       const drawnFacing = small ? HERO_MAP_IMAGE_FACES : HERO_IMAGE_FACES;
-      if (p.facing !== drawnFacing) {
+      // 左右に歩くときだけ、絵の向きと違えば反転する（後ろ姿・正面はそのまま）
+      const sideways = p.facing === 'left' || p.facing === 'right';
+      if (!front && sideways && p.facing !== drawnFacing) {
         ctx.translate(cx + w / 2, top);
         ctx.scale(-1, 1);
         ctx.drawImage(frame, 0, 0, w, h);
@@ -358,7 +371,7 @@ export function MapScreen({
       const p = posRef.current;
       if (!map || !p || movingRef.current || busyRef.current) return;
       const { dx, dy } = DIRECTION_STEP[dir];
-      const facing = dx < 0 ? 'left' : dx > 0 ? 'right' : p.facing;
+      const facing: Facing = dx < 0 ? 'left' : dx > 0 ? 'right' : dy < 0 ? 'up' : dy > 0 ? 'down' : p.facing;
       const nx = p.x + dx;
       const ny = p.y + dy;
       if (!canWalk(map, nx, ny)) {

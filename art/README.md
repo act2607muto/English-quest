@@ -7,3 +7,4 @@
 
 ほかの Pixellab の絵は、作ったままのものが `public/` に入っている。
 - `pixellab-original/town01-boss-armored.png`：最初の Pixellab のボス（よろいの騎士）。2026-11-17 に「最初の街には強そうすぎる」ため、狼のボスに差し替えた。戻すときは `public/monsters/town01-boss.png` にコピーし、`scripts/make_breath_frames.ps1` のボスの SplitRow を 73 に戻して動かす。
+- `pixellab-original/hero-map-three-quarter.png`：マップ用の主人公の、最初の絵（ななめ前向き）。2026-11-17 に、横へ歩くときは真横を向いた絵（`public/hero/hero-map.png`、左向き）に差し替えた。
