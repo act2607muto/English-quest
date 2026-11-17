@@ -365,7 +365,7 @@ export function BattleScreen({
   const isSpeaking = !isChoice && skill === 'speaking';
 
   return (
-    <main className="screen battle">
+    <main className={`screen battle${phase === 'feedback' && !hit ? ' battle--hurt' : ''}`}>
       <section
         className={`battle__enemy${background && !bgBroken ? ' battle__enemy--scene' : ''}${kind === 'boss' ? ' battle__enemy--boss' : ''}`}
       >
@@ -373,14 +373,25 @@ export function BattleScreen({
           {background && !bgBroken && (
             <img className="battle__bg" src={background} alt="" aria-hidden="true" onError={() => setBgBroken(true)} />
           )}
-          <MonsterArt
-            skill={monster.skill}
-            image={monster.image}
-            hurt={phase === 'feedback' && hit}
-            defeated={monsterHp <= 0}
-            revival={kind === 'revival'}
-            size={kind === 'boss' ? 'huge' : 'large'}
-          />
+          {/* 攻撃の動き：正解なら斬る光とダメージの数、まちがいならモンスターが飛びかかる */}
+          <span className={`battle__target${phase === 'feedback' && !hit ? ' battle__target--attack' : ''}`}>
+            <MonsterArt
+              skill={monster.skill}
+              image={monster.image}
+              hurt={phase === 'feedback' && hit}
+              defeated={monsterHp <= 0}
+              revival={kind === 'revival'}
+              size={kind === 'boss' ? 'huge' : 'large'}
+            />
+            {phase === 'feedback' && hit && (
+              <>
+                <span key={`slash-${answered}`} className="battle-fx battle-fx--slash" aria-hidden="true" />
+                <span key={`dmg-${answered}`} className="damage-pop" aria-hidden="true">
+                  -{outcome?.damage ?? 0}
+                </span>
+              </>
+            )}
+          </span>
         </div>
         <div className="battle__enemy-info">
           <p className="battle__enemy-name">{monster.name}</p>
@@ -571,10 +582,28 @@ export function BattleScreen({
 
       <section className="battle__player">
         <div className="battle__player-row">
-          <HeroArt
-            size={64}
-            className={playerHp <= 0 ? 'hero-art--defeated' : phase === 'feedback' && !hit ? 'hero-art--hurt' : ''}
-          />
+          <span className="battle__hero">
+            <HeroArt
+              size={64}
+              className={
+                playerHp <= 0
+                  ? 'hero-art--defeated'
+                  : phase === 'feedback'
+                    ? hit
+                      ? 'hero-art--attack'
+                      : 'hero-art--hurt'
+                    : ''
+              }
+            />
+            {phase === 'feedback' && !hit && (
+              <>
+                <span key={`claw-${answered}`} className="battle-fx battle-fx--claw" aria-hidden="true" />
+                <span key={`hurt-${answered}`} className="damage-pop damage-pop--player" aria-hidden="true">
+                  -1
+                </span>
+              </>
+            )}
+          </span>
           <HpBar label={heroNameOf(player)} value={playerHp} max={player.maxHp} />
         </div>
         {saveFailed && <p className="message message--error">通信できず、記録できなかった答えがあります。</p>}
