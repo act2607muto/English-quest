@@ -42,6 +42,9 @@ function cellFor(width: number, height: number, mapRows: number): number {
 }
 /** マップで使う主人公の小さい絵（32×32、Pixellab）。ないときは戦闘の絵（64×64）を半分の大きさで使う */
 const HERO_MAP_IMAGE = '/hero/hero-map.png';
+/** 絵そのものが向いている向き。歩く向きと違うときだけ左右を反転して描く（マップ用の主人公は左向き、戦闘用は右向き） */
+const HERO_MAP_IMAGE_FACES = 'left';
+const HERO_IMAGE_FACES = 'right';
 /** 主人公の足の下の行が分からないときの値 */
 const HERO_FEET_DEFAULT = 30;
 /** 1マス歩くのにかける時間 */
@@ -261,7 +264,8 @@ export function MapScreen({
       const h = frame.height * heroScale;
       const top = feetY - (heroFeetRef.current + 1) * heroScale - bob;
       ctx.save();
-      if (p.facing === 'left') {
+      const drawnFacing = small ? HERO_MAP_IMAGE_FACES : HERO_IMAGE_FACES;
+      if (p.facing !== drawnFacing) {
         ctx.translate(cx + w / 2, top);
         ctx.scale(-1, 1);
         ctx.drawImage(frame, 0, 0, w, h);
