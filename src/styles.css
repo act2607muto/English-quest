@@ -1369,7 +1369,7 @@ code {
 
 .battle__enemy--scene.battle__enemy--boss .battle__stage {
   aspect-ratio: auto;
-  min-height: 220px;
+  min-height: 190px;
 }
 
 .battle__bg {
@@ -1553,6 +1553,17 @@ code {
   position: relative;
   z-index: 1;
   margin-bottom: 2px;
+}
+
+/* 戦闘では、主人公（96）とモンスター（104、ボスは160）の大きさを近づける */
+.battle__stage .monster-art--large.monster-art--sprite {
+  width: 104px;
+  height: 104px;
+}
+
+.battle__stage .monster-art--huge.monster-art--sprite {
+  width: 160px;
+  height: 160px;
 }
 
 .battle__status {

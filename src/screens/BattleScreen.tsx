@@ -376,7 +376,7 @@ export function BattleScreen({
           {/* 主人公（左下でモンスターと向き合う）。まちがえると、ひっかき傷と「-1」 */}
           <span className="battle__hero">
             <HeroArt
-              size={64}
+              size={96}
               className={
                 playerHp <= 0
                   ? 'hero-art--defeated'
