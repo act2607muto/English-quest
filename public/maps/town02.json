@@ -261,6 +261,9 @@
     },
     "checkpoint": {
       "image": "/maps/obj-checkpoint.png"
+    },
+    "westgate": {
+      "image": "/maps/obj-westgate.png"
     }
   },
   "tiles": {
@@ -352,7 +355,12 @@
       "ground": "path",
       "walk": true,
       "exit": "town01",
-      "exit_name": "はじまりの街へ"
+      "exit_name": "はじまりの街へ",
+      "object": "westgate"
+    },
+    "_": {
+      "ground": "path",
+      "walk": true
     }
   },
   "start": {
@@ -369,8 +377,8 @@
     "T.,......,......f..r...T",
     "T....,....S.......,....T",
     "T.r.,.........,....,sssT",
-    "T....,.b...H....,...sssT",
-    "E==================.ssBT",
+    "T.S..,.b...H....,...sssT",
+    "TE_================.ssBT",
     "T...,..b........,...sssT",
     "T.,..r..,..r...,....sssT",
     "T..,.....,.....,....,..T",
@@ -392,7 +400,7 @@
     "-ooooooooooohhhhhhhhhhh-",
     "-gggggggggggggggggggkkk-",
     "-gggggggggggggggggggkkk-",
-    "-gggggggggggggggggggkkk-",
+    "-eegggggggggggggggggkkk-",
     "-gggggggggggggggggggkkk-",
     "-gggggggggggggggggggkkk-",
     "-rrrrrrrrrrrrrrrrrrrrrr-",
@@ -445,6 +453,10 @@
         "vocabulary": 1
       },
       "battle_background": "/battle/town02-boss.png"
+    },
+    "e": {
+      "name": "はじまりの街への道",
+      "skills": {}
     }
   }
 }

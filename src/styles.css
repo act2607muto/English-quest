@@ -1198,6 +1198,12 @@ code {
   }
 }
 
+/* 上の欄の、別の街への案内（◀ 西の門から はじまりの街へ） */
+.map-place__exit {
+  margin: 2px 0 0;
+  color: var(--accent);
+}
+
 /* 別の街への道を踏んだとき：行くかどうかをたずねる */
 .map-ask {
   position: absolute;

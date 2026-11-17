@@ -92,6 +92,29 @@ function lowestOpaqueRow(img: HTMLImageElement): number {
   return HERO_FEET_DEFAULT;
 }
 
+/** 別の街への道の案内（例：◀ 西の門から はじまりの街へ）。道がマップのどの端に近いかで向きを決める */
+function exitHintsOf(map: FieldMap): string[] {
+  const hints = new Set<string>();
+  map.rows.forEach((row, y) =>
+    [...row].forEach((ch, x) => {
+      const tile = map.tiles[ch];
+      if (!tile?.exit || !tile.exitName) return;
+      const [arrow, side] =
+        x <= 1
+          ? ['◀', '西']
+          : x >= map.width - 2
+            ? ['▶', '東']
+            : y <= 1
+              ? ['▲', '北']
+              : y >= map.height - 2
+                ? ['▼', '南']
+                : ['●', 'マップ'];
+      hints.add(`${arrow} ${side}の門から ${tile.exitName}`);
+    }),
+  );
+  return [...hints];
+}
+
 function loadImage(src: string): Promise<HTMLImageElement | null> {
   return new Promise((resolve) => {
     const img = new Image();
@@ -533,6 +556,8 @@ export function MapScreen({
   }
 
   const area = pos ? areaAt(map, pos.x, pos.y) : null;
+  // 別の街への道（tiles の exit）があれば、上の欄に「◀ 西の門から はじまりの街へ」のように出す
+  const exitHints = exitHintsOf(map);
   const areaSkills = area
     ? (Object.keys(area.skills) as Skill[]).filter((s) => available.has(s)).map((s) => SKILL_LABELS[s])
     : [];
@@ -544,10 +569,15 @@ export function MapScreen({
         <p className="note">
           {noEncounters
             ? 'デバッグ用の設定で、モンスターに出会いません'
-            : area
+            : area && areaSkills.length > 0
               ? `出やすい：${areaSkills.join('・')}`
               : 'ここではモンスターは出ません'}
         </p>
+        {exitHints.map((hint) => (
+          <p key={hint} className="note map-place__exit">
+            {hint}
+          </p>
+        ))}
       </section>
 
       <div className="map-view" ref={viewElRef}>
