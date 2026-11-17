@@ -2,7 +2,8 @@
  * 街の外のマップ（歩きまわってモンスターに出会う）。画面には触らない。
  *
  * マップは街ごとのファイル public/maps/{街のID}.json に置く。街を足すときは、ファイルを足すだけでよい。
- *   ground     : 地面。base（草など）と、それとつながる地形（水・道など）の絵。地形の境目は角ごとに絵を選んでなめらかにつなぐ
+ *   ground     : 地面。base（草など）と、2つの地形をつなぐ絵の組（sets：水と草、道と森の地面など）。
+ *                地形の境目は角ごとに絵を選んでなめらかにつなぐ。前の形（terrains：base とつながる地形ごとの絵）も読める
  *   objects    : 木・岩・草むら・街などの、地面の上に置く絵（マスの下ぞろえ、左右まんなか）
  *   tiles      : 地形の文字ごとの決まり（地面、置く物、歩けるか、出会いやすさ、街の入口か）
  *   rows       : 地形を文字で並べたもの（1文字が1マス）
@@ -22,7 +23,7 @@ import {
 } from './rules';
 
 export type TileDef = {
-  /** 地面の種類（ground.base か ground.terrains の名前） */
+  /** 地面の種類（ground.base か、ground.sets に出てくる地形の名前） */
   ground: string;
   /** 上に置く物（objects の名前）。なければ null */
   object: string | null;
@@ -41,15 +42,17 @@ export type AreaDef = {
   skills: Partial<Record<Skill, number>>;
 };
 
-/** つながる地形の絵。corners は「北西・北東・南西・南東」の角が u（base 側）か l（その地形）かで、絵の位置を引く */
-export type TerrainDef = { sheet: string; corners: Record<string, [number, number]> };
+/**
+ * 2つの地形をつなぐ絵の組。corners は「北西・北東・南西・南東」の角が u（upper の地形）か l（lower の地形）かで、絵の位置を引く
+ */
+export type TerrainSet = { lower: string; upper: string; sheet: string; corners: Record<string, [number, number]> };
 
 export type ObjectDef = { image: string; /** 主人公より下に描く（草むら・花など） */ underHero: boolean };
 
 export type FieldMap = {
   townId: string;
   tileSize: number;
-  ground: { base: string; terrains: Record<string, TerrainDef> };
+  ground: { base: string; sets: TerrainSet[] };
   objects: Record<string, ObjectDef>;
   width: number;
   height: number;
@@ -95,20 +98,34 @@ export function parseFieldMap(raw: unknown): FieldMap {
   const groundRaw = isObject(raw.ground) ? raw.ground : {};
   const base = typeof groundRaw.base === 'string' ? groundRaw.base : '';
   if (!base) problems.push('ground.base（いちばん下の地面）がありません');
-  const terrains: Record<string, TerrainDef> = {};
+  const sets: TerrainSet[] = [];
+  const readCorners = (label: string, def: Record<string, unknown>) => {
+    const corners: Record<string, [number, number]> = {};
+    for (const [key, xy] of Object.entries(isObject(def.corners) ? def.corners : {})) {
+      if (/^[ul]{4}$/.test(key) && Array.isArray(xy) && xy.length === 2) corners[key] = [Number(xy[0]), Number(xy[1])];
+    }
+    if (Object.keys(corners).length !== 16) problems.push(`${label} の corners は16通りそろえてください`);
+    return corners;
+  };
+  // 前の形：base とつながる地形ごとの絵（lower がその地形、upper が base）
   for (const [name, def] of Object.entries(isObject(groundRaw.terrains) ? groundRaw.terrains : {})) {
-    if (!isObject(def) || typeof def.sheet !== 'string' || !isObject(def.corners)) {
+    if (!isObject(def) || typeof def.sheet !== 'string') {
       problems.push(`ground.terrains の「${name}」の形が正しくありません`);
       continue;
     }
-    const corners: Record<string, [number, number]> = {};
-    for (const [key, xy] of Object.entries(def.corners)) {
-      if (/^[ul]{4}$/.test(key) && Array.isArray(xy) && xy.length === 2) corners[key] = [Number(xy[0]), Number(xy[1])];
-    }
-    if (Object.keys(corners).length !== 16) problems.push(`ground.terrains の「${name}」の corners は16通りそろえてください`);
-    terrains[name] = { sheet: def.sheet, corners };
+    sets.push({ lower: name, upper: base, sheet: def.sheet, corners: readCorners(`ground.terrains の「${name}」`, def) });
   }
-  if (Object.keys(terrains).length === 0) problems.push('ground.terrains がありません（base の絵もここから取る）');
+  // 今の形：2つの地形をつなぐ絵の組
+  (Array.isArray(groundRaw.sets) ? groundRaw.sets : []).forEach((def: unknown, i: number) => {
+    const label = `ground.sets の ${i + 1} 番目`;
+    if (!isObject(def) || typeof def.sheet !== 'string' || typeof def.lower !== 'string' || typeof def.upper !== 'string') {
+      problems.push(`${label} の形が正しくありません（lower・upper・sheet・corners）`);
+      return;
+    }
+    sets.push({ lower: def.lower, upper: def.upper, sheet: def.sheet, corners: readCorners(label, def) });
+  });
+  if (sets.length === 0) problems.push('ground.sets がありません（base の絵もここから取る）');
+  const groundNames = new Set([base, ...sets.flatMap((s) => [s.lower, s.upper])]);
 
   const objects: Record<string, ObjectDef> = {};
   for (const [name, def] of Object.entries(isObject(raw.objects) ? raw.objects : {})) {
@@ -125,7 +142,7 @@ export function parseFieldMap(raw: unknown): FieldMap {
         continue;
       }
       const ground = typeof def.ground === 'string' ? def.ground : '';
-      if (ground !== base && !terrains[ground]) problems.push(`tiles の「${ch}」の ground「${ground}」が ground にありません`);
+      if (!groundNames.has(ground)) problems.push(`tiles の「${ch}」の ground「${ground}」が ground にありません`);
       const object = typeof def.object === 'string' ? def.object : null;
       if (object && !objects[object]) problems.push(`tiles の「${ch}」の object「${object}」が objects にありません`);
       const encounter = def.encounter === undefined || def.encounter === null ? null : Number(def.encounter);
@@ -176,7 +193,7 @@ export function parseFieldMap(raw: unknown): FieldMap {
   const map: FieldMap = {
     townId,
     tileSize,
-    ground: { base, terrains },
+    ground: { base, sets },
     objects,
     width,
     height,
@@ -200,19 +217,25 @@ export function tileAt(map: FieldMap, x: number, y: number): TileDef | null {
 /**
  * 地面の絵を選ぶ。絵はマスの角（頂点）ごとに1枚置き、その4方のマスの地面で、どの絵にするかを決める
  * （vx, vy は頂点の位置。0〜width, 0〜height）。マップの外は、いちばん近いマスと同じにする。
- * 4方に base 以外の地面が2種類あるときは、先に見つかったほうを使い、もう一方は base として扱う。
+ * 4方の地面をいちばん多く含む絵の組を使う（同じなら sets の先のほう）。組にない地面は upper として扱う。
  */
-export function groundAt(map: FieldMap, vx: number, vy: number): { terrain: string; sx: number; sy: number } | null {
+export function groundAt(map: FieldMap, vx: number, vy: number): { sheet: string; sx: number; sy: number } | null {
   const cell = (x: number, y: number) =>
     tileAt(map, Math.min(Math.max(x, 0), map.width - 1), Math.min(Math.max(y, 0), map.height - 1))?.ground ?? map.ground.base;
   const four = [cell(vx - 1, vy - 1), cell(vx, vy - 1), cell(vx - 1, vy), cell(vx, vy)];
-  const other = four.find((g) => g !== map.ground.base && map.ground.terrains[g]);
-  const terrain = other ?? Object.keys(map.ground.terrains)[0];
-  const def = map.ground.terrains[terrain];
-  if (!def) return null;
-  const key = other ? four.map((g) => (g === other ? 'l' : 'u')).join('') : 'uuuu';
-  const xy = def.corners[key];
-  return xy ? { terrain, sx: xy[0], sy: xy[1] } : null;
+  let best: TerrainSet | null = null;
+  let bestScore = -1;
+  for (const set of map.ground.sets) {
+    const score = four.filter((g) => g === set.lower || g === set.upper).length;
+    if (score > bestScore) {
+      best = set;
+      bestScore = score;
+    }
+  }
+  if (!best) return null;
+  const key = four.map((g) => (g === best.lower ? 'l' : 'u')).join('');
+  const xy = best.corners[key];
+  return xy ? { sheet: best.sheet, sx: xy[0], sy: xy[1] } : null;
 }
 
 export function areaAt(map: FieldMap, x: number, y: number): AreaDef | null {

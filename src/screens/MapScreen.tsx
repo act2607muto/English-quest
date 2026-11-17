@@ -157,7 +157,7 @@ export function MapScreen({
           HERO_MAP_UP_IMAGE,
           HERO_MAP_DOWN_IMAGE,
           HERO_IMAGE,
-          ...(m ? Object.values(m.ground.terrains).map((t) => t.sheet) : []),
+          ...(m ? m.ground.sets.map((s) => s.sheet) : []),
           ...(m ? Object.values(m.objects).map((o) => o.image) : []),
         ];
         const loaded = await Promise.all(sources.map(loadImage));
@@ -224,7 +224,7 @@ export function MapScreen({
     for (let vy = y0 + 1; vy <= y1; vy++) {
       for (let vx = x0 + 1; vx <= x1; vx++) {
         const g = groundAt(map, vx, vy);
-        const sheet = g ? images.get(map.ground.terrains[g.terrain].sheet) : null;
+        const sheet = g ? images.get(g.sheet) : null;
         const dx = ox + Math.round((vx - 0.5) * CELL);
         const dy = oy + Math.round((vy - 0.5) * CELL);
         if (g && sheet) ctx.drawImage(sheet, g.sx, g.sy, ts, ts, dx, dy, CELL, CELL);
