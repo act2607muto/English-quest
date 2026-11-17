@@ -8,7 +8,7 @@
  *   tiles      : 地形の文字ごとの決まり（地面、置く物、歩けるか、出会いやすさ、街の入口か）
  *   rows       : 地形を文字で並べたもの（1文字が1マス）
  *   areas      : 場所を文字で並べたもの（rows と同じ大きさ。「-」は出会わない）
- *   area_defs  : 場所の文字ごとの名前と、出てくる能力値の割合
+ *   area_defs  : 場所の文字ごとの名前と、出てくる能力値の割合、戦闘の背景の絵（battle_background）
  *   start      : 街から出たときに立つマス
  * 出会いやすさ（encounter）は「1歩で出会う確率の逆数」。10 なら、だいたい10歩に1回。
  */
@@ -38,6 +38,8 @@ export type TileDef = {
 
 export type AreaDef = {
   name: string;
+  /** この場所で出会ったときの、戦闘の背景の絵（なければ null） */
+  battleBackground: string | null;
   /** 能力値ごとの出やすさ（大きいほど出やすい） */
   skills: Partial<Record<Skill, number>>;
 };
@@ -180,7 +182,11 @@ export function parseFieldMap(raw: unknown): FieldMap {
         else if (typeof weight !== 'number' || weight <= 0) problems.push(`area_defs の「${ch}」の ${skill} は0より大きい数にしてください`);
         else skills[skill as Skill] = weight;
       }
-      areaDefs[ch] = { name: def.name, skills };
+      areaDefs[ch] = {
+        name: def.name,
+        skills,
+        battleBackground: typeof def.battle_background === 'string' ? def.battle_background : null,
+      };
     }
   }
   areas.forEach((r, y) =>

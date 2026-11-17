@@ -93,15 +93,10 @@
     "------------------------"
   ],
   "area_defs": {
-    "g": { "name": "はじまりの草原", "skills": { "vocabulary": 2, "grammar": 2 }
-    },
-    "l": { "name": "ささやきの森", "skills": { "listening": 3, "vocabulary": 1 }
-    },
-    "w": { "name": "いろどりの花畑", "skills": { "writing": 3, "grammar": 1 }
-    },
-    "k": { "name": "こえの湖", "skills": { "speaking": 3, "listening": 1 }
-    },
-    "b": { "name": "ことだまの門のまえ", "skills": { "listening": 3, "vocabulary": 1 }
-    }
+    "g": { "name": "はじまりの草原", "skills": { "vocabulary": 2, "grammar": 2 }, "battle_background": "/battle/town01-meadow.png" },
+    "l": { "name": "ささやきの森", "skills": { "listening": 3, "vocabulary": 1 }, "battle_background": "/battle/town01-forest.png" },
+    "w": { "name": "いろどりの花畑", "skills": { "writing": 3, "grammar": 1 }, "battle_background": "/battle/town01-flowers.png" },
+    "k": { "name": "こえの湖", "skills": { "speaking": 3, "listening": 1 }, "battle_background": "/battle/town01-lake.png" },
+    "b": { "name": "ことだまの門のまえ", "skills": { "listening": 3, "vocabulary": 1 }, "battle_background": "/battle/town01-boss.png" }
   }
 }

@@ -47,8 +47,10 @@ type Route =
       before: Player;
       key: number;
       from: BattleFrom;
+      /** 戦闘の背景の絵（なければ null） */
+      background: string | null;
     }
-  | { name: 'result'; result: BattleResult; before: Player; from: BattleFrom }
+  | { name: 'result'; result: BattleResult; before: Player; from: BattleFrom; background: string | null }
   | { name: 'settings' }
   | { name: 'hero-name' }
   /** あそびかた。first は名前をつけた直後（読み終わると街へ。ほかは設定へもどる） */
@@ -151,7 +153,11 @@ function Game() {
     setMapPos(null);
     go({ name: 'town' });
   };
-  const fight = (monster: MonsterRow, kind: BattleKind, from: BattleFrom, skills?: Skill[]) =>
+  /**
+   * 戦闘を始める。背景は、街の外なら出会った場所の絵、スキルダンジョンとボスは街ごとの決まった名前の絵
+   * （public/battle/{街のID}-dungeon.png・-boss.png）。
+   */
+  const fight = (monster: MonsterRow, kind: BattleKind, from: BattleFrom, skills?: Skill[], background?: string | null) =>
     go({
       name: 'battle',
       monster,
@@ -160,6 +166,12 @@ function Game() {
       before: player,
       key: Date.now(),
       from,
+      background:
+        from === 'dungeon'
+          ? `/battle/${monster.town_id}-dungeon.png`
+          : from === 'boss'
+            ? `/battle/${monster.town_id}-boss.png`
+            : (background ?? null),
     });
   /** 戦闘を始めた場所へもどる（ボスは街の外のマップの、ボスのいる場所へ） */
   const backTo = (from: BattleFrom) => {
@@ -180,7 +192,7 @@ function Game() {
           status={townStatus}
           position={mapPos}
           onMove={setMapPos}
-          onEncounter={(m, kind, skills) => fight(m, kind, 'map', skills)}
+          onEncounter={(m, kind, skills, background) => fight(m, kind, 'map', skills, background)}
           onChoose={() => go({ name: 'field' })}
           onTown={toTown}
           onBoss={() => go({ name: 'boss' })}
@@ -211,12 +223,13 @@ function Game() {
           monster={route.monster}
           kind={route.kind}
           skills={route.skills}
+          background={route.background}
           player={route.before}
           isAdmin={isAdmin}
           onEnd={(result) => {
             void reload()
               .catch(() => player)
-              .then(() => go({ name: 'result', result, before: route.before, from: route.from }));
+              .then(() => go({ name: 'result', result, before: route.before, from: route.from, background: route.background }));
           }}
           onRunAway={() => {
             void reload().catch(() => {});
@@ -232,7 +245,8 @@ function Game() {
           after={player}
           onAgain={
             route.result.kind === 'normal'
-              ? () => fight(route.result.monster, 'normal', route.from === 'dungeon' ? 'dungeon' : 'map')
+              ? () =>
+                  fight(route.result.monster, 'normal', route.from === 'dungeon' ? 'dungeon' : 'map', undefined, route.background)
               : null
           }
           onField={() => go({ name: route.from === 'dungeon' ? 'field' : 'map' })}

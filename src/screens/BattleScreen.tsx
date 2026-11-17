@@ -85,6 +85,7 @@ export function BattleScreen({
   monster,
   kind,
   skills,
+  background = null,
   player,
   isAdmin,
   onEnd,
@@ -95,12 +96,15 @@ export function BattleScreen({
   kind: BattleKind;
   /** 出題する能力値。ふつうは1つ、ボスは練習した能力値すべて */
   skills: Skill[];
+  /** 戦闘の背景の絵（出会った場所など）。なければ背景なし */
+  background?: string | null;
   player: Player;
   isAdmin: boolean;
   onEnd: (result: BattleResult) => void;
   onRunAway: () => void;
 }) {
   const [phase, setPhase] = useState<Phase>('loading');
+  const [bgBroken, setBgBroken] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [queue, setQueue] = useState<QuestionRow[]>([]);
   const [index, setIndex] = useState(0);
@@ -362,15 +366,22 @@ export function BattleScreen({
 
   return (
     <main className="screen battle">
-      <section className="battle__enemy">
-        <MonsterArt
-          skill={monster.skill}
-          image={monster.image}
-          hurt={phase === 'feedback' && hit}
-          defeated={monsterHp <= 0}
-          revival={kind === 'revival'}
-          size={kind === 'boss' ? 'huge' : 'large'}
-        />
+      <section
+        className={`battle__enemy${background && !bgBroken ? ' battle__enemy--scene' : ''}${kind === 'boss' ? ' battle__enemy--boss' : ''}`}
+      >
+        <div className="battle__stage">
+          {background && !bgBroken && (
+            <img className="battle__bg" src={background} alt="" aria-hidden="true" onError={() => setBgBroken(true)} />
+          )}
+          <MonsterArt
+            skill={monster.skill}
+            image={monster.image}
+            hurt={phase === 'feedback' && hit}
+            defeated={monsterHp <= 0}
+            revival={kind === 'revival'}
+            size={kind === 'boss' ? 'huge' : 'large'}
+          />
+        </div>
         <div className="battle__enemy-info">
           <p className="battle__enemy-name">{monster.name}</p>
           <HpBar label="HP" value={monsterHp} max={monster.hp} />

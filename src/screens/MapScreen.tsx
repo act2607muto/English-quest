@@ -57,7 +57,7 @@ const STEP_MS = 170;
 /** 「あらわれた！」を見せてから戦闘に移るまで */
 const ENCOUNTER_MS = 1100;
 
-type Encounter = { monster: MonsterRow; kind: BattleKind; skills?: Skill[] };
+type Encounter = { monster: MonsterRow; kind: BattleKind; skills?: Skill[]; background: string | null };
 
 function prefersReducedMotion(): boolean {
   return typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -110,8 +110,8 @@ export function MapScreen({
   status: TownStatus | null;
   position: MapPosition | null;
   onMove: (pos: MapPosition) => void;
-  /** skills：めずらしいモンスターが出す能力値（ほかは省く） */
-  onEncounter: (monster: MonsterRow, kind: BattleKind, skills?: Skill[]) => void;
+  /** skills：めずらしいモンスターが出す能力値（ほかは省く）。background：出会った場所の戦闘の背景 */
+  onEncounter: (monster: MonsterRow, kind: BattleKind, skills: Skill[] | undefined, background: string | null) => void;
   onChoose: () => void;
   onTown: () => void;
   /** ボスのいる場所を踏んだとき */
@@ -341,15 +341,15 @@ export function MapScreen({
       const mixed = rareSkills(player, available);
       let found: Encounter;
       if (rare && mixed.length > 0) {
-        found = { monster: rare, kind: 'rare', skills: mixed };
+        found = { monster: rare, kind: 'rare', skills: mixed, background: area.battleBackground };
       } else {
         const skill = chooseEncounterSkill(area, player.skills, available);
         const base = skill ? monsters.find((m) => m.skill === skill) : null;
         if (!skill || !base) return;
         const due = status?.dueBySkill[skill] ?? 0;
         found = rollRevival(due)
-          ? { monster: revivalOf(base, due, player), kind: 'revival' }
-          : { monster: base, kind: 'normal' };
+          ? { monster: revivalOf(base, due, player), kind: 'revival', background: area.battleBackground }
+          : { monster: base, kind: 'normal', background: area.battleBackground };
       }
       busyRef.current = true;
       heldRef.current = null;
@@ -358,7 +358,7 @@ export function MapScreen({
       posRef.current = reset;
       onMove(reset);
       window.setTimeout(
-        () => onEncounter(found.monster, found.kind, found.skills),
+        () => onEncounter(found.monster, found.kind, found.skills, found.background),
         prefersReducedMotion() ? 500 : ENCOUNTER_MS,
       );
     },
