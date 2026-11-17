@@ -75,9 +75,14 @@ export function flawlessBonusEach(skillCount: number): number {
   return skillCount > 0 ? Math.ceil(EXP_FLAWLESS_BONUS / skillCount) : 0;
 }
 
-/** ボスが出す能力値：今戦える能力値のうち、練習したことがあるもの */
-export function bossSkills(player: Player): Skill[] {
-  const open = player.skills.filter((s) => s.unlocked && PLAYABLE_SKILLS.includes(s.skill));
+/**
+ * ボスが出す能力値：今戦える能力値のうち、練習したことがあるもの。
+ * townSkills を渡すと、その街に問題がある能力値だけにする（はじまりの街にはリーディングの問題がないので）。
+ */
+export function bossSkills(player: Player, townSkills?: Skill[]): Skill[] {
+  const open = player.skills.filter(
+    (s) => s.unlocked && PLAYABLE_SKILLS.includes(s.skill) && (!townSkills || townSkills.includes(s.skill)),
+  );
   const practiced = open.filter((s) => s.exp > 0 || s.daysUntilDecay !== null);
   // まだどの能力値も練習していない人（はじめてすぐボスに挑む人）は、戦えるすべての能力値から出す
   return (practiced.length > 0 ? practiced : open).map((s) => s.skill);

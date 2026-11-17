@@ -111,6 +111,7 @@ export function MapScreen({
   onChoose,
   onTown,
   onBoss,
+  onExit,
 }: {
   player: Player;
   status: TownStatus | null;
@@ -122,12 +123,16 @@ export function MapScreen({
   onTown: () => void;
   /** ボスのいる場所を踏んだとき */
   onBoss: () => void;
+  /** 別の街への道を進むと決めたとき（行き先の街のID） */
+  onExit: (townId: string) => void;
 }) {
   const [map, setMap] = useState<FieldMap | null | undefined>(undefined);
   const [monsters, setMonsters] = useState<MonsterRow[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [pos, setPos] = useState<MapPosition | null>(position);
   const [encounter, setEncounter] = useState<Encounter | null>(null);
+  /** 別の街への道を踏んだとき：行くかどうかをたずねる（やめたら、1歩もどる） */
+  const [exitAsk, setExitAsk] = useState<{ to: string; name: string; back: MapPosition } | null>(null);
   /** 十字ボタンを出す側（設定で選ぶ） */
   const [dpadSide] = useState(getDpadSide);
   /** デバッグ用の設定で「出会わない」にしているか */
@@ -327,11 +332,17 @@ export function MapScreen({
     monsters.map((m) => m.skill).filter((s): s is Skill => !!s && PLAYABLE_SKILLS.includes(s)),
   );
 
-  /** 1歩すすんだあと：街の入口か、ボスの場所か、出会うか */
+  /** 1歩すすんだあと：街の入口か、ボスの場所か、別の街への道か、出会うか（prev は1歩まえの位置） */
   const arrive = useCallback(
-    (next: MapPosition) => {
+    (next: MapPosition, prev: MapPosition) => {
       if (!map) return;
       const tile = tileAt(map, next.x, next.y);
+      if (tile?.exit) {
+        busyRef.current = true;
+        heldRef.current = null;
+        setExitAsk({ to: tile.exit, name: tile.exitName ?? 'となりの街へ', back: prev });
+        return;
+      }
       if (tile?.town) {
         busyRef.current = true;
         heldRef.current = null;
@@ -400,7 +411,7 @@ export function MapScreen({
         drawRef.current = { x: nx, y: ny };
         setPos(next);
         onMove(next);
-        arrive(next);
+        arrive(next, p);
         // 押したままなら、続けて歩く
         const held = heldRef.current;
         if (held && !busyRef.current) stepRef.current(held);
@@ -455,6 +466,18 @@ export function MapScreen({
       window.removeEventListener('keyup', up);
     };
   }, []);
+
+  /** 別の街へ行くのをやめて、1歩もどる */
+  function stayHere() {
+    if (!exitAsk) return;
+    const back = { ...exitAsk.back, steps: posRef.current?.steps ?? 0, facing: exitAsk.back.facing };
+    posRef.current = back;
+    drawRef.current = { x: back.x, y: back.y };
+    setPos(back);
+    onMove(back);
+    setExitAsk(null);
+    busyRef.current = false;
+  }
 
   function press(dir: Direction) {
     heldRef.current = dir;
@@ -533,8 +556,21 @@ export function MapScreen({
             <p className="window map-encounter__text">{encounter.monster.name}が あらわれた！</p>
           </div>
         )}
-        {/* 十字のボタン：マップに重ねて、うすく出す（出会ったときは消す） */}
-        {!encounter && (
+        {exitAsk && (
+          <div className="map-ask" role="dialog" aria-label={exitAsk.name}>
+            <div className="window map-exit">
+              <p>{exitAsk.name} 向かいますか？</p>
+              <button className="command" type="button" onClick={() => onExit(exitAsk.to)}>
+                ▶ 向かう
+              </button>
+              <button className="command command--quiet" type="button" onClick={stayHere}>
+                やめる
+              </button>
+            </div>
+          </div>
+        )}
+        {/* 十字のボタン：マップに重ねて、うすく出す（出会ったとき・別の街へ行くかをたずねているときは消す） */}
+        {!encounter && !exitAsk && (
           <div className={`dpad dpad--${dpadSide}`} aria-label="歩く">
             {(
               [

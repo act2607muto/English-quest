@@ -5,8 +5,8 @@ import type { QuestionRow } from '../questionFile';
 import type { Skill } from '../skills';
 import { isDue, localDate, type ReviewState } from './growth';
 
-/** 今戦える能力値（リーディングは第2段階で足す） */
-export const PLAYABLE_SKILLS: readonly Skill[] = ['vocabulary', 'grammar', 'listening', 'writing', 'speaking'];
+/** 戦える能力値（リーディングは2つ目の街で解放される。解放されているかは能力値ごとの unlocked で見る） */
+export const PLAYABLE_SKILLS: readonly Skill[] = ['vocabulary', 'grammar', 'listening', 'reading', 'writing', 'speaking'];
 
 export type Rng = () => number;
 

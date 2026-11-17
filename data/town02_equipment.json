@@ -1,0 +1,118 @@
+{
+  "format_version": 1,
+  "town": {
+    "id": "town02",
+    "name": "にぎわいの市",
+    "scene": "買い物",
+    "difficulty": "標準",
+    "order": 2
+  },
+  "equipment": [
+    {
+      "id": "town02-wpn-voc",
+      "name": "ねだんよみの短剣",
+      "slot": "weapon",
+      "effect": {
+        "type": "attack",
+        "skill": "vocabulary",
+        "amount": 4
+      },
+      "price": 180,
+      "image": "/equipment/town02-wpn-voc.png"
+    },
+    {
+      "id": "town02-wpn-gra",
+      "name": "てんびんの斧",
+      "slot": "weapon",
+      "effect": {
+        "type": "attack",
+        "skill": "grammar",
+        "amount": 4
+      },
+      "price": 180,
+      "image": "/equipment/town02-wpn-gra.png"
+    },
+    {
+      "id": "town02-wpn-lis",
+      "name": "よびごえの弓",
+      "slot": "weapon",
+      "effect": {
+        "type": "attack",
+        "skill": "listening",
+        "amount": 5
+      },
+      "price": 220,
+      "image": "/equipment/town02-wpn-lis.png"
+    },
+    {
+      "id": "town02-wpn-rea",
+      "name": "ちらしの巻物",
+      "slot": "weapon",
+      "effect": {
+        "type": "attack",
+        "skill": "reading",
+        "amount": 5
+      },
+      "price": 220,
+      "image": "/equipment/town02-wpn-rea.png"
+    },
+    {
+      "id": "town02-wpn-wri",
+      "name": "ちょうめんの羽ペン",
+      "slot": "weapon",
+      "effect": {
+        "type": "attack",
+        "skill": "writing",
+        "amount": 5
+      },
+      "price": 240,
+      "image": "/equipment/town02-wpn-wri.png"
+    },
+    {
+      "id": "town02-wpn-spe",
+      "name": "ねぎりの扇",
+      "slot": "weapon",
+      "effect": {
+        "type": "attack",
+        "skill": "speaking",
+        "amount": 5
+      },
+      "price": 220,
+      "image": "/equipment/town02-wpn-spe.png"
+    },
+    {
+      "id": "town02-wpn-all",
+      "name": "いちばの大剣",
+      "slot": "weapon",
+      "effect": {
+        "type": "attack",
+        "skill": "all",
+        "amount": 5
+      },
+      "price": 550,
+      "image": "/equipment/town02-wpn-all.png"
+    },
+    {
+      "id": "town02-arm-hp",
+      "name": "あきんどの外套",
+      "slot": "armor",
+      "effect": {
+        "type": "max_hp",
+        "amount": 2
+      },
+      "price": 400,
+      "image": "/equipment/town02-arm-hp.png"
+    },
+    {
+      "id": "town02-arm-grace",
+      "name": "おぼえがきの帽子",
+      "slot": "armor",
+      "effect": {
+        "type": "decay_grace",
+        "days": 2
+      },
+      "price": 500,
+      "image": "/equipment/town02-arm-grace.png"
+    }
+  ]
+}

@@ -464,6 +464,7 @@ export function BattleScreen({
         <section className="window battle__question">
           <p className="battle__prompt">{fillNames(q.prompt)}</p>
           {skill === 'grammar' && q.sentence && <p className="battle__sentence">{fillNames(q.sentence)}</p>}
+          {skill === 'reading' && q.sentence && <p className="battle__passage">{fillNames(q.sentence)}</p>}
           {!isChoice && q.sentence && (
             <p className="battle__sentence battle__sentence--ja">
               {q.sentence_ja && <small className="note">{fillNames(q.sentence_ja)}</small>}

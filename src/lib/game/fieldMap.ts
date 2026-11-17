@@ -10,6 +10,8 @@
  *   areas      : 場所を文字で並べたもの（rows と同じ大きさ。「-」は出会わない）
  *   area_defs  : 場所の文字ごとの名前と、出てくる能力値の割合、戦闘の背景の絵（battle_background）
  *   start      : 街から出たときに立つマス
+ *   boss_place : ボスのいる場所の説明（街の画面に出す。例：ささやきの森の奥「ことだまの門」）
+ * tiles の exit に街のIDを書くと、そのマスは別の街への道になる（exit_name は「はじまりの街へ」のような名前）
  * 出会いやすさ（encounter）は「1歩で出会う確率の逆数」。10 なら、だいたい10歩に1回。
  */
 import type { Skill } from '../skills';
@@ -34,6 +36,10 @@ export type TileDef = {
   town: boolean;
   /** ボスのいる場所（踏むとボスの画面を開く） */
   boss: boolean;
+  /** 別の街への道（行き先の街のID）。踏むと、その街へ行くかをたずねる */
+  exit: string | null;
+  /** 別の街への道の名前（例：はじまりの街へ） */
+  exitName: string | null;
 };
 
 export type AreaDef = {
@@ -63,6 +69,8 @@ export type FieldMap = {
   areas: string[];
   areaDefs: Record<string, AreaDef>;
   start: { x: number; y: number };
+  /** ボスのいる場所の説明。なければ null */
+  bossPlace: string | null;
 };
 
 export type Direction = 'up' | 'down' | 'left' | 'right';
@@ -149,7 +157,18 @@ export function parseFieldMap(raw: unknown): FieldMap {
       if (object && !objects[object]) problems.push(`tiles の「${ch}」の object「${object}」が objects にありません`);
       const encounter = def.encounter === undefined || def.encounter === null ? null : Number(def.encounter);
       if (encounter !== null && !(encounter >= 1)) problems.push(`tiles の「${ch}」の encounter は1以上にしてください`);
-      tiles[ch] = { ground, object, walk: def.walk === true, encounter, town: def.town === true, boss: def.boss === true };
+      const exit = typeof def.exit === 'string' && def.exit ? def.exit : null;
+      const exitName = typeof def.exit_name === 'string' && def.exit_name ? def.exit_name : null;
+      tiles[ch] = {
+        ground,
+        object,
+        walk: def.walk === true,
+        encounter,
+        town: def.town === true,
+        boss: def.boss === true,
+        exit,
+        exitName,
+      };
     }
   }
 
@@ -208,6 +227,7 @@ export function parseFieldMap(raw: unknown): FieldMap {
     areas,
     areaDefs,
     start,
+    bossPlace: typeof raw.boss_place === 'string' && raw.boss_place ? raw.boss_place : null,
   };
   if (problems.length === 0 && !canWalk(map, start.x, start.y)) problems.push('start は歩けるマスにしてください');
 

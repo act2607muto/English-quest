@@ -75,7 +75,7 @@ export async function fetchQuestionsByIds(ids: string[]): Promise<QuestionRow[]>
 export async function fetchTowns(): Promise<TownRow[]> {
   const { data, error } = await requireSupabase()
     .from('towns')
-    .select('id, scene, difficulty, sort_order, background_image')
+    .select('id, name, scene, difficulty, sort_order, background_image')
     .order('sort_order');
   if (error) throw error;
   return data as TownRow[];
@@ -84,7 +84,7 @@ export async function fetchTowns(): Promise<TownRow[]> {
 export async function fetchTown(townId: string): Promise<TownRow | null> {
   const { data, error } = await requireSupabase()
     .from('towns')
-    .select('id, scene, difficulty, sort_order, background_image')
+    .select('id, name, scene, difficulty, sort_order, background_image')
     .eq('id', townId)
     .maybeSingle();
   if (error) throw error;
@@ -132,7 +132,7 @@ export async function flagQuestion(id: string, note: string): Promise<void> {
 
 /**
  * 街と、問題・モンスターを登録する。同じIDがあれば上書きし、なければ足す。
- * 要修正の印（needs_fix）と街の名前・背景は送らないので、今の値のまま残る。
+ * 要修正の印（needs_fix）は送らないので、今の値のまま残る。街の名前・背景は、ファイルに書いてあるときだけ変える。
  */
 export async function importTownFile(
   town: TownRow,

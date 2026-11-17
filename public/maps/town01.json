@@ -2,6 +2,7 @@
   "format_version": 3,
   "town_id": "town01",
   "tile_size": 32,
+  "boss_place": "ささやきの森の奥「ことだまの門」",
   "ground": {
     "base": "grass",
     "sets": [

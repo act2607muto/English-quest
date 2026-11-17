@@ -60,7 +60,9 @@ export async function loadPlayer(): Promise<Player> {
       daysUntilDecay: s ? daysUntilDecay(s.lastPracticedAt, today, mods.graceDays) : null,
     };
   });
-  const overall = overallLevel(skills);
+  // 解放されたばかりで、まだ一度も練習していない能力値（リーディングなど）は、総合レベルに入れない
+  // （入れると、新しい街に着いたとたんに総合レベルが下がってしまうため）
+  const overall = overallLevel(skills.filter((s) => s.exp > 0 || s.daysUntilDecay !== null));
   return {
     heroName: adventure?.heroName ?? null,
     skills,

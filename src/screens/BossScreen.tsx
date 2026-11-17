@@ -1,39 +1,50 @@
 import { useEffect, useState } from 'react';
 import { MonsterArt } from '../components/MonsterArt';
-import { fetchMonstersOfTown } from '../lib/content';
+import { fetchMonstersOfTown, fetchTowns } from '../lib/content';
 import { bossFor, bossSkills } from '../lib/game/foes';
 import type { Player } from '../lib/game/player';
 import { BOSS_RECOMMEND_RATIO } from '../lib/game/rules';
 import type { TownStatus } from '../lib/game/town';
-import type { MonsterRow } from '../lib/questionFile';
+import type { MonsterRow, TownRow } from '../lib/questionFile';
 import { SKILL_LABELS, type Skill } from '../lib/skills';
 
 /**
  * ボスへの入口。街の外のマップで、ボスのいる場所（ことだまの門）を踏むと開く。
  * いつでも挑める。街の問題の8割に1回以上正解するのは「おすすめの目安」として出す。
- * 出題は、練習した能力値の問題を混ぜたもの。倒すと次の街へ進める（2つ目の街は第2段階で作る）。
+ * 出題は、練習した能力値の問題を混ぜたもの。倒すと、門をくぐって次の街（順番が次の街）へ進める。
  */
 export function BossScreen({
   player,
   status,
   onFight,
+  onTravel,
   onBack,
 }: {
   player: Player;
   status: TownStatus | null;
   onFight: (boss: MonsterRow, skills: Skill[]) => void;
+  /** 門をくぐって次の街へ（行き先の街のID） */
+  onTravel: (townId: string) => void;
   onBack: () => void;
 }) {
   const [boss, setBoss] = useState<MonsterRow | null | undefined>(undefined);
   const [error, setError] = useState<string | null>(null);
+  /** 次の街（順番が次の街。まだなければ null） */
+  const [nextTown, setNextTown] = useState<TownRow | null>(null);
 
   useEffect(() => {
     fetchMonstersOfTown(player.currentTownId)
       .then((m) => setBoss(m.find((x) => x.is_boss) ?? null))
       .catch((err) => setError(err instanceof Error ? err.message : String(err)));
+    fetchTowns()
+      .then((towns) => {
+        const here = towns.find((t) => t.id === player.currentTownId);
+        setNextTown(here ? (towns.find((t) => t.sort_order > here.sort_order) ?? null) : null);
+      })
+      .catch(() => setNextTown(null));
   }, [player.currentTownId]);
 
-  const skills = bossSkills(player);
+  const skills = bossSkills(player, status?.skills);
   const defeated = boss ? player.defeatedBosses.includes(boss.id) : false;
   const rest = status ? Math.max(0, status.needed - status.correctOnce) : null;
   const ratio = status && status.total > 0 ? status.correctOnce / status.total : 0;
@@ -45,7 +56,7 @@ export function BossScreen({
       {boss === null && (
         <section className="window">
           <p className="message message--error">
-            この街にはまだボスがいません。「設定」→「教材の取り込み」で town01_monsters.json を取り込み直してください。
+            この街にはまだボスがいません。「設定」→「教材の取り込み」で {player.currentTownId}_monsters.json を取り込み直してください。
           </p>
         </section>
       )}
@@ -58,7 +69,11 @@ export function BossScreen({
             <p className="note">
               HP {boss.hp}　出題：{skills.length > 0 ? skills.map((s) => SKILL_LABELS[s]).join('・') : '練習した能力値'}の混合
             </p>
-            {defeated && <p className="levelup">たおした！ 次の街への道が開けています（次の街は準備中です）。</p>}
+            {defeated && (
+              <p className="levelup">
+                たおした！ {nextTown ? '門の先に、次の街への道が開けています。' : '次の街への道が開けています（次の街は準備中です）。'}
+              </p>
+            )}
           </section>
 
           <section className="window">
@@ -93,6 +108,11 @@ export function BossScreen({
         </>
       )}
 
+      {boss && defeated && nextTown && (
+        <button className="command command--boss" type="button" onClick={() => onTravel(nextTown.id)}>
+          ▶ 門をくぐって「{nextTown.name ?? nextTown.scene}」へ
+        </button>
+      )}
       <button className="command" type="button" onClick={onBack}>
         ▶ 引き返す
       </button>

@@ -56,7 +56,7 @@ export function FieldScreen({
       {monsters && monsters.length === 0 && (
         <section className="window">
           <p className="message message--error">
-            この街にはまだモンスターがいません。「設定」→「教材の取り込み」で town01_monsters.json を取り込んでください。
+            この街にはまだモンスターがいません。「設定」→「教材の取り込み」で {player.currentTownId}_monsters.json を取り込んでください。
           </p>
         </section>
       )}

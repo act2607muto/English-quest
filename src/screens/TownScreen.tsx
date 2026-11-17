@@ -1,9 +1,11 @@
+import { useEffect, useState } from 'react';
 import { PLAYABLE_SKILLS } from '../lib/game/battle';
+import { fetchFieldMap } from '../lib/game/fieldMap';
 import { HeroArt } from '../components/HeroArt';
 import { heroNameOf, type Player, type PlayerSkill } from '../lib/game/player';
 import type { TownRow } from '../lib/questionFile';
 import type { TownStatus } from '../lib/game/town';
-import { SKILL_LABELS } from '../lib/skills';
+import { SKILL_LABELS, type Skill } from '../lib/skills';
 
 /**
  * 街（ゲームのトップ画面）。冒険の拠点で、行き先を選ぶ。
@@ -14,6 +16,7 @@ import { SKILL_LABELS } from '../lib/skills';
 export function TownScreen({
   player,
   town,
+  arrival,
   onStatus,
   onSettings,
   onGuide,
@@ -21,16 +24,31 @@ export function TownScreen({
 }: {
   player: Player;
   town: TownRow | null;
+  /** 別の街に着いたばかりなら、解放された能力値（着いた！と知らせる） */
+  arrival: { unlocked: Skill[] } | null;
   /** 上の帯の主人公を押したとき（ステータスへ） */
   onStatus: () => void;
   onSettings: () => void;
   onGuide: () => void;
   status: TownStatus | null;
 }) {
-  const playable = player.skills.filter((s) => s.unlocked && PLAYABLE_SKILLS.includes(s.skill));
+  // この街に問題がある能力値だけ（はじまりの街にはリーディングがない）
+  const playable = player.skills.filter(
+    (s) => s.unlocked && PLAYABLE_SKILLS.includes(s.skill) && (!status || status.skills.includes(s.skill)),
+  );
   const revivalSkills = playable.filter((s) => (status?.dueBySkill[s.skill] ?? 0) > 0);
   const advice = recommendation(playable);
-  const bossDefeated = player.defeatedBosses.length > 0;
+  const boss = status?.boss ?? null;
+  const bossDefeated = boss ? player.defeatedBosses.includes(boss.id) : false;
+  /** ボスのいる場所の説明（マップのファイルの boss_place） */
+  const [bossPlace, setBossPlace] = useState<string | null>(null);
+  useEffect(() => {
+    setBossPlace(null);
+    fetchFieldMap(player.currentTownId)
+      .then((m) => setBossPlace(m?.bossPlace ?? null))
+      .catch(() => setBossPlace(null));
+  }, [player.currentTownId]);
+  const place = bossPlace ?? '街の外の奥';
 
   return (
     <main className="town-home">
@@ -67,19 +85,32 @@ export function TownScreen({
             </div>
           )}
           <div className="town-banner__text">
-            <p className="town-banner__sub">はじまりの街</p>
+            {town?.name && <p className="town-banner__sub">{town.name}</p>}
             <h1 className="town-banner__name">{town?.scene ?? ''}</h1>
           </div>
         </section>
 
-        {status && (
+        {arrival && (
+          <section className="window">
+            <h2 className="window__title">{town?.name ?? town?.scene ?? '新しい街'}に 着いた！</h2>
+            {arrival.unlocked.length > 0 ? (
+              <p className="levelup">
+                {arrival.unlocked.map((s) => SKILL_LABELS[s]).join('・')}が 使えるようになった！ 六角形の、あいていた頂点が伸びはじめます。
+              </p>
+            ) : (
+              <p>この街のモンスターは、前の街より少し手ごわい。</p>
+            )}
+          </section>
+        )}
+
+        {status && boss && (
           <section className="window">
             <p className="town-boss-hint">
               {bossDefeated
-                ? '門番を たおした！ 次の街への道が開けている。'
+                ? `${boss.name}を たおした！ ${place}の先に、次の街への道が開けている。`
                 : status.bossReady
-                  ? 'ささやきの森の奥「ことだまの門」の門番に、挑む準備ができた！'
-                  : `ささやきの森の奥「ことだまの門」に、門番がいるらしい…。いつでも挑めるが、あと ${Math.max(0, status.needed - status.correctOnce)} 問 正解してからがおすすめ。`}
+                  ? `${place}の${boss.name}に、挑む準備ができた！`
+                  : `${place}に、${boss.name}がいるらしい…。いつでも挑めるが、あと ${Math.max(0, status.needed - status.correctOnce)} 問 正解してからがおすすめ。`}
             </p>
           </section>
         )}

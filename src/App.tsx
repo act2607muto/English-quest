@@ -1,7 +1,8 @@
 import { useCallback, useEffect, useState, type ReactNode } from 'react';
 import { AuthProvider, useAuth } from './auth/AuthProvider';
 import { BottomNav, type NavTab } from './components/BottomNav';
-import { fetchIsAdmin, fetchTown } from './lib/content';
+import { fetchIsAdmin, fetchTown, fetchTownQuestionIndex } from './lib/content';
+import { moveToTown } from './lib/records';
 import { loadPlayer, type Player } from './lib/game/player';
 import { loadTownStatus, type TownStatus } from './lib/game/town';
 import type { Skill } from './lib/skills';
@@ -86,6 +87,8 @@ function Game() {
   const [isAdmin, setIsAdmin] = useState(false);
   /** マップの上の位置（戦闘から戻ったとき、同じ場所から歩く。街に入ると忘れる） */
   const [mapPos, setMapPos] = useState<MapPosition | null>(null);
+  /** 別の街に着いたばかりのとき（街の画面に「着いた！」と、解放された能力値を出す。街を離れると消す） */
+  const [arrival, setArrival] = useState<{ unlocked: Skill[] } | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   const reload = useCallback(async () => {
@@ -149,7 +152,27 @@ function Game() {
 
   const go = (r: Route) => {
     window.scrollTo(0, 0);
+    if (r.name !== 'town') setArrival(null);
     setRoute(r);
+  };
+  /**
+   * 別の街へ移る（ボスの門の先や、マップの端の道から）。その街に問題がある能力値のうち、
+   * まだ解放されていないもの（リーディングなど）を解放して、着いた街の画面を出す。
+   */
+  const travel = async (townId: string) => {
+    try {
+      const index = await fetchTownQuestionIndex(townId);
+      if (index.length === 0) throw new Error('その街の教材が、まだ取り込まれていません');
+      const unlocked = await moveToTown(townId, [...new Set(index.map((q) => q.skill))]);
+      setTownStatus(null);
+      const p = await reload();
+      setTown(await fetchTown(p.currentTownId));
+      setMapPos(null);
+      go({ name: 'town' });
+      setArrival({ unlocked });
+    } catch (err) {
+      setError(err instanceof Error ? err.message : String(err));
+    }
   };
   const toTown = () => {
     void reload().catch(() => {});
@@ -217,6 +240,7 @@ function Game() {
           onChoose={() => go({ name: 'field' })}
           onTown={toTown}
           onBoss={() => go({ name: 'boss' })}
+          onExit={(townId) => void travel(townId)}
         />
       );
     case 'field':
@@ -235,6 +259,7 @@ function Game() {
           player={player}
           status={townStatus}
           onFight={(boss, skills) => fight(boss, 'boss', 'boss', skills)}
+          onTravel={(townId) => void travel(townId)}
           onBack={() => go({ name: 'map' })}
         />
       );
@@ -317,6 +342,7 @@ function Game() {
         <TownScreen
           player={player}
           town={town}
+          arrival={arrival}
           onStatus={() => go({ name: 'status' })}
           status={townStatus}
           onSettings={() => go({ name: 'settings' })}

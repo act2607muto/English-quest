@@ -1,0 +1,3041 @@
+{
+  "format_version": 1,
+  "town": {
+    "id": "town02",
+    "name": "にぎわいの市",
+    "scene": "買い物",
+    "difficulty": "標準",
+    "order": 2
+  },
+  "questions": [
+    {
+      "id": "town02-voc-001",
+      "town": "town02",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「Can I try this on?」の try this on の意味は？",
+      "sentence": "Can I try this on?",
+      "choices": [
+        "試着する",
+        "交換する",
+        "返品する",
+        "包装する"
+      ],
+      "answer": 0,
+      "explanation": "try this on = 試着する",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-voc-002",
+      "town": "town02",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「Is this on sale?」の on sale の意味は？",
+      "sentence": "Is this on sale?",
+      "choices": [
+        "入荷待ちで",
+        "展示用で",
+        "売り切れで",
+        "セール中で（安くなって）"
+      ],
+      "answer": 3,
+      "explanation": "on sale = セール中で（安くなって）",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-voc-003",
+      "town": "town02",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「I'd like a refund, please.」の refund の意味は？",
+      "sentence": "I'd like a refund, please.",
+      "choices": [
+        "割引",
+        "交換",
+        "返金",
+        "領収書"
+      ],
+      "answer": 2,
+      "explanation": "refund = 返金",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-voc-004",
+      "town": "town02",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「Could I get a receipt?」の receipt の意味は？",
+      "sentence": "Could I get a receipt?",
+      "choices": [
+        "袋",
+        "おつり",
+        "レシート（領収書）",
+        "保証書"
+      ],
+      "answer": 2,
+      "explanation": "receipt = レシート（領収書）",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-voc-005",
+      "town": "town02",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「Here's your change.」の change の意味は？",
+      "sentence": "Here's your change.",
+      "choices": [
+        "変更",
+        "小銭入れ",
+        "おつり",
+        "商品"
+      ],
+      "answer": 2,
+      "explanation": "change = おつり",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-voc-006",
+      "town": "town02",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「This shirt is out of stock.」の out of stock の意味は？",
+      "sentence": "This shirt is out of stock.",
+      "choices": [
+        "在庫切れ",
+        "値下げ中",
+        "サイズ違い",
+        "流行遅れ"
+      ],
+      "answer": 0,
+      "explanation": "out of stock = 在庫切れ",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-voc-007",
+      "town": "town02",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「Can I pay by credit card?」の pay by の意味は？",
+      "sentence": "Can I pay by credit card?",
+      "choices": [
+        "〜で支払う",
+        "〜を落とす",
+        "〜を預ける",
+        "〜を申し込む"
+      ],
+      "answer": 0,
+      "explanation": "pay by = 〜で支払う",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-voc-008",
+      "town": "town02",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「It's too expensive for me.」の expensive の意味は？",
+      "sentence": "It's too expensive for me.",
+      "choices": [
+        "重い",
+        "地味な",
+        "派手な",
+        "値段が高い"
+      ],
+      "answer": 3,
+      "explanation": "expensive = 値段が高い",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-voc-009",
+      "town": "town02",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「That's a good deal.」の a good deal の意味は？",
+      "sentence": "That's a good deal.",
+      "choices": [
+        "大量の品",
+        "よい品質",
+        "よい取引先",
+        "お買い得"
+      ],
+      "answer": 3,
+      "explanation": "a good deal = お買い得",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-voc-010",
+      "town": "town02",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「Where is the fitting room?」の fitting room の意味は？",
+      "sentence": "Where is the fitting room?",
+      "choices": [
+        "試着室",
+        "倉庫",
+        "休憩室",
+        "待合室"
+      ],
+      "answer": 0,
+      "explanation": "fitting room = 試着室",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-voc-011",
+      "town": "town02",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「Could you gift-wrap it?」の gift-wrap の意味は？",
+      "sentence": "Could you gift-wrap it?",
+      "choices": [
+        "プレゼント用に包む",
+        "配達する",
+        "値引きする",
+        "取り置きする"
+      ],
+      "answer": 0,
+      "explanation": "gift-wrap = プレゼント用に包む",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-voc-012",
+      "town": "town02",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「Can you hold this for me until tomorrow?」の hold の意味は？",
+      "sentence": "Can you hold this for me until tomorrow?",
+      "choices": [
+        "値下げする",
+        "持ち上げる",
+        "修理する",
+        "取り置く"
+      ],
+      "answer": 3,
+      "explanation": "hold = 取り置く",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-voc-013",
+      "town": "town02",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「The total comes to 30 dollars.」の total の意味は？",
+      "sentence": "The total comes to 30 dollars.",
+      "choices": [
+        "おつり",
+        "割引",
+        "合計",
+        "税金"
+      ],
+      "answer": 2,
+      "explanation": "total = 合計",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-voc-014",
+      "town": "town02",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「Tax is included.」の included の意味は？",
+      "sentence": "Tax is included.",
+      "choices": [
+        "別の",
+        "含まれている",
+        "免除された",
+        "値上がりした"
+      ],
+      "answer": 1,
+      "explanation": "included = 含まれている",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-voc-015",
+      "town": "town02",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「I'm just browsing.」の browsing の意味は？",
+      "sentence": "I'm just browsing.",
+      "choices": [
+        "急いでいる",
+        "迷っている",
+        "（買わずに）見ている",
+        "待っている"
+      ],
+      "answer": 2,
+      "explanation": "browsing = （買わずに）見ている",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-voc-016",
+      "town": "town02",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「This item is non-refundable.」の non-refundable の意味は？",
+      "sentence": "This item is non-refundable.",
+      "choices": [
+        "割引できない",
+        "持ち帰れない",
+        "返金できない",
+        "試着できない"
+      ],
+      "answer": 2,
+      "explanation": "non-refundable = 返金できない",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-voc-017",
+      "town": "town02",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「It's buy one, get one free.」の意味は？",
+      "sentence": "It's buy one, get one free.",
+      "choices": [
+        "1つ買うと、もう1つ無料",
+        "2つ買うと半額",
+        "1つ目だけ無料",
+        "1人1つまで"
+      ],
+      "answer": 0,
+      "explanation": "It's buy one, get one free. = 1つ買うと、もう1つ無料",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-voc-018",
+      "town": "town02",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「These shoes are a bit tight.」の tight の意味は？",
+      "sentence": "These shoes are a bit tight.",
+      "choices": [
+        "すべりやすい",
+        "ゆるい",
+        "きつい",
+        "重い"
+      ],
+      "answer": 2,
+      "explanation": "tight = きつい",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-voc-019",
+      "town": "town02",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「The checkout is over there.」の checkout の意味は？",
+      "sentence": "The checkout is over there.",
+      "choices": [
+        "入口",
+        "レジ（会計所）",
+        "出口",
+        "案内所"
+      ],
+      "answer": 1,
+      "explanation": "checkout = レジ（会計所）",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-voc-020",
+      "town": "town02",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「I'll take it.」の意味は？",
+      "sentence": "I'll take it.",
+      "choices": [
+        "これにします（買います）",
+        "取っておいてください",
+        "少し考えます",
+        "持って帰ってもいいですか"
+      ],
+      "answer": 0,
+      "explanation": "I'll take it. = これにします（買います）",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-voc-021",
+      "town": "town02",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「Can I exchange this for a larger size?」の exchange の意味は？",
+      "sentence": "Can I exchange this for a larger size?",
+      "choices": [
+        "測る",
+        "交換する",
+        "返品する",
+        "注文する"
+      ],
+      "answer": 1,
+      "explanation": "exchange = 交換する",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-voc-022",
+      "town": "town02",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「We're closing in ten minutes.」の closing の意味は？",
+      "sentence": "We're closing in ten minutes.",
+      "choices": [
+        "閉店する",
+        "掃除する",
+        "休憩する",
+        "開店する"
+      ],
+      "answer": 0,
+      "explanation": "closing = 閉店する",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-voc-023",
+      "town": "town02",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「It's twenty percent off.」の off の意味は？",
+      "sentence": "It's twenty percent off.",
+      "choices": [
+        "〜税込み",
+        "〜引き（割引）",
+        "〜送料",
+        "〜増し"
+      ],
+      "answer": 1,
+      "explanation": "off = 〜引き（割引）",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-voc-024",
+      "town": "town02",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「Is there a warranty on this?」の warranty の意味は？",
+      "sentence": "Is there a warranty on this?",
+      "choices": [
+        "保証",
+        "在庫",
+        "説明書",
+        "送料"
+      ],
+      "answer": 0,
+      "explanation": "warranty = 保証",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-voc-025",
+      "town": "town02",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「I'm looking for a gift for my mother.」の looking for の意味は？",
+      "sentence": "I'm looking for a gift for my mother.",
+      "choices": [
+        "〜をながめている",
+        "〜を待っている",
+        "〜を探している",
+        "〜の世話をしている"
+      ],
+      "answer": 2,
+      "explanation": "looking for = 〜を探している",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-voc-026",
+      "town": "town02",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「Do you deliver?」の deliver の意味は？",
+      "sentence": "Do you deliver?",
+      "choices": [
+        "配達する",
+        "値引きする",
+        "包装する",
+        "修理する"
+      ],
+      "answer": 0,
+      "explanation": "deliver = 配達する",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-voc-027",
+      "town": "town02",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「This is the latest model.」の latest の意味は？",
+      "sentence": "This is the latest model.",
+      "choices": [
+        "最新の",
+        "中古の",
+        "最後の",
+        "いちばん安い"
+      ],
+      "answer": 0,
+      "explanation": "latest = 最新の",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-voc-028",
+      "town": "town02",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「Do you sell secondhand books?」の secondhand の意味は？",
+      "sentence": "Do you sell secondhand books?",
+      "choices": [
+        "外国の",
+        "中古の",
+        "子ども向けの",
+        "新刊の"
+      ],
+      "answer": 1,
+      "explanation": "secondhand = 中古の",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-voc-029",
+      "town": "town02",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「Sorry, we only accept cash.」の accept の意味は？",
+      "sentence": "Sorry, we only accept cash.",
+      "choices": [
+        "数える",
+        "両替する",
+        "受け付ける",
+        "返す"
+      ],
+      "answer": 2,
+      "explanation": "accept = 受け付ける",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-voc-030",
+      "town": "town02",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「Could you give me a discount?」の discount の意味は？",
+      "sentence": "Could you give me a discount?",
+      "choices": [
+        "保証",
+        "見本",
+        "値引き",
+        "説明"
+      ],
+      "answer": 2,
+      "explanation": "discount = 値引き",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-gra-001",
+      "town": "town02",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "This bag is ___ than that one.",
+      "choices": [
+        "cheap",
+        "cheapest",
+        "more cheap",
+        "cheaper"
+      ],
+      "answer": 3,
+      "explanation": "2つを比べるときは比較級。cheap → cheaper。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-gra-002",
+      "town": "town02",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "This is the ___ expensive watch in the store.",
+      "choices": [
+        "more",
+        "most",
+        "very",
+        "much"
+      ],
+      "answer": 1,
+      "explanation": "3つ以上の中で「いちばん〜」は、長い語なら the most + 形容詞。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-gra-003",
+      "town": "town02",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "I'd like ___ this shirt on.",
+      "choices": [
+        "trying",
+        "to try",
+        "try",
+        "tried"
+      ],
+      "answer": 1,
+      "explanation": "would like のあとは to + 動詞の原形。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-gra-004",
+      "town": "town02",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "___ much is this hat?",
+      "choices": [
+        "What",
+        "Where",
+        "How",
+        "Which"
+      ],
+      "answer": 2,
+      "explanation": "値段をたずねるときは How much。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-gra-005",
+      "town": "town02",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "How ___ apples do you need?",
+      "choices": [
+        "long",
+        "much",
+        "often",
+        "many"
+      ],
+      "answer": 3,
+      "explanation": "数えられるもの（apples）の数は How many。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-gra-006",
+      "town": "town02",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "These shoes are too small ___ me.",
+      "choices": [
+        "to",
+        "with",
+        "for",
+        "at"
+      ],
+      "answer": 2,
+      "explanation": "「〜には小さすぎる」は too small for 〜。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-gra-007",
+      "town": "town02",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "Do you have this shirt ___ blue?",
+      "choices": [
+        "on",
+        "by",
+        "in",
+        "at"
+      ],
+      "answer": 2,
+      "explanation": "色やサイズを言うときは in blue、in a medium のように in を使う。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-gra-008",
+      "town": "town02",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "I have ___ been to this shop before.",
+      "choices": [
+        "ago",
+        "ever",
+        "never",
+        "yet"
+      ],
+      "answer": 2,
+      "explanation": "「一度も〜したことがない」は have never + 過去分詞。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-gra-009",
+      "town": "town02",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "Have you found a nice jacket ___?",
+      "choices": [
+        "ago",
+        "yet",
+        "already",
+        "since"
+      ],
+      "answer": 1,
+      "explanation": "疑問文で「もう〜しましたか」は文の最後に yet。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-gra-010",
+      "town": "town02",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "These cups are ___ in Japan.",
+      "choices": [
+        "make",
+        "to make",
+        "making",
+        "made"
+      ],
+      "answer": 3,
+      "explanation": "「〜で作られている」は受け身（be動詞 + 過去分詞）で are made。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-gra-011",
+      "town": "town02",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "The staff member ___ helped me was very kind.",
+      "choices": [
+        "where",
+        "who",
+        "which",
+        "what"
+      ],
+      "answer": 1,
+      "explanation": "人を説明する関係代名詞は who。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-gra-012",
+      "town": "town02",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "___ I help you?",
+      "choices": [
+        "Have",
+        "Do",
+        "Am",
+        "May"
+      ],
+      "answer": 3,
+      "explanation": "店員の決まり文句 May I help you?（いらっしゃいませ・何かお探しですか）。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-gra-013",
+      "town": "town02",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "Could you show me ___ one?",
+      "choices": [
+        "other",
+        "another",
+        "others",
+        "the others"
+      ],
+      "answer": 1,
+      "explanation": "「別のもう1つ」は another one。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-gra-014",
+      "town": "town02",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "I'm thinking ___ buying a new phone.",
+      "choices": [
+        "at",
+        "to",
+        "for",
+        "about"
+      ],
+      "answer": 3,
+      "explanation": "think about -ing で「〜しようかと考えている」。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-gra-015",
+      "town": "town02",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "This one is ___ expensive as that one.",
+      "choices": [
+        "as",
+        "more",
+        "so",
+        "than"
+      ],
+      "answer": 0,
+      "explanation": "as 〜 as … で「…と同じくらい〜」。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-gra-016",
+      "town": "town02",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "Which is ___, the red one or the blue one?",
+      "choices": [
+        "more good",
+        "best",
+        "good",
+        "better"
+      ],
+      "answer": 3,
+      "explanation": "2つを比べて「どちらがよいか」は good の比較級 better。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-gra-017",
+      "town": "town02",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "The shop is ___ crowded to walk around.",
+      "choices": [
+        "very",
+        "so",
+        "too",
+        "enough"
+      ],
+      "answer": 2,
+      "explanation": "too 〜 to … で「〜すぎて…できない」。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-gra-018",
+      "town": "town02",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "Is this jacket big ___ for me?",
+      "choices": [
+        "too",
+        "so",
+        "much",
+        "enough"
+      ],
+      "answer": 3,
+      "explanation": "形容詞 + enough で「十分に〜」。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-gra-019",
+      "town": "town02",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "I enjoyed ___ at the market.",
+      "choices": [
+        "to shop",
+        "shopping",
+        "shop",
+        "shopped"
+      ],
+      "answer": 1,
+      "explanation": "enjoy のあとは -ing（〜すること）。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-gra-020",
+      "town": "town02",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "She ___ shopping every Saturday.",
+      "choices": [
+        "going",
+        "is go",
+        "go",
+        "goes"
+      ],
+      "answer": 3,
+      "explanation": "主語が she（3人称単数）で、いつもすることは goes。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-gra-021",
+      "town": "town02",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "We ___ out of milk, so I went to the store.",
+      "choices": [
+        "is",
+        "were",
+        "are",
+        "was"
+      ],
+      "answer": 1,
+      "explanation": "主語 we の過去形の be動詞は were。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-gra-022",
+      "town": "town02",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "I ___ this watch last week.",
+      "choices": [
+        "have bought",
+        "buyed",
+        "bought",
+        "buy"
+      ],
+      "answer": 2,
+      "explanation": "last week（過去の時）があるので過去形。buy の過去形は bought。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-gra-023",
+      "town": "town02",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "How long have you ___ in line?",
+      "choices": [
+        "waited been",
+        "been waiting",
+        "waiting",
+        "be waiting"
+      ],
+      "answer": 1,
+      "explanation": "「ずっと〜している」は have been -ing（現在完了進行形）。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-gra-024",
+      "town": "town02",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "The store will be closed ___ Sunday.",
+      "choices": [
+        "at",
+        "on",
+        "in",
+        "by"
+      ],
+      "answer": 1,
+      "explanation": "曜日の前は on。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-gra-025",
+      "town": "town02",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "Please pay ___ the counter.",
+      "choices": [
+        "to",
+        "on",
+        "in",
+        "at"
+      ],
+      "answer": 3,
+      "explanation": "場所の一点（カウンターで）は at。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-gra-026",
+      "town": "town02",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "This is the shirt ___ I bought yesterday.",
+      "choices": [
+        "who",
+        "where",
+        "that",
+        "what"
+      ],
+      "answer": 2,
+      "explanation": "物を説明する関係代名詞は that（which）。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-gra-027",
+      "town": "town02",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "Do you know what time the store ___?",
+      "choices": [
+        "does open",
+        "opening",
+        "opens",
+        "open"
+      ],
+      "answer": 2,
+      "explanation": "文の中の疑問（間接疑問）は「主語 + 動詞」の順。the store は3人称単数なので opens。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-gra-028",
+      "town": "town02",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "There ___ many people at the market yesterday.",
+      "choices": [
+        "is",
+        "be",
+        "were",
+        "was"
+      ],
+      "answer": 2,
+      "explanation": "people は複数。yesterday（過去）なので There were。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-gra-029",
+      "town": "town02",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "If I ___ more money, I would buy it.",
+      "choices": [
+        "have",
+        "has",
+        "had",
+        "will have"
+      ],
+      "answer": 2,
+      "explanation": "今の事実と違う「もし〜なら…だろうに」は、if + 過去形 + would。",
+      "difficulty": 3,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-gra-030",
+      "town": "town02",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "You don't have to pay ___ the bag.",
+      "choices": [
+        "by",
+        "with",
+        "to",
+        "for"
+      ],
+      "answer": 3,
+      "explanation": "pay for 〜 で「〜の代金を払う」。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-lis-001",
+      "town": "town02",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "Excuse me, do you have this in a medium?",
+      "choices": [
+        "これを中に入れてもいいですか",
+        "これは中くらいの値段ですか",
+        "これはまん中の棚にありますか",
+        "これのMサイズはありますか"
+      ],
+      "answer": 3,
+      "explanation": "Excuse me, do you have this in a medium? = これのMサイズはありますか",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-lis-002",
+      "town": "town02",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "I'm afraid we're sold out.",
+      "choices": [
+        "あいにく現金のみです",
+        "あいにく閉店です",
+        "あいにく準備中です",
+        "あいにく売り切れです"
+      ],
+      "answer": 3,
+      "explanation": "I'm afraid we're sold out. = あいにく売り切れです",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-lis-003",
+      "town": "town02",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "Would you like to pay by cash or card?",
+      "choices": [
+        "現金を両替しますか",
+        "現金とカード、どちらで払いますか",
+        "ポイントを使いますか",
+        "カードを作りますか"
+      ],
+      "answer": 1,
+      "explanation": "Would you like to pay by cash or card? = 現金とカード、どちらで払いますか",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-lis-004",
+      "town": "town02",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "The fitting rooms are next to the stairs.",
+      "choices": [
+        "レジは階段の前です",
+        "試着室は階段のとなりです",
+        "トイレは階段の下です",
+        "試着室は2階です"
+      ],
+      "answer": 1,
+      "explanation": "The fitting rooms are next to the stairs. = 試着室は階段のとなりです",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-lis-005",
+      "town": "town02",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "It was on sale, so I got two.",
+      "choices": [
+        "売り切れだったので2つ注文した",
+        "2つ目は無料だった",
+        "2つで1つの値段だった",
+        "セール中だったので2つ買った"
+      ],
+      "answer": 3,
+      "explanation": "It was on sale, so I got two. = セール中だったので2つ買った",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-lis-006",
+      "town": "town02",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "Can I get this delivered to my house?",
+      "choices": [
+        "これを家で使えますか",
+        "これを家族に送れますか",
+        "これを家に配達してもらえますか",
+        "家まで取りに来てもらえますか"
+      ],
+      "answer": 2,
+      "explanation": "Can I get this delivered to my house? = これを家に配達してもらえますか",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-lis-007",
+      "town": "town02",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "Sorry, this coupon expired last month.",
+      "choices": [
+        "このクーポンは先月もらいました",
+        "このクーポンは来月から使えます",
+        "このクーポンは先月で期限が切れています",
+        "このクーポンは1人1枚です"
+      ],
+      "answer": 2,
+      "explanation": "Sorry, this coupon expired last month. = このクーポンは先月で期限が切れています",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-lis-008",
+      "town": "town02",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "That comes to twelve fifty.",
+      "choices": [
+        "合計20ドル50セントです",
+        "合計12ドル15セントです",
+        "合計12ドル50セントです",
+        "合計1250ドルです"
+      ],
+      "answer": 2,
+      "explanation": "That comes to twelve fifty. = 合計12ドル50セントです",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-lis-009",
+      "town": "town02",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "Do you have anything cheaper?",
+      "choices": [
+        "もっと安いものはありますか",
+        "これより高いものはありますか",
+        "もっと大きいものはありますか",
+        "安いのはどれですか"
+      ],
+      "answer": 0,
+      "explanation": "Do you have anything cheaper? = もっと安いものはありますか",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-lis-010",
+      "town": "town02",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "I'd like to return this. It doesn't fit.",
+      "choices": [
+        "サイズが合わないので返品したい",
+        "サイズを測ってほしい",
+        "色が合わないので交換したい",
+        "こわれているので返品したい"
+      ],
+      "answer": 0,
+      "explanation": "I'd like to return this. It doesn't fit. = サイズが合わないので返品したい",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-lis-011",
+      "town": "town02",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "We open at ten and close at eight.",
+      "choices": [
+        "10時間営業している",
+        "10日から8日まで休む",
+        "10時に開いて8時に閉まる",
+        "8時に開いて10時に閉まる"
+      ],
+      "answer": 2,
+      "explanation": "We open at ten and close at eight. = 10時に開いて8時に閉まる",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-lis-012",
+      "town": "town02",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "Is it okay if I just look around?",
+      "choices": [
+        "見て回るだけでもいいですか",
+        "案内してもらえますか",
+        "あとで来てもいいですか",
+        "まわりを片付けてもいいですか"
+      ],
+      "answer": 0,
+      "explanation": "Is it okay if I just look around? = 見て回るだけでもいいですか",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-lis-013",
+      "town": "town02",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "The shoes are buy one, get one half price.",
+      "choices": [
+        "靴は2足で半額",
+        "靴は1足買うと、2足目が半額",
+        "靴は1足だけ半額",
+        "靴は半額で1足だけ買える"
+      ],
+      "answer": 1,
+      "explanation": "The shoes are buy one, get one half price. = 靴は1足買うと、2足目が半額",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-lis-014",
+      "town": "town02",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "Could you wrap it as a gift, please?",
+      "choices": [
+        "プレゼント用に包んでもらえますか",
+        "プレゼントを選んでもらえますか",
+        "プレゼントを送ってもらえますか",
+        "袋に入れなくて大丈夫です"
+      ],
+      "answer": 0,
+      "explanation": "Could you wrap it as a gift, please? = プレゼント用に包んでもらえますか",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-lis-015",
+      "town": "town02",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "Oh no, I left my wallet at home.",
+      "choices": [
+        "財布を家に忘れた",
+        "財布をなくした場所がわからない",
+        "財布を家で見つけた",
+        "家の鍵を忘れた"
+      ],
+      "answer": 0,
+      "explanation": "Oh no, I left my wallet at home. = 財布を家に忘れた",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-lis-016",
+      "town": "town02",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "The vegetables came fresh from the farm this morning.",
+      "choices": [
+        "農場は今朝から開いている",
+        "野菜は明日の朝に届く",
+        "野菜は今朝、全部売れた",
+        "野菜は今朝、農場からとれたてで届いた"
+      ],
+      "answer": 3,
+      "explanation": "The vegetables came fresh from the farm this morning. = 野菜は今朝、農場からとれたてで届いた",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-lis-017",
+      "town": "town02",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "You can get a free bag if you spend over thirty dollars.",
+      "choices": [
+        "30ドルで袋が買える",
+        "袋は30セント",
+        "30ドルより多く買うと、袋が無料",
+        "30ドル以下なら袋が無料"
+      ],
+      "answer": 2,
+      "explanation": "You can get a free bag if you spend over thirty dollars. = 30ドルより多く買うと、袋が無料",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-lis-018",
+      "town": "town02",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "Let me check if we have it in the back.",
+      "choices": [
+        "あとで取りに来てください",
+        "奥に置いておきます",
+        "奥の棚を見てください",
+        "奥に在庫があるか確認します"
+      ],
+      "answer": 3,
+      "explanation": "Let me check if we have it in the back. = 奥に在庫があるか確認します",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-lis-019",
+      "town": "town02",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "How about this one? It's lighter and easier to carry.",
+      "choices": [
+        "こちらのほうが安くて丈夫",
+        "こちらのほうが軽くて持ち運びやすい",
+        "こちらのほうが小さくて使いやすい",
+        "こちらのほうが明るくて目立つ"
+      ],
+      "answer": 1,
+      "explanation": "How about this one? It's lighter and easier to carry. = こちらのほうが軽くて持ち運びやすい",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-lis-020",
+      "town": "town02",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "I'm looking for a birthday present for my sister.",
+      "choices": [
+        "妹（姉）の誕生日プレゼントを探している",
+        "妹（姉）と誕生日プレゼントを買いに来た",
+        "妹（姉）の誕生日を忘れていた",
+        "妹（姉）から誕生日プレゼントをもらった"
+      ],
+      "answer": 0,
+      "explanation": "I'm looking for a birthday present for my sister. = 妹（姉）の誕生日プレゼントを探している",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-lis-021",
+      "town": "town02",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "Sorry, we don't take credit cards.",
+      "choices": [
+        "クレジットカードは作れません",
+        "クレジットカードは預かれません",
+        "カードを持っていません",
+        "クレジットカードは使えません"
+      ],
+      "answer": 3,
+      "explanation": "Sorry, we don't take credit cards. = クレジットカードは使えません",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-lis-022",
+      "town": "town02",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "Could I have a bigger bag? This one's full.",
+      "choices": [
+        "いっぱいなので、もっと大きい袋をもらえますか",
+        "袋を2枚に分けてください",
+        "この袋は大きすぎます",
+        "袋はいりません"
+      ],
+      "answer": 0,
+      "explanation": "Could I have a bigger bag? This one's full. = いっぱいなので、もっと大きい袋をもらえますか",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-lis-023",
+      "town": "town02",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "These apples are three for two dollars.",
+      "choices": [
+        "りんごは3個で2ドル",
+        "りんごは1個3ドル",
+        "りんごは2個で3ドル",
+        "りんごは1個2ドル"
+      ],
+      "answer": 0,
+      "explanation": "These apples are three for two dollars. = りんごは3個で2ドル",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-lis-024",
+      "town": "town02",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "The store is having a closing-down sale.",
+      "choices": [
+        "店はもうすぐ今日の営業を終える",
+        "店は年末セールの準備中",
+        "店は開店セールをしている",
+        "店は閉店セールをしている"
+      ],
+      "answer": 3,
+      "explanation": "The store is having a closing-down sale. = 店は閉店セールをしている",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-lis-025",
+      "town": "town02",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "I'll think about it and come back later.",
+      "choices": [
+        "考えて、あとでまた来ます",
+        "あとで届けてください",
+        "もう来ません",
+        "今すぐ決めます"
+      ],
+      "answer": 0,
+      "explanation": "I'll think about it and come back later. = 考えて、あとでまた来ます",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-lis-026",
+      "town": "town02",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "Do you need a receipt?",
+      "choices": [
+        "レシートは必要ですか",
+        "袋は必要ですか",
+        "おつりは必要ですか",
+        "作り方は必要ですか"
+      ],
+      "answer": 0,
+      "explanation": "Do you need a receipt? = レシートは必要ですか",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-lis-027",
+      "town": "town02",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "This sweater shrank after I washed it.",
+      "choices": [
+        "このセーターは洗えない",
+        "このセーターは洗ったら色が落ちた",
+        "このセーターは洗ったら縮んだ",
+        "このセーターは乾くのが遅い"
+      ],
+      "answer": 2,
+      "explanation": "This sweater shrank after I washed it. = このセーターは洗ったら縮んだ",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-lis-028",
+      "town": "town02",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "We'll give you a call when it comes in.",
+      "choices": [
+        "来店したら呼んでください",
+        "届いたら取りに来てください",
+        "電話で注文してください",
+        "入荷したら電話します"
+      ],
+      "answer": 3,
+      "explanation": "We'll give you a call when it comes in. = 入荷したら電話します",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-lis-029",
+      "town": "town02",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "Is this the line for the cashier?",
+      "choices": [
+        "会計はもう済みましたか",
+        "レジはどこですか",
+        "これはレジの列ですか",
+        "この線を越えてもいいですか"
+      ],
+      "answer": 2,
+      "explanation": "Is this the line for the cashier? = これはレジの列ですか",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-lis-030",
+      "town": "town02",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "It's a little out of my price range.",
+      "choices": [
+        "予算を少しこえている",
+        "値段が書いていない",
+        "少し安すぎる",
+        "値段の幅が広い"
+      ],
+      "answer": 0,
+      "explanation": "It's a little out of my price range. = 予算を少しこえている",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-rea-001",
+      "town": "town02",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "Tシャツのセールはいつまで？",
+      "sentence": "SUMMER SALE\nAll T-shirts 30% off\nUntil Sunday, July 20",
+      "choices": [
+        "7月20日から",
+        "7月20日（日）まで",
+        "日曜日から",
+        "7月30日まで"
+      ],
+      "answer": 1,
+      "explanation": "Until Sunday, July 20 = 7月20日（日）まで。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-rea-002",
+      "town": "town02",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "土曜日は何時に閉まる？",
+      "sentence": "Store Hours\nMon–Fri: 9 a.m. – 8 p.m.\nSat–Sun: 10 a.m. – 6 p.m.",
+      "choices": [
+        "午前9時",
+        "午後6時",
+        "午前10時",
+        "午後8時"
+      ],
+      "answer": 1,
+      "explanation": "Sat–Sun（土・日）は 10 a.m. – 6 p.m.。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-rea-003",
+      "town": "town02",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "卵について正しいのは？",
+      "sentence": "Sorry! We are out of eggs today.\nNew eggs will arrive tomorrow morning.",
+      "choices": [
+        "今日は売り切れで、明日の朝に入荷する",
+        "今日は半額で売っている",
+        "明日は売り切れになる",
+        "今日の朝に入荷した"
+      ],
+      "answer": 0,
+      "explanation": "out of eggs = 卵を切らしている。arrive tomorrow morning = 明日の朝に届く。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-rea-004",
+      "town": "town02",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "返品するのに必要なものは？",
+      "sentence": "Returns are accepted within 14 days.\nPlease bring your receipt.",
+      "choices": [
+        "身分証",
+        "箱と袋",
+        "クレジットカード",
+        "レシート"
+      ],
+      "answer": 3,
+      "explanation": "Please bring your receipt. = レシートを持ってきてください。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-rea-005",
+      "town": "town02",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "ジュースを3本手に入れるには、何本分の代金が要る？",
+      "sentence": "Buy 2 bottles of juice, get 1 free!",
+      "choices": [
+        "3本分",
+        "2本分",
+        "1本分",
+        "4本分"
+      ],
+      "answer": 1,
+      "explanation": "2本買うと、1本無料（get 1 free）。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-rea-006",
+      "town": "town02",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "ケンが聞きたいことは？",
+      "sentence": "Hi Mom, I'm at the supermarket.\nThey don't have whole milk. Is low-fat okay?\n— Ken",
+      "choices": [
+        "牛乳を何本買うか",
+        "卵も買うか",
+        "スーパーがどこにあるか",
+        "低脂肪の牛乳でもいいか"
+      ],
+      "answer": 3,
+      "explanation": "Is low-fat okay? = 低脂肪（の牛乳）でもいい？",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-rea-007",
+      "town": "town02",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "40ドルの注文の送料は？",
+      "sentence": "Free delivery on orders over $50.\nOrders under $50: $5 delivery fee.",
+      "choices": [
+        "無料",
+        "4ドル",
+        "5ドル",
+        "50ドル"
+      ],
+      "answer": 2,
+      "explanation": "50ドル未満（under $50）の注文は、送料 $5。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-rea-008",
+      "town": "town02",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "試着室に一度に持ちこめるのは？",
+      "sentence": "Fitting Room\nMaximum 3 items at a time",
+      "choices": [
+        "1点だけ",
+        "3点まで",
+        "3分まで",
+        "3人まで"
+      ],
+      "answer": 1,
+      "explanation": "Maximum 3 items = いちどに最大3点まで。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-rea-009",
+      "town": "town02",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "おつりはいくら？",
+      "sentence": "RECEIPT\nBread $3.00\nCheese $5.50\nTotal $8.50\nCash $10.00\nChange $1.50",
+      "choices": [
+        "8ドル50セント",
+        "1ドル50セント",
+        "5ドル50セント",
+        "10ドル"
+      ],
+      "answer": 1,
+      "explanation": "Change = おつり。$1.50。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-rea-010",
+      "town": "town02",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "パン屋がまた開くのは？",
+      "sentence": "The bakery on Main Street is closed for repairs until May 3.\nWe will open again on May 4.",
+      "choices": [
+        "5月3日",
+        "5月30日",
+        "今日",
+        "5月4日"
+      ],
+      "answer": 3,
+      "explanation": "We will open again on May 4. = 5月4日に再開します。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-rea-011",
+      "town": "town02",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "割引を受けられるのは？",
+      "sentence": "Customers with a member card get 10% off every Tuesday.",
+      "choices": [
+        "会員カードを作った日だけ",
+        "10個以上買った人",
+        "会員カードを持つ人が、火曜日に買うとき",
+        "火曜日に来た全員"
+      ],
+      "answer": 2,
+      "explanation": "Customers with a member card（会員カードを持つお客さん）が every Tuesday（毎週火曜日）に10%引き。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-rea-012",
+      "town": "town02",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "Aはどうした？",
+      "sentence": "A: Excuse me, how much are these sunglasses?\nB: They're $25, but they're 20% off today.\nA: Great, I'll take them.",
+      "choices": [
+        "明日また来ることにした",
+        "高いので買わなかった",
+        "サングラスを買うことにした",
+        "別の色をたのんだ"
+      ],
+      "answer": 2,
+      "explanation": "I'll take them. = それを買います。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-rea-013",
+      "town": "town02",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "本屋でしてはいけないことは？",
+      "sentence": "NOTICE\nPlease do not eat or drink in the bookstore.",
+      "choices": [
+        "大きな声で話すこと",
+        "飲んだり食べたりすること",
+        "本を読むこと",
+        "写真をとること"
+      ],
+      "answer": 1,
+      "explanation": "do not eat or drink = 飲食しないでください。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-rea-014",
+      "town": "town02",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "黒い傘をなくした人は、どこへ行けばいい？",
+      "sentence": "Lost and Found\nA black umbrella was found near the entrance.\nPlease ask at the service counter.",
+      "choices": [
+        "入口",
+        "サービスカウンター",
+        "レジ",
+        "駐車場"
+      ],
+      "answer": 1,
+      "explanation": "Please ask at the service counter. = サービスカウンターでたずねてください。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-rea-015",
+      "town": "town02",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "朝市が開かれるのは？",
+      "sentence": "Farmers' Market\nEvery Saturday 8 a.m. – noon\nCity Park",
+      "choices": [
+        "毎週日曜日の正午から",
+        "毎週土曜日の夜",
+        "毎日の午前中",
+        "毎週土曜日の午前中"
+      ],
+      "answer": 3,
+      "explanation": "Every Saturday 8 a.m. – noon = 毎週土曜日、朝8時から正午まで。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-rea-016",
+      "town": "town02",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "リサがすることは？",
+      "sentence": "Hi Lisa,\nThe blue dress you ordered has arrived.\nYou can pick it up anytime this week.\n— Rose Boutique",
+      "choices": [
+        "家にドレスが届くのを待つ",
+        "ドレスを返品する",
+        "ドレスを注文する",
+        "今週中に、店へドレスを受け取りに行く"
+      ],
+      "answer": 3,
+      "explanation": "pick it up = 受け取りに来る。anytime this week = 今週ならいつでも。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-rea-017",
+      "town": "town02",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "本を3冊買うといくら？",
+      "sentence": "Special offer: Any 3 books for $20.\nSingle books: $8 each.",
+      "choices": [
+        "8ドル",
+        "24ドル",
+        "60ドル",
+        "20ドル"
+      ],
+      "answer": 3,
+      "explanation": "Any 3 books for $20 = どれでも3冊で20ドル。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-rea-018",
+      "town": "town02",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "この商品について正しいのは？",
+      "sentence": "This product contains nuts.\nNot suitable for people with nut allergies.",
+      "choices": [
+        "ナッツは入っていない",
+        "ナッツが入っている",
+        "アレルギーの人のために作られた",
+        "ナッツの代わりに豆を使っている"
+      ],
+      "answer": 1,
+      "explanation": "contains nuts = ナッツを含む。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-rea-019",
+      "town": "town02",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "ギフトカードについて正しいのは？",
+      "sentence": "Gift cards are available in $10, $25, and $50 amounts.\nThey cannot be exchanged for cash.",
+      "choices": [
+        "現金で返金してもらえる",
+        "好きな金額で作れる",
+        "現金にはかえられない",
+        "100ドルのものもある"
+      ],
+      "answer": 2,
+      "explanation": "cannot be exchanged for cash = 現金とは交換できない。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-rea-020",
+      "town": "town02",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "黒のジャケットは？",
+      "sentence": "A: Do you have this jacket in black?\nB: Sorry, only in brown and gray right now.\n   Black will be back next week.",
+      "choices": [
+        "今日買える",
+        "来週また入荷する",
+        "茶色より安い",
+        "もう作られていない"
+      ],
+      "answer": 1,
+      "explanation": "Black will be back next week. = 黒は来週また入ってくる。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-rea-021",
+      "town": "town02",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "何か買って、3時間とめたら駐車料金は？",
+      "sentence": "Parking is free for 2 hours with any purchase.\nAfter that, $2 per hour.",
+      "choices": [
+        "無料",
+        "6ドル",
+        "2ドル",
+        "4ドル"
+      ],
+      "answer": 2,
+      "explanation": "2時間は無料。そのあと1時間ごとに$2なので、3時間なら$2。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-rea-022",
+      "town": "town02",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "トムが買うものは？",
+      "sentence": "Hi Tom,\nCan you buy some bread on your way home?\nWe have butter, so you don't need to get that.\n— Amy",
+      "choices": [
+        "パンだけ",
+        "バターだけ",
+        "パンとバター",
+        "何も買わなくていい"
+      ],
+      "answer": 0,
+      "explanation": "We have butter, so you don't need to get that. = バターはあるので買わなくていい。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-rea-023",
+      "town": "town02",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "コーヒーをお得に買うには？",
+      "sentence": "Our coffee prices will go up on April 1.\nBuy before the end of March and save!",
+      "choices": [
+        "3月の終わりまでに買う",
+        "4月中に買う",
+        "4月1日に買う",
+        "3月1日を待つ"
+      ],
+      "answer": 0,
+      "explanation": "Buy before the end of March and save! = 3月末までに買うとお得。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-rea-024",
+      "town": "town02",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "セール品について正しいのは？",
+      "sentence": "Sale items cannot be returned or exchanged.",
+      "choices": [
+        "返品も交換もできない",
+        "交換だけならできる",
+        "レシートがあれば返品できる",
+        "返品だけならできる"
+      ],
+      "answer": 0,
+      "explanation": "cannot be returned or exchanged = 返品も交換もできない。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-rea-025",
+      "town": "town02",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "無料のコーヒーをもらう条件は？",
+      "sentence": "Today only!\nShow this coupon at the checkout\nto get a free coffee with any sandwich.",
+      "choices": [
+        "いつでもクーポンを見せる",
+        "今日、コーヒーを2杯買う",
+        "サンドイッチを2つ買う",
+        "今日、サンドイッチを買ってクーポンを見せる"
+      ],
+      "answer": 3,
+      "explanation": "Today only（今日だけ）、with any sandwich（サンドイッチを買うと）クーポンでコーヒー無料。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-rea-026",
+      "town": "town02",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "靴売り場は今どこにある？",
+      "sentence": "The shoe section has moved\nfrom the 2nd floor to the 4th floor.",
+      "choices": [
+        "2階",
+        "1階",
+        "3階",
+        "4階"
+      ],
+      "answer": 3,
+      "explanation": "moved from the 2nd floor to the 4th floor = 2階から4階へ移った。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-rea-027",
+      "town": "town02",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "現金で払うと、テレビはいくら？",
+      "sentence": "A: This TV is $400. Can you do any better?\nB: I can give you $50 off if you pay in cash.",
+      "choices": [
+        "50ドル",
+        "350ドル",
+        "450ドル",
+        "400ドル"
+      ],
+      "answer": 1,
+      "explanation": "$400 から $50 引き（$50 off）で $350。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-rea-028",
+      "town": "town02",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "この店がさがしているのは？",
+      "sentence": "We're hiring!\nPart-time cashiers wanted. Weekends only.\nAsk a staff member for details.",
+      "choices": [
+        "平日に働く店長",
+        "週末に働くレジ係",
+        "毎日働く配達係",
+        "週末に来るお客さん"
+      ],
+      "answer": 1,
+      "explanation": "cashiers wanted = レジ係を募集。Weekends only = 週末だけ。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-rea-029",
+      "town": "town02",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "注文した品について正しいのは？",
+      "sentence": "Your order #2381 has been shipped.\nIt will arrive in 3–5 business days.",
+      "choices": [
+        "もう発送された",
+        "キャンセルされた",
+        "まだ準備中",
+        "今日届いた"
+      ],
+      "answer": 0,
+      "explanation": "has been shipped = 発送された。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-rea-030",
+      "town": "town02",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "レシートを取っておく理由は？",
+      "sentence": "Please keep your receipt.\nYou will need it for the free gift drawing on Sunday.",
+      "choices": [
+        "ポイントをためるため",
+        "日曜日の景品の抽選に使うから",
+        "日曜日に返品するため",
+        "日曜日に値引きされるため"
+      ],
+      "answer": 1,
+      "explanation": "free gift drawing = 景品の抽選。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-wri-001",
+      "town": "town02",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "このシャツの、もっと大きいサイズはありますか。",
+      "model_answers": [
+        "Do you have this shirt in a larger size?",
+        "Do you have a bigger size of this shirt?",
+        "Do you have this shirt in a bigger size?"
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-wri-002",
+      "town": "town02",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "これを試着してもいいですか。",
+      "model_answers": [
+        "Can I try this on?",
+        "May I try this on?",
+        "Could I try this on?"
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-wri-003",
+      "town": "town02",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "全部でいくらですか。",
+      "model_answers": [
+        "How much is it altogether?",
+        "How much is it in total?",
+        "How much is everything?"
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-wri-004",
+      "town": "town02",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "カードで払えますか。",
+      "model_answers": [
+        "Can I pay by card?",
+        "Can I pay with a card?",
+        "Do you take cards?",
+        "Do you accept credit cards?"
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-wri-005",
+      "town": "town02",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "見ているだけです、ありがとう。",
+      "model_answers": [
+        "I'm just looking, thanks.",
+        "I'm just browsing, thank you."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-wri-006",
+      "town": "town02",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "これをプレゼント用に包んでもらえますか。",
+      "model_answers": [
+        "Could you gift-wrap this?",
+        "Could you wrap this as a gift?",
+        "Can you wrap this as a present?"
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-wri-007",
+      "town": "town02",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "このかばんを返品したいのですが。",
+      "model_answers": [
+        "I'd like to return this bag.",
+        "I would like to return this bag."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-wri-008",
+      "town": "town02",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "もう少し安いものはありますか。",
+      "model_answers": [
+        "Do you have anything a little cheaper?",
+        "Do you have something a bit cheaper?"
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-wri-009",
+      "town": "town02",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "これは私には少し高すぎます。",
+      "model_answers": [
+        "This is a little too expensive for me.",
+        "It's a bit too expensive for me."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-wri-010",
+      "town": "town02",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "レシートをもらえますか。",
+      "model_answers": [
+        "Could I have a receipt?",
+        "Can I get a receipt, please?",
+        "May I have a receipt?"
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-wri-011",
+      "town": "town02",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "この靴は少しきついです。",
+      "model_answers": [
+        "These shoes are a little tight.",
+        "These shoes are a bit tight."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-wri-012",
+      "town": "town02",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "これの別の色はありますか。",
+      "model_answers": [
+        "Do you have this in another color?",
+        "Do you have this in a different color?"
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-wri-013",
+      "town": "town02",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "母への誕生日プレゼントを探しています。",
+      "model_answers": [
+        "I'm looking for a birthday present for my mother.",
+        "I'm looking for a birthday gift for my mom."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-wri-014",
+      "town": "town02",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "このお店は何時に閉まりますか。",
+      "model_answers": [
+        "What time does this store close?",
+        "What time do you close?"
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-wri-015",
+      "town": "town02",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "これにします。",
+      "model_answers": [
+        "I'll take this one.",
+        "I'll take it.",
+        "I'll take this."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-wri-016",
+      "town": "town02",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "袋はいりません。",
+      "model_answers": [
+        "I don't need a bag.",
+        "No bag, thank you.",
+        "I don't need a bag, thanks."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-wri-017",
+      "town": "town02",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "これはセール中ですか。",
+      "model_answers": [
+        "Is this on sale?",
+        "Is this item on sale?"
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-wri-018",
+      "town": "town02",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "明日まで取っておいてもらえますか。",
+      "model_answers": [
+        "Could you hold this until tomorrow?",
+        "Can you keep this for me until tomorrow?"
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-wri-019",
+      "town": "town02",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "このりんごは1個いくらですか。",
+      "model_answers": [
+        "How much is one apple?",
+        "How much are these apples each?",
+        "How much is each apple?"
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-wri-020",
+      "town": "town02",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "Mサイズに交換できますか。",
+      "model_answers": [
+        "Can I exchange this for a medium?",
+        "Could I exchange it for a medium size?"
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-wri-021",
+      "town": "town02",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "これは日本で作られたものですか。",
+      "model_answers": [
+        "Was this made in Japan?",
+        "Is this made in Japan?"
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-wri-022",
+      "town": "town02",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "昨日ここでこのシャツを買いました。",
+      "model_answers": [
+        "I bought this shirt here yesterday."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-wri-023",
+      "town": "town02",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "もう少し考えてみます。",
+      "model_answers": [
+        "I'll think about it a little more.",
+        "Let me think about it a bit more."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-wri-024",
+      "town": "town02",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "家まで配達してもらえますか。",
+      "model_answers": [
+        "Can you deliver it to my house?",
+        "Could you deliver this to my home?"
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-wri-025",
+      "town": "town02",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "店員さんはとても親切でした。",
+      "model_answers": [
+        "The staff member was very kind.",
+        "The salesclerk was very kind.",
+        "The staff were very friendly."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-wri-026",
+      "town": "town02",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "牛乳がなくなったので、買いに行かなければなりません。",
+      "model_answers": [
+        "We're out of milk, so I have to go buy some.",
+        "I ran out of milk, so I need to go and buy some."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-wri-027",
+      "town": "town02",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "このクーポンは使えますか。",
+      "model_answers": [
+        "Can I use this coupon?",
+        "Is this coupon valid?"
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-wri-028",
+      "town": "town02",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "これは、私が今まで買った中でいちばん高い時計です。",
+      "model_answers": [
+        "This is the most expensive watch I've ever bought.",
+        "It is the most expensive watch I have ever bought."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-wri-029",
+      "town": "town02",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "もしもっと安ければ、2つ買うのに。",
+      "model_answers": [
+        "If it were cheaper, I would buy two.",
+        "If it was cheaper, I'd buy two."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-wri-030",
+      "town": "town02",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "赤と青、どちらがいいと思いますか。",
+      "model_answers": [
+        "Which do you think is better, the red one or the blue one?",
+        "Which one do you think is better, red or blue?"
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-spe-001",
+      "town": "town02",
+      "skill": "speaking",
+      "format": "translate",
+      "prompt": "英語で言おう",
+      "sentence": "このジャケットはいくらですか。",
+      "model_answers": [
+        "How much is this jacket?"
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-spe-002",
+      "town": "town02",
+      "skill": "speaking",
+      "format": "translate",
+      "prompt": "英語で言おう",
+      "sentence": "試着室はどこですか。",
+      "model_answers": [
+        "Where is the fitting room?",
+        "Where are the fitting rooms?"
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-spe-003",
+      "town": "town02",
+      "skill": "speaking",
+      "format": "translate",
+      "prompt": "英語で言おう",
+      "sentence": "もっと小さいサイズはありますか。",
+      "model_answers": [
+        "Do you have a smaller size?",
+        "Do you have this in a smaller size?"
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-spe-004",
+      "town": "town02",
+      "skill": "speaking",
+      "format": "translate",
+      "prompt": "英語で言おう",
+      "sentence": "これを2つください。",
+      "model_answers": [
+        "I'll take two of these.",
+        "Two of these, please.",
+        "Can I have two of these?"
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-spe-005",
+      "town": "town02",
+      "skill": "speaking",
+      "format": "translate",
+      "prompt": "英語で言おう",
+      "sentence": "現金で払います。",
+      "model_answers": [
+        "I'll pay in cash.",
+        "I'll pay by cash.",
+        "Cash, please."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-spe-006",
+      "town": "town02",
+      "skill": "speaking",
+      "format": "translate",
+      "prompt": "英語で言おう",
+      "sentence": "少し値引きしてもらえますか。",
+      "model_answers": [
+        "Could you give me a small discount?",
+        "Can you give me a little discount?",
+        "Could you lower the price a little?"
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-spe-007",
+      "town": "town02",
+      "skill": "speaking",
+      "format": "translate",
+      "prompt": "英語で言おう",
+      "sentence": "おつりがまちがっていると思います。",
+      "model_answers": [
+        "I think the change is wrong.",
+        "I think you gave me the wrong change."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-spe-008",
+      "town": "town02",
+      "skill": "speaking",
+      "format": "translate",
+      "prompt": "英語で言おう",
+      "sentence": "これの黒はありますか。",
+      "model_answers": [
+        "Do you have this in black?",
+        "Do you have a black one?"
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-spe-009",
+      "town": "town02",
+      "skill": "speaking",
+      "format": "translate",
+      "prompt": "英語で言おう",
+      "sentence": "レジはどこですか。",
+      "model_answers": [
+        "Where is the checkout?",
+        "Where is the cashier?",
+        "Where can I pay?"
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-spe-010",
+      "town": "town02",
+      "skill": "speaking",
+      "format": "translate",
+      "prompt": "英語で言おう",
+      "sentence": "これを返品したいです。",
+      "model_answers": [
+        "I'd like to return this.",
+        "I want to return this."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-spe-011",
+      "town": "town02",
+      "skill": "speaking",
+      "format": "translate",
+      "prompt": "英語で言おう",
+      "sentence": "もう少し見てまわります。",
+      "model_answers": [
+        "I'll look around a bit more.",
+        "I'm going to look around a little more."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-spe-012",
+      "town": "town02",
+      "skill": "speaking",
+      "format": "translate",
+      "prompt": "英語で言おう",
+      "sentence": "これはいつ入荷しますか。",
+      "model_answers": [
+        "When will this come in?",
+        "When will you have this in stock?",
+        "When will this be back in stock?"
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-spe-013",
+      "town": "town02",
+      "skill": "speaking",
+      "format": "translate",
+      "prompt": "英語で言おう",
+      "sentence": "袋を1枚もらえますか。",
+      "model_answers": [
+        "Can I have a bag?",
+        "Could I get a bag, please?"
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-spe-014",
+      "town": "town02",
+      "skill": "speaking",
+      "format": "translate",
+      "prompt": "英語で言おう",
+      "sentence": "これは私の妹にぴったりです。",
+      "model_answers": [
+        "This is perfect for my sister.",
+        "This is just right for my sister."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-spe-015",
+      "town": "town02",
+      "skill": "speaking",
+      "format": "translate",
+      "prompt": "英語で言おう",
+      "sentence": "このパンは今朝焼いたものですか。",
+      "model_answers": [
+        "Was this bread baked this morning?",
+        "Is this bread from this morning?"
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-spe-016",
+      "town": "town02",
+      "skill": "speaking",
+      "format": "respond",
+      "prompt": "質問に英語で答えよう",
+      "sentence": "What do you usually buy at the supermarket?",
+      "sentence_ja": "スーパーで、ふだん何を買いますか？",
+      "model_answers": [
+        "I usually buy vegetables, milk, and bread.",
+        "I often buy fruit and snacks."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-spe-017",
+      "town": "town02",
+      "skill": "speaking",
+      "format": "respond",
+      "prompt": "質問に英語で答えよう",
+      "sentence": "Do you prefer shopping online or in stores? Why?",
+      "sentence_ja": "ネットと店、どちらで買い物するのが好きですか？それはなぜ？",
+      "model_answers": [
+        "I prefer shopping online because it's easy.",
+        "I like shopping in stores because I can see the items."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-spe-018",
+      "town": "town02",
+      "skill": "speaking",
+      "format": "respond",
+      "prompt": "質問に英語で答えよう",
+      "sentence": "What's the last thing you bought?",
+      "sentence_ja": "最後に買ったものは何ですか？",
+      "model_answers": [
+        "The last thing I bought was a new pair of shoes.",
+        "I bought a book yesterday."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-spe-019",
+      "town": "town02",
+      "skill": "speaking",
+      "format": "respond",
+      "prompt": "質問に英語で答えよう",
+      "sentence": "How often do you go shopping?",
+      "sentence_ja": "どのくらいの頻度で買い物に行きますか？",
+      "model_answers": [
+        "I go shopping about twice a week.",
+        "I go shopping every weekend."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-spe-020",
+      "town": "town02",
+      "skill": "speaking",
+      "format": "respond",
+      "prompt": "質問に英語で答えよう",
+      "sentence": "Can I help you find something?",
+      "sentence_ja": "何かお探しですか？",
+      "model_answers": [
+        "Yes, I'm looking for a winter jacket.",
+        "I'm just looking, thank you."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-spe-021",
+      "town": "town02",
+      "skill": "speaking",
+      "format": "respond",
+      "prompt": "質問に英語で答えよう",
+      "sentence": "What size do you wear?",
+      "sentence_ja": "サイズはいくつですか？",
+      "model_answers": [
+        "I wear a medium.",
+        "I usually wear a large."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-spe-022",
+      "town": "town02",
+      "skill": "speaking",
+      "format": "respond",
+      "prompt": "質問に英語で答えよう",
+      "sentence": "Would you like to pay by cash or card?",
+      "sentence_ja": "現金とカード、どちらでお支払いですか？",
+      "model_answers": [
+        "By card, please.",
+        "I'll pay in cash."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-spe-023",
+      "town": "town02",
+      "skill": "speaking",
+      "format": "respond",
+      "prompt": "質問に英語で答えよう",
+      "sentence": "Is this a gift?",
+      "sentence_ja": "プレゼント用ですか？",
+      "model_answers": [
+        "Yes, it's a gift for my friend.",
+        "No, it's for me."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-spe-024",
+      "town": "town02",
+      "skill": "speaking",
+      "format": "respond",
+      "prompt": "質問に英語で答えよう",
+      "sentence": "What's the best present you've ever received?",
+      "sentence_ja": "今までにもらった中で、いちばんうれしかったプレゼントは何ですか？",
+      "model_answers": [
+        "The best present was a watch from my parents.",
+        "My best present was a bike."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-spe-025",
+      "town": "town02",
+      "skill": "speaking",
+      "format": "respond",
+      "prompt": "質問に英語で答えよう",
+      "sentence": "Where is your favorite place to shop?",
+      "sentence_ja": "買い物でいちばん好きな場所はどこですか？",
+      "model_answers": [
+        "My favorite place is a shopping mall near my house.",
+        "I like the farmers' market in my town."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-spe-026",
+      "town": "town02",
+      "skill": "speaking",
+      "format": "respond",
+      "prompt": "質問に英語で答えよう",
+      "sentence": "Do you need a bag?",
+      "sentence_ja": "袋はご入用ですか？",
+      "model_answers": [
+        "No, thank you. I have my own bag.",
+        "Yes, please."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-spe-027",
+      "town": "town02",
+      "skill": "speaking",
+      "format": "respond",
+      "prompt": "質問に英語で答えよう",
+      "sentence": "What would you buy if you had a lot of money?",
+      "sentence_ja": "お金がたくさんあったら、何を買いますか？",
+      "model_answers": [
+        "I would buy a big house.",
+        "If I had a lot of money, I'd buy a new car."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-spe-028",
+      "town": "town02",
+      "skill": "speaking",
+      "format": "respond",
+      "prompt": "質問に英語で答えよう",
+      "sentence": "Do you like going to sales? Why or why not?",
+      "sentence_ja": "セールに行くのは好きですか？それはなぜ？",
+      "model_answers": [
+        "Yes, because I can buy things cheaply.",
+        "Not really, because they're too crowded."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-spe-029",
+      "town": "town02",
+      "skill": "speaking",
+      "format": "respond",
+      "prompt": "質問に英語で答えよう",
+      "sentence": "How do you usually decide what to buy?",
+      "sentence_ja": "ふだん、何を買うかをどうやって決めますか？",
+      "model_answers": [
+        "I usually read reviews online before I buy something.",
+        "I compare prices at a few stores."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town02-spe-030",
+      "town": "town02",
+      "skill": "speaking",
+      "format": "respond",
+      "prompt": "質問に英語で答えよう",
+      "sentence": "We have this in blue and green. Which would you like?",
+      "sentence_ja": "青と緑があります。どちらにしますか？",
+      "model_answers": [
+        "I'd like the blue one, please.",
+        "The green one, please."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    }
+  ]
+}

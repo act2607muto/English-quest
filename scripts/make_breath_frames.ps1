@@ -30,6 +30,21 @@ $frames = @(
   @{ File = 'monsters/town01-rare-exp.png';  SplitRow = 54 }  # ひらめきボタル（飛んでいるので全体を下げる）
   @{ File = 'monsters/town01-rare-gold.png'; SplitRow = 47 }  # こばんガエル（足元の小判は動かさない）
   @{ File = 'monsters/town01-boss.png';      SplitRow = 80 }  # ことだまの門番（96×96。狼なので足先より上）
+  @{ File = 'monsters/town02-mon-voc.png';   SplitRow = 49 }  # ねふだネズミ
+  @{ File = 'monsters/town02-mon-gra.png';   SplitRow = 45 }  # てんびんガニ
+  @{ File = 'monsters/town02-mon-lis.png';   SplitRow = 52 }  # よびこみオウム
+  @{ File = 'monsters/town02-mon-rea.png';   SplitRow = 48 }  # レシートヘビ
+  @{ File = 'monsters/town02-mon-wri.png';   SplitRow = 51 }  # ちょうめんフクロウ
+  @{ File = 'monsters/town02-mon-spe.png';   SplitRow = 52 }  # ねぎりダヌキ
+  @{ File = 'monsters/town02-mon-voc-revival.png'; SplitRow = 49 }  # ねふだネズミ（復活・色違い）
+  @{ File = 'monsters/town02-mon-gra-revival.png'; SplitRow = 45 }  # てんびんガニ（復活・色違い）
+  @{ File = 'monsters/town02-mon-lis-revival.png'; SplitRow = 52 }  # よびこみオウム（復活・色違い）
+  @{ File = 'monsters/town02-mon-rea-revival.png'; SplitRow = 48 }  # レシートヘビ（復活・色違い）
+  @{ File = 'monsters/town02-mon-wri-revival.png'; SplitRow = 51 }  # ちょうめんフクロウ（復活・色違い）
+  @{ File = 'monsters/town02-mon-spe-revival.png'; SplitRow = 52 }  # ねぎりダヌキ（復活・色違い）
+  @{ File = 'monsters/town02-rare-exp.png';  SplitRow = 50 }  # ほしくずリス
+  @{ File = 'monsters/town02-rare-gold.png'; SplitRow = 46 }  # ちょきんブタ
+  @{ File = 'monsters/town02-boss.png';      SplitRow = 82 }  # せきもりの大ガメ（96×96）
 )
 
 foreach ($f in $frames) {

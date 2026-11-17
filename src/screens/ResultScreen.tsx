@@ -67,7 +67,7 @@ export function ResultScreen({
         )}
         {firstBossWin && (
           <p className="levelup">
-            {result.monster.name}を はじめて たおした！ 次の街への道が開けた。（次の街は準備中です）
+            {result.monster.name}を はじめて たおした！ 次の街への道が開けた。ボスのいた場所から、門の先へ進めます。
           </p>
         )}
         {levelUps.map(([s, b, a]) => (

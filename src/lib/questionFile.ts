@@ -12,6 +12,8 @@ export const NAME_PLACEHOLDERS = ['name_ja', 'given_ja', 'name_en', 'given_en'] 
 
 export type TownRow = {
   id: string;
+  /** 街の名前（例：はじまりの街）。ファイルに書いてあるときだけ入る */
+  name?: string | null;
   scene: string;
   difficulty: number;
   sort_order: number;
@@ -324,11 +326,15 @@ function parseTown(raw: unknown, errors: string[]): TownRow | null {
   if (!difficulty || difficulty < 1 || difficulty > 3) {
     errors.push(`town.difficulty は「基本」「標準」「目標」か 1〜3 にしてください（${JSON.stringify(raw.difficulty)}）`);
   }
+  if (raw.name !== undefined && raw.name !== null && typeof raw.name !== 'string') {
+    errors.push('town.name（街の名前）は文字にしてください');
+  }
   if (raw.background_image !== undefined && raw.background_image !== null && typeof raw.background_image !== 'string') {
     errors.push('town.background_image（背景の絵）は文字にしてください');
   }
   if (errors.length > before) return null;
   const row: TownRow = { id: id as string, scene: (scene as string).trim(), difficulty: difficulty!, sort_order: order as number };
+  if (raw.name !== undefined) row.name = ((raw.name as string | null) ?? '').trim() || null;
   if (raw.background_image !== undefined) row.background_image = (raw.background_image as string | null) || null;
   return row;
 }

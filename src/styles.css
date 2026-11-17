@@ -505,6 +505,19 @@ code {
   overflow-wrap: anywhere;
 }
 
+/* リーディングの文章（メモ・お知らせなど）。左ぞろえで、改行をそのまま出す */
+.battle__passage {
+  font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+  font-size: 17px;
+  line-height: 1.5;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+  margin: 8px 0 0;
+  padding: 8px 10px;
+  background: rgba(255, 255, 255, 0.06);
+  border-left: 3px solid var(--accent);
+}
+
 .command--listen {
   text-align: center;
   border-color: var(--accent);
@@ -1176,6 +1189,25 @@ code {
   50% {
     background: transparent;
   }
+}
+
+/* 別の街への道を踏んだとき：行くかどうかをたずねる */
+.map-ask {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  padding: 8px;
+  line-height: normal;
+}
+
+.map-exit {
+  margin: 0;
+  width: 100%;
+}
+
+.map-exit p {
+  margin: 0 0 8px;
 }
 
 /* 十字のボタン：マップの右下（設定で左下）に、うすく重ねる */

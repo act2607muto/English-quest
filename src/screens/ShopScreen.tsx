@@ -169,7 +169,7 @@ export function ShopScreen({
       {items && items.length === 0 && (
         <section className="window">
           <p className="message message--error">
-            まだ品物がありません。「設定」→「教材の取り込み」で town01_equipment.json を取り込んでください。
+            まだ品物がありません。「設定」→「教材の取り込み」で {player.currentTownId}_equipment.json を取り込んでください。
           </p>
         </section>
       )}

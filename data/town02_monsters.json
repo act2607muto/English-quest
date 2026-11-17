@@ -1,0 +1,106 @@
+{
+  "format_version": 1,
+  "town": {
+    "id": "town02",
+    "name": "にぎわいの市",
+    "scene": "買い物",
+    "difficulty": "標準",
+    "order": 2,
+    "background_image": "/towns/town02.png"
+  },
+  "monsters": [
+    {
+      "id": "town02-mon-voc",
+      "name": "ねふだネズミ",
+      "skill": "vocabulary",
+      "hp": 60,
+      "gold": 15,
+      "is_boss": false,
+      "image": "/monsters/town02-mon-voc.png",
+      "description": "体じゅうに値札をつけたネズミ。知らない単語の値札をつけかえて、買い物客をこまらせる。"
+    },
+    {
+      "id": "town02-mon-gra",
+      "name": "てんびんガニ",
+      "skill": "grammar",
+      "hp": 90,
+      "gold": 22,
+      "is_boss": false,
+      "image": "/monsters/town02-mon-gra.png",
+      "description": "はさみが天びんになったカニ。ことばの並びがつりあわないと、ぶくぶく泡をふいて怒る。"
+    },
+    {
+      "id": "town02-mon-lis",
+      "name": "よびこみオウム",
+      "skill": "listening",
+      "hp": 75,
+      "gold": 18,
+      "is_boss": false,
+      "image": "/monsters/town02-mon-lis.png",
+      "description": "市場の呼びこみの声をまねるオウム。早口で値段をさけぶので、よく聞かないとだまされる。"
+    },
+    {
+      "id": "town02-mon-rea",
+      "name": "レシートヘビ",
+      "skill": "reading",
+      "hp": 70,
+      "gold": 18,
+      "is_boss": false,
+      "image": "/monsters/town02-mon-rea.png",
+      "description": "長いレシートが丸まって生まれたヘビ。体に書かれた細かい字を読めた人には、道をゆずる。"
+    },
+    {
+      "id": "town02-mon-wri",
+      "name": "ちょうめんフクロウ",
+      "skill": "writing",
+      "hp": 60,
+      "gold": 22,
+      "is_boss": false,
+      "image": "/monsters/town02-mon-wri.png",
+      "description": "帳面をかかえた物知りのフクロウ。まちがった書き方を見つけると、羽ペンでつついてくる。"
+    },
+    {
+      "id": "town02-mon-spe",
+      "name": "ねぎりダヌキ",
+      "skill": "speaking",
+      "hp": 55,
+      "gold": 18,
+      "is_boss": false,
+      "image": "/monsters/town02-mon-spe.png",
+      "description": "値切るのが大好きなタヌキ。はっきり話しかけないと、勝手に値段を下げてしまう。"
+    },
+    {
+      "id": "town02-rare-exp",
+      "name": "ほしくずリス",
+      "skill": null,
+      "hp": 45,
+      "gold": 15,
+      "exp_reward": 400,
+      "encounter_rate": 0.01,
+      "is_boss": false,
+      "image": "/monsters/town02-rare-exp.png",
+      "description": "しっぽに星くずをためこんだリス。めったに見つからないが、出会えたら大きく成長できる。"
+    },
+    {
+      "id": "town02-rare-gold",
+      "name": "ちょきんブタ",
+      "skill": null,
+      "hp": 60,
+      "gold": 120,
+      "encounter_rate": 0.04,
+      "is_boss": false,
+      "image": "/monsters/town02-rare-gold.png",
+      "description": "市場で落ちた小銭を拾い集める、陶器のブタ。倒すと、おなかの小銭がじゃらじゃら出てくる。"
+    },
+    {
+      "id": "town02-boss",
+      "name": "せきもりの大ガメ",
+      "skill": null,
+      "hp": 180,
+      "gold": 200,
+      "is_boss": true,
+      "image": "/monsters/town02-boss.png",
+      "description": "東の関所を守る大きなカメ。背中の甲らはそろばんになっていて、通る人の買い物を一つ残らず数えている。"
+    }
+  ]
+}

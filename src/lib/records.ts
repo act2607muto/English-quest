@@ -255,6 +255,24 @@ export async function markBossDefeated(bossId: string): Promise<void> {
   if (error) throw error;
 }
 
+/**
+ * 別の街へ移る。その街で出る能力値のうち、まだ解放されていないもの（2つ目の街のリーディングなど）を解放する。
+ * 解放した能力値を返す（街に着いたときに知らせるため）。
+ */
+export async function moveToTown(townId: string, townSkills: Skill[]): Promise<Skill[]> {
+  const client = requireSupabase();
+  const userId = await currentUserId();
+  const { error } = await client.from('adventure_state').update({ current_town_id: townId }).eq('user_id', userId);
+  if (error) throw error;
+  const stats = await fetchSkillStats();
+  const toUnlock = stats.filter((s) => !s.unlocked && townSkills.includes(s.skill)).map((s) => s.skill);
+  if (toUnlock.length > 0) {
+    const update = await client.from('skill_stats').update({ unlocked: true }).eq('user_id', userId).in('skill', toUnlock);
+    if (update.error) throw update.error;
+  }
+  return toUnlock;
+}
+
 /** 武器か防具を付け替える。null ならはずす。持っている物しか装備できない */
 export async function equip(slot: 'weapon' | 'armor', itemId: string | null): Promise<void> {
   const client = requireSupabase();
