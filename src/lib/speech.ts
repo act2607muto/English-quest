@@ -19,12 +19,25 @@ function englishVoice(): SpeechSynthesisVoice | null {
   return cachedVoice;
 }
 
+/**
+ * 読み上げ機能が英語の単語として読めない名前を、読み上げるときだけ近い音のつづりに変える
+ * （画面に出す英文は変えない）。例：Emi を「イー・エム・アイ」と読んでしまうので Emmy にする。
+ * 読みまちがいを見つけたら、ここに足す。
+ */
+const SPOKEN_AS: Record<string, string> = {
+  Emi: 'Emmy',
+};
+
+function forSpeech(text: string): string {
+  return text.replace(/[A-Za-z]+/g, (word) => SPOKEN_AS[word] ?? word);
+}
+
 /** 英文を読み上げる。iPhone では、最初の1回はボタンを押した処理の中から呼ぶ必要がある */
 export function speakEnglish(text: string, rate = 0.9): void {
   if (!canSpeak) return;
   try {
     speechSynthesis.cancel();
-    const u = new SpeechSynthesisUtterance(text);
+    const u = new SpeechSynthesisUtterance(forSpeech(text));
     u.lang = 'en-US';
     u.rate = rate;
     const voice = englishVoice();
