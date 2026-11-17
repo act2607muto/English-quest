@@ -1265,3 +1265,42 @@ code {
   border-color: var(--accent);
   color: var(--accent);
 }
+
+/* あそびかた */
+.guide__count {
+  margin: 0 0 4px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.guide__art {
+  display: flex;
+  justify-content: center;
+  margin: 8px 0 12px;
+}
+
+.guide__list {
+  margin: 8px 0;
+  padding-left: 1.2em;
+}
+
+.guide__list li + li {
+  margin-top: 6px;
+}
+
+.guide__menu {
+  margin: 0;
+}
+
+.guide__menu dt {
+  margin-top: 10px;
+  color: var(--accent);
+}
+
+.guide__menu dt:first-child {
+  margin-top: 0;
+}
+
+.guide__menu dd {
+  margin: 2px 0 0 1.2em;
+}

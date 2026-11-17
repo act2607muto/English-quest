@@ -9,6 +9,7 @@ import { isSupabaseConfigured } from './lib/supabase';
 import { BattleScreen, type BattleKind, type BattleResult } from './screens/BattleScreen';
 import { BossScreen } from './screens/BossScreen';
 import { FieldScreen } from './screens/FieldScreen';
+import { GuideScreen } from './screens/GuideScreen';
 import { ImportScreen } from './screens/ImportScreen';
 import { LoginScreen } from './screens/LoginScreen';
 import { MapScreen, type MapPosition } from './screens/MapScreen';
@@ -48,6 +49,8 @@ type Route =
   | { name: 'result'; result: BattleResult; before: Player; from: BattleFrom }
   | { name: 'settings' }
   | { name: 'hero-name' }
+  /** あそびかた。first は名前をつけた直後（読み終わると街へ。ほかは設定へもどる） */
+  | { name: 'guide'; first: boolean }
   | { name: 'password' }
   | { name: 'import' }
   | { name: 'mic-test' };
@@ -123,8 +126,19 @@ function Game() {
   }
   if (!player) return <Loading />;
 
-  // 主人公の名前がまだないとき（最初のログインのあと）は、先に名前をつけてもらう
-  if (player.heroName === null) return <NameScreen current={null} onSaved={reload} onBack={null} />;
+  // 主人公の名前がまだないとき（最初のログインのあと）は、先に名前をつけてもらい、続けて「あそびかた」を出す
+  if (player.heroName === null) {
+    return (
+      <NameScreen
+        current={null}
+        onSaved={() => {
+          setRoute({ name: 'guide', first: true });
+          return reload();
+        }}
+        onBack={null}
+      />
+    );
+  }
 
   const go = (r: Route) => {
     window.scrollTo(0, 0);
@@ -230,7 +244,16 @@ function Game() {
           onMicTest={() => go({ name: 'mic-test' })}
           onHeroName={() => go({ name: 'hero-name' })}
           onPassword={() => go({ name: 'password' })}
+          onGuide={() => go({ name: 'guide', first: false })}
           onBack={() => go({ name: 'town' })}
+        />
+      );
+    case 'guide':
+      return (
+        <GuideScreen
+          player={player}
+          first={route.first}
+          onDone={() => go({ name: route.first ? 'town' : 'settings' })}
         />
       );
     case 'password':

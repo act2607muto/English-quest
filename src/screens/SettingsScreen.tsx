@@ -10,6 +10,7 @@ export function SettingsScreen({
   onMicTest,
   onHeroName,
   onPassword,
+  onGuide,
   onBack,
 }: {
   isAdmin: boolean;
@@ -17,6 +18,7 @@ export function SettingsScreen({
   onMicTest: () => void;
   onHeroName: () => void;
   onPassword: () => void;
+  onGuide: () => void;
   onBack: () => void;
 }) {
   const { session, signOut } = useAuth();
@@ -39,6 +41,9 @@ export function SettingsScreen({
         <p>ログイン中：{session?.user.email}</p>
       </section>
       <nav className="window commands" aria-label="設定の項目">
+        <button className="command command--plain" type="button" onClick={onGuide}>
+          ▶ あそびかた
+        </button>
         {admin && (
           <button className="command command--plain" type="button" onClick={onImport}>
             ▶ 教材の取り込み
