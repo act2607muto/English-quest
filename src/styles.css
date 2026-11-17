@@ -1887,3 +1887,14 @@ code {
   background: rgba(255, 216, 74, 0.12);
   outline: none;
 }
+
+/* 下の行き先のボタンを出す画面は、ボタンに隠れないよう下に余白を取る */
+.with-tabbar > .screen {
+  padding-bottom: calc(110px + env(safe-area-inset-bottom));
+}
+
+/* いま開いている画面のボタン */
+.town-tabbar__button--on {
+  color: var(--accent);
+  background: rgba(255, 216, 74, 0.16);
+}

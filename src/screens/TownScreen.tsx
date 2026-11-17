@@ -9,29 +9,20 @@ import { SKILL_LABELS } from '../lib/skills';
  * 街（ゲームのトップ画面）。冒険の拠点で、行き先を選ぶ。
  * 上の帯：主人公の名前・レベル・HP、右におかねと「あそびかた」「設定」。
  * まん中：街の絵、ボスのいる場所、今日のおすすめ（下がりかけの能力値）。
- * 下の列：行き先のボタン（街の外・スキルダンジョン・ステータス・図鑑・工房）。画面の下に固定する。
- * ボタンの絵は public/ui/icon-*.png（Pixellab）。
+ * 下の列：行き先のボタン（components/BottomNav。App が街などの画面の下に出す）。
  */
 export function TownScreen({
   player,
   town,
-  onField,
-  onDungeon,
   onStatus,
-  onBestiary,
-  onShop,
   onSettings,
   onGuide,
   status,
 }: {
   player: Player;
   town: TownRow | null;
-  onField: () => void;
-  /** スキルダンジョン（練習したい能力値のモンスターを選んで戦う） */
-  onDungeon: () => void;
+  /** 上の帯の主人公を押したとき（ステータスへ） */
   onStatus: () => void;
-  onBestiary: () => void;
-  onShop: () => void;
   onSettings: () => void;
   onGuide: () => void;
   status: TownStatus | null;
@@ -40,14 +31,6 @@ export function TownScreen({
   const revivalSkills = playable.filter((s) => (status?.dueBySkill[s.skill] ?? 0) > 0);
   const advice = recommendation(playable);
   const bossDefeated = player.defeatedBosses.length > 0;
-
-  const tabs = [
-    { label: '街の外へ', icon: 'map', onClick: onField },
-    { label: 'ダンジョン', icon: 'dungeon', onClick: onDungeon },
-    { label: 'ステータス', icon: 'status', onClick: onStatus },
-    { label: '図鑑', icon: 'book', onClick: onBestiary },
-    { label: '工房', icon: 'workshop', onClick: onShop },
-  ];
 
   return (
     <main className="town-home">
@@ -114,20 +97,6 @@ export function TownScreen({
         )}
       </div>
 
-      <nav className="town-tabbar" aria-label="行き先">
-        {tabs.map((t) => (
-          <button
-            key={t.label}
-            className="town-tabbar__button"
-            type="button"
-            onClick={t.onClick}
-            aria-label={t.label}
-          >
-            <img src={`/ui/icon-${t.icon}.png`} alt="" width={40} height={40} />
-            <span>{t.label}</span>
-          </button>
-        ))}
-      </nav>
     </main>
   );
 }

@@ -1,5 +1,6 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState, type ReactNode } from 'react';
 import { AuthProvider, useAuth } from './auth/AuthProvider';
+import { BottomNav, type NavTab } from './components/BottomNav';
 import { fetchIsAdmin, fetchTown } from './lib/content';
 import { loadPlayer, type Player } from './lib/game/player';
 import { loadTownStatus, type TownStatus } from './lib/game/town';
@@ -179,6 +180,20 @@ function Game() {
             : (background ?? null),
       backgroundFallback: from === 'dungeon' ? `/battle/${monster.town_id}-dungeon.png` : null,
     });
+  /** 画面の下の行き先のボタンを、その画面の下に出す（active はいま開いている画面） */
+  const NAV_ROUTES: Record<NavTab, Route> = {
+    map: { name: 'map' },
+    dungeon: { name: 'field' },
+    status: { name: 'status' },
+    bestiary: { name: 'bestiary' },
+    shop: { name: 'shop' },
+  };
+  const withNav = (active: NavTab | null, screen: ReactNode) => (
+    <div className="with-tabbar">
+      {screen}
+      <BottomNav active={active} onSelect={(tab) => (tab !== active ? go(NAV_ROUTES[tab]) : window.scrollTo(0, 0))} />
+    </div>
+  );
   /** 戦闘を始めた場所へもどる（ボスは街の外のマップの、ボスのいる場所へ） */
   const backTo = (from: BattleFrom) => {
     go({ name: from === 'dungeon' ? 'field' : 'map' });
@@ -186,11 +201,11 @@ function Game() {
 
   switch (route.name) {
     case 'bestiary':
-      return <BestiaryScreen player={player} onBack={() => go({ name: 'town' })} />;
+      return withNav('bestiary', <BestiaryScreen player={player} onBack={() => go({ name: 'town' })} />);
     case 'status':
-      return <StatusScreen player={player} onBack={() => go({ name: 'town' })} />;
+      return withNav('status', <StatusScreen player={player} onBack={() => go({ name: 'town' })} />);
     case 'shop':
-      return <ShopScreen player={player} onChanged={reload} onBack={() => go({ name: 'town' })} />;
+      return withNav('shop', <ShopScreen player={player} onChanged={reload} onBack={() => go({ name: 'town' })} />);
     case 'map':
       return (
         <MapScreen
@@ -205,13 +220,14 @@ function Game() {
         />
       );
     case 'field':
-      return (
+      return withNav(
+        'dungeon',
         <FieldScreen
           player={player}
           status={townStatus}
           onFight={(m, kind) => fight(m, kind, 'dungeon')}
           onBack={toTown}
-        />
+        />,
       );
     case 'boss':
       return (
@@ -296,19 +312,16 @@ function Game() {
     case 'mic-test':
       return <MicTestScreen onBack={() => go({ name: 'settings' })} />;
     default:
-      return (
+      return withNav(
+        null,
         <TownScreen
           player={player}
           town={town}
-          onField={() => go({ name: 'map' })}
-          onDungeon={() => go({ name: 'field' })}
           onStatus={() => go({ name: 'status' })}
-          onBestiary={() => go({ name: 'bestiary' })}
-          onShop={() => go({ name: 'shop' })}
           status={townStatus}
           onSettings={() => go({ name: 'settings' })}
           onGuide={() => go({ name: 'guide', first: false, back: 'town' })}
-        />
+        />,
       );
   }
 }
