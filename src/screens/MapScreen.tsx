@@ -18,7 +18,7 @@ import {
 import { isRare, rareSkills, revivalOf, rollRare } from '../lib/game/foes';
 import type { Player } from '../lib/game/player';
 import type { TownStatus } from '../lib/game/town';
-import { getDpadSide } from '../lib/preferences';
+import { getDpadSide, getNoEncounters } from '../lib/preferences';
 import type { MonsterRow } from '../lib/questionFile';
 import { SKILL_LABELS, type Skill } from '../lib/skills';
 import type { BattleKind } from './BattleScreen';
@@ -124,6 +124,8 @@ export function MapScreen({
   const [encounter, setEncounter] = useState<Encounter | null>(null);
   /** 十字ボタンを出す側（設定で選ぶ） */
   const [dpadSide] = useState(getDpadSide);
+  /** デバッグ用の設定で「出会わない」にしているか */
+  const [noEncounters] = useState(getNoEncounters);
 
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const viewElRef = useRef<HTMLDivElement | null>(null);
@@ -333,7 +335,7 @@ export function MapScreen({
         return;
       }
       const area = areaAt(map, next.x, next.y);
-      if (!area || !rollEncounter(tile, area, next.steps)) return;
+      if (!area || noEncounters || !rollEncounter(tile, area, next.steps)) return;
       // まれに、めずらしいモンスター（いろいろな能力値の問題を出す）に出会う
       const rare = rollRare(monsters.filter(isRare));
       const mixed = rareSkills(player, available);
@@ -362,7 +364,7 @@ export function MapScreen({
     },
     // available は monsters から作るので monsters を見ればよい
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [map, monsters, player, status, onMove, onTown, onBoss, onEncounter],
+    [map, monsters, player, status, noEncounters, onMove, onTown, onBoss, onEncounter],
   );
 
   /** 1歩すすむ（歩けないマスなら向きだけ変える） */
@@ -500,7 +502,13 @@ export function MapScreen({
     <main className="screen map-screen">
       <section className="window map-place" aria-live="polite">
         <p className="map-place__name">{area ? area.name : '街のまわり'}</p>
-        <p className="note">{area ? `出やすい：${areaSkills.join('・')}` : 'ここではモンスターは出ません'}</p>
+        <p className="note">
+          {noEncounters
+            ? 'デバッグ用の設定で、モンスターに出会いません'
+            : area
+              ? `出やすい：${areaSkills.join('・')}`
+              : 'ここではモンスターは出ません'}
+        </p>
       </section>
 
       <div className="map-view" ref={viewElRef}>

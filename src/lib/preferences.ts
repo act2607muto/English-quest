@@ -23,3 +23,23 @@ export function setDpadSide(side: DpadSide): void {
     // 覚えられなくても、この画面の間は選んだ側で動く
   }
 }
+
+const NO_ENCOUNTERS_KEY = 'english-quest:no-encounters';
+
+/** デバッグ用：街の外のマップでモンスターに出会わないようにするか（管理者の設定にだけ出す。決めていなければ出会う） */
+export function getNoEncounters(): boolean {
+  try {
+    return localStorage.getItem(NO_ENCOUNTERS_KEY) === 'on';
+  } catch {
+    return false;
+  }
+}
+
+export function setNoEncounters(on: boolean): void {
+  try {
+    if (on) localStorage.setItem(NO_ENCOUNTERS_KEY, 'on');
+    else localStorage.removeItem(NO_ENCOUNTERS_KEY);
+  } catch {
+    // 覚えられなくても、この画面の間は選んだとおりに動く
+  }
+}

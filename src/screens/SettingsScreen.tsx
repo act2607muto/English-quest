@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useAuth } from '../auth/AuthProvider';
 import { fetchIsAdmin } from '../lib/content';
-import { getDpadSide, setDpadSide, type DpadSide } from '../lib/preferences';
+import { getDpadSide, getNoEncounters, setDpadSide, setNoEncounters, type DpadSide } from '../lib/preferences';
 
 /** 設定。問題文に使う自分の名前・音声の速さは、この後の手順で足す */
 export function SettingsScreen({
@@ -33,6 +33,11 @@ export function SettingsScreen({
   const chooseSide = (side: DpadSide) => {
     setDpadSide(side);
     setSide(side);
+  };
+  const [noEncounters, setNoEnc] = useState(getNoEncounters);
+  const chooseEncounters = (off: boolean) => {
+    setNoEncounters(off);
+    setNoEnc(off);
   };
   return (
     <main className="screen">
@@ -87,6 +92,35 @@ export function SettingsScreen({
           ))}
         </div>
       </section>
+      {admin && (
+        <section className="window" aria-labelledby="debug-encounter-title">
+          <h2 className="window__title" id="debug-encounter-title">
+            デバッグ用：モンスターとの出会い
+          </h2>
+          <p className="note">
+            管理者だけに出る設定です。「出会わない」にすると、街の外のマップを歩いてもモンスターに出会いません（マップや門を確かめるときに使います）。この端末に覚えておきます。
+          </p>
+          <div className="choice-pair" role="group" aria-labelledby="debug-encounter-title">
+            {(
+              [
+                [false, '出会う'],
+                [true, '出会わない'],
+              ] as const
+            ).map(([off, label]) => (
+              <button
+                key={label}
+                type="button"
+                className={`command choice-pair__button${noEncounters === off ? ' choice-pair__button--on' : ''}`}
+                aria-pressed={noEncounters === off}
+                onClick={() => chooseEncounters(off)}
+              >
+                {noEncounters === off ? '● ' : '○ '}
+                {label}
+              </button>
+            ))}
+          </div>
+        </section>
+      )}
       <button className="command" type="button" onClick={onBack}>
         ▶ 街にもどる
       </button>
