@@ -77,9 +77,9 @@ export function TownScreen({
             <p className="town-boss-hint">
               {bossDefeated
                 ? '門番を たおした！ 次の街への道が開けている。'
-                : status.bossUnlocked
-                  ? 'ささやきの森の奥「ことだまの門」の門番に、挑めるようになった！'
-                  : `ささやきの森の奥「ことだまの門」に、門番がいるらしい…（あと ${Math.max(0, status.needed - status.correctOnce)} 問 正解すると挑める）`}
+                : status.bossReady
+                  ? 'ささやきの森の奥「ことだまの門」の門番に、挑む準備ができた！'
+                  : `ささやきの森の奥「ことだまの門」に、門番がいるらしい…。いつでも挑めるが、あと ${Math.max(0, status.needed - status.correctOnce)} 問 正解してからがおすすめ。`}
             </p>
           </section>
         )}

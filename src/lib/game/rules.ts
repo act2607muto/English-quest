@@ -42,7 +42,7 @@ export const ENCOUNTER_DECAY_BONUS = 1.5; // 下がり始めている能力値�
 export const ENCOUNTER_REVIVAL_CHANCE = 0.4; // 復習の時期が来た問題があれば、この割合で復活モンスターになる
 
 /** ボスと復活モンスター */
-export const BOSS_UNLOCK_RATIO = 0.8; // 街の問題の8割に1回以上正解するとボスに挑める
+export const BOSS_RECOMMEND_RATIO = 0.8; // ボスはいつでも挑めるが、街の問題の8割に1回以上正解してからがおすすめ（目安）
 export const BOSS_REMATCH_GOLD = 10; // 2回目以降にボスを倒したときのお金（100Gは最初の1回だけ）
 export const REVIVAL_GOLD = 15; // 復活モンスターを倒したときのお金
 

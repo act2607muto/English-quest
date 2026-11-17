@@ -3,13 +3,14 @@ import { MonsterArt } from '../components/MonsterArt';
 import { fetchMonstersOfTown } from '../lib/content';
 import { bossFor, bossSkills } from '../lib/game/foes';
 import type { Player } from '../lib/game/player';
-import { BOSS_UNLOCK_RATIO } from '../lib/game/rules';
+import { BOSS_RECOMMEND_RATIO } from '../lib/game/rules';
 import type { TownStatus } from '../lib/game/town';
 import type { MonsterRow } from '../lib/questionFile';
 import { SKILL_LABELS, type Skill } from '../lib/skills';
 
 /**
- * ボスへの入口。街の外のマップで、ボスのいる場所（ことだまの門）を踏むと開く。街の問題の8割に1回以上正解すると挑める。
+ * ボスへの入口。街の外のマップで、ボスのいる場所（ことだまの門）を踏むと開く。
+ * いつでも挑める。街の問題の8割に1回以上正解するのは「おすすめの目安」として出す。
  * 出題は、練習した能力値の問題を混ぜたもの。倒すと次の街へ進める（2つ目の街は第2段階で作る）。
  */
 export function BossScreen({
@@ -61,17 +62,17 @@ export function BossScreen({
           </section>
 
           <section className="window">
-            <h2 className="window__title">挑むための条件</h2>
-            <p>この街の問題の{Math.round(BOSS_UNLOCK_RATIO * 100)}%に、1回以上正解すること。</p>
+            <h2 className="window__title">おすすめの目安</h2>
+            <p>この街の問題の{Math.round(BOSS_RECOMMEND_RATIO * 100)}%に1回以上正解してから挑むと、勝ちやすくなります。</p>
             {status ? (
               <>
                 <div className="meter-bar" aria-hidden="true">
                   <span style={{ width: `${Math.min(100, ratio * 100)}%` }} />
-                  <span className="meter-bar__goal" style={{ left: `${BOSS_UNLOCK_RATIO * 100}%` }} />
+                  <span className="meter-bar__goal" style={{ left: `${BOSS_RECOMMEND_RATIO * 100}%` }} />
                 </div>
                 <p>
                   正解した問題 {status.correctOnce} / {status.total}
-                  {rest && rest > 0 ? `（あと ${rest} 問）` : '（条件クリア！）'}
+                  {rest && rest > 0 ? `（目安まで あと ${rest} 問）` : '（目安クリア！）'}
                 </p>
               </>
             ) : (
@@ -79,16 +80,15 @@ export function BossScreen({
             )}
           </section>
 
-          {status?.bossUnlocked ? (
-            skills.length > 0 ? (
-              <button className="command command--boss" type="button" onClick={() => onFight(bossFor(boss, player), skills)}>
-                {defeated ? `▶ もう一度挑む（${bossFor(boss, player).gold} G）` : `▶ ${boss.name}に挑む（${boss.gold} G）`}
-              </button>
-            ) : (
-              <p className="message message--error">練習した能力値がありません。</p>
-            )
+          {status && !status.bossReady && !defeated && (
+            <p className="note">まだ目安に届いていません。挑むことはできます（負けても、正解した分の経験値は残ります）。</p>
+          )}
+          {skills.length > 0 ? (
+            <button className="command command--boss" type="button" onClick={() => onFight(bossFor(boss, player), skills)}>
+              {defeated ? `▶ もう一度挑む（${bossFor(boss, player).gold} G）` : `▶ ${boss.name}に挑む（${boss.gold} G）`}
+            </button>
           ) : (
-            <p className="note">街の外のモンスターと戦って、まだ正解していない問題に正解していきましょう。</p>
+            <p className="message message--error">戦える能力値がありません。</p>
           )}
         </>
       )}

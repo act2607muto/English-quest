@@ -3,7 +3,7 @@ import { HeroArt } from '../components/HeroArt';
 import { Hexagon } from '../components/Hexagon';
 import { MonsterArt } from '../components/MonsterArt';
 import { heroNameOf, type Player } from '../lib/game/player';
-import { BOSS_UNLOCK_RATIO, DECAY_FLOOR_RATIO, DECAY_GRACE_DAYS } from '../lib/game/rules';
+import { BOSS_RECOMMEND_RATIO, DECAY_FLOOR_RATIO, DECAY_GRACE_DAYS } from '../lib/game/rules';
 
 /**
  * あそびかた。はじめての人は、主人公に名前をつけたすぐあとに読む（とばしてもよい）。
@@ -125,8 +125,8 @@ function guidePages(name: string, player: Player): Page[] {
           <dd>倒して手に入れたお金で、武器や防具を買えます。武器は、こうげきを上げます（英語の正解・不正解は変わりません）。</dd>
           <dt>ボス</dt>
           <dd>
-            街の外の、ささやきの森の奥にある「ことだまの門」にいます。街の問題の{percent(BOSS_UNLOCK_RATIO)}
-            に1回以上正解すると、挑めます。倒すと次の街への道が開けます。
+            街の外の、ささやきの森の奥にある「ことだまの門」にいます。いつでも挑めますが、街の問題の{percent(BOSS_RECOMMEND_RATIO)}
+            に1回以上正解してからだと勝ちやすくなります。倒すと次の街への道が開けます。
           </dd>
         </dl>
       ),
