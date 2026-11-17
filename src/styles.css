@@ -1725,3 +1725,165 @@ code {
 .answer-summary__row--wrong {
   color: var(--error);
 }
+
+/* ---------- 街（ゲームのトップ画面）（2026-11-17） ----------
+ * 上の帯に主人公とおかね・設定、下に行き先のボタンを固定する。下のボタンの分、まん中の下に余白を取る。
+ */
+.town-home {
+  max-width: 480px;
+  margin: 0 auto;
+  min-height: 100dvh;
+  padding: calc(8px + env(safe-area-inset-top)) calc(12px + env(safe-area-inset-right))
+    calc(110px + env(safe-area-inset-bottom)) calc(12px + env(safe-area-inset-left));
+}
+
+.town-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.town-topbar__hero {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  padding: 0;
+  font: inherit;
+  color: var(--fg);
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+}
+
+.town-topbar__who {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  line-height: 1.3;
+}
+
+.town-topbar__name {
+  font-size: 16px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.town-topbar__level {
+  font-size: 13px;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+.town-topbar__right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: none;
+}
+
+.town-topbar__gold {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 10px 2px 6px;
+  font-size: 15px;
+  background: #0d1232;
+  border: 2px solid #5a6496;
+  border-radius: 999px;
+}
+
+.town-topbar__gold img,
+.icon-button img,
+.town-tabbar__button img {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.icon-button {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  background: #0d1232;
+  border: 8px solid transparent;
+  border-image: url('/ui/frame-white.png') 10 stretch;
+  background-clip: padding-box;
+  cursor: pointer;
+}
+
+.icon-button img {
+  width: 28px;
+  height: 28px;
+}
+
+.icon-button:active,
+.icon-button:focus-visible {
+  border-image-source: url('/ui/frame-gold.png');
+  outline: none;
+}
+
+.town-home__body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.town-boss-hint {
+  color: var(--fg);
+  font-size: 16px;
+}
+
+/* 下に固定する行き先のボタン */
+.town-tabbar {
+  position: fixed;
+  left: 50%;
+  bottom: 0;
+  z-index: 20;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2px;
+  width: min(480px, 100%);
+  transform: translateX(-50%);
+  padding: 4px 6px calc(4px + env(safe-area-inset-bottom));
+  background: linear-gradient(180deg, #1a2152, #0b0f2c);
+  background-clip: padding-box;
+  border: 10px solid transparent;
+  border-bottom-width: 0;
+  border-image: url('/ui/frame-white.png') 10 10 0 10 stretch;
+}
+
+.town-tabbar__button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  min-width: 0;
+  padding: 4px 0;
+  font: inherit;
+  font-size: 12px;
+  line-height: 1.2;
+  color: var(--fg);
+  white-space: nowrap;
+  background: none;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.town-tabbar__button img {
+  width: 40px;
+  height: 40px;
+}
+
+.town-tabbar__button:active,
+.town-tabbar__button:focus-visible {
+  color: var(--accent);
+  background: rgba(255, 216, 74, 0.12);
+  outline: none;
+}

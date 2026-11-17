@@ -56,7 +56,7 @@ type Route =
   | { name: 'settings' }
   | { name: 'hero-name' }
   /** あそびかた。first は名前をつけた直後（読み終わると街へ。ほかは設定へもどる） */
-  | { name: 'guide'; first: boolean }
+  | { name: 'guide'; first: boolean; back?: 'town' | 'settings' }
   | { name: 'password' }
   | { name: 'import' }
   | { name: 'mic-test' };
@@ -278,7 +278,7 @@ function Game() {
         <GuideScreen
           player={player}
           first={route.first}
-          onDone={() => go({ name: route.first ? 'town' : 'settings' })}
+          onDone={() => go({ name: route.first ? 'town' : (route.back ?? 'settings') })}
         />
       );
     case 'password':
@@ -307,6 +307,7 @@ function Game() {
           onShop={() => go({ name: 'shop' })}
           status={townStatus}
           onSettings={() => go({ name: 'settings' })}
+          onGuide={() => go({ name: 'guide', first: false, back: 'town' })}
         />
       );
   }

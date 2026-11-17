@@ -42,7 +42,7 @@ export function GuideScreen({
       </section>
 
       <button className="command" type="button" onClick={() => (last ? onDone() : move(page + 1))}>
-        {last ? (first ? '▶ ぼうけんに出る' : '▶ 設定にもどる') : '▶ つぎへ'}
+        {last ? (first ? '▶ ぼうけんに出る' : '▶ もどる') : '▶ つぎへ'}
       </button>
       {page > 0 && (
         <button className="command" type="button" onClick={() => move(page - 1)}>
@@ -51,7 +51,7 @@ export function GuideScreen({
       )}
       {!last && (
         <button className="command command--quiet" type="button" onClick={onDone}>
-          {first ? 'せつめいを とばす' : '設定にもどる'}
+          {first ? 'せつめいを とばす' : 'もどる'}
         </button>
       )}
     </main>
@@ -110,15 +110,18 @@ function guidePages(name: string, player: Player): Page[] {
       title: '街で できること',
       body: (
         <dl className="guide__menu">
+          <dd style={{ marginLeft: 0 }}>
+            画面の下のボタンで行き先を選びます。右上の歯車が「設定」、？がこの「あそびかた」です。
+          </dd>
           <dt>▶ 街の外へ</dt>
           <dd>マップを歩くと、モンスターに出会います。場所によって、出やすい能力値がちがいます。まれに、めずらしいモンスターも。</dd>
-          <dt>▶ スキルダンジョンへ</dt>
+          <dt>▶ ダンジョン（スキルダンジョン）</dt>
           <dd>練習したい能力値を選んで、そのモンスターと戦えます。</dd>
           <dt>▶ ステータス</dt>
           <dd>六角形と、能力値ごとのレベルを見られます。</dd>
-          <dt>▶ モンスター図鑑</dt>
+          <dt>▶ 図鑑（モンスター図鑑）</dt>
           <dd>出会ったモンスターの絵・説明・倒した回数が記録されていきます。</dd>
-          <dt>▶ ことのは工房</dt>
+          <dt>▶ 工房（ことのは工房）</dt>
           <dd>倒して手に入れたお金で、武器や防具を買えます。武器は、こうげきを上げます（英語の正解・不正解は変わりません）。</dd>
           <dt>ボス</dt>
           <dd>
