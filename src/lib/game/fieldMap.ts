@@ -31,6 +31,8 @@ export type TileDef = {
   encounter: number | null;
   /** 街の入口（踏むと街にもどる） */
   town: boolean;
+  /** ボスのいる場所（踏むとボスの画面を開く） */
+  boss: boolean;
 };
 
 export type AreaDef = {
@@ -128,7 +130,7 @@ export function parseFieldMap(raw: unknown): FieldMap {
       if (object && !objects[object]) problems.push(`tiles の「${ch}」の object「${object}」が objects にありません`);
       const encounter = def.encounter === undefined || def.encounter === null ? null : Number(def.encounter);
       if (encounter !== null && !(encounter >= 1)) problems.push(`tiles の「${ch}」の encounter は1以上にしてください`);
-      tiles[ch] = { ground, object, walk: def.walk === true, encounter, town: def.town === true };
+      tiles[ch] = { ground, object, walk: def.walk === true, encounter, town: def.town === true, boss: def.boss === true };
     }
   }
 

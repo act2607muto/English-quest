@@ -9,7 +9,7 @@ import type { MonsterRow } from '../lib/questionFile';
 import { SKILL_LABELS, type Skill } from '../lib/skills';
 
 /**
- * ボスへの入口。街の問題の8割に1回以上正解すると挑める。
+ * ボスへの入口。街の外のマップで、ボスのいる場所（ことだまの門）を踏むと開く。街の問題の8割に1回以上正解すると挑める。
  * 出題は、練習した能力値の問題を混ぜたもの。倒すと次の街へ進める（2つ目の街は第2段階で作る）。
  */
 export function BossScreen({
@@ -94,7 +94,7 @@ export function BossScreen({
       )}
 
       <button className="command" type="button" onClick={onBack}>
-        ▶ 街にもどる
+        ▶ 引き返す
       </button>
     </main>
   );

@@ -159,10 +159,9 @@ function Game() {
       key: Date.now(),
       from,
     });
-  /** 戦闘を始めた場所へもどる（ボスは街へ） */
+  /** 戦闘を始めた場所へもどる（ボスは街の外のマップの、ボスのいる場所へ） */
   const backTo = (from: BattleFrom) => {
-    if (from === 'boss') toTown();
-    else go({ name: from === 'dungeon' ? 'field' : 'map' });
+    go({ name: from === 'dungeon' ? 'field' : 'map' });
   };
 
   switch (route.name) {
@@ -180,6 +179,7 @@ function Game() {
           onEncounter={(m, kind, skills) => fight(m, kind, 'map', skills)}
           onChoose={() => go({ name: 'field' })}
           onTown={toTown}
+          onBoss={() => go({ name: 'boss' })}
         />
       );
     case 'field':
@@ -197,7 +197,7 @@ function Game() {
           player={player}
           status={townStatus}
           onFight={(boss, skills) => fight(boss, 'boss', 'boss', skills)}
-          onBack={toTown}
+          onBack={() => go({ name: 'map' })}
         />
       );
     case 'battle':
@@ -279,7 +279,6 @@ function Game() {
           onDungeon={() => go({ name: 'field' })}
           onStatus={() => go({ name: 'status' })}
           onShop={() => go({ name: 'shop' })}
-          onBoss={() => go({ name: 'boss' })}
           status={townStatus}
           onSettings={() => go({ name: 'settings' })}
         />

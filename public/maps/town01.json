@@ -20,7 +20,8 @@
     "rock": { "image": "/maps/obj-rock.png" },
     "tallgrass": { "image": "/maps/obj-tallgrass.png", "under_hero": true },
     "flowers": { "image": "/maps/obj-flowers.png", "under_hero": true },
-    "town": { "image": "/maps/obj-town.png" }
+    "town": { "image": "/maps/obj-town.png" },
+    "bossgate": { "image": "/maps/obj-bossgate.png" }
   },
   "tiles": {
     ".": { "ground": "grass", "walk": true, "encounter": 10 },
@@ -30,12 +31,13 @@
     "~": { "ground": "water", "walk": false },
     "f": { "ground": "grass", "object": "flowers", "walk": true, "encounter": 10 },
     "r": { "ground": "grass", "object": "rock", "walk": false },
-    "H": { "ground": "grass", "object": "town", "walk": true, "town": true }
+    "H": { "ground": "grass", "object": "town", "walk": true, "town": true },
+    "B": { "ground": "grass", "object": "bossgate", "walk": true, "boss": true }
   },
   "start": { "x": 9, "y": 8 },
   "rows": [
     "TTTTTTTTTTTTTTTTTTTT",
-    "Tfff.f...T,,,T,,,,,T",
+    "Tfff.f...T,,,T,,,,BT",
     "Tff.ff...=,,,,,,T,,T",
     "T.fff.r..=,T,,,,,,,T",
     "Tf.f.....=,,,,T,,,,T",
@@ -53,8 +55,8 @@
   ],
   "areas": [
     "--------------------",
-    "-wwwwwwww-lllllllll-",
-    "-wwwwwwwwwlllllllll-",
+    "-wwwwwwww-lllllllbb-",
+    "-wwwwwwwwwlllllllbb-",
     "-wwwwwwwwwlllllllll-",
     "-wwwwwwwwwlllllllll-",
     "-gggggggggllllllll--",
@@ -73,6 +75,7 @@
     "g": { "name": "はじまりの草原", "skills": { "vocabulary": 2, "grammar": 2 } },
     "l": { "name": "ささやきの森", "skills": { "listening": 3, "vocabulary": 1 } },
     "w": { "name": "いろどりの花畑", "skills": { "writing": 3, "grammar": 1 } },
-    "k": { "name": "こえの湖", "skills": { "speaking": 3, "listening": 1 } }
+    "k": { "name": "こえの湖", "skills": { "speaking": 3, "listening": 1 } },
+    "b": { "name": "ことだまの門のまえ", "skills": { "listening": 3, "vocabulary": 1 } }
   }
 }

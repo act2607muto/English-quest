@@ -16,7 +16,6 @@ export function TownScreen({
   onDungeon,
   onStatus,
   onShop,
-  onBoss,
   onSettings,
   status,
 }: {
@@ -27,7 +26,6 @@ export function TownScreen({
   onDungeon: () => void;
   onStatus: () => void;
   onShop: () => void;
-  onBoss: () => void;
   onSettings: () => void;
   status: TownStatus | null;
 }) {
@@ -71,6 +69,15 @@ export function TownScreen({
             </tr>
           </tbody>
         </table>
+        {status && (
+          <p className="note town-boss-hint">
+            {bossDefeated
+              ? '門番を たおした！ 次の街への道が開けている。'
+              : status.bossUnlocked
+                ? 'ささやきの森の奥「ことだまの門」の門番に、挑めるようになった！'
+                : `ささやきの森の奥「ことだまの門」に、門番がいるらしい…（あと ${Math.max(0, status.needed - status.correctOnce)} 問 正解すると挑める）`}
+          </p>
+        )}
       </section>
 
       {(advice || revivalSkills.length > 0) && (
@@ -97,15 +104,6 @@ export function TownScreen({
         </button>
         <button className="command command--plain" type="button" onClick={onShop}>
           ▶ ことのは工房
-        </button>
-        <button className="command command--plain" type="button" onClick={onBoss}>
-          ▶ ボス
-          {status &&
-            (bossDefeated
-              ? '（たおした）'
-              : status.bossUnlocked
-                ? '（挑める！）'
-                : `（あと ${Math.max(0, status.needed - status.correctOnce)} 問）`)}
         </button>
         <button className="command command--plain" type="button" onClick={onSettings}>
           ▶ 設定

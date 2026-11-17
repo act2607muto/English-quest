@@ -96,6 +96,7 @@ export function MapScreen({
   onEncounter,
   onChoose,
   onTown,
+  onBoss,
 }: {
   player: Player;
   status: TownStatus | null;
@@ -105,6 +106,8 @@ export function MapScreen({
   onEncounter: (monster: MonsterRow, kind: BattleKind, skills?: Skill[]) => void;
   onChoose: () => void;
   onTown: () => void;
+  /** ボスのいる場所を踏んだとき */
+  onBoss: () => void;
 }) {
   const [map, setMap] = useState<FieldMap | null | undefined>(undefined);
   const [monsters, setMonsters] = useState<MonsterRow[]>([]);
@@ -295,7 +298,7 @@ export function MapScreen({
     monsters.map((m) => m.skill).filter((s): s is Skill => !!s && PLAYABLE_SKILLS.includes(s)),
   );
 
-  /** 1歩すすんだあと：街の入口か、出会うか */
+  /** 1歩すすんだあと：街の入口か、ボスの場所か、出会うか */
   const arrive = useCallback(
     (next: MapPosition) => {
       if (!map) return;
@@ -304,6 +307,12 @@ export function MapScreen({
         busyRef.current = true;
         heldRef.current = null;
         onTown();
+        return;
+      }
+      if (tile?.boss) {
+        busyRef.current = true;
+        heldRef.current = null;
+        onBoss();
         return;
       }
       const area = areaAt(map, next.x, next.y);
@@ -336,7 +345,7 @@ export function MapScreen({
     },
     // available は monsters から作るので monsters を見ればよい
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [map, monsters, player, status, onMove, onTown, onEncounter],
+    [map, monsters, player, status, onMove, onTown, onBoss, onEncounter],
   );
 
   /** 1歩すすむ（歩けないマスなら向きだけ変える） */
