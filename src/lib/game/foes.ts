@@ -6,7 +6,7 @@ import type { Skill } from '../skills';
 import { attackOf, damageTo } from './attack';
 import { PLAYABLE_SKILLS } from './battle';
 import type { Player } from './player';
-import { BOSS_REMATCH_GOLD, REVIVAL_GOLD } from './rules';
+import { BOSS_REMATCH_GOLD, EXP_FLAWLESS_BONUS, REVIVAL_GOLD } from './rules';
 
 /**
  * 復活モンスター：復習の時期が来た問題で現れる色違い。
@@ -65,6 +65,14 @@ export function splitExpReward(total: number, skills: Skill[]): Partial<Record<S
     if (v > 0) out[s] = v;
   });
   return out;
+}
+
+/**
+ * ミスなしのボーナス：出た能力値に同じだけ分ける。合計が EXP_FLAWLESS_BONUS を下回らないよう切り上げる。
+ * 1種類なら10、2種類なら5ずつ、3種類なら4ずつ、4種類なら3ずつ、5〜6種類なら2ずつ。
+ */
+export function flawlessBonusEach(skillCount: number): number {
+  return skillCount > 0 ? Math.ceil(EXP_FLAWLESS_BONUS / skillCount) : 0;
 }
 
 /** ボスが出す能力値：今戦える能力値のうち、練習したことがあるもの */

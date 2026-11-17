@@ -7,7 +7,7 @@
 export const EXP_CORRECT = 10;
 export const EXP_CORRECT_REVIEW = 15; // 復習の時期が来ていた問題に正解
 export const EXP_HALF = 5; // AI採点で「惜しい」（手順4以降）
-export const EXP_FLAWLESS_BONUS = 10; // ミスなしで勝つ
+export const EXP_FLAWLESS_BONUS = 10; // ミスなしで勝つ（出た能力値に同じだけ分ける。合計はこれを下回らない）
 
 /**
  * レベル：必要な累計経験値は「30 ×（レベル − 1）の2.5乗」。

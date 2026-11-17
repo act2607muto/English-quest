@@ -5,10 +5,10 @@ import { SpeakAnswer } from '../components/SpeakAnswer';
 import { fetchPlayableQuestions, flagQuestion } from '../lib/content';
 import { fillNames, pickQuestions, shuffle, shuffleChoices } from '../lib/game/battle';
 import { attackOf, damageTo, hitsToDefeat } from '../lib/game/attack';
-import { splitExpReward } from '../lib/game/foes';
+import { flawlessBonusEach, splitExpReward } from '../lib/game/foes';
 import { isDue } from '../lib/game/growth';
 import { heroNameOf, type Player } from '../lib/game/player';
-import { EXP_CORRECT, EXP_CORRECT_REVIEW, EXP_FLAWLESS_BONUS, EXP_HALF } from '../lib/game/rules';
+import { EXP_CORRECT, EXP_CORRECT_REVIEW, EXP_HALF } from '../lib/game/rules';
 import { gradeAnswer, RATING_LABELS, type Rating } from '../lib/grading';
 import type { MonsterRow, QuestionRow } from '../lib/questionFile';
 import { addSkillExp, fetchProgress, finishBattle, markBossDefeated, saveAnswer, type QuestionProgress } from '../lib/records';
@@ -275,11 +275,11 @@ export function BattleScreen({
     window.scrollTo(0, 0);
     const flawless = won && correctCount === answered;
     const gold = won ? monster.gold : 0;
-    // ミスなしのボーナスは、この戦闘で出た能力値それぞれに入る
+    // ミスなしのボーナスは、この戦闘で出た能力値に同じだけ分ける（合計が10を下回らないよう切り上げ）
     const total: Partial<Record<Skill, number>> = { ...expBySkill };
     if (flawless) {
+      const bonus = flawlessBonusEach(askedSkills.size);
       for (const sk of askedSkills) {
-        const bonus = EXP_FLAWLESS_BONUS;
         total[sk] = (total[sk] ?? 0) + bonus;
         queueSave(() => addSkillExp(sk, bonus, player.mods.graceDays));
       }
