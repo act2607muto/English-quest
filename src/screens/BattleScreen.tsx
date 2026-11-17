@@ -158,7 +158,7 @@ export function BattleScreen({
         setQueue(picked);
         setShown(present(picked[0], progress));
         setPhase('question');
-        if (picked[0].skill === 'listening' && picked[0].audio_text) speakEnglish(picked[0].audio_text);
+        // リスニングの英文は自動では流さず、「▶ 聞く」を押して聞く（自動だと最初が聞こえないため。2026-11-18 本人の希望）
       } catch (err) {
         if (cancelled) return;
         setError(err instanceof Error ? err.message : String(err));
@@ -274,8 +274,8 @@ export function BattleScreen({
     setGradeError(null);
     setPhase('question');
     window.scrollTo(0, 0);
-    // ボタンを押した処理の中で読み上げると、iPhone でも音が出る
-    if (q.skill === 'listening' && q.audio_text) speakEnglish(q.audio_text);
+    // 前の問題の読み上げが続いていれば止める（次のリスニングは「▶ 聞く」を押して流す）
+    stopSpeaking();
   }
 
   async function finish(won: boolean) {
