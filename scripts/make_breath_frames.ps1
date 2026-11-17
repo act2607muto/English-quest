@@ -17,6 +17,7 @@ $public = Join-Path $PSScriptRoot '..\public'
 
 $frames = @(
   @{ File = 'hero/hero.png';                 SplitRow = 47 }  # 主人公（64×64）：腰から上
+  @{ File = 'hero/girl/hero.png';            SplitRow = 47 }  # 主人公・女の子（64×64）：腰から上
   @{ File = 'monsters/town01-mon-voc.png';   SplitRow = 48 }  # ページムシ
   @{ File = 'monsters/town01-mon-gra.png';   SplitRow = 46 }
   @{ File = 'monsters/town01-mon-lis.png';   SplitRow = 45 }

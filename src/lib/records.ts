@@ -7,6 +7,7 @@
  */
 import { requireSupabase } from './supabase';
 import type { Skill } from './skills';
+import { isHeroLook, type HeroLook } from './heroLook';
 import { effectiveExp, localDate, nextReview, type ReviewState } from './game/growth';
 import { DECAY_GRACE_DAYS } from './game/rules';
 
@@ -27,6 +28,8 @@ export type AdventureState = {
   defeatedBosses: string[];
   /** 主人公の名前。まだつけていなければ null */
   heroName: string | null;
+  /** 主人公の見た目（男の子・女の子） */
+  heroLook: HeroLook;
 };
 
 /** 主人公の名前の長さ（データベースの制約と同じ） */
@@ -46,13 +49,19 @@ export async function fetchSkillStats(): Promise<SkillStat[]> {
   }));
 }
 
+const ADVENTURE_COLUMNS =
+  'current_town_id, gold, owned_equipment, equipped_weapon_id, equipped_armor_id, defeated_bosses, hero_name';
+
 export async function fetchAdventureState(): Promise<AdventureState | null> {
-  const { data, error } = await requireSupabase()
+  const client = requireSupabase();
+  let { data, error } = await client
     .from('adventure_state')
-    .select(
-      'current_town_id, gold, owned_equipment, equipped_weapon_id, equipped_armor_id, defeated_bosses, hero_name',
-    )
+    .select(`${ADVENTURE_COLUMNS}, hero_look`)
     .maybeSingle();
+  // 見た目の列（hero_look）をまだデータベースに足していないときは、それ抜きで読む（男の子として遊べる）
+  if (error?.code === '42703') {
+    ({ data, error } = await client.from('adventure_state').select(ADVENTURE_COLUMNS).maybeSingle());
+  }
   if (error) throw error;
   if (!data) return null;
   return {
@@ -63,6 +72,7 @@ export async function fetchAdventureState(): Promise<AdventureState | null> {
     equippedArmorId: data.equipped_armor_id,
     defeatedBosses: data.defeated_bosses,
     heroName: data.hero_name,
+    heroLook: 'hero_look' in data && isHeroLook(data.hero_look) ? data.hero_look : 'boy',
   };
 }
 
@@ -301,15 +311,15 @@ export function normalizeHeroName(input: string): { name: string } | { error: st
   return { name };
 }
 
-/** 主人公の名前をつける・変える */
-export async function saveHeroName(input: string): Promise<void> {
+/** 主人公の名前と見た目をつける・変える */
+export async function saveHeroName(input: string, look: HeroLook): Promise<void> {
   const checked = normalizeHeroName(input);
   if ('error' in checked) throw new Error(checked.error);
   const client = requireSupabase();
   const userId = await currentUserId();
   const { data, error } = await client
     .from('adventure_state')
-    .update({ hero_name: checked.name })
+    .update({ hero_name: checked.name, hero_look: look })
     .eq('user_id', userId)
     .select('hero_name');
   if (error) throw error;

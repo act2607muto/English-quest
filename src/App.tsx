@@ -4,6 +4,7 @@ import { BottomNav, type NavTab } from './components/BottomNav';
 import { fetchIsAdmin, fetchTown, fetchTownQuestionIndex } from './lib/content';
 import { moveToTown } from './lib/records';
 import { loadPlayer, type Player } from './lib/game/player';
+import { setHeroLook } from './lib/heroLook';
 import { loadTownStatus, type TownStatus } from './lib/game/town';
 import type { Skill } from './lib/skills';
 import type { MonsterRow, TownRow } from './lib/questionFile';
@@ -93,6 +94,7 @@ function Game() {
 
   const reload = useCallback(async () => {
     const p = await loadPlayer();
+    setHeroLook(p.heroLook);
     setPlayer(p);
     // 街の進み具合（ボスの条件、復習の数）は、読めなくても遊べるので失敗しても止めない
     loadTownStatus(p.currentTownId)
@@ -141,6 +143,7 @@ function Game() {
     return (
       <NameScreen
         current={null}
+        currentLook={player.heroLook}
         onSaved={() => {
           setRoute({ name: 'guide', first: true });
           return reload();
@@ -328,6 +331,7 @@ function Game() {
       return (
         <NameScreen
           current={player.heroName}
+          currentLook={player.heroLook}
           onSaved={() => reload().then(() => go({ name: 'settings' }))}
           onBack={() => go({ name: 'settings' })}
         />

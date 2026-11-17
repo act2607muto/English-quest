@@ -55,7 +55,7 @@ export function SettingsScreen({
           </button>
         )}
         <button className="command command--plain" type="button" onClick={onHeroName}>
-          ▶ 主人公の名前を変える
+          ▶ 主人公の名前と見た目を変える
         </button>
         <button className="command command--plain" type="button" onClick={onPassword}>
           ▶ パスワードを変える

@@ -5,6 +5,7 @@ import { fetchEquipmentByIds } from '../content';
 import type { EquipmentRow } from '../questionFile';
 import { fetchAdventureState, fetchSkillStats } from '../records';
 import { SKILLS, type Skill } from '../skills';
+import type { HeroLook } from '../heroLook';
 import { modifiersOf, type Modifiers } from './equipment';
 import {
   daysUntilDecay,
@@ -25,6 +26,8 @@ export type PlayerSkill = SkillLevel & {
 export type Player = {
   /** 主人公の名前。まだつけていなければ null（名前をつける画面を出す） */
   heroName: string | null;
+  /** 主人公の見た目（男の子・女の子） */
+  heroLook: HeroLook;
   skills: PlayerSkill[];
   overall: number;
   maxHp: number;
@@ -65,6 +68,7 @@ export async function loadPlayer(): Promise<Player> {
   const overall = overallLevel(skills.filter((s) => s.exp > 0 || s.daysUntilDecay !== null));
   return {
     heroName: adventure?.heroName ?? null,
+    heroLook: adventure?.heroLook ?? 'boy',
     skills,
     overall,
     maxHp: playerMaxHp(overall, mods.hpBonus),

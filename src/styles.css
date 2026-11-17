@@ -1009,9 +1009,16 @@ code {
   max-width: 420px;
 }
 
-.name-form__hero {
+.name-form__looks {
+  margin-bottom: 12px;
+}
+
+/* 見た目を選ぶボタン：絵と「男の子」「女の子」を縦に並べる */
+.name-form__look {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
 }
 
 .name-form__count {

@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { HERO_IMAGE } from '../components/HeroArt';
+import { heroSrc, useHeroLook } from '../lib/heroLook';
 import { fetchMonstersOfTown } from '../lib/content';
 import { PLAYABLE_SKILLS } from '../lib/game/battle';
 import {
@@ -42,7 +43,10 @@ function cellFor(width: number, height: number, mapRows: number): number {
   const byHeight = mapRows > 0 ? Math.ceil(height / mapRows / 4) * 4 : 0;
   return Math.min(CELL_MAX, Math.max(CELL_MIN, byWidth, byHeight));
 }
-/** マップで使う主人公の小さい絵（32×32、Pixellab）。ないときは戦闘の絵（64×64）を半分の大きさで使う */
+/**
+ * マップで使う主人公の小さい絵（32×32、Pixellab）。ないときは戦闘の絵（64×64）を半分の大きさで使う。
+ * 女の子のときは public/hero/girl/ の同じ名前の絵を読む（読んだ絵は、ここの名前で覚えておく）
+ */
 const HERO_MAP_IMAGE = '/hero/hero-map.png';
 /** 上へ歩くときの後ろ姿と、下へ歩くときの正面（なければ横向きの絵で代わりにする） */
 const HERO_MAP_UP_IMAGE = '/hero/hero-map-up.png';
@@ -137,6 +141,8 @@ export function MapScreen({
   const [dpadSide] = useState(getDpadSide);
   /** デバッグ用の設定で「出会わない」にしているか */
   const [noEncounters] = useState(getNoEncounters);
+  /** 主人公の見た目（男の子・女の子）。絵の読み先が変わる */
+  const heroLook = useHeroLook();
 
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const viewElRef = useRef<HTMLDivElement | null>(null);
@@ -174,7 +180,7 @@ export function MapScreen({
           ...(m ? m.ground.sets.map((s) => s.sheet) : []),
           ...(m ? Object.values(m.objects).map((o) => o.image) : []),
         ];
-        const loaded = await Promise.all(sources.map(loadImage));
+        const loaded = await Promise.all(sources.map((src) => loadImage(heroSrc(src, heroLook))));
         if (cancelled) return;
         imagesRef.current = new Map(sources.map((src, i) => [src, loaded[i]]));
         for (const src of [HERO_MAP_IMAGE, HERO_MAP_UP_IMAGE, HERO_MAP_DOWN_IMAGE, ...HERO_WALK_IMAGES, HERO_IMAGE]) {
@@ -196,7 +202,7 @@ export function MapScreen({
     return () => {
       cancelled = true;
     };
-  }, [player.currentTownId]);
+  }, [player.currentTownId, heroLook]);
 
   /** 今の位置のまわりを描く（地面 → 草むらなど → 木・岩・街と主人公を、下の行ほど手前に） */
   const draw = useCallback(() => {
