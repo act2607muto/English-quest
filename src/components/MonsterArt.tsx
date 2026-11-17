@@ -6,6 +6,8 @@ import type { Skill } from '../lib/skills';
  * 同じ場所に「-breath」をつけた2コマ目（例：town01-mon-voc-breath.png）があれば、交互に出して呼吸に見せる。
  * 2コマ目は scripts/make_breath_frames.ps1 で作る。ないときは止まった絵のまま。
  * 絵がないとき・読み込めないときは、能力値の1文字を枠に入れて代わりにする。
+ * 復活モンスターは、同じ名前に「-revival」をつけた色違いの絵（例：town01-mon-voc-revival.png）を使う。
+ * その絵がなければ、もとの絵の色を画面でずらして代わりにする。
  */
 const GLYPH: Record<Skill, string> = {
   vocabulary: '語',
@@ -37,7 +39,11 @@ export function MonsterArt({
 }) {
   const [broken, setBroken] = useState(false);
   const [breathBroken, setBreathBroken] = useState(false);
-  const breathImage = image && /\.png$/.test(image) ? image.replace(/\.png$/, '-breath.png') : null;
+  const [revivalBroken, setRevivalBroken] = useState(false);
+  // 復活モンスターは色違いの絵（なければ、もとの絵の色をずらす）
+  const useRevivalArt = revival && !revivalBroken && !!image && /\.png$/.test(image);
+  const shown = useRevivalArt && image ? image.replace(/\.png$/, '-revival.png') : image;
+  const breathImage = shown && /\.png$/.test(shown) ? shown.replace(/\.png$/, '-breath.png') : null;
   const classes = [
     'monster-art',
     `monster-art--${size}`,
@@ -45,15 +51,26 @@ export function MonsterArt({
     hurt && !defeated ? 'monster-art--hurt' : '',
     defeated ? 'monster-art--defeated' : '',
     dim ? 'monster-art--dim' : '',
-    revival ? 'monster-art--revival' : '',
+    revival && !useRevivalArt ? 'monster-art--revival' : '',
   ].join(' ');
 
-  if (image && !broken) {
+  if (shown && !broken) {
     return (
       <span className={`${classes} monster-art--sprite`} aria-hidden="true">
-        <img src={image} alt="" onError={() => setBroken(true)} />
+        <img
+          key={shown}
+          src={shown}
+          alt=""
+          onError={() => (useRevivalArt ? setRevivalBroken(true) : setBroken(true))}
+        />
         {breathImage && !breathBroken && (
-          <img className="monster-art__breath" src={breathImage} alt="" onError={() => setBreathBroken(true)} />
+          <img
+            key={breathImage}
+            className="monster-art__breath"
+            src={breathImage}
+            alt=""
+            onError={() => setBreathBroken(true)}
+          />
         )}
       </span>
     );

@@ -44,7 +44,7 @@
 - 採点は Claude（claude-haiku-5-5）、文字起こしは OpenAI（gpt-transcribe）。各社の比較はしない。
 - 名前は、今のもの（ページムシ・ことだまの門番など）を当面そのまま使う。
 - 絵は Pixellab（Claude Code に MCP でつないである）で作る。モンスター 64×64、ボス 96×96、主人公 64×64、装備品 32×32、街の背景と工房の絵 256×112（工房は public/shops/{街のID}.png）。指示文に既存ゲームの名前は入れない。差し替えは `public/` の同じ名前の PNG を置き換える（2026-11-16 に15枚を差し替え済み）。
-- 主人公とモンスターは、2コマ目の絵（同じ名前に `-breath` をつけた PNG。足元より上を1マス下げたもの）と交互に出して、呼吸しているように動かす。2コマ目は `scripts/make_breath_frames.ps1` で作る（PowerShell で動く）。絵を差し替えたり足したりしたら、このスクリプトの一覧を直して動かし直す。2コマ目がない絵は止まったまま出る。
+- 主人公とモンスターは、2コマ目の絵（同じ名前に `-breath` をつけた PNG。足元より上を1マス下げたもの）と交互に出して、呼吸しているように動かす。2コマ目は `scripts/make_breath_frames.ps1` で作る（PowerShell で動く）。絵を差し替えたり足したりしたら、このスクリプトの一覧を直して動かし直す。2コマ目がない絵は止まったまま出る。復活モンスターは、同じ名前に `-revival` をつけた色違いの絵（2026-11-17、Pixellab で薄紫と水色に塗り直し。呼吸の2コマ目は `-revival-breath`）を使い、なければ画面で色をずらす。
 - アプリのアイコン（2026-11-17）は、主人公の顔（`art/icon-candidates/icon-A.png`、Pixellab）をひとまわり大きい 80×80 に置き、下に金のドット文字「ENGLISH QUEST」を入れたもの。作り直しは `powershell -ExecutionPolicy Bypass -File scripts/make_icon.ps1 -Source art/icon-candidates/icon-A.png -Out art/icon-candidates/icon-A-title.png -Export`（public の icon-512・icon-192・apple-touch-icon を書き出す）。前の六角形のアイコンを作る `scripts/make_icons.mjs` は、動かすと上書きされるので使わない。
 - `scripts/make_sprites.mjs` は前の仮の絵を作るスクリプト。実行すると Pixellab の絵が上書きされるので使わない。前の絵そのものは `art/old-sprites/` に残してある（`art/README.md`）。
 

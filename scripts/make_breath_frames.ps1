@@ -22,6 +22,11 @@ $frames = @(
   @{ File = 'monsters/town01-mon-lis.png';   SplitRow = 45 }
   @{ File = 'monsters/town01-mon-wri.png';   SplitRow = 47 }
   @{ File = 'monsters/town01-mon-spe.png';   SplitRow = 46 }
+  @{ File = 'monsters/town01-mon-voc-revival.png'; SplitRow = 48 }  # ページムシ（復活・色違い）
+  @{ File = 'monsters/town01-mon-gra-revival.png'; SplitRow = 46 }
+  @{ File = 'monsters/town01-mon-lis-revival.png'; SplitRow = 45 }
+  @{ File = 'monsters/town01-mon-wri-revival.png'; SplitRow = 47 }
+  @{ File = 'monsters/town01-mon-spe-revival.png'; SplitRow = 46 }
   @{ File = 'monsters/town01-rare-exp.png';  SplitRow = 54 }  # ひらめきボタル（飛んでいるので全体を下げる）
   @{ File = 'monsters/town01-rare-gold.png'; SplitRow = 47 }  # こばんガエル（足元の小判は動かさない）
   @{ File = 'monsters/town01-boss.png';      SplitRow = 80 }  # ことだまの門番（96×96。狼なので足先より上）
