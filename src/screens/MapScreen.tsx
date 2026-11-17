@@ -47,6 +47,12 @@ const HERO_MAP_IMAGE = '/hero/hero-map.png';
 /** 上へ歩くときの後ろ姿と、下へ歩くときの正面（なければ横向きの絵で代わりにする） */
 const HERO_MAP_UP_IMAGE = '/hero/hero-map-up.png';
 const HERO_MAP_DOWN_IMAGE = '/hero/hero-map-down.png';
+/**
+ * 歩いているときの絵（足をふみ出した2コマ）。1歩ごとに 1 と 2 を交互に出し、止まると立っている絵にもどる。
+ * 同じ名前に -walk1・-walk2 をつけた PNG。なければ、立っている絵を上下にゆらす。
+ */
+const walkImages = (stand: string) => [stand.replace(/.png$/, '-walk1.png'), stand.replace(/.png$/, '-walk2.png')];
+const HERO_WALK_IMAGES = [HERO_MAP_IMAGE, HERO_MAP_UP_IMAGE, HERO_MAP_DOWN_IMAGE].flatMap(walkImages);
 /** 絵そのものが向いている向き。歩く向きと違うときだけ左右を反転して描く（マップ用の主人公は左向き、戦闘用は右向き） */
 const HERO_MAP_IMAGE_FACES = 'left';
 const HERO_IMAGE_FACES = 'right';
@@ -158,6 +164,7 @@ export function MapScreen({
           HERO_MAP_IMAGE,
           HERO_MAP_UP_IMAGE,
           HERO_MAP_DOWN_IMAGE,
+          ...HERO_WALK_IMAGES,
           HERO_IMAGE,
           ...(m ? m.ground.sets.map((s) => s.sheet) : []),
           ...(m ? Object.values(m.objects).map((o) => o.image) : []),
@@ -165,7 +172,7 @@ export function MapScreen({
         const loaded = await Promise.all(sources.map(loadImage));
         if (cancelled) return;
         imagesRef.current = new Map(sources.map((src, i) => [src, loaded[i]]));
-        for (const src of [HERO_MAP_IMAGE, HERO_MAP_UP_IMAGE, HERO_MAP_DOWN_IMAGE, HERO_IMAGE]) {
+        for (const src of [HERO_MAP_IMAGE, HERO_MAP_UP_IMAGE, HERO_MAP_DOWN_IMAGE, ...HERO_WALK_IMAGES, HERO_IMAGE]) {
           const img = imagesRef.current.get(src);
           if (img) heroFeetRef.current.set(img, lowestOpaqueRow(img));
         }
@@ -259,13 +266,16 @@ export function MapScreen({
     for (let ty = y0; ty <= y1; ty++) {
       for (let tx = x0; tx <= x1; tx++) drawObject(tx, ty, false);
       if (ty !== heroRow) continue;
-      // 主人公：歩くたびに1マス分だけ上下させて、足ぶみしているように見せる
-      // 上下に歩くときは後ろ姿・正面の絵。なければ横向きの絵を使う
-      const front = p.facing === 'up' ? images.get(HERO_MAP_UP_IMAGE) : p.facing === 'down' ? images.get(HERO_MAP_DOWN_IMAGE) : null;
-      const small = front ?? images.get(HERO_MAP_IMAGE) ?? null;
+      // 主人公：上下に歩くときは後ろ姿・正面の絵。なければ横向きの絵を使う
+      // 歩いている間は、足をふみ出した絵（1歩ごとに左右の足を交互に）。その絵がなければ、上下にゆらす
+      const standSrc = p.facing === 'up' ? HERO_MAP_UP_IMAGE : p.facing === 'down' ? HERO_MAP_DOWN_IMAGE : HERO_MAP_IMAGE;
+      const stand = images.get(standSrc) ?? null;
+      const walking = movingRef.current ? (images.get(walkImages(standSrc)[p.steps % 2]) ?? null) : null;
+      const front = p.facing === 'up' || p.facing === 'down' ? (walking ?? stand) : null;
+      const small = walking ?? stand ?? images.get(HERO_MAP_IMAGE) ?? null;
       const frame = small ?? images.get(HERO_IMAGE) ?? null;
       const heroScale = small ? scale : scale / 2;
-      const bob = p.steps % 2 === 1 ? heroScale : 0;
+      const bob = !walking && p.steps % 2 === 1 ? heroScale : 0;
       const cx = ox + Math.round(hx * CELL + CELL / 2);
       const feetY = oy + Math.round((hy + 1) * CELL) - 2;
       if (!frame) {
