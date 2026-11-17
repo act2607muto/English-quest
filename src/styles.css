@@ -511,9 +511,10 @@ code {
   color: var(--accent);
 }
 
+/* 4択は 2×2 に並べて、画面を下へ動かさなくても答えられるようにする */
 .choices {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 8px;
 }
 
@@ -1703,4 +1704,24 @@ code {
 .revival,
 .monster-card--revival {
   border-image-source: url('/ui/frame-purple.png');
+}
+
+/* 答えたあとの「あなたの答え・正解」 */
+.answer-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.answer-summary__row .note {
+  display: block;
+  font-size: 14px;
+}
+
+.answer-summary__row--right {
+  color: #8ff0a4;
+}
+
+.answer-summary__row--wrong {
+  color: var(--error);
 }

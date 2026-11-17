@@ -342,6 +342,17 @@ export function BattleScreen({
     }
   }
 
+  // 最後の答えで決着がついたら、ボタンを押さなくても、倒れる動きのあとで結果の画面へ進む
+  const autoFinishedRef = useRef(false);
+  useEffect(() => {
+    if (phase !== 'feedback' || autoFinishedRef.current) return;
+    if (monsterHp > 0 && playerHp > 0) return;
+    autoFinishedRef.current = true;
+    void finish(monsterHp <= 0);
+    // finish は毎回作り直される関数なので、決着のときの1回だけ呼べばよい
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [phase, monsterHp, playerHp]);
+
   if (phase === 'loading') {
     return (
       <main className="screen screen--center">
@@ -366,12 +377,16 @@ export function BattleScreen({
   const skill = q.skill;
   const isChoice = q.format === 'choice4';
   const over = monsterHp <= 0 || playerHp <= 0;
+  // 攻撃の動きを見せている間（答えた直後と、決着して結果の画面へ進むまで）
+  const acting = (phase === 'feedback' || phase === 'finishing') && !!outcome;
+  /** 答えたあと（結果を見ているところと、決着して結果の画面へ進むまで） */
+  const showResult = acting;
   const hit = outcome ? outcome.rating !== 'bad' : false;
   const models = (q.model_answers ?? []).map((m) => fillNames(m));
   const isSpeaking = !isChoice && skill === 'speaking';
 
   return (
-    <main className={`screen battle${phase === 'feedback' && !hit ? ' battle--hurt' : ''}`}>
+    <main className={`screen battle${acting && !hit ? ' battle--hurt' : ''}`}>
       <section
         className={`battle__enemy${!bgBroken ? ' battle__enemy--scene' : ''}${kind === 'boss' ? ' battle__enemy--boss' : ''}`}
       >
@@ -393,14 +408,14 @@ export function BattleScreen({
               className={
                 playerHp <= 0
                   ? 'hero-art--defeated'
-                  : phase === 'feedback'
+                  : acting
                     ? hit
                       ? 'hero-art--attack'
                       : 'hero-art--hurt'
                     : ''
               }
             />
-            {phase === 'feedback' && !hit && (
+            {acting && !hit && (
               <>
                 <span key={`claw-${answered}`} className="battle-fx battle-fx--claw" aria-hidden="true" />
                 <span key={`hurt-${answered}`} className="damage-pop damage-pop--player" aria-hidden="true">
@@ -410,16 +425,16 @@ export function BattleScreen({
             )}
           </span>
           {/* 攻撃の動き：正解なら斬る光とダメージの数、まちがいならモンスターが飛びかかる */}
-          <span className={`battle__target${phase === 'feedback' && !hit ? ' battle__target--attack' : ''}`}>
+          <span className={`battle__target${acting && !hit ? ' battle__target--attack' : ''}`}>
             <MonsterArt
               skill={monster.skill}
               image={monster.image}
-              hurt={phase === 'feedback' && hit}
+              hurt={acting && hit}
               defeated={monsterHp <= 0}
               revival={kind === 'revival'}
               size={kind === 'boss' ? 'huge' : 'large'}
             />
-            {phase === 'feedback' && hit && (
+            {acting && hit && (
               <>
                 <span key={`slash-${answered}`} className="battle-fx battle-fx--slash" aria-hidden="true" />
                 <span key={`dmg-${answered}`} className="damage-pop" aria-hidden="true">
@@ -443,102 +458,106 @@ export function BattleScreen({
         {saveFailed && <p className="message message--error">通信できず、記録できなかった答えがあります。</p>}
       </section>
 
-      <section className="window battle__question">
-        <p className="battle__prompt">{fillNames(q.prompt)}</p>
-        {skill === 'grammar' && q.sentence && <p className="battle__sentence">{fillNames(q.sentence)}</p>}
-        {!isChoice && q.sentence && (
-          <p className="battle__sentence battle__sentence--ja">
-            {q.sentence_ja && <small className="note">{fillNames(q.sentence_ja)}</small>}
-            {fillNames(q.sentence)}
-          </p>
-        )}
-        {q.format === 'respond' && q.sentence && canSpeak && (
-          <button className="command command--listen" type="button" onClick={() => speakEnglish(fillNames(q.sentence!))}>
-            ▶ 質問を聞く
-          </button>
-        )}
-        {skill === 'listening' && q.audio_text && (
-          <>
-            {canSpeak ? (
-              <button className="command command--listen" type="button" onClick={() => speakEnglish(q.audio_text!)}>
-                ▶ 聞く
-              </button>
-            ) : (
-              <p className="message message--error">この端末では読み上げが使えません。</p>
-            )}
-            {phase === 'feedback' && <p className="battle__sentence">{q.audio_text}</p>}
-          </>
-        )}
-      </section>
-
-      {isChoice ? (
-        <div className="choices">
-          {shown!.choices.map((c, i) => {
-            const state =
-              phase === 'feedback' && i === shown!.answerIndex
-                ? 'right'
-                : phase === 'feedback' && i === outcome?.picked
-                  ? 'wrong'
-                  : '';
-            return (
-              <button
-                key={i}
-                type="button"
-                className={`choice ${state ? `choice--${state}` : ''}`}
-                disabled={phase !== 'question'}
-                onClick={() => handlePick(i)}
-              >
-                {state === 'right' ? '◯ ' : state === 'wrong' ? '✕ ' : ''}
-                {c}
-              </button>
-            );
-          })}
-        </div>
-      ) : isSpeaking ? (
-        phase === 'question' ? (
-          <SpeakAnswer
-            key={`${q.id}-${index}`}
-            onSubmit={(text) => void submitText(text, true)}
-            onFail={(message) => {
-              setGradeError(message);
-              setPhase('self-grade');
-            }}
-          />
-        ) : (
-          <>
-            {draft && (
-              <div>
-                <p className="note">あなたの答え</p>
-                <p className="battle__sentence">{draft}</p>
-              </div>
-            )}
-            {phase === 'grading' && <p className="note">採点しています…</p>}
-          </>
-        )
-      ) : (
-        <form className="write" onSubmit={handleWrite}>
-          <label className="field">
-            <span className="note">英語で入力</span>
-            <textarea
-              value={draft}
-              onChange={(e) => setDraft(e.target.value)}
-              disabled={phase !== 'question'}
-              rows={3}
-              maxLength={300}
-              lang="en"
-              autoCapitalize="sentences"
-              autoCorrect="off"
-              spellCheck={false}
-              placeholder="ここに英文を書く"
-            />
-          </label>
-          {phase === 'question' && (
-            <button className="command" type="submit" disabled={!draft.trim()}>
-              ▶ こたえる
+      {/* 答えたあとは、問題と答えの欄を消して、下の「結果」のウインドウにまとめる（画面を下へ動かさずにすむように） */}
+      {!showResult && (
+        <>
+        <section className="window battle__question">
+          <p className="battle__prompt">{fillNames(q.prompt)}</p>
+          {skill === 'grammar' && q.sentence && <p className="battle__sentence">{fillNames(q.sentence)}</p>}
+          {!isChoice && q.sentence && (
+            <p className="battle__sentence battle__sentence--ja">
+              {q.sentence_ja && <small className="note">{fillNames(q.sentence_ja)}</small>}
+              {fillNames(q.sentence)}
+            </p>
+          )}
+          {q.format === 'respond' && q.sentence && canSpeak && (
+            <button className="command command--listen" type="button" onClick={() => speakEnglish(fillNames(q.sentence!))}>
+              ▶ 質問を聞く
             </button>
           )}
-          {phase === 'grading' && <p className="note">採点しています…</p>}
-        </form>
+          {skill === 'listening' && q.audio_text && (
+            <>
+              {canSpeak ? (
+                <button className="command command--listen" type="button" onClick={() => speakEnglish(q.audio_text!)}>
+                  ▶ 聞く
+                </button>
+              ) : (
+                <p className="message message--error">この端末では読み上げが使えません。</p>
+              )}
+            </>
+          )}
+        </section>
+
+        {isChoice ? (
+          <div className="choices">
+            {shown!.choices.map((c, i) => {
+              const state =
+                phase === 'feedback' && i === shown!.answerIndex
+                  ? 'right'
+                  : phase === 'feedback' && i === outcome?.picked
+                    ? 'wrong'
+                    : '';
+              return (
+                <button
+                  key={i}
+                  type="button"
+                  className={`choice ${state ? `choice--${state}` : ''}`}
+                  disabled={phase !== 'question'}
+                  onClick={() => handlePick(i)}
+                >
+                  {state === 'right' ? '◯ ' : state === 'wrong' ? '✕ ' : ''}
+                  {c}
+                </button>
+              );
+            })}
+          </div>
+        ) : isSpeaking ? (
+          phase === 'question' ? (
+            <SpeakAnswer
+              key={`${q.id}-${index}`}
+              onSubmit={(text) => void submitText(text, true)}
+              onFail={(message) => {
+                setGradeError(message);
+                setPhase('self-grade');
+              }}
+            />
+          ) : (
+            <>
+              {draft && (
+                <div>
+                  <p className="note">あなたの答え</p>
+                  <p className="battle__sentence">{draft}</p>
+                </div>
+              )}
+              {phase === 'grading' && <p className="note">採点しています…</p>}
+            </>
+          )
+        ) : (
+          <form className="write" onSubmit={handleWrite}>
+            <label className="field">
+              <span className="note">英語で入力</span>
+              <textarea
+                value={draft}
+                onChange={(e) => setDraft(e.target.value)}
+                disabled={phase !== 'question'}
+                rows={3}
+                maxLength={300}
+                lang="en"
+                autoCapitalize="sentences"
+                autoCorrect="off"
+                spellCheck={false}
+                placeholder="ここに英文を書く"
+              />
+            </label>
+            {phase === 'question' && (
+              <button className="command" type="submit" disabled={!draft.trim()}>
+                ▶ こたえる
+              </button>
+            )}
+            {phase === 'grading' && <p className="note">採点しています…</p>}
+          </form>
+        )}
+        </>
       )}
 
       {phase === 'self-grade' && (
@@ -580,6 +599,33 @@ export function BattleScreen({
               ? `${outcome.rating === 'close' ? 'おしい！ ' : 'せいかい！ '}${monster.name}に ${outcome.damage} のダメージ！${shown!.due && outcome.rating === 'good' ? '（復習ボーナス）' : ''}`
               : `ざんねん… ${heroNameOf(player)}は 1 のダメージを うけた！`}
           </p>
+          {/* 何を選んだか・正解はどれか（4択） */}
+          {isChoice && (
+            <div className="answer-summary">
+              {outcome.picked !== undefined && outcome.picked !== shown!.answerIndex && (
+                <p className="answer-summary__row answer-summary__row--wrong">
+                  <span className="note">あなたの答え</span>✕ {shown!.choices[outcome.picked]}
+                </p>
+              )}
+              <p className="answer-summary__row answer-summary__row--right">
+                <span className="note">{hit ? 'あなたの答え' : '正解'}</span>◯ {shown!.choices[shown!.answerIndex]}
+              </p>
+            </div>
+          )}
+          {/* 書く・話す問題は、自分の答え */}
+          {!isChoice && draft.trim() && (
+            <div>
+              <p className="note">あなたの答え</p>
+              <p className="battle__sentence">{draft.trim()}</p>
+            </div>
+          )}
+          {/* リスニングは、聞こえた英文 */}
+          {skill === 'listening' && q.audio_text && (
+            <div>
+              <p className="note">読み上げた英文</p>
+              <p className="battle__sentence">{q.audio_text}</p>
+            </div>
+          )}
           {outcome.advice && <p>{outcome.advice}</p>}
           {outcome.better && outcome.better.trim() !== outcome.answer.trim() && (
             <div>
@@ -598,15 +644,11 @@ export function BattleScreen({
             </div>
           )}
           {q.explanation && <p className="note">{fillNames(q.explanation)}</p>}
-          {monsterHp <= 0 && (
-            <p>
-              {heroNameOf(player)}は {monster.name}を たおした！
-            </p>
+          {!over && (
+            <button className="command" type="button" onClick={handleNext} autoFocus={isChoice}>
+              ▶ つぎへ
+            </button>
           )}
-          {playerHp <= 0 && <p>{heroNameOf(player)}は ちからつきた…</p>}
-          <button className="command" type="button" onClick={handleNext} autoFocus={isChoice}>
-            {over ? '▶ 戦闘をおえる' : '▶ つぎへ'}
-          </button>
           {isAdmin &&
             (flagged.has(q.id) ? (
               <p className="note">この問題に要修正の印をつけました。次から出題しません。</p>
@@ -618,9 +660,15 @@ export function BattleScreen({
         </section>
       )}
 
+      {/* 決着：倒れる動きを見せてから、自動で結果の画面へ */}
       {phase === 'finishing' && (
-        <section className="window">
-          <p>記録しています…</p>
+        <section className="window battle__message" aria-live="polite">
+          <p className="levelup">
+            {monsterHp <= 0
+              ? `${heroNameOf(player)}は ${monster.name}を たおした！`
+              : `${heroNameOf(player)}は ちからつきた…`}
+          </p>
+          {outcome && q.explanation && <p className="note">{fillNames(q.explanation)}</p>}
         </section>
       )}
 
