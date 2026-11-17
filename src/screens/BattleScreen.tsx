@@ -342,17 +342,6 @@ export function BattleScreen({
     }
   }
 
-  // 最後の答えで決着がついたら、ボタンを押さなくても、倒れる動きのあとで結果の画面へ進む
-  const autoFinishedRef = useRef(false);
-  useEffect(() => {
-    if (phase !== 'feedback' || autoFinishedRef.current) return;
-    if (monsterHp > 0 && playerHp > 0) return;
-    autoFinishedRef.current = true;
-    void finish(monsterHp <= 0);
-    // finish は毎回作り直される関数なので、決着のときの1回だけ呼べばよい
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [phase, monsterHp, playerHp]);
-
   if (phase === 'loading') {
     return (
       <main className="screen screen--center">
@@ -627,6 +616,12 @@ export function BattleScreen({
               <p className="battle__sentence">{q.audio_text}</p>
             </div>
           )}
+          {/* 最後の答えで決着がついたとき（解説を読んでから「戦闘を終える」で結果の画面へ。2026-11-18 本人の希望） */}
+          {over && (
+            <p className="levelup">
+              {monsterHp <= 0 ? `${heroNameOf(player)}は ${monster.name}を たおした！` : `${heroNameOf(player)}は ちからつきた…`}
+            </p>
+          )}
           {outcome.advice && <p>{outcome.advice}</p>}
           {outcome.better && outcome.better.trim() !== outcome.answer.trim() && (
             <div>
@@ -645,11 +640,9 @@ export function BattleScreen({
             </div>
           )}
           {q.explanation && <p className="note">{fillNames(q.explanation)}</p>}
-          {!over && (
-            <button className="command" type="button" onClick={handleNext} autoFocus={isChoice}>
-              ▶ つぎへ
-            </button>
-          )}
+          <button className="command" type="button" onClick={handleNext} autoFocus={isChoice}>
+            {over ? '▶ 戦闘を終える' : '▶ つぎへ'}
+          </button>
           {isAdmin &&
             (flagged.has(q.id) ? (
               <p className="note">この問題に要修正の印をつけました。次から出題しません。</p>
@@ -661,7 +654,7 @@ export function BattleScreen({
         </section>
       )}
 
-      {/* 決着：倒れる動きを見せてから、自動で結果の画面へ */}
+      {/* 「戦闘を終える」を押したあと：記録を保存し、倒れる動きが終わっていなければ待ってから結果の画面へ */}
       {phase === 'finishing' && (
         <section className="window battle__message" aria-live="polite">
           <p className="levelup">
