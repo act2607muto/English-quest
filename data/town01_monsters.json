@@ -54,6 +54,27 @@
       "image": "/monsters/town01-mon-spe.png"
     },
     {
+      "id": "town01-rare-exp",
+      "name": "ひらめきボタル",
+      "skill": null,
+      "hp": 30,
+      "gold": 10,
+      "exp_reward": 300,
+      "encounter_rate": 0.01,
+      "is_boss": false,
+      "image": "/monsters/town01-rare-exp.png"
+    },
+    {
+      "id": "town01-rare-gold",
+      "name": "こばんガエル",
+      "skill": null,
+      "hp": 40,
+      "gold": 80,
+      "encounter_rate": 0.04,
+      "is_boss": false,
+      "image": "/monsters/town01-rare-gold.png"
+    },
+    {
       "id": "town01-boss",
       "name": "ことだまの門番",
       "skill": null,

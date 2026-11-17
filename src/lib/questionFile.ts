@@ -47,6 +47,10 @@ export type MonsterRow = {
   gold: number;
   is_boss: boolean;
   image: string | null;
+  /** 勝ったときに足す経験値（出た能力値で分ける）。ふつうは 0 */
+  exp_reward: number;
+  /** めずらしいモンスター（街の外でだけ出会う）：出会いのうち、このモンスターになる割合。ほかは null */
+  encounter_rate: number | null;
 };
 
 /**
@@ -250,7 +254,20 @@ function parseMonster(raw: unknown, townId: string | null, problems: string[]): 
   if (raw.is_boss !== undefined && typeof raw.is_boss !== 'boolean') problems.push('is_boss は true か false にしてください');
   const skill = raw.skill === undefined || raw.skill === null ? null : (raw.skill as Skill);
   if (skill !== null && !SKILLS.includes(skill)) problems.push(`skill が正しくありません（${JSON.stringify(raw.skill)}）`);
-  if (!isBoss && skill === null) problems.push('ボスでないモンスターには skill が必要です');
+  const rate = raw.encounter_rate ?? null;
+  if (rate !== null && (typeof rate !== 'number' || !(rate > 0 && rate <= 1))) {
+    problems.push(`encounter_rate は 0 より大きく 1 以下の数にしてください（${JSON.stringify(raw.encounter_rate)}）`);
+  }
+  if (rate !== null && (isBoss || skill !== null)) {
+    problems.push('encounter_rate は、skill のないめずらしいモンスター（ボスではない）だけに書けます');
+  }
+  if (!isBoss && skill === null && rate === null) {
+    problems.push('ボスでないモンスターには skill が必要です（めずらしいモンスターなら encounter_rate を書いてください）');
+  }
+  const expReward = raw.exp_reward ?? 0;
+  if (!Number.isInteger(expReward) || (expReward as number) < 0) {
+    problems.push(`exp_reward は0以上の整数にしてください（${JSON.stringify(raw.exp_reward)}）`);
+  }
   if (!Number.isInteger(raw.hp) || (raw.hp as number) < 1) problems.push(`hp は1以上の整数にしてください（${JSON.stringify(raw.hp)}）`);
   const gold = raw.gold ?? 0;
   if (!Number.isInteger(gold) || (gold as number) < 0) problems.push(`gold は0以上の整数にしてください（${JSON.stringify(raw.gold)}）`);
@@ -265,11 +282,23 @@ function parseMonster(raw: unknown, townId: string | null, problems: string[]): 
     gold: gold as number,
     is_boss: isBoss,
     image,
+    exp_reward: expReward as number,
+    encounter_rate: rate as number | null,
   };
 }
 
 export function sameMonster(a: MonsterRow, b: MonsterRow): boolean {
-  const keys: (keyof MonsterRow)[] = ['name', 'town_id', 'skill', 'hp', 'gold', 'is_boss', 'image'];
+  const keys: (keyof MonsterRow)[] = [
+    'name',
+    'town_id',
+    'skill',
+    'hp',
+    'gold',
+    'is_boss',
+    'image',
+    'exp_reward',
+    'encounter_rate',
+  ];
   return keys.every((k) => (a[k] ?? null) === (b[k] ?? null));
 }
 

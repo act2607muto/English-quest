@@ -163,7 +163,7 @@ function Game() {
           status={townStatus}
           position={mapPos}
           onMove={setMapPos}
-          onEncounter={(m, kind) => fight(m, kind, 'map')}
+          onEncounter={(m, kind, skills) => fight(m, kind, 'map', skills)}
           onChoose={() => go({ name: 'field' })}
           onTown={toTown}
         />

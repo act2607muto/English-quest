@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { MonsterArt } from '../components/MonsterArt';
 import { fetchMonstersOfTown } from '../lib/content';
 import { PLAYABLE_SKILLS } from '../lib/game/battle';
-import { revivalOf } from '../lib/game/foes';
+import { isRare, revivalOf } from '../lib/game/foes';
 import type { Player } from '../lib/game/player';
 import type { TownStatus } from '../lib/game/town';
 import type { MonsterRow } from '../lib/questionFile';
@@ -31,7 +31,7 @@ export function FieldScreen({
 
   useEffect(() => {
     fetchMonstersOfTown(player.currentTownId)
-      .then((m) => setMonsters(m.filter((x) => !x.is_boss)))
+      .then((m) => setMonsters(m.filter((x) => !x.is_boss && !isRare(x))))
       .catch((err) => setError(err instanceof Error ? err.message : String(err)));
   }, [player.currentTownId]);
 

@@ -29,6 +29,44 @@ export function bossFor(boss: MonsterRow, player: Player): MonsterRow {
   return { ...boss, gold: defeated ? BOSS_REMATCH_GOLD : boss.gold };
 }
 
+/** めずらしいモンスター（街の外でだけ、まれに出会う。いろいろな能力値の問題を出す） */
+export function isRare(monster: MonsterRow): boolean {
+  return !monster.is_boss && monster.skill === null && monster.encounter_rate !== null;
+}
+
+/**
+ * 出会いのとき、めずらしいモンスターになるかを決める。
+ * それぞれの encounter_rate の割合で選ばれ、どれにも当たらなければ null（ふつうのモンスター）。
+ */
+export function rollRare(rares: MonsterRow[], roll = Math.random()): MonsterRow | null {
+  let edge = 0;
+  for (const m of [...rares].sort((a, b) => (a.encounter_rate ?? 0) - (b.encounter_rate ?? 0))) {
+    edge += m.encounter_rate ?? 0;
+    if (roll < edge) return m;
+  }
+  return null;
+}
+
+/** めずらしいモンスターが出す能力値：今戦える能力値のうち、問題があるものすべて */
+export function rareSkills(player: Player, available: Set<Skill>): Skill[] {
+  return player.skills.filter((s) => s.unlocked && available.has(s.skill)).map((s) => s.skill);
+}
+
+/**
+ * 勝ったときの経験値のおまけを、出た能力値で分ける（合計が exp_reward になるよう、余りは前から1ずつ）。
+ */
+export function splitExpReward(total: number, skills: Skill[]): Partial<Record<Skill, number>> {
+  const out: Partial<Record<Skill, number>> = {};
+  if (total <= 0 || skills.length === 0) return out;
+  const each = Math.floor(total / skills.length);
+  const rest = total - each * skills.length;
+  skills.forEach((s, i) => {
+    const v = each + (i < rest ? 1 : 0);
+    if (v > 0) out[s] = v;
+  });
+  return out;
+}
+
 /** ボスが出す能力値：今戦える能力値のうち、練習したことがあるもの */
 export function bossSkills(player: Player): Skill[] {
   return player.skills

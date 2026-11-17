@@ -15,7 +15,7 @@ import {
   type Direction,
   type FieldMap,
 } from '../lib/game/fieldMap';
-import { revivalOf } from '../lib/game/foes';
+import { isRare, rareSkills, revivalOf, rollRare } from '../lib/game/foes';
 import type { Player } from '../lib/game/player';
 import type { TownStatus } from '../lib/game/town';
 import { getDpadSide } from '../lib/preferences';
@@ -49,7 +49,7 @@ const STEP_MS = 170;
 /** 「あらわれた！」を見せてから戦闘に移るまで */
 const ENCOUNTER_MS = 1100;
 
-type Encounter = { monster: MonsterRow; kind: BattleKind };
+type Encounter = { monster: MonsterRow; kind: BattleKind; skills?: Skill[] };
 
 function prefersReducedMotion(): boolean {
   return typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -101,7 +101,8 @@ export function MapScreen({
   status: TownStatus | null;
   position: MapPosition | null;
   onMove: (pos: MapPosition) => void;
-  onEncounter: (monster: MonsterRow, kind: BattleKind) => void;
+  /** skills：めずらしいモンスターが出す能力値（ほかは省く） */
+  onEncounter: (monster: MonsterRow, kind: BattleKind, skills?: Skill[]) => void;
   onChoose: () => void;
   onTown: () => void;
 }) {
@@ -307,20 +308,31 @@ export function MapScreen({
       }
       const area = areaAt(map, next.x, next.y);
       if (!area || !rollEncounter(tile, area, next.steps)) return;
-      const skill = chooseEncounterSkill(area, player.skills, available);
-      const base = skill ? monsters.find((m) => m.skill === skill) : null;
-      if (!skill || !base) return;
-      const due = status?.dueBySkill[skill] ?? 0;
-      const found: Encounter = rollRevival(due)
-        ? { monster: revivalOf(base, due, player), kind: 'revival' }
-        : { monster: base, kind: 'normal' };
+      // まれに、めずらしいモンスター（いろいろな能力値の問題を出す）に出会う
+      const rare = rollRare(monsters.filter(isRare));
+      const mixed = rareSkills(player, available);
+      let found: Encounter;
+      if (rare && mixed.length > 0) {
+        found = { monster: rare, kind: 'rare', skills: mixed };
+      } else {
+        const skill = chooseEncounterSkill(area, player.skills, available);
+        const base = skill ? monsters.find((m) => m.skill === skill) : null;
+        if (!skill || !base) return;
+        const due = status?.dueBySkill[skill] ?? 0;
+        found = rollRevival(due)
+          ? { monster: revivalOf(base, due, player), kind: 'revival' }
+          : { monster: base, kind: 'normal' };
+      }
       busyRef.current = true;
       heldRef.current = null;
       setEncounter(found);
       const reset = { ...next, steps: 0 };
       posRef.current = reset;
       onMove(reset);
-      window.setTimeout(() => onEncounter(found.monster, found.kind), prefersReducedMotion() ? 500 : ENCOUNTER_MS);
+      window.setTimeout(
+        () => onEncounter(found.monster, found.kind, found.skills),
+        prefersReducedMotion() ? 500 : ENCOUNTER_MS,
+      );
     },
     // available は monsters から作るので monsters を見ればよい
     // eslint-disable-next-line react-hooks/exhaustive-deps

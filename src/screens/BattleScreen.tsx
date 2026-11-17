@@ -5,6 +5,7 @@ import { SpeakAnswer } from '../components/SpeakAnswer';
 import { fetchPlayableQuestions, flagQuestion } from '../lib/content';
 import { fillNames, pickQuestions, shuffle, shuffleChoices } from '../lib/game/battle';
 import { attackOf, damageTo, hitsToDefeat } from '../lib/game/attack';
+import { splitExpReward } from '../lib/game/foes';
 import { isDue } from '../lib/game/growth';
 import { heroNameOf, type Player } from '../lib/game/player';
 import { EXP_CORRECT, EXP_CORRECT_REVIEW, EXP_FLAWLESS_BONUS, EXP_HALF } from '../lib/game/rules';
@@ -41,7 +42,8 @@ const sleep = (ms: number) => new Promise<void>((resolve) => setTimeout(resolve,
  * ボス（練習した能力値の問題を混ぜて出す）。経験値は、問題ごとにその能力値に入る。
  */
 
-export type BattleKind = 'normal' | 'revival' | 'boss';
+/** rare：街の外でだけ出会う、めずらしいモンスター */
+export type BattleKind = 'normal' | 'revival' | 'boss' | 'rare';
 
 export type BattleResult = {
   monster: MonsterRow;
@@ -53,6 +55,8 @@ export type BattleResult = {
   /** 能力値ごとの獲得経験値 */
   expBySkill: Partial<Record<Skill, number>>;
   gold: number;
+  /** 勝ったときの経験値のおまけ（めずらしいモンスター）。expBySkill に含まれている */
+  rewardExp: number;
   saveFailed: boolean;
 };
 
@@ -136,7 +140,7 @@ export function BattleScreen({
         if (bySkill.length === 1) {
           picked = pickQuestions(questions, progress, count);
         } else {
-          // ボス：能力値ごとに選んでから、交互に並べる
+          // ボス・めずらしいモンスター：能力値ごとに選んでから、交互に並べる
           const lists = shuffle(bySkill.filter((l) => l.length > 0).map((l) => pickQuestions(l, progress, count)));
           picked = [];
           for (let i = 0; picked.length < count; i++) picked.push(lists[i % lists.length][Math.floor(i / lists.length)]);
@@ -280,6 +284,12 @@ export function BattleScreen({
         queueSave(() => addSkillExp(sk, bonus, player.mods.graceDays));
       }
     }
+    // めずらしいモンスターの経験値のおまけは、この戦闘で出た能力値で分ける
+    const rewardExp = won ? monster.exp_reward : 0;
+    for (const [sk, amount] of Object.entries(splitExpReward(rewardExp, [...askedSkills])) as [Skill, number][]) {
+      total[sk] = (total[sk] ?? 0) + amount;
+      queueSave(() => addSkillExp(sk, amount, player.mods.graceDays));
+    }
     queueSave(() =>
       finishBattle({
         townId: monster.town_id,
@@ -308,6 +318,7 @@ export function BattleScreen({
       flawless,
       expBySkill: total,
       gold,
+      rewardExp,
       saveFailed: saveFailedRef.current,
     });
   }

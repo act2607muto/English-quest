@@ -60,6 +60,11 @@ export function ResultScreen({
           </tbody>
         </table>
         {!result.won && <p className="note">正解した分の経験値は残っています。</p>}
+        {result.rewardExp > 0 && (
+          <p className="levelup">
+            {result.monster.name}から、おまけの経験値 {result.rewardExp}！（出た能力値で分けて入りました）
+          </p>
+        )}
         {firstBossWin && (
           <p className="levelup">
             {result.monster.name}を はじめて たおした！ 次の街への道が開けた。（次の街は準備中です）
