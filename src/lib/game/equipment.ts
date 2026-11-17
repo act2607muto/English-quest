@@ -6,8 +6,8 @@ import { SKILL_LABELS, type Skill } from '../skills';
 import { DECAY_GRACE_DAYS } from './rules';
 
 export type Modifiers = {
-  /** 武器が上乗せする攻撃力と、効く能力値 */
-  attackBonus: { skill: Skill; amount: number } | null;
+  /** 武器が上乗せする攻撃力と、効く能力値（'all' はすべての能力値） */
+  attackBonus: { skill: Skill | 'all'; amount: number } | null;
   hpBonus: number;
   graceDays: number;
 };
@@ -27,7 +27,7 @@ export function modifiersOf(weapon: EquipmentRow | null, armor: EquipmentRow | n
 export function describeEffect(effect: EquipmentEffect): string {
   switch (effect.type) {
     case 'attack':
-      return `${SKILL_LABELS[effect.skill]}の こうげき +${effect.amount}`;
+      return `${attackTargetLabel(effect.skill)}の こうげき +${effect.amount}`;
     case 'max_hp':
       return `HP +${effect.amount}`;
     case 'decay_grace':
@@ -36,4 +36,9 @@ export function describeEffect(effect: EquipmentEffect): string {
       // 前の形の効果（取り込み直す前のデータ）
       return '効果なし（装備品のファイルを取り込み直してください）';
   }
+}
+
+/** 武器が効く能力値の呼び名 */
+export function attackTargetLabel(skill: Skill | 'all'): string {
+  return skill === 'all' ? 'すべての能力値' : SKILL_LABELS[skill];
 }

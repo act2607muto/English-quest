@@ -38,7 +38,8 @@ export function StatusScreen({ player, onBack }: { player: Player; onBack: () =>
                 {baseAttackOf(player)}
                 {player.mods.attackBonus && (
                   <span className="note">
-                    （{SKILL_LABELS[player.mods.attackBonus.skill]}の問題は {baseAttackOf(player) + player.mods.attackBonus.amount}）
+                    （{player.mods.attackBonus.skill === 'all' ? 'どの問題も' : `${SKILL_LABELS[player.mods.attackBonus.skill]}の問題は`}{' '}
+                    {baseAttackOf(player) + player.mods.attackBonus.amount}）
                   </span>
                 )}
               </td>

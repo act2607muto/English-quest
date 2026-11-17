@@ -47,7 +47,9 @@ export function ShopScreen({
   }
 
   // 武器は能力値の並び（語彙・文法・リスニング…）にそろえる
-  const skillOrder = (i: EquipmentRow) => (i.effect.type === 'attack' ? SKILLS.indexOf(i.effect.skill) : 99);
+  // すべてに効く武器は最後に出す
+  const skillOrder = (i: EquipmentRow) =>
+    i.effect.type !== 'attack' ? 99 : i.effect.skill === 'all' ? SKILLS.length : SKILLS.indexOf(i.effect.skill);
   const weapons = (items?.filter((i) => i.slot === 'weapon') ?? []).sort(
     (a, b) => skillOrder(a) - skillOrder(b) || a.price - b.price,
   );

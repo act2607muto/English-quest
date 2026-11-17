@@ -12,10 +12,10 @@ export function baseAttackOf(player: Pick<Player, 'overall'>): number {
   return ATTACK_BASE + Math.floor((player.overall - 1) * ATTACK_PER_LEVEL);
 }
 
-/** 武器による上乗せ（その能力値の武器を持っていなければ 0） */
+/** 武器による上乗せ（その能力値の武器か、すべてに効く武器を持っていなければ 0） */
 export function weaponAttackOf(player: Player, skill: Skill): number {
   const bonus = player.mods.attackBonus;
-  return bonus && bonus.skill === skill ? bonus.amount : 0;
+  return bonus && (bonus.skill === 'all' || bonus.skill === skill) ? bonus.amount : 0;
 }
 
 /** その能力値の問題に正解したときの攻撃力 */

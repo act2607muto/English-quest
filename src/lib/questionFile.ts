@@ -51,12 +51,12 @@ export type MonsterRow = {
 
 /**
  * 装備品の効果。英語の正誤を変える効果（ヒント、選択肢を減らす等）は作らない。
- *   attack      : その能力値の問題に正解したときの攻撃力が amount 増える（武器）
+ *   attack      : その能力値の問題に正解したときの攻撃力が amount 増える（武器）。skill が "all" なら、どの能力値の問題でも増える
  *   max_hp      : 自分のHPが amount 増える
  *   decay_grace : 能力値が下がり始めるまでの猶予が days 日延びる
  */
 export type EquipmentEffect =
-  | { type: 'attack'; skill: Skill; amount: number }
+  | { type: 'attack'; skill: Skill | 'all'; amount: number }
   | { type: 'max_hp'; amount: number }
   | { type: 'decay_grace'; days: number };
 
@@ -196,8 +196,8 @@ function parseEffect(raw: unknown, problems: string[]): EquipmentEffect | null {
   }
   switch (raw.type) {
     case 'attack': {
-      const skill = raw.skill as Skill;
-      if (!SKILLS.includes(skill)) problems.push(`effect.skill が正しくありません（${JSON.stringify(raw.skill)}）`);
+      const skill = raw.skill as Skill | 'all';
+      if (skill !== 'all' && !SKILLS.includes(skill)) problems.push(`effect.skill が正しくありません（${JSON.stringify(raw.skill)}）`);
       if (!Number.isInteger(raw.amount) || (raw.amount as number) < 1) {
         problems.push(`effect.amount は1以上の整数にしてください（${JSON.stringify(raw.amount)}）`);
       }

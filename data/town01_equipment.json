@@ -11,16 +11,16 @@
       "id": "town01-wpn-voc",
       "name": "ことのはのナイフ",
       "slot": "weapon",
-      "effect": { "type": "attack", "skill": "vocabulary", "amount": 3 },
-      "price": 100,
+      "effect": { "type": "attack", "skill": "vocabulary", "amount": 2 },
+      "price": 70,
       "image": "/equipment/town01-wpn-voc.png"
     },
     {
       "id": "town01-wpn-gra",
       "name": "くみたてハンマー",
       "slot": "weapon",
-      "effect": { "type": "attack", "skill": "grammar", "amount": 3 },
-      "price": 100,
+      "effect": { "type": "attack", "skill": "grammar", "amount": 2 },
+      "price": 70,
       "image": "/equipment/town01-wpn-gra.png"
     },
     {
@@ -36,7 +36,7 @@
       "name": "はねペンのつるぎ",
       "slot": "weapon",
       "effect": { "type": "attack", "skill": "writing", "amount": 3 },
-      "price": 100,
+      "price": 120,
       "image": "/equipment/town01-wpn-wri.png"
     },
     {
@@ -46,6 +46,14 @@
       "effect": { "type": "attack", "skill": "speaking", "amount": 3 },
       "price": 100,
       "image": "/equipment/town01-wpn-spe.png"
+    },
+    {
+      "id": "town01-wpn-all",
+      "name": "にじいろのつるぎ",
+      "slot": "weapon",
+      "effect": { "type": "attack", "skill": "all", "amount": 3 },
+      "price": 300,
+      "image": "/equipment/town01-wpn-all.png"
     },
     {
       "id": "town01-arm-hp",
@@ -60,7 +68,7 @@
       "name": "わすれずのかぶと",
       "slot": "armor",
       "effect": { "type": "decay_grace", "days": 1 },
-      "price": 150,
+      "price": 250,
       "image": "/equipment/town01-arm-grace.png"
     }
   ]
