@@ -7,6 +7,7 @@ import type { Skill } from './lib/skills';
 import type { MonsterRow, TownRow } from './lib/questionFile';
 import { isSupabaseConfigured } from './lib/supabase';
 import { BattleScreen, type BattleKind, type BattleResult } from './screens/BattleScreen';
+import { BestiaryScreen } from './screens/BestiaryScreen';
 import { BossScreen } from './screens/BossScreen';
 import { FieldScreen } from './screens/FieldScreen';
 import { GuideScreen } from './screens/GuideScreen';
@@ -33,6 +34,7 @@ type BattleFrom = 'map' | 'dungeon' | 'boss';
 type Route =
   | { name: 'town' }
   | { name: 'status' }
+  | { name: 'bestiary' }
   | { name: 'map' }
   | { name: 'field' }
   | { name: 'shop' }
@@ -165,6 +167,8 @@ function Game() {
   };
 
   switch (route.name) {
+    case 'bestiary':
+      return <BestiaryScreen player={player} onBack={() => go({ name: 'town' })} />;
     case 'status':
       return <StatusScreen player={player} onBack={() => go({ name: 'town' })} />;
     case 'shop':
@@ -278,6 +282,7 @@ function Game() {
           onField={() => go({ name: 'map' })}
           onDungeon={() => go({ name: 'field' })}
           onStatus={() => go({ name: 'status' })}
+          onBestiary={() => go({ name: 'bestiary' })}
           onShop={() => go({ name: 'shop' })}
           status={townStatus}
           onSettings={() => go({ name: 'settings' })}

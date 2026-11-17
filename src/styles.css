@@ -1304,3 +1304,41 @@ code {
 .guide__menu dd {
   margin: 2px 0 0 1.2em;
 }
+
+/* モンスター図鑑 */
+.bestiary-entry__no {
+  margin: 0 0 4px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.bestiary-entry__head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.bestiary-entry__name {
+  margin: 0;
+  font-size: 20px;
+  font-weight: normal;
+  color: var(--accent);
+}
+
+.bestiary-entry__title .note {
+  margin: 4px 0 0;
+}
+
+.bestiary-entry__text {
+  margin: 10px 0;
+}
+
+/* まだ出会っていないモンスターは、影だけ */
+.bestiary-entry--unknown .bestiary-entry__art {
+  filter: brightness(0) invert(1);
+  opacity: 0.22;
+}
+
+.bestiary-entry--unknown .bestiary-entry__name {
+  color: var(--muted);
+}

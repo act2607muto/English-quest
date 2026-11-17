@@ -15,6 +15,7 @@ export function TownScreen({
   onField,
   onDungeon,
   onStatus,
+  onBestiary,
   onShop,
   onSettings,
   status,
@@ -25,6 +26,7 @@ export function TownScreen({
   /** スキルダンジョン（練習したい能力値のモンスターを選んで戦う） */
   onDungeon: () => void;
   onStatus: () => void;
+  onBestiary: () => void;
   onShop: () => void;
   onSettings: () => void;
   status: TownStatus | null;
@@ -101,6 +103,9 @@ export function TownScreen({
         </button>
         <button className="command command--plain" type="button" onClick={onStatus}>
           ▶ ステータス
+        </button>
+        <button className="command command--plain" type="button" onClick={onBestiary}>
+          ▶ モンスター図鑑
         </button>
         <button className="command command--plain" type="button" onClick={onShop}>
           ▶ ことのは工房

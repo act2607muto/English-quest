@@ -10,7 +10,7 @@ import type { Skill } from './skills';
 
 const QUESTION_COLUMNS =
   'id, town_id, skill, format, prompt, sentence, sentence_ja, audio_text, choices, answer, model_answers, explanation, difficulty, tags';
-const MONSTER_COLUMNS = 'id, name, town_id, skill, hp, gold, is_boss, image, exp_reward, encounter_rate';
+const MONSTER_COLUMNS = 'id, name, town_id, skill, hp, gold, is_boss, image, exp_reward, encounter_rate, description';
 const EQUIPMENT_COLUMNS = 'id, name, slot, effect, price, town_id, image';
 
 /** 街の店の品ぞろえ（武器が先、安い順） */

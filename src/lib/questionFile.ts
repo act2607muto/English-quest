@@ -51,6 +51,8 @@ export type MonsterRow = {
   exp_reward: number;
   /** めずらしいモンスター（街の外でだけ出会う）：出会いのうち、このモンスターになる割合。ほかは null */
   encounter_rate: number | null;
+  /** 図鑑の説明文。なければ null */
+  description: string | null;
 };
 
 /**
@@ -272,6 +274,7 @@ function parseMonster(raw: unknown, townId: string | null, problems: string[]): 
   const gold = raw.gold ?? 0;
   if (!Number.isInteger(gold) || (gold as number) < 0) problems.push(`gold は0以上の整数にしてください（${JSON.stringify(raw.gold)}）`);
   const image = optionalText(raw.image, 'image', problems);
+  const description = optionalText(raw.description, 'description', problems);
   if (problems.length > 0 || !townId) return null;
   return {
     id: raw.id as string,
@@ -284,6 +287,7 @@ function parseMonster(raw: unknown, townId: string | null, problems: string[]): 
     image,
     exp_reward: expReward as number,
     encounter_rate: rate as number | null,
+    description,
   };
 }
 
@@ -298,6 +302,7 @@ export function sameMonster(a: MonsterRow, b: MonsterRow): boolean {
     'image',
     'exp_reward',
     'encounter_rate',
+    'description',
   ];
   return keys.every((k) => (a[k] ?? null) === (b[k] ?? null));
 }

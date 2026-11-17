@@ -15,7 +15,8 @@
       "hp": 40,
       "gold": 8,
       "is_boss": false,
-      "image": "/monsters/town01-mon-voc.png"
+      "image": "/monsters/town01-mon-voc.png",
+      "description": "古い辞書のページから生まれた虫。知らない単語を見つけると、もぐもぐ食べてしまう。"
     },
     {
       "id": "town01-mon-gra",
@@ -24,7 +25,8 @@
       "hp": 60,
       "gold": 12,
       "is_boss": false,
-      "image": "/monsters/town01-mon-gra.png"
+      "image": "/monsters/town01-mon-gra.png",
+      "description": "ことばの積み木でできたゴーレム。順番をまちがえると、がらがらとくずれてしまう。"
     },
     {
       "id": "town01-mon-lis",
@@ -33,7 +35,8 @@
       "hp": 50,
       "gold": 10,
       "is_boss": false,
-      "image": "/monsters/town01-mon-lis.png"
+      "image": "/monsters/town01-mon-lis.png",
+      "description": "体より大きな耳で、遠くのささやきまで聞きとる。小さな声で話しかけると喜ぶ。"
     },
     {
       "id": "town01-mon-wri",
@@ -42,7 +45,8 @@
       "hp": 40,
       "gold": 12,
       "is_boss": false,
-      "image": "/monsters/town01-mon-wri.png"
+      "image": "/monsters/town01-mon-wri.png",
+      "description": "書きかけの手紙から生まれたインクのつぼ。きれいな文を見ると、うれしそうに泡をふく。"
     },
     {
       "id": "town01-mon-spe",
@@ -51,7 +55,8 @@
       "hp": 30,
       "gold": 10,
       "is_boss": false,
-      "image": "/monsters/town01-mon-spe.png"
+      "image": "/monsters/town01-mon-spe.png",
+      "description": "一日中しゃべりつづける小鳥。あいさつを返さないと、すねて追いかけてくる。"
     },
     {
       "id": "town01-rare-exp",
@@ -62,7 +67,8 @@
       "exp_reward": 300,
       "encounter_rate": 0.01,
       "is_boss": false,
-      "image": "/monsters/town01-rare-exp.png"
+      "image": "/monsters/town01-rare-exp.png",
+      "description": "ひらめいた瞬間にだけ光るホタル。めったに姿を見せないが、出会えたら大きく成長できる。"
     },
     {
       "id": "town01-rare-gold",
@@ -72,7 +78,8 @@
       "gold": 80,
       "encounter_rate": 0.04,
       "is_boss": false,
-      "image": "/monsters/town01-rare-gold.png"
+      "image": "/monsters/town01-rare-gold.png",
+      "description": "おなかに小判の模様がある金色のカエル。倒すと、ためこんだお金を落としていく。"
     },
     {
       "id": "town01-boss",
@@ -81,7 +88,8 @@
       "hp": 100,
       "gold": 100,
       "is_boss": true,
-      "image": "/monsters/town01-boss.png"
+      "image": "/monsters/town01-boss.png",
+      "description": "ことだまの門を守る若い狼。首にさげた鍵は、次の街への道を開くといわれている。"
     }
   ]
 }

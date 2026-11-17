@@ -297,3 +297,36 @@ export async function saveHeroName(input: string): Promise<void> {
   if (error) throw error;
   if (!data || data.length === 0) throw new Error('冒険の記録が見つからず、名前を保存できませんでした。');
 }
+
+/** モンスター図鑑の記録：モンスターごとの、戦った回数・倒した回数・はじめて倒した日 */
+export type MonsterRecord = { fought: number; defeated: number; firstDefeatedAt: string | null };
+
+/**
+ * 戦闘の履歴から、モンスターごとの記録を作る。復活モンスター（ID の最後が -revival）は、もとのモンスターに数える。
+ * 履歴が多くても読めるよう、1000件ずつ読む。
+ */
+export async function fetchMonsterRecords(): Promise<Map<string, MonsterRecord>> {
+  const client = requireSupabase();
+  const records = new Map<string, MonsterRecord>();
+  const PAGE = 1000;
+  for (let from = 0; ; from += PAGE) {
+    const { data, error } = await client
+      .from('battle_logs')
+      .select('monster_id, won, fought_at')
+      .order('fought_at')
+      .range(from, from + PAGE - 1);
+    if (error) throw error;
+    for (const row of data as { monster_id: string; won: boolean; fought_at: string }[]) {
+      const id = row.monster_id.replace(/-revival$/, '');
+      const r = records.get(id) ?? { fought: 0, defeated: 0, firstDefeatedAt: null };
+      r.fought += 1;
+      if (row.won) {
+        r.defeated += 1;
+        r.firstDefeatedAt ??= row.fought_at;
+      }
+      records.set(id, r);
+    }
+    if (data.length < PAGE) break;
+  }
+  return records;
+}
