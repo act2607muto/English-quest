@@ -49,6 +49,8 @@ type Route =
       from: BattleFrom;
       /** 戦闘の背景の絵（なければ null） */
       background: string | null;
+      /** background が読めないときに使う絵 */
+      backgroundFallback: string | null;
     }
   | { name: 'result'; result: BattleResult; before: Player; from: BattleFrom; background: string | null }
   | { name: 'settings' }
@@ -166,12 +168,16 @@ function Game() {
       before: player,
       key: Date.now(),
       from,
+      // スキルダンジョンは、その能力値の部屋の絵（なければ、ダンジョン共通の絵）
       background:
         from === 'dungeon'
-          ? `/battle/${monster.town_id}-dungeon.png`
+          ? monster.skill
+            ? `/battle/${monster.town_id}-dungeon-${monster.skill}.png`
+            : `/battle/${monster.town_id}-dungeon.png`
           : from === 'boss'
             ? `/battle/${monster.town_id}-boss.png`
             : (background ?? null),
+      backgroundFallback: from === 'dungeon' ? `/battle/${monster.town_id}-dungeon.png` : null,
     });
   /** 戦闘を始めた場所へもどる（ボスは街の外のマップの、ボスのいる場所へ） */
   const backTo = (from: BattleFrom) => {
@@ -224,6 +230,7 @@ function Game() {
           kind={route.kind}
           skills={route.skills}
           background={route.background}
+          backgroundFallback={route.backgroundFallback}
           player={route.before}
           isAdmin={isAdmin}
           onEnd={(result) => {

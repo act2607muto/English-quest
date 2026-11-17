@@ -86,6 +86,7 @@ export function BattleScreen({
   kind,
   skills,
   background = null,
+  backgroundFallback = null,
   player,
   isAdmin,
   onEnd,
@@ -98,13 +99,18 @@ export function BattleScreen({
   skills: Skill[];
   /** 戦闘の背景の絵（出会った場所など）。なければ背景なし */
   background?: string | null;
+  /** background が読めないときに使う絵 */
+  backgroundFallback?: string | null;
   player: Player;
   isAdmin: boolean;
   onEnd: (result: BattleResult) => void;
   onRunAway: () => void;
 }) {
   const [phase, setPhase] = useState<Phase>('loading');
-  const [bgBroken, setBgBroken] = useState(false);
+  // 背景の絵：background → backgroundFallback の順に試し、どちらも読めなければ背景なし
+  const [bgTry, setBgTry] = useState(0);
+  const bgSrc = bgTry === 0 ? background : bgTry === 1 ? backgroundFallback : null;
+  const bgBroken = !bgSrc;
   const [error, setError] = useState<string | null>(null);
   const [queue, setQueue] = useState<QuestionRow[]>([]);
   const [index, setIndex] = useState(0);
@@ -367,11 +373,18 @@ export function BattleScreen({
   return (
     <main className={`screen battle${phase === 'feedback' && !hit ? ' battle--hurt' : ''}`}>
       <section
-        className={`battle__enemy${background && !bgBroken ? ' battle__enemy--scene' : ''}${kind === 'boss' ? ' battle__enemy--boss' : ''}`}
+        className={`battle__enemy${!bgBroken ? ' battle__enemy--scene' : ''}${kind === 'boss' ? ' battle__enemy--boss' : ''}`}
       >
         <div className="battle__stage">
-          {background && !bgBroken && (
-            <img className="battle__bg" src={background} alt="" aria-hidden="true" onError={() => setBgBroken(true)} />
+          {bgSrc && (
+            <img
+              key={bgSrc}
+              className="battle__bg"
+              src={bgSrc}
+              alt=""
+              aria-hidden="true"
+              onError={() => setBgTry((n) => (n === 0 && backgroundFallback ? 1 : 2))}
+            />
           )}
           {/* 主人公（左下でモンスターと向き合う）。まちがえると、ひっかき傷と「-1」 */}
           <span className="battle__hero">

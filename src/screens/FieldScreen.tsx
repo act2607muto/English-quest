@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, type CSSProperties } from 'react';
 import { MonsterArt } from '../components/MonsterArt';
 import { fetchMonstersOfTown } from '../lib/content';
 import { PLAYABLE_SKILLS } from '../lib/game/battle';
@@ -6,7 +6,7 @@ import { isRare, revivalOf } from '../lib/game/foes';
 import type { Player } from '../lib/game/player';
 import type { TownStatus } from '../lib/game/town';
 import type { MonsterRow } from '../lib/questionFile';
-import { SKILLS, SKILL_LABELS } from '../lib/skills';
+import { SKILLS, SKILL_LABELS, type Skill } from '../lib/skills';
 import type { BattleKind } from './BattleScreen';
 
 /**
@@ -70,7 +70,8 @@ export function FieldScreen({
               <button
                 key={monster.id}
                 type="button"
-                className="monster-card monster-card--revival"
+                className="monster-card monster-card--revival monster-card--room"
+                style={roomStyle(player.currentTownId, monster.skill)}
                 onClick={() => onFight(monster, 'revival')}
               >
                 <MonsterArt skill={monster.skill} image={monster.image} size="small" revival />
@@ -98,7 +99,8 @@ export function FieldScreen({
               <button
                 key={skill}
                 type="button"
-                className="monster-card"
+                className={`monster-card${playable ? ' monster-card--room' : ''}`}
+                style={playable ? roomStyle(player.currentTownId, skill) : undefined}
                 disabled={!playable}
                 onClick={() => m && onFight(m, 'normal')}
               >
@@ -122,4 +124,10 @@ export function FieldScreen({
       </button>
     </main>
   );
+}
+
+/** 能力値ごとの部屋の絵（public/battle/{街のID}-dungeon-{能力値}.png）をカードの背景にする */
+function roomStyle(townId: string, skill: Skill | null): CSSProperties | undefined {
+  if (!skill) return undefined;
+  return { '--room': `url('/battle/${townId}-dungeon-${skill}.png')` } as CSSProperties;
 }
