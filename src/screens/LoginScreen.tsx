@@ -44,7 +44,7 @@ export function LoginScreen() {
   return (
     <main className="screen screen--center">
       <h1 className="title">English Quest</h1>
-      <section className="window login-google">
+      <section className="window login-panel login-google">
         <button className="command" type="button" onClick={() => void handleGoogle()} disabled={busy}>
           ▶ Google でログイン
         </button>
@@ -54,7 +54,7 @@ export function LoginScreen() {
         </p>
       </section>
       <p className="login-or">または メールアドレスで</p>
-      <form className="window" onSubmit={handleSubmit}>
+      <form className="window login-panel" onSubmit={handleSubmit}>
         <label className="field">
           <span>メールアドレス</span>
           <input

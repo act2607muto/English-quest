@@ -1085,9 +1085,11 @@ code {
 }
 
 /* ---------- ログイン（Google） ---------- */
-.login-google {
+/* Google のわくとメールアドレスのわくは、同じ幅でまん中にそろえる */
+.login-panel {
   width: 100%;
   max-width: 420px;
+  align-self: center;
 }
 
 .login-google a {
@@ -1096,6 +1098,7 @@ code {
 
 .login-or {
   margin: 0;
+  text-align: center;
   color: var(--muted);
   font-size: 14px;
 }
