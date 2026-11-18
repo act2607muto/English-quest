@@ -100,7 +100,8 @@ export function BossScreen({
           )}
           {skills.length > 0 ? (
             <button className="command command--boss" type="button" onClick={() => onFight(bossFor(boss, player), skills)}>
-              {defeated ? `▶ もう一度挑む（${bossFor(boss, player).gold} G）` : `▶ ${boss.name}に挑む（${boss.gold} G）`}
+              {/* 勝ったときのお金は、払うお金に見えるのでボタンには出さない（2026-11-18 本人の希望） */}
+              {defeated ? '▶ もう一度挑む' : `▶ ${boss.name}に挑む`}
             </button>
           ) : (
             <p className="message message--error">戦える能力値がありません。</p>
