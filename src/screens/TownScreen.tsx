@@ -24,7 +24,7 @@ export function TownScreen({
 }: {
   player: Player;
   town: TownRow | null;
-  /** 別の街に着いたばかりなら、解放された能力値（着いた！と知らせる） */
+  /** 先の街に着いたばかりなら、解放された能力値（着いた！と知らせる。前の街へもどったときは null） */
   arrival: { unlocked: Skill[] } | null;
   /** 上の帯の主人公を押したとき（ステータスへ） */
   onStatus: () => void;

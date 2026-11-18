@@ -168,11 +168,15 @@ function Game() {
       if (index.length === 0) throw new Error('その街の教材が、まだ取り込まれていません');
       const unlocked = await moveToTown(townId, [...new Set(index.map((q) => q.skill))]);
       setTownStatus(null);
+      const before = town;
       const p = await reload();
-      setTown(await fetchTown(p.currentTownId));
+      const next = await fetchTown(p.currentTownId);
+      setTown(next);
       setMapPos(null);
       go({ name: 'town' });
-      setArrival({ unlocked });
+      // 「着いた！」は、順番が先の街へ進んだときだけ出す（前の街へもどったときは、いつもの街の画面）
+      const forward = !before || !next || next.sort_order > before.sort_order;
+      if (forward || unlocked.length > 0) setArrival({ unlocked });
     } catch (err) {
       setError(err instanceof Error ? err.message : String(err));
     }
