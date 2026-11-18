@@ -1944,3 +1944,117 @@ code {
   color: var(--accent);
   background: rgba(255, 216, 74, 0.16);
 }
+
+/* ---------- 記録 ---------- */
+.record-tiles {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin: 0 0 8px;
+}
+
+.record-tile {
+  padding: 8px 10px;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+}
+
+.record-tile dt {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.record-tile dd {
+  margin: 2px 0 0;
+  font-size: 24px;
+  color: var(--fg);
+}
+
+.record-chart {
+  display: block;
+  width: 100%;
+  height: auto;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.record-chart__grid {
+  stroke: rgba(255, 255, 255, 0.15);
+  stroke-width: 1;
+}
+
+.record-chart__axis {
+  fill: var(--muted);
+  font-size: 11px;
+  font-family: inherit;
+}
+
+.record-chart__bar {
+  fill: var(--accent);
+  opacity: 0.75;
+}
+
+.record-chart__bar--on {
+  opacity: 1;
+  stroke: #fff;
+  stroke-width: 2;
+}
+
+.record-chart__hit {
+  fill: transparent;
+  cursor: pointer;
+}
+
+.record-chart__line {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2;
+  stroke-linejoin: round;
+}
+
+.record-chart__dot {
+  fill: var(--accent);
+  stroke: #0a0e28;
+  stroke-width: 2;
+}
+
+.record-chart__cursor {
+  stroke: rgba(255, 255, 255, 0.35);
+  stroke-width: 1;
+  stroke-dasharray: 3 3;
+}
+
+.record-chart__info {
+  margin: 4px 0 0;
+}
+
+.record-table {
+  margin-top: 8px;
+}
+
+.record-table summary {
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.record-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.record-skill {
+  font: inherit;
+  font-size: 14px;
+  padding: 4px 10px;
+  color: var(--muted);
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  cursor: pointer;
+}
+
+.record-skill--on {
+  color: var(--accent);
+  border-color: var(--accent);
+}

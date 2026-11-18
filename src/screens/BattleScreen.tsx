@@ -333,6 +333,28 @@ export function BattleScreen({
     });
   }
 
+  /**
+   * にげる。1問でも答えていれば、記録の画面で数えられるよう、負けとして戦闘の履歴を残す（経験値は答えるたびに入っている）
+   */
+  async function handleRunAway() {
+    stopSpeaking();
+    if (answered > 0) {
+      queueSave(() =>
+        finishBattle({
+          townId: monster.town_id,
+          monsterId: monster.id,
+          questionCount: answered,
+          correctCount,
+          won: false,
+          expBySkill,
+          gold: 0,
+        }),
+      );
+      await saveChain.current;
+    }
+    onRunAway();
+  }
+
   async function handleFlag(q: QuestionRow) {
     try {
       await flagQuestion(q.id, '戦闘中に印をつけた');
@@ -667,7 +689,7 @@ export function BattleScreen({
       )}
 
       {phase === 'question' && (
-        <button className="command command--quiet" type="button" onClick={onRunAway}>
+        <button className="command command--quiet" type="button" onClick={() => void handleRunAway()}>
           ▶ にげる（ここまでの正解は残ります）
         </button>
       )}

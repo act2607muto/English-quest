@@ -20,6 +20,7 @@ import { MapScreen, type MapPosition } from './screens/MapScreen';
 import { MicTestScreen } from './screens/MicTestScreen';
 import { NameScreen } from './screens/NameScreen';
 import { PasswordScreen } from './screens/PasswordScreen';
+import { RecordsScreen } from './screens/RecordsScreen';
 import { ResultScreen } from './screens/ResultScreen';
 import { SettingsScreen } from './screens/SettingsScreen';
 import { ShopScreen } from './screens/ShopScreen';
@@ -37,6 +38,8 @@ type BattleFrom = 'map' | 'dungeon' | 'boss';
 type Route =
   | { name: 'town' }
   | { name: 'status' }
+  /** 記録（日ごとの練習量と能力値の推移）。ステータスから開く */
+  | { name: 'records' }
   | { name: 'bestiary' }
   | { name: 'map' }
   | { name: 'field' }
@@ -233,7 +236,12 @@ function Game() {
     case 'bestiary':
       return withNav('bestiary', <BestiaryScreen player={player} onBack={() => go({ name: 'town' })} />);
     case 'status':
-      return withNav('status', <StatusScreen player={player} onBack={() => go({ name: 'town' })} />);
+      return withNav(
+        'status',
+        <StatusScreen player={player} onRecords={() => go({ name: 'records' })} onBack={() => go({ name: 'town' })} />,
+      );
+    case 'records':
+      return withNav('status', <RecordsScreen player={player} onBack={() => go({ name: 'status' })} />);
     case 'shop':
       return withNav('shop', <ShopScreen player={player} onChanged={reload} onBack={() => go({ name: 'town' })} />);
     case 'map':

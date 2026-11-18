@@ -10,6 +10,7 @@ import type { Skill } from './skills';
 import { isHeroLook, type HeroLook } from './heroLook';
 import { effectiveExp, localDate, nextReview, type ReviewState } from './game/growth';
 import { DECAY_GRACE_DAYS } from './game/rules';
+import type { BattleLogRow } from './game/history';
 
 export type SkillStat = {
   skill: Skill;
@@ -324,6 +325,36 @@ export async function saveHeroName(input: string, look: HeroLook): Promise<void>
     .select('hero_name');
   if (error) throw error;
   if (!data || data.length === 0) throw new Error('冒険の記録が見つからず、名前を保存できませんでした。');
+}
+
+/** 記録の画面で使う、戦闘の履歴（古い順。多くても読めるよう 1000件ずつ読む） */
+export async function fetchBattleHistory(): Promise<BattleLogRow[]> {
+  const client = requireSupabase();
+  const rows: BattleLogRow[] = [];
+  const PAGE = 1000;
+  for (let from = 0; ; from += PAGE) {
+    const { data, error } = await client
+      .from('battle_logs')
+      .select('fought_at, question_count, correct_count, exp_by_skill')
+      .order('fought_at')
+      .range(from, from + PAGE - 1);
+    if (error) throw error;
+    for (const row of data as {
+      fought_at: string;
+      question_count: number;
+      correct_count: number;
+      exp_by_skill: Partial<Record<Skill, number>> | null;
+    }[]) {
+      rows.push({
+        foughtAt: row.fought_at,
+        questions: row.question_count,
+        correct: row.correct_count,
+        expBySkill: row.exp_by_skill ?? {},
+      });
+    }
+    if (data.length < PAGE) break;
+  }
+  return rows;
 }
 
 /** モンスター図鑑の記録：モンスターごとの、戦った回数・倒した回数・はじめて倒した日 */

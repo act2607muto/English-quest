@@ -8,7 +8,16 @@ import { MAX_LEVEL } from '../lib/game/rules';
 import { SKILL_LABELS } from '../lib/skills';
 
 /** ステータス：六角形、総合レベル、お金、装備 */
-export function StatusScreen({ player, onBack }: { player: Player; onBack: () => void }) {
+export function StatusScreen({
+  player,
+  onRecords,
+  onBack,
+}: {
+  player: Player;
+  /** 記録（日ごとの練習量と能力値の推移）を開く */
+  onRecords: () => void;
+  onBack: () => void;
+}) {
   return (
     <main className="screen">
       <section className="window">
@@ -83,6 +92,9 @@ export function StatusScreen({ player, onBack }: { player: Player; onBack: () =>
         </table>
       </section>
 
+      <button className="command" type="button" onClick={onRecords}>
+        ▶ 記録を見る（練習した日・能力値の推移）
+      </button>
       <button className="command" type="button" onClick={onBack}>
         ▶ 街にもどる
       </button>
