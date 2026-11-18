@@ -49,7 +49,7 @@
     },
     {
       "id": "town01-wpn-all",
-      "name": "にじいろのつるぎ",
+      "name": "たびだちのつるぎ",
       "slot": "weapon",
       "effect": { "type": "attack", "skill": "all", "amount": 3 },
       "price": 300,
