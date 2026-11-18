@@ -505,17 +505,15 @@ code {
   overflow-wrap: anywhere;
 }
 
-/* リーディングの文章（メモ・お知らせなど）。左ぞろえで、改行をそのまま出す */
+/* リーディングの文章（メモ・お知らせなど）。ほかの問題の英文（battle__sentence）と同じ書体と色にし、
+   長いので字だけ少し小さくする。改行はそのまま出す（2026-11-18 本人の希望で、枠をやめてそろえた） */
 .battle__passage {
   font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
-  font-size: 17px;
-  line-height: 1.5;
+  font-size: 19px;
+  line-height: 1.45;
+  color: var(--accent);
   white-space: pre-line;
   overflow-wrap: anywhere;
-  margin: 8px 0 0;
-  padding: 8px 10px;
-  background: rgba(255, 255, 255, 0.06);
-  border-left: 3px solid var(--accent);
 }
 
 .command--listen {
