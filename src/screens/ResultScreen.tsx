@@ -1,4 +1,6 @@
+import { useEffect } from 'react';
 import { Hexagon } from '../components/Hexagon';
+import { playSfx } from '../lib/sound';
 import { heroNameOf, skillOf, type Player } from '../lib/game/player';
 import { SKILLS, SKILL_LABELS } from '../lib/skills';
 import { baseAttackOf } from '../lib/game/attack';
@@ -30,6 +32,14 @@ export function ResultScreen({
   const overallUp = after.overall > before.overall;
   const firstBossWin =
     result.kind === 'boss' && result.won && !before.defeatedBosses.includes(result.monster.id);
+
+  // 音：勝ったらファンファーレ、負けたら下がっていく音。レベルが上がっていれば、そのあとに上がる音
+  const leveledUp = levelUps.length > 0 || overallUp;
+  useEffect(() => {
+    const timers = [window.setTimeout(() => playSfx(result.won ? 'win' : 'lose'), 50)];
+    if (leveledUp) timers.push(window.setTimeout(() => playSfx('levelup'), 1500));
+    return () => timers.forEach((t) => window.clearTimeout(t));
+  }, [result.won, leveledUp]);
 
   return (
     <main className="screen">

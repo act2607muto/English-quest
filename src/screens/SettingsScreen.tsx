@@ -1,7 +1,18 @@
 import { useEffect, useState } from 'react';
 import { useAuth } from '../auth/AuthProvider';
 import { fetchIsAdmin } from '../lib/content';
-import { getDpadSide, getNoEncounters, setDpadSide, setNoEncounters, type DpadSide } from '../lib/preferences';
+import {
+  getBgmOn,
+  getDpadSide,
+  getNoEncounters,
+  getSfxOn,
+  setBgmOn,
+  setDpadSide,
+  setNoEncounters,
+  setSfxOn,
+  type DpadSide,
+} from '../lib/preferences';
+import { bgmSettingChanged, playSfx } from '../lib/sound';
 
 /** 設定。問題文に使う自分の名前・音声の速さは、この後の手順で足す */
 export function SettingsScreen({
@@ -33,6 +44,18 @@ export function SettingsScreen({
   const chooseSide = (side: DpadSide) => {
     setDpadSide(side);
     setSide(side);
+  };
+  const [bgm, setBgmState] = useState(getBgmOn);
+  const chooseBgm = (on: boolean) => {
+    setBgmOn(on);
+    setBgmState(on);
+    bgmSettingChanged();
+  };
+  const [sfx, setSfxState] = useState(getSfxOn);
+  const chooseSfx = (on: boolean) => {
+    setSfxOn(on);
+    setSfxState(on);
+    if (on) playSfx('coin');
   };
   const [noEncounters, setNoEnc] = useState(getNoEncounters);
   const chooseEncounters = (off: boolean) => {
@@ -67,6 +90,43 @@ export function SettingsScreen({
           ▶ ログアウト
         </button>
       </nav>
+      <section className="window" aria-labelledby="sound-title">
+        <h2 className="window__title" id="sound-title">
+          音
+        </h2>
+        <p className="note">
+          この端末に覚えておきます。iPhone のマナーモードのときは鳴りません。リスニングの読み上げ中と録音中は、BGM が消えます。
+        </p>
+        {(
+          [
+            ['BGM', bgm, chooseBgm],
+            ['効果音', sfx, chooseSfx],
+          ] as const
+        ).map(([label, value, choose]) => (
+          <div key={label} className="sound-row">
+            <span className="sound-row__label">{label}</span>
+            <div className="choice-pair" role="group" aria-label={label}>
+              {(
+                [
+                  [true, 'オン'],
+                  [false, 'オフ'],
+                ] as const
+              ).map(([on, text]) => (
+                <button
+                  key={text}
+                  type="button"
+                  className={`command choice-pair__button${value === on ? ' choice-pair__button--on' : ''}`}
+                  aria-pressed={value === on}
+                  onClick={() => choose(on)}
+                >
+                  {value === on ? '● ' : '○ '}
+                  {text}
+                </button>
+              ))}
+            </div>
+          </div>
+        ))}
+      </section>
       <section className="window" aria-labelledby="dpad-side-title">
         <h2 className="window__title" id="dpad-side-title">
           十字ボタンの位置

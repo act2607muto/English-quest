@@ -9,6 +9,7 @@ import { loadTownStatus, type TownStatus } from './lib/game/town';
 import type { Skill } from './lib/skills';
 import type { MonsterRow, TownRow } from './lib/questionFile';
 import { isSupabaseConfigured } from './lib/supabase';
+import { installAudio, playSfx, setBgm, type BgmName } from './lib/sound';
 import { BattleScreen, type BattleKind, type BattleResult } from './screens/BattleScreen';
 import { BestiaryScreen } from './screens/BestiaryScreen';
 import { BossScreen } from './screens/BossScreen';
@@ -67,6 +68,24 @@ type Route =
   | { name: 'import' }
   | { name: 'mic-test' };
 
+// 音：最初のタップで音を使えるようにし、ボタンを押したら「ピッ」と鳴らす（lib/sound.ts）
+installAudio();
+
+/** 画面ごとの BGM（結果の画面は勝ち負けの音を鳴らすので止める。マイクのテストは録音に入らないよう止める） */
+function bgmFor(route: Route): BgmName | null {
+  switch (route.name) {
+    case 'map':
+      return 'field';
+    case 'battle':
+      return route.kind === 'boss' ? 'boss' : 'battle';
+    case 'result':
+    case 'mic-test':
+      return null;
+    default:
+      return 'town';
+  }
+}
+
 export function App() {
   if (!isSupabaseConfigured) return <SetupNeeded />;
   return (
@@ -118,6 +137,11 @@ function Game() {
       .catch(() => setIsAdmin(false));
   }, [reload]);
 
+  // 画面が変わったら、その画面の BGM にする
+  useEffect(() => {
+    setBgm(player ? bgmFor(route) : null);
+  }, [route, player]);
+
   // アプリに戻ってきたとき（日付が変わったときなど）に、低下を計算し直す
   useEffect(() => {
     const onVisible = () => {
@@ -166,6 +190,7 @@ function Game() {
    * まだ解放されていないもの（リーディングなど）を解放して、着いた街の画面を出す。
    */
   const travel = async (townId: string) => {
+    playSfx('warp');
     try {
       const index = await fetchTownQuestionIndex(townId);
       if (index.length === 0) throw new Error('その街の教材が、まだ取り込まれていません');

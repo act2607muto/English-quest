@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { transcribeAudio } from '../lib/grading';
 import { describeRecordingError, isRecordingSupported, startRecording, type RecordingSession } from '../lib/recorder';
+import { holdBgm } from '../lib/sound';
 
 /**
  * 声で答える欄（スピーキング）。
@@ -33,6 +34,9 @@ export function SpeakAnswer({
   useEffect(() => () => sessionRef.current?.cancel(), []);
 
   // 録音中は秒数を数え、上限で自動的に止める
+  // 録音の途中で画面を離れても、BGM が消えたままにならないように
+  useEffect(() => () => holdBgm('mic', false), []);
+
   useEffect(() => {
     if (state.kind !== 'recording') return;
     const timer = setInterval(() => {
@@ -51,11 +55,14 @@ export function SpeakAnswer({
     }
     setState({ kind: 'starting' });
     try {
+      // 録音している間は BGM を消す（BGM が録音に入らないように）
+      holdBgm('mic', true);
       sessionRef.current = await startRecording();
       startedRef.current = Date.now();
       setState({ kind: 'recording', elapsed: 0 });
     } catch (err) {
       sessionRef.current = null;
+      holdBgm('mic', false);
       onFail(describeRecordingError(err));
     }
   }
@@ -64,6 +71,7 @@ export function SpeakAnswer({
     const session = sessionRef.current;
     if (!session) return;
     sessionRef.current = null;
+    holdBgm('mic', false);
     setState({ kind: 'transcribing' });
     try {
       const rec = await session.stop();

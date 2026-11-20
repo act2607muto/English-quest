@@ -14,6 +14,7 @@ import type { MonsterRow, QuestionRow } from '../lib/questionFile';
 import { addSkillExp, fetchProgress, finishBattle, markBossDefeated, saveAnswer, type QuestionProgress } from '../lib/records';
 import type { Skill } from '../lib/skills';
 import { canSpeak, speakEnglish, stopSpeaking } from '../lib/speech';
+import { playSfx } from '../lib/sound';
 
 /**
  * 決着がついてから戦闘結果へ移るまでの、最低限の待ち時間（ミリ秒）。
@@ -206,6 +207,9 @@ export function BattleScreen({
     setAnswered((n) => n + 1);
     setAskedSkills((set) => new Set(set).add(skill));
     if ((hit && monsterHp - damage <= 0) || (!hit && playerHp - 1 <= 0)) endedAtRef.current = Date.now();
+    // 音：正解は斬る音（倒したら倒れる音も）、まちがいはダメージの音
+    playSfx(hit ? 'hit' : 'hurt');
+    if (hit && monsterHp - damage <= 0) window.setTimeout(() => playSfx('defeat'), 350);
     if (hit) {
       setMonsterHp((hp) => hp - damage);
       setCorrectCount((n) => n + 1);

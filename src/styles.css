@@ -2058,3 +2058,13 @@ code {
   color: var(--accent);
   border-color: var(--accent);
 }
+
+/* ---------- 設定：音 ---------- */
+.sound-row {
+  margin-top: 8px;
+}
+
+.sound-row__label {
+  display: block;
+  margin-bottom: 4px;
+}

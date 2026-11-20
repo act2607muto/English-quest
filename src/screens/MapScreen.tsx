@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { HERO_IMAGE } from '../components/HeroArt';
 import { heroSrc, useHeroLook } from '../lib/heroLook';
+import { playSfx } from '../lib/sound';
 import { fetchMonstersOfTown } from '../lib/content';
 import { PLAYABLE_SKILLS } from '../lib/game/battle';
 import {
@@ -404,6 +405,7 @@ export function MapScreen({
       busyRef.current = true;
       heldRef.current = null;
       setEncounter(found);
+      playSfx('encounter');
       const reset = { ...next, steps: 0 };
       posRef.current = reset;
       onMove(reset);

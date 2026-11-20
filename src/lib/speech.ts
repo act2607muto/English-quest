@@ -19,6 +19,8 @@ function englishVoice(): SpeechSynthesisVoice | null {
   return cachedVoice;
 }
 
+import { holdBgm } from './sound';
+
 /**
  * 読み上げ機能が英語の単語として読めない名前を、読み上げるときだけ近い音のつづりに変える
  * （画面に出す英文は変えない）。例：Emi を「イー・エム・アイ」と読んでしまうので Emmy にする。
@@ -42,6 +44,10 @@ export function speakEnglish(text: string, rate = 0.9): void {
     u.rate = rate;
     const voice = englishVoice();
     if (voice) u.voice = voice;
+    // 読み上げている間は BGM を消す（英文が聞こえにくくならないように）
+    holdBgm('speech', true);
+    u.onend = () => holdBgm('speech', false);
+    u.onerror = () => holdBgm('speech', false);
     speechSynthesis.speak(u);
   } catch {
     // 読み上げられない端末では何もしない（画面の「聞く」ボタンでやり直せる）
@@ -49,5 +55,6 @@ export function speakEnglish(text: string, rate = 0.9): void {
 }
 
 export function stopSpeaking(): void {
+  holdBgm('speech', false);
   if (canSpeak) speechSynthesis.cancel();
 }

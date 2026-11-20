@@ -4,6 +4,7 @@ import { describeEffect } from '../lib/game/equipment';
 import type { Player } from '../lib/game/player';
 import type { EquipmentRow } from '../lib/questionFile';
 import { buyEquipment, equip } from '../lib/records';
+import { playSfx } from '../lib/sound';
 import { SKILLS } from '../lib/skills';
 
 /**
@@ -83,7 +84,12 @@ export function ShopScreen({
                 className="command"
                 type="button"
                 disabled={busy}
-                onClick={() => void run(() => buyEquipment(item), `${item.name}を 買った！`)}
+                onClick={() =>
+                  void run(async () => {
+                    await buyEquipment(item);
+                    playSfx('coin');
+                  }, `${item.name}を 買った！`)
+                }
               >
                 ▶ はい
               </button>

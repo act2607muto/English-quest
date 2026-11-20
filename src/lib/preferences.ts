@@ -43,3 +43,48 @@ export function setNoEncounters(on: boolean): void {
     // 覚えられなくても、この画面の間は選んだとおりに動く
   }
 }
+
+const BGM_KEY = 'english-quest:bgm';
+const SFX_KEY = 'english-quest:sfx';
+
+/** BGM を流すか（決めていなければ流す） */
+export function getBgmOn(): boolean {
+  try {
+    return localStorage.getItem(BGM_KEY) !== 'off';
+  } catch {
+    return bgmFallback;
+  }
+}
+
+export function setBgmOn(on: boolean): void {
+  try {
+    if (on) localStorage.removeItem(BGM_KEY);
+    else localStorage.setItem(BGM_KEY, 'off');
+  } catch {
+    // 覚えられなくても、アプリを開いている間は選んだとおりに動く（下の値を使う）
+  }
+  bgmFallback = on;
+}
+
+/** 効果音を鳴らすか（決めていなければ鳴らす） */
+export function getSfxOn(): boolean {
+  try {
+    return localStorage.getItem(SFX_KEY) !== 'off';
+  } catch {
+    return sfxFallback;
+  }
+}
+
+export function setSfxOn(on: boolean): void {
+  try {
+    if (on) localStorage.removeItem(SFX_KEY);
+    else localStorage.setItem(SFX_KEY, 'off');
+  } catch {
+    // 覚えられなくても、アプリを開いている間は選んだとおりに動く
+  }
+  sfxFallback = on;
+}
+
+/** ブラウザが覚えられないときに使う、今回の値 */
+let bgmFallback = true;
+let sfxFallback = true;
