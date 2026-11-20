@@ -35,6 +35,8 @@
 
 7. 「Deploy」を押す。1分ほどで終わり、`https://english-status-xxxx.vercel.app` のような URL ができる。
 
+今は自分のドメイン `https://english-quest.app` で公開している（下の「自分のドメインにする」）。
+
 ## 3. Supabase に公開先を伝える
 
 1. Supabase の「Authentication」→「URL Configuration」を開く。
@@ -71,3 +73,17 @@
 | 録音1〜3 | すべて成功し、再生すると声が聞こえる |
 | マイクの表示 | 止めると消える |
 | 開き直したあと | 録音できる（許可をもう一度聞かれることはある） |
+
+## 自分のドメインにする（2026-11-21 に済み）
+
+`english-quest.app` を Vercel で買い、このプロジェクトにつないだ。
+
+1. Vercel のプロジェクトの「Settings」→「Domains」で「Buy」からドメインを買い、プロジェクトに追加する（DNS は Vercel が自動で設定する）。
+2. `www.english-quest.app` と、もとの `english-quest-tawny-nu.vercel.app` は、「Edit」→「Redirect to」で `english-quest.app` へ飛ばす（308）。
+3. Supabase の「Authentication」→「URL Configuration」で、Site URL を `https://english-quest.app` にし、Redirect URLs に `https://english-quest.app/**` を足す。
+4. Google Cloud の OAuth 同意画面の「承認済みドメイン」に `english-quest.app` を足し、ホームページとプライバシーポリシーのリンクも新しいアドレスにする。
+5. iPhone のホーム画面のアイコンは、古いアドレスのものを消して、新しいアドレスで追加し直す。
+
+アプリのプログラムには公開先のアドレスを書いていない（Google ログインのあとの戻り先は、今開いているアドレスを使う）ので、ドメインを変えてもプログラムは直さなくてよい。
+端末ごとの設定（十字ボタンの左右、BGM・効果音）はアドレスごとに覚えるので、アドレスを変えると、はじめの値にもどる。
+

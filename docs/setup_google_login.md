@@ -7,7 +7,7 @@ Google 側（Google Cloud）と Supabase 側の両方で設定する。どちら
 - メールアドレスとパスワードでのログインも、今までどおり使える。
 - 「Client Secret」はパスワードと同じくらい大事な値。Supabase の画面に貼るだけにして、ほかの所（チャット、ファイル、GitHub）には書かない。
 
-以下の「アプリの URL」は、Vercel で公開しているアドレス（例：`https://english-status-xxxx.vercel.app`、最後の `/` は付けない）。
+以下の「アプリの URL」は、公開しているアドレス。今は `https://english-quest.app`（2026-11-21 に自分のドメインにした。最後の `/` は付けない）。
 
 ## 1. Supabase で、Google から戻ってくる先の URL を確かめる
 
@@ -31,7 +31,7 @@ Google 側（Google Cloud）と Supabase 側の両方で設定する。どちら
    - 作ったあと「ブランディング」を開き、次も入れて保存する（公開するのに必要）。
      - アプリケーションのホームページ：アプリの URL
      - アプリケーション プライバシー ポリシー リンク：アプリの URL のあとに `/privacy.html` を付けたもの
-     - 承認済みドメイン：`vjesfbengdyecwhnwtfv.supabase.co` と、アプリの URL のドメイン（例：`english-status-xxxx.vercel.app`）
+     - 承認済みドメイン：`vjesfbengdyecwhnwtfv.supabase.co` と、アプリの URL のドメイン（`english-quest.app`）
      - ロゴと利用規約は空のままにする（ロゴを入れると Google の審査が要る）
 4. 「対象」（Audience）を開き、公開ステータスの「アプリを公開」を押して **本番環境** にする。
    テストのままだと、自分で登録したテストユーザーしかログインできない。
@@ -58,7 +58,7 @@ Google 側（Google Cloud）と Supabase 側の両方で設定する。どちら
 1. 「Authentication」→「URL Configuration」を開く。
 2. 「Site URL」をアプリの URL にする。
 3. 「Redirect URLs」に「Add URL」で次の2つを足して保存する。
-   - アプリの URL のあとに `/**` を付けたもの（例：`https://english-status-xxxx.vercel.app/**`）
+   - アプリの URL のあとに `/**` を付けたもの（`https://english-quest.app/**`）
    - `http://localhost:5173/**`
 
 ## 5. Supabase で新規登録を開く
