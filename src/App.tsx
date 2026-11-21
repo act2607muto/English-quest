@@ -6,6 +6,8 @@ import { moveToTown } from './lib/records';
 import { loadPlayer, type Player } from './lib/game/player';
 import { setHeroLook } from './lib/heroLook';
 import { loadTownStatus, type TownStatus } from './lib/game/town';
+import { loadWorldState, type WorldState } from './lib/game/worldMap';
+import { getWorldMapDebug } from './lib/preferences';
 import type { Skill } from './lib/skills';
 import type { MonsterRow, TownRow } from './lib/questionFile';
 import { isSupabaseConfigured } from './lib/supabase';
@@ -27,6 +29,7 @@ import { SettingsScreen } from './screens/SettingsScreen';
 import { ShopScreen } from './screens/ShopScreen';
 import { StatusScreen } from './screens/StatusScreen';
 import { TownScreen } from './screens/TownScreen';
+import { WorldMapScreen } from './screens/WorldMapScreen';
 
 /** 戦闘を始めた場所（戦闘のあと、そこへもどる） */
 type BattleFrom = 'map' | 'dungeon' | 'boss';
@@ -43,6 +46,8 @@ type Route =
   | { name: 'records' }
   | { name: 'bestiary' }
   | { name: 'map' }
+  /** 旅の地図（点と道の世界地図）。3つ目の街に着くと、街の画面の右上と冒険のマップの下から開ける。back は開いた画面 */
+  | { name: 'world'; back: 'town' | 'map' }
   | { name: 'field' }
   | { name: 'shop' }
   | { name: 'boss' }
@@ -75,6 +80,7 @@ installAudio();
 function bgmFor(route: Route): BgmName | null {
   switch (route.name) {
     case 'map':
+    case 'world':
       return 'field';
     case 'battle':
       return route.kind === 'boss' ? 'boss' : 'battle';
@@ -111,7 +117,9 @@ function Game() {
   /** マップの上の位置（戦闘から戻ったとき、同じ場所から歩く。街に入ると忘れる） */
   const [mapPos, setMapPos] = useState<MapPosition | null>(null);
   /** 別の街に着いたばかりのとき（街の画面に「着いた！」と、解放された能力値を出す。街を離れると消す） */
-  const [arrival, setArrival] = useState<{ unlocked: Skill[] } | null>(null);
+  const [arrival, setArrival] = useState<{ unlocked: Skill[]; worldMap: boolean } | null>(null);
+  /** 旅の地図：どの街まで行ったか・使えるか（読めなくても遊べるので、失敗したら null のまま） */
+  const [world, setWorld] = useState<WorldState | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   const reload = useCallback(async () => {
@@ -121,6 +129,9 @@ function Game() {
     // 街の進み具合（ボスの条件、復習の数）は、読めなくても遊べるので失敗しても止めない
     loadTownStatus(p.currentTownId)
       .then(setTownStatus)
+      .catch(() => {});
+    loadWorldState(p)
+      .then(setWorld)
       .catch(() => {});
     return p;
   }, []);
@@ -180,6 +191,8 @@ function Game() {
     );
   }
 
+  // 旅の地図のボタンを出すか：3つ目の街に着いてから（管理者はデバッグの設定で、その前でも）
+  const worldMapOpen = !!world && (world.unlocked || (isAdmin && getWorldMapDebug()));
   const go = (r: Route) => {
     window.scrollTo(0, 0);
     if (r.name !== 'town') setArrival(null);
@@ -197,14 +210,19 @@ function Game() {
       const unlocked = await moveToTown(townId, [...new Set(index.map((q) => q.skill))]);
       setTownStatus(null);
       const before = town;
+      const wasWorldUnlocked = world?.unlocked ?? false;
       const p = await reload();
+      // 旅の地図をはじめて手に入れたか（3つ目の街に、はじめて着いたとき）
+      const nowWorld = await loadWorldState(p).catch(() => null);
+      setWorld(nowWorld);
+      const worldMap = !wasWorldUnlocked && (nowWorld?.unlocked ?? false);
       const next = await fetchTown(p.currentTownId);
       setTown(next);
       setMapPos(null);
       go({ name: 'town' });
       // 「着いた！」は、順番が先の街へ進んだときだけ出す（前の街へもどったときは、いつもの街の画面）
       const forward = !before || !next || next.sort_order > before.sort_order;
-      if (forward || unlocked.length > 0) setArrival({ unlocked });
+      if (forward || unlocked.length > 0 || worldMap) setArrival({ unlocked, worldMap });
     } catch (err) {
       setError(err instanceof Error ? err.message : String(err));
     }
@@ -281,6 +299,18 @@ function Game() {
           onTown={toTown}
           onBoss={() => go({ name: 'boss' })}
           onExit={(townId) => void travel(townId)}
+          onWorldMap={worldMapOpen ? () => go({ name: 'world', back: 'map' }) : null}
+        />
+      );
+    case 'world':
+      return (
+        <WorldMapScreen
+          player={player}
+          world={world}
+          onTravel={(townId) => void travel(townId)}
+          backLabel={route.back === 'map' ? '冒険にもどる' : '街にもどる'}
+          // 冒険のマップから開いたときは、マップの同じ場所にもどる（位置は mapPos に残っている）
+          onBack={() => go({ name: route.back })}
         />
       );
     case 'field':
@@ -389,6 +419,7 @@ function Game() {
           status={townStatus}
           onSettings={() => go({ name: 'settings' })}
           onGuide={() => go({ name: 'guide', first: false, back: 'town' })}
+          onWorldMap={worldMapOpen ? () => go({ name: 'world', back: 'town' }) : null}
         />,
       );
   }

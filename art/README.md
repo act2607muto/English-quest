@@ -14,4 +14,6 @@
 - `ogp-candidates/`：OGP の画像（アドレスを送ったときに出る絵、1200×630）の案（2026-11-21、`scripts/make_ogp.ps1` で作った）。本人が選んだのは A（`public/ogp.png` にコピーした）。作り直しは `powershell -ExecutionPolicy Bypass -File scripts/make_ogp.ps1 -Design A -Out art/ogp-candidates/ogp-A.png` のあと、public/ogp.png に上書きする。
 - `old-map/topdown-objects/`：マップに置く物の、真上から見た前の絵（2026-11-21 に「ななめ上から見る」絵に差し替えた）。戻すときは public/maps/ に上書きする。
 - `map-style-candidates/`：マップの見え方の3案（A ななめ上から見る野原・B 世界地図・C 高さのある地形）の見本。本人が A を選んだ。
+- `map-style-survey/`：いろいろなゲームのマップの見え方を、オリジナルの見本で比べたもの（2026-11-21、7種類。README.md に説明）。
+- `world-map-candidates/`：旅の地図の背景のもう1案（B、海ぞいの野原）。使っているのは A（public/maps/world.png）。
 - `map-overview/`：冒険のマップの全体図（2026-11-21、アプリと同じ描き方で2倍にしたもの。確かめ用）。

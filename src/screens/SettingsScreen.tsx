@@ -6,10 +6,12 @@ import {
   getDpadSide,
   getNoEncounters,
   getSfxOn,
+  getWorldMapDebug,
   setBgmOn,
   setDpadSide,
   setNoEncounters,
   setSfxOn,
+  setWorldMapDebug,
   type DpadSide,
 } from '../lib/preferences';
 import { bgmSettingChanged, playSfx } from '../lib/sound';
@@ -77,6 +79,11 @@ export function SettingsScreen({
   const chooseEncounters = (off: boolean) => {
     setNoEncounters(off);
     setNoEnc(off);
+  };
+  const [worldDebug, setWorldDebugState] = useState(getWorldMapDebug);
+  const chooseWorldDebug = (on: boolean) => {
+    setWorldMapDebug(on);
+    setWorldDebugState(on);
   };
   return (
     <main className="screen">
@@ -209,6 +216,35 @@ export function SettingsScreen({
                 onClick={() => chooseEncounters(off)}
               >
                 {noEncounters === off ? '● ' : '○ '}
+                {label}
+              </button>
+            ))}
+          </div>
+        </section>
+      )}
+      {admin && (
+        <section className="window" aria-labelledby="debug-world-title">
+          <h2 className="window__title" id="debug-world-title">
+            デバッグ用：旅の地図
+          </h2>
+          <p className="note">
+            管理者だけに出る設定です。旅の地図は、ふつうは3つ目の街に着くと使えるようになります。「使える」にすると、その前でも街の画面の右上に地図のボタンが出ます（行けるのは、行ったことのある街だけ）。この端末に覚えておきます。
+          </p>
+          <div className="choice-pair" role="group" aria-labelledby="debug-world-title">
+            {(
+              [
+                [false, 'ふつう'],
+                [true, '使える'],
+              ] as const
+            ).map(([on, label]) => (
+              <button
+                key={label}
+                type="button"
+                className={`command choice-pair__button${worldDebug === on ? ' choice-pair__button--on' : ''}`}
+                aria-pressed={worldDebug === on}
+                onClick={() => chooseWorldDebug(on)}
+              >
+                {worldDebug === on ? '● ' : '○ '}
                 {label}
               </button>
             ))}

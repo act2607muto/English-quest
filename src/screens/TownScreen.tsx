@@ -20,16 +20,19 @@ export function TownScreen({
   onStatus,
   onSettings,
   onGuide,
+  onWorldMap,
   status,
 }: {
   player: Player;
   town: TownRow | null;
   /** 先の街に着いたばかりなら、解放された能力値（着いた！と知らせる。前の街へもどったときは null） */
-  arrival: { unlocked: Skill[] } | null;
+  arrival: { unlocked: Skill[]; worldMap: boolean } | null;
   /** 上の帯の主人公を押したとき（ステータスへ） */
   onStatus: () => void;
   onSettings: () => void;
   onGuide: () => void;
+  /** 旅の地図を開く（まだ使えないときは null で、ボタンを出さない） */
+  onWorldMap: (() => void) | null;
   status: TownStatus | null;
 }) {
   // この街に問題がある能力値だけ（はじまりの街にはリーディングがない）
@@ -67,6 +70,11 @@ export function TownScreen({
             <img src="/ui/icon-coin.png" alt="" width={24} height={24} />
             {player.gold}
           </span>
+          {onWorldMap && (
+            <button className="icon-button" type="button" onClick={onWorldMap} aria-label="旅の地図">
+              <img src="/ui/icon-worldmap.png" alt="" width={32} height={32} />
+            </button>
+          )}
           <button className="icon-button" type="button" onClick={onGuide} aria-label="あそびかた">
             <img src="/ui/icon-help.png" alt="" width={32} height={32} />
           </button>
@@ -99,6 +107,11 @@ export function TownScreen({
               </p>
             ) : (
               <p>この街のモンスターは、前の街より少し手ごわい。</p>
+            )}
+            {arrival.worldMap && (
+              <p className="levelup">
+                旅の地図を 手に入れた！ 右上の地図から、行ったことのある街へ すぐに行けます。
+              </p>
             )}
           </section>
         )}

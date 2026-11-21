@@ -141,6 +141,7 @@ export function MapScreen({
   onTown,
   onBoss,
   onExit,
+  onWorldMap,
 }: {
   player: Player;
   status: TownStatus | null;
@@ -154,6 +155,8 @@ export function MapScreen({
   onBoss: () => void;
   /** 別の街への道を進むと決めたとき（行き先の街のID） */
   onExit: (townId: string) => void;
+  /** 旅の地図を開く（まだ使えないときは null で、ボタンを出さない） */
+  onWorldMap: (() => void) | null;
 }) {
   const [map, setMap] = useState<FieldMap | null | undefined>(undefined);
   const [monsters, setMonsters] = useState<MonsterRow[]>([]);
@@ -646,6 +649,11 @@ export function MapScreen({
         <button className="command" type="button" onClick={onTown} disabled={!!encounter}>
           ▶ 街にもどる
         </button>
+        {onWorldMap && (
+          <button className="command" type="button" onClick={onWorldMap} disabled={!!encounter}>
+            ▶ 旅の地図
+          </button>
+        )}
       </nav>
     </main>
   );

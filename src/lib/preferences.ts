@@ -44,6 +44,26 @@ export function setNoEncounters(on: boolean): void {
   }
 }
 
+const WORLD_MAP_DEBUG_KEY = 'english-quest:world-map-debug';
+
+/** デバッグ用：3つ目の街に着く前でも、旅の地図を使えるようにするか（管理者の設定にだけ出す） */
+export function getWorldMapDebug(): boolean {
+  try {
+    return localStorage.getItem(WORLD_MAP_DEBUG_KEY) === 'on';
+  } catch {
+    return false;
+  }
+}
+
+export function setWorldMapDebug(on: boolean): void {
+  try {
+    if (on) localStorage.setItem(WORLD_MAP_DEBUG_KEY, 'on');
+    else localStorage.removeItem(WORLD_MAP_DEBUG_KEY);
+  } catch {
+    // 覚えられなくても、この画面の間は選んだとおりに動く
+  }
+}
+
 const BGM_KEY = 'english-quest:bgm';
 const SFX_KEY = 'english-quest:sfx';
 
