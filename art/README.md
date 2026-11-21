@@ -12,3 +12,6 @@
 - `old-map/`：2026-11-17 に作り直す前の街の外のマップ（20×16 の town01.json と、地面の絵 terrain-water.png・terrain-path.png）。戻すときは public/maps/ に上書きする。
 - `pixellab-original/town01-wpn-all-rainbow.png`：はじまりの街の「すべてに効く剣」の最初の絵（にじいろのつるぎ）。2026-11-18 に「2つ目の街の剣より強そうに見える」ため、たびだちのつるぎ（地味な鉄の剣）に差し替えた。
 - `ogp-candidates/`：OGP の画像（アドレスを送ったときに出る絵、1200×630）の案（2026-11-21、`scripts/make_ogp.ps1` で作った）。本人が選んだのは A（`public/ogp.png` にコピーした）。作り直しは `powershell -ExecutionPolicy Bypass -File scripts/make_ogp.ps1 -Design A -Out art/ogp-candidates/ogp-A.png` のあと、public/ogp.png に上書きする。
+- `old-map/topdown-objects/`：マップに置く物の、真上から見た前の絵（2026-11-21 に「ななめ上から見る」絵に差し替えた）。戻すときは public/maps/ に上書きする。
+- `map-style-candidates/`：マップの見え方の3案（A ななめ上から見る野原・B 世界地図・C 高さのある地形）の見本。本人が A を選んだ。
+- `map-overview/`：冒険のマップの全体図（2026-11-21、アプリと同じ描き方で2倍にしたもの。確かめ用）。
