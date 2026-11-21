@@ -21,22 +21,33 @@ const source = await import(pathToFileURL(resolve('scripts/wordbook', `${townId}
 const { TOWN, MONSTER, EXPECTED_COUNT, LEVEL } = source;
 
 /** 1行「英語|品詞|意味|例文」を読む。品詞は n（名詞）v（動詞）a（形容詞）o（そのほか） */
-const words = source.WORDS.split('\n')
-  .map((line) => line.trim())
-  .filter((line) => line && !line.startsWith('#'))
-  .map((line, i) => {
-    const [word, pos, meaning, example] = line.split('|').map((s) => s?.trim());
-    if (!word || !pos || !meaning || !example) throw new Error(`${i + 1}行目の形が正しくありません：${line}`);
-    if (!['n', 'v', 'a', 'o'].includes(pos)) throw new Error(`${word} の品詞が n・v・a・o ではありません`);
-    return { word, pos, meaning, example };
-  });
+function readWords(text) {
+  return text
+    .split('\n')
+    .map((line) => line.trim())
+    .filter((line) => line && !line.startsWith('#'))
+    .map((line, i) => {
+      const [word, pos, meaning, example] = line.split('|').map((s) => s?.trim());
+      if (!word || !pos || !meaning || !example) throw new Error(`${i + 1}行目の形が正しくありません：${line}`);
+      if (!['n', 'v', 'a', 'o'].includes(pos)) throw new Error(`${word} の品詞が n・v・a・o ではありません`);
+      return { word, pos, meaning, example };
+    });
+}
+const words = readWords(source.WORDS);
 
-// 確かめ：同じ単語が2回ないか、数が合っているか
+// 確かめ：同じ単語が2回ないか（前の街の書庫とも重ならないか）、数が合っているか
 const seen = new Set();
 for (const w of words) {
   const key = w.word.toLowerCase();
   if (seen.has(key)) throw new Error(`同じ単語が2回あります：${w.word}`);
   seen.add(key);
+}
+for (const earlier of source.EARLIER_TOWNS ?? []) {
+  const before = await import(pathToFileURL(resolve('scripts/wordbook', `${earlier}.mjs`)).href);
+  const repeated = readWords(before.WORDS).filter((w) => seen.has(w.word.toLowerCase()));
+  if (repeated.length > 0) {
+    throw new Error(`${earlier} の書庫と同じ単語があります：${repeated.map((w) => w.word).join(', ')}`);
+  }
 }
 if (EXPECTED_COUNT && words.length !== EXPECTED_COUNT) {
   throw new Error(`単語の数が ${EXPECTED_COUNT} ではありません（${words.length}）`);
