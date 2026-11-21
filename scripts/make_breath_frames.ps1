@@ -54,6 +54,12 @@ $frames = @(
   @{ File = 'monsters/town03-mon-rea.png';   SplitRow = 51 }  # たてふだカカシ
   @{ File = 'monsters/town03-mon-wri.png';   SplitRow = 51 }  # でんぴょうカモメ
   @{ File = 'monsters/town03-mon-spe.png';   SplitRow = 50 }  # よびりんペンギン
+  @{ File = 'monsters/town03-mon-voc-revival.png'; SplitRow = 43 }  # おしながきイモムシ（復活・色違い）
+  @{ File = 'monsters/town03-mon-gra-revival.png'; SplitRow = 51 }  # ぎょうれつアリ（復活・色違い）
+  @{ File = 'monsters/town03-mon-lis-revival.png'; SplitRow = 52 }  # ちゅうもんコウモリ（復活・色違い）
+  @{ File = 'monsters/town03-mon-rea-revival.png'; SplitRow = 51 }  # たてふだカカシ（復活・色違い）
+  @{ File = 'monsters/town03-mon-wri-revival.png'; SplitRow = 51 }  # でんぴょうカモメ（復活・色違い）
+  @{ File = 'monsters/town03-mon-spe-revival.png'; SplitRow = 50 }  # よびりんペンギン（復活・色違い）
   @{ File = 'monsters/town03-rare-exp.png';  SplitRow = 50 }  # ほうせきカタツムリ
   @{ File = 'monsters/town03-rare-gold.png'; SplitRow = 51 }  # おさいふペリカン
   @{ File = 'monsters/town03-boss.png';      SplitRow = 82 }  # みちまよいの大ダコ（96×96）
