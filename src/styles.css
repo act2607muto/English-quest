@@ -2190,3 +2190,65 @@ code {
     transform: translateY(-3px);
   }
 }
+
+/* 単語の並べかえ（components/OrderAnswer。3つ目の街から） */
+.order {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.order__line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 6px;
+  min-height: 64px;
+  padding: 8px;
+  background: #070a20;
+  border-bottom: 3px dashed #5a6496;
+}
+
+.order__empty {
+  align-self: center;
+}
+
+.order__pool {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+  min-height: 48px;
+}
+
+.order .order__tile {
+  min-height: 44px;
+  padding: 2px 8px;
+  font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+  font-size: 18px;
+  text-align: center;
+}
+
+.order .order__tile--placed {
+  color: var(--accent);
+  border-image-source: url('/ui/frame-gold.png');
+}
+
+.order__mark {
+  font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+  font-size: 22px;
+  color: var(--accent);
+  padding-bottom: 8px;
+}
+
+.order__actions {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 8px;
+}
+
+/* 会話のリスニング（A: … / B: …）の英文は、1行ずつ出す */
+.battle__sentence--dialogue {
+  white-space: pre-line;
+  font-size: 19px;
+}

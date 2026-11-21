@@ -2,9 +2,12 @@
  * 問題ファイル（data/town01_questions.json の形）を読み、取り込める形に直す。
  * データベースには触らない。おかしいところは、問題ごとに日本語で返す。
  */
+import { dialogueLines } from './dialogue';
+import { sameWords } from './game/wordOrder';
 import { SKILLS, type Skill } from './skills';
 
-export const FORMATS = ['choice4', 'translate', 'respond'] as const;
+/** order は単語の並べかえ（3つ目の街から。lib/game/wordOrder.ts） */
+export const FORMATS = ['choice4', 'translate', 'respond', 'order'] as const;
 export type QuestionFormat = (typeof FORMATS)[number];
 
 /** 文中で本人の名前に置き換える印 */
@@ -379,6 +382,10 @@ function parseQuestion(raw: unknown, townId: string | null, problems: string[]):
       answer = raw.answer as number;
     }
     if (skill === 'listening' && !audioText) problems.push('リスニングなのに audio_text（読み上げる英文）がありません');
+    // 会話のリスニング：2行以上なら、どの行も「A: 英文」の形にする（話す人ごとに声を変えるため）
+    if (audioText && audioText.includes('\n') && !dialogueLines(audioText)) {
+      problems.push('audio_text が2行以上なのに、どの行も「A: 英文」の形になっていません（会話は1行に1人ずつ書く）');
+    }
     if (skill !== 'listening' && !sentence) problems.push('sentence（出題する文）がありません');
   } else if (format === 'translate' || format === 'respond') {
     if (!isStringArray(raw.model_answers) || raw.model_answers.length === 0) {
@@ -392,6 +399,26 @@ function parseQuestion(raw: unknown, townId: string | null, problems: string[]):
     }
     if (!sentence) problems.push('sentence（出題する文）がありません');
     if (format === 'respond' && !sentenceJa) problems.push('respond なのに sentence_ja（質問の日本語訳）がありません');
+  } else if (format === 'order') {
+    // 並べかえ：choices は並べる単語のカード、model_answers は正しい英文（カードと同じ単語でできていること）
+    if (!isStringArray(raw.choices) || raw.choices.length < 2 || raw.choices.length > 14) {
+      problems.push('並べかえなのに choices（並べる単語のカード）が2〜14個の文字ではありません');
+    } else if (raw.choices.some((c) => !c.trim())) {
+      problems.push('choices に空のカードがあります');
+    } else {
+      choices = raw.choices.map((c) => c.trim());
+    }
+    if (!isStringArray(raw.model_answers) || raw.model_answers.length === 0 || raw.model_answers.some((m) => !m.trim())) {
+      problems.push('model_answers（正しい英文）が1つ以上の文字の並びではありません');
+    } else {
+      modelAnswers = raw.model_answers.map((m) => m.trim());
+      if (choices) {
+        const tiles = choices;
+        const wrong = modelAnswers.filter((m) => !sameWords(tiles, m));
+        if (wrong.length > 0) problems.push(`model_answers の英文が、choices のカードと同じ単語でできていません（${wrong.join(' / ')}）`);
+      }
+    }
+    if (!sentenceJa) problems.push('並べかえなのに sentence_ja（画面に出す日本語）がありません');
   }
 
   const difficulty = raw.difficulty ?? 1;

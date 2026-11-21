@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { HeroArt } from '../components/HeroArt';
 import { MonsterArt } from '../components/MonsterArt';
+import { OrderAnswer } from '../components/OrderAnswer';
 import { SpeakAnswer } from '../components/SpeakAnswer';
 import { fetchPlayableQuestions, flagQuestion } from '../lib/content';
 import { fillNames, pickQuestions, shuffle, shuffleChoices } from '../lib/game/battle';
@@ -10,6 +11,7 @@ import { isDue } from '../lib/game/growth';
 import { heroNameOf, type Player } from '../lib/game/player';
 import { EXP_CORRECT, EXP_CORRECT_REVIEW, EXP_HALF, EXP_WORDBOOK, EXP_WORDBOOK_REVIEW } from '../lib/game/rules';
 import { isWordbookMonster, isWordbookQuestion } from '../lib/game/wordbook';
+import { endMarkOf, isOrderCorrect } from '../lib/game/wordOrder';
 import { gradeAnswer, RATING_LABELS, type Rating } from '../lib/grading';
 import type { MonsterRow, QuestionRow } from '../lib/questionFile';
 import { addSkillExp, fetchProgress, finishBattle, markBossDefeated, saveAnswer, type QuestionProgress } from '../lib/records';
@@ -257,6 +259,14 @@ export function BattleScreen({
     resolve({ rating: i === shown.answerIndex ? 'good' : 'bad', answer: shown.choices[i], picked: i });
   }
 
+  /** 単語の並べかえ：並べた文が、正しい英文のどれかと同じなら正解 */
+  function handleOrder(picked: string[]) {
+    if (!shown || phase !== 'question') return;
+    const models = (shown.question.model_answers ?? []).map((m) => fillNames(m));
+    const mark = endMarkOf(models[0] ?? '');
+    resolve({ rating: isOrderCorrect(picked, models) ? 'good' : 'bad', answer: picked.join(' ') + mark });
+  }
+
   function handleWrite(e: FormEvent) {
     e.preventDefault();
     void submitText(draft.trim(), false);
@@ -408,6 +418,8 @@ export function BattleScreen({
   const q = shown!.question;
   const skill = q.skill;
   const isChoice = q.format === 'choice4';
+  /** 単語の並べかえ（答え合わせはアプリの中でする。AI採点はしない） */
+  const isOrder = q.format === 'order';
   const over = monsterHp <= 0 || playerHp <= 0;
   // 攻撃の動きを見せている間（答えた直後と、決着して結果の画面へ進むまで）
   const acting = (phase === 'feedback' || phase === 'finishing') && !!outcome;
@@ -415,7 +427,7 @@ export function BattleScreen({
   const showResult = acting;
   const hit = outcome ? outcome.rating !== 'bad' : false;
   const models = (q.model_answers ?? []).map((m) => fillNames(m));
-  const isSpeaking = !isChoice && skill === 'speaking';
+  const isSpeaking = !isChoice && !isOrder && skill === 'speaking';
 
   return (
     <main className={`screen battle${acting && !hit ? ' battle--hurt' : ''}`}>
@@ -497,7 +509,8 @@ export function BattleScreen({
           <p className="battle__prompt">{fillNames(q.prompt)}</p>
           {skill === 'grammar' && q.sentence && <p className="battle__sentence">{fillNames(q.sentence)}</p>}
           {skill === 'reading' && q.sentence && <p className="battle__passage">{fillNames(q.sentence)}</p>}
-          {!isChoice && q.sentence && (
+          {isOrder && q.sentence_ja && <p className="battle__sentence battle__sentence--ja">{fillNames(q.sentence_ja)}</p>}
+          {!isChoice && !isOrder && q.sentence && (
             <p className="battle__sentence battle__sentence--ja">
               {q.sentence_ja && <small className="note">{fillNames(q.sentence_ja)}</small>}
               {fillNames(q.sentence)}
@@ -544,6 +557,13 @@ export function BattleScreen({
               );
             })}
           </div>
+        ) : isOrder ? (
+          <OrderAnswer
+            key={`${q.id}-${index}`}
+            tiles={(q.choices ?? []).map((c) => fillNames(c))}
+            endMark={endMarkOf(models[0] ?? '')}
+            onSubmit={handleOrder}
+          />
         ) : isSpeaking ? (
           phase === 'question' ? (
             <SpeakAnswer
@@ -624,7 +644,7 @@ export function BattleScreen({
 
       {phase === 'feedback' && outcome && (
         <section className="window battle__message" aria-live="polite">
-          {!isChoice && !outcome.selfGraded && (
+          {!isChoice && !isOrder && !outcome.selfGraded && (
             <p className={`rating rating--${outcome.rating}`}>{RATING_LABELS[outcome.rating]}</p>
           )}
           <p>
@@ -645,8 +665,21 @@ export function BattleScreen({
               </p>
             </div>
           )}
+          {/* 並べかえは、並べた文と正しい文 */}
+          {isOrder && (
+            <div className="answer-summary">
+              {!hit && (
+                <p className="answer-summary__row answer-summary__row--wrong">
+                  <span className="note">あなたの答え</span>✕ {outcome.answer}
+                </p>
+              )}
+              <p className="answer-summary__row answer-summary__row--right">
+                <span className="note">{hit ? 'あなたの答え' : '正解'}</span>◯ {hit ? outcome.answer : models[0]}
+              </p>
+            </div>
+          )}
           {/* 書く・話す問題は、自分の答え */}
-          {!isChoice && draft.trim() && (
+          {!isChoice && !isOrder && draft.trim() && (
             <div>
               <p className="note">あなたの答え</p>
               <p className="battle__sentence">{draft.trim()}</p>
@@ -656,7 +689,7 @@ export function BattleScreen({
           {skill === 'listening' && q.audio_text && (
             <div>
               <p className="note">読み上げた英文</p>
-              <p className="battle__sentence">{q.audio_text}</p>
+              <p className={`battle__sentence${q.audio_text.includes('\n') ? ' battle__sentence--dialogue' : ''}`}>{q.audio_text}</p>
             </div>
           )}
           {/* 最後の答えで決着がついたとき（解説を読んでから「戦闘を終える」で結果の画面へ。2026-11-18 本人の希望） */}
@@ -672,7 +705,7 @@ export function BattleScreen({
               <p className="battle__sentence">{outcome.better}</p>
             </div>
           )}
-          {!isChoice && (
+          {!isChoice && !isOrder && (
             <div>
               <p className="note">模範解答</p>
               <ul className="models">
@@ -683,7 +716,7 @@ export function BattleScreen({
             </div>
           )}
           {q.explanation && <p className="note">{fillNames(q.explanation)}</p>}
-          <button className="command" type="button" onClick={handleNext} autoFocus={isChoice}>
+          <button className="command" type="button" onClick={handleNext} autoFocus={isChoice || isOrder}>
             {over ? '▶ 戦闘を終える' : '▶ つぎへ'}
           </button>
           {isAdmin &&

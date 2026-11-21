@@ -8,6 +8,7 @@
  *   iPhone・Mac：Samantha など（拡張版・高品質版があればそれ）
  * Windows に最初から入っている「Microsoft Zira Desktop」などは機械っぽいので、ほかにないときだけ使う。
  */
+import { dialogueLines } from './dialogue';
 import { holdBgm } from './sound';
 
 export const canSpeak = typeof window !== 'undefined' && 'speechSynthesis' in window;
@@ -80,30 +81,69 @@ function forSpeech(text: string): string {
   return text.replace(/[A-Za-z]+/g, (word) => SPOKEN_AS[word] ?? word);
 }
 
+/** 声の名前から、女性の声か男性の声かを当てる（わからなければ null）。2人目の声を、1人目とちがう声にするのに使う */
+const FEMALE_VOICES =
+  /(?:^|[^a-z])(female|aria|jenny|michelle|ana|emma|ava|sonia|libby|natasha|clara|samantha|karen|moira|tessa|victoria|allison|susan|zoe|serena|fiona|kate|zira|hazel|catherine|nicky|joelle|google us english)(?![a-z])/i;
+const MALE_VOICES =
+  /(?:^|[^a-z])(male|guy|christopher|eric|roger|steffan|andrew|brian|ryan|thomas|william|liam|davis|tony|jason|alex|daniel|tom|aaron|arthur|rishi|oliver|evan|nathan|gordon|lee|david|mark|george)(?![a-z])/i;
+
+function genderOf(v: SpeechSynthesisVoice): 'f' | 'm' | null {
+  if (FEMALE_VOICES.test(v.name)) return 'f';
+  if (MALE_VOICES.test(v.name)) return 'm';
+  return null;
+}
+
+/** 会話の2人目の声：1人目と性別がちがう声のうち、いちばん自然なもの（なければ、ほかの声。1つしかなければ null） */
+function secondVoice(first: SpeechSynthesisVoice | null): SpeechSynthesisVoice | null {
+  if (!first) return null;
+  const others = speechSynthesis
+    .getVoices()
+    .filter((v) => v.name !== first.name && voiceScore(v) > -100)
+    .sort((a, b) => voiceScore(b) - voiceScore(a));
+  const g = genderOf(first);
+  const opposite = g ? others.find((v) => genderOf(v) !== null && genderOf(v) !== g) : undefined;
+  return opposite ?? others[0] ?? null;
+}
+
 /** 読み上げの終わりが知らされないことがあるので、この時間がたったら BGM をもどす */
 let releaseTimer: number | undefined;
 
-/** 英文を読み上げる。iPhone では、最初の1回はボタンを押した処理の中から呼ぶ必要がある */
+/**
+ * 英文を読み上げる。iPhone では、最初の1回はボタンを押した処理の中から呼ぶ必要がある。
+ * 会話（A: … / B: …）なら、話す人ごとに声を変えて1行ずつ読む。
+ */
 export function speakEnglish(text: string, rate = 0.9): void {
   if (!canSpeak) return;
   try {
     speechSynthesis.cancel();
-    const u = new SpeechSynthesisUtterance(forSpeech(text));
     const voice = englishVoice();
-    u.lang = voice?.lang ?? 'en-US';
-    u.rate = rate;
-    if (voice) u.voice = voice;
+    const dialogue = dialogueLines(text);
+    const parts = dialogue ?? [{ speaker: '', text }];
+    const speakers = [...new Set(parts.map((p) => p.speaker))];
+    const voice2 = dialogue ? secondVoice(voice) : null;
     // 読み上げている間は BGM を消す（英文が聞こえにくくならないように）
     holdBgm('speech', true);
     const release = () => {
       window.clearTimeout(releaseTimer);
       holdBgm('speech', false);
     };
-    u.onend = release;
-    u.onerror = release;
     window.clearTimeout(releaseTimer);
     releaseTimer = window.setTimeout(release, 4000 + text.length * 150);
-    speechSynthesis.speak(u);
+    parts.forEach((p, i) => {
+      const u = new SpeechSynthesisUtterance(forSpeech(p.text));
+      // 1人目・3人目…はいつもの声、2人目・4人目…はちがう声（ちがう声がなければ、声の高さを変える）
+      const second = speakers.indexOf(p.speaker) % 2 === 1;
+      const v = second ? (voice2 ?? voice) : voice;
+      u.lang = v?.lang ?? 'en-US';
+      u.rate = rate;
+      if (v) u.voice = v;
+      if (second && !voice2) u.pitch = 1.4;
+      if (i === parts.length - 1) {
+        u.onend = release;
+        u.onerror = release;
+      }
+      speechSynthesis.speak(u);
+    });
   } catch {
     // 読み上げられない端末では何もしない（画面の「聞く」ボタンでやり直せる）
   }
