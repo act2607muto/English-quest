@@ -42,20 +42,26 @@ export async function fetchIsAdmin(): Promise<boolean> {
   return data === true;
 }
 
+/** データベースが一度に返すのは1,000件まで。それより多いときは、区切って最後まで読む */
+const PAGE_SIZE = 1000;
+
+async function readAllPages<T>(
+  page: (from: number, to: number) => PromiseLike<{ data: unknown[] | null; error: unknown }>,
+): Promise<T[]> {
+  const rows: T[] = [];
+  for (let from = 0; ; from += PAGE_SIZE) {
+    const { data, error } = await page(from, from + PAGE_SIZE - 1);
+    if (error) throw error;
+    rows.push(...((data ?? []) as T[]));
+    if (!data || data.length < PAGE_SIZE) return rows;
+  }
+}
+
 /** 指定した街に今ある問題 */
 export async function fetchQuestionsOfTown(townId: string): Promise<QuestionRow[]> {
-  const rows: QuestionRow[] = [];
-  for (let from = 0; ; from += 1000) {
-    const { data, error } = await requireSupabase()
-      .from('questions')
-      .select(QUESTION_COLUMNS)
-      .eq('town_id', townId)
-      .order('id')
-      .range(from, from + 999);
-    if (error) throw error;
-    rows.push(...(data as QuestionRow[]));
-    if (data.length < 1000) return rows;
-  }
+  return readAllPages<QuestionRow>((from, to) =>
+    requireSupabase().from('questions').select(QUESTION_COLUMNS).eq('town_id', townId).order('id').range(from, to),
+  );
 }
 
 /** 指定したIDの問題（ほかの街に同じIDがないかを確かめるため） */
@@ -117,15 +123,16 @@ export async function fetchMonstersByIds(ids: string[]): Promise<MonsterRow[]> {
 
 /** 出題に使う問題（要修正の印がついたものは除く） */
 export async function fetchPlayableQuestions(townId: string, skill: Skill): Promise<QuestionRow[]> {
-  const { data, error } = await requireSupabase()
-    .from('questions')
-    .select(QUESTION_COLUMNS)
-    .eq('town_id', townId)
-    .eq('skill', skill)
-    .eq('needs_fix', false)
-    .order('id');
-  if (error) throw error;
-  return data as QuestionRow[];
+  return readAllPages<QuestionRow>((from, to) =>
+    requireSupabase()
+      .from('questions')
+      .select(QUESTION_COLUMNS)
+      .eq('town_id', townId)
+      .eq('skill', skill)
+      .eq('needs_fix', false)
+      .order('id')
+      .range(from, to),
+  );
 }
 
 /** 練習中に見つけたおかしい問題に印をつける（管理者だけ） */
@@ -169,12 +176,13 @@ export async function importTownFile(
 
 /** 街の問題のIDと能力値と印だけ（ボスの目安や、復習の数を数えるため。要修正の印つきは除く） */
 export async function fetchTownQuestionIndex(townId: string): Promise<{ id: string; skill: Skill; tags: string[] }[]> {
-  const { data, error } = await requireSupabase()
-    .from('questions')
-    .select('id, skill, tags')
-    .eq('town_id', townId)
-    .eq('needs_fix', false)
-    .order('id');
-  if (error) throw error;
-  return data as { id: string; skill: Skill; tags: string[] }[];
+  return readAllPages<{ id: string; skill: Skill; tags: string[] }>((from, to) =>
+    requireSupabase()
+      .from('questions')
+      .select('id, skill, tags')
+      .eq('town_id', townId)
+      .eq('needs_fix', false)
+      .order('id')
+      .range(from, to),
+  );
 }
