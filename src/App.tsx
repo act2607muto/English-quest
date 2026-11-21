@@ -331,15 +331,16 @@ function Game() {
           result={route.result}
           before={route.before}
           after={player}
+          // 「もう一度戦う」はスキルダンジョンだけ（冒険のマップは歩いて出会う形なので出さない。2026-11-21）
           onAgain={
-            route.result.kind === 'normal'
-              ? () =>
-                  fight(route.result.monster, 'normal', route.from === 'dungeon' ? 'dungeon' : 'map', undefined, route.background)
+            route.result.kind === 'normal' && route.from === 'dungeon'
+              ? () => fight(route.result.monster, 'normal', 'dungeon', undefined, route.background)
               : null
           }
           onField={() => go({ name: route.from === 'dungeon' ? 'field' : 'map' })}
           fieldLabel={route.from === 'dungeon' ? 'スキルダンジョンへ' : '冒険へ'}
-          onTown={toTown}
+          // 冒険のマップ（ボスも）で勝ったあとは、マップにもどる。街へはマップの「街にもどる」で帰れる
+          onTown={route.from === 'dungeon' || !route.result.won ? toTown : null}
         />
       );
     case 'settings':

@@ -23,7 +23,8 @@ export function ResultScreen({
   onField: () => void;
   /** 戦った場所にもどるボタンの文（街の外・スキルダンジョン） */
   fieldLabel: string;
-  onTown: () => void;
+  /** 街にもどる（冒険のマップで勝ったときは出さない。マップの「街にもどる」で帰れるので。2026-11-21） */
+  onTown: (() => void) | null;
 }) {
   const gained = SKILLS.filter((s) => (result.expBySkill[s] ?? 0) > 0);
   const levelUps = SKILLS.map((s) => [s, skillOf(before, s).level, skillOf(after, s).level] as const).filter(
@@ -107,15 +108,19 @@ export function ResultScreen({
           <button className="command" type="button" onClick={onField}>
             ▶ {fieldLabel}
           </button>
-          <button className="command" type="button" onClick={onTown}>
-            ▶ 街にもどる
-          </button>
+          {onTown && (
+            <button className="command" type="button" onClick={onTown}>
+              ▶ 街にもどる
+            </button>
+          )}
         </>
       ) : (
         <>
-          <button className="command" type="button" onClick={onTown}>
-            ▶ 街にもどる
-          </button>
+          {onTown && (
+            <button className="command" type="button" onClick={onTown}>
+              ▶ 街にもどる
+            </button>
+          )}
           <button className="command" type="button" onClick={onField}>
             ▶ {fieldLabel}
           </button>
