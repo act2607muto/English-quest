@@ -1,0 +1,8823 @@
+{
+  "format_version": 1,
+  "town": {
+    "id": "town01",
+    "scene": "あいさつと自己紹介",
+    "difficulty": "基本",
+    "order": 1
+  },
+  "monsters": [
+    {
+      "id": "town01-wordbook",
+      "name": "しおりオバケ",
+      "skill": "vocabulary",
+      "hp": 120,
+      "gold": 10,
+      "is_boss": false,
+      "image": "/monsters/town01-wordbook.png",
+      "description": "書庫にすむ、しおりのオバケ。読んだ単語を忘れかけると、そっとページにはさんで、もう一度見せてくる。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "town01-wb-001",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「family」の意味は？",
+      "sentence": "My family is small.",
+      "choices": [
+        "休暇",
+        "年",
+        "家族",
+        "部屋"
+      ],
+      "answer": 2,
+      "explanation": "family = 家族　例：My family is small.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-002",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「father」の意味は？",
+      "sentence": "My father is a cook.",
+      "choices": [
+        "かさ",
+        "昼食",
+        "日",
+        "父"
+      ],
+      "answer": 3,
+      "explanation": "father = 父　例：My father is a cook.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-003",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「mother」の意味は？",
+      "sentence": "My mother works at a bank.",
+      "choices": [
+        "母",
+        "病院",
+        "床",
+        "間違い"
+      ],
+      "answer": 0,
+      "explanation": "mother = 母　例：My mother works at a bank.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-004",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「brother」の意味は？",
+      "sentence": "I have one brother.",
+      "choices": [
+        "兄弟",
+        "先生",
+        "質問",
+        "体"
+      ],
+      "answer": 0,
+      "explanation": "brother = 兄弟　例：I have one brother.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-005",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「sister」の意味は？",
+      "sentence": "My sister is a student.",
+      "choices": [
+        "自転車",
+        "姉妹",
+        "女の子",
+        "卵"
+      ],
+      "answer": 1,
+      "explanation": "sister = 姉妹　例：My sister is a student.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-006",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「parent」の意味は？",
+      "sentence": "My parents live in Osaka.",
+      "choices": [
+        "親",
+        "スポーツ",
+        "国",
+        "服"
+      ],
+      "answer": 0,
+      "explanation": "parent = 親　例：My parents live in Osaka.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-007",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「child」の意味は？",
+      "sentence": "The child is sleeping.",
+      "choices": [
+        "駅",
+        "子ども",
+        "質問",
+        "動物"
+      ],
+      "answer": 1,
+      "explanation": "child = 子ども　例：The child is sleeping.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-008",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「baby」の意味は？",
+      "sentence": "The baby is crying.",
+      "choices": [
+        "女性",
+        "夢",
+        "赤ちゃん",
+        "試合"
+      ],
+      "answer": 2,
+      "explanation": "baby = 赤ちゃん　例：The baby is crying.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-009",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「husband」の意味は？",
+      "sentence": "Her husband is kind.",
+      "choices": [
+        "床",
+        "夫",
+        "猫",
+        "女の子"
+      ],
+      "answer": 1,
+      "explanation": "husband = 夫　例：Her husband is kind.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-010",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「wife」の意味は？",
+      "sentence": "This is my wife.",
+      "choices": [
+        "妻",
+        "計画",
+        "木",
+        "都市"
+      ],
+      "answer": 0,
+      "explanation": "wife = 妻　例：This is my wife.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-011",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「son」の意味は？",
+      "sentence": "Their son is ten years old.",
+      "choices": [
+        "息子",
+        "山",
+        "答え",
+        "パン"
+      ],
+      "answer": 0,
+      "explanation": "son = 息子　例：Their son is ten years old.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-012",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「daughter」の意味は？",
+      "sentence": "My daughter likes music.",
+      "choices": [
+        "銀行",
+        "娘",
+        "父",
+        "床"
+      ],
+      "answer": 1,
+      "explanation": "daughter = 娘　例：My daughter likes music.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-013",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「grandfather」の意味は？",
+      "sentence": "My grandfather is eighty.",
+      "choices": [
+        "野菜",
+        "試験",
+        "祖父",
+        "医者"
+      ],
+      "answer": 2,
+      "explanation": "grandfather = 祖父　例：My grandfather is eighty.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-014",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「grandmother」の意味は？",
+      "sentence": "I visit my grandmother on Sundays.",
+      "choices": [
+        "時間",
+        "夕方",
+        "祖母",
+        "会社"
+      ],
+      "answer": 2,
+      "explanation": "grandmother = 祖母　例：I visit my grandmother on Sundays.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-015",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「friend」の意味は？",
+      "sentence": "She is my best friend.",
+      "choices": [
+        "飛行機",
+        "父",
+        "友だち",
+        "質問"
+      ],
+      "answer": 2,
+      "explanation": "friend = 友だち　例：She is my best friend.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-016",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「people」の意味は？",
+      "sentence": "Many people live in this city.",
+      "choices": [
+        "箱",
+        "趣味",
+        "パン",
+        "人々"
+      ],
+      "answer": 3,
+      "explanation": "people = 人々　例：Many people live in this city.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-017",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「man」の意味は？",
+      "sentence": "That man is my teacher.",
+      "choices": [
+        "休暇",
+        "写真",
+        "試合",
+        "男性"
+      ],
+      "answer": 3,
+      "explanation": "man = 男性　例：That man is my teacher.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-018",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「woman」の意味は？",
+      "sentence": "The woman is a doctor.",
+      "choices": [
+        "女性",
+        "写真",
+        "服",
+        "店"
+      ],
+      "answer": 0,
+      "explanation": "woman = 女性　例：The woman is a doctor.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-019",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「boy」の意味は？",
+      "sentence": "The boy is my son.",
+      "choices": [
+        "食べ物",
+        "パーティー",
+        "夢",
+        "男の子"
+      ],
+      "answer": 3,
+      "explanation": "boy = 男の子　例：The boy is my son.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-020",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「girl」の意味は？",
+      "sentence": "The girl is reading a book.",
+      "choices": [
+        "贈り物",
+        "自転車",
+        "女の子",
+        "公園"
+      ],
+      "answer": 2,
+      "explanation": "girl = 女の子　例：The girl is reading a book.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-021",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「group」の意味は？",
+      "sentence": "We work in a group.",
+      "choices": [
+        "町",
+        "電話",
+        "集団・グループ",
+        "趣味"
+      ],
+      "answer": 2,
+      "explanation": "group = 集団・グループ　例：We work in a group.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-022",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「name」の意味は？",
+      "sentence": "What is your name?",
+      "choices": [
+        "知らせ・ニュース",
+        "問題",
+        "名前",
+        "考え"
+      ],
+      "answer": 2,
+      "explanation": "name = 名前　例：What is your name?",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-023",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「age」の意味は？",
+      "sentence": "Age is just a number.",
+      "choices": [
+        "色",
+        "年齢",
+        "朝食",
+        "日"
+      ],
+      "answer": 1,
+      "explanation": "age = 年齢　例：Age is just a number.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-024",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「birthday」の意味は？",
+      "sentence": "Happy birthday!",
+      "choices": [
+        "バス",
+        "壁",
+        "誕生日",
+        "空港"
+      ],
+      "answer": 2,
+      "explanation": "birthday = 誕生日　例：Happy birthday!",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-025",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「hobby」の意味は？",
+      "sentence": "My hobby is cooking.",
+      "choices": [
+        "趣味",
+        "ドア",
+        "図書館",
+        "かさ"
+      ],
+      "answer": 0,
+      "explanation": "hobby = 趣味　例：My hobby is cooking.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-026",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「dream」の意味は？",
+      "sentence": "My dream is to live abroad.",
+      "choices": [
+        "夢",
+        "鳥",
+        "旅行",
+        "手紙"
+      ],
+      "answer": 0,
+      "explanation": "dream = 夢　例：My dream is to live abroad.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-027",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「job」の意味は？",
+      "sentence": "I like my job.",
+      "choices": [
+        "答え",
+        "仕事",
+        "夏",
+        "コンピューター"
+      ],
+      "answer": 1,
+      "explanation": "job = 仕事　例：I like my job.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-028",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「company」の意味は？",
+      "sentence": "He works for a big company.",
+      "choices": [
+        "箱",
+        "親",
+        "星",
+        "会社"
+      ],
+      "answer": 3,
+      "explanation": "company = 会社　例：He works for a big company.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-029",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「office」の意味は？",
+      "sentence": "The office opens at nine.",
+      "choices": [
+        "昼食",
+        "赤ちゃん",
+        "事務所",
+        "自転車"
+      ],
+      "answer": 2,
+      "explanation": "office = 事務所　例：The office opens at nine.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-030",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「teacher」の意味は？",
+      "sentence": "Our teacher is from London.",
+      "choices": [
+        "先生",
+        "旅行",
+        "ペン",
+        "夢"
+      ],
+      "answer": 0,
+      "explanation": "teacher = 先生　例：Our teacher is from London.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-031",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「student」の意味は？",
+      "sentence": "I am a college student.",
+      "choices": [
+        "学生",
+        "米",
+        "店",
+        "夕方"
+      ],
+      "answer": 0,
+      "explanation": "student = 学生　例：I am a college student.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-032",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「doctor」の意味は？",
+      "sentence": "You should see a doctor.",
+      "choices": [
+        "お金",
+        "お茶",
+        "医者",
+        "値段"
+      ],
+      "answer": 2,
+      "explanation": "doctor = 医者　例：You should see a doctor.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-033",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「nurse」の意味は？",
+      "sentence": "The nurse is very kind.",
+      "choices": [
+        "看護師",
+        "兄弟",
+        "顔",
+        "飛行機"
+      ],
+      "answer": 0,
+      "explanation": "nurse = 看護師　例：The nurse is very kind.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-034",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「driver」の意味は？",
+      "sentence": "The bus driver said hello.",
+      "choices": [
+        "川",
+        "国",
+        "運転手",
+        "いす"
+      ],
+      "answer": 2,
+      "explanation": "driver = 運転手　例：The bus driver said hello.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-035",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「school」の意味は？",
+      "sentence": "School starts in April.",
+      "choices": [
+        "名前",
+        "道路",
+        "学校",
+        "月（暦の）"
+      ],
+      "answer": 2,
+      "explanation": "school = 学校　例：School starts in April.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-036",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「class」の意味は？",
+      "sentence": "The class starts at nine.",
+      "choices": [
+        "目",
+        "授業",
+        "娘",
+        "手"
+      ],
+      "answer": 1,
+      "explanation": "class = 授業　例：The class starts at nine.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-037",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「homework」の意味は？",
+      "sentence": "I finished my homework.",
+      "choices": [
+        "魚",
+        "飛行機",
+        "太陽",
+        "宿題"
+      ],
+      "answer": 3,
+      "explanation": "homework = 宿題　例：I finished my homework.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-038",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「test」の意味は？",
+      "sentence": "I passed the test.",
+      "choices": [
+        "試験",
+        "冬",
+        "手紙",
+        "夕方"
+      ],
+      "answer": 0,
+      "explanation": "test = 試験　例：I passed the test.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-039",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「question」の意味は？",
+      "sentence": "Can I ask a question?",
+      "choices": [
+        "場所",
+        "学生",
+        "動物",
+        "質問"
+      ],
+      "answer": 3,
+      "explanation": "question = 質問　例：Can I ask a question?",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-040",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「answer」の意味は？",
+      "sentence": "That is the right answer.",
+      "choices": [
+        "男の子",
+        "雨",
+        "贈り物",
+        "答え"
+      ],
+      "answer": 3,
+      "explanation": "answer = 答え　例：That is the right answer.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-041",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「word」の意味は？",
+      "sentence": "What does this word mean?",
+      "choices": [
+        "日",
+        "星",
+        "単語",
+        "人々"
+      ],
+      "answer": 2,
+      "explanation": "word = 単語　例：What does this word mean?",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-042",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「language」の意味は？",
+      "sentence": "English is a world language.",
+      "choices": [
+        "病院",
+        "言語",
+        "娘",
+        "木"
+      ],
+      "answer": 1,
+      "explanation": "language = 言語　例：English is a world language.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-043",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「example」の意味は？",
+      "sentence": "Can you give me an example?",
+      "choices": [
+        "祖母",
+        "例",
+        "物語",
+        "町"
+      ],
+      "answer": 1,
+      "explanation": "example = 例　例：Can you give me an example?",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-044",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「idea」の意味は？",
+      "sentence": "That's a good idea.",
+      "choices": [
+        "側",
+        "子ども",
+        "考え",
+        "母"
+      ],
+      "answer": 2,
+      "explanation": "idea = 考え　例：That's a good idea.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-045",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「problem」の意味は？",
+      "sentence": "No problem.",
+      "choices": [
+        "問題",
+        "空港",
+        "お金",
+        "服"
+      ],
+      "answer": 0,
+      "explanation": "problem = 問題　例：No problem.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-046",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「plan」の意味は？",
+      "sentence": "What's your plan for tomorrow?",
+      "choices": [
+        "計画",
+        "雨",
+        "1時間",
+        "授業"
+      ],
+      "answer": 0,
+      "explanation": "plan = 計画　例：What's your plan for tomorrow?",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-047",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「story」の意味は？",
+      "sentence": "Tell me a story.",
+      "choices": [
+        "物語",
+        "値段",
+        "兄弟",
+        "質問"
+      ],
+      "answer": 0,
+      "explanation": "story = 物語　例：Tell me a story.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-048",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「news」の意味は？",
+      "sentence": "Did you hear the news?",
+      "choices": [
+        "料理",
+        "女の子",
+        "試験",
+        "知らせ・ニュース"
+      ],
+      "answer": 3,
+      "explanation": "news = 知らせ・ニュース　例：Did you hear the news?",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-049",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「mistake」の意味は？",
+      "sentence": "Everyone makes mistakes.",
+      "choices": [
+        "チーム",
+        "間違い",
+        "床",
+        "季節"
+      ],
+      "answer": 1,
+      "explanation": "mistake = 間違い　例：Everyone makes mistakes.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-050",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「world」の意味は？",
+      "sentence": "I want to travel around the world.",
+      "choices": [
+        "看護師",
+        "問題",
+        "心臓",
+        "世界"
+      ],
+      "answer": 3,
+      "explanation": "world = 世界　例：I want to travel around the world.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-051",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「country」の意味は？",
+      "sentence": "Japan is an island country.",
+      "choices": [
+        "米",
+        "牛乳",
+        "国",
+        "星"
+      ],
+      "answer": 2,
+      "explanation": "country = 国　例：Japan is an island country.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-052",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「city」の意味は？",
+      "sentence": "Tokyo is a big city.",
+      "choices": [
+        "体",
+        "都市",
+        "料理",
+        "公園"
+      ],
+      "answer": 1,
+      "explanation": "city = 都市　例：Tokyo is a big city.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-053",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「town」の意味は？",
+      "sentence": "I live in a small town.",
+      "choices": [
+        "午後",
+        "町",
+        "スポーツ",
+        "夫"
+      ],
+      "answer": 1,
+      "explanation": "town = 町　例：I live in a small town.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-054",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「street」の意味は？",
+      "sentence": "The shop is on this street.",
+      "choices": [
+        "音楽",
+        "学生",
+        "通り",
+        "星"
+      ],
+      "answer": 2,
+      "explanation": "street = 通り　例：The shop is on this street.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-055",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「road」の意味は？",
+      "sentence": "The road is wet.",
+      "choices": [
+        "ホテル",
+        "医者",
+        "赤ちゃん",
+        "道路"
+      ],
+      "answer": 3,
+      "explanation": "road = 道路　例：The road is wet.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-056",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「station」の意味は？",
+      "sentence": "Where is the station?",
+      "choices": [
+        "赤ちゃん",
+        "事務所",
+        "駅",
+        "車"
+      ],
+      "answer": 2,
+      "explanation": "station = 駅　例：Where is the station?",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-057",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「airport」の意味は？",
+      "sentence": "We arrived at the airport.",
+      "choices": [
+        "都市",
+        "食べ物",
+        "いす",
+        "空港"
+      ],
+      "answer": 3,
+      "explanation": "airport = 空港　例：We arrived at the airport.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-058",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「hospital」の意味は？",
+      "sentence": "She works at a hospital.",
+      "choices": [
+        "病院",
+        "分",
+        "お茶",
+        "机"
+      ],
+      "answer": 0,
+      "explanation": "hospital = 病院　例：She works at a hospital.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-059",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「bank」の意味は？",
+      "sentence": "The bank closes at three.",
+      "choices": [
+        "銀行",
+        "答え",
+        "祝日",
+        "間違い"
+      ],
+      "answer": 0,
+      "explanation": "bank = 銀行　例：The bank closes at three.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-060",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「library」の意味は？",
+      "sentence": "I study at the library.",
+      "choices": [
+        "男の子",
+        "祝日",
+        "夕食",
+        "図書館"
+      ],
+      "answer": 3,
+      "explanation": "library = 図書館　例：I study at the library.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-061",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「park」の意味は？",
+      "sentence": "Let's walk in the park.",
+      "choices": [
+        "夕方",
+        "買い物",
+        "公園",
+        "山"
+      ],
+      "answer": 2,
+      "explanation": "park = 公園　例：Let's walk in the park.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-062",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「restaurant」の意味は？",
+      "sentence": "This restaurant is popular.",
+      "choices": [
+        "レストラン",
+        "家",
+        "前",
+        "風"
+      ],
+      "answer": 0,
+      "explanation": "restaurant = レストラン　例：This restaurant is popular.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-063",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「hotel」の意味は？",
+      "sentence": "We stayed at a nice hotel.",
+      "choices": [
+        "月（天体）",
+        "写真",
+        "ホテル",
+        "手紙"
+      ],
+      "answer": 2,
+      "explanation": "hotel = ホテル　例：We stayed at a nice hotel.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-064",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「store」の意味は？",
+      "sentence": "The store sells shoes.",
+      "choices": [
+        "計画",
+        "パーティー",
+        "店",
+        "間違い"
+      ],
+      "answer": 2,
+      "explanation": "store = 店　例：The store sells shoes.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-065",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「place」の意味は？",
+      "sentence": "This is a nice place.",
+      "choices": [
+        "夏",
+        "場所",
+        "図書館",
+        "知らせ・ニュース"
+      ],
+      "answer": 1,
+      "explanation": "place = 場所　例：This is a nice place.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-066",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「way」の意味は？",
+      "sentence": "This is the best way.",
+      "choices": [
+        "方法",
+        "宿題",
+        "都市",
+        "机"
+      ],
+      "answer": 0,
+      "explanation": "way = 方法　例：This is the best way.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-067",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「side」の意味は？",
+      "sentence": "The bank is on the left side.",
+      "choices": [
+        "買い物",
+        "もの",
+        "朝",
+        "側"
+      ],
+      "answer": 3,
+      "explanation": "side = 側　例：The bank is on the left side.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-068",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「front」の意味は？",
+      "sentence": "Wait in front of the station.",
+      "choices": [
+        "角",
+        "パン",
+        "前",
+        "祝日"
+      ],
+      "answer": 2,
+      "explanation": "front = 前　例：Wait in front of the station.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-069",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「corner」の意味は？",
+      "sentence": "Turn right at the corner.",
+      "choices": [
+        "子ども",
+        "会社",
+        "趣味",
+        "角"
+      ],
+      "answer": 3,
+      "explanation": "corner = 角　例：Turn right at the corner.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-070",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「end」の意味は？",
+      "sentence": "See you at the end of the month.",
+      "choices": [
+        "レストラン",
+        "終わり",
+        "鳥",
+        "髪"
+      ],
+      "answer": 1,
+      "explanation": "end = 終わり　例：See you at the end of the month.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-071",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「house」の意味は？",
+      "sentence": "Their house is big.",
+      "choices": [
+        "家",
+        "親",
+        "看護師",
+        "コンピューター"
+      ],
+      "answer": 0,
+      "explanation": "house = 家　例：Their house is big.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-072",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「room」の意味は？",
+      "sentence": "My room is on the second floor.",
+      "choices": [
+        "手",
+        "赤ちゃん",
+        "問題",
+        "部屋"
+      ],
+      "answer": 3,
+      "explanation": "room = 部屋　例：My room is on the second floor.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-073",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「kitchen」の意味は？",
+      "sentence": "Mom is in the kitchen.",
+      "choices": [
+        "雨",
+        "集団・グループ",
+        "いす",
+        "台所"
+      ],
+      "answer": 3,
+      "explanation": "kitchen = 台所　例：Mom is in the kitchen.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-074",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「bathroom」の意味は？",
+      "sentence": "Where is the bathroom?",
+      "choices": [
+        "魚",
+        "空港",
+        "体",
+        "浴室"
+      ],
+      "answer": 3,
+      "explanation": "bathroom = 浴室　例：Where is the bathroom?",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-075",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「door」の意味は？",
+      "sentence": "Please close the door.",
+      "choices": [
+        "写真",
+        "手紙",
+        "台所",
+        "ドア"
+      ],
+      "answer": 3,
+      "explanation": "door = ドア　例：Please close the door.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-076",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「window」の意味は？",
+      "sentence": "Open the window, please.",
+      "choices": [
+        "窓",
+        "パーティー",
+        "休暇",
+        "夕方"
+      ],
+      "answer": 0,
+      "explanation": "window = 窓　例：Open the window, please.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-077",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「floor」の意味は？",
+      "sentence": "The floor is clean.",
+      "choices": [
+        "料理",
+        "写真",
+        "色",
+        "床"
+      ],
+      "answer": 3,
+      "explanation": "floor = 床　例：The floor is clean.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-078",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「wall」の意味は？",
+      "sentence": "There is a picture on the wall.",
+      "choices": [
+        "魚",
+        "学生",
+        "卵",
+        "壁"
+      ],
+      "answer": 3,
+      "explanation": "wall = 壁　例：There is a picture on the wall.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-079",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「table」の意味は？",
+      "sentence": "The keys are on the table.",
+      "choices": [
+        "お茶",
+        "川",
+        "テーブル",
+        "レストラン"
+      ],
+      "answer": 2,
+      "explanation": "table = テーブル　例：The keys are on the table.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-080",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「chair」の意味は？",
+      "sentence": "Sit on the chair.",
+      "choices": [
+        "いす",
+        "公園",
+        "友だち",
+        "床"
+      ],
+      "answer": 0,
+      "explanation": "chair = いす　例：Sit on the chair.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-081",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「bed」の意味は？",
+      "sentence": "I go to bed at eleven.",
+      "choices": [
+        "前",
+        "ベッド",
+        "月（天体）",
+        "ホテル"
+      ],
+      "answer": 1,
+      "explanation": "bed = ベッド　例：I go to bed at eleven.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-082",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「desk」の意味は？",
+      "sentence": "My desk is messy.",
+      "choices": [
+        "図書館",
+        "歌",
+        "看護師",
+        "机"
+      ],
+      "answer": 3,
+      "explanation": "desk = 机　例：My desk is messy.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-083",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「box」の意味は？",
+      "sentence": "What is in the box?",
+      "choices": [
+        "角",
+        "試合",
+        "箱",
+        "店"
+      ],
+      "answer": 2,
+      "explanation": "box = 箱　例：What is in the box?",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-084",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「bag」の意味は？",
+      "sentence": "This bag is heavy.",
+      "choices": [
+        "休暇",
+        "かばん",
+        "飛行機",
+        "かさ"
+      ],
+      "answer": 1,
+      "explanation": "bag = かばん　例：This bag is heavy.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-085",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「key」の意味は？",
+      "sentence": "I lost my key.",
+      "choices": [
+        "かさ",
+        "窓",
+        "鍵",
+        "知らせ・ニュース"
+      ],
+      "answer": 2,
+      "explanation": "key = 鍵　例：I lost my key.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-086",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「phone」の意味は？",
+      "sentence": "My phone is ringing.",
+      "choices": [
+        "川",
+        "電話",
+        "カップ",
+        "太陽"
+      ],
+      "answer": 1,
+      "explanation": "phone = 電話　例：My phone is ringing.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-087",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「computer」の意味は？",
+      "sentence": "I use a computer at work.",
+      "choices": [
+        "値段",
+        "人々",
+        "コンピューター",
+        "終わり"
+      ],
+      "answer": 2,
+      "explanation": "computer = コンピューター　例：I use a computer at work.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-088",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「umbrella」の意味は？",
+      "sentence": "Take an umbrella.",
+      "choices": [
+        "かさ",
+        "写真",
+        "部屋",
+        "野菜"
+      ],
+      "answer": 0,
+      "explanation": "umbrella = かさ　例：Take an umbrella.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-089",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「money」の意味は？",
+      "sentence": "I don't have much money.",
+      "choices": [
+        "お金",
+        "病院",
+        "頭",
+        "魚"
+      ],
+      "answer": 0,
+      "explanation": "money = お金　例：I don't have much money.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-090",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「ticket」の意味は？",
+      "sentence": "I bought a train ticket.",
+      "choices": [
+        "テーブル",
+        "切符",
+        "間違い",
+        "1時間"
+      ],
+      "answer": 1,
+      "explanation": "ticket = 切符　例：I bought a train ticket.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-091",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「picture」の意味は？",
+      "sentence": "Can I take a picture?",
+      "choices": [
+        "時間",
+        "空",
+        "写真",
+        "窓"
+      ],
+      "answer": 2,
+      "explanation": "picture = 写真　例：Can I take a picture?",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-092",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「letter」の意味は？",
+      "sentence": "I wrote a letter to my friend.",
+      "choices": [
+        "手紙",
+        "旅行",
+        "季節",
+        "月（暦の）"
+      ],
+      "answer": 0,
+      "explanation": "letter = 手紙　例：I wrote a letter to my friend.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-093",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「book」の意味は？",
+      "sentence": "This book is interesting.",
+      "choices": [
+        "兄弟",
+        "集団・グループ",
+        "部屋",
+        "本"
+      ],
+      "answer": 3,
+      "explanation": "book = 本　例：This book is interesting.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-094",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「pen」の意味は？",
+      "sentence": "Can I borrow a pen?",
+      "choices": [
+        "年齢",
+        "看護師",
+        "ペン",
+        "通り"
+      ],
+      "answer": 2,
+      "explanation": "pen = ペン　例：Can I borrow a pen?",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-095",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「map」の意味は？",
+      "sentence": "Let's check the map.",
+      "choices": [
+        "かさ",
+        "地図",
+        "雨",
+        "星"
+      ],
+      "answer": 1,
+      "explanation": "map = 地図　例：Let's check the map.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-096",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「thing」の意味は？",
+      "sentence": "I have many things to do.",
+      "choices": [
+        "お茶",
+        "女性",
+        "贈り物",
+        "もの"
+      ],
+      "answer": 3,
+      "explanation": "thing = もの　例：I have many things to do.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-097",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「clothes」の意味は？",
+      "sentence": "I bought new clothes.",
+      "choices": [
+        "都市",
+        "木",
+        "服",
+        "贈り物"
+      ],
+      "answer": 2,
+      "explanation": "clothes = 服　例：I bought new clothes.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-098",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「shoes」の意味は？",
+      "sentence": "These shoes are comfortable.",
+      "choices": [
+        "魚",
+        "靴",
+        "雨",
+        "肉"
+      ],
+      "answer": 1,
+      "explanation": "shoes = 靴　例：These shoes are comfortable.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-099",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「present」の意味は？",
+      "sentence": "Thank you for the present.",
+      "choices": [
+        "贈り物",
+        "週",
+        "りんご",
+        "事務所"
+      ],
+      "answer": 0,
+      "explanation": "present = 贈り物　例：Thank you for the present.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-100",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「gift」の意味は？",
+      "sentence": "This is a gift for you.",
+      "choices": [
+        "父",
+        "贈り物",
+        "午後",
+        "雨"
+      ],
+      "answer": 1,
+      "explanation": "gift = 贈り物　例：This is a gift for you.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-101",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「price」の意味は？",
+      "sentence": "What's the price of this bag?",
+      "choices": [
+        "月（暦の）",
+        "テーブル",
+        "値段",
+        "事務所"
+      ],
+      "answer": 2,
+      "explanation": "price = 値段　例：What's the price of this bag?",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-102",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「car」の意味は？",
+      "sentence": "He has a red car.",
+      "choices": [
+        "車",
+        "季節",
+        "スポーツ",
+        "世界"
+      ],
+      "answer": 0,
+      "explanation": "car = 車　例：He has a red car.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-103",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「bus」の意味は？",
+      "sentence": "I go to work by bus.",
+      "choices": [
+        "病院",
+        "バス",
+        "宿題",
+        "太陽"
+      ],
+      "answer": 1,
+      "explanation": "bus = バス　例：I go to work by bus.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-104",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「train」の意味は？",
+      "sentence": "The train is late.",
+      "choices": [
+        "電車",
+        "運転手",
+        "りんご",
+        "木"
+      ],
+      "answer": 0,
+      "explanation": "train = 電車　例：The train is late.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-105",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「bike」の意味は？",
+      "sentence": "I ride my bike to school.",
+      "choices": [
+        "服",
+        "男の子",
+        "星",
+        "自転車"
+      ],
+      "answer": 3,
+      "explanation": "bike = 自転車　例：I ride my bike to school.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-106",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「plane」の意味は？",
+      "sentence": "The plane leaves at noon.",
+      "choices": [
+        "飛行機",
+        "春",
+        "側",
+        "先生"
+      ],
+      "answer": 0,
+      "explanation": "plane = 飛行機　例：The plane leaves at noon.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-107",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「food」の意味は？",
+      "sentence": "Japanese food is healthy.",
+      "choices": [
+        "贈り物",
+        "バス",
+        "食べ物",
+        "国"
+      ],
+      "answer": 2,
+      "explanation": "food = 食べ物　例：Japanese food is healthy.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-108",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「breakfast」の意味は？",
+      "sentence": "I eat breakfast at seven.",
+      "choices": [
+        "間違い",
+        "目",
+        "年",
+        "朝食"
+      ],
+      "answer": 3,
+      "explanation": "breakfast = 朝食　例：I eat breakfast at seven.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-109",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「lunch」の意味は？",
+      "sentence": "Let's have lunch together.",
+      "choices": [
+        "方法",
+        "犬",
+        "昼食",
+        "試験"
+      ],
+      "answer": 2,
+      "explanation": "lunch = 昼食　例：Let's have lunch together.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-110",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「dinner」の意味は？",
+      "sentence": "Dinner is ready.",
+      "choices": [
+        "年齢",
+        "夏",
+        "夕食",
+        "部屋"
+      ],
+      "answer": 2,
+      "explanation": "dinner = 夕食　例：Dinner is ready.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-111",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「rice」の意味は？",
+      "sentence": "I eat rice every day.",
+      "choices": [
+        "海",
+        "夢",
+        "米",
+        "都市"
+      ],
+      "answer": 2,
+      "explanation": "rice = 米　例：I eat rice every day.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-112",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「bread」の意味は？",
+      "sentence": "I buy bread at the bakery.",
+      "choices": [
+        "電話",
+        "パン",
+        "女の子",
+        "仕事"
+      ],
+      "answer": 1,
+      "explanation": "bread = パン　例：I buy bread at the bakery.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-113",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「meat」の意味は？",
+      "sentence": "I don't eat much meat.",
+      "choices": [
+        "肉",
+        "映画",
+        "ベッド",
+        "水"
+      ],
+      "answer": 0,
+      "explanation": "meat = 肉　例：I don't eat much meat.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-114",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「fish」の意味は？",
+      "sentence": "This fish is fresh.",
+      "choices": [
+        "魚",
+        "誕生日",
+        "兄弟",
+        "水"
+      ],
+      "answer": 0,
+      "explanation": "fish = 魚　例：This fish is fresh.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-115",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「egg」の意味は？",
+      "sentence": "I had an egg for breakfast.",
+      "choices": [
+        "卵",
+        "星",
+        "手紙",
+        "都市"
+      ],
+      "answer": 0,
+      "explanation": "egg = 卵　例：I had an egg for breakfast.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-116",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「vegetable」の意味は？",
+      "sentence": "Eat more vegetables.",
+      "choices": [
+        "休暇",
+        "川",
+        "午後",
+        "野菜"
+      ],
+      "answer": 3,
+      "explanation": "vegetable = 野菜　例：Eat more vegetables.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-117",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「fruit」の意味は？",
+      "sentence": "I like fruit.",
+      "choices": [
+        "猫",
+        "果物",
+        "牛乳",
+        "図書館"
+      ],
+      "answer": 1,
+      "explanation": "fruit = 果物　例：I like fruit.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-118",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「apple」の意味は？",
+      "sentence": "I eat an apple every morning.",
+      "choices": [
+        "りんご",
+        "飛行機",
+        "卵",
+        "手紙"
+      ],
+      "answer": 0,
+      "explanation": "apple = りんご　例：I eat an apple every morning.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-119",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「water」の意味は？",
+      "sentence": "Can I have some water?",
+      "choices": [
+        "花",
+        "学生",
+        "水",
+        "間違い"
+      ],
+      "answer": 2,
+      "explanation": "water = 水　例：Can I have some water?",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-120",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「milk」の意味は？",
+      "sentence": "I drink milk every morning.",
+      "choices": [
+        "車",
+        "牛乳",
+        "母",
+        "角"
+      ],
+      "answer": 1,
+      "explanation": "milk = 牛乳　例：I drink milk every morning.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-121",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「tea」の意味は？",
+      "sentence": "Would you like some tea?",
+      "choices": [
+        "季節",
+        "鍵",
+        "お茶",
+        "果物"
+      ],
+      "answer": 2,
+      "explanation": "tea = お茶　例：Would you like some tea?",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-122",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「coffee」の意味は？",
+      "sentence": "I need a cup of coffee.",
+      "choices": [
+        "かばん",
+        "浴室",
+        "都市",
+        "コーヒー"
+      ],
+      "answer": 3,
+      "explanation": "coffee = コーヒー　例：I need a cup of coffee.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-123",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「dish」の意味は？",
+      "sentence": "This dish is spicy.",
+      "choices": [
+        "ホテル",
+        "肉",
+        "靴",
+        "料理"
+      ],
+      "answer": 3,
+      "explanation": "dish = 料理　例：This dish is spicy.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-124",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「cup」の意味は？",
+      "sentence": "I broke my cup.",
+      "choices": [
+        "チーム",
+        "カップ",
+        "休暇",
+        "空"
+      ],
+      "answer": 1,
+      "explanation": "cup = カップ　例：I broke my cup.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-125",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「animal」の意味は？",
+      "sentence": "I love animals.",
+      "choices": [
+        "朝食",
+        "動物",
+        "集団・グループ",
+        "例"
+      ],
+      "answer": 1,
+      "explanation": "animal = 動物　例：I love animals.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-126",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「dog」の意味は？",
+      "sentence": "My dog is very friendly.",
+      "choices": [
+        "口",
+        "犬",
+        "店",
+        "写真"
+      ],
+      "answer": 1,
+      "explanation": "dog = 犬　例：My dog is very friendly.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-127",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「cat」の意味は？",
+      "sentence": "The cat is sleeping.",
+      "choices": [
+        "鍵",
+        "料理",
+        "問題",
+        "猫"
+      ],
+      "answer": 3,
+      "explanation": "cat = 猫　例：The cat is sleeping.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-128",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「bird」の意味は？",
+      "sentence": "A bird is singing.",
+      "choices": [
+        "道路",
+        "鳥",
+        "天気",
+        "夕食"
+      ],
+      "answer": 1,
+      "explanation": "bird = 鳥　例：A bird is singing.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-129",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「flower」の意味は？",
+      "sentence": "These flowers are beautiful.",
+      "choices": [
+        "年",
+        "カップ",
+        "壁",
+        "花"
+      ],
+      "answer": 3,
+      "explanation": "flower = 花　例：These flowers are beautiful.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-130",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「tree」の意味は？",
+      "sentence": "There is a big tree in the yard.",
+      "choices": [
+        "前",
+        "秋",
+        "公園",
+        "木"
+      ],
+      "answer": 3,
+      "explanation": "tree = 木　例：There is a big tree in the yard.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-131",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「river」の意味は？",
+      "sentence": "We swam in the river.",
+      "choices": [
+        "計画",
+        "休暇",
+        "川",
+        "天気"
+      ],
+      "answer": 2,
+      "explanation": "river = 川　例：We swam in the river.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-132",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「mountain」の意味は？",
+      "sentence": "We climbed the mountain.",
+      "choices": [
+        "側",
+        "駅",
+        "山",
+        "花"
+      ],
+      "answer": 2,
+      "explanation": "mountain = 山　例：We climbed the mountain.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-133",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「sea」の意味は？",
+      "sentence": "I want to swim in the sea.",
+      "choices": [
+        "場所",
+        "川",
+        "海",
+        "りんご"
+      ],
+      "answer": 2,
+      "explanation": "sea = 海　例：I want to swim in the sea.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-134",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「sky」の意味は？",
+      "sentence": "The sky is blue.",
+      "choices": [
+        "心臓",
+        "季節",
+        "空",
+        "部屋"
+      ],
+      "answer": 2,
+      "explanation": "sky = 空　例：The sky is blue.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-135",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「sun」の意味は？",
+      "sentence": "The sun is hot today.",
+      "choices": [
+        "手",
+        "目",
+        "問題",
+        "太陽"
+      ],
+      "answer": 3,
+      "explanation": "sun = 太陽　例：The sun is hot today.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-136",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「moon」の意味は？",
+      "sentence": "The moon is bright tonight.",
+      "choices": [
+        "ホテル",
+        "歌",
+        "月（天体）",
+        "ベッド"
+      ],
+      "answer": 2,
+      "explanation": "moon = 月（天体）　例：The moon is bright tonight.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-137",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「star」の意味は？",
+      "sentence": "I can see many stars.",
+      "choices": [
+        "お茶",
+        "父",
+        "授業",
+        "星"
+      ],
+      "answer": 3,
+      "explanation": "star = 星　例：I can see many stars.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-138",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「rain」の意味は？",
+      "sentence": "We had a lot of rain.",
+      "choices": [
+        "昼食",
+        "雪",
+        "米",
+        "雨"
+      ],
+      "answer": 3,
+      "explanation": "rain = 雨　例：We had a lot of rain.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-139",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「snow」の意味は？",
+      "sentence": "We had snow last night.",
+      "choices": [
+        "スポーツ",
+        "体",
+        "雪",
+        "コーヒー"
+      ],
+      "answer": 2,
+      "explanation": "snow = 雪　例：We had snow last night.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-140",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「wind」の意味は？",
+      "sentence": "The wind is strong.",
+      "choices": [
+        "歌",
+        "仕事",
+        "風",
+        "言語"
+      ],
+      "answer": 2,
+      "explanation": "wind = 風　例：The wind is strong.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-141",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「weather」の意味は？",
+      "sentence": "How is the weather?",
+      "choices": [
+        "物語",
+        "窓",
+        "天気",
+        "試合"
+      ],
+      "answer": 2,
+      "explanation": "weather = 天気　例：How is the weather?",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-142",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「season」の意味は？",
+      "sentence": "Spring is my favorite season.",
+      "choices": [
+        "音楽",
+        "季節",
+        "壁",
+        "靴"
+      ],
+      "answer": 1,
+      "explanation": "season = 季節　例：Spring is my favorite season.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-143",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「spring」の意味は？",
+      "sentence": "Flowers bloom in spring.",
+      "choices": [
+        "春",
+        "月（天体）",
+        "考え",
+        "名前"
+      ],
+      "answer": 0,
+      "explanation": "spring = 春　例：Flowers bloom in spring.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-144",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「summer」の意味は？",
+      "sentence": "Summer in Japan is hot.",
+      "choices": [
+        "男性",
+        "家",
+        "夏",
+        "女の子"
+      ],
+      "answer": 2,
+      "explanation": "summer = 夏　例：Summer in Japan is hot.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-145",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「fall」の意味は？",
+      "sentence": "The leaves turn red in fall.",
+      "choices": [
+        "終わり",
+        "店",
+        "秋",
+        "魚"
+      ],
+      "answer": 2,
+      "explanation": "fall = 秋　例：The leaves turn red in fall.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-146",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「winter」の意味は？",
+      "sentence": "Winter is cold here.",
+      "choices": [
+        "道路",
+        "前",
+        "冬",
+        "太陽"
+      ],
+      "answer": 2,
+      "explanation": "winter = 冬　例：Winter is cold here.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-147",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「morning」の意味は？",
+      "sentence": "I run every morning.",
+      "choices": [
+        "パン",
+        "分",
+        "父",
+        "朝"
+      ],
+      "answer": 3,
+      "explanation": "morning = 朝　例：I run every morning.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-148",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「afternoon」の意味は？",
+      "sentence": "See you in the afternoon.",
+      "choices": [
+        "答え",
+        "夏",
+        "試合",
+        "午後"
+      ],
+      "answer": 3,
+      "explanation": "afternoon = 午後　例：See you in the afternoon.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-149",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「evening」の意味は？",
+      "sentence": "We eat dinner in the evening.",
+      "choices": [
+        "先生",
+        "夕方",
+        "母",
+        "知らせ・ニュース"
+      ],
+      "answer": 1,
+      "explanation": "evening = 夕方　例：We eat dinner in the evening.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-150",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「night」の意味は？",
+      "sentence": "I study at night.",
+      "choices": [
+        "牛乳",
+        "夜",
+        "祖母",
+        "空"
+      ],
+      "answer": 1,
+      "explanation": "night = 夜　例：I study at night.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-151",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「day」の意味は？",
+      "sentence": "Have a nice day.",
+      "choices": [
+        "電話",
+        "空港",
+        "日",
+        "チーム"
+      ],
+      "answer": 2,
+      "explanation": "day = 日　例：Have a nice day.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-152",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「week」の意味は？",
+      "sentence": "I work five days a week.",
+      "choices": [
+        "週",
+        "例",
+        "朝",
+        "部屋"
+      ],
+      "answer": 0,
+      "explanation": "week = 週　例：I work five days a week.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-153",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「month」の意味は？",
+      "sentence": "I visit my parents once a month.",
+      "choices": [
+        "男性",
+        "宿題",
+        "月（暦の）",
+        "体"
+      ],
+      "answer": 2,
+      "explanation": "month = 月（暦の）　例：I visit my parents once a month.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-154",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「year」の意味は？",
+      "sentence": "I started this job last year.",
+      "choices": [
+        "年",
+        "テーブル",
+        "秋",
+        "服"
+      ],
+      "answer": 0,
+      "explanation": "year = 年　例：I started this job last year.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-155",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「weekend」の意味は？",
+      "sentence": "What did you do last weekend?",
+      "choices": [
+        "頭",
+        "週末",
+        "風",
+        "娘"
+      ],
+      "answer": 1,
+      "explanation": "weekend = 週末　例：What did you do last weekend?",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-156",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「holiday」の意味は？",
+      "sentence": "Monday is a holiday.",
+      "choices": [
+        "娘",
+        "足",
+        "祝日",
+        "月（天体）"
+      ],
+      "answer": 2,
+      "explanation": "holiday = 祝日　例：Monday is a holiday.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-157",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「vacation」の意味は？",
+      "sentence": "I'm on vacation.",
+      "choices": [
+        "夫",
+        "太陽",
+        "休暇",
+        "祖父"
+      ],
+      "answer": 2,
+      "explanation": "vacation = 休暇　例：I'm on vacation.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-158",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「time」の意味は？",
+      "sentence": "What time is it?",
+      "choices": [
+        "時間",
+        "手紙",
+        "夕食",
+        "側"
+      ],
+      "answer": 0,
+      "explanation": "time = 時間　例：What time is it?",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-159",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「hour」の意味は？",
+      "sentence": "The movie is two hours long.",
+      "choices": [
+        "川",
+        "台所",
+        "1時間",
+        "週"
+      ],
+      "answer": 2,
+      "explanation": "hour = 1時間　例：The movie is two hours long.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-160",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「minute」の意味は？",
+      "sentence": "Wait a minute, please.",
+      "choices": [
+        "分",
+        "服",
+        "食べ物",
+        "海"
+      ],
+      "answer": 0,
+      "explanation": "minute = 分　例：Wait a minute, please.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-161",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「date」の意味は？",
+      "sentence": "What's the date today?",
+      "choices": [
+        "分",
+        "兄弟",
+        "空",
+        "日付"
+      ],
+      "answer": 3,
+      "explanation": "date = 日付　例：What's the date today?",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-162",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「party」の意味は？",
+      "sentence": "Come to my party.",
+      "choices": [
+        "昼食",
+        "パーティー",
+        "年",
+        "祝日"
+      ],
+      "answer": 1,
+      "explanation": "party = パーティー　例：Come to my party.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-163",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「game」の意味は？",
+      "sentence": "The game starts at six.",
+      "choices": [
+        "旅行",
+        "ホテル",
+        "試合",
+        "手紙"
+      ],
+      "answer": 2,
+      "explanation": "game = 試合　例：The game starts at six.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-164",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「music」の意味は？",
+      "sentence": "I listen to music every day.",
+      "choices": [
+        "朝食",
+        "雨",
+        "音楽",
+        "授業"
+      ],
+      "answer": 2,
+      "explanation": "music = 音楽　例：I listen to music every day.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-165",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「song」の意味は？",
+      "sentence": "This is my favorite song.",
+      "choices": [
+        "歌",
+        "朝",
+        "地図",
+        "間違い"
+      ],
+      "answer": 0,
+      "explanation": "song = 歌　例：This is my favorite song.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-166",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「movie」の意味は？",
+      "sentence": "Let's watch a movie.",
+      "choices": [
+        "映画",
+        "公園",
+        "果物",
+        "病院"
+      ],
+      "answer": 0,
+      "explanation": "movie = 映画　例：Let's watch a movie.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-167",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「sport」の意味は？",
+      "sentence": "What sport do you like?",
+      "choices": [
+        "方法",
+        "運転手",
+        "スポーツ",
+        "知らせ・ニュース"
+      ],
+      "answer": 2,
+      "explanation": "sport = スポーツ　例：What sport do you like?",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-168",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「team」の意味は？",
+      "sentence": "Our team won the game.",
+      "choices": [
+        "チーム",
+        "女の子",
+        "手",
+        "花"
+      ],
+      "answer": 0,
+      "explanation": "team = チーム　例：Our team won the game.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-169",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「trip」の意味は？",
+      "sentence": "How was your trip?",
+      "choices": [
+        "ホテル",
+        "贈り物",
+        "旅行",
+        "写真"
+      ],
+      "answer": 2,
+      "explanation": "trip = 旅行　例：How was your trip?",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-170",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「shopping」の意味は？",
+      "sentence": "I went shopping yesterday.",
+      "choices": [
+        "買い物",
+        "通り",
+        "値段",
+        "魚"
+      ],
+      "answer": 0,
+      "explanation": "shopping = 買い物　例：I went shopping yesterday.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-171",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「color」の意味は？",
+      "sentence": "What color do you like?",
+      "choices": [
+        "部屋",
+        "祖母",
+        "雨",
+        "色"
+      ],
+      "answer": 3,
+      "explanation": "color = 色　例：What color do you like?",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-172",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「body」の意味は？",
+      "sentence": "Exercise is good for your body.",
+      "choices": [
+        "前",
+        "目",
+        "言語",
+        "体"
+      ],
+      "answer": 3,
+      "explanation": "body = 体　例：Exercise is good for your body.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-173",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「head」の意味は？",
+      "sentence": "My head hurts.",
+      "choices": [
+        "顔",
+        "試験",
+        "頭",
+        "朝"
+      ],
+      "answer": 2,
+      "explanation": "head = 頭　例：My head hurts.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-174",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「face」の意味は？",
+      "sentence": "Wash your face.",
+      "choices": [
+        "顔",
+        "ベッド",
+        "朝食",
+        "運転手"
+      ],
+      "answer": 0,
+      "explanation": "face = 顔　例：Wash your face.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-175",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「eye」の意味は？",
+      "sentence": "She has blue eyes.",
+      "choices": [
+        "夏",
+        "目",
+        "図書館",
+        "夫"
+      ],
+      "answer": 1,
+      "explanation": "eye = 目　例：She has blue eyes.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-176",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「ear」の意味は？",
+      "sentence": "The rabbit has long ears.",
+      "choices": [
+        "例",
+        "間違い",
+        "耳",
+        "足"
+      ],
+      "answer": 2,
+      "explanation": "ear = 耳　例：The rabbit has long ears.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-177",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「mouth」の意味は？",
+      "sentence": "Open your mouth, please.",
+      "choices": [
+        "年",
+        "夏",
+        "牛乳",
+        "口"
+      ],
+      "answer": 3,
+      "explanation": "mouth = 口　例：Open your mouth, please.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-178",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「hand」の意味は？",
+      "sentence": "Raise your hand.",
+      "choices": [
+        "単語",
+        "手",
+        "りんご",
+        "足"
+      ],
+      "answer": 1,
+      "explanation": "hand = 手　例：Raise your hand.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-179",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「foot」の意味は？",
+      "sentence": "My foot hurts.",
+      "choices": [
+        "試験",
+        "足",
+        "旅行",
+        "本"
+      ],
+      "answer": 1,
+      "explanation": "foot = 足　例：My foot hurts.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-180",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「hair」の意味は？",
+      "sentence": "She has long hair.",
+      "choices": [
+        "昼食",
+        "方法",
+        "間違い",
+        "髪"
+      ],
+      "answer": 3,
+      "explanation": "hair = 髪　例：She has long hair.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-181",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「heart」の意味は？",
+      "sentence": "My heart is beating fast.",
+      "choices": [
+        "心臓",
+        "花",
+        "答え",
+        "祝日"
+      ],
+      "answer": 0,
+      "explanation": "heart = 心臓　例：My heart is beating fast.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-182",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「health」の意味は？",
+      "sentence": "Sleep is important for health.",
+      "choices": [
+        "朝",
+        "床",
+        "果物",
+        "健康"
+      ],
+      "answer": 3,
+      "explanation": "health = 健康　例：Sleep is important for health.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "n"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-183",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「go」の意味は？",
+      "sentence": "I go to school by bus.",
+      "choices": [
+        "眠る",
+        "選ぶ",
+        "行く",
+        "忘れる"
+      ],
+      "answer": 2,
+      "explanation": "go = 行く　例：I go to school by bus.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-184",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「come」の意味は？",
+      "sentence": "Come here, please.",
+      "choices": [
+        "料理する",
+        "来る",
+        "置く",
+        "曲がる"
+      ],
+      "answer": 1,
+      "explanation": "come = 来る　例：Come here, please.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-185",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「eat」の意味は？",
+      "sentence": "I eat breakfast every day.",
+      "choices": [
+        "取っておく",
+        "ほほえむ",
+        "始まる・始める",
+        "食べる"
+      ],
+      "answer": 3,
+      "explanation": "eat = 食べる　例：I eat breakfast every day.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-186",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「drink」の意味は？",
+      "sentence": "I drink coffee in the morning.",
+      "choices": [
+        "飲む",
+        "手に入れる",
+        "持っている",
+        "飛ぶ"
+      ],
+      "answer": 0,
+      "explanation": "drink = 飲む　例：I drink coffee in the morning.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-187",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「sleep」の意味は？",
+      "sentence": "I sleep eight hours a day.",
+      "choices": [
+        "眠る",
+        "感じる",
+        "勝つ",
+        "言う"
+      ],
+      "answer": 0,
+      "explanation": "sleep = 眠る　例：I sleep eight hours a day.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-188",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「wake up」の意味は？",
+      "sentence": "I wake up at six.",
+      "choices": [
+        "歩く",
+        "学ぶ",
+        "旅行する",
+        "目を覚ます・起きる"
+      ],
+      "answer": 3,
+      "explanation": "wake up = 目を覚ます・起きる　例：I wake up at six.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-189",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「get up」の意味は？",
+      "sentence": "What time do you get up?",
+      "choices": [
+        "泣く",
+        "踊る",
+        "起きる・起床する",
+        "止まる"
+      ],
+      "answer": 2,
+      "explanation": "get up = 起きる・起床する　例：What time do you get up?",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-190",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「walk」の意味は？",
+      "sentence": "I walk to the station.",
+      "choices": [
+        "歩く",
+        "買う",
+        "じっと見る",
+        "勝つ"
+      ],
+      "answer": 0,
+      "explanation": "walk = 歩く　例：I walk to the station.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-191",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「run」の意味は？",
+      "sentence": "He runs very fast.",
+      "choices": [
+        "走る",
+        "感じる",
+        "見せる",
+        "終える"
+      ],
+      "answer": 0,
+      "explanation": "run = 走る　例：He runs very fast.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-192",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「swim」の意味は？",
+      "sentence": "Can you swim?",
+      "choices": [
+        "眠る",
+        "運ぶ",
+        "泳ぐ",
+        "話す・しゃべる"
+      ],
+      "answer": 2,
+      "explanation": "swim = 泳ぐ　例：Can you swim?",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-193",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「sit」の意味は？",
+      "sentence": "Please sit down.",
+      "choices": [
+        "座る",
+        "見る",
+        "作る",
+        "身につけている"
+      ],
+      "answer": 0,
+      "explanation": "sit = 座る　例：Please sit down.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-194",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「stand」の意味は？",
+      "sentence": "Stand up, please.",
+      "choices": [
+        "到着する",
+        "立つ",
+        "聞こえる",
+        "歩く"
+      ],
+      "answer": 1,
+      "explanation": "stand = 立つ　例：Stand up, please.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-195",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「see」の意味は？",
+      "sentence": "I can see the mountain.",
+      "choices": [
+        "作る",
+        "歩く",
+        "捕まえる",
+        "見る・見える"
+      ],
+      "answer": 3,
+      "explanation": "see = 見る・見える　例：I can see the mountain.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-196",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「look」の意味は？",
+      "sentence": "Look at this picture.",
+      "choices": [
+        "話す・しゃべる",
+        "止まる",
+        "見る",
+        "始める・始まる"
+      ],
+      "answer": 2,
+      "explanation": "look = 見る　例：Look at this picture.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-197",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「watch」の意味は？",
+      "sentence": "I watch TV after dinner.",
+      "choices": [
+        "覚えている",
+        "旅行する",
+        "じっと見る",
+        "読む"
+      ],
+      "answer": 2,
+      "explanation": "watch = じっと見る　例：I watch TV after dinner.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-198",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「hear」の意味は？",
+      "sentence": "Can you hear me?",
+      "choices": [
+        "送る",
+        "作る",
+        "ほしい",
+        "聞こえる"
+      ],
+      "answer": 3,
+      "explanation": "hear = 聞こえる　例：Can you hear me?",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-199",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「listen」の意味は？",
+      "sentence": "Listen to me carefully.",
+      "choices": [
+        "ほほえむ",
+        "読む",
+        "渡る",
+        "聞く"
+      ],
+      "answer": 3,
+      "explanation": "listen = 聞く　例：Listen to me carefully.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-200",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「speak」の意味は？",
+      "sentence": "Do you speak English?",
+      "choices": [
+        "到着する",
+        "払う",
+        "話す",
+        "練習する"
+      ],
+      "answer": 2,
+      "explanation": "speak = 話す　例：Do you speak English?",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-201",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「talk」の意味は？",
+      "sentence": "Let's talk about it later.",
+      "choices": [
+        "学ぶ",
+        "話す・しゃべる",
+        "言う",
+        "理解する"
+      ],
+      "answer": 1,
+      "explanation": "talk = 話す・しゃべる　例：Let's talk about it later.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-202",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「say」の意味は？",
+      "sentence": "What did you say?",
+      "choices": [
+        "言う",
+        "望む",
+        "払う",
+        "～になる"
+      ],
+      "answer": 0,
+      "explanation": "say = 言う　例：What did you say?",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-203",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「tell」の意味は？",
+      "sentence": "Tell me your name.",
+      "choices": [
+        "旅行する",
+        "練習する",
+        "始まる・始める",
+        "伝える"
+      ],
+      "answer": 3,
+      "explanation": "tell = 伝える　例：Tell me your name.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-204",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「ask」の意味は？",
+      "sentence": "Can I ask you something?",
+      "choices": [
+        "曲がる",
+        "たずねる",
+        "遊ぶ",
+        "身につけている"
+      ],
+      "answer": 1,
+      "explanation": "ask = たずねる　例：Can I ask you something?",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-205",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「read」の意味は？",
+      "sentence": "I read a book every week.",
+      "choices": [
+        "遊ぶ",
+        "話す・しゃべる",
+        "読む",
+        "引っ越す"
+      ],
+      "answer": 2,
+      "explanation": "read = 読む　例：I read a book every week.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-206",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「write」の意味は？",
+      "sentence": "Please write your name here.",
+      "choices": [
+        "渡る",
+        "書く",
+        "旅行する",
+        "練習する"
+      ],
+      "answer": 1,
+      "explanation": "write = 書く　例：Please write your name here.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-207",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「study」の意味は？",
+      "sentence": "I study English every day.",
+      "choices": [
+        "引っ越す",
+        "ほほえむ",
+        "読む",
+        "勉強する"
+      ],
+      "answer": 3,
+      "explanation": "study = 勉強する　例：I study English every day.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-208",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「learn」の意味は？",
+      "sentence": "I want to learn Spanish.",
+      "choices": [
+        "遊ぶ",
+        "学ぶ",
+        "会う",
+        "起きる・起床する"
+      ],
+      "answer": 1,
+      "explanation": "learn = 学ぶ　例：I want to learn Spanish.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-209",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「teach」の意味は？",
+      "sentence": "She teaches math.",
+      "choices": [
+        "勝つ",
+        "教える",
+        "終える",
+        "学ぶ"
+      ],
+      "answer": 1,
+      "explanation": "teach = 教える　例：She teaches math.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-210",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「know」の意味は？",
+      "sentence": "I know that man.",
+      "choices": [
+        "戻る",
+        "知っている",
+        "変える",
+        "持ってくる"
+      ],
+      "answer": 1,
+      "explanation": "know = 知っている　例：I know that man.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-211",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「think」の意味は？",
+      "sentence": "I think so too.",
+      "choices": [
+        "言う",
+        "思う",
+        "必要とする",
+        "勉強する"
+      ],
+      "answer": 1,
+      "explanation": "think = 思う　例：I think so too.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-212",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「understand」の意味は？",
+      "sentence": "I don't understand.",
+      "choices": [
+        "愛する",
+        "思う",
+        "なくす",
+        "理解する"
+      ],
+      "answer": 3,
+      "explanation": "understand = 理解する　例：I don't understand.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-213",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「remember」の意味は？",
+      "sentence": "I remember his name.",
+      "choices": [
+        "与える",
+        "覚えている",
+        "行く",
+        "渡る"
+      ],
+      "answer": 1,
+      "explanation": "remember = 覚えている　例：I remember his name.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-214",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「forget」の意味は？",
+      "sentence": "Don't forget your umbrella.",
+      "choices": [
+        "勉強する",
+        "踊る",
+        "忘れる",
+        "やってみる"
+      ],
+      "answer": 2,
+      "explanation": "forget = 忘れる　例：Don't forget your umbrella.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-215",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「like」の意味は？",
+      "sentence": "I like cats.",
+      "choices": [
+        "好きだ",
+        "貸す",
+        "楽しむ",
+        "来る"
+      ],
+      "answer": 0,
+      "explanation": "like = 好きだ　例：I like cats.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-216",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「love」の意味は？",
+      "sentence": "I love this song.",
+      "choices": [
+        "愛する",
+        "走る",
+        "持ってくる",
+        "使う"
+      ],
+      "answer": 0,
+      "explanation": "love = 愛する　例：I love this song.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-217",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「want」の意味は？",
+      "sentence": "I want a new bike.",
+      "choices": [
+        "じっと見る",
+        "終える",
+        "信じる",
+        "ほしい"
+      ],
+      "answer": 3,
+      "explanation": "want = ほしい　例：I want a new bike.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-218",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「need」の意味は？",
+      "sentence": "I need your help.",
+      "choices": [
+        "必要とする",
+        "知っている",
+        "愛する",
+        "忘れる"
+      ],
+      "answer": 0,
+      "explanation": "need = 必要とする　例：I need your help.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-219",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「have」の意味は？",
+      "sentence": "I have two sisters.",
+      "choices": [
+        "与える",
+        "持っている",
+        "書く",
+        "遊ぶ"
+      ],
+      "answer": 1,
+      "explanation": "have = 持っている　例：I have two sisters.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-220",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「get」の意味は？",
+      "sentence": "Where did you get that bag?",
+      "choices": [
+        "作る",
+        "手に入れる",
+        "会う",
+        "引っ越す"
+      ],
+      "answer": 1,
+      "explanation": "get = 手に入れる　例：Where did you get that bag?",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-221",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「give」の意味は？",
+      "sentence": "I gave her a present.",
+      "choices": [
+        "ほしい",
+        "～になる",
+        "手に持つ",
+        "与える"
+      ],
+      "answer": 3,
+      "explanation": "give = 与える　例：I gave her a present.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-222",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「take」の意味は？",
+      "sentence": "Take your umbrella with you.",
+      "choices": [
+        "持っていく",
+        "～になる",
+        "言う",
+        "始まる・始める"
+      ],
+      "answer": 0,
+      "explanation": "take = 持っていく　例：Take your umbrella with you.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-223",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「bring」の意味は？",
+      "sentence": "Bring your lunch tomorrow.",
+      "choices": [
+        "感じる",
+        "持ってくる",
+        "食べる",
+        "ほほえむ"
+      ],
+      "answer": 1,
+      "explanation": "bring = 持ってくる　例：Bring your lunch tomorrow.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-224",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「buy」の意味は？",
+      "sentence": "I bought a new phone.",
+      "choices": [
+        "買う",
+        "行く",
+        "引っ越す",
+        "使う"
+      ],
+      "answer": 0,
+      "explanation": "buy = 買う　例：I bought a new phone.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-225",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「sell」の意味は？",
+      "sentence": "They sell fresh fruit.",
+      "choices": [
+        "売る",
+        "止まる",
+        "置く",
+        "乗る"
+      ],
+      "answer": 0,
+      "explanation": "sell = 売る　例：They sell fresh fruit.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-226",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「pay」の意味は？",
+      "sentence": "Can I pay by card?",
+      "choices": [
+        "払う",
+        "引っ越す",
+        "知っている",
+        "話す"
+      ],
+      "answer": 0,
+      "explanation": "pay = 払う　例：Can I pay by card?",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-227",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「make」の意味は？",
+      "sentence": "I made a cake.",
+      "choices": [
+        "飛ぶ",
+        "立つ",
+        "作る",
+        "働く"
+      ],
+      "answer": 2,
+      "explanation": "make = 作る　例：I made a cake.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-228",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「cook」の意味は？",
+      "sentence": "I cook dinner every night.",
+      "choices": [
+        "来る",
+        "住む",
+        "使う",
+        "料理する"
+      ],
+      "answer": 3,
+      "explanation": "cook = 料理する　例：I cook dinner every night.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-229",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「wash」の意味は？",
+      "sentence": "Wash your hands.",
+      "choices": [
+        "建てる",
+        "聞く",
+        "歌う",
+        "洗う"
+      ],
+      "answer": 3,
+      "explanation": "wash = 洗う　例：Wash your hands.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-230",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「clean」の意味は？",
+      "sentence": "I clean my room on Sundays.",
+      "choices": [
+        "払う",
+        "理解する",
+        "掃除する",
+        "思う"
+      ],
+      "answer": 2,
+      "explanation": "clean = 掃除する　例：I clean my room on Sundays.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-231",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「open」の意味は？",
+      "sentence": "Open the door, please.",
+      "choices": [
+        "開ける",
+        "戻る",
+        "じっと見る",
+        "滞在する"
+      ],
+      "answer": 0,
+      "explanation": "open = 開ける　例：Open the door, please.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-232",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「close」の意味は？",
+      "sentence": "Close the window, please.",
+      "choices": [
+        "持っていく",
+        "閉める",
+        "望む",
+        "変える"
+      ],
+      "answer": 1,
+      "explanation": "close = 閉める　例：Close the window, please.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-233",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「start」の意味は？",
+      "sentence": "Let's start the meeting.",
+      "choices": [
+        "引っ越す",
+        "旅行する",
+        "滞在する",
+        "始める・始まる"
+      ],
+      "answer": 3,
+      "explanation": "start = 始める・始まる　例：Let's start the meeting.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-234",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「finish」の意味は？",
+      "sentence": "I finished my work.",
+      "choices": [
+        "置く",
+        "終える",
+        "描く",
+        "渡る"
+      ],
+      "answer": 1,
+      "explanation": "finish = 終える　例：I finished my work.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-235",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「stop」の意味は？",
+      "sentence": "Stop the car!",
+      "choices": [
+        "笑う",
+        "止まる",
+        "売る",
+        "勉強する"
+      ],
+      "answer": 1,
+      "explanation": "stop = 止まる　例：Stop the car!",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-236",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「wait」の意味は？",
+      "sentence": "Wait here, please.",
+      "choices": [
+        "見つける",
+        "食べる",
+        "借りる",
+        "待つ"
+      ],
+      "answer": 3,
+      "explanation": "wait = 待つ　例：Wait here, please.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-237",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「stay」の意味は？",
+      "sentence": "I stayed in Kyoto for three days.",
+      "choices": [
+        "閉める",
+        "踊る",
+        "滞在する",
+        "働く"
+      ],
+      "answer": 2,
+      "explanation": "stay = 滞在する　例：I stayed in Kyoto for three days.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-238",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「live」の意味は？",
+      "sentence": "I live in Tokyo.",
+      "choices": [
+        "眠る",
+        "与える",
+        "渡る",
+        "住む"
+      ],
+      "answer": 3,
+      "explanation": "live = 住む　例：I live in Tokyo.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-239",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「work」の意味は？",
+      "sentence": "I work at a hotel.",
+      "choices": [
+        "勉強する",
+        "売る",
+        "働く",
+        "やってみる"
+      ],
+      "answer": 2,
+      "explanation": "work = 働く　例：I work at a hotel.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-240",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「play」の意味は？",
+      "sentence": "The children are playing outside.",
+      "choices": [
+        "手伝う",
+        "捕まえる",
+        "食べる",
+        "遊ぶ"
+      ],
+      "answer": 3,
+      "explanation": "play = 遊ぶ　例：The children are playing outside.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-241",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「sing」の意味は？",
+      "sentence": "She sings very well.",
+      "choices": [
+        "歌う",
+        "笑う",
+        "持っていく",
+        "戻る"
+      ],
+      "answer": 0,
+      "explanation": "sing = 歌う　例：She sings very well.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-242",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「dance」の意味は？",
+      "sentence": "Let's dance!",
+      "choices": [
+        "育てる",
+        "払う",
+        "踊る",
+        "信じる"
+      ],
+      "answer": 2,
+      "explanation": "dance = 踊る　例：Let's dance!",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-243",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「draw」の意味は？",
+      "sentence": "He draws pictures well.",
+      "choices": [
+        "走る",
+        "描く",
+        "読む",
+        "到着する"
+      ],
+      "answer": 1,
+      "explanation": "draw = 描く　例：He draws pictures well.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-244",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「use」の意味は？",
+      "sentence": "Can I use your pen?",
+      "choices": [
+        "食べる",
+        "住む",
+        "使う",
+        "見る"
+      ],
+      "answer": 2,
+      "explanation": "use = 使う　例：Can I use your pen?",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-245",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「try」の意味は？",
+      "sentence": "Try this cake.",
+      "choices": [
+        "やってみる",
+        "見せる",
+        "ほしい",
+        "理解する"
+      ],
+      "answer": 0,
+      "explanation": "try = やってみる　例：Try this cake.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-246",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「help」の意味は？",
+      "sentence": "Can you help me?",
+      "choices": [
+        "理解する",
+        "借りる",
+        "手伝う",
+        "旅行する"
+      ],
+      "answer": 2,
+      "explanation": "help = 手伝う　例：Can you help me?",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-247",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「call」の意味は？",
+      "sentence": "I'll call you later.",
+      "choices": [
+        "電話する",
+        "過ごす",
+        "泣く",
+        "愛する"
+      ],
+      "answer": 0,
+      "explanation": "call = 電話する　例：I'll call you later.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-248",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「meet」の意味は？",
+      "sentence": "Nice to meet you.",
+      "choices": [
+        "描く",
+        "会う",
+        "泣く",
+        "歌う"
+      ],
+      "answer": 1,
+      "explanation": "meet = 会う　例：Nice to meet you.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-249",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「visit」の意味は？",
+      "sentence": "I visited Kyoto last year.",
+      "choices": [
+        "やってみる",
+        "訪れる",
+        "勉強する",
+        "過ごす"
+      ],
+      "answer": 1,
+      "explanation": "visit = 訪れる　例：I visited Kyoto last year.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-250",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「travel」の意味は？",
+      "sentence": "I like to travel.",
+      "choices": [
+        "飛ぶ",
+        "旅行する",
+        "食べる",
+        "歌う"
+      ],
+      "answer": 1,
+      "explanation": "travel = 旅行する　例：I like to travel.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-251",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「drive」の意味は？",
+      "sentence": "Can you drive?",
+      "choices": [
+        "待つ",
+        "決める",
+        "話す・しゃべる",
+        "運転する"
+      ],
+      "answer": 3,
+      "explanation": "drive = 運転する　例：Can you drive?",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-252",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「ride」の意味は？",
+      "sentence": "I ride a bike to work.",
+      "choices": [
+        "変える",
+        "乗る",
+        "使う",
+        "渡る"
+      ],
+      "answer": 1,
+      "explanation": "ride = 乗る　例：I ride a bike to work.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-253",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「fly」の意味は？",
+      "sentence": "Birds fly south in winter.",
+      "choices": [
+        "ほしい",
+        "飛ぶ",
+        "望む",
+        "目を覚ます・起きる"
+      ],
+      "answer": 1,
+      "explanation": "fly = 飛ぶ　例：Birds fly south in winter.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-254",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「leave」の意味は？",
+      "sentence": "The train leaves at six.",
+      "choices": [
+        "渡る",
+        "望む",
+        "楽しむ",
+        "出発する"
+      ],
+      "answer": 3,
+      "explanation": "leave = 出発する　例：The train leaves at six.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-255",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「arrive」の意味は？",
+      "sentence": "We arrived at noon.",
+      "choices": [
+        "閉める",
+        "好きだ",
+        "勝つ",
+        "到着する"
+      ],
+      "answer": 3,
+      "explanation": "arrive = 到着する　例：We arrived at noon.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-256",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「return」の意味は？",
+      "sentence": "I returned home late.",
+      "choices": [
+        "戻る",
+        "滞在する",
+        "過ごす",
+        "与える"
+      ],
+      "answer": 0,
+      "explanation": "return = 戻る　例：I returned home late.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-257",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「send」の意味は？",
+      "sentence": "I sent you an email.",
+      "choices": [
+        "望む",
+        "送る",
+        "描く",
+        "歌う"
+      ],
+      "answer": 1,
+      "explanation": "send = 送る　例：I sent you an email.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-258",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「show」の意味は？",
+      "sentence": "Show me your ticket, please.",
+      "choices": [
+        "買う",
+        "待つ",
+        "見せる",
+        "忘れる"
+      ],
+      "answer": 2,
+      "explanation": "show = 見せる　例：Show me your ticket, please.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-259",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「find」の意味は？",
+      "sentence": "I can't find my key.",
+      "choices": [
+        "身につけている",
+        "話す",
+        "作る",
+        "見つける"
+      ],
+      "answer": 3,
+      "explanation": "find = 見つける　例：I can't find my key.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-260",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「lose」の意味は？",
+      "sentence": "I lost my wallet.",
+      "choices": [
+        "買う",
+        "なくす",
+        "住む",
+        "賛成する"
+      ],
+      "answer": 1,
+      "explanation": "lose = なくす　例：I lost my wallet.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-261",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「win」の意味は？",
+      "sentence": "Our team won.",
+      "choices": [
+        "渡る",
+        "歌う",
+        "勝つ",
+        "思う"
+      ],
+      "answer": 2,
+      "explanation": "win = 勝つ　例：Our team won.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-262",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「carry」の意味は？",
+      "sentence": "Can you carry this box?",
+      "choices": [
+        "終える",
+        "運ぶ",
+        "勝つ",
+        "掃除する"
+      ],
+      "answer": 1,
+      "explanation": "carry = 運ぶ　例：Can you carry this box?",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-263",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「move」の意味は？",
+      "sentence": "We moved to Osaka last year.",
+      "choices": [
+        "到着する",
+        "飲む",
+        "建てる",
+        "引っ越す"
+      ],
+      "answer": 3,
+      "explanation": "move = 引っ越す　例：We moved to Osaka last year.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-264",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「change」の意味は？",
+      "sentence": "I changed my plan.",
+      "choices": [
+        "変える",
+        "やってみる",
+        "貸す",
+        "曲がる"
+      ],
+      "answer": 0,
+      "explanation": "change = 変える　例：I changed my plan.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-265",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「turn」の意味は？",
+      "sentence": "Turn left at the bank.",
+      "choices": [
+        "曲がる",
+        "持っている",
+        "止まる",
+        "心配する"
+      ],
+      "answer": 0,
+      "explanation": "turn = 曲がる　例：Turn left at the bank.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-266",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「cross」の意味は？",
+      "sentence": "Cross the street carefully.",
+      "choices": [
+        "渡る",
+        "書く",
+        "買う",
+        "行く"
+      ],
+      "answer": 0,
+      "explanation": "cross = 渡る　例：Cross the street carefully.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-267",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「enjoy」の意味は？",
+      "sentence": "I enjoyed the party.",
+      "choices": [
+        "理解する",
+        "見つける",
+        "楽しむ",
+        "取っておく"
+      ],
+      "answer": 2,
+      "explanation": "enjoy = 楽しむ　例：I enjoyed the party.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-268",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「laugh」の意味は？",
+      "sentence": "Everyone laughed.",
+      "choices": [
+        "変える",
+        "笑う",
+        "到着する",
+        "見る"
+      ],
+      "answer": 1,
+      "explanation": "laugh = 笑う　例：Everyone laughed.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-269",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「cry」の意味は？",
+      "sentence": "The baby cried all night.",
+      "choices": [
+        "勉強する",
+        "捕まえる",
+        "好きだ",
+        "泣く"
+      ],
+      "answer": 3,
+      "explanation": "cry = 泣く　例：The baby cried all night.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-270",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「smile」の意味は？",
+      "sentence": "She smiled at me.",
+      "choices": [
+        "ほほえむ",
+        "運ぶ",
+        "貸す",
+        "立つ"
+      ],
+      "answer": 0,
+      "explanation": "smile = ほほえむ　例：She smiled at me.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-271",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「feel」の意味は？",
+      "sentence": "I feel tired today.",
+      "choices": [
+        "感じる",
+        "取っておく",
+        "始める・始まる",
+        "訪れる"
+      ],
+      "answer": 0,
+      "explanation": "feel = 感じる　例：I feel tired today.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-272",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「hope」の意味は？",
+      "sentence": "I hope you like it.",
+      "choices": [
+        "賛成する",
+        "望む",
+        "心配する",
+        "行く"
+      ],
+      "answer": 1,
+      "explanation": "hope = 望む　例：I hope you like it.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-273",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「believe」の意味は？",
+      "sentence": "I believe you.",
+      "choices": [
+        "学ぶ",
+        "信じる",
+        "描く",
+        "与える"
+      ],
+      "answer": 1,
+      "explanation": "believe = 信じる　例：I believe you.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-274",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「choose」の意味は？",
+      "sentence": "Choose one color.",
+      "choices": [
+        "忘れる",
+        "選ぶ",
+        "到着する",
+        "見る"
+      ],
+      "answer": 1,
+      "explanation": "choose = 選ぶ　例：Choose one color.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-275",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「decide」の意味は？",
+      "sentence": "I decided to study abroad.",
+      "choices": [
+        "会う",
+        "運ぶ",
+        "決める",
+        "売る"
+      ],
+      "answer": 2,
+      "explanation": "decide = 決める　例：I decided to study abroad.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-276",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「agree」の意味は？",
+      "sentence": "I agree with you.",
+      "choices": [
+        "聞く",
+        "手伝う",
+        "賛成する",
+        "売る"
+      ],
+      "answer": 2,
+      "explanation": "agree = 賛成する　例：I agree with you.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-277",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「practice」の意味は？",
+      "sentence": "I practice the piano every day.",
+      "choices": [
+        "捕まえる",
+        "愛する",
+        "電話する",
+        "練習する"
+      ],
+      "answer": 3,
+      "explanation": "practice = 練習する　例：I practice the piano every day.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-278",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「borrow」の意味は？",
+      "sentence": "Can I borrow your pen?",
+      "choices": [
+        "掃除する",
+        "ほほえむ",
+        "乗る",
+        "借りる"
+      ],
+      "answer": 3,
+      "explanation": "borrow = 借りる　例：Can I borrow your pen?",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-279",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「lend」の意味は？",
+      "sentence": "Can you lend me some money?",
+      "choices": [
+        "貸す",
+        "話す・しゃべる",
+        "到着する",
+        "来る"
+      ],
+      "answer": 0,
+      "explanation": "lend = 貸す　例：Can you lend me some money?",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-280",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「grow」の意味は？",
+      "sentence": "My father grows tomatoes.",
+      "choices": [
+        "持っている",
+        "たずねる",
+        "育てる",
+        "学ぶ"
+      ],
+      "answer": 2,
+      "explanation": "grow = 育てる　例：My father grows tomatoes.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-281",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「become」の意味は？",
+      "sentence": "She became a doctor.",
+      "choices": [
+        "知っている",
+        "～になる",
+        "貸す",
+        "見る・見える"
+      ],
+      "answer": 1,
+      "explanation": "become = ～になる　例：She became a doctor.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-282",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「begin」の意味は？",
+      "sentence": "The class begins at nine.",
+      "choices": [
+        "手に入れる",
+        "作る",
+        "始まる・始める",
+        "伝える"
+      ],
+      "answer": 2,
+      "explanation": "begin = 始まる・始める　例：The class begins at nine.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-283",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「build」の意味は？",
+      "sentence": "They built a new school.",
+      "choices": [
+        "建てる",
+        "運ぶ",
+        "引っ越す",
+        "好きだ"
+      ],
+      "answer": 0,
+      "explanation": "build = 建てる　例：They built a new school.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-284",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「catch」の意味は？",
+      "sentence": "The cat caught a mouse.",
+      "choices": [
+        "賛成する",
+        "見る・見える",
+        "捕まえる",
+        "忘れる"
+      ],
+      "answer": 2,
+      "explanation": "catch = 捕まえる　例：The cat caught a mouse.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-285",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「hold」の意味は？",
+      "sentence": "Hold my hand.",
+      "choices": [
+        "電話する",
+        "手に持つ",
+        "借りる",
+        "目を覚ます・起きる"
+      ],
+      "answer": 1,
+      "explanation": "hold = 手に持つ　例：Hold my hand.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-286",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「keep」の意味は？",
+      "sentence": "Keep the change.",
+      "choices": [
+        "泣く",
+        "働く",
+        "聞こえる",
+        "取っておく"
+      ],
+      "answer": 3,
+      "explanation": "keep = 取っておく　例：Keep the change.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-287",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「put」の意味は？",
+      "sentence": "Put your bag here.",
+      "choices": [
+        "置く",
+        "開ける",
+        "旅行する",
+        "運転する"
+      ],
+      "answer": 0,
+      "explanation": "put = 置く　例：Put your bag here.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-288",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「spend」の意味は？",
+      "sentence": "I spent the weekend at home.",
+      "choices": [
+        "手に入れる",
+        "過ごす",
+        "信じる",
+        "勝つ"
+      ],
+      "answer": 1,
+      "explanation": "spend = 過ごす　例：I spent the weekend at home.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-289",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「wear」の意味は？",
+      "sentence": "She is wearing a red coat.",
+      "choices": [
+        "飛ぶ",
+        "たずねる",
+        "身につけている",
+        "働く"
+      ],
+      "answer": 2,
+      "explanation": "wear = 身につけている　例：She is wearing a red coat.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-290",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「worry」の意味は？",
+      "sentence": "Don't worry.",
+      "choices": [
+        "始まる・始める",
+        "やってみる",
+        "心配する",
+        "作る"
+      ],
+      "answer": 2,
+      "explanation": "worry = 心配する　例：Don't worry.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "v"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-291",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「big」の意味は？",
+      "sentence": "That is a big house.",
+      "choices": [
+        "大きい",
+        "疲れた",
+        "難しい",
+        "違う"
+      ],
+      "answer": 0,
+      "explanation": "big = 大きい　例：That is a big house.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "a"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-292",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「large」の意味は？",
+      "sentence": "I'd like a large coffee.",
+      "choices": [
+        "いちばん好きな",
+        "低い",
+        "貧しい",
+        "大きい"
+      ],
+      "answer": 3,
+      "explanation": "large = 大きい　例：I'd like a large coffee.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "a"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-293",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「small」の意味は？",
+      "sentence": "My room is small.",
+      "choices": [
+        "同じ",
+        "小さい",
+        "人気のある",
+        "かわいい"
+      ],
+      "answer": 1,
+      "explanation": "small = 小さい　例：My room is small.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "a"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-294",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「long」の意味は？",
+      "sentence": "She has long hair.",
+      "choices": [
+        "うれしい・幸せな",
+        "長い",
+        "おなかがすいた",
+        "遅い（速さ）"
+      ],
+      "answer": 1,
+      "explanation": "long = 長い　例：She has long hair.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "a"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-295",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「short」の意味は？",
+      "sentence": "The movie was short.",
+      "choices": [
+        "正しい",
+        "古い",
+        "短い",
+        "大きい"
+      ],
+      "answer": 2,
+      "explanation": "short = 短い　例：The movie was short.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "a"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-296",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「tall」の意味は？",
+      "sentence": "He is very tall.",
+      "choices": [
+        "背が高い",
+        "かわいい",
+        "お金持ちの",
+        "うるさい"
+      ],
+      "answer": 0,
+      "explanation": "tall = 背が高い　例：He is very tall.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "a"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-297",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「high」の意味は？",
+      "sentence": "The mountain is high.",
+      "choices": [
+        "難しい",
+        "うれしい",
+        "甘い",
+        "高い（高さ）"
+      ],
+      "answer": 3,
+      "explanation": "high = 高い（高さ）　例：The mountain is high.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "a"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-298",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「low」の意味は？",
+      "sentence": "The price is low.",
+      "choices": [
+        "悲しい",
+        "元気な",
+        "うれしい・幸せな",
+        "低い"
+      ],
+      "answer": 3,
+      "explanation": "low = 低い　例：The price is low.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "a"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-299",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「new」の意味は？",
+      "sentence": "I bought a new car.",
+      "choices": [
+        "新しい",
+        "低い",
+        "安い",
+        "いちばん好きな"
+      ],
+      "answer": 0,
+      "explanation": "new = 新しい　例：I bought a new car.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "a"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-300",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「old」の意味は？",
+      "sentence": "This is an old temple.",
+      "choices": [
+        "正しい",
+        "古い",
+        "重い",
+        "汚い"
+      ],
+      "answer": 1,
+      "explanation": "old = 古い　例：This is an old temple.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "a"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-301",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「young」の意味は？",
+      "sentence": "She looks young.",
+      "choices": [
+        "暗い",
+        "若い",
+        "違う",
+        "安全な"
+      ],
+      "answer": 1,
+      "explanation": "young = 若い　例：She looks young.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "a"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-302",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「good」の意味は？",
+      "sentence": "That's a good idea.",
+      "choices": [
+        "寒い",
+        "大切な",
+        "よい",
+        "強い"
+      ],
+      "answer": 2,
+      "explanation": "good = よい　例：That's a good idea.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "a"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-303",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「bad」の意味は？",
+      "sentence": "I have bad news.",
+      "choices": [
+        "甘い",
+        "速い",
+        "悪い",
+        "涼しい"
+      ],
+      "answer": 2,
+      "explanation": "bad = 悪い　例：I have bad news.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "a"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-304",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「nice」の意味は？",
+      "sentence": "What a nice day!",
+      "choices": [
+        "速い",
+        "すてきな",
+        "高価な",
+        "暗い"
+      ],
+      "answer": 1,
+      "explanation": "nice = すてきな　例：What a nice day!",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "a"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-305",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「beautiful」の意味は？",
+      "sentence": "The view is beautiful.",
+      "choices": [
+        "美しい",
+        "強い",
+        "甘い",
+        "長い"
+      ],
+      "answer": 0,
+      "explanation": "beautiful = 美しい　例：The view is beautiful.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "a"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-306",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「pretty」の意味は？",
+      "sentence": "What a pretty flower!",
+      "choices": [
+        "人なつっこい",
+        "人気のある",
+        "かわいい",
+        "すまなく思って"
+      ],
+      "answer": 2,
+      "explanation": "pretty = かわいい　例：What a pretty flower!",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "a"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-307",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「cute」の意味は？",
+      "sentence": "Your dog is cute.",
+      "choices": [
+        "間違った",
+        "難しい",
+        "とてもおいしい",
+        "かわいい"
+      ],
+      "answer": 3,
+      "explanation": "cute = かわいい　例：Your dog is cute.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "a"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-308",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「hot」の意味は？",
+      "sentence": "It's hot today.",
+      "choices": [
+        "暑い",
+        "明るい",
+        "暖かい",
+        "空の"
+      ],
+      "answer": 0,
+      "explanation": "hot = 暑い　例：It's hot today.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "a"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-309",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「cold」の意味は？",
+      "sentence": "It's cold outside.",
+      "choices": [
+        "のどがかわいた",
+        "おかしい",
+        "寒い",
+        "安い"
+      ],
+      "answer": 2,
+      "explanation": "cold = 寒い　例：It's cold outside.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "a"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-310",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「warm」の意味は？",
+      "sentence": "It's warm in spring.",
+      "choices": [
+        "涼しい",
+        "間違った",
+        "汚い",
+        "暖かい"
+      ],
+      "answer": 3,
+      "explanation": "warm = 暖かい　例：It's warm in spring.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "a"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-311",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「cool」の意味は？",
+      "sentence": "The evening is cool.",
+      "choices": [
+        "親切な",
+        "涼しい",
+        "暖かい",
+        "汚い"
+      ],
+      "answer": 1,
+      "explanation": "cool = 涼しい　例：The evening is cool.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "a"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-312",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「easy」の意味は？",
+      "sentence": "This test is easy.",
+      "choices": [
+        "元気な",
+        "退屈な",
+        "お金持ちの",
+        "簡単な"
+      ],
+      "answer": 3,
+      "explanation": "easy = 簡単な　例：This test is easy.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "a"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-313",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「difficult」の意味は？",
+      "sentence": "This question is difficult.",
+      "choices": [
+        "難しい",
+        "安い",
+        "うれしい・幸せな",
+        "小さい"
+      ],
+      "answer": 0,
+      "explanation": "difficult = 難しい　例：This question is difficult.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "a"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-314",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「busy」の意味は？",
+      "sentence": "I'm busy today.",
+      "choices": [
+        "暖かい",
+        "低い",
+        "古い",
+        "忙しい"
+      ],
+      "answer": 3,
+      "explanation": "busy = 忙しい　例：I'm busy today.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "a"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-315",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「free」の意味は？",
+      "sentence": "Are you free tomorrow?",
+      "choices": [
+        "大きい",
+        "ひまな",
+        "遅い（速さ）",
+        "退屈な"
+      ],
+      "answer": 1,
+      "explanation": "free = ひまな　例：Are you free tomorrow?",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "a"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-316",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「happy」の意味は？",
+      "sentence": "I'm happy to see you.",
+      "choices": [
+        "貧しい",
+        "病気の",
+        "うれしい・幸せな",
+        "静かな"
+      ],
+      "answer": 2,
+      "explanation": "happy = うれしい・幸せな　例：I'm happy to see you.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "a"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-317",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「glad」の意味は？",
+      "sentence": "I'm glad you came.",
+      "choices": [
+        "うれしい",
+        "遅れた",
+        "暖かい",
+        "とてもおいしい"
+      ],
+      "answer": 0,
+      "explanation": "glad = うれしい　例：I'm glad you came.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "a"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-318",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「sad」の意味は？",
+      "sentence": "The movie was sad.",
+      "choices": [
+        "すてきな",
+        "悲しい",
+        "暗い",
+        "古い"
+      ],
+      "answer": 1,
+      "explanation": "sad = 悲しい　例：The movie was sad.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "a"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-319",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「tired」の意味は？",
+      "sentence": "I'm tired after work.",
+      "choices": [
+        "退屈な",
+        "安全な",
+        "低い",
+        "疲れた"
+      ],
+      "answer": 3,
+      "explanation": "tired = 疲れた　例：I'm tired after work.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "a"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-320",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「hungry」の意味は？",
+      "sentence": "I'm hungry.",
+      "choices": [
+        "忙しい",
+        "おなかがすいた",
+        "うるさい",
+        "古い"
+      ],
+      "answer": 1,
+      "explanation": "hungry = おなかがすいた　例：I'm hungry.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "a"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-321",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「thirsty」の意味は？",
+      "sentence": "I'm thirsty.",
+      "choices": [
+        "のどがかわいた",
+        "弱い",
+        "涼しい",
+        "低い"
+      ],
+      "answer": 0,
+      "explanation": "thirsty = のどがかわいた　例：I'm thirsty.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "a"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-322",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「sick」の意味は？",
+      "sentence": "She is sick in bed.",
+      "choices": [
+        "悪い",
+        "病気の",
+        "大きい",
+        "短い"
+      ],
+      "answer": 1,
+      "explanation": "sick = 病気の　例：She is sick in bed.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "a"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-323",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「fine」の意味は？",
+      "sentence": "I'm fine, thank you.",
+      "choices": [
+        "人なつっこい",
+        "元気な",
+        "のどがかわいた",
+        "大切な"
+      ],
+      "answer": 1,
+      "explanation": "fine = 元気な　例：I'm fine, thank you.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "a"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-324",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「kind」の意味は？",
+      "sentence": "He is very kind.",
+      "choices": [
+        "簡単な",
+        "新しい",
+        "親切な",
+        "悪い"
+      ],
+      "answer": 2,
+      "explanation": "kind = 親切な　例：He is very kind.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "a"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-325",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「friendly」の意味は？",
+      "sentence": "The people here are friendly.",
+      "choices": [
+        "のどがかわいた",
+        "正しい",
+        "人なつっこい",
+        "親切な"
+      ],
+      "answer": 2,
+      "explanation": "friendly = 人なつっこい　例：The people here are friendly.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "a"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-326",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「famous」の意味は？",
+      "sentence": "This temple is famous.",
+      "choices": [
+        "遅い（速さ）",
+        "確かな",
+        "静かな",
+        "有名な"
+      ],
+      "answer": 3,
+      "explanation": "famous = 有名な　例：This temple is famous.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "a"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-327",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「popular」の意味は？",
+      "sentence": "This song is popular.",
+      "choices": [
+        "人気のある",
+        "背が高い",
+        "涼しい",
+        "寒い"
+      ],
+      "answer": 0,
+      "explanation": "popular = 人気のある　例：This song is popular.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "a"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-328",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「interesting」の意味は？",
+      "sentence": "The book is interesting.",
+      "choices": [
+        "興味深い",
+        "悲しい",
+        "軽い",
+        "高価な"
+      ],
+      "answer": 0,
+      "explanation": "interesting = 興味深い　例：The book is interesting.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "a"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-329",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「funny」の意味は？",
+      "sentence": "He told a funny story.",
+      "choices": [
+        "おかしい",
+        "違う",
+        "古い",
+        "暑い"
+      ],
+      "answer": 0,
+      "explanation": "funny = おかしい　例：He told a funny story.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "a"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-330",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「boring」の意味は？",
+      "sentence": "The class was boring.",
+      "choices": [
+        "寒い",
+        "退屈な",
+        "新しい",
+        "いちばん好きな"
+      ],
+      "answer": 1,
+      "explanation": "boring = 退屈な　例：The class was boring.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "a"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-331",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「important」の意味は？",
+      "sentence": "Health is important.",
+      "choices": [
+        "大切な",
+        "軽い",
+        "おなかがすいた",
+        "人気のある"
+      ],
+      "answer": 0,
+      "explanation": "important = 大切な　例：Health is important.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "a"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-332",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「favorite」の意味は？",
+      "sentence": "What's your favorite food?",
+      "choices": [
+        "有名な",
+        "いちばん好きな",
+        "強い",
+        "美しい"
+      ],
+      "answer": 1,
+      "explanation": "favorite = いちばん好きな　例：What's your favorite food?",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "a"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-333",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「different」の意味は？",
+      "sentence": "We have different ideas.",
+      "choices": [
+        "古い",
+        "違う",
+        "人気のある",
+        "背が高い"
+      ],
+      "answer": 1,
+      "explanation": "different = 違う　例：We have different ideas.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "a"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-334",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「same」の意味は？",
+      "sentence": "We are in the same class.",
+      "choices": [
+        "準備ができた",
+        "かわいい",
+        "同じ",
+        "安い"
+      ],
+      "answer": 2,
+      "explanation": "same = 同じ　例：We are in the same class.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "a"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-335",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「right」の意味は？",
+      "sentence": "You are right.",
+      "choices": [
+        "興味深い",
+        "貧しい",
+        "正しい",
+        "汚い"
+      ],
+      "answer": 2,
+      "explanation": "right = 正しい　例：You are right.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "a"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-336",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「wrong」の意味は？",
+      "sentence": "I took the wrong train.",
+      "choices": [
+        "間違った",
+        "小さい",
+        "危険な",
+        "短い"
+      ],
+      "answer": 0,
+      "explanation": "wrong = 間違った　例：I took the wrong train.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "a"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-337",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「late」の意味は？",
+      "sentence": "I'm late for school.",
+      "choices": [
+        "遅れた",
+        "明るい",
+        "貧しい",
+        "元気な"
+      ],
+      "answer": 0,
+      "explanation": "late = 遅れた　例：I'm late for school.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "a"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-338",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「fast」の意味は？",
+      "sentence": "This train is fast.",
+      "choices": [
+        "若い",
+        "貧しい",
+        "大きい",
+        "速い"
+      ],
+      "answer": 3,
+      "explanation": "fast = 速い　例：This train is fast.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "a"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-339",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「slow」の意味は？",
+      "sentence": "The bus is slow.",
+      "choices": [
+        "汚い",
+        "人なつっこい",
+        "よい",
+        "遅い（速さ）"
+      ],
+      "answer": 3,
+      "explanation": "slow = 遅い（速さ）　例：The bus is slow.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "a"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-340",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「quiet」の意味は？",
+      "sentence": "The library is quiet.",
+      "choices": [
+        "静かな",
+        "おなかがすいた",
+        "甘い",
+        "大きい"
+      ],
+      "answer": 0,
+      "explanation": "quiet = 静かな　例：The library is quiet.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "a"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-341",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「noisy」の意味は？",
+      "sentence": "The street is noisy.",
+      "choices": [
+        "静かな",
+        "うれしい",
+        "うるさい",
+        "明るい"
+      ],
+      "answer": 2,
+      "explanation": "noisy = うるさい　例：The street is noisy.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "a"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-342",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「dirty」の意味は？",
+      "sentence": "My shoes are dirty.",
+      "choices": [
+        "おかしい",
+        "親切な",
+        "間違った",
+        "汚い"
+      ],
+      "answer": 3,
+      "explanation": "dirty = 汚い　例：My shoes are dirty.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "a"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-343",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「expensive」の意味は？",
+      "sentence": "This watch is expensive.",
+      "choices": [
+        "新しい",
+        "高価な",
+        "かわいい",
+        "とてもおいしい"
+      ],
+      "answer": 1,
+      "explanation": "expensive = 高価な　例：This watch is expensive.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "a"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-344",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「cheap」の意味は？",
+      "sentence": "The food here is cheap.",
+      "choices": [
+        "お金持ちの",
+        "暖かい",
+        "悪い",
+        "安い"
+      ],
+      "answer": 3,
+      "explanation": "cheap = 安い　例：The food here is cheap.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "a"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-345",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「heavy」の意味は？",
+      "sentence": "This bag is heavy.",
+      "choices": [
+        "いちばん好きな",
+        "強い",
+        "高い（高さ）",
+        "重い"
+      ],
+      "answer": 3,
+      "explanation": "heavy = 重い　例：This bag is heavy.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "a"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-346",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「light」の意味は？",
+      "sentence": "This box is light.",
+      "choices": [
+        "軽い",
+        "かわいい",
+        "人気のある",
+        "涼しい"
+      ],
+      "answer": 0,
+      "explanation": "light = 軽い　例：This box is light.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "a"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-347",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「full」の意味は？",
+      "sentence": "I'm full.",
+      "choices": [
+        "満腹の",
+        "新しい",
+        "暑い",
+        "小さい"
+      ],
+      "answer": 0,
+      "explanation": "full = 満腹の　例：I'm full.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "a"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-348",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「empty」の意味は？",
+      "sentence": "The bottle is empty.",
+      "choices": [
+        "汚い",
+        "短い",
+        "空の",
+        "古い"
+      ],
+      "answer": 2,
+      "explanation": "empty = 空の　例：The bottle is empty.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "a"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-349",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「delicious」の意味は？",
+      "sentence": "This soup is delicious.",
+      "choices": [
+        "いちばん好きな",
+        "よい",
+        "とてもおいしい",
+        "忙しい"
+      ],
+      "answer": 2,
+      "explanation": "delicious = とてもおいしい　例：This soup is delicious.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "a"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-350",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「sweet」の意味は？",
+      "sentence": "This cake is very sweet.",
+      "choices": [
+        "甘い",
+        "すてきな",
+        "暖かい",
+        "明るい"
+      ],
+      "answer": 0,
+      "explanation": "sweet = 甘い　例：This cake is very sweet.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "a"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-351",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「strong」の意味は？",
+      "sentence": "He is very strong.",
+      "choices": [
+        "強い",
+        "のどがかわいた",
+        "簡単な",
+        "お金持ちの"
+      ],
+      "answer": 0,
+      "explanation": "strong = 強い　例：He is very strong.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "a"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-352",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「weak」の意味は？",
+      "sentence": "The signal is weak.",
+      "choices": [
+        "弱い",
+        "おなかがすいた",
+        "背が高い",
+        "有名な"
+      ],
+      "answer": 0,
+      "explanation": "weak = 弱い　例：The signal is weak.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "a"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-353",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「rich」の意味は？",
+      "sentence": "He is rich.",
+      "choices": [
+        "お金持ちの",
+        "貧しい",
+        "危険な",
+        "違う"
+      ],
+      "answer": 0,
+      "explanation": "rich = お金持ちの　例：He is rich.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "a"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-354",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「poor」の意味は？",
+      "sentence": "They were poor.",
+      "choices": [
+        "おかしい",
+        "準備ができた",
+        "貧しい",
+        "うるさい"
+      ],
+      "answer": 2,
+      "explanation": "poor = 貧しい　例：They were poor.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "a"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-355",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「dark」の意味は？",
+      "sentence": "It's dark outside.",
+      "choices": [
+        "重い",
+        "安い",
+        "明るい",
+        "暗い"
+      ],
+      "answer": 3,
+      "explanation": "dark = 暗い　例：It's dark outside.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "a"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-356",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「bright」の意味は？",
+      "sentence": "The room is bright.",
+      "choices": [
+        "遅れた",
+        "明るい",
+        "危険な",
+        "大きい"
+      ],
+      "answer": 1,
+      "explanation": "bright = 明るい　例：The room is bright.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "a"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-357",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「safe」の意味は？",
+      "sentence": "This town is safe.",
+      "choices": [
+        "安全な",
+        "重い",
+        "空の",
+        "元気な"
+      ],
+      "answer": 0,
+      "explanation": "safe = 安全な　例：This town is safe.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "a"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-358",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「dangerous」の意味は？",
+      "sentence": "Swimming here is dangerous.",
+      "choices": [
+        "美しい",
+        "危険な",
+        "遅い（速さ）",
+        "のどがかわいた"
+      ],
+      "answer": 1,
+      "explanation": "dangerous = 危険な　例：Swimming here is dangerous.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "a"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-359",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「sure」の意味は？",
+      "sentence": "Are you sure?",
+      "choices": [
+        "甘い",
+        "若い",
+        "元気な",
+        "確かな"
+      ],
+      "answer": 3,
+      "explanation": "sure = 確かな　例：Are you sure?",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "a"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-360",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「ready」の意味は？",
+      "sentence": "Dinner is ready.",
+      "choices": [
+        "準備ができた",
+        "違う",
+        "空の",
+        "難しい"
+      ],
+      "answer": 0,
+      "explanation": "ready = 準備ができた　例：Dinner is ready.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "a"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-361",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「sorry」の意味は？",
+      "sentence": "I'm sorry I'm late.",
+      "choices": [
+        "高価な",
+        "弱い",
+        "すまなく思って",
+        "うれしい"
+      ],
+      "answer": 2,
+      "explanation": "sorry = すまなく思って　例：I'm sorry I'm late.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "a"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-362",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「today」の意味は？",
+      "sentence": "It's sunny today.",
+      "choices": [
+        "ほとんど",
+        "今日",
+        "しかし",
+        "一緒に"
+      ],
+      "answer": 1,
+      "explanation": "today = 今日　例：It's sunny today.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "o"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-363",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「tomorrow」の意味は？",
+      "sentence": "See you tomorrow.",
+      "choices": [
+        "よく・しばしば",
+        "すでに",
+        "以前に",
+        "明日"
+      ],
+      "answer": 3,
+      "explanation": "tomorrow = 明日　例：See you tomorrow.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "o"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-364",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「yesterday」の意味は？",
+      "sentence": "I was busy yesterday.",
+      "choices": [
+        "昨日",
+        "まだ",
+        "～もまた",
+        "～のあとで"
+      ],
+      "answer": 0,
+      "explanation": "yesterday = 昨日　例：I was busy yesterday.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "o"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-365",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「now」の意味は？",
+      "sentence": "I'm busy now.",
+      "choices": [
+        "～の下に",
+        "今",
+        "～と一緒に",
+        "～もまた"
+      ],
+      "answer": 1,
+      "explanation": "now = 今　例：I'm busy now.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "o"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-366",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「soon」の意味は？",
+      "sentence": "I'll be back soon.",
+      "choices": [
+        "すぐに",
+        "よく・しばしば",
+        "まだ",
+        "昨日"
+      ],
+      "answer": 0,
+      "explanation": "soon = すぐに　例：I'll be back soon.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "o"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-367",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「again」の意味は？",
+      "sentence": "Say that again, please.",
+      "choices": [
+        "～と～の間に",
+        "もう一度",
+        "今日",
+        "～のあとで"
+      ],
+      "answer": 1,
+      "explanation": "again = もう一度　例：Say that again, please.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "o"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-368",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「always」の意味は？",
+      "sentence": "I always get up early.",
+      "choices": [
+        "～なしで",
+        "なぜなら",
+        "もう一度",
+        "いつも"
+      ],
+      "answer": 3,
+      "explanation": "always = いつも　例：I always get up early.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "o"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-369",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「usually」の意味は？",
+      "sentence": "I usually walk to work.",
+      "choices": [
+        "一度も～ない",
+        "早く",
+        "もし～なら",
+        "たいてい"
+      ],
+      "answer": 3,
+      "explanation": "usually = たいてい　例：I usually walk to work.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "o"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-370",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「often」の意味は？",
+      "sentence": "I often eat out.",
+      "choices": [
+        "ちょうど",
+        "今",
+        "よく・しばしば",
+        "～の下に"
+      ],
+      "answer": 2,
+      "explanation": "often = よく・しばしば　例：I often eat out.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "o"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-371",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「sometimes」の意味は？",
+      "sentence": "I sometimes cook.",
+      "choices": [
+        "ほとんど",
+        "ときどき",
+        "上手に",
+        "外国に"
+      ],
+      "answer": 1,
+      "explanation": "sometimes = ときどき　例：I sometimes cook.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "o"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-372",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「never」の意味は？",
+      "sentence": "I have never been to Paris.",
+      "choices": [
+        "～すぎる",
+        "いつも",
+        "一度も～ない",
+        "～の下に"
+      ],
+      "answer": 2,
+      "explanation": "never = 一度も～ない　例：I have never been to Paris.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "o"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-373",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「very」の意味は？",
+      "sentence": "It's very cold.",
+      "choices": [
+        "～のあいだずっと",
+        "ほとんど",
+        "とても",
+        "今日"
+      ],
+      "answer": 2,
+      "explanation": "very = とても　例：It's very cold.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "o"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-374",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「too」の意味は？",
+      "sentence": "This shirt is too big.",
+      "choices": [
+        "～のあいだずっと",
+        "～すぎる",
+        "いつも",
+        "～と～の間に"
+      ],
+      "answer": 1,
+      "explanation": "too = ～すぎる　例：This shirt is too big.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "o"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-375",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「also」の意味は？",
+      "sentence": "I also play tennis.",
+      "choices": [
+        "～もまた",
+        "以前に",
+        "～と～の間に",
+        "一緒に"
+      ],
+      "answer": 0,
+      "explanation": "also = ～もまた　例：I also play tennis.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "o"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-376",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「only」の意味は？",
+      "sentence": "I have only one brother.",
+      "choices": [
+        "今日",
+        "～だけ",
+        "～の近くに",
+        "たいてい"
+      ],
+      "answer": 1,
+      "explanation": "only = ～だけ　例：I have only one brother.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "o"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-377",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「just」の意味は？",
+      "sentence": "I just arrived.",
+      "choices": [
+        "今",
+        "以前に",
+        "ちょうど",
+        "～と～の間に"
+      ],
+      "answer": 2,
+      "explanation": "just = ちょうど　例：I just arrived.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "o"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-378",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「here」の意味は？",
+      "sentence": "Come here.",
+      "choices": [
+        "ここに",
+        "ちょうど",
+        "たぶん",
+        "たいてい"
+      ],
+      "answer": 0,
+      "explanation": "here = ここに　例：Come here.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "o"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-379",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「there」の意味は？",
+      "sentence": "Put it there.",
+      "choices": [
+        "明日",
+        "そこに",
+        "たぶん",
+        "いつも"
+      ],
+      "answer": 1,
+      "explanation": "there = そこに　例：Put it there.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "o"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-380",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「together」の意味は？",
+      "sentence": "Let's go together.",
+      "choices": [
+        "～なしで",
+        "明日",
+        "～の近くに",
+        "一緒に"
+      ],
+      "answer": 3,
+      "explanation": "together = 一緒に　例：Let's go together.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "o"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-381",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「early」の意味は？",
+      "sentence": "I got up early.",
+      "choices": [
+        "～のあとで",
+        "早く",
+        "ときどき",
+        "～まで"
+      ],
+      "answer": 1,
+      "explanation": "early = 早く　例：I got up early.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "o"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-382",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「well」の意味は？",
+      "sentence": "She sings well.",
+      "choices": [
+        "～の近くに",
+        "～なしで",
+        "上手に",
+        "ほとんど"
+      ],
+      "answer": 2,
+      "explanation": "well = 上手に　例：She sings well.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "o"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-383",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「abroad」の意味は？",
+      "sentence": "I want to study abroad.",
+      "choices": [
+        "とても",
+        "一緒に",
+        "～と～の間に",
+        "外国に"
+      ],
+      "answer": 3,
+      "explanation": "abroad = 外国に　例：I want to study abroad.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "o"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-384",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「before」の意味は？",
+      "sentence": "Have we met before?",
+      "choices": [
+        "～の下に",
+        "とても",
+        "ここに",
+        "以前に"
+      ],
+      "answer": 3,
+      "explanation": "before = 以前に　例：Have we met before?",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "o"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-385",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「after」の意味は？",
+      "sentence": "After dinner, I watch TV.",
+      "choices": [
+        "～の近くに",
+        "今",
+        "～のあとで",
+        "ちょうど"
+      ],
+      "answer": 2,
+      "explanation": "after = ～のあとで　例：After dinner, I watch TV.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "o"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-386",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「because」の意味は？",
+      "sentence": "I stayed home because it rained.",
+      "choices": [
+        "～の下に",
+        "一度も～ない",
+        "よく・しばしば",
+        "なぜなら"
+      ],
+      "answer": 3,
+      "explanation": "because = なぜなら　例：I stayed home because it rained.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "o"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-387",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「but」の意味は？",
+      "sentence": "I like it, but it's expensive.",
+      "choices": [
+        "ちょうど",
+        "しかし",
+        "～なしで",
+        "昨日"
+      ],
+      "answer": 1,
+      "explanation": "but = しかし　例：I like it, but it's expensive.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "o"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-388",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「if」の意味は？",
+      "sentence": "If it rains, I'll stay home.",
+      "choices": [
+        "もし～なら",
+        "たいてい",
+        "しかし",
+        "外国に"
+      ],
+      "answer": 0,
+      "explanation": "if = もし～なら　例：If it rains, I'll stay home.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "o"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-389",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「when」の意味は？",
+      "sentence": "Call me when you arrive.",
+      "choices": [
+        "～するとき",
+        "たいてい",
+        "たぶん",
+        "～と一緒に"
+      ],
+      "answer": 0,
+      "explanation": "when = ～するとき　例：Call me when you arrive.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "o"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-390",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「under」の意味は？",
+      "sentence": "The cat is under the table.",
+      "choices": [
+        "～と一緒に",
+        "まだ",
+        "～の下に",
+        "～するとき"
+      ],
+      "answer": 2,
+      "explanation": "under = ～の下に　例：The cat is under the table.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "o"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-391",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「between」の意味は？",
+      "sentence": "The bank is between the station and the park.",
+      "choices": [
+        "ちょうど",
+        "すぐに",
+        "ほとんど",
+        "～と～の間に"
+      ],
+      "answer": 3,
+      "explanation": "between = ～と～の間に　例：The bank is between the station and the park.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "o"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-392",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「near」の意味は？",
+      "sentence": "I live near the station.",
+      "choices": [
+        "～の下に",
+        "たぶん",
+        "～なしで",
+        "～の近くに"
+      ],
+      "answer": 3,
+      "explanation": "near = ～の近くに　例：I live near the station.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "o"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-393",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「with」の意味は？",
+      "sentence": "I live with my family.",
+      "choices": [
+        "～のあとで",
+        "～のあいだずっと",
+        "そこに",
+        "～と一緒に"
+      ],
+      "answer": 3,
+      "explanation": "with = ～と一緒に　例：I live with my family.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "o"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-394",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「without」の意味は？",
+      "sentence": "I can't live without coffee.",
+      "choices": [
+        "～まで",
+        "ときどき",
+        "～なしで",
+        "今"
+      ],
+      "answer": 2,
+      "explanation": "without = ～なしで　例：I can't live without coffee.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "o"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-395",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「during」の意味は？",
+      "sentence": "I slept during the movie.",
+      "choices": [
+        "～だけ",
+        "～の下に",
+        "～と一緒に",
+        "～のあいだずっと"
+      ],
+      "answer": 3,
+      "explanation": "during = ～のあいだずっと　例：I slept during the movie.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "o"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-396",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「until」の意味は？",
+      "sentence": "Wait until five.",
+      "choices": [
+        "～まで",
+        "今",
+        "一度も～ない",
+        "～と一緒に"
+      ],
+      "answer": 0,
+      "explanation": "until = ～まで　例：Wait until five.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "o"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-397",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「maybe」の意味は？",
+      "sentence": "Maybe it will rain.",
+      "choices": [
+        "すぐに",
+        "もう一度",
+        "たぶん",
+        "とても"
+      ],
+      "answer": 2,
+      "explanation": "maybe = たぶん　例：Maybe it will rain.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "o"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-398",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「almost」の意味は？",
+      "sentence": "I'm almost ready.",
+      "choices": [
+        "～の下に",
+        "～のあいだずっと",
+        "すぐに",
+        "ほとんど"
+      ],
+      "answer": 3,
+      "explanation": "almost = ほとんど　例：I'm almost ready.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "o"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-399",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「already」の意味は？",
+      "sentence": "I already ate lunch.",
+      "choices": [
+        "すでに",
+        "以前に",
+        "いつも",
+        "ほとんど"
+      ],
+      "answer": 0,
+      "explanation": "already = すでに　例：I already ate lunch.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "o"
+      ],
+      "needs_fix": false
+    },
+    {
+      "id": "town01-wb-400",
+      "town": "town01",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「still」の意味は？",
+      "sentence": "It's still raining.",
+      "choices": [
+        "まだ",
+        "～の近くに",
+        "～のあいだずっと",
+        "明日"
+      ],
+      "answer": 0,
+      "explanation": "still = まだ　例：It's still raining.",
+      "difficulty": 1,
+      "tags": [
+        "wordbook",
+        "o"
+      ],
+      "needs_fix": false
+    }
+  ]
+}

@@ -3,6 +3,7 @@ import { MonsterArt } from '../components/MonsterArt';
 import { fetchMonstersOfTown } from '../lib/content';
 import { PLAYABLE_SKILLS } from '../lib/game/battle';
 import { isRare, revivalOf } from '../lib/game/foes';
+import { isWordbookMonster } from '../lib/game/wordbook';
 import type { Player } from '../lib/game/player';
 import type { TownStatus } from '../lib/game/town';
 import type { MonsterRow } from '../lib/questionFile';
@@ -35,10 +36,13 @@ export function FieldScreen({
       .catch((err) => setError(err instanceof Error ? err.message : String(err)));
   }, [player.currentTownId]);
 
-  const bySkill = new Map(monsters?.map((m) => [m.skill, m]));
+  // 書庫のモンスターは、能力値の部屋とは別に出す
+  const wordbookMonster = monsters?.find(isWordbookMonster) ?? null;
+  const roomMonsters = (monsters ?? []).filter((m) => !isWordbookMonster(m));
+  const bySkill = new Map(roomMonsters.map((m) => [m.skill, m]));
   const unlocked = new Map(player.skills.map((s) => [s.skill, s.unlocked]));
 
-  const revivals = (monsters ?? [])
+  const revivals = roomMonsters
     .filter((m) => m.skill && unlocked.get(m.skill) && PLAYABLE_SKILLS.includes(m.skill))
     .map((m) => ({ base: m, due: status?.dueBySkill[m.skill!] ?? 0 }))
     .filter((r) => r.due > 0)
@@ -84,6 +88,32 @@ export function FieldScreen({
                 <span className="monster-card__status">復習 {due}問</span>
               </button>
             ))}
+          </div>
+        </section>
+      )}
+
+      {wordbookMonster && status?.wordbook && unlocked.get('vocabulary') && (
+        <section className="window">
+          <h2 className="window__title">単語の書庫</h2>
+          <p className="note">
+            単語だけをたくさん練習する部屋です。覚えた単語は、日をあけてまた出てきます。正解すると語彙が少し伸びます。
+          </p>
+          <div className="monster-list">
+            <button
+              type="button"
+              className="monster-card monster-card--room"
+              style={roomStyle(player.currentTownId, 'vocabulary')}
+              onClick={() => onFight(wordbookMonster, 'normal')}
+            >
+              <MonsterArt skill="vocabulary" image={wordbookMonster.image} size="small" />
+              <span className="monster-card__body">
+                <span className="monster-card__name">{wordbookMonster.name}</span>
+                <span className="monster-card__meta">
+                  覚えた単語 {status.wordbook.learned} / {status.wordbook.total}
+                </span>
+              </span>
+              {status.wordbook.due > 0 && <span className="monster-card__status">復習 {status.wordbook.due}語</span>}
+            </button>
           </div>
         </section>
       )}

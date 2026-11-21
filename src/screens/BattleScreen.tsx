@@ -8,7 +8,8 @@ import { attackOf, damageTo, hitsToDefeat } from '../lib/game/attack';
 import { flawlessBonusEach, splitExpReward } from '../lib/game/foes';
 import { isDue } from '../lib/game/growth';
 import { heroNameOf, type Player } from '../lib/game/player';
-import { EXP_CORRECT, EXP_CORRECT_REVIEW, EXP_HALF } from '../lib/game/rules';
+import { EXP_CORRECT, EXP_CORRECT_REVIEW, EXP_HALF, EXP_WORDBOOK, EXP_WORDBOOK_REVIEW } from '../lib/game/rules';
+import { isWordbookMonster, isWordbookQuestion } from '../lib/game/wordbook';
 import { gradeAnswer, RATING_LABELS, type Rating } from '../lib/grading';
 import type { MonsterRow, QuestionRow } from '../lib/questionFile';
 import { addSkillExp, fetchProgress, finishBattle, markBossDefeated, saveAnswer, type QuestionProgress } from '../lib/records';
@@ -139,7 +140,11 @@ export function BattleScreen({
     let cancelled = false;
     (async () => {
       try {
-        const bySkill = await Promise.all(skills.map((sk) => fetchPlayableQuestions(monster.town_id, sk)));
+        // 書庫のモンスターは書庫の単語だけ、ほかのモンスターは書庫の単語を除いて出す
+        const wordbook = isWordbookMonster(monster);
+        const bySkill = (await Promise.all(skills.map((sk) => fetchPlayableQuestions(monster.town_id, sk)))).map((list) =>
+          list.filter((q) => isWordbookQuestion(q) === wordbook),
+        );
         const questions = bySkill.flat();
         if (questions.length === 0) throw new Error('この能力値の問題がありません。教材を取り込んでください。');
         const progress = await fetchProgress(questions.map((q) => q.id));
@@ -199,7 +204,19 @@ export function BattleScreen({
     if (!shown) return;
     const hit = o.rating !== 'bad';
     const skill = shown.question.skill;
-    const base = o.rating === 'good' ? (shown.due ? EXP_CORRECT_REVIEW : EXP_CORRECT) : o.rating === 'close' ? EXP_HALF : 0;
+    const base = isWordbookMonster(monster)
+      ? o.rating === 'good'
+        ? shown.due
+          ? EXP_WORDBOOK_REVIEW
+          : EXP_WORDBOOK
+        : 0
+      : o.rating === 'good'
+        ? shown.due
+          ? EXP_CORRECT_REVIEW
+          : EXP_CORRECT
+        : o.rating === 'close'
+          ? EXP_HALF
+          : 0;
     const gained = base;
     const damage = hit ? damageTo(monster, attackOf(player, skill)) : 0;
     setOutcome({ ...o, damage });

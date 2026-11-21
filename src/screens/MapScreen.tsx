@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { HERO_IMAGE } from '../components/HeroArt';
 import { heroSrc, useHeroLook } from '../lib/heroLook';
 import { playSfx } from '../lib/sound';
+import { isWordbookMonster } from '../lib/game/wordbook';
 import { fetchMonstersOfTown } from '../lib/content';
 import { PLAYABLE_SKILLS } from '../lib/game/battle';
 import {
@@ -211,7 +212,8 @@ export function MapScreen({
           const img = imagesRef.current.get(src);
           if (img) heroFeetRef.current.set(img, lowestOpaqueRow(img));
         }
-        setMonsters(list.filter((x) => !x.is_boss));
+        // 書庫のモンスターはスキルダンジョンにだけいる
+        setMonsters(list.filter((x) => !x.is_boss && !isWordbookMonster(x)));
         if (m && !posRef.current) {
           const start: MapPosition = { x: m.start.x, y: m.start.y, steps: 0, facing: 'down' };
           posRef.current = start;

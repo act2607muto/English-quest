@@ -46,6 +46,7 @@ $frames = @(
   @{ File = 'monsters/town02-rare-exp.png';  SplitRow = 50 }  # ほしくずリス
   @{ File = 'monsters/town02-rare-gold.png'; SplitRow = 46 }  # ちょきんブタ
   @{ File = 'monsters/town02-boss.png';      SplitRow = 82 }  # せきもりの大ガメ（96×96）
+  @{ File = 'monsters/town01-wordbook.png';  SplitRow = 63 }  # しおりオバケ（浮いているので全体を下げる）
 )
 
 foreach ($f in $frames) {

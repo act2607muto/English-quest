@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { MonsterArt } from '../components/MonsterArt';
 import { fetchMonstersOfTown } from '../lib/content';
 import { isRare } from '../lib/game/foes';
+import { isWordbookMonster } from '../lib/game/wordbook';
 import type { Player } from '../lib/game/player';
 import type { MonsterRow } from '../lib/questionFile';
 import { fetchMonsterRecords, type MonsterRecord } from '../lib/records';
@@ -108,13 +109,15 @@ export function BestiaryScreen({ player, onBack }: { player: Player; onBack: () 
 
 /** 図鑑の並び：能力値の順のモンスター → めずらしいモンスター → ボス */
 function sortForBook(list: MonsterRow[]): MonsterRow[] {
-  const rank = (m: MonsterRow) => (m.is_boss ? 2000 : isRare(m) ? 1000 + (m.encounter_rate ?? 0) * -100 : SKILLS.indexOf(m.skill!));
+  const rank = (m: MonsterRow) =>
+    m.is_boss ? 2000 : isRare(m) ? 1000 + (m.encounter_rate ?? 0) * -100 : isWordbookMonster(m) ? 900 : SKILLS.indexOf(m.skill!);
   return [...list].sort((a, b) => rank(a) - rank(b) || a.id.localeCompare(b.id));
 }
 
 function kindOf(m: MonsterRow): string {
   if (m.is_boss) return 'この街のボス';
   if (isRare(m)) return 'めずらしいモンスター';
+  if (isWordbookMonster(m)) return '単語の書庫のモンスター';
   return m.skill ? `${SKILL_LABELS[m.skill]}のモンスター` : '';
 }
 

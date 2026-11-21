@@ -7,6 +7,7 @@ import { fetchProgress, type QuestionProgress } from '../records';
 import type { Skill } from '../skills';
 import { isDue, localDate } from './growth';
 import { BOSS_RECOMMEND_RATIO } from './rules';
+import { isWordbookQuestion } from './wordbook';
 
 export type TownStatus = {
   /** 街の問題の数（要修正の印つきは除く） */
@@ -23,13 +24,27 @@ export type TownStatus = {
   skills: Skill[];
   /** この街のボス（いなければ null） */
   boss: { id: string; name: string } | null;
+  /** 単語の書庫の進み具合（書庫の単語がなければ null）。上の数には書庫の単語を入れない */
+  wordbook: { total: number; learned: number; due: number } | null;
 };
 
 export function summarizeTown(
-  questions: { id: string; skill: Skill }[],
+  all: { id: string; skill: Skill; tags?: string[] | null }[],
   progress: Map<string, Pick<QuestionProgress, 'correctCount' | 'nextReviewOn' | 'stage'>>,
   today: string = localDate(),
 ): TownStatus {
+  // 単語の書庫の単語は、ボスの目安や復活モンスターには入れず、別に数える
+  const questions = all.filter((q) => !isWordbookQuestion(q));
+  const words = all.filter((q) => isWordbookQuestion(q));
+  let learned = 0;
+  let wordsDue = 0;
+  for (const w of words) {
+    const p = progress.get(w.id);
+    if (!p) continue;
+    if (p.correctCount > 0) learned++;
+    if (isDue(p, today)) wordsDue++;
+  }
+  const wordbook = words.length > 0 ? { total: words.length, learned, due: wordsDue } : null;
   let correctOnce = 0;
   const dueBySkill: Partial<Record<Skill, number>> = {};
   for (const q of questions) {
@@ -41,7 +56,16 @@ export function summarizeTown(
   const total = questions.length;
   const needed = Math.ceil(total * BOSS_RECOMMEND_RATIO);
   const skills = [...new Set(questions.map((q) => q.skill))];
-  return { total, correctOnce, needed, bossReady: total > 0 && correctOnce >= needed, dueBySkill, skills, boss: null };
+  return {
+    total,
+    correctOnce,
+    needed,
+    bossReady: total > 0 && correctOnce >= needed,
+    dueBySkill,
+    skills,
+    boss: null,
+    wordbook,
+  };
 }
 
 export async function loadTownStatus(townId: string): Promise<TownStatus> {
