@@ -544,7 +544,7 @@ export function MapScreen({
     return (
       <main className="screen">
         <section className="window">
-          <h2 className="window__title">街の外</h2>
+          <h2 className="window__title">冒険</h2>
           <p>この街には、まだ歩けるマップがありません。スキルダンジョンで戦ってください。</p>
         </section>
         <button className="command" type="button" onClick={onChoose}>
@@ -640,7 +640,7 @@ export function MapScreen({
         )}
       </div>
 
-      <nav className="map-menu" aria-label="街の外の項目">
+      <nav className="map-menu" aria-label="冒険の項目">
         <button className="command" type="button" onClick={onTown} disabled={!!encounter}>
           ▶ 街にもどる
         </button>

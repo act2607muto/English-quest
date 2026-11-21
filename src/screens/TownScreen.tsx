@@ -48,7 +48,7 @@ export function TownScreen({
       .then((m) => setBossPlace(m?.bossPlace ?? null))
       .catch(() => setBossPlace(null));
   }, [player.currentTownId]);
-  const place = bossPlace ?? '街の外の奥';
+  const place = bossPlace ?? '冒険のマップの奥';
 
   return (
     <main className="town-home">
@@ -120,7 +120,7 @@ export function TownScreen({
             <h2 className="window__title">今日のおすすめ</h2>
             {revivalSkills.length > 0 && (
               <p>
-                {names(revivalSkills)}の復活モンスターが現れています。スキルダンジョンで選べるほか、街の外でもときどき出会います。倒すと、おかねが多めに入ります。
+                {names(revivalSkills)}の復活モンスターが現れています。スキルダンジョンで選べるほか、冒険のマップでもときどき出会います。倒すと、おかねが多めに入ります。
               </p>
             )}
             {advice && <p>{advice}</p>}
@@ -140,7 +140,7 @@ function recommendation(skills: PlayerSkill[]): string | null {
   const soon = skills.filter((s) => s.daysUntilDecay === 1);
   if (soon.length > 0) return `${names(soon)}は、明日から下がり始めます。`;
   const never = skills.filter((s) => s.daysUntilDecay === null);
-  if (never.length > 0) return `まだ${names(never)}のモンスターと戦っていません。街の外で戦ってみましょう。`;
+  if (never.length > 0) return `まだ${names(never)}のモンスターと戦っていません。「冒険へ」で戦ってみましょう。`;
   return null;
 }
 

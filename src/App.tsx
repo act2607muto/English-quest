@@ -338,7 +338,7 @@ function Game() {
               : null
           }
           onField={() => go({ name: route.from === 'dungeon' ? 'field' : 'map' })}
-          fieldLabel={route.from === 'dungeon' ? 'スキルダンジョンへ' : '街の外へ'}
+          fieldLabel={route.from === 'dungeon' ? 'スキルダンジョンへ' : '冒険へ'}
           onTown={toTown}
         />
       );

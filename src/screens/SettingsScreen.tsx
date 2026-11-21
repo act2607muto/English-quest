@@ -131,7 +131,7 @@ export function SettingsScreen({
         <h2 className="window__title" id="dpad-side-title">
           十字ボタンの位置
         </h2>
-        <p className="note">街の外のマップで、歩くボタンを出す側です。左手で持つときは「左」が押しやすくなります。この端末に覚えておきます。</p>
+        <p className="note">冒険のマップで、歩くボタンを出す側です。左手で持つときは「左」が押しやすくなります。この端末に覚えておきます。</p>
         <div className="choice-pair" role="group" aria-labelledby="dpad-side-title">
           {(
             [
@@ -158,7 +158,7 @@ export function SettingsScreen({
             デバッグ用：モンスターとの出会い
           </h2>
           <p className="note">
-            管理者だけに出る設定です。「出会わない」にすると、街の外のマップを歩いてもモンスターに出会いません（マップや門を確かめるときに使います）。この端末に覚えておきます。
+            管理者だけに出る設定です。「出会わない」にすると、冒険のマップを歩いてもモンスターに出会いません（マップや門を確かめるときに使います）。この端末に覚えておきます。
           </p>
           <div className="choice-pair" role="group" aria-labelledby="debug-encounter-title">
             {(

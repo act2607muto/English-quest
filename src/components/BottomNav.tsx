@@ -5,7 +5,7 @@
 export type NavTab = 'map' | 'dungeon' | 'status' | 'bestiary' | 'shop';
 
 const TABS: { id: NavTab; label: string; icon: string }[] = [
-  { id: 'map', label: '街の外へ', icon: 'map' },
+  { id: 'map', label: '冒険へ', icon: 'map' },
   { id: 'dungeon', label: 'ダンジョン', icon: 'dungeon' },
   { id: 'status', label: 'ステータス', icon: 'status' },
   { id: 'bestiary', label: '図鑑', icon: 'book' },
