@@ -529,11 +529,9 @@ export function BattleScreen({
           {skill === 'grammar' && q.sentence && <p className="battle__sentence">{fillNames(q.sentence)}</p>}
           {skill === 'reading' && q.sentence && <Passage text={fillNames(q.sentence)} />}
           {isOrder && q.sentence_ja && <p className="battle__sentence battle__sentence--ja">{fillNames(q.sentence_ja)}</p>}
+          {/* 英語の質問に答える問題（respond）でも、質問の日本語訳は出さない（2026-11-22 本人の希望。英語のまま読んで答える） */}
           {!isChoice && !isOrder && q.sentence && (
-            <p className="battle__sentence battle__sentence--ja">
-              {q.sentence_ja && <small className="note">{fillNames(q.sentence_ja)}</small>}
-              {fillNames(q.sentence)}
-            </p>
+            <p className="battle__sentence battle__sentence--ja">{fillNames(q.sentence)}</p>
           )}
           {q.format === 'respond' && q.sentence && canSpeak && (
             <button className="command command--listen" type="button" onClick={() => speakEnglish(fillNames(q.sentence!))}>
