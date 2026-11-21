@@ -1,0 +1,106 @@
+{
+  "format_version": 1,
+  "town": {
+    "id": "town04",
+    "name": "とけいだいの城下町",
+    "scene": "予定・電話・雑談",
+    "difficulty": "目標",
+    "order": 4,
+    "background_image": "/towns/town04.png"
+  },
+  "monsters": [
+    {
+      "id": "town04-mon-voc",
+      "name": "こよみトカゲ",
+      "skill": "vocabulary",
+      "hp": 90,
+      "gold": 30,
+      "is_boss": false,
+      "image": "/monsters/town04-mon-voc.png",
+      "description": "うろこの1枚1枚に、こよみの日付が書かれたトカゲ。約束の日を言いまちがえると、その日のうろこをぺろりとめくって見せる。"
+    },
+    {
+      "id": "town04-mon-gra",
+      "name": "ふりこヤドカリ",
+      "skill": "grammar",
+      "hp": 125,
+      "gold": 36,
+      "is_boss": false,
+      "image": "/monsters/town04-mon-gra.png",
+      "description": "ふりこ時計を背負ったヤドカリ。ふりこが右へゆれると昔のこと、左へゆれると今のことしか話せなくなる。"
+    },
+    {
+      "id": "town04-mon-lis",
+      "name": "いとでんわグモ",
+      "skill": "listening",
+      "hp": 105,
+      "gold": 32,
+      "is_boss": false,
+      "image": "/monsters/town04-mon-lis.png",
+      "description": "城下町の屋根から屋根へ、糸電話の糸をはりめぐらせるクモ。糸をふるわせて、町じゅうのひそひそ話を聞いている。"
+    },
+    {
+      "id": "town04-mon-rea",
+      "name": "ゆうびんバト",
+      "skill": "reading",
+      "hp": 100,
+      "gold": 32,
+      "is_boss": false,
+      "image": "/monsters/town04-mon-rea.png",
+      "description": "手紙のつまったかばんを首からさげたハト。宛名を読まずに受け取ろうとすると、手紙をくわえて飛んでいってしまう。"
+    },
+    {
+      "id": "town04-mon-wri",
+      "name": "ペンさきハリネズミ",
+      "skill": "writing",
+      "hp": 95,
+      "gold": 36,
+      "is_boss": false,
+      "image": "/monsters/town04-mon-wri.png",
+      "description": "背中の針がすべてペン先になっているハリネズミ。体を丸めて転がると、通ったあとに文が書かれていく。"
+    },
+    {
+      "id": "town04-mon-spe",
+      "name": "あいづちアザラシ",
+      "skill": "speaking",
+      "hp": 90,
+      "gold": 32,
+      "is_boss": false,
+      "image": "/monsters/town04-mon-spe.png",
+      "description": "お堀の石がきでひなたぼっこをしているアザラシ。話しかけると「うんうん」とうなずくが、返事をしないとすねて水にもぐる。"
+    },
+    {
+      "id": "town04-rare-exp",
+      "name": "すいしょうクラゲ",
+      "skill": null,
+      "hp": 60,
+      "gold": 25,
+      "exp_reward": 600,
+      "encounter_rate": 0.01,
+      "is_boss": false,
+      "image": "/monsters/town04-rare-exp.png",
+      "description": "水晶のようにすきとおったクラゲ。月の明るい夜だけ、お堀の上をふわふわ飛ぶという。出会えたら大きく成長できる。"
+    },
+    {
+      "id": "town04-rare-gold",
+      "name": "こぜにアナグマ",
+      "skill": null,
+      "hp": 80,
+      "gold": 200,
+      "encounter_rate": 0.04,
+      "is_boss": false,
+      "image": "/monsters/town04-rare-gold.png",
+      "description": "城下町の両替屋の床下に穴をほり、小銭をため込むアナグマ。倒すと、穴の中から小銭がじゃらじゃら出てくる。"
+    },
+    {
+      "id": "town04-boss",
+      "name": "すれちがいの大クジラ",
+      "skill": null,
+      "hp": 300,
+      "gold": 300,
+      "is_boss": true,
+      "image": "/monsters/town04-boss.png",
+      "description": "お城の東の大きな湖にすむクジラ。しおをふくたびに町じゅうの時計の針がずれて、待ち合わせの人どうしをすれちがわせてしまう。"
+    }
+  ]
+}
