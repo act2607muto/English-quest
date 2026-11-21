@@ -1,0 +1,84 @@
+{
+  "format_version": 1,
+  "town": {
+    "id": "town03",
+    "name": "みちしるべの宿場町",
+    "scene": "食事と道案内",
+    "difficulty": "標準",
+    "order": 3
+  },
+  "equipment": [
+    {
+      "id": "town03-wpn-voc",
+      "name": "おしながきの短刀",
+      "slot": "weapon",
+      "effect": { "type": "attack", "skill": "vocabulary", "amount": 6 },
+      "price": 320,
+      "image": "/equipment/town03-wpn-voc.png"
+    },
+    {
+      "id": "town03-wpn-gra",
+      "name": "みちじゅんの槍",
+      "slot": "weapon",
+      "effect": { "type": "attack", "skill": "grammar", "amount": 6 },
+      "price": 320,
+      "image": "/equipment/town03-wpn-gra.png"
+    },
+    {
+      "id": "town03-wpn-lis",
+      "name": "こだまの弓",
+      "slot": "weapon",
+      "effect": { "type": "attack", "skill": "listening", "amount": 7 },
+      "price": 380,
+      "image": "/equipment/town03-wpn-lis.png"
+    },
+    {
+      "id": "town03-wpn-rea",
+      "name": "みちしるべの杖",
+      "slot": "weapon",
+      "effect": { "type": "attack", "skill": "reading", "amount": 7 },
+      "price": 380,
+      "image": "/equipment/town03-wpn-rea.png"
+    },
+    {
+      "id": "town03-wpn-wri",
+      "name": "でんぴょうの筆",
+      "slot": "weapon",
+      "effect": { "type": "attack", "skill": "writing", "amount": 7 },
+      "price": 400,
+      "image": "/equipment/town03-wpn-wri.png"
+    },
+    {
+      "id": "town03-wpn-spe",
+      "name": "よびこえの鈴",
+      "slot": "weapon",
+      "effect": { "type": "attack", "skill": "speaking", "amount": 7 },
+      "price": 380,
+      "image": "/equipment/town03-wpn-spe.png"
+    },
+    {
+      "id": "town03-wpn-all",
+      "name": "しゅくばの名刀",
+      "slot": "weapon",
+      "effect": { "type": "attack", "skill": "all", "amount": 7 },
+      "price": 900,
+      "image": "/equipment/town03-wpn-all.png"
+    },
+    {
+      "id": "town03-arm-hp",
+      "name": "どうちゅう合羽",
+      "slot": "armor",
+      "effect": { "type": "max_hp", "amount": 3 },
+      "price": 700,
+      "image": "/equipment/town03-arm-hp.png"
+    },
+    {
+      "id": "town03-arm-grace",
+      "name": "みちしるべの笠",
+      "slot": "armor",
+      "effect": { "type": "decay_grace", "days": 3 },
+      "price": 850,
+      "image": "/equipment/town03-arm-grace.png"
+    }
+  ]
+}

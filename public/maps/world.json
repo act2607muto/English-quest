@@ -4,7 +4,7 @@
   "nodes": [
     { "town": "town01", "name": "はじまりの街", "x": 0.5, "y": 0.84, "icon": "/maps/obj-town.png" },
     { "town": "town02", "x": 0.76, "y": 0.66, "icon": "/maps/obj-town02.png" },
-    { "town": "town03", "x": 0.52, "y": 0.47 },
+    { "town": "town03", "x": 0.52, "y": 0.47, "icon": "/maps/obj-town03.png" },
     { "town": "town04", "x": 0.82, "y": 0.28 },
     { "town": "town05", "x": 0.22, "y": 0.2 }
   ],

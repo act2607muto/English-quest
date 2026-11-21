@@ -1,0 +1,6161 @@
+{
+  "format_version": 1,
+  "town": {
+    "id": "town03",
+    "name": "みちしるべの宿場町",
+    "scene": "食事と道案内",
+    "difficulty": "標準",
+    "order": 3
+  },
+  "questions": [
+    {
+      "id": "town03-voc-001",
+      "town": "town03",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「Are you ready to order?」の order の意味は？",
+      "sentence": "Are you ready to order?",
+      "choices": [
+        "支払う",
+        "片付ける",
+        "注文する",
+        "予約する"
+      ],
+      "answer": 2,
+      "explanation": "order = 注文する",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-voc-002",
+      "town": "town03",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「I have a reservation for two at seven.」の reservation の意味は？",
+      "sentence": "I have a reservation for two at seven.",
+      "choices": [
+        "予約",
+        "注文",
+        "招待",
+        "会計"
+      ],
+      "answer": 0,
+      "explanation": "reservation = 予約",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-voc-003",
+      "town": "town03",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「Could we have the check, please?」の check の意味は？",
+      "sentence": "Could we have the check, please?",
+      "choices": [
+        "お水",
+        "取り皿",
+        "お会計（伝票）",
+        "メニュー"
+      ],
+      "answer": 2,
+      "explanation": "check = お会計（伝票）",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-voc-004",
+      "town": "town03",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「What do you recommend?」の recommend の意味は？",
+      "sentence": "What do you recommend?",
+      "choices": [
+        "がまんする",
+        "すすめる",
+        "注文する",
+        "片付ける"
+      ],
+      "answer": 1,
+      "explanation": "recommend = すすめる",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-voc-005",
+      "town": "town03",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「Is this dish spicy?」の spicy の意味は？",
+      "sentence": "Is this dish spicy?",
+      "choices": [
+        "甘い",
+        "すっぱい",
+        "辛い",
+        "苦い"
+      ],
+      "answer": 2,
+      "explanation": "spicy = 辛い",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-voc-006",
+      "town": "town03",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「I'm allergic to peanuts.」の allergic to の意味は？",
+      "sentence": "I'm allergic to peanuts.",
+      "choices": [
+        "〜が大好きだ",
+        "〜を探している",
+        "〜にアレルギーがある",
+        "〜を育てている"
+      ],
+      "answer": 2,
+      "explanation": "allergic to = 〜にアレルギーがある",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-voc-007",
+      "town": "town03",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「For here or to go?」の to go の意味は？",
+      "sentence": "For here or to go?",
+      "choices": [
+        "いっしょに",
+        "店内で",
+        "持ち帰りで",
+        "急いで"
+      ],
+      "answer": 2,
+      "explanation": "to go = 持ち帰りで",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-voc-008",
+      "town": "town03",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「Could I get a refill?」の refill の意味は？",
+      "sentence": "Could I get a refill?",
+      "choices": [
+        "おしぼり",
+        "取り皿",
+        "おかわり（飲み物を注ぎ足すこと）",
+        "持ち帰り用の箱"
+      ],
+      "answer": 2,
+      "explanation": "refill = おかわり（飲み物を注ぎ足すこと）",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-voc-009",
+      "town": "town03",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「The soup is a little salty.」の salty の意味は？",
+      "sentence": "The soup is a little salty.",
+      "choices": [
+        "味が薄い",
+        "ぬるい",
+        "しょっぱい",
+        "辛い"
+      ],
+      "answer": 2,
+      "explanation": "salty = しょっぱい",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-voc-010",
+      "town": "town03",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「Can I have the dressing on the side?」の on the side の意味は？",
+      "sentence": "Can I have the dressing on the side?",
+      "choices": [
+        "多めに",
+        "少なめに",
+        "温めて",
+        "別にして（添えて）"
+      ],
+      "answer": 3,
+      "explanation": "on the side = 別にして（添えて）",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-voc-011",
+      "town": "town03",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「This steak is overcooked.」の overcooked の意味は？",
+      "sentence": "This steak is overcooked.",
+      "choices": [
+        "焼きすぎの",
+        "冷めた",
+        "味が薄い",
+        "生焼けの"
+      ],
+      "answer": 0,
+      "explanation": "overcooked = 焼きすぎの",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-voc-012",
+      "town": "town03",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「Would you like dessert?」の dessert の意味は？",
+      "sentence": "Would you like dessert?",
+      "choices": [
+        "前菜",
+        "デザート",
+        "飲み物",
+        "砂漠"
+      ],
+      "answer": 1,
+      "explanation": "dessert = デザート",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-voc-013",
+      "town": "town03",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「Let's split the bill.」の split the bill の意味は？",
+      "sentence": "Let's split the bill.",
+      "choices": [
+        "割り勘にする",
+        "請求をまちがえる",
+        "おごる",
+        "会計を急ぐ"
+      ],
+      "answer": 0,
+      "explanation": "split the bill = 割り勘にする",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-voc-014",
+      "town": "town03",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「It's my treat today.」の treat の意味は？",
+      "sentence": "It's my treat today.",
+      "choices": [
+        "休み",
+        "おごり",
+        "予定",
+        "担当"
+      ],
+      "answer": 1,
+      "explanation": "treat = おごり",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-voc-015",
+      "town": "town03",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「The appetizers are on the first page.」の appetizers の意味は？",
+      "sentence": "The appetizers are on the first page.",
+      "choices": [
+        "日替わり料理",
+        "飲み物",
+        "デザート",
+        "前菜"
+      ],
+      "answer": 3,
+      "explanation": "appetizers = 前菜",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-voc-016",
+      "town": "town03",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「Today's special is grilled salmon.」の today's special の意味は？",
+      "sentence": "Today's special is grilled salmon.",
+      "choices": [
+        "今日の休み",
+        "今日の特売品",
+        "今日の予約",
+        "本日のおすすめ料理"
+      ],
+      "answer": 3,
+      "explanation": "today's special = 本日のおすすめ料理",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-voc-017",
+      "town": "town03",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「Do you have any vegetarian dishes?」の vegetarian の意味は？",
+      "sentence": "Do you have any vegetarian dishes?",
+      "choices": [
+        "量が少ない",
+        "肉や魚を使わない（菜食の）",
+        "野菜だけを売る",
+        "地元の"
+      ],
+      "answer": 1,
+      "explanation": "vegetarian = 肉や魚を使わない（菜食の）",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-voc-018",
+      "town": "town03",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「The cake is homemade.」の homemade の意味は？",
+      "sentence": "The cake is homemade.",
+      "choices": [
+        "手作りの",
+        "冷凍の",
+        "外国産の",
+        "お取り寄せの"
+      ],
+      "answer": 0,
+      "explanation": "homemade = 手作りの",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-voc-019",
+      "town": "town03",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「Thank you, but I'm full.」の full の意味は？",
+      "sentence": "Thank you, but I'm full.",
+      "choices": [
+        "疲れた",
+        "満席だ",
+        "おなかがすいた",
+        "おなかがいっぱい"
+      ],
+      "answer": 3,
+      "explanation": "full = おなかがいっぱい",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-voc-020",
+      "town": "town03",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「Let's eat. I'm starving.」の starving の意味は？",
+      "sentence": "Let's eat. I'm starving.",
+      "choices": [
+        "のどがかわいた",
+        "おなかがぺこぺこ",
+        "寒い",
+        "眠い"
+      ],
+      "answer": 1,
+      "explanation": "starving = おなかがぺこぺこ",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-voc-021",
+      "town": "town03",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「Could you pass me the salt?」の pass の意味は？",
+      "sentence": "Could you pass me the salt?",
+      "choices": [
+        "減らす",
+        "通り過ぎる",
+        "取って渡す",
+        "合格する"
+      ],
+      "answer": 2,
+      "explanation": "pass = 取って渡す",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-voc-022",
+      "town": "town03",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「There are cookies on the table. Please help yourself.」の help yourself の意味は？",
+      "sentence": "There are cookies on the table. Please help yourself.",
+      "choices": [
+        "自由に取って食べる",
+        "自分で作る",
+        "助けを呼ぶ",
+        "自分で片付ける"
+      ],
+      "answer": 0,
+      "explanation": "help yourself = 自由に取って食べる",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-voc-023",
+      "town": "town03",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「This restaurant is always crowded.」の crowded の意味は？",
+      "sentence": "This restaurant is always crowded.",
+      "choices": [
+        "高い",
+        "混んでいる",
+        "閉まっている",
+        "静かな"
+      ],
+      "answer": 1,
+      "explanation": "crowded = 混んでいる",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-voc-024",
+      "town": "town03",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「How would you like your eggs?」の意味は？",
+      "sentence": "How would you like your eggs?",
+      "choices": [
+        "卵はいくつですか",
+        "卵はどこで買いましたか",
+        "卵はお好きですか",
+        "卵はどのように調理しますか"
+      ],
+      "answer": 3,
+      "explanation": "How would you like your eggs? = 卵はどのように調理しますか",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-voc-025",
+      "town": "town03",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「The coffee is on the house.」の on the house の意味は？",
+      "sentence": "The coffee is on the house.",
+      "choices": [
+        "店の名物",
+        "屋上の席",
+        "持ち帰り",
+        "店のおごり（無料）"
+      ],
+      "answer": 3,
+      "explanation": "on the house = 店のおごり（無料）",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-voc-026",
+      "town": "town03",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「Could we get a table by the window?」の by the window の意味は？",
+      "sentence": "Could we get a table by the window?",
+      "choices": [
+        "窓ぎわの",
+        "窓のない",
+        "奥の",
+        "入口近くの"
+      ],
+      "answer": 0,
+      "explanation": "by the window = 窓ぎわの",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-voc-027",
+      "town": "town03",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「The service here is excellent.」の service の意味は？",
+      "sentence": "The service here is excellent.",
+      "choices": [
+        "接客（サービス）",
+        "料金",
+        "店の雰囲気",
+        "料理の量"
+      ],
+      "answer": 0,
+      "explanation": "service = 接客（サービス）",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-voc-028",
+      "town": "town03",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「Could you heat this up?」の heat up の意味は？",
+      "sentence": "Could you heat this up?",
+      "choices": [
+        "冷やす",
+        "温める",
+        "切り分ける",
+        "包む"
+      ],
+      "answer": 1,
+      "explanation": "heat up = 温める",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-voc-029",
+      "town": "town03",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「Is a tip included?」の tip の意味は？",
+      "sentence": "Is a tip included?",
+      "choices": [
+        "チップ（心づけ）",
+        "先端",
+        "席料",
+        "税金"
+      ],
+      "answer": 0,
+      "explanation": "tip = チップ（心づけ）",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-voc-030",
+      "town": "town03",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「Let's grab a bite before the movie.」の grab a bite の意味は？",
+      "sentence": "Let's grab a bite before the movie.",
+      "choices": [
+        "急いで買い物する",
+        "軽く何か食べる",
+        "席をとる",
+        "チケットを取る"
+      ],
+      "answer": 1,
+      "explanation": "grab a bite = 軽く何か食べる",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-voc-031",
+      "town": "town03",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「Go straight and turn left at the corner.」の corner の意味は？",
+      "sentence": "Go straight and turn left at the corner.",
+      "choices": [
+        "信号",
+        "角",
+        "橋",
+        "突き当たり"
+      ],
+      "answer": 1,
+      "explanation": "corner = 角",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-voc-032",
+      "town": "town03",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「It's across from the bank.」の across from の意味は？",
+      "sentence": "It's across from the bank.",
+      "choices": [
+        "〜の裏に",
+        "〜の中に",
+        "〜の向かいに",
+        "〜のとなりに"
+      ],
+      "answer": 2,
+      "explanation": "across from = 〜の向かいに",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-voc-033",
+      "town": "town03",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「The museum is next to the park.」の next to の意味は？",
+      "sentence": "The museum is next to the park.",
+      "choices": [
+        "〜の向かいに",
+        "〜の奥に",
+        "〜のとなりに",
+        "〜の裏に"
+      ],
+      "answer": 2,
+      "explanation": "next to = 〜のとなりに",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-voc-034",
+      "town": "town03",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「Turn right at the second traffic light.」の traffic light の意味は？",
+      "sentence": "Turn right at the second traffic light.",
+      "choices": [
+        "信号",
+        "街灯",
+        "標識",
+        "交差点"
+      ],
+      "answer": 0,
+      "explanation": "traffic light = 信号",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-voc-035",
+      "town": "town03",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「Is it within walking distance?」の within walking distance の意味は？",
+      "sentence": "Is it within walking distance?",
+      "choices": [
+        "歩道の中に",
+        "車でしか行けない距離に",
+        "歩くのが大変な距離に",
+        "歩いて行ける距離に"
+      ],
+      "answer": 3,
+      "explanation": "within walking distance = 歩いて行ける距離に",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-voc-036",
+      "town": "town03",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「Go along this street for two blocks.」の blocks の意味は？",
+      "sentence": "Go along this street for two blocks.",
+      "choices": [
+        "停留所",
+        "区画（ブロック）",
+        "階",
+        "分"
+      ],
+      "answer": 1,
+      "explanation": "blocks = 区画（ブロック）",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-voc-037",
+      "town": "town03",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「Take the subway to Central Station.」の subway の意味は？",
+      "sentence": "Take the subway to Central Station.",
+      "choices": [
+        "フェリー",
+        "地下鉄",
+        "高速バス",
+        "路面電車"
+      ],
+      "answer": 1,
+      "explanation": "subway = 地下鉄",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-voc-038",
+      "town": "town03",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「It's a big red building. You can't miss it.」の意味は？",
+      "sentence": "It's a big red building. You can't miss it.",
+      "choices": [
+        "すぐに見つかりますよ",
+        "見のがしてはいけません",
+        "行かないほうがいいですよ",
+        "絶対に遅れないで"
+      ],
+      "answer": 0,
+      "explanation": "It's a big red building. You can't miss it. = すぐに見つかりますよ",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-voc-039",
+      "town": "town03",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「Where is the nearest bus stop?」の nearest の意味は？",
+      "sentence": "Where is the nearest bus stop?",
+      "choices": [
+        "いちばん近い",
+        "となりの",
+        "いちばん大きい",
+        "いちばん新しい"
+      ],
+      "answer": 0,
+      "explanation": "nearest = いちばん近い",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-voc-040",
+      "town": "town03",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「Change trains at the next station.」の change trains の意味は？",
+      "sentence": "Change trains at the next station.",
+      "choices": [
+        "電車を降りる",
+        "切符を変更する",
+        "電車を乗りかえる",
+        "電車を待つ"
+      ],
+      "answer": 2,
+      "explanation": "change trains = 電車を乗りかえる",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-voc-041",
+      "town": "town03",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「Get off at the third stop.」の get off の意味は？",
+      "sentence": "Get off at the third stop.",
+      "choices": [
+        "乗る",
+        "通り過ぎる",
+        "降りる",
+        "待つ"
+      ],
+      "answer": 2,
+      "explanation": "get off = 降りる",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-voc-042",
+      "town": "town03",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「The station is at the end of this street.」の at the end of の意味は？",
+      "sentence": "The station is at the end of this street.",
+      "choices": [
+        "〜の突き当たりに",
+        "〜の裏に",
+        "〜の入口に",
+        "〜の途中に"
+      ],
+      "answer": 0,
+      "explanation": "at the end of = 〜の突き当たりに",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-voc-043",
+      "town": "town03",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「Cross the bridge and you'll see the library.」の cross の意味は？",
+      "sentence": "Cross the bridge and you'll see the library.",
+      "choices": [
+        "渡る",
+        "見上げる",
+        "くぐる",
+        "曲がる"
+      ],
+      "answer": 0,
+      "explanation": "cross = 渡る",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-voc-044",
+      "town": "town03",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「Excuse me, I'm lost.」の lost の意味は？",
+      "sentence": "Excuse me, I'm lost.",
+      "choices": [
+        "遅れた",
+        "疲れた",
+        "道に迷った",
+        "負けた"
+      ],
+      "answer": 2,
+      "explanation": "lost = 道に迷った",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-voc-045",
+      "town": "town03",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「Could you draw me a map?」の draw の意味は？",
+      "sentence": "Could you draw me a map?",
+      "choices": [
+        "探す",
+        "描く",
+        "貸す",
+        "送る"
+      ],
+      "answer": 1,
+      "explanation": "draw = 描く",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-voc-046",
+      "town": "town03",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「It takes about ten minutes on foot.」の on foot の意味は？",
+      "sentence": "It takes about ten minutes on foot.",
+      "choices": [
+        "自転車で",
+        "車で",
+        "走って",
+        "歩いて"
+      ],
+      "answer": 3,
+      "explanation": "on foot = 歩いて",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-voc-047",
+      "town": "town03",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「Which platform does the train leave from?」の platform の意味は？",
+      "sentence": "Which platform does the train leave from?",
+      "choices": [
+        "切符売り場",
+        "（駅の）ホーム・〜番線",
+        "車両",
+        "改札"
+      ],
+      "answer": 1,
+      "explanation": "platform = （駅の）ホーム・〜番線",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-voc-048",
+      "town": "town03",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「Is this the right way to the castle?」の the right way の意味は？",
+      "sentence": "Is this the right way to the castle?",
+      "choices": [
+        "近道",
+        "右の道",
+        "広い道",
+        "正しい道"
+      ],
+      "answer": 3,
+      "explanation": "the right way = 正しい道",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-voc-049",
+      "town": "town03",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「There's a shortcut through the park.」の shortcut の意味は？",
+      "sentence": "There's a shortcut through the park.",
+      "choices": [
+        "行き止まり",
+        "回り道",
+        "遊歩道",
+        "近道"
+      ],
+      "answer": 3,
+      "explanation": "shortcut = 近道",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-voc-050",
+      "town": "town03",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「The road is closed for construction.」の construction の意味は？",
+      "sentence": "The road is closed for construction.",
+      "choices": [
+        "事故",
+        "工事",
+        "お祭り",
+        "大雨"
+      ],
+      "answer": 1,
+      "explanation": "construction = 工事",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-voc-051",
+      "town": "town03",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「Go past the post office.」の go past の意味は？",
+      "sentence": "Go past the post office.",
+      "choices": [
+        "〜に入る",
+        "〜を通り過ぎる",
+        "〜を曲がる",
+        "〜の前で止まる"
+      ],
+      "answer": 1,
+      "explanation": "go past = 〜を通り過ぎる",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-voc-052",
+      "town": "town03",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「Turn right, and it's on your left.」の on your left の意味は？",
+      "sentence": "Turn right, and it's on your left.",
+      "choices": [
+        "あなたの左手に",
+        "左に曲がって",
+        "あなたの後ろに",
+        "左に残って"
+      ],
+      "answer": 0,
+      "explanation": "on your left = あなたの左手に",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-voc-053",
+      "town": "town03",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「The entrance is around the back.」の entrance の意味は？",
+      "sentence": "The entrance is around the back.",
+      "choices": [
+        "階段",
+        "入口",
+        "受付",
+        "出口"
+      ],
+      "answer": 1,
+      "explanation": "entrance = 入口",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-voc-054",
+      "town": "town03",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「Where can I buy a ticket?」の ticket の意味は？",
+      "sentence": "Where can I buy a ticket?",
+      "choices": [
+        "時刻表",
+        "定期入れ",
+        "切符",
+        "地図"
+      ],
+      "answer": 2,
+      "explanation": "ticket = 切符",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-voc-055",
+      "town": "town03",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「Keep going until you reach the river.」の reach の意味は？",
+      "sentence": "Keep going until you reach the river.",
+      "choices": [
+        "〜を越える",
+        "〜を探す",
+        "〜に沿って進む",
+        "〜に着く"
+      ],
+      "answer": 3,
+      "explanation": "reach = 〜に着く",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-voc-056",
+      "town": "town03",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「The bus runs every fifteen minutes.」の runs の意味は？",
+      "sentence": "The bus runs every fifteen minutes.",
+      "choices": [
+        "遅れる",
+        "走って逃げる",
+        "止まる",
+        "運行する"
+      ],
+      "answer": 3,
+      "explanation": "runs = 運行する",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-voc-057",
+      "town": "town03",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「Is there a convenience store around here?」の around here の意味は？",
+      "sentence": "Is there a convenience store around here?",
+      "choices": [
+        "この町の外に",
+        "この店の中に",
+        "このあたりに",
+        "ここを1周して"
+      ],
+      "answer": 2,
+      "explanation": "around here = このあたりに",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-voc-058",
+      "town": "town03",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「Could you tell me where the city hall is?」の city hall の意味は？",
+      "sentence": "Could you tell me where the city hall is?",
+      "choices": [
+        "市場",
+        "市民ホール",
+        "市役所",
+        "駅前広場"
+      ],
+      "answer": 2,
+      "explanation": "city hall = 市役所",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-voc-059",
+      "town": "town03",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「The hotel is opposite the station.」の opposite の意味は？",
+      "sentence": "The hotel is opposite the station.",
+      "choices": [
+        "〜の向かい側に",
+        "〜のとなりに",
+        "〜の上に",
+        "〜の裏に"
+      ],
+      "answer": 0,
+      "explanation": "opposite = 〜の向かい側に",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-voc-060",
+      "town": "town03",
+      "skill": "vocabulary",
+      "format": "choice4",
+      "prompt": "「You'll find it at the intersection.」の intersection の意味は？",
+      "sentence": "You'll find it at the intersection.",
+      "choices": [
+        "歩道橋",
+        "交差点",
+        "踏切",
+        "駐車場"
+      ],
+      "answer": 1,
+      "explanation": "intersection = 交差点",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-gra-001",
+      "town": "town03",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "I think I ___ have the pasta.",
+      "choices": [
+        "am",
+        "will",
+        "have",
+        "was"
+      ],
+      "answer": 1,
+      "explanation": "その場で決めたことは will + 動詞の原形（〜にします）。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-gra-002",
+      "town": "town03",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "We ___ going to eat out tonight.",
+      "choices": [
+        "have",
+        "do",
+        "are",
+        "will"
+      ],
+      "answer": 2,
+      "explanation": "前から決めている予定は be going to + 動詞の原形。主語 we なので are。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-gra-003",
+      "town": "town03",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "Look at those dark clouds. It is ___ to rain.",
+      "choices": [
+        "goes",
+        "go",
+        "going",
+        "will"
+      ],
+      "answer": 2,
+      "explanation": "目に見える様子から「〜しそうだ」と言うときは be going to。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-gra-004",
+      "town": "town03",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "___ you like something to drink?",
+      "choices": [
+        "Would",
+        "Have",
+        "Are",
+        "Will"
+      ],
+      "answer": 0,
+      "explanation": "「〜はいかがですか」とていねいにすすめるのは Would you like 〜?",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-gra-005",
+      "town": "town03",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "___ I take your order?",
+      "choices": [
+        "Does",
+        "Am",
+        "Was",
+        "May"
+      ],
+      "answer": 3,
+      "explanation": "店員の「ご注文をうかがってもよろしいですか」は May I take your order?",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-gra-006",
+      "town": "town03",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "You ___ try the cheesecake. It's really good.",
+      "choices": [
+        "were",
+        "are",
+        "did",
+        "should"
+      ],
+      "answer": 3,
+      "explanation": "すすめるときは should + 動詞の原形（〜したほうがいい）。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-gra-007",
+      "town": "town03",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "You ___ smoke in this restaurant. It is not allowed.",
+      "choices": [
+        "must",
+        "must not",
+        "have to",
+        "should"
+      ],
+      "answer": 1,
+      "explanation": "must not + 動詞の原形で「〜してはいけない」（禁止）。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-gra-008",
+      "town": "town03",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "You don't ___ to make a reservation.",
+      "choices": [
+        "should",
+        "must",
+        "have",
+        "can"
+      ],
+      "answer": 2,
+      "explanation": "don't have to + 動詞の原形で「〜しなくてよい」。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-gra-009",
+      "town": "town03",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "It's a nice day. ___ we sit outside?",
+      "choices": [
+        "Are",
+        "Have",
+        "Shall",
+        "Did"
+      ],
+      "answer": 2,
+      "explanation": "「〜しましょうか」と誘うときは Shall we 〜?",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-gra-010",
+      "town": "town03",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "Could you tell me how ___ get to the station?",
+      "choices": [
+        "can",
+        "do",
+        "for",
+        "to"
+      ],
+      "answer": 3,
+      "explanation": "「〜への行き方」は how to get to 〜。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-gra-011",
+      "town": "town03",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "What ___ you doing when I called you?",
+      "choices": [
+        "did",
+        "was",
+        "are",
+        "were"
+      ],
+      "answer": 3,
+      "explanation": "過去のある時に「〜していた」は過去進行形（was / were + -ing）。主語 you なので were。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-gra-012",
+      "town": "town03",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "I ___ cooking dinner when the phone rang.",
+      "choices": [
+        "was",
+        "were",
+        "did",
+        "am"
+      ],
+      "answer": 0,
+      "explanation": "電話が鳴った（過去）ときにしていたことは過去進行形。主語 I なので was。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-gra-013",
+      "town": "town03",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "While we ___ eating, it started to rain.",
+      "choices": [
+        "was",
+        "were",
+        "did",
+        "are"
+      ],
+      "answer": 1,
+      "explanation": "while（〜している間に）のあとは、過去なら過去進行形。主語 we なので were。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-gra-014",
+      "town": "town03",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "The bank is ___ the post office and the hotel.",
+      "choices": [
+        "between",
+        "from",
+        "across",
+        "among"
+      ],
+      "answer": 0,
+      "explanation": "2つのものの「あいだに」は between A and B。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-gra-015",
+      "town": "town03",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "The café is ___ the corner.",
+      "choices": [
+        "of",
+        "on",
+        "with",
+        "to"
+      ],
+      "answer": 1,
+      "explanation": "「角に（面して）」は on the corner（at the corner とも言う）。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-gra-016",
+      "town": "town03",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "Walk ___ the river for five minutes.",
+      "choices": [
+        "between",
+        "into",
+        "at",
+        "along"
+      ],
+      "answer": 3,
+      "explanation": "「〜に沿って」は along。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-gra-017",
+      "town": "town03",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "Go ___ the bridge and turn left.",
+      "choices": [
+        "between",
+        "into",
+        "among",
+        "across"
+      ],
+      "answer": 3,
+      "explanation": "「（橋や道を）渡って」は across。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-gra-018",
+      "town": "town03",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "The restaurant is ___ the second floor.",
+      "choices": [
+        "in",
+        "over",
+        "on",
+        "to"
+      ],
+      "answer": 2,
+      "explanation": "「〜階に」は on the 〜 floor。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-gra-019",
+      "town": "town03",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "Turn left ___ the next traffic light.",
+      "choices": [
+        "on",
+        "at",
+        "in",
+        "to"
+      ],
+      "answer": 1,
+      "explanation": "「〜のところで（曲がる）」と一点を言うときは at。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-gra-020",
+      "town": "town03",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "The station is ___ the end of this street.",
+      "choices": [
+        "to",
+        "at",
+        "on",
+        "in"
+      ],
+      "answer": 1,
+      "explanation": "at the end of 〜 で「〜の突き当たりに」。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-gra-021",
+      "town": "town03",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "How long does it take ___ here to the airport?",
+      "choices": [
+        "from",
+        "at",
+        "in",
+        "on"
+      ],
+      "answer": 0,
+      "explanation": "from A to B で「AからBまで」。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-gra-022",
+      "town": "town03",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "It takes about twenty minutes ___ bus.",
+      "choices": [
+        "with",
+        "in",
+        "by",
+        "on"
+      ],
+      "answer": 2,
+      "explanation": "乗り物で行くときは by bus（a や the をつけない）。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-gra-023",
+      "town": "town03",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "I'm looking forward to ___ at the new restaurant.",
+      "choices": [
+        "eating",
+        "eat",
+        "eaten",
+        "ate"
+      ],
+      "answer": 0,
+      "explanation": "look forward to のあとは -ing（〜するのを楽しみにしている）。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-gra-024",
+      "town": "town03",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "This is the restaurant ___ I had my birthday dinner.",
+      "choices": [
+        "who",
+        "what",
+        "which",
+        "where"
+      ],
+      "answer": 3,
+      "explanation": "場所を説明して「そこで〜した」と続けるときは where。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-gra-025",
+      "town": "town03",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "The pasta ___ by a chef from Italy.",
+      "choices": [
+        "was cooked",
+        "was cooking",
+        "cooks",
+        "cooked"
+      ],
+      "answer": 0,
+      "explanation": "「〜によって作られた」は受け身（was + 過去分詞）。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-gra-026",
+      "town": "town03",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "Could you tell me where the restroom ___?",
+      "choices": [
+        "does",
+        "are",
+        "is",
+        "be"
+      ],
+      "answer": 2,
+      "explanation": "文の中の疑問（間接疑問）は「主語 + 動詞」の順。the restroom は1つなので is。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-gra-027",
+      "town": "town03",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "If you're hungry, I ___ make you a sandwich.",
+      "choices": [
+        "have",
+        "did",
+        "was",
+        "can"
+      ],
+      "answer": 3,
+      "explanation": "「（よければ）〜してあげられる」は can + 動詞の原形。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-gra-028",
+      "town": "town03",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "___ you mind if I sit here?",
+      "choices": [
+        "Would",
+        "Are",
+        "Have",
+        "Did"
+      ],
+      "answer": 0,
+      "explanation": "Would you mind if 〜? で「〜してもかまいませんか」。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-gra-029",
+      "town": "town03",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "I'm going to ___ a table for four.",
+      "choices": [
+        "book",
+        "booked",
+        "booking",
+        "books"
+      ],
+      "answer": 0,
+      "explanation": "be going to のあとは動詞の原形。book = 予約する。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-gra-030",
+      "town": "town03",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "She ___ dinner when I got home.",
+      "choices": [
+        "is making",
+        "has made",
+        "makes",
+        "was making"
+      ],
+      "answer": 3,
+      "explanation": "私が帰った（過去）ときにしていたことは過去進行形。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-gra-031",
+      "town": "town03",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "We ___ go to that café tomorrow if it's sunny.",
+      "choices": [
+        "did",
+        "were",
+        "have",
+        "will"
+      ],
+      "answer": 3,
+      "explanation": "tomorrow（これから）のことは will + 動詞の原形。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-gra-032",
+      "town": "town03",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "The tea is too hot ___ drink.",
+      "choices": [
+        "that",
+        "to",
+        "for",
+        "and"
+      ],
+      "answer": 1,
+      "explanation": "too 〜 to … で「〜すぎて…できない」。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-gra-033",
+      "town": "town03",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "Is there a pharmacy ___ here?",
+      "choices": [
+        "near",
+        "between",
+        "next",
+        "close"
+      ],
+      "answer": 0,
+      "explanation": "「この近くに」は near here。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-gra-034",
+      "town": "town03",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "Go straight ___ you see a big red sign.",
+      "choices": [
+        "until",
+        "by",
+        "since",
+        "during"
+      ],
+      "answer": 0,
+      "explanation": "「〜するまで（ずっと）」は until。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-gra-035",
+      "town": "town03",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "The bus stop is in ___ of the bank.",
+      "choices": [
+        "front",
+        "before",
+        "face",
+        "head"
+      ],
+      "answer": 0,
+      "explanation": "in front of 〜 で「〜の前に」。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-gra-036",
+      "town": "town03",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "You ___ order at the counter before you sit down.",
+      "choices": [
+        "had better to",
+        "have to",
+        "having to",
+        "has to"
+      ],
+      "answer": 1,
+      "explanation": "主語 you なので have to（〜しなければならない）。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-gra-037",
+      "town": "town03",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "Would you like ___ more coffee?",
+      "choices": [
+        "few",
+        "a",
+        "some",
+        "many"
+      ],
+      "answer": 2,
+      "explanation": "ものをすすめる疑問文では some を使う。coffee は数えられないので many・a・few は使わない。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-gra-038",
+      "town": "town03",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "How ___ is it from here to the museum?",
+      "choices": [
+        "much",
+        "often",
+        "many",
+        "far"
+      ],
+      "answer": 3,
+      "explanation": "距離をたずねるときは How far。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-gra-039",
+      "town": "town03",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "The waiter brought us the menus ___ we sat down.",
+      "choices": [
+        "even if",
+        "unless",
+        "so that",
+        "as soon as"
+      ],
+      "answer": 3,
+      "explanation": "as soon as で「〜するとすぐに」。",
+      "difficulty": 3,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-gra-040",
+      "town": "town03",
+      "skill": "grammar",
+      "format": "choice4",
+      "prompt": "空欄に入る語句は？",
+      "sentence": "I ___ to this restaurant three times.",
+      "choices": [
+        "have been",
+        "have went",
+        "am going",
+        "was"
+      ],
+      "answer": 0,
+      "explanation": "「〜へ行ったことがある」は have been to 〜。go の過去分詞は gone（went は過去形）。",
+      "difficulty": 3,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-gra-041",
+      "town": "town03",
+      "skill": "grammar",
+      "format": "order",
+      "prompt": "日本語に合うように、単語を並べかえよう",
+      "sentence_ja": "駅への行き方を教えてくれませんか。",
+      "choices": [
+        "could",
+        "you",
+        "tell",
+        "me",
+        "the",
+        "way",
+        "to",
+        "the",
+        "station"
+      ],
+      "model_answers": [
+        "Could you tell me the way to the station?"
+      ],
+      "explanation": "Could you tell me 〜? で「〜を教えてくれませんか」。the way to 〜 で「〜への道」。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-gra-042",
+      "town": "town03",
+      "skill": "grammar",
+      "format": "order",
+      "prompt": "日本語に合うように、単語を並べかえよう",
+      "sentence_ja": "（注文で）魚にします。",
+      "choices": [
+        "I",
+        "will",
+        "have",
+        "the",
+        "fish"
+      ],
+      "model_answers": [
+        "I will have the fish."
+      ],
+      "explanation": "注文で「〜にします」は I will have 〜（I'll have 〜）。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-gra-043",
+      "town": "town03",
+      "skill": "grammar",
+      "format": "order",
+      "prompt": "日本語に合うように、単語を並べかえよう",
+      "sentence_ja": "私たちは公園でお昼ごはんを食べる予定です。",
+      "choices": [
+        "we",
+        "are",
+        "going",
+        "to",
+        "have",
+        "lunch",
+        "at",
+        "the",
+        "park"
+      ],
+      "model_answers": [
+        "We are going to have lunch at the park.",
+        "At the park we are going to have lunch."
+      ],
+      "explanation": "予定は be going to + 動詞の原形。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-gra-044",
+      "town": "town03",
+      "skill": "grammar",
+      "format": "order",
+      "prompt": "日本語に合うように、単語を並べかえよう",
+      "sentence_ja": "何をお飲みになりますか。",
+      "choices": [
+        "what",
+        "would",
+        "you",
+        "like",
+        "to",
+        "drink"
+      ],
+      "model_answers": [
+        "What would you like to drink?"
+      ],
+      "explanation": "What would you like to 〜? で「何を〜なさいますか」。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-gra-045",
+      "town": "town03",
+      "skill": "grammar",
+      "format": "order",
+      "prompt": "日本語に合うように、単語を並べかえよう",
+      "sentence_ja": "2つ目の角を右に曲がってください。",
+      "choices": [
+        "turn",
+        "right",
+        "at",
+        "the",
+        "second",
+        "corner"
+      ],
+      "model_answers": [
+        "Turn right at the second corner.",
+        "At the second corner, turn right."
+      ],
+      "explanation": "道案内は動詞から始める（命令文）。「〜で」は at。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-gra-046",
+      "town": "town03",
+      "skill": "grammar",
+      "format": "order",
+      "prompt": "日本語に合うように、単語を並べかえよう",
+      "sentence_ja": "銀行は郵便局のとなりにあります。",
+      "choices": [
+        "the",
+        "bank",
+        "is",
+        "next",
+        "to",
+        "the",
+        "post",
+        "office"
+      ],
+      "model_answers": [
+        "The bank is next to the post office."
+      ],
+      "explanation": "next to 〜 で「〜のとなりに」。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-gra-047",
+      "town": "town03",
+      "skill": "grammar",
+      "format": "order",
+      "prompt": "日本語に合うように、単語を並べかえよう",
+      "sentence_ja": "あなたが電話をくれたとき、私は夕食を食べていました。",
+      "choices": [
+        "I",
+        "was",
+        "eating",
+        "dinner",
+        "when",
+        "you",
+        "called"
+      ],
+      "model_answers": [
+        "I was eating dinner when you called.",
+        "When you called, I was eating dinner."
+      ],
+      "explanation": "過去のある時にしていたことは過去進行形（was + -ing）。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-gra-048",
+      "town": "town03",
+      "skill": "grammar",
+      "format": "order",
+      "prompt": "日本語に合うように、単語を並べかえよう",
+      "sentence_ja": "チョコレートケーキを食べてみるといいですよ。",
+      "choices": [
+        "you",
+        "should",
+        "try",
+        "the",
+        "chocolate",
+        "cake"
+      ],
+      "model_answers": [
+        "You should try the chocolate cake."
+      ],
+      "explanation": "should + 動詞の原形で「〜したほうがいい」。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-gra-049",
+      "town": "town03",
+      "skill": "grammar",
+      "format": "order",
+      "prompt": "日本語に合うように、単語を並べかえよう",
+      "sentence_ja": "そこへ行くのにどれくらい時間がかかりますか。",
+      "choices": [
+        "how",
+        "long",
+        "does",
+        "it",
+        "take",
+        "to",
+        "get",
+        "there"
+      ],
+      "model_answers": [
+        "How long does it take to get there?"
+      ],
+      "explanation": "How long does it take to 〜? で「〜するのにどれくらいかかるか」。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-gra-050",
+      "town": "town03",
+      "skill": "grammar",
+      "format": "order",
+      "prompt": "日本語に合うように、単語を並べかえよう",
+      "sentence_ja": "メニューを見せていただけますか。",
+      "choices": [
+        "may",
+        "I",
+        "see",
+        "the",
+        "menu"
+      ],
+      "model_answers": [
+        "May I see the menu?"
+      ],
+      "explanation": "May I 〜? で「〜してもよろしいですか」（ていねいな頼み方）。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-gra-051",
+      "town": "town03",
+      "skill": "grammar",
+      "format": "order",
+      "prompt": "日本語に合うように、単語を並べかえよう",
+      "sentence_ja": "ここではチップを置かなくてもいいですよ。",
+      "choices": [
+        "you",
+        "don't",
+        "have",
+        "to",
+        "leave",
+        "a",
+        "tip",
+        "here"
+      ],
+      "model_answers": [
+        "You don't have to leave a tip here.",
+        "Here you don't have to leave a tip."
+      ],
+      "explanation": "don't have to で「〜しなくてよい」。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-gra-052",
+      "town": "town03",
+      "skill": "grammar",
+      "format": "order",
+      "prompt": "日本語に合うように、単語を並べかえよう",
+      "sentence_ja": "この近くにいいレストランはありますか。",
+      "choices": [
+        "is",
+        "there",
+        "a",
+        "good",
+        "restaurant",
+        "near",
+        "here"
+      ],
+      "model_answers": [
+        "Is there a good restaurant near here?"
+      ],
+      "explanation": "Is there 〜? で「〜はありますか」。near here で「この近くに」。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-gra-053",
+      "town": "town03",
+      "skill": "grammar",
+      "format": "order",
+      "prompt": "日本語に合うように、単語を並べかえよう",
+      "sentence_ja": "川が見えるまで、この通りを進んでください。",
+      "choices": [
+        "go",
+        "along",
+        "this",
+        "street",
+        "until",
+        "you",
+        "see",
+        "the",
+        "river"
+      ],
+      "model_answers": [
+        "Go along this street until you see the river.",
+        "Until you see the river, go along this street."
+      ],
+      "explanation": "along で「〜に沿って」、until で「〜するまで」。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-gra-054",
+      "town": "town03",
+      "skill": "grammar",
+      "format": "order",
+      "prompt": "日本語に合うように、単語を並べかえよう",
+      "sentence_ja": "タクシーで10分くらいかかるでしょう。",
+      "choices": [
+        "it",
+        "will",
+        "take",
+        "about",
+        "ten",
+        "minutes",
+        "by",
+        "taxi"
+      ],
+      "model_answers": [
+        "It will take about ten minutes by taxi.",
+        "By taxi, it will take about ten minutes."
+      ],
+      "explanation": "It takes 〜 で「（時間が）かかる」。by taxi で「タクシーで」。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-gra-055",
+      "town": "town03",
+      "skill": "grammar",
+      "format": "order",
+      "prompt": "日本語に合うように、単語を並べかえよう",
+      "sentence_ja": "ピザを分けて食べませんか。",
+      "choices": [
+        "shall",
+        "we",
+        "share",
+        "a",
+        "pizza"
+      ],
+      "model_answers": [
+        "Shall we share a pizza?"
+      ],
+      "explanation": "Shall we 〜? で「〜しませんか」。share = 分け合う。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-gra-056",
+      "town": "town03",
+      "skill": "grammar",
+      "format": "order",
+      "prompt": "日本語に合うように、単語を並べかえよう",
+      "sentence_ja": "昨夜8時に何をしていましたか。",
+      "choices": [
+        "what",
+        "were",
+        "you",
+        "doing",
+        "at",
+        "eight",
+        "last",
+        "night"
+      ],
+      "model_answers": [
+        "What were you doing at eight last night?",
+        "What were you doing last night at eight?"
+      ],
+      "explanation": "過去のある時にしていたことをたずねるのは What were you doing 〜?",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-gra-057",
+      "town": "town03",
+      "skill": "grammar",
+      "format": "order",
+      "prompt": "日本語に合うように、単語を並べかえよう",
+      "sentence_ja": "博物館は図書館と公園のあいだにあります。",
+      "choices": [
+        "the",
+        "museum",
+        "is",
+        "between",
+        "the",
+        "library",
+        "and",
+        "the",
+        "park"
+      ],
+      "model_answers": [
+        "The museum is between the library and the park.",
+        "The museum is between the park and the library."
+      ],
+      "explanation": "between A and B で「AとBのあいだに」。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-gra-058",
+      "town": "town03",
+      "skill": "grammar",
+      "format": "order",
+      "prompt": "日本語に合うように、単語を並べかえよう",
+      "sentence_ja": "お水を1杯もらえますか。",
+      "choices": [
+        "could",
+        "I",
+        "have",
+        "a",
+        "glass",
+        "of",
+        "water"
+      ],
+      "model_answers": [
+        "Could I have a glass of water?"
+      ],
+      "explanation": "Could I have 〜? で「〜をもらえますか」。a glass of water = コップ1杯の水。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-gra-059",
+      "town": "town03",
+      "skill": "grammar",
+      "format": "order",
+      "prompt": "日本語に合うように、単語を並べかえよう",
+      "sentence_ja": "今夜はカレーを作るつもりです。",
+      "choices": [
+        "I",
+        "am",
+        "going",
+        "to",
+        "cook",
+        "curry",
+        "tonight"
+      ],
+      "model_answers": [
+        "I am going to cook curry tonight.",
+        "Tonight I am going to cook curry."
+      ],
+      "explanation": "予定は be going to + 動詞の原形。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-gra-060",
+      "town": "town03",
+      "skill": "grammar",
+      "format": "order",
+      "prompt": "日本語に合うように、単語を並べかえよう",
+      "sentence_ja": "どのバスが空港へ行きますか。",
+      "choices": [
+        "which",
+        "bus",
+        "goes",
+        "to",
+        "the",
+        "airport"
+      ],
+      "model_answers": [
+        "Which bus goes to the airport?"
+      ],
+      "explanation": "Which bus が主語なので、そのあとはすぐ動詞（goes）。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-lis-001",
+      "town": "town03",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "Could we have a table for three, please?",
+      "choices": [
+        "3時に席を予約できますか",
+        "3人分の料理をお願いできますか",
+        "3人用の席をお願いできますか",
+        "3番のテーブルに座れますか"
+      ],
+      "answer": 2,
+      "explanation": "Could we have a table for three, please? = 3人用の席をお願いできますか",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-lis-002",
+      "town": "town03",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "I'm sorry, but we're fully booked tonight.",
+      "choices": [
+        "今夜は予約がいりません",
+        "すみません、今夜は貸し切りです",
+        "すみません、今夜は早めに閉店します",
+        "すみません、今夜は予約でいっぱいです"
+      ],
+      "answer": 3,
+      "explanation": "I'm sorry, but we're fully booked tonight. = すみません、今夜は予約でいっぱいです",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-lis-003",
+      "town": "town03",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "Can I have my steak medium, please?",
+      "choices": [
+        "ステーキを半分に切ってください",
+        "ステーキは少なめでお願いします",
+        "ステーキは中くらいの大きさでお願いします",
+        "ステーキはミディアムの焼き加減でお願いします"
+      ],
+      "answer": 3,
+      "explanation": "Can I have my steak medium, please? = ステーキはミディアムの焼き加減でお願いします",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-lis-004",
+      "town": "town03",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "Is there anything you can't eat?",
+      "choices": [
+        "もう食べ終わりましたか",
+        "何か食べられないものはありますか",
+        "食べきれない量ですか",
+        "何か食べたいものはありますか"
+      ],
+      "answer": 1,
+      "explanation": "Is there anything you can't eat? = 何か食べられないものはありますか",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-lis-005",
+      "town": "town03",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "We'll wait at the bar until our table is ready.",
+      "choices": [
+        "席の用意ができたら呼んでください",
+        "席が空いたらすぐに帰ります",
+        "席が用意できるまでカウンターで待ちます",
+        "カウンター席を予約します"
+      ],
+      "answer": 2,
+      "explanation": "We'll wait at the bar until our table is ready. = 席が用意できるまでカウンターで待ちます",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-lis-006",
+      "town": "town03",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "Could you put the leftovers in a box?",
+      "choices": [
+        "料理をもう1つ箱で作ってもらえますか",
+        "空いたお皿を下げてもらえますか",
+        "残った料理を箱に入れてもらえますか",
+        "箱を開けてもらえますか"
+      ],
+      "answer": 2,
+      "explanation": "Could you put the leftovers in a box? = 残った料理を箱に入れてもらえますか",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-lis-007",
+      "town": "town03",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "This isn't what I ordered.",
+      "choices": [
+        "これはまだ注文していません",
+        "これは注文したより多いです",
+        "これは注文したものとちがいます",
+        "これを注文し直したいです"
+      ],
+      "answer": 2,
+      "explanation": "This isn't what I ordered. = これは注文したものとちがいます",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-lis-008",
+      "town": "town03",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "The kitchen closes in thirty minutes, so please order soon.",
+      "choices": [
+        "30分以内に食べ終えてほしい",
+        "あと30分で料理の注文が終わるので、早めに注文してほしい",
+        "30分後に料理ができる",
+        "30分前に店が開いた"
+      ],
+      "answer": 1,
+      "explanation": "The kitchen closes in thirty minutes, so please order soon. = あと30分で料理の注文が終わるので、早めに注文してほしい",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-lis-009",
+      "town": "town03",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "Would you like your coffee now or after your meal?",
+      "choices": [
+        "食事の前にコーヒーを飲みましたか",
+        "コーヒーは今にしますか、食後にしますか",
+        "コーヒーと食事、どちらにしますか",
+        "コーヒーのおかわりはいりますか"
+      ],
+      "answer": 1,
+      "explanation": "Would you like your coffee now or after your meal? = コーヒーは今にしますか、食後にしますか",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-lis-010",
+      "town": "town03",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "Everything was delicious. Thank you.",
+      "choices": [
+        "全部おいしかったです。ありがとう",
+        "全部いただきます",
+        "全部は食べきれませんでした",
+        "おいしいものを全部ください"
+      ],
+      "answer": 0,
+      "explanation": "Everything was delicious. Thank you. = 全部おいしかったです。ありがとう",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-lis-011",
+      "town": "town03",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "I'll have the same as her.",
+      "choices": [
+        "彼女はもう注文しました",
+        "彼女と分けて食べます",
+        "彼女の分も払います",
+        "彼女と同じものにします"
+      ],
+      "answer": 3,
+      "explanation": "I'll have the same as her. = 彼女と同じものにします",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-lis-012",
+      "town": "town03",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "Can we sit outside on the terrace?",
+      "choices": [
+        "外で待っていてもいいですか",
+        "屋上で食べられますか",
+        "テラス席は寒いですか",
+        "外のテラス席に座れますか"
+      ],
+      "answer": 3,
+      "explanation": "Can we sit outside on the terrace? = 外のテラス席に座れますか",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-lis-013",
+      "town": "town03",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "Sorry, we've run out of the chocolate cake.",
+      "choices": [
+        "チョコレートケーキを落としてしまいました",
+        "すみません、チョコレートケーキは売り切れです",
+        "チョコレートケーキは予約が必要です",
+        "チョコレートケーキは今焼いています"
+      ],
+      "answer": 1,
+      "explanation": "Sorry, we've run out of the chocolate cake. = すみません、チョコレートケーキは売り切れです",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-lis-014",
+      "town": "town03",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "The bill seems to be wrong. We didn't order the salad.",
+      "choices": [
+        "サラダを頼んでいないので、伝票がまちがっていそう",
+        "サラダの代金をまだ払っていない",
+        "サラダを追加で頼みたい",
+        "サラダがまだ来ていない"
+      ],
+      "answer": 0,
+      "explanation": "The bill seems to be wrong. We didn't order the salad. = サラダを頼んでいないので、伝票がまちがっていそう",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-lis-015",
+      "town": "town03",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "I'd like to cancel my reservation for Friday.",
+      "choices": [
+        "金曜日の予約を確認したい",
+        "金曜日の予約を取り消したい",
+        "金曜日に予約したい",
+        "金曜日の予約を変更したい"
+      ],
+      "answer": 1,
+      "explanation": "I'd like to cancel my reservation for Friday. = 金曜日の予約を取り消したい",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-lis-016",
+      "town": "town03",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "Go straight for two blocks, then turn left.",
+      "choices": [
+        "2ブロックまっすぐ進んで、左に曲がる",
+        "2ブロック先の左側にある",
+        "2つ目の角を右に曲がる",
+        "左に曲がって2ブロック進む"
+      ],
+      "answer": 0,
+      "explanation": "Go straight for two blocks, then turn left. = 2ブロックまっすぐ進んで、左に曲がる",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-lis-017",
+      "town": "town03",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "The post office is on the corner, across from the park.",
+      "choices": [
+        "郵便局は角にあって、公園の向かい側",
+        "郵便局は公園のとなり",
+        "郵便局は公園の中の角にある",
+        "郵便局は公園を通り過ぎた先"
+      ],
+      "answer": 0,
+      "explanation": "The post office is on the corner, across from the park. = 郵便局は角にあって、公園の向かい側",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-lis-018",
+      "town": "town03",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "You'd better take a taxi. It's too far to walk.",
+      "choices": [
+        "歩くには遠すぎるので、タクシーがいい",
+        "タクシーで行くと遠回りになる",
+        "タクシーは高いので歩いたほうがいい",
+        "タクシー乗り場は遠い"
+      ],
+      "answer": 0,
+      "explanation": "You'd better take a taxi. It's too far to walk. = 歩くには遠すぎるので、タクシーがいい",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-lis-019",
+      "town": "town03",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "Take the number five bus and get off at City Hall.",
+      "choices": [
+        "5番のバスに乗って、市役所で降りる",
+        "5つ目のバス停で降りる",
+        "市役所から5番のバスに乗る",
+        "バスに5分乗って、市役所で降りる"
+      ],
+      "answer": 0,
+      "explanation": "Take the number five bus and get off at City Hall. = 5番のバスに乗って、市役所で降りる",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-lis-020",
+      "town": "town03",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "The museum is about a ten-minute walk from here.",
+      "choices": [
+        "博物館までは10キロくらい",
+        "博物館までは車で10分くらい",
+        "博物館は10時に開く",
+        "博物館はここから歩いて10分くらい"
+      ],
+      "answer": 3,
+      "explanation": "The museum is about a ten-minute walk from here. = 博物館はここから歩いて10分くらい",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-lis-021",
+      "town": "town03",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "Turn right when you see the gas station.",
+      "choices": [
+        "ガソリンスタンドを過ぎたら左に曲がる",
+        "ガソリンスタンドの手前で止まる",
+        "ガソリンスタンドの右側にある",
+        "ガソリンスタンドが見えたら右に曲がる"
+      ],
+      "answer": 3,
+      "explanation": "Turn right when you see the gas station. = ガソリンスタンドが見えたら右に曲がる",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-lis-022",
+      "town": "town03",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "I'm sorry, I'm not from around here.",
+      "choices": [
+        "すみません、ここで待ち合わせをしています",
+        "すみません、ここに来たのは初めてではありません",
+        "すみません、このあたりの者ではないんです",
+        "すみません、ここから遠くへは行けません"
+      ],
+      "answer": 2,
+      "explanation": "I'm sorry, I'm not from around here. = すみません、このあたりの者ではないんです",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-lis-023",
+      "town": "town03",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "This train doesn't stop at Green Park.",
+      "choices": [
+        "この電車はグリーンパーク駅で止まったまま",
+        "この電車はグリーンパーク駅が終点",
+        "この電車はグリーンパーク駅には止まらない",
+        "この電車はグリーンパーク駅から出る"
+      ],
+      "answer": 2,
+      "explanation": "This train doesn't stop at Green Park. = この電車はグリーンパーク駅には止まらない",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-lis-024",
+      "town": "town03",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "You're going the wrong way. The station is behind you.",
+      "choices": [
+        "道がちがう。駅はうしろの方",
+        "駅への近道がある",
+        "駅はもう少し先",
+        "駅は右側にある"
+      ],
+      "answer": 0,
+      "explanation": "You're going the wrong way. The station is behind you. = 道がちがう。駅はうしろの方",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-lis-025",
+      "town": "town03",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "Excuse me, is this seat taken?",
+      "choices": [
+        "この席で写真をとってもいいですか",
+        "この席に座ってもらえますか",
+        "すみません、この席はふさがっていますか",
+        "この席を予約しましたか"
+      ],
+      "answer": 2,
+      "explanation": "Excuse me, is this seat taken? = すみません、この席はふさがっていますか",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-lis-026",
+      "town": "town03",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "The next train to the airport leaves at 9:45.",
+      "choices": [
+        "空港から9時45分に電車が出る",
+        "空港行きの次の電車は4時45分に出る",
+        "空港行きの電車は9時45分に着く",
+        "空港行きの次の電車は9時45分に出る"
+      ],
+      "answer": 3,
+      "explanation": "The next train to the airport leaves at 9:45. = 空港行きの次の電車は9時45分に出る",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-lis-027",
+      "town": "town03",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "Walk through the park and you'll find the library on the other side.",
+      "choices": [
+        "公園の中に図書館がある",
+        "公園の手前に図書館がある",
+        "公園のまわりを歩くと図書館がある",
+        "公園を通り抜けると、反対側に図書館がある"
+      ],
+      "answer": 3,
+      "explanation": "Walk through the park and you'll find the library on the other side. = 公園を通り抜けると、反対側に図書館がある",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-lis-028",
+      "town": "town03",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "There's a lot of traffic, so it may take longer.",
+      "choices": [
+        "道が混んでいるので、もっと時間がかかるかもしれない",
+        "人が多いので歩きにくい",
+        "信号が多くて遠回りになる",
+        "道が工事中で通れない"
+      ],
+      "answer": 0,
+      "explanation": "There's a lot of traffic, so it may take longer. = 道が混んでいるので、もっと時間がかかるかもしれない",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-lis-029",
+      "town": "town03",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "Could you tell me which exit to use for the stadium?",
+      "choices": [
+        "スタジアムの入口はどこですか",
+        "スタジアムから出る方法を教えてください",
+        "スタジアムへはどの出口を使えばいいか教えてもらえますか",
+        "スタジアムへの出口は閉まっていますか"
+      ],
+      "answer": 2,
+      "explanation": "Could you tell me which exit to use for the stadium? = スタジアムへはどの出口を使えばいいか教えてもらえますか",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-lis-030",
+      "town": "town03",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "聞こえた英文の意味は？",
+      "audio_text": "It's the third building on the right after the bank.",
+      "choices": [
+        "銀行を過ぎて、右側の3つ目の建物",
+        "銀行の右どなりの建物",
+        "銀行の3階",
+        "銀行の手前の、右側の3つ目の建物"
+      ],
+      "answer": 0,
+      "explanation": "It's the third building on the right after the bank. = 銀行を過ぎて、右側の3つ目の建物",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-lis-031",
+      "town": "town03",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "会話を聞いて答えよう：客が注文したものは？",
+      "audio_text": "A: Are you ready to order?\nB: Yes. I'll have the chicken salad and an orange juice.",
+      "choices": [
+        "サラダだけ",
+        "チキンサラダとりんごジュース",
+        "チキンサラダとオレンジジュース",
+        "チキンカレーとオレンジジュース"
+      ],
+      "answer": 2,
+      "explanation": "I'll have 〜 で「〜にします」。chicken salad and an orange juice。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-lis-032",
+      "town": "town03",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "会話を聞いて答えよう：最後には何人になる？",
+      "audio_text": "A: How many people are in your party?\nB: Four, but one more person will join us later.",
+      "choices": [
+        "6人",
+        "3人",
+        "5人",
+        "4人"
+      ],
+      "answer": 2,
+      "explanation": "Four（4人）に、one more person will join us later（あとでもう1人来る）。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-lis-033",
+      "town": "town03",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "会話を聞いて答えよう：銀行のところでどうする？",
+      "audio_text": "A: Excuse me, how do I get to the train station?\nB: Go down this street and turn right at the bank.",
+      "choices": [
+        "まっすぐ進む",
+        "電車に乗る",
+        "左に曲がる",
+        "右に曲がる"
+      ],
+      "answer": 3,
+      "explanation": "turn right at the bank = 銀行のところで右に曲がる。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-lis-034",
+      "town": "town03",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "会話を聞いて答えよう：客がしたいことは？",
+      "audio_text": "A: Would you like something for dessert?\nB: No, thanks. Just the check, please.",
+      "choices": [
+        "デザートを注文したい",
+        "飲み物を追加したい",
+        "デザートはいらず、会計をしたい",
+        "メニューをもう一度見たい"
+      ],
+      "answer": 2,
+      "explanation": "Just the check, please. = お会計だけお願いします。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-lis-035",
+      "town": "town03",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "会話を聞いて答えよう：博物館までは？",
+      "audio_text": "A: Is the museum far from here?\nB: Not really. It's about a fifteen-minute walk.",
+      "choices": [
+        "バスで15分くらい",
+        "歩いて15分くらい",
+        "すぐとなり",
+        "歩いて50分くらい"
+      ],
+      "answer": 1,
+      "explanation": "a fifteen-minute walk = 歩いて15分。fifteen（15）と fifty（50）は聞き分けがむずかしい。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-lis-036",
+      "town": "town03",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "会話を聞いて答えよう：客はどうなる？",
+      "audio_text": "A: Do you have a reservation?\nB: No, we don't. Is there a table for two?\nA: Yes, but you'll have to wait about twenty minutes.",
+      "choices": [
+        "席がないので帰る",
+        "予約がないので、20分ほど待つ",
+        "予約があるので、すぐ座れる",
+        "2時間待つ"
+      ],
+      "answer": 1,
+      "explanation": "No, we don't（予約はない）。you'll have to wait about twenty minutes（20分ほど待つ必要がある）。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-lis-037",
+      "town": "town03",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "会話を聞いて答えよう：空港へ行くバスは？",
+      "audio_text": "A: Which bus goes to the airport?\nB: Number twelve. It leaves from stop C.",
+      "choices": [
+        "12番のバスで、Cの乗り場から出る",
+        "20番のバスで、Cの乗り場から出る",
+        "2番のバスで、Cの乗り場から出る",
+        "12番のバスで、Dの乗り場から出る"
+      ],
+      "answer": 0,
+      "explanation": "Number twelve（12番）、stop C（C乗り場）。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-lis-038",
+      "town": "town03",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "会話を聞いて答えよう：スープについて言っていることは？",
+      "audio_text": "A: How's your soup?\nB: It's good, but it's a little too salty for me.",
+      "choices": [
+        "少し辛すぎる",
+        "まずくて、しょっぱい",
+        "おいしいが、少し冷めている",
+        "おいしいが、少ししょっぱい"
+      ],
+      "answer": 3,
+      "explanation": "It's good, but … too salty = おいしいけれど、しょっぱすぎる。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-lis-039",
+      "town": "town03",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "会話を聞いて答えよう：銀行はどこにある？",
+      "audio_text": "A: Excuse me, is there a bank near here?\nB: Yes, there's one next to the supermarket on Main Street.",
+      "choices": [
+        "メイン通りのスーパーの向かい",
+        "メイン通りのスーパーのとなり",
+        "スーパーの中",
+        "駅のとなり"
+      ],
+      "answer": 1,
+      "explanation": "next to the supermarket = スーパーのとなり。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-lis-040",
+      "town": "town03",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "会話を聞いて答えよう：このあと、最初に話した人がすることは？",
+      "audio_text": "A: Shall we eat out tonight?\nB: Sure. How about that new Italian restaurant?\nA: Sounds great. I'll book a table.",
+      "choices": [
+        "料理を作る",
+        "本を買う",
+        "イタリアへ行く",
+        "席を予約する"
+      ],
+      "answer": 3,
+      "explanation": "I'll book a table. = 席を予約します（book = 予約する）。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-lis-041",
+      "town": "town03",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "会話を聞いて答えよう：客はどうすればいい？",
+      "audio_text": "A: Can I pay by card?\nB: I'm sorry, we only take cash. There's an ATM across the street.",
+      "choices": [
+        "カードで払う",
+        "明日払いに来る",
+        "となりの店で両替する",
+        "通りの向かいのATMで現金をおろす"
+      ],
+      "answer": 3,
+      "explanation": "we only take cash（現金だけ）。There's an ATM across the street（通りの向かいにATMがある）。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-lis-042",
+      "town": "town03",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "会話を聞いて答えよう：リバーサイドへ行くには？",
+      "audio_text": "A: Excuse me, does this train go to Riverside?\nB: No, you need to change at the next station.",
+      "choices": [
+        "次の駅で乗りかえる",
+        "次の駅で降りて歩く",
+        "この電車でそのまま行ける",
+        "反対方向の電車に乗る"
+      ],
+      "answer": 0,
+      "explanation": "change at the next station = 次の駅で乗りかえる。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-lis-043",
+      "town": "town03",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "会話を聞いて答えよう：店員がすすめたものは？",
+      "audio_text": "A: What would you recommend?\nB: The fish of the day is very popular. It's grilled with lemon.",
+      "choices": [
+        "レモンケーキ",
+        "魚のフライ",
+        "本日の魚料理（レモンと焼いたもの）",
+        "人気のパスタ"
+      ],
+      "answer": 2,
+      "explanation": "the fish of the day = 本日の魚料理。grilled = 焼いた。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-lis-044",
+      "town": "town03",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "会話を聞いて答えよう：図書館はどこにある？",
+      "audio_text": "A: I'm looking for the city library.\nB: It's on the second floor of that tall building.",
+      "choices": [
+        "あの高い建物の2階",
+        "あの高い建物の2つ先",
+        "2つ目の高い建物",
+        "あの高い建物の地下"
+      ],
+      "answer": 0,
+      "explanation": "on the second floor = 2階に。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-lis-045",
+      "town": "town03",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "会話を聞いて答えよう：店員がすることは？",
+      "audio_text": "A: Could I have some more water, please?\nB: Of course. I'll bring it right away.",
+      "choices": [
+        "お茶を持ってくる",
+        "すぐに水を持ってくる",
+        "水を片付ける",
+        "あとで水を持ってくる"
+      ],
+      "answer": 1,
+      "explanation": "right away = すぐに。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-lis-046",
+      "town": "town03",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "会話を聞いて答えよう：正しいのは？",
+      "audio_text": "A: How long does it take to get to the beach by bus?\nB: About forty minutes, but it's faster by train.",
+      "choices": [
+        "バスで40分くらい。電車のほうが速い",
+        "バスで40分くらい。電車は走っていない",
+        "電車で40分くらい。バスのほうが速い",
+        "バスで14分くらい。電車のほうが速い"
+      ],
+      "answer": 0,
+      "explanation": "About forty minutes（バスで40分くらい）、it's faster by train（電車のほうが速い）。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-lis-047",
+      "town": "town03",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "会話を聞いて答えよう：客の様子は？",
+      "audio_text": "A: Are you finished with your plate?\nB: Not yet. I'm still eating.",
+      "choices": [
+        "まだ食べている",
+        "お皿をかえてほしい",
+        "おなかがいっぱい",
+        "もう食べ終わった"
+      ],
+      "answer": 0,
+      "explanation": "Not yet. I'm still eating. = まだです。食べているところです。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-lis-048",
+      "town": "town03",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "会話を聞いて答えよう：切符を買える場所は？",
+      "audio_text": "A: Excuse me, where can I buy a ticket?\nB: You can use the machines over there, or the window next to the gate.",
+      "choices": [
+        "電車の中",
+        "あそこの券売機か、改札のとなりの窓口",
+        "あそこの売店",
+        "改札の中の窓口だけ"
+      ],
+      "answer": 1,
+      "explanation": "the machines over there（あそこの機械）、the window next to the gate（改札のとなりの窓口）。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-lis-049",
+      "town": "town03",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "会話を聞いて答えよう：店員がすることは？",
+      "audio_text": "A: I'm sorry, I spilled my juice.\nB: Don't worry. I'll get a towel and a new glass.",
+      "choices": [
+        "タオルと新しいグラスを持ってくる",
+        "席をかえる",
+        "ほかの店員を呼ぶ",
+        "ジュースの代金を返す"
+      ],
+      "answer": 0,
+      "explanation": "I'll get a towel and a new glass. = タオルと新しいグラスを持ってきます。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-lis-050",
+      "town": "town03",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "会話を聞いて答えよう：日曜日のショッピングモールは？",
+      "audio_text": "A: Is the shopping mall open on Sundays?\nB: Yes, but it closes early, at six.",
+      "choices": [
+        "休み",
+        "いつもより遅くまで開いている",
+        "開いているが、6時に早めに閉まる",
+        "6時に開く"
+      ],
+      "answer": 2,
+      "explanation": "it closes early, at six = 6時に早めに閉まる。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-lis-051",
+      "town": "town03",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "会話を聞いて答えよう：待ち合わせは？",
+      "audio_text": "A: Let's meet in front of the station at noon.\nB: OK. Which exit?\nA: The north exit, near the clock.",
+      "choices": [
+        "正午に、駅の南口の時計の近く",
+        "正午に、時計店の前で",
+        "午後2時に、駅の北口で",
+        "正午に、駅の北口の時計の近く"
+      ],
+      "answer": 3,
+      "explanation": "at noon（正午に）、the north exit, near the clock（北口の時計の近く）。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-lis-052",
+      "town": "town03",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "会話を聞いて答えよう：提案されたことは？",
+      "audio_text": "A: This place is so crowded.\nB: Yeah. Why don't we get some sandwiches and eat in the park?",
+      "choices": [
+        "公園で料理を作る",
+        "ほかの店にならぶ",
+        "この店でサンドイッチを食べる",
+        "サンドイッチを買って公園で食べる"
+      ],
+      "answer": 3,
+      "explanation": "Why don't we 〜? = 〜しませんか。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-lis-053",
+      "town": "town03",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "会話を聞いて答えよう：博物館へ行くには？",
+      "audio_text": "A: Excuse me, is the City Museum this way?\nB: No, it's the other way. Go back to the traffic light and turn left.",
+      "choices": [
+        "信号までもどって左に曲がる",
+        "信号を過ぎて右に曲がる",
+        "となりの道に入る",
+        "このまま進んで左に曲がる"
+      ],
+      "answer": 0,
+      "explanation": "it's the other way（反対の方向）。Go back to the traffic light and turn left.（信号までもどって左）。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-lis-054",
+      "town": "town03",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "会話を聞いて答えよう：客のコーヒーは？",
+      "audio_text": "A: How would you like your coffee?\nB: With milk, no sugar, please.",
+      "choices": [
+        "ミルクも砂糖も入れる",
+        "ミルクも砂糖もなし",
+        "ミルクを入れて、砂糖なし",
+        "砂糖を入れて、ミルクなし"
+      ],
+      "answer": 2,
+      "explanation": "With milk, no sugar = ミルク入り、砂糖なし。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-lis-055",
+      "town": "town03",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "会話を聞いて答えよう：客がこまっていることは？",
+      "audio_text": "A: Excuse me. We ordered twenty minutes ago, but our food hasn't come yet.\nB: I'm very sorry. I'll check with the kitchen.",
+      "choices": [
+        "20分前に注文した料理が、まだ来ない",
+        "料理がまちがっている",
+        "料理が冷めている",
+        "20分待ってもメニューが来ない"
+      ],
+      "answer": 0,
+      "explanation": "our food hasn't come yet = 料理がまだ来ない。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-lis-056",
+      "town": "town03",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "会話を聞いて答えよう：すすめられた店は？",
+      "audio_text": "A: Can you recommend a good place for lunch near here?\nB: There's a nice noodle shop around the corner. It's cheap and fast.",
+      "choices": [
+        "角を曲がったところの、安くて早いめん類の店",
+        "遠いけれどおいしいすし屋",
+        "駅前の高いめん類の店",
+        "角のパン屋"
+      ],
+      "answer": 0,
+      "explanation": "around the corner = 角を曲がったところに。cheap and fast = 安くて早い。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-lis-057",
+      "town": "town03",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "会話を聞いて答えよう：ヒルタウン行きの電車は？",
+      "audio_text": "A: Which platform is the train for Hill Town?\nB: Platform three. But it's delayed by ten minutes.",
+      "choices": [
+        "3番線で、10分おくれている",
+        "3番線で、10分早く出る",
+        "10番線で、3分おくれている",
+        "3番線で、時間どおり"
+      ],
+      "answer": 0,
+      "explanation": "Platform three（3番線）、delayed by ten minutes（10分おくれ）。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-lis-058",
+      "town": "town03",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "会話を聞いて答えよう：2人はどうする？",
+      "audio_text": "A: Would you like to share a dessert?\nB: Good idea. Let's get the apple pie.",
+      "choices": [
+        "アップルパイを持ち帰る",
+        "アップルパイを2つ頼む",
+        "アップルパイを1つ分けて食べる",
+        "デザートは頼まない"
+      ],
+      "answer": 2,
+      "explanation": "share a dessert = デザートを分け合う。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-lis-059",
+      "town": "town03",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "会話を聞いて答えよう：2人はどんな様子？",
+      "audio_text": "A: I think we're lost. Let's ask someone.\nB: Good idea. Excuse me, where is Lake Street?",
+      "choices": [
+        "友だちを探している",
+        "道に迷ったので、人にたずねる",
+        "地図を買う",
+        "湖を見に行く"
+      ],
+      "answer": 1,
+      "explanation": "we're lost = 道に迷った。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-lis-060",
+      "town": "town03",
+      "skill": "listening",
+      "format": "choice4",
+      "prompt": "会話を聞いて答えよう：客の感想は？",
+      "audio_text": "A: Thank you for coming. How was everything?\nB: It was wonderful. We'll definitely come back.",
+      "choices": [
+        "料理がおそかった",
+        "とてもよかったので、また来る",
+        "次は別の店に行く",
+        "よかったが、もう来ない"
+      ],
+      "answer": 1,
+      "explanation": "We'll definitely come back. = 必ずまた来ます。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-rea-001",
+      "town": "town03",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "ランチの時間は？",
+      "sentence": "LUNCH MENU (11 a.m. – 2 p.m.)\nPasta of the day ... $9\nChicken curry ... $10\nGreen salad ... $6\nAll lunches come with free coffee or tea.",
+      "choices": [
+        "午前11時から正午",
+        "午後2時から",
+        "午後11時から午前2時",
+        "午前11時から午後2時"
+      ],
+      "answer": 3,
+      "explanation": "11 a.m. – 2 p.m. = 午前11時から午後2時。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-rea-002",
+      "town": "town03",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "ランチに無料でつくものは？",
+      "sentence": "LUNCH MENU (11 a.m. – 2 p.m.)\nPasta of the day ... $9\nChicken curry ... $10\nGreen salad ... $6\nAll lunches come with free coffee or tea.",
+      "choices": [
+        "デザート",
+        "コーヒーか紅茶",
+        "パン",
+        "サラダ"
+      ],
+      "answer": 1,
+      "explanation": "come with free coffee or tea = 無料のコーヒーか紅茶がつく。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-rea-003",
+      "town": "town03",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "日曜日は？",
+      "sentence": "Café Hours\nMon–Fri: 7 a.m. – 7 p.m.\nSat: 8 a.m. – 5 p.m.\nClosed on Sundays",
+      "choices": [
+        "午後5時に閉まる",
+        "午前7時から開く",
+        "午前8時から開く",
+        "休み"
+      ],
+      "answer": 3,
+      "explanation": "Closed on Sundays = 日曜日は休み。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-rea-004",
+      "town": "town03",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "土曜日に閉まる時間は？",
+      "sentence": "Café Hours\nMon–Fri: 7 a.m. – 7 p.m.\nSat: 8 a.m. – 5 p.m.\nClosed on Sundays",
+      "choices": [
+        "午後8時",
+        "午後5時",
+        "午前8時",
+        "午後7時"
+      ],
+      "answer": 1,
+      "explanation": "Sat: 8 a.m. – 5 p.m.",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-rea-005",
+      "town": "town03",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "本日のおすすめは何食限定？",
+      "sentence": "Today's Special\nBeef stew with bread ... $12\n(Only 20 servings!)",
+      "choices": [
+        "12食",
+        "限定なし",
+        "20食",
+        "2食"
+      ],
+      "answer": 2,
+      "explanation": "Only 20 servings = 20食だけ。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-rea-006",
+      "town": "town03",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "ビーフシチューについてくるものは？",
+      "sentence": "Today's Special\nBeef stew with bread ... $12\n(Only 20 servings!)",
+      "choices": [
+        "パン",
+        "ごはん",
+        "スープ",
+        "サラダ"
+      ],
+      "answer": 0,
+      "explanation": "with bread = パンつき。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-rea-007",
+      "town": "town03",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "この料理に入っているものは？",
+      "sentence": "Allergy information:\nThis dish contains nuts and milk.\nPlease ask our staff if you have any allergies.",
+      "choices": [
+        "ナッツと牛乳",
+        "小麦と牛乳",
+        "ナッツと卵",
+        "何も入っていない"
+      ],
+      "answer": 0,
+      "explanation": "contains nuts and milk = ナッツと牛乳が入っている。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-rea-008",
+      "town": "town03",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "アレルギーがある人は、どうするように書いてある？",
+      "sentence": "Allergy information:\nThis dish contains nuts and milk.\nPlease ask our staff if you have any allergies.",
+      "choices": [
+        "お店の人にたずねる",
+        "自分でメニューを調べる",
+        "席をかえる",
+        "となりの店に行く"
+      ],
+      "answer": 0,
+      "explanation": "Please ask our staff = 店員にたずねてください。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-rea-009",
+      "town": "town03",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "午後3時から5時のあいだは？",
+      "sentence": "Sorry! The kitchen is closed for cleaning from 3 p.m. to 5 p.m.\nDrinks are still available.",
+      "choices": [
+        "料理はないが、飲み物は頼める",
+        "飲み物もない",
+        "料理だけ頼める",
+        "店が全部閉まる"
+      ],
+      "answer": 0,
+      "explanation": "Drinks are still available. = 飲み物は頼める。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-rea-010",
+      "town": "town03",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "キッチンが閉まる理由は？",
+      "sentence": "Sorry! The kitchen is closed for cleaning from 3 p.m. to 5 p.m.\nDrinks are still available.",
+      "choices": [
+        "そうじのため",
+        "休けいのため",
+        "工事のため",
+        "材料がないため"
+      ],
+      "answer": 0,
+      "explanation": "closed for cleaning = そうじのために閉まる。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-rea-011",
+      "town": "town03",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "駅のどの出口から出る？",
+      "sentence": "Hi Ken! From the station, take the south exit. Walk straight for five minutes. My house is the blue one next to the bakery.",
+      "choices": [
+        "南口",
+        "北口",
+        "西口",
+        "東口"
+      ],
+      "answer": 0,
+      "explanation": "take the south exit = 南口から出る。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-rea-012",
+      "town": "town03",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "家の目印は？",
+      "sentence": "Hi Ken! From the station, take the south exit. Walk straight for five minutes. My house is the blue one next to the bakery.",
+      "choices": [
+        "青い看板のパン屋",
+        "パン屋のとなりの青い家",
+        "駅のとなりの家",
+        "パン屋の向かいの青い家"
+      ],
+      "answer": 1,
+      "explanation": "the blue one next to the bakery = パン屋のとなりの青い家。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-rea-013",
+      "town": "town03",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "今週末、パーク駅では？",
+      "sentence": "Due to track repairs, trains will not stop at Park Station this weekend.\nPlease use the bus service instead.",
+      "choices": [
+        "電車が早く出る",
+        "駅が新しくなる",
+        "電車が止まらない",
+        "電車が無料になる"
+      ],
+      "answer": 2,
+      "explanation": "trains will not stop at Park Station = パーク駅に電車は止まらない。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-rea-014",
+      "town": "town03",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "かわりに何を使うように書いてある？",
+      "sentence": "Due to track repairs, trains will not stop at Park Station this weekend.\nPlease use the bus service instead.",
+      "choices": [
+        "自転車",
+        "バス",
+        "となりの駅の電車",
+        "タクシー"
+      ],
+      "answer": 1,
+      "explanation": "use the bus service instead = かわりにバスを使って。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-rea-015",
+      "town": "town03",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "図書館の両どなりにあるのは？",
+      "sentence": "The library is on Oak Street, between the post office and the flower shop.\nIt is across from the city park.",
+      "choices": [
+        "郵便局と銀行",
+        "郵便局と花屋",
+        "花屋と公園",
+        "郵便局と公園"
+      ],
+      "answer": 1,
+      "explanation": "between the post office and the flower shop = 郵便局と花屋のあいだ。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-rea-016",
+      "town": "town03",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "図書館の向かいにあるのは？",
+      "sentence": "The library is on Oak Street, between the post office and the flower shop.\nIt is across from the city park.",
+      "choices": [
+        "市の公園",
+        "オーク通りの駅",
+        "郵便局",
+        "花屋"
+      ],
+      "answer": 0,
+      "explanation": "across from the city park = 市の公園の向かい。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-rea-017",
+      "town": "town03",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "この人がほめているのは？",
+      "sentence": "★★★★☆\nGreat pizza and friendly staff! But the place is small, so it gets crowded on weekends. Go early!",
+      "choices": [
+        "店の広さ",
+        "ピザと、店員の感じのよさ",
+        "値段の安さ",
+        "週末のすいていること"
+      ],
+      "answer": 1,
+      "explanation": "Great pizza and friendly staff = ピザがおいしく、店員が親切。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-rea-018",
+      "town": "town03",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "すすめていることは？",
+      "sentence": "★★★★☆\nGreat pizza and friendly staff! But the place is small, so it gets crowded on weekends. Go early!",
+      "choices": [
+        "早めに行くこと",
+        "週末に行くこと",
+        "持ち帰りにすること",
+        "予約すること"
+      ],
+      "answer": 0,
+      "explanation": "Go early! = 早めに行こう。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-rea-019",
+      "town": "town03",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "材料として書かれていないものは？",
+      "sentence": "Easy Pancakes\n1. Mix flour, milk, and an egg.\n2. Heat a pan.\n3. Cook each side for about two minutes.",
+      "choices": [
+        "卵",
+        "牛乳",
+        "砂糖",
+        "小麦粉"
+      ],
+      "answer": 2,
+      "explanation": "flour（小麦粉）、milk（牛乳）、an egg（卵）。砂糖（sugar）はない。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-rea-020",
+      "town": "town03",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "片面を焼く時間は？",
+      "sentence": "Easy Pancakes\n1. Mix flour, milk, and an egg.\n2. Heat a pan.\n3. Cook each side for about two minutes.",
+      "choices": [
+        "約20分",
+        "約2分",
+        "約12分",
+        "約1分"
+      ],
+      "answer": 1,
+      "explanation": "Cook each side for about two minutes. = 片面を約2分焼く。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-rea-021",
+      "town": "town03",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "トイレについて正しいのは？",
+      "sentence": "Restrooms are for customers only.\nPlease ask staff for the key.",
+      "choices": [
+        "客だけが使え、カギは店員にもらう",
+        "店員だけが使える",
+        "客だけが使え、カギはいらない",
+        "だれでも自由に使える"
+      ],
+      "answer": 0,
+      "explanation": "for customers only（客だけ）、ask staff for the key（店員にカギをもらう）。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-rea-022",
+      "town": "town03",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "午後10時ごろのバスは？",
+      "sentence": "Bus 7 to Central Station\nEvery 15 minutes from 6 a.m. to 9 p.m.\nAfter 9 p.m.: every 30 minutes",
+      "choices": [
+        "15分ごとに来る",
+        "30分ごとに来る",
+        "走っていない",
+        "1時間ごとに来る"
+      ],
+      "answer": 1,
+      "explanation": "After 9 p.m.: every 30 minutes = 午後9時からは30分ごと。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-rea-023",
+      "town": "town03",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "7番のバスの行き先は？",
+      "sentence": "Bus 7 to Central Station\nEvery 15 minutes from 6 a.m. to 9 p.m.\nAfter 9 p.m.: every 30 minutes",
+      "choices": [
+        "空港",
+        "中央駅",
+        "7番通り",
+        "市役所"
+      ],
+      "answer": 1,
+      "explanation": "Bus 7 to Central Station = 中央駅行き。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-rea-024",
+      "town": "town03",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "予約の人数は？",
+      "sentence": "Dear Ms. Brown,\nThank you for your reservation. We will see you on May 3 at 7 p.m. for a party of six.\nRiverside Grill",
+      "choices": [
+        "3人",
+        "6人",
+        "7人",
+        "2人"
+      ],
+      "answer": 1,
+      "explanation": "a party of six = 6人の一行。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-rea-025",
+      "town": "town03",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "予約の日時は？",
+      "sentence": "Dear Ms. Brown,\nThank you for your reservation. We will see you on May 3 at 7 p.m. for a party of six.\nRiverside Grill",
+      "choices": [
+        "3月5日の午後7時",
+        "5月3日の午前7時",
+        "5月7日の午後3時",
+        "5月3日の午後7時"
+      ],
+      "answer": 3,
+      "explanation": "May 3 at 7 p.m. = 5月3日の午後7時。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-rea-026",
+      "town": "town03",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "Wi-Fi のパスワードはどこにある？",
+      "sentence": "Free Wi-Fi\nThe password is on your receipt.",
+      "choices": [
+        "レシート",
+        "メニュー",
+        "入口の看板",
+        "テーブルの上"
+      ],
+      "answer": 0,
+      "explanation": "on your receipt = レシートに書いてある。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-rea-027",
+      "town": "town03",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "大人2人と子ども1人の料金は？",
+      "sentence": "City Tour Bus\nStarts at the Tourist Center at 10 a.m.\nTakes about 2 hours\nTickets: Adults $15, Children $8",
+      "choices": [
+        "30ドル",
+        "23ドル",
+        "38ドル",
+        "46ドル"
+      ],
+      "answer": 2,
+      "explanation": "15 × 2 + 8 = 38 ドル。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-rea-028",
+      "town": "town03",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "ツアーが終わるのは何時ごろ？",
+      "sentence": "City Tour Bus\nStarts at the Tourist Center at 10 a.m.\nTakes about 2 hours\nTickets: Adults $15, Children $8",
+      "choices": [
+        "午前10時ごろ",
+        "正午ごろ",
+        "午前11時ごろ",
+        "午後2時ごろ"
+      ],
+      "answer": 1,
+      "explanation": "10時に出て約2時間なので、12時（正午）ごろ。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-rea-029",
+      "town": "town03",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "おくれる理由は？",
+      "sentence": "Sorry, I'm going to be 15 minutes late. The bus is stuck in traffic. Please order without me!",
+      "choices": [
+        "バスが渋滞につかまっている",
+        "道に迷った",
+        "寝ぼうした",
+        "バスに乗りおくれた"
+      ],
+      "answer": 0,
+      "explanation": "The bus is stuck in traffic. = バスが渋滞で動けない。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-rea-030",
+      "town": "town03",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "この人がたのんでいることは？",
+      "sentence": "Sorry, I'm going to be 15 minutes late. The bus is stuck in traffic. Please order without me!",
+      "choices": [
+        "先に注文していてほしい",
+        "待たずに帰ってほしい",
+        "迎えに来てほしい",
+        "席を予約してほしい"
+      ],
+      "answer": 0,
+      "explanation": "Please order without me! = 私を待たずに注文して。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-rea-031",
+      "town": "town03",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "キッズメニューを頼めるのは？",
+      "sentence": "Kids' Menu\nFor children under 10\nEach meal comes with juice and a small ice cream.",
+      "choices": [
+        "10歳以上の子ども",
+        "大人も子どもも",
+        "10歳未満の子ども",
+        "12歳未満の子ども"
+      ],
+      "answer": 2,
+      "explanation": "under 10 = 10歳未満。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-rea-032",
+      "town": "town03",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "キッズメニューについてくるものは？",
+      "sentence": "Kids' Menu\nFor children under 10\nEach meal comes with juice and a small ice cream.",
+      "choices": [
+        "おもちゃ",
+        "ジュースと小さいアイスクリーム",
+        "ジュースとケーキ",
+        "牛乳とクッキー"
+      ],
+      "answer": 1,
+      "explanation": "comes with juice and a small ice cream。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-rea-033",
+      "town": "town03",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "3時間とめると、いくら？",
+      "sentence": "Parking for Restaurant Guests Only\nFirst 2 hours free\nAfter that: $3 per hour",
+      "choices": [
+        "3ドル",
+        "6ドル",
+        "9ドル",
+        "無料"
+      ],
+      "answer": 0,
+      "explanation": "最初の2時間は無料、そのあと1時間3ドルなので、3時間なら3ドル。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-rea-034",
+      "town": "town03",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "この駐車場を使えるのは？",
+      "sentence": "Parking for Restaurant Guests Only\nFirst 2 hours free\nAfter that: $3 per hour",
+      "choices": [
+        "レストランの客",
+        "駅を使う人",
+        "近所の人",
+        "だれでも"
+      ],
+      "answer": 0,
+      "explanation": "for Restaurant Guests Only = レストランの客だけ。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-rea-035",
+      "town": "town03",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "駅を出てからどうする？",
+      "sentence": "Getting here:\nFrom Green Station, take Exit 2. Turn left and walk along the river. We are next to the bridge.",
+      "choices": [
+        "橋を渡って左に曲がる",
+        "まっすぐ橋まで歩く",
+        "左に曲がって、川沿いを歩く",
+        "右に曲がって、川を渡る"
+      ],
+      "answer": 2,
+      "explanation": "Turn left and walk along the river. = 左に曲がって川沿いを歩く。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-rea-036",
+      "town": "town03",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "店の場所は？",
+      "sentence": "Getting here:\nFrom Green Station, take Exit 2. Turn left and walk along the river. We are next to the bridge.",
+      "choices": [
+        "川の中の島",
+        "駅のとなり",
+        "橋の向こう側",
+        "橋のとなり"
+      ],
+      "answer": 3,
+      "explanation": "next to the bridge = 橋のとなり。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-rea-037",
+      "town": "town03",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "8月17日は？",
+      "sentence": "Our restaurant will be closed from August 10 to 16 for summer holidays.\nWe will open again on August 17.",
+      "choices": [
+        "特別メニューがある",
+        "店が閉まる",
+        "夏休みが始まる",
+        "店がまた開く"
+      ],
+      "answer": 3,
+      "explanation": "We will open again on August 17. = 8月17日にまた開く。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-rea-038",
+      "town": "town03",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "休みは何日間？",
+      "sentence": "Our restaurant will be closed from August 10 to 16 for summer holidays.\nWe will open again on August 17.",
+      "choices": [
+        "7日間",
+        "10日間",
+        "6日間",
+        "16日間"
+      ],
+      "answer": 0,
+      "explanation": "10日から16日まで（両方ふくむ）で7日間。",
+      "difficulty": 3,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-rea-039",
+      "town": "town03",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "無料の1杯をもらうには、あと何杯買えばいい？",
+      "sentence": "Coffee Card\nBuy 9 coffees, get the 10th free!\nStamps: ● ● ● ● ● ● ●",
+      "choices": [
+        "あと3杯",
+        "あと2杯",
+        "あと1杯",
+        "あと10杯"
+      ],
+      "answer": 1,
+      "explanation": "スタンプは7つ。9杯買うと10杯目が無料なので、あと2杯。",
+      "difficulty": 3,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-rea-040",
+      "town": "town03",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "電車に乗るには？",
+      "sentence": "Taxi →\nBus ←\nTrain: go down one floor",
+      "choices": [
+        "1つ下の階へ行く",
+        "右へ行く",
+        "左へ行く",
+        "1つ上の階へ行く"
+      ],
+      "answer": 0,
+      "explanation": "go down one floor = 1つ下の階へ行く。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-rea-041",
+      "town": "town03",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "バス乗り場は？",
+      "sentence": "Taxi →\nBus ←\nTrain: go down one floor",
+      "choices": [
+        "下の階",
+        "右",
+        "上の階",
+        "左"
+      ],
+      "answer": 3,
+      "explanation": "Bus ← = バスは左。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-rea-042",
+      "town": "town03",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "テーブル5の客は、何人だと考えられる？",
+      "sentence": "Table 5\n2 x Hamburger\n1 x Fish and chips\n3 x Lemonade",
+      "choices": [
+        "6人",
+        "2人",
+        "5人",
+        "3人"
+      ],
+      "answer": 3,
+      "explanation": "料理が3つ（ハンバーガー2つとフィッシュアンドチップス1つ）、レモネードが3つなので3人。",
+      "difficulty": 3,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-rea-043",
+      "town": "town03",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "ハンバーガーはいくつ？",
+      "sentence": "Table 5\n2 x Hamburger\n1 x Fish and chips\n3 x Lemonade",
+      "choices": [
+        "3つ",
+        "2つ",
+        "5つ",
+        "1つ"
+      ],
+      "answer": 1,
+      "explanation": "2 x Hamburger = ハンバーガー2つ。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-rea-044",
+      "town": "town03",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "この入口について正しいのは？",
+      "sentence": "Wet Floor\nPlease use the other entrance.",
+      "choices": [
+        "傘を置いてから入る",
+        "床がぬれているので、別の入口を使う",
+        "足をふいてから入る",
+        "入口は工事中で使えない"
+      ],
+      "answer": 1,
+      "explanation": "Wet Floor = 床がぬれている。use the other entrance = 別の入口を使う。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-rea-045",
+      "town": "town03",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "市場について正しいのは？",
+      "sentence": "The new food market opened last Saturday near Central Park. It has more than 30 food stalls from around the world. It is open every day until 10 p.m.",
+      "choices": [
+        "世界中の料理の屋台が30より多くある",
+        "夜10時に開く",
+        "30か国の料理がある",
+        "先週の日曜日に開いた"
+      ],
+      "answer": 0,
+      "explanation": "more than 30 food stalls from around the world = 世界中の屋台が30より多い。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-rea-046",
+      "town": "town03",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "市場が開いているのは？",
+      "sentence": "The new food market opened last Saturday near Central Park. It has more than 30 food stalls from around the world. It is open every day until 10 p.m.",
+      "choices": [
+        "毎日、夜10時から",
+        "毎日、夜10時まで",
+        "週末だけ",
+        "平日の夜10時から"
+      ],
+      "answer": 1,
+      "explanation": "open every day until 10 p.m. = 毎日、夜10時まで。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-rea-047",
+      "town": "town03",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "朝食の場所は？",
+      "sentence": "Breakfast is served in the restaurant on the 2nd floor from 6:30 to 9:30 a.m.",
+      "choices": [
+        "部屋",
+        "9階のレストラン",
+        "1階のロビー",
+        "2階のレストラン"
+      ],
+      "answer": 3,
+      "explanation": "in the restaurant on the 2nd floor = 2階のレストランで。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-rea-048",
+      "town": "town03",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "朝食が終わる時間は？",
+      "sentence": "Breakfast is served in the restaurant on the 2nd floor from 6:30 to 9:30 a.m.",
+      "choices": [
+        "午前6時30分",
+        "午前9時30分",
+        "午前10時",
+        "午前9時"
+      ],
+      "answer": 1,
+      "explanation": "from 6:30 to 9:30 a.m. = 午前6時30分から9時30分まで。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-rea-049",
+      "town": "town03",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "カフェの場所は？",
+      "sentence": "Let's meet at the café across from the bookstore. I'll wait inside by the window.",
+      "choices": [
+        "本屋の中",
+        "本屋の向かい",
+        "本屋の2階",
+        "本屋のとなり"
+      ],
+      "answer": 1,
+      "explanation": "across from the bookstore = 本屋の向かい。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-rea-050",
+      "town": "town03",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "この人が待っている場所は？",
+      "sentence": "Let's meet at the café across from the bookstore. I'll wait inside by the window.",
+      "choices": [
+        "カフェの入口",
+        "本屋の窓ぎわ",
+        "カフェの中の窓ぎわ",
+        "カフェの外"
+      ],
+      "answer": 2,
+      "explanation": "inside by the window = 中の窓ぎわで。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-rea-051",
+      "town": "town03",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "午後9時45分に店に入ると？",
+      "sentence": "Last Order 9:30 p.m.\nWe close at 10 p.m.",
+      "choices": [
+        "もう料理を注文できない",
+        "10時まで外で待つ",
+        "店はもう閉まっている",
+        "まだ料理を注文できる"
+      ],
+      "answer": 0,
+      "explanation": "Last Order 9:30 p.m. = 最後の注文は午後9時30分まで。店は10時まで開いている。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-rea-052",
+      "town": "town03",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "雨が降ったら？",
+      "sentence": "Food Festival\nSaturday, June 8\nCity Square, 11 a.m. – 8 p.m.\nIf it rains, the event will be held on Sunday.",
+      "choices": [
+        "次の週の土曜日に行う",
+        "日曜日に行う",
+        "中止になる",
+        "屋内で行う"
+      ],
+      "answer": 1,
+      "explanation": "If it rains, … on Sunday. = 雨なら日曜日に行う。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-rea-053",
+      "town": "town03",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "どこで行う？",
+      "sentence": "Food Festival\nSaturday, June 8\nCity Square, 11 a.m. – 8 p.m.\nIf it rains, the event will be held on Sunday.",
+      "choices": [
+        "市の広場",
+        "市役所の中",
+        "学校",
+        "公園"
+      ],
+      "answer": 0,
+      "explanation": "City Square = 市の広場。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-rea-054",
+      "town": "town03",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "城に入れる最後の時間は？",
+      "sentence": "How to get to the castle:\nTake the Red Line to Castle Hill. It's a 5-minute walk from the station.\nOpen 9 a.m. – 5 p.m. (last entry 4:30 p.m.)",
+      "choices": [
+        "午後4時",
+        "午後5時",
+        "午前9時",
+        "午後4時30分"
+      ],
+      "answer": 3,
+      "explanation": "last entry 4:30 p.m. = 最後の入場は午後4時30分。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-rea-055",
+      "town": "town03",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "城へ行くには？",
+      "sentence": "How to get to the castle:\nTake the Red Line to Castle Hill. It's a 5-minute walk from the station.\nOpen 9 a.m. – 5 p.m. (last entry 4:30 p.m.)",
+      "choices": [
+        "駅から50分歩く",
+        "レッドラインに5駅乗る",
+        "キャッスルヒル駅からバスに乗る",
+        "レッドラインでキャッスルヒル駅へ行き、5分歩く"
+      ],
+      "answer": 3,
+      "explanation": "Take the Red Line to Castle Hill. It's a 5-minute walk from the station.",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-rea-056",
+      "town": "town03",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "お金を払うのはいつ？",
+      "sentence": "Self-service\n1. Take a tray.\n2. Choose your food.\n3. Pay at the end of the line.",
+      "choices": [
+        "席についてから",
+        "料理を選んだあと、列の最後で",
+        "トレーを取る前に",
+        "食べ終わってから"
+      ],
+      "answer": 1,
+      "explanation": "Pay at the end of the line. = 列の最後で払う。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-rea-057",
+      "town": "town03",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "最初にすることは？",
+      "sentence": "Self-service\n1. Take a tray.\n2. Choose your food.\n3. Pay at the end of the line.",
+      "choices": [
+        "料理を選ぶ",
+        "お金を払う",
+        "席を取る",
+        "トレーを取る"
+      ],
+      "answer": 3,
+      "explanation": "1. Take a tray. = まずトレーを取る。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-rea-058",
+      "town": "town03",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "1日借りるといくら？",
+      "sentence": "Bike Rental\n$5 for 1 hour, $15 for the whole day\nPlease return bikes by 6 p.m.",
+      "choices": [
+        "15ドル",
+        "30ドル",
+        "6ドル",
+        "5ドル"
+      ],
+      "answer": 0,
+      "explanation": "$15 for the whole day = 1日15ドル。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-rea-059",
+      "town": "town03",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "自転車を返す時間は？",
+      "sentence": "Bike Rental\n$5 for 1 hour, $15 for the whole day\nPlease return bikes by 6 p.m.",
+      "choices": [
+        "次の日の朝まで",
+        "午後6時まで",
+        "1時間後",
+        "午後5時まで"
+      ],
+      "answer": 1,
+      "explanation": "return bikes by 6 p.m. = 午後6時までに返す。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-rea-060",
+      "town": "town03",
+      "skill": "reading",
+      "format": "choice4",
+      "prompt": "今日は、どうやって上の階へ行く？",
+      "sentence": "Notice: The elevator is not working today.\nPlease use the stairs on your right.",
+      "choices": [
+        "エスカレーターを使う",
+        "エレベーターを使う",
+        "左側の階段を使う",
+        "右側の階段を使う"
+      ],
+      "answer": 3,
+      "explanation": "use the stairs on your right = 右側の階段を使う。",
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-wri-001",
+      "town": "town03",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "今夜7時に2人で予約したいのですが。",
+      "model_answers": [
+        "I'd like to make a reservation for two at seven tonight.",
+        "I'd like to book a table for two at 7 tonight."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-wri-002",
+      "town": "town03",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "窓ぎわの席はありますか。",
+      "model_answers": [
+        "Do you have a table by the window?",
+        "Is there a table by the window?"
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-wri-003",
+      "town": "town03",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "おすすめは何ですか。",
+      "model_answers": [
+        "What do you recommend?",
+        "What would you recommend?"
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-wri-004",
+      "town": "town03",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "この料理には何が入っていますか。",
+      "model_answers": [
+        "What's in this dish?",
+        "What is in this dish?"
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-wri-005",
+      "town": "town03",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "私はえびのアレルギーがあります。",
+      "model_answers": [
+        "I'm allergic to shrimp.",
+        "I have a shrimp allergy."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-wri-006",
+      "town": "town03",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "ハンバーガーとコーラをください。",
+      "model_answers": [
+        "I'll have a hamburger and a cola, please.",
+        "A hamburger and a Coke, please.",
+        "Can I have a hamburger and a cola?"
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-wri-007",
+      "town": "town03",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "持ち帰りでお願いします。",
+      "model_answers": [
+        "To go, please.",
+        "I'd like it to go.",
+        "Can I get it to go?"
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-wri-008",
+      "town": "town03",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "お水をもう少しもらえますか。",
+      "model_answers": [
+        "Could I have some more water?",
+        "Can I get some more water, please?"
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-wri-009",
+      "town": "town03",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "このスープは少し冷めています。",
+      "model_answers": [
+        "This soup is a little cold.",
+        "The soup is a bit cold."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-wri-010",
+      "town": "town03",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "お会計をお願いします。",
+      "model_answers": [
+        "Check, please.",
+        "Could we have the check, please?",
+        "Can I have the bill, please?"
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-wri-011",
+      "town": "town03",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "カードで払ってもいいですか。",
+      "model_answers": [
+        "Can I pay by card?",
+        "Can I pay with a credit card?"
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-wri-012",
+      "town": "town03",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "割り勘にしましょう。",
+      "model_answers": [
+        "Let's split the bill.",
+        "Let's go Dutch."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-wri-013",
+      "town": "town03",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "今日は私がおごります。",
+      "model_answers": [
+        "It's my treat today.",
+        "I'll pay today.",
+        "Today is on me."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-wri-014",
+      "town": "town03",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "デザートは何がありますか。",
+      "model_answers": [
+        "What do you have for dessert?",
+        "What desserts do you have?"
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-wri-015",
+      "town": "town03",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "ステーキはよく焼いてください。",
+      "model_answers": [
+        "Well done, please.",
+        "I'd like my steak well done.",
+        "Could you make my steak well done?"
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-wri-016",
+      "town": "town03",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "これは注文したものではありません。",
+      "model_answers": [
+        "This isn't what I ordered.",
+        "This is not what I ordered."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-wri-017",
+      "town": "town03",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "料理がまだ来ていません。",
+      "model_answers": [
+        "Our food hasn't come yet.",
+        "My food hasn't arrived yet."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-wri-018",
+      "town": "town03",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "残りを持ち帰ってもいいですか。",
+      "model_answers": [
+        "Can I take the rest home?",
+        "Could I get a box for the leftovers?"
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-wri-019",
+      "town": "town03",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "ここで食べます。",
+      "model_answers": [
+        "I'll eat here.",
+        "For here, please."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-wri-020",
+      "town": "town03",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "とてもおいしかったです。",
+      "model_answers": [
+        "It was delicious.",
+        "It was very good.",
+        "That was really delicious."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-wri-021",
+      "town": "town03",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "もうおなかがいっぱいです。",
+      "model_answers": [
+        "I'm full.",
+        "I'm already full."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-wri-022",
+      "town": "town03",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "メニューをもう一度見せてもらえますか。",
+      "model_answers": [
+        "Could I see the menu again?",
+        "Can I have the menu again?"
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-wri-023",
+      "town": "town03",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "辛くない料理はありますか。",
+      "model_answers": [
+        "Do you have any dishes that aren't spicy?",
+        "Do you have anything that is not spicy?"
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-wri-024",
+      "town": "town03",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "どれくらい待ちますか。",
+      "model_answers": [
+        "How long is the wait?",
+        "How long will we have to wait?",
+        "How long do we need to wait?"
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-wri-025",
+      "town": "town03",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "明日の夕食はどこで食べましょうか。",
+      "model_answers": [
+        "Where shall we eat dinner tomorrow?",
+        "Where should we have dinner tomorrow?"
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-wri-026",
+      "town": "town03",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "新しいラーメン屋に行ってみませんか。",
+      "model_answers": [
+        "Why don't we try the new ramen shop?",
+        "Shall we try the new ramen shop?",
+        "How about going to the new ramen shop?"
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-wri-027",
+      "town": "town03",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "私は今週末、家族のために料理をするつもりです。",
+      "model_answers": [
+        "I'm going to cook for my family this weekend.",
+        "I will cook for my family this weekend."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-wri-028",
+      "town": "town03",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "あなたが来たとき、私は昼ごはんを食べていました。",
+      "model_answers": [
+        "I was eating lunch when you came.",
+        "I was having lunch when you came."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-wri-029",
+      "town": "town03",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "このお店はいつも混んでいます。",
+      "model_answers": [
+        "This restaurant is always crowded.",
+        "This place is always busy."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-wri-030",
+      "town": "town03",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "飲み物は食後にお願いします。",
+      "model_answers": [
+        "Could I have my drink after the meal?",
+        "I'd like my drink after the meal, please."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-wri-031",
+      "town": "town03",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "すみません、駅はどこですか。",
+      "model_answers": [
+        "Excuse me, where is the station?",
+        "Excuse me, where is the train station?"
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-wri-032",
+      "town": "town03",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "郵便局への行き方を教えてくれませんか。",
+      "model_answers": [
+        "Could you tell me how to get to the post office?",
+        "Could you tell me the way to the post office?"
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-wri-033",
+      "town": "town03",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "ここから歩いて行けますか。",
+      "model_answers": [
+        "Can I walk there from here?",
+        "Is it within walking distance?"
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-wri-034",
+      "town": "town03",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "まっすぐ行って、2つ目の角を左に曲がってください。",
+      "model_answers": [
+        "Go straight and turn left at the second corner.",
+        "Go straight and take the second left."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-wri-035",
+      "town": "town03",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "銀行は本屋のとなりにあります。",
+      "model_answers": [
+        "The bank is next to the bookstore.",
+        "The bank is next to the bookshop."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-wri-036",
+      "town": "town03",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "駅は公園の向かいにあります。",
+      "model_answers": [
+        "The station is across from the park.",
+        "The station is opposite the park."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-wri-037",
+      "town": "town03",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "道に迷ってしまいました。",
+      "model_answers": [
+        "I'm lost.",
+        "I got lost."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-wri-038",
+      "town": "town03",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "ここはどこですか。",
+      "model_answers": [
+        "Where am I?",
+        "Where are we?"
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-wri-039",
+      "town": "town03",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "この地図で場所を教えてもらえますか。",
+      "model_answers": [
+        "Could you show me on this map?",
+        "Can you show me where it is on this map?"
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-wri-040",
+      "town": "town03",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "空港へ行くバスはどれですか。",
+      "model_answers": [
+        "Which bus goes to the airport?",
+        "Which bus should I take to the airport?"
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-wri-041",
+      "town": "town03",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "次の駅で乗りかえてください。",
+      "model_answers": [
+        "Change trains at the next station.",
+        "Please change at the next station."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-wri-042",
+      "town": "town03",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "3つ目の駅で降りてください。",
+      "model_answers": [
+        "Get off at the third station.",
+        "Please get off at the third stop."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-wri-043",
+      "town": "town03",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "そこまでどれくらい時間がかかりますか。",
+      "model_answers": [
+        "How long does it take to get there?",
+        "How long will it take to get there?"
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-wri-044",
+      "town": "town03",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "タクシーで15分くらいです。",
+      "model_answers": [
+        "It's about fifteen minutes by taxi.",
+        "It takes about 15 minutes by taxi."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-wri-045",
+      "town": "town03",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "この電車は博物館の近くに止まりますか。",
+      "model_answers": [
+        "Does this train stop near the museum?"
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-wri-046",
+      "town": "town03",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "切符はどこで買えますか。",
+      "model_answers": [
+        "Where can I buy a ticket?",
+        "Where can I get a ticket?"
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-wri-047",
+      "town": "town03",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "橋を渡ると、右側に病院があります。",
+      "model_answers": [
+        "Cross the bridge, and the hospital is on your right.",
+        "After you cross the bridge, you'll see the hospital on your right."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-wri-048",
+      "town": "town03",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "信号のところで右に曲がってください。",
+      "model_answers": [
+        "Turn right at the traffic light.",
+        "Please turn right at the lights."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-wri-049",
+      "town": "town03",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "このあたりにコンビニはありますか。",
+      "model_answers": [
+        "Is there a convenience store around here?",
+        "Is there a convenience store near here?"
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-wri-050",
+      "town": "town03",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "すみません、私もこのあたりは知らないんです。",
+      "model_answers": [
+        "Sorry, I'm not from around here either.",
+        "Sorry, I don't know this area either."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-wri-051",
+      "town": "town03",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "そのお店は大きな赤い建物の2階にあります。",
+      "model_answers": [
+        "The shop is on the second floor of the big red building.",
+        "The store is on the second floor of a big red building."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-wri-052",
+      "town": "town03",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "この道は工事中で通れません。",
+      "model_answers": [
+        "This road is closed for construction.",
+        "You can't use this road because of construction."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-wri-053",
+      "town": "town03",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "公園を通ると近道です。",
+      "model_answers": [
+        "It's a shortcut through the park.",
+        "Going through the park is a shortcut."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-wri-054",
+      "town": "town03",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "すぐにわかりますよ。",
+      "model_answers": [
+        "You can't miss it.",
+        "It's easy to find."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-wri-055",
+      "town": "town03",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "駅の北口で会いましょう。",
+      "model_answers": [
+        "Let's meet at the north exit of the station.",
+        "Let's meet at the station's north exit."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-wri-056",
+      "town": "town03",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "私が電話したとき、あなたは何をしていましたか。",
+      "model_answers": [
+        "What were you doing when I called you?",
+        "What were you doing when I called?"
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-wri-057",
+      "town": "town03",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "明日は電車で美術館に行くつもりです。",
+      "model_answers": [
+        "I'm going to go to the art museum by train tomorrow.",
+        "I'm going to the art museum by train tomorrow."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-wri-058",
+      "town": "town03",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "道がわからなければ、私に電話してください。",
+      "model_answers": [
+        "If you can't find the way, please call me.",
+        "Call me if you get lost."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-wri-059",
+      "town": "town03",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "この通りに沿って5分歩いてください。",
+      "model_answers": [
+        "Walk along this street for five minutes.",
+        "Go along this street for about five minutes."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-wri-060",
+      "town": "town03",
+      "skill": "writing",
+      "format": "translate",
+      "prompt": "英語で書こう",
+      "sentence": "ホテルは駅と銀行のあいだにあります。",
+      "model_answers": [
+        "The hotel is between the station and the bank."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-spe-001",
+      "town": "town03",
+      "skill": "speaking",
+      "format": "translate",
+      "prompt": "英語で言おう",
+      "sentence": "3人ですが、席はありますか。",
+      "model_answers": [
+        "Do you have a table for three?",
+        "There are three of us. Do you have a table?"
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-spe-002",
+      "town": "town03",
+      "skill": "speaking",
+      "format": "translate",
+      "prompt": "英語で言おう",
+      "sentence": "注文をお願いします。",
+      "model_answers": [
+        "We're ready to order.",
+        "Excuse me, we'd like to order."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-spe-003",
+      "town": "town03",
+      "skill": "speaking",
+      "format": "translate",
+      "prompt": "英語で言おう",
+      "sentence": "これにします。",
+      "model_answers": [
+        "I'll have this.",
+        "I'll have this one, please."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-spe-004",
+      "town": "town03",
+      "skill": "speaking",
+      "format": "translate",
+      "prompt": "英語で言おう",
+      "sentence": "チキンカレーを1つと、サラダを2つください。",
+      "model_answers": [
+        "One chicken curry and two salads, please.",
+        "I'll have one chicken curry and two salads."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-spe-005",
+      "town": "town03",
+      "skill": "speaking",
+      "format": "translate",
+      "prompt": "英語で言おう",
+      "sentence": "氷なしでお願いします。",
+      "model_answers": [
+        "No ice, please.",
+        "Without ice, please."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-spe-006",
+      "town": "town03",
+      "skill": "speaking",
+      "format": "translate",
+      "prompt": "英語で言おう",
+      "sentence": "それは辛いですか。",
+      "model_answers": [
+        "Is it spicy?",
+        "Is that spicy?"
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-spe-007",
+      "town": "town03",
+      "skill": "speaking",
+      "format": "translate",
+      "prompt": "英語で言おう",
+      "sentence": "取り皿をもらえますか。",
+      "model_answers": [
+        "Could we have some small plates?",
+        "Can I get an extra plate?"
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-spe-008",
+      "town": "town03",
+      "skill": "speaking",
+      "format": "translate",
+      "prompt": "英語で言おう",
+      "sentence": "おかわりをもらえますか。",
+      "model_answers": [
+        "Can I get a refill?",
+        "Could I have a refill, please?"
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-spe-009",
+      "town": "town03",
+      "skill": "speaking",
+      "format": "translate",
+      "prompt": "英語で言おう",
+      "sentence": "デザートは結構です。",
+      "model_answers": [
+        "No dessert, thank you.",
+        "I'll pass on dessert, thanks."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-spe-010",
+      "town": "town03",
+      "skill": "speaking",
+      "format": "translate",
+      "prompt": "英語で言おう",
+      "sentence": "トイレはどこですか。",
+      "model_answers": [
+        "Where is the restroom?",
+        "Where is the bathroom?"
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-spe-011",
+      "town": "town03",
+      "skill": "speaking",
+      "format": "translate",
+      "prompt": "英語で言おう",
+      "sentence": "予約をキャンセルしたいのですが。",
+      "model_answers": [
+        "I'd like to cancel my reservation.",
+        "I want to cancel my reservation."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-spe-012",
+      "town": "town03",
+      "skill": "speaking",
+      "format": "translate",
+      "prompt": "英語で言おう",
+      "sentence": "ここに座ってもいいですか。",
+      "model_answers": [
+        "Can I sit here?",
+        "Is this seat free?",
+        "May I sit here?"
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-spe-013",
+      "town": "town03",
+      "skill": "speaking",
+      "format": "translate",
+      "prompt": "英語で言おう",
+      "sentence": "もう少し待ってもらえますか。まだ決めていません。",
+      "model_answers": [
+        "Could you give us a few more minutes? We haven't decided yet.",
+        "Can we have a little more time? We haven't decided."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-spe-014",
+      "town": "town03",
+      "skill": "speaking",
+      "format": "translate",
+      "prompt": "英語で言おう",
+      "sentence": "ケーキを2つに分けてもらえますか。",
+      "model_answers": [
+        "Could you cut the cake in two?",
+        "Could you cut the cake in half?"
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-spe-015",
+      "town": "town03",
+      "skill": "speaking",
+      "format": "translate",
+      "prompt": "英語で言おう",
+      "sentence": "ごちそうさまでした。とてもおいしかったです。",
+      "model_answers": [
+        "Thank you. It was really delicious.",
+        "Thanks for the meal. It was very good."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-spe-016",
+      "town": "town03",
+      "skill": "speaking",
+      "format": "translate",
+      "prompt": "英語で言おう",
+      "sentence": "すみません、道に迷いました。",
+      "model_answers": [
+        "Excuse me, I'm lost.",
+        "Excuse me, I think I'm lost."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-spe-017",
+      "town": "town03",
+      "skill": "speaking",
+      "format": "translate",
+      "prompt": "英語で言おう",
+      "sentence": "市役所はどこですか。",
+      "model_answers": [
+        "Where is the city hall?",
+        "Where is City Hall?"
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-spe-018",
+      "town": "town03",
+      "skill": "speaking",
+      "format": "translate",
+      "prompt": "英語で言おう",
+      "sentence": "駅まで歩いてどれくらいですか。",
+      "model_answers": [
+        "How long does it take to walk to the station?",
+        "How far is it to the station on foot?"
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-spe-019",
+      "town": "town03",
+      "skill": "speaking",
+      "format": "translate",
+      "prompt": "英語で言おう",
+      "sentence": "この電車は空港に行きますか。",
+      "model_answers": [
+        "Does this train go to the airport?"
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-spe-020",
+      "town": "town03",
+      "skill": "speaking",
+      "format": "translate",
+      "prompt": "英語で言おう",
+      "sentence": "どこで乗りかえればいいですか。",
+      "model_answers": [
+        "Where should I change trains?",
+        "Where do I change trains?"
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-spe-021",
+      "town": "town03",
+      "skill": "speaking",
+      "format": "translate",
+      "prompt": "英語で言おう",
+      "sentence": "まっすぐ行って、右に曲がってください。",
+      "model_answers": [
+        "Go straight and turn right.",
+        "Go straight, then turn right."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-spe-022",
+      "town": "town03",
+      "skill": "speaking",
+      "format": "translate",
+      "prompt": "英語で言おう",
+      "sentence": "あの高い建物のとなりです。",
+      "model_answers": [
+        "It's next to that tall building.",
+        "It is next to that tall building."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-spe-023",
+      "town": "town03",
+      "skill": "speaking",
+      "format": "translate",
+      "prompt": "英語で言おう",
+      "sentence": "郵便局の向かいです。",
+      "model_answers": [
+        "It's across from the post office.",
+        "It's opposite the post office."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-spe-024",
+      "town": "town03",
+      "skill": "speaking",
+      "format": "translate",
+      "prompt": "英語で言おう",
+      "sentence": "この地図のどこにいますか。",
+      "model_answers": [
+        "Where are we on this map?",
+        "Where am I on this map?"
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-spe-025",
+      "town": "town03",
+      "skill": "speaking",
+      "format": "translate",
+      "prompt": "英語で言おう",
+      "sentence": "タクシーで行ったほうがいいですよ。",
+      "model_answers": [
+        "You should take a taxi.",
+        "You'd better take a taxi."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-spe-026",
+      "town": "town03",
+      "skill": "speaking",
+      "format": "translate",
+      "prompt": "英語で言おう",
+      "sentence": "次のバスは何時ですか。",
+      "model_answers": [
+        "What time is the next bus?",
+        "When is the next bus?"
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-spe-027",
+      "town": "town03",
+      "skill": "speaking",
+      "format": "translate",
+      "prompt": "英語で言おう",
+      "sentence": "2番線から出ます。",
+      "model_answers": [
+        "It leaves from platform two.",
+        "It departs from track two."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-spe-028",
+      "town": "town03",
+      "skill": "speaking",
+      "format": "translate",
+      "prompt": "英語で言おう",
+      "sentence": "いっしょに行きましょうか。",
+      "model_answers": [
+        "Shall I go with you?",
+        "Shall I take you there?"
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-spe-029",
+      "town": "town03",
+      "skill": "speaking",
+      "format": "translate",
+      "prompt": "英語で言おう",
+      "sentence": "この道で合っていますか。",
+      "model_answers": [
+        "Is this the right way?",
+        "Am I going the right way?"
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-spe-030",
+      "town": "town03",
+      "skill": "speaking",
+      "format": "translate",
+      "prompt": "英語で言おう",
+      "sentence": "駅に着いたら電話します。",
+      "model_answers": [
+        "I'll call you when I get to the station.",
+        "I'll call you when I arrive at the station."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-spe-031",
+      "town": "town03",
+      "skill": "speaking",
+      "format": "respond",
+      "prompt": "質問に英語で答えよう",
+      "sentence": "What's your favorite food?",
+      "sentence_ja": "いちばん好きな食べ物は何ですか？",
+      "model_answers": [
+        "My favorite food is sushi.",
+        "I love curry and rice."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-spe-032",
+      "town": "town03",
+      "skill": "speaking",
+      "format": "respond",
+      "prompt": "質問に英語で答えよう",
+      "sentence": "What did you have for breakfast this morning?",
+      "sentence_ja": "今朝、朝ごはんに何を食べましたか？",
+      "model_answers": [
+        "I had toast and coffee.",
+        "I had rice and miso soup."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-spe-033",
+      "town": "town03",
+      "skill": "speaking",
+      "format": "respond",
+      "prompt": "質問に英語で答えよう",
+      "sentence": "Do you cook at home? What do you make?",
+      "sentence_ja": "家で料理をしますか？何を作りますか？",
+      "model_answers": [
+        "Yes, I often make pasta.",
+        "Not much, but sometimes I make fried rice."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-spe-034",
+      "town": "town03",
+      "skill": "speaking",
+      "format": "respond",
+      "prompt": "質問に英語で答えよう",
+      "sentence": "Are you ready to order?",
+      "sentence_ja": "ご注文はお決まりですか？",
+      "model_answers": [
+        "Yes, I'll have the fish, please.",
+        "Could you give me a few more minutes?"
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-spe-035",
+      "town": "town03",
+      "skill": "speaking",
+      "format": "respond",
+      "prompt": "質問に英語で答えよう",
+      "sentence": "How many people are in your party?",
+      "sentence_ja": "何名さまですか？",
+      "model_answers": [
+        "Two, please.",
+        "There are four of us."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-spe-036",
+      "town": "town03",
+      "skill": "speaking",
+      "format": "respond",
+      "prompt": "質問に英語で答えよう",
+      "sentence": "Would you like something to drink?",
+      "sentence_ja": "何かお飲みになりますか？",
+      "model_answers": [
+        "I'll have an iced tea, please.",
+        "Just water, thanks."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-spe-037",
+      "town": "town03",
+      "skill": "speaking",
+      "format": "respond",
+      "prompt": "質問に英語で答えよう",
+      "sentence": "For here or to go?",
+      "sentence_ja": "店内でお召し上がりですか、お持ち帰りですか？",
+      "model_answers": [
+        "For here, please.",
+        "To go, please."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-spe-038",
+      "town": "town03",
+      "skill": "speaking",
+      "format": "respond",
+      "prompt": "質問に英語で答えよう",
+      "sentence": "How was your meal?",
+      "sentence_ja": "お食事はいかがでしたか？",
+      "model_answers": [
+        "It was great, thank you.",
+        "It was delicious. I really liked the soup."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-spe-039",
+      "town": "town03",
+      "skill": "speaking",
+      "format": "respond",
+      "prompt": "質問に英語で答えよう",
+      "sentence": "Is there anything you cannot eat?",
+      "sentence_ja": "何か食べられないものはありますか？",
+      "model_answers": [
+        "I can't eat shrimp.",
+        "No, I can eat anything."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-spe-040",
+      "town": "town03",
+      "skill": "speaking",
+      "format": "respond",
+      "prompt": "質問に英語で答えよう",
+      "sentence": "Where do you usually eat lunch?",
+      "sentence_ja": "ふだん、どこで昼ごはんを食べますか？",
+      "model_answers": [
+        "I usually eat lunch at my office.",
+        "I often eat at a café near my school."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-spe-041",
+      "town": "town03",
+      "skill": "speaking",
+      "format": "respond",
+      "prompt": "質問に英語で答えよう",
+      "sentence": "What are you going to eat for dinner tonight?",
+      "sentence_ja": "今夜の夕食は何を食べるつもりですか？",
+      "model_answers": [
+        "I'm going to have curry tonight.",
+        "I'm going to eat pasta with my family."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-spe-042",
+      "town": "town03",
+      "skill": "speaking",
+      "format": "respond",
+      "prompt": "質問に英語で答えよう",
+      "sentence": "Do you prefer eating out or eating at home? Why?",
+      "sentence_ja": "外食と家で食べるのと、どちらが好きですか？それはなぜ？",
+      "model_answers": [
+        "I prefer eating at home because it is relaxing.",
+        "I like eating out because I can try new food."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-spe-043",
+      "town": "town03",
+      "skill": "speaking",
+      "format": "respond",
+      "prompt": "質問に英語で答えよう",
+      "sentence": "What were you doing at seven last night?",
+      "sentence_ja": "昨夜7時に何をしていましたか？",
+      "model_answers": [
+        "I was eating dinner with my family.",
+        "I was cooking dinner."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-spe-044",
+      "town": "town03",
+      "skill": "speaking",
+      "format": "respond",
+      "prompt": "質問に英語で答えよう",
+      "sentence": "Can you recommend a good restaurant in your town?",
+      "sentence_ja": "あなたの町のいいレストランをすすめてくれますか？",
+      "model_answers": [
+        "There's a nice ramen shop near the station.",
+        "You should try the Italian restaurant on Main Street."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-spe-045",
+      "town": "town03",
+      "skill": "speaking",
+      "format": "respond",
+      "prompt": "質問に英語で答えよう",
+      "sentence": "What food from your country should visitors try?",
+      "sentence_ja": "旅行者が試すべき、あなたの国の食べ物は何ですか？",
+      "model_answers": [
+        "They should try sushi and ramen.",
+        "I think they should try okonomiyaki."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-spe-046",
+      "town": "town03",
+      "skill": "speaking",
+      "format": "respond",
+      "prompt": "質問に英語で答えよう",
+      "sentence": "Excuse me, is there a station near here?",
+      "sentence_ja": "すみません、この近くに駅はありますか？",
+      "model_answers": [
+        "Yes, it's about five minutes from here.",
+        "Yes. Go straight and turn left at the corner."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-spe-047",
+      "town": "town03",
+      "skill": "speaking",
+      "format": "respond",
+      "prompt": "質問に英語で答えよう",
+      "sentence": "How do you usually get to school or work?",
+      "sentence_ja": "ふだん学校や仕事にどうやって行きますか？",
+      "model_answers": [
+        "I usually go by train.",
+        "I walk to work.",
+        "I ride my bike to school."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-spe-048",
+      "town": "town03",
+      "skill": "speaking",
+      "format": "respond",
+      "prompt": "質問に英語で答えよう",
+      "sentence": "How long does it take to get there?",
+      "sentence_ja": "そこへ行くのにどれくらいかかりますか？",
+      "model_answers": [
+        "It takes about thirty minutes by train.",
+        "It takes about ten minutes on foot."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-spe-049",
+      "town": "town03",
+      "skill": "speaking",
+      "format": "respond",
+      "prompt": "質問に英語で答えよう",
+      "sentence": "What's near your house?",
+      "sentence_ja": "あなたの家の近くには何がありますか？",
+      "model_answers": [
+        "There's a supermarket and a park near my house.",
+        "There is a station next to my house."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-spe-050",
+      "town": "town03",
+      "skill": "speaking",
+      "format": "respond",
+      "prompt": "質問に英語で答えよう",
+      "sentence": "Could you tell me the way to the post office?",
+      "sentence_ja": "郵便局への行き方を教えてくれませんか？",
+      "model_answers": [
+        "Sure. Go straight and it's on your right.",
+        "Sorry, I'm not from around here."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-spe-051",
+      "town": "town03",
+      "skill": "speaking",
+      "format": "respond",
+      "prompt": "質問に英語で答えよう",
+      "sentence": "Is it far from here?",
+      "sentence_ja": "ここから遠いですか？",
+      "model_answers": [
+        "No, it's only a few minutes' walk.",
+        "Yes, you should take a bus."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-spe-052",
+      "town": "town03",
+      "skill": "speaking",
+      "format": "respond",
+      "prompt": "質問に英語で答えよう",
+      "sentence": "Which do you like better, buses or trains? Why?",
+      "sentence_ja": "バスと電車、どちらが好きですか？それはなぜ？",
+      "model_answers": [
+        "I like trains better because they are fast.",
+        "I like buses because I can see the town."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-spe-053",
+      "town": "town03",
+      "skill": "speaking",
+      "format": "respond",
+      "prompt": "質問に英語で答えよう",
+      "sentence": "Where is your favorite place in your town?",
+      "sentence_ja": "あなたの町で好きな場所はどこですか？",
+      "model_answers": [
+        "My favorite place is the park by the river.",
+        "I like the library near my house."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-spe-054",
+      "town": "town03",
+      "skill": "speaking",
+      "format": "respond",
+      "prompt": "質問に英語で答えよう",
+      "sentence": "Have you ever gotten lost? What did you do?",
+      "sentence_ja": "道に迷ったことはありますか？どうしましたか？",
+      "model_answers": [
+        "Yes. I asked someone for directions.",
+        "Yes, once. I used the map on my phone."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-spe-055",
+      "town": "town03",
+      "skill": "speaking",
+      "format": "respond",
+      "prompt": "質問に英語で答えよう",
+      "sentence": "Where are you going to go this weekend?",
+      "sentence_ja": "今週末はどこへ行くつもりですか？",
+      "model_answers": [
+        "I'm going to go to the beach.",
+        "I'm going to visit my grandparents."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-spe-056",
+      "town": "town03",
+      "skill": "speaking",
+      "format": "respond",
+      "prompt": "質問に英語で答えよう",
+      "sentence": "Shall we meet at the station?",
+      "sentence_ja": "駅で会いましょうか？",
+      "model_answers": [
+        "Sure. Let's meet at the north exit.",
+        "OK. What time shall we meet?"
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-spe-057",
+      "town": "town03",
+      "skill": "speaking",
+      "format": "respond",
+      "prompt": "質問に英語で答えよう",
+      "sentence": "What time does your nearest station close?",
+      "sentence_ja": "いちばん近い駅は何時に閉まりますか？",
+      "model_answers": [
+        "I think it closes around midnight.",
+        "The last train is at about twelve."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-spe-058",
+      "town": "town03",
+      "skill": "speaking",
+      "format": "respond",
+      "prompt": "質問に英語で答えよう",
+      "sentence": "How would you explain the way from the station to your house?",
+      "sentence_ja": "駅からあなたの家への道をどう説明しますか？",
+      "model_answers": [
+        "Go out of the north exit and walk straight for five minutes.",
+        "Turn left at the station and my house is next to the bakery."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-spe-059",
+      "town": "town03",
+      "skill": "speaking",
+      "format": "respond",
+      "prompt": "質問に英語で答えよう",
+      "sentence": "What were you doing at this time yesterday?",
+      "sentence_ja": "昨日の今ごろ、何をしていましたか？",
+      "model_answers": [
+        "I was working at my office.",
+        "I was studying at home."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    },
+    {
+      "id": "town03-spe-060",
+      "town": "town03",
+      "skill": "speaking",
+      "format": "respond",
+      "prompt": "質問に英語で答えよう",
+      "sentence": "Do you use a map app when you go somewhere new?",
+      "sentence_ja": "新しい場所へ行くとき、地図アプリを使いますか？",
+      "model_answers": [
+        "Yes, I always use a map app.",
+        "Sometimes, but I also ask people."
+      ],
+      "difficulty": 2,
+      "needs_fix": false
+    }
+  ]
+}

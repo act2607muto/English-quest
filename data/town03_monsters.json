@@ -1,0 +1,106 @@
+{
+  "format_version": 1,
+  "town": {
+    "id": "town03",
+    "name": "みちしるべの宿場町",
+    "scene": "食事と道案内",
+    "difficulty": "標準",
+    "order": 3,
+    "background_image": "/towns/town03.png"
+  },
+  "monsters": [
+    {
+      "id": "town03-mon-voc",
+      "name": "おしながきイモムシ",
+      "skill": "vocabulary",
+      "hp": 75,
+      "gold": 20,
+      "is_boss": false,
+      "image": "/monsters/town03-mon-voc.png",
+      "description": "体の節ひとつひとつに料理の名前が書かれたイモムシ。読めない料理を見つけると、くるりと丸まって隠してしまう。"
+    },
+    {
+      "id": "town03-mon-gra",
+      "name": "ぎょうれつアリ",
+      "skill": "grammar",
+      "hp": 110,
+      "gold": 28,
+      "is_boss": false,
+      "image": "/monsters/town03-mon-gra.png",
+      "description": "ことばのカードを1枚ずつ背負って行進するアリ。並び順がちがうと、列がばらばらにくずれて大さわぎになる。"
+    },
+    {
+      "id": "town03-mon-lis",
+      "name": "ちゅうもんコウモリ",
+      "skill": "listening",
+      "hp": 90,
+      "gold": 24,
+      "is_boss": false,
+      "image": "/monsters/town03-mon-lis.png",
+      "description": "宿場町の食堂の天井にぶらさがり、客の注文をひとつ残らず聞いているコウモリ。聞きのがした人には、まちがった料理を運んでくる。"
+    },
+    {
+      "id": "town03-mon-rea",
+      "name": "たてふだカカシ",
+      "skill": "reading",
+      "hp": 85,
+      "gold": 24,
+      "is_boss": false,
+      "image": "/monsters/town03-mon-rea.png",
+      "description": "道ばたに立つ、立て札をかかえたカカシ。札の文字を読まずに通りすぎようとすると、くるりと向きを変えて道をふさぐ。"
+    },
+    {
+      "id": "town03-mon-wri",
+      "name": "でんぴょうカモメ",
+      "skill": "writing",
+      "hp": 75,
+      "gold": 28,
+      "is_boss": false,
+      "image": "/monsters/town03-mon-wri.png",
+      "description": "注文の伝票をくちばしにくわえて飛びまわるカモメ。書きまちがいを見つけると、伝票をひらひらと落としていく。"
+    },
+    {
+      "id": "town03-mon-spe",
+      "name": "よびりんペンギン",
+      "skill": "speaking",
+      "hp": 70,
+      "gold": 24,
+      "is_boss": false,
+      "image": "/monsters/town03-mon-spe.png",
+      "description": "頭に呼び鈴をのせた、宿屋の案内係のペンギン。はっきり声をかけないと、チリンと鳴らして知らんぷりをする。"
+    },
+    {
+      "id": "town03-rare-exp",
+      "name": "ほうせきカタツムリ",
+      "skill": null,
+      "hp": 55,
+      "gold": 20,
+      "exp_reward": 500,
+      "encounter_rate": 0.01,
+      "is_boss": false,
+      "image": "/monsters/town03-rare-exp.png",
+      "description": "宝石のからを背負ったカタツムリ。ゆっくりした足どりなのに、めったに見つからない。出会えたら大きく成長できる。"
+    },
+    {
+      "id": "town03-rare-gold",
+      "name": "おさいふペリカン",
+      "skill": null,
+      "hp": 70,
+      "gold": 160,
+      "encounter_rate": 0.04,
+      "is_boss": false,
+      "image": "/monsters/town03-rare-gold.png",
+      "description": "旅人の落とした小銭を、のどの袋にため込むペリカン。倒すと、袋の中の小銭がざらざらこぼれ出す。"
+    },
+    {
+      "id": "town03-boss",
+      "name": "みちまよいの大ダコ",
+      "skill": null,
+      "hp": 240,
+      "gold": 250,
+      "is_boss": true,
+      "image": "/monsters/town03-boss.png",
+      "description": "宿場町の外れの分かれ道にすみつく大きなタコ。8本の足はどれも道しるべになっていて、それぞれちがう方向をさして旅人を迷わせる。"
+    }
+  ]
+}

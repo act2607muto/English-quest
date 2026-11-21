@@ -48,6 +48,16 @@ $frames = @(
   @{ File = 'monsters/town02-boss.png';      SplitRow = 82 }  # せきもりの大ガメ（96×96）
   @{ File = 'monsters/town01-wordbook.png';  SplitRow = 63 }  # しおりオバケ（浮いているので全体を下げる）
   @{ File = 'monsters/town02-wordbook.png';  SplitRow = 63 }  # ふせんチョウ（飛んでいるので全体を下げる）
+  @{ File = 'monsters/town03-mon-voc.png';   SplitRow = 43 }  # おしながきイモムシ（地面をはうので低め）
+  @{ File = 'monsters/town03-mon-gra.png';   SplitRow = 51 }  # ぎょうれつアリ
+  @{ File = 'monsters/town03-mon-lis.png';   SplitRow = 52 }  # ちゅうもんコウモリ
+  @{ File = 'monsters/town03-mon-rea.png';   SplitRow = 51 }  # たてふだカカシ
+  @{ File = 'monsters/town03-mon-wri.png';   SplitRow = 51 }  # でんぴょうカモメ
+  @{ File = 'monsters/town03-mon-spe.png';   SplitRow = 50 }  # よびりんペンギン
+  @{ File = 'monsters/town03-rare-exp.png';  SplitRow = 50 }  # ほうせきカタツムリ
+  @{ File = 'monsters/town03-rare-gold.png'; SplitRow = 51 }  # おさいふペリカン
+  @{ File = 'monsters/town03-boss.png';      SplitRow = 82 }  # みちまよいの大ダコ（96×96）
+  @{ File = 'monsters/town03-wordbook.png';  SplitRow = 48 }  # じびきモグラ（本から上だけ動かす）
 )
 
 foreach ($f in $frames) {
