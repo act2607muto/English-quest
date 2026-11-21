@@ -2,6 +2,7 @@ import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { HeroArt } from '../components/HeroArt';
 import { MonsterArt } from '../components/MonsterArt';
 import { OrderAnswer } from '../components/OrderAnswer';
+import { Passage } from '../components/Passage';
 import { SpeakAnswer } from '../components/SpeakAnswer';
 import { fetchPlayableQuestions, flagQuestion } from '../lib/content';
 import { fillNames, pickQuestions, shuffle, shuffleChoices } from '../lib/game/battle';
@@ -12,6 +13,7 @@ import { heroNameOf, type Player } from '../lib/game/player';
 import { EXP_CORRECT, EXP_CORRECT_REVIEW, EXP_HALF, EXP_WORDBOOK, EXP_WORDBOOK_REVIEW } from '../lib/game/rules';
 import { isWordbookMonster, isWordbookQuestion } from '../lib/game/wordbook';
 import { endMarkOf, isOrderCorrect } from '../lib/game/wordOrder';
+import { gradeDictation, markDictation } from '../lib/game/dictation';
 import { gradeAnswer, RATING_LABELS, type Rating } from '../lib/grading';
 import type { MonsterRow, QuestionRow } from '../lib/questionFile';
 import { addSkillExp, fetchProgress, finishBattle, markBossDefeated, saveAnswer, type QuestionProgress } from '../lib/records';
@@ -267,6 +269,15 @@ export function BattleScreen({
     resolve({ rating: isOrderCorrect(picked, models) ? 'good' : 'bad', answer: picked.join(' ') + mark });
   }
 
+  /** 書き取り：聞いた英文と同じなら正解、1語だけちがえば惜しい（アプリの中で採点する） */
+  function handleDictation(e: FormEvent) {
+    e.preventDefault();
+    if (!shown || phase !== 'question' || !draft.trim()) return;
+    const models = (shown.question.model_answers ?? []).map((m) => fillNames(m));
+    stopSpeaking();
+    resolve({ rating: gradeDictation(draft, models), answer: draft.trim() });
+  }
+
   function handleWrite(e: FormEvent) {
     e.preventDefault();
     void submitText(draft.trim(), false);
@@ -420,6 +431,8 @@ export function BattleScreen({
   const isChoice = q.format === 'choice4';
   /** 単語の並べかえ（答え合わせはアプリの中でする。AI採点はしない） */
   const isOrder = q.format === 'order';
+  /** 書き取り（聞いた英文を書く。答え合わせはアプリの中でする） */
+  const isDictation = q.format === 'dictation';
   const over = monsterHp <= 0 || playerHp <= 0;
   // 攻撃の動きを見せている間（答えた直後と、決着して結果の画面へ進むまで）
   const acting = (phase === 'feedback' || phase === 'finishing') && !!outcome;
@@ -427,7 +440,9 @@ export function BattleScreen({
   const showResult = acting;
   const hit = outcome ? outcome.rating !== 'bad' : false;
   const models = (q.model_answers ?? []).map((m) => fillNames(m));
-  const isSpeaking = !isChoice && !isOrder && skill === 'speaking';
+  const isSpeaking = !isChoice && !isOrder && !isDictation && skill === 'speaking';
+  /** AI採点の問題か（書く・話す。並べかえと書き取りはアプリの中で採点する） */
+  const isGraded = !isChoice && !isOrder && !isDictation;
 
   return (
     <main className={`screen battle${acting && !hit ? ' battle--hurt' : ''}`}>
@@ -508,7 +523,7 @@ export function BattleScreen({
         <section className="window battle__question">
           <p className="battle__prompt">{fillNames(q.prompt)}</p>
           {skill === 'grammar' && q.sentence && <p className="battle__sentence">{fillNames(q.sentence)}</p>}
-          {skill === 'reading' && q.sentence && <p className="battle__passage">{fillNames(q.sentence)}</p>}
+          {skill === 'reading' && q.sentence && <Passage text={fillNames(q.sentence)} />}
           {isOrder && q.sentence_ja && <p className="battle__sentence battle__sentence--ja">{fillNames(q.sentence_ja)}</p>}
           {!isChoice && !isOrder && q.sentence && (
             <p className="battle__sentence battle__sentence--ja">
@@ -524,9 +539,17 @@ export function BattleScreen({
           {skill === 'listening' && q.audio_text && (
             <>
               {canSpeak ? (
-                <button className="command command--listen" type="button" onClick={() => speakEnglish(q.audio_text!)}>
-                  ▶ 聞く
-                </button>
+                <>
+                  <button className="command command--listen" type="button" onClick={() => speakEnglish(q.audio_text!)}>
+                    ▶ 聞く
+                  </button>
+                  {/* 書き取りは、ゆっくりも聞ける（何度でも） */}
+                  {isDictation && (
+                    <button className="command" type="button" onClick={() => speakEnglish(q.audio_text!, 0.65)}>
+                      ▶ ゆっくり聞く
+                    </button>
+                  )}
+                </>
               ) : (
                 <p className="message message--error">この端末では読み上げが使えません。</p>
               )}
@@ -564,6 +587,29 @@ export function BattleScreen({
             endMark={endMarkOf(models[0] ?? '')}
             onSubmit={handleOrder}
           />
+        ) : isDictation ? (
+          <form className="write" onSubmit={handleDictation}>
+            <label className="field">
+              <span className="note">聞こえた英文を書く</span>
+              <textarea
+                value={draft}
+                onChange={(e) => setDraft(e.target.value)}
+                disabled={phase !== 'question'}
+                rows={2}
+                maxLength={300}
+                lang="en"
+                autoCapitalize="off"
+                autoCorrect="off"
+                spellCheck={false}
+                placeholder="ここに英文を書く"
+              />
+            </label>
+            {phase === 'question' && (
+              <button className="command" type="submit" disabled={!draft.trim()}>
+                ▶ こたえる
+              </button>
+            )}
+          </form>
         ) : isSpeaking ? (
           phase === 'question' ? (
             <SpeakAnswer
@@ -644,7 +690,7 @@ export function BattleScreen({
 
       {phase === 'feedback' && outcome && (
         <section className="window battle__message" aria-live="polite">
-          {!isChoice && !isOrder && !outcome.selfGraded && (
+          {isGraded && !outcome.selfGraded && (
             <p className={`rating rating--${outcome.rating}`}>{RATING_LABELS[outcome.rating]}</p>
           )}
           <p>
@@ -678,15 +724,35 @@ export function BattleScreen({
               </p>
             </div>
           )}
+          {/* 書き取りは、書いた答えと、正しい英文（まちがえた単語は赤） */}
+          {isDictation && (
+            <div className="answer-summary">
+              {outcome.rating !== 'good' && (
+                <p className="answer-summary__row answer-summary__row--wrong">
+                  <span className="note">あなたの答え</span>
+                  {outcome.rating === 'close' ? '△ ' : '✕ '}
+                  {outcome.answer}
+                </p>
+              )}
+              <p className="answer-summary__row answer-summary__row--right">
+                <span className="note">{outcome.rating === 'good' ? 'あなたの答え' : '正しい英文（赤い単語がちがっていた）'}</span>◯{' '}
+                {markDictation(outcome.answer, models[0] ?? '').map((w, i) => (
+                  <span key={i} className={w.ok ? undefined : 'dictation__miss'}>
+                    {w.word}{' '}
+                  </span>
+                ))}
+              </p>
+            </div>
+          )}
           {/* 書く・話す問題は、自分の答え */}
-          {!isChoice && !isOrder && draft.trim() && (
+          {isGraded && draft.trim() && (
             <div>
               <p className="note">あなたの答え</p>
               <p className="battle__sentence">{draft.trim()}</p>
             </div>
           )}
           {/* リスニングは、聞こえた英文 */}
-          {skill === 'listening' && q.audio_text && (
+          {skill === 'listening' && q.audio_text && !isDictation && (
             <div>
               <p className="note">読み上げた英文</p>
               <p className={`battle__sentence${q.audio_text.includes('\n') ? ' battle__sentence--dialogue' : ''}`}>{q.audio_text}</p>
@@ -705,7 +771,7 @@ export function BattleScreen({
               <p className="battle__sentence">{outcome.better}</p>
             </div>
           )}
-          {!isChoice && !isOrder && (
+          {isGraded && (
             <div>
               <p className="note">模範解答</p>
               <ul className="models">
@@ -716,7 +782,7 @@ export function BattleScreen({
             </div>
           )}
           {q.explanation && <p className="note">{fillNames(q.explanation)}</p>}
-          <button className="command" type="button" onClick={handleNext} autoFocus={isChoice || isOrder}>
+          <button className="command" type="button" onClick={handleNext} autoFocus={isChoice || isOrder || isDictation}>
             {over ? '▶ 戦闘を終える' : '▶ つぎへ'}
           </button>
           {isAdmin &&

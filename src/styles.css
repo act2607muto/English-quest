@@ -2252,3 +2252,96 @@ code {
   white-space: pre-line;
   font-size: 19px;
 }
+
+/* 書き取りの答え合わせ：まちがえた単語（4つ目の街から） */
+.dictation__miss {
+  color: var(--error);
+  text-decoration: underline;
+  text-decoration-style: wavy;
+}
+
+/* リーディングのメール（components/Passage。4つ目の街から） */
+.mail {
+  font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+  background: #f4f1e8;
+  color: #1d2238;
+  border: 3px solid #0d1232;
+  border-radius: 4px;
+  overflow-wrap: anywhere;
+}
+
+.mail__head {
+  margin: 0;
+  padding: 6px 10px;
+  background: #dfe5f2;
+  border-bottom: 2px solid #9aa4c4;
+  font-size: 14px;
+}
+
+.mail__row {
+  display: flex;
+  gap: 8px;
+}
+
+.mail__row dt {
+  flex: none;
+  width: 3.5em;
+  color: #556089;
+}
+
+.mail__row dd {
+  margin: 0;
+  font-weight: bold;
+}
+
+.mail__body {
+  margin: 0;
+  padding: 8px 10px 10px;
+  font-size: 17px;
+  line-height: 1.5;
+  white-space: pre-line;
+}
+
+/* リーディングのメッセージ（吹き出し） */
+.chat {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 8px;
+  background: #0d1232;
+  border-radius: 4px;
+  font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+
+.chat__msg {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 85%;
+}
+
+.chat__msg--me {
+  align-self: flex-end;
+  align-items: flex-end;
+}
+
+.chat__name {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.chat__bubble {
+  margin: 0;
+  padding: 6px 10px;
+  font-size: 17px;
+  line-height: 1.4;
+  color: #1d2238;
+  background: #f4f1e8;
+  border-radius: 12px 12px 12px 2px;
+  overflow-wrap: anywhere;
+}
+
+.chat__msg--me .chat__bubble {
+  background: #ffe9a8;
+  border-radius: 12px 12px 2px 12px;
+}

@@ -6,8 +6,8 @@ import { dialogueLines } from './dialogue';
 import { sameWords } from './game/wordOrder';
 import { SKILLS, type Skill } from './skills';
 
-/** order は単語の並べかえ（3つ目の街から。lib/game/wordOrder.ts） */
-export const FORMATS = ['choice4', 'translate', 'respond', 'order'] as const;
+/** order は単語の並べかえ（3つ目の街から。lib/game/wordOrder.ts）、dictation は書き取り（4つ目の街から。lib/game/dictation.ts） */
+export const FORMATS = ['choice4', 'translate', 'respond', 'order', 'dictation'] as const;
 export type QuestionFormat = (typeof FORMATS)[number];
 
 /** 文中で本人の名前に置き換える印 */
@@ -419,6 +419,16 @@ function parseQuestion(raw: unknown, townId: string | null, problems: string[]):
       }
     }
     if (!sentenceJa) problems.push('並べかえなのに sentence_ja（画面に出す日本語）がありません');
+  } else if (format === 'dictation') {
+    // 書き取り：audio_text を読み上げ、model_answers（1つ目は audio_text と同じ英文）と比べる
+    if (!audioText) problems.push('書き取りなのに audio_text（読み上げる英文）がありません');
+    if (!isStringArray(raw.model_answers) || raw.model_answers.length === 0 || raw.model_answers.some((m) => !m.trim())) {
+      problems.push('書き取りなのに model_answers（正解とする英文）が1つ以上の文字の並びではありません');
+    } else {
+      modelAnswers = raw.model_answers.map((m) => m.trim());
+      if (audioText && modelAnswers[0] !== audioText) problems.push('書き取りの model_answers の1つ目は、audio_text と同じ英文にしてください');
+    }
+    if (audioText?.includes('\n')) problems.push('書き取りの audio_text は1行の英文にしてください（会話は書き取りにしない）');
   }
 
   const difficulty = raw.difficulty ?? 1;
