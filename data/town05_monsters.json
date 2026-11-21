@@ -1,0 +1,106 @@
+{
+  "format_version": 1,
+  "town": {
+    "id": "town05",
+    "name": "ほしぞらの王城",
+    "scene": "旅行と仕事",
+    "difficulty": "目標",
+    "order": 5,
+    "background_image": "/towns/town05.png"
+  },
+  "monsters": [
+    {
+      "id": "town05-mon-voc",
+      "name": "にふだカワウソ",
+      "skill": "vocabulary",
+      "hp": 105,
+      "gold": 40,
+      "is_boss": false,
+      "image": "/monsters/town05-mon-voc.png",
+      "description": "旅行かばんの荷札を、首からじゃらじゃらさげたカワウソ。札に書かれた行き先の名前を、ひとつ残らず覚えている。"
+    },
+    {
+      "id": "town05-mon-gra",
+      "name": "もしもギツネ",
+      "skill": "grammar",
+      "hp": 145,
+      "gold": 46,
+      "is_boss": false,
+      "image": "/monsters/town05-mon-gra.png",
+      "description": "「もしも、あのとき〜だったら」と、ありえなかった話ばかりするキツネ。話のすじが合わないと、しっぽをふって煙にまく。"
+    },
+    {
+      "id": "town05-mon-lis",
+      "name": "ほうそうイルカ",
+      "skill": "listening",
+      "hp": 120,
+      "gold": 42,
+      "is_boss": false,
+      "image": "/monsters/town05-mon-lis.png",
+      "description": "港のアナウンスをそっくりまねして流すイルカ。ときどき行き先や時間をわざと変えて、旅人をまどわせる。"
+    },
+    {
+      "id": "town05-mon-rea",
+      "name": "しんぶんアルマジロ",
+      "skill": "reading",
+      "hp": 115,
+      "gold": 42,
+      "is_boss": false,
+      "image": "/monsters/town05-mon-rea.png",
+      "description": "こうらが新聞の記事でできたアルマジロ。丸まると新聞の巻き物になり、読みとばした人の足もとへ転がってくる。"
+    },
+    {
+      "id": "town05-mon-wri",
+      "name": "はねペンクジャク",
+      "skill": "writing",
+      "hp": 110,
+      "gold": 46,
+      "is_boss": false,
+      "image": "/monsters/town05-mon-wri.png",
+      "description": "広げた尾ばねが、ぜんぶ羽ペンになっているクジャク。理由のない文を見つけると、尾ばねでさらさらと書き足していく。"
+    },
+    {
+      "id": "town05-mon-spe",
+      "name": "えんぜつライオン",
+      "skill": "speaking",
+      "hp": 105,
+      "gold": 42,
+      "is_boss": false,
+      "image": "/monsters/town05-mon-spe.png",
+      "description": "王城の広場の演台に立ち、自分の意見をほえるライオン。「なぜなら？」と聞き返すと、ますます声が大きくなる。"
+    },
+    {
+      "id": "town05-rare-exp",
+      "name": "にじいろハチドリ",
+      "skill": null,
+      "hp": 65,
+      "gold": 30,
+      "exp_reward": 700,
+      "encounter_rate": 0.01,
+      "is_boss": false,
+      "image": "/monsters/town05-rare-exp.png",
+      "description": "羽ばたくたびに小さな虹を残すハチドリ。星のきれいな夜明けにだけ姿を見せる。出会えたら大きく成長できる。"
+    },
+    {
+      "id": "town05-rare-gold",
+      "name": "きんかコガネムシ",
+      "skill": null,
+      "hp": 90,
+      "gold": 250,
+      "encounter_rate": 0.04,
+      "is_boss": false,
+      "image": "/monsters/town05-rare-gold.png",
+      "description": "金貨のようにぴかぴか光るコガネムシ。王城の宝物庫からこぼれた金貨を、せっせと巣に運んでいる。"
+    },
+    {
+      "id": "town05-boss",
+      "name": "そらの関所の大グリフォン",
+      "skill": null,
+      "hp": 360,
+      "gold": 400,
+      "is_boss": true,
+      "image": "/monsters/town05-boss.png",
+      "description": "王城の上にある、旅のさいごの関所を守る大きなグリフォン。世界じゅうのことばで問いかけ、答えられた旅人だけを星空の向こうへ通す。"
+    }
+  ]
+}

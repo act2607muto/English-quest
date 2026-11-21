@@ -1,0 +1,84 @@
+{
+  "format_version": 1,
+  "town": {
+    "id": "town05",
+    "name": "ほしぞらの王城",
+    "scene": "旅行と仕事",
+    "difficulty": "目標",
+    "order": 5
+  },
+  "equipment": [
+    {
+      "id": "town05-wpn-voc",
+      "name": "せかいちずのサーベル",
+      "slot": "weapon",
+      "effect": { "type": "attack", "skill": "vocabulary", "amount": 10 },
+      "price": 700,
+      "image": "/equipment/town05-wpn-voc.png"
+    },
+    {
+      "id": "town05-wpn-gra",
+      "name": "ほしよみの槌",
+      "slot": "weapon",
+      "effect": { "type": "attack", "skill": "grammar", "amount": 10 },
+      "price": 700,
+      "image": "/equipment/town05-wpn-gra.png"
+    },
+    {
+      "id": "town05-wpn-lis",
+      "name": "とおみみの長弓",
+      "slot": "weapon",
+      "effect": { "type": "attack", "skill": "listening", "amount": 11 },
+      "price": 800,
+      "image": "/equipment/town05-wpn-lis.png"
+    },
+    {
+      "id": "town05-wpn-rea",
+      "name": "ほしぞらの星図",
+      "slot": "weapon",
+      "effect": { "type": "attack", "skill": "reading", "amount": 11 },
+      "price": 800,
+      "image": "/equipment/town05-wpn-rea.png"
+    },
+    {
+      "id": "town05-wpn-wri",
+      "name": "くじゃくばねの槍",
+      "slot": "weapon",
+      "effect": { "type": "attack", "skill": "writing", "amount": 11 },
+      "price": 820,
+      "image": "/equipment/town05-wpn-wri.png"
+    },
+    {
+      "id": "town05-wpn-spe",
+      "name": "えんぜつの王笏",
+      "slot": "weapon",
+      "effect": { "type": "attack", "skill": "speaking", "amount": 11 },
+      "price": 800,
+      "image": "/equipment/town05-wpn-spe.png"
+    },
+    {
+      "id": "town05-wpn-all",
+      "name": "おうじゃの聖剣",
+      "slot": "weapon",
+      "effect": { "type": "attack", "skill": "all", "amount": 11 },
+      "price": 1900,
+      "image": "/equipment/town05-wpn-all.png"
+    },
+    {
+      "id": "town05-arm-hp",
+      "name": "ほしぞらのよろい",
+      "slot": "armor",
+      "effect": { "type": "max_hp", "amount": 5 },
+      "price": 1500,
+      "image": "/equipment/town05-arm-hp.png"
+    },
+    {
+      "id": "town05-arm-grace",
+      "name": "ほしくずのティアラ",
+      "slot": "armor",
+      "effect": { "type": "decay_grace", "days": 5 },
+      "price": 1800,
+      "image": "/equipment/town05-arm-grace.png"
+    }
+  ]
+}

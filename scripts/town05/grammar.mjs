@@ -1,0 +1,123 @@
+/**
+ * 5つ目の街（旅行と仕事）の文法 100問。高3〜大学・TOEIC 750〜800 くらい。
+ * 文法の中心：仮定法過去完了（If I had 〜, I would have 〜 / I wish I had 〜）・should have / could have・
+ * 分詞構文（Arriving at 〜 / Having finished 〜 / Written in 〜）・ていねいな頼み方と言いかえ（Would you mind -ing / I was wondering if 〜）・
+ * ビジネスの決まった言い方（look forward to -ing / Please find attached / regarding）・受け身・前置詞と接続詞の使い分け（despite と although など）。
+ *
+ * 前半75問は穴埋め4択：[英文（空欄は ___）, 正解, 誤答3つ, 解説, 難しさ（書かなければ 3）]
+ *   誤答は、その文では文法的に入らないものにする（入れても正しい英文になるものは誤答にしない）。
+ * 後半25問は単語の並べかえ（format order）：[日本語, 正しい英文のリスト, 解説]
+ *   カードは1つ目の英文から作る。ほかの並べ方でも正しい英文になるときは、リストに足す（カードと同じ単語でできていること）。
+ */
+export const GRAMMAR = [
+  // ---------- 仮定法過去完了・should have ----------
+  ['If I had known about the delay, I ___ taken an earlier train.', 'would have', ['will have', 'would', 'had'], '過去の事実と反対のこと（もし〜だったら、〜しただろうに）は If + had + 過去分詞, would have + 過去分詞。'],
+  ['If we ___ left earlier, we would have caught the flight.', 'had', ['have', 'would have', 'did'], 'If のあとは had + 過去分詞（仮定法過去完了）。'],
+  ['I wish I ___ booked the hotel in advance.', 'had', ['have', 'would', 'was'], '「〜しておけばよかった」（過去への後悔）は I wish + had + 過去分詞。'],
+  ['If she had asked me, I ___ have helped her.', 'could', ['can', 'will', 'did'], 'could have + 過去分詞で「〜できただろうに」。'],
+  ['You ___ have told me about the meeting. I missed it.', 'should', ['ought', 'had', 'did'], '「〜すべきだったのに（しなかった）」は should have + 過去分詞。ought なら ought to have になる。'],
+  ['I ___ have left my umbrella on the train.', 'must', ['ought', 'had', 'did'], '「〜したにちがいない」は must have + 過去分詞。'],
+  ['He ___ have received my email yet. He hasn\'t replied.', "can't", ["mustn't to", "doesn't", "isn't"], '「〜したはずがない」は can\'t have + 過去分詞。'],
+  ['Had I known you were coming, I ___ have cooked dinner.', 'would', ['will', 'had', 'did'], 'Had I known 〜 は If I had known 〜 と同じ（if を省いて順番を入れかえた形）。'],
+  ['If it ___ for your help, the project would have failed.', "hadn't been", ["didn't be", "isn't", "hasn't been"], '「もし〜がなかったら（過去）」は If it hadn\'t been for 〜。'],
+  ['If I were you, I ___ accept the offer.', 'would', ['will', 'had', 'am'], '今のことの仮定（もし私があなたなら）は If I were 〜, I would 〜（仮定法過去）。'],
+  ['I would have called you if I ___ your number.', 'had had', ['have had', 'had have', 'would have'], 'If のあとは had + 過去分詞。have の過去分詞は had なので had had。'],
+  ['It\'s time we ___ home. It\'s getting late.', 'went', ['goes', 'gone', 'going'], 'It\'s time + 主語 + 過去形 で「もう〜する時間だ」。'],
+  ['We might have won the contract if our price ___ lower.', 'had been', ['is', 'has been', 'will be'], '過去の事実と反対の仮定なので had been。'],
+  // ---------- 分詞構文 ----------
+  ['___ at the airport, I called my hotel.', 'Arriving', ['Arrive', 'Arrived', 'Arrives'], '「〜すると・〜したとき」は動詞の -ing で文を始める（分詞構文）。Arriving at 〜 = 〜に着くと。'],
+  ['___ finished the report, she went home.', 'Having', ['Have', 'Had', 'To have'], '先に終わっていたことは Having + 過去分詞（〜し終えて）。'],
+  ['___ in simple English, the guidebook is easy to read.', 'Written', ['Writing', 'Wrote', 'Write'], '「〜されているので」（受け身）は過去分詞で始める。The guidebook is written 〜 の意味。'],
+  ['___ from the hill, the city looks beautiful.', 'Seen', ['Seeing', 'Saw', 'See'], '街が「見られる」ので過去分詞 Seen（丘から見ると）。'],
+  ['Not ___ what to say, he kept quiet.', 'knowing', ['know', 'known', 'knew'], '分詞構文の否定は Not + -ing（何を言えばいいかわからなかったので）。'],
+  ['___ the train, I read a book.', 'While waiting for', ['While wait for', 'During waiting for', 'While waited for'], 'while + -ing で「〜している間に」。during のあとは名詞。'],
+  ['The plane took off at 9, ___ in London at noon.', 'arriving', ['arrive', 'arrived to', 'to arriving'], '「そして〜した」と続けるとき、, + -ing でつなげる。'],
+  ['___ by the noise, the guests complained to the front desk.', 'Annoyed', ['Annoying', 'Annoy', 'To annoy'], '客は「いらいらさせられた」ので過去分詞 Annoyed。'],
+  ['Generally ___, business travel has become more common.', 'speaking', ['spoken', 'speak', 'to speaking'], 'Generally speaking = 一般的に言えば（決まった言い方）。'],
+  ['___ his experience, he should get the job.', 'Considering', ['Considered', 'Consider', 'To considering'], 'Considering 〜 = 〜を考えると（決まった言い方）。'],
+  // ---------- ていねいな頼み方・言いかえ ----------
+  ['Would you mind ___ the window?', 'closing', ['to close', 'close', 'closed'], 'Would you mind のあとは -ing（〜していただけませんか）。'],
+  ['I was wondering ___ you could help me.', 'if', ['that', 'what', 'which'], 'I was wondering if 〜 = 〜していただけないかと思いまして（ていねいな頼み方）。'],
+  ['Could you possibly ___ me a ride to the station?', 'give', ['giving', 'to give', 'gave'], 'Could you のあとは動詞の原形。possibly は「なんとか」とていねいにする語。'],
+  ['Would it be possible ___ the meeting to Thursday?', 'to move', ['moving', 'move', 'moved'], 'Would it be possible to + 動詞の原形 = 〜することはできますか。'],
+  ['Do you mind if I ___ here?', 'sit', ['sitting', 'to sit', 'sat to'], 'Do you mind if I + 現在形 = 〜してもかまいませんか。'],
+  ['I would appreciate it if you ___ reply by Friday.', 'could', ['can be', 'will be', 'are'], 'I would appreciate it if you could 〜 = 〜していただけるとありがたいです。'],
+  ['Would you be ___ to send me the file?', 'kind enough', ['enough kind', 'kindly enough', 'so kind'], 'Would you be kind enough to 〜 = 〜していただけませんか。enough は形容詞のあと。'],
+  ['I\'d rather ___ by train than by bus.', 'go', ['going', 'to go', 'went'], 'would rather + 動詞の原形 = （どちらかと言えば）〜したい。'],
+  ['You had better ___ a taxi. It\'s raining hard.', 'take', ['taking', 'to take', 'took'], 'had better + 動詞の原形 = 〜したほうがいい。'],
+  ['Let me ___ you to our manager.', 'introduce', ['introducing', 'to introduce', 'introduced'], 'Let me + 動詞の原形 = 〜させてください。'],
+  ['May I ask what this is ___?', 'regarding', ['regard', 'regarded', 'to regard'], 'What is this regarding? = 何の件でしょうか（電話や受付の決まった言い方）。'],
+  // ---------- ビジネスの決まった言い方 ----------
+  ['I look forward to ___ from you.', 'hearing', ['hear', 'heard', 'be heard'], 'look forward to のあとは -ing（to は前置詞）。'],
+  ['Please find ___ the documents you requested.', 'attached', ['attach', 'attaching', 'to attach'], 'Please find attached 〜 = 〜を添付しましたのでご確認ください。'],
+  ['I am writing ___ your order of May 3.', 'regarding', ['regard', 'about of', 'for regard'], 'regarding 〜 = 〜に関して（メールでよく使う）。'],
+  ['Thank you for ___ the time to meet with us.', 'taking', ['take', 'took', 'to take'], 'Thank you for のあとは -ing。take the time = 時間を割く。'],
+  ['We are pleased ___ you that your application was successful.', 'to inform', ['informing', 'inform', 'informed'], 'be pleased to + 動詞の原形 = 喜んで〜する（お知らせします）。'],
+  ['Please do not hesitate ___ us if you have any questions.', 'to contact', ['contacting', 'contact', 'contacted'], 'do not hesitate to + 動詞の原形 = 遠慮なく〜してください。'],
+  ['We apologize ___ any inconvenience this may cause.', 'for', ['to', 'about of', 'with'], 'apologize for 〜 = 〜をおわびする。'],
+  ['As ___ in my last email, the price will change next month.', 'mentioned', ['mention', 'mentioning', 'to mention'], 'As mentioned 〜 = 〜でお伝えしたとおり。'],
+  ['I am ___ to accept your invitation.', 'delighted', ['delighting', 'delight', 'to delight'], 'be delighted to 〜 = 喜んで〜する。人が喜ぶので過去分詞 delighted。'],
+  ['Could you let me know ___ you will attend?', 'whether', ['what', 'which', 'who'], 'let me know whether 〜 = 〜かどうか知らせる。'],
+  ['We need to finish this ___ the end of the month.', 'by', ['until', 'since', 'during'], '「〜までに（済ませる）」は by。until は「〜までずっと」。'],
+  ['The office will be closed ___ Monday.', 'until', ['while', 'since', 'ago'], '「月曜日までずっと（閉まっている）」は until。'],
+  // ---------- 受け身 ----------
+  ['The conference ___ held in Singapore next year.', 'will be', ['will', 'is being to', 'has'], '「〜される予定だ」は will be + 過去分詞。'],
+  ['All flights have been ___ because of the storm.', 'canceled', ['canceling', 'cancel', 'to cancel'], 'have been + 過去分詞（〜されてしまった）。'],
+  ['The new hotel is ___ built near the beach.', 'being', ['been', 'be', 'having'], '「今〜されているところだ」は is being + 過去分詞。'],
+  ['Breakfast is served ___ 7 to 10 a.m.', 'from', ['since', 'between', 'at'], 'from 7 to 10 = 7時から10時まで。between なら between 7 and 10。'],
+  ['I had my suitcase ___ to my room.', 'carried', ['carry', 'carrying', 'to carry'], 'have + 物 + 過去分詞 = 〜してもらう。'],
+  ['The package should be ___ by tomorrow.', 'delivered', ['deliver', 'delivering', 'to deliver'], 'should be + 過去分詞 = 〜されるはずだ。'],
+  ['Visitors are not allowed ___ photos in the gallery.', 'to take', ['taking', 'take', 'taken'], 'be allowed to + 動詞の原形 = 〜することが許されている。'],
+  // ---------- 前置詞と接続詞の使い分け ----------
+  ['___ the rain, we enjoyed the tour.', 'Despite', ['Although', 'Even', 'Though'], 'despite のあとは名詞（the rain）。although のあとは文。'],
+  ['___ it was raining, we enjoyed the tour.', 'Although', ['Despite', 'In spite of', 'Because of'], 'although のあとは文（主語 + 動詞）。'],
+  ['The flight was delayed ___ heavy snow.', 'because of', ['because', 'although', 'so'], 'because of のあとは名詞。because のあとは文。'],
+  ['Take a jacket ___ it gets cold in the evening.', 'in case', ['in case of', 'despite', 'because of'], 'in case + 文 = 〜するといけないので。in case of のあとは名詞。'],
+  ['You can\'t board the plane ___ you have a passport.', 'unless', ['without', 'whether', 'despite'], 'unless = 〜でない限り。'],
+  ['___ you arrive, please call me.', 'As soon as', ['Since', 'During', 'Despite'], 'As soon as 〜 = 〜したらすぐに。'],
+  ['The hotel was nice. ___, it was too expensive.', 'However', ['Although', 'Despite', 'Because'], '文と文を「しかし」でつなぐときは However,（コンマつき）。'],
+  ['She speaks ___ English but also Chinese.', 'not only', ['either', 'both', 'neither'], 'not only A but also B = A だけでなく B も。'],
+  ['___ the hotel nor the restaurant was open.', 'Neither', ['Either', 'Both', 'Not'], 'neither A nor B = A も B も〜ない。'],
+  ['We stayed at the hotel ___ was recommended by our friend.', 'which', ['who', 'where', 'what'], '物（the hotel）を説明する関係代名詞は which（that でもよい）。'],
+  ['This is the city ___ I was born.', 'where', ['which', 'what', 'who'], '場所を説明して「〜するところ」は where。'],
+  ['___ you need is a good map.', 'What', ['That', 'Which', 'It'], 'What you need = あなたに必要なもの（what = 〜するもの）。'],
+  // ---------- 動名詞・不定詞・比較 ----------
+  ['I\'m used to ___ on business.', 'traveling', ['travel', 'traveled', 'be travel'], 'be used to のあとは -ing（〜することに慣れている）。'],
+  ['He stopped ___ when he became a manager.', 'smoking', ['smoke', 'to smoking', 'smoked'], 'stop -ing = 〜するのをやめる（stop to 〜 は「〜するために止まる」）。'],
+  ['Don\'t forget ___ your passport.', 'to bring', ['bringing', 'bring', 'brought'], 'forget to 〜 = （これから）〜するのを忘れる。'],
+  ['It\'s worth ___ the museum.', 'visiting', ['visit', 'to visit', 'visited'], 'be worth -ing = 〜する価値がある。'],
+  ['This hotel is ___ more expensive than the one we stayed at.', 'much', ['very', 'many', 'more'], '比較級を強めるときは much（ずっと）。very は使えない。'],
+  ['The sooner you book, ___ the price will be.', 'the cheaper', ['cheaper', 'the cheap', 'cheapest'], 'the + 比較級, the + 比較級 = 〜すればするほど…。'],
+  ['This is ___ interesting trip I have ever taken.', 'the most', ['more', 'most', 'the more'], '「今までで一番」は the + 最上級。'],
+  ['The train was ___ crowded that we couldn\'t get on.', 'so', ['such', 'too', 'very'], 'so + 形容詞 + that 〜 = とても〜なので…。'],
+  ['It was ___ a long meeting that I got tired.', 'such', ['so', 'too', 'very'], 'such a + 形容詞 + 名詞 + that 〜 = とても〜なので…。'],
+  ['The bag is too heavy ___ carry on the plane.', 'to', ['for', 'that', 'so'], 'too 〜 to … = …するには〜すぎる。'],
+];
+
+export const ORDER = [
+  ['もっと早く出発していれば、飛行機に間に合ったのに。', ['If we had left earlier, we would have caught the plane.', 'We would have caught the plane if we had left earlier.'], 'If + had + 過去分詞, would have + 過去分詞（過去の事実と反対の仮定）。'],
+  ['ホテルを前もって予約しておけばよかった。', ['I wish I had booked the hotel in advance.'], 'I wish + had + 過去分詞 = 〜しておけばよかった。'],
+  ['あなたは私に言うべきだったのに。', ['You should have told me.'], 'should have + 過去分詞 = 〜すべきだったのに。'],
+  ['彼はかぎを電車に置き忘れたにちがいない。', ['He must have left his key on the train.'], 'must have + 過去分詞 = 〜したにちがいない。'],
+  ['駅に着いたとき、私は友だちに電話した。', ['Arriving at the station, I called my friend.'], '分詞構文：Arriving at 〜 = 〜に着いたとき。'],
+  ['仕事を終えたので、彼女は家に帰った。', ['Having finished her work, she went home.'], 'Having + 過去分詞 = 〜し終えて（先に終わったこと）。'],
+  ['窓を開けていただけませんか。', ['Would you mind opening the window?'], 'Would you mind -ing? = 〜していただけませんか。'],
+  ['手伝っていただけないかと思いまして。', ['I was wondering if you could help me.'], 'I was wondering if you could 〜 = ていねいな頼み方。'],
+  ['お返事をお待ちしております。', ['I look forward to hearing from you.'], 'look forward to -ing。to のあとは -ing。'],
+  ['ご質問があれば、遠慮なくご連絡ください。', ['Please do not hesitate to contact us if you have any questions.', 'If you have any questions please do not hesitate to contact us.'], 'do not hesitate to 〜 = 遠慮なく〜する。'],
+  ['ご不便をおかけして申し訳ございません。', ['We apologize for the inconvenience.'], 'apologize for 〜 = 〜をおわびする。'],
+  ['会議は来年シンガポールで開かれる予定です。', ['The conference will be held in Singapore next year.', 'Next year the conference will be held in Singapore.'], 'will be + 過去分詞（〜される予定だ）。'],
+  ['私はスーツケースを部屋まで運んでもらった。', ['I had my suitcase carried to my room.'], 'have + 物 + 過去分詞 = 〜してもらう。'],
+  ['雨にもかかわらず、私たちは旅行を楽しんだ。', ['Despite the rain we enjoyed the trip.', 'We enjoyed the trip despite the rain.'], 'despite + 名詞 = 〜にもかかわらず。'],
+  ['寒くなるといけないので、上着を持っていきなさい。', ['Take a jacket in case it gets cold.', 'In case it gets cold take a jacket.'], 'in case + 文 = 〜するといけないので。'],
+  ['出張することには慣れています。', ["I'm used to traveling on business."], 'be used to -ing = 〜することに慣れている。'],
+  ['その博物館は訪れる価値がある。', ['The museum is worth visiting.'], 'be worth -ing = 〜する価値がある。'],
+  ['早く予約すればするほど、値段は安くなる。', ['The sooner you book the cheaper it will be.'], 'the + 比較級, the + 比較級 = 〜すればするほど…。'],
+  ['電車がとても混んでいたので、乗れなかった。', ["The train was so crowded that we couldn't get on."], 'so 〜 that … = とても〜なので…。'],
+  ['あなたに必要なのは、よい地図です。', ['What you need is a good map.'], 'What you need = あなたに必要なもの。'],
+  ['ここはその会社が始まった町です。', ['This is the town where the company started.'], '場所を説明する where（〜するところ）。'],
+  ['もし私があなたなら、その申し出を受けるでしょう。', ['If I were you I would accept the offer.', 'I would accept the offer if I were you.'], '今のことの仮定は If I were 〜, I would 〜。'],
+  ['添付の書類をご確認ください。', ['Please find the attached documents.', 'Please find attached the documents.'], 'Please find attached 〜 / the attached documents = 添付の〜をご確認ください。'],
+  ['お時間を割いていただきありがとうございます。', ['Thank you for taking the time to meet us.'], 'Thank you for -ing。take the time to 〜 = 〜するために時間を割く。'],
+  ['その案は役員会で承認された。', ['The plan was approved by the board.'], '受け身 was + 過去分詞 + by 〜。'],
+];

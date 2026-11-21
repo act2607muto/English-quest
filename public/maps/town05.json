@@ -1,0 +1,616 @@
+{
+  "format_version": 3,
+  "town_id": "town05",
+  "tile_size": 32,
+  "boss_place": "王城の北の石段の上の「そらの関所」",
+  "ground": {
+    "base": "grass",
+    "sets": [
+      {
+        "lower": "path",
+        "upper": "grass",
+        "sheet": "/maps/terrain-path.png",
+        "corners": {
+          "uulu": [
+            0,
+            0
+          ],
+          "ulul": [
+            32,
+            0
+          ],
+          "lull": [
+            64,
+            0
+          ],
+          "uull": [
+            96,
+            0
+          ],
+          "luul": [
+            0,
+            32
+          ],
+          "ulll": [
+            32,
+            32
+          ],
+          "llll": [
+            64,
+            32
+          ],
+          "lllu": [
+            96,
+            32
+          ],
+          "uluu": [
+            0,
+            64
+          ],
+          "lluu": [
+            32,
+            64
+          ],
+          "llul": [
+            64,
+            64
+          ],
+          "lulu": [
+            96,
+            64
+          ],
+          "uuuu": [
+            0,
+            96
+          ],
+          "uuul": [
+            32,
+            96
+          ],
+          "ullu": [
+            64,
+            96
+          ],
+          "luuu": [
+            96,
+            96
+          ]
+        }
+      },
+      {
+        "lower": "water",
+        "upper": "grass",
+        "sheet": "/maps/terrain-water.png",
+        "corners": {
+          "uulu": [
+            0,
+            0
+          ],
+          "ulul": [
+            32,
+            0
+          ],
+          "lull": [
+            64,
+            0
+          ],
+          "uull": [
+            96,
+            0
+          ],
+          "luul": [
+            0,
+            32
+          ],
+          "ulll": [
+            32,
+            32
+          ],
+          "llll": [
+            64,
+            32
+          ],
+          "lllu": [
+            96,
+            32
+          ],
+          "uluu": [
+            0,
+            64
+          ],
+          "lluu": [
+            32,
+            64
+          ],
+          "llul": [
+            64,
+            64
+          ],
+          "lulu": [
+            96,
+            64
+          ],
+          "uuuu": [
+            0,
+            96
+          ],
+          "uuul": [
+            32,
+            96
+          ],
+          "ullu": [
+            64,
+            96
+          ],
+          "luuu": [
+            96,
+            96
+          ]
+        }
+      },
+      {
+        "lower": "forest",
+        "upper": "grass",
+        "sheet": "/maps/terrain-forest.png",
+        "corners": {
+          "uulu": [
+            0,
+            0
+          ],
+          "ulul": [
+            32,
+            0
+          ],
+          "lull": [
+            64,
+            0
+          ],
+          "uull": [
+            96,
+            0
+          ],
+          "luul": [
+            0,
+            32
+          ],
+          "ulll": [
+            32,
+            32
+          ],
+          "llll": [
+            64,
+            32
+          ],
+          "lllu": [
+            96,
+            32
+          ],
+          "uluu": [
+            0,
+            64
+          ],
+          "lluu": [
+            32,
+            64
+          ],
+          "llul": [
+            64,
+            64
+          ],
+          "lulu": [
+            96,
+            64
+          ],
+          "uuuu": [
+            0,
+            96
+          ],
+          "uuul": [
+            32,
+            96
+          ],
+          "ullu": [
+            64,
+            96
+          ],
+          "luuu": [
+            96,
+            96
+          ]
+        }
+      },
+      {
+        "lower": "stone",
+        "upper": "grass",
+        "sheet": "/maps/terrain-stone.png",
+        "corners": {
+          "uulu": [
+            0,
+            0
+          ],
+          "ulul": [
+            32,
+            0
+          ],
+          "lull": [
+            64,
+            0
+          ],
+          "uull": [
+            96,
+            0
+          ],
+          "luul": [
+            0,
+            32
+          ],
+          "ulll": [
+            32,
+            32
+          ],
+          "llll": [
+            64,
+            32
+          ],
+          "lllu": [
+            96,
+            32
+          ],
+          "uluu": [
+            0,
+            64
+          ],
+          "lluu": [
+            32,
+            64
+          ],
+          "llul": [
+            64,
+            64
+          ],
+          "lulu": [
+            96,
+            64
+          ],
+          "uuuu": [
+            0,
+            96
+          ],
+          "uuul": [
+            32,
+            96
+          ],
+          "ullu": [
+            64,
+            96
+          ],
+          "luuu": [
+            96,
+            96
+          ]
+        }
+      },
+      {
+        "lower": "path",
+        "upper": "forest",
+        "sheet": "/maps/terrain-path-forest.png",
+        "corners": {
+          "uulu": [
+            0,
+            0
+          ],
+          "ulul": [
+            32,
+            0
+          ],
+          "lull": [
+            64,
+            0
+          ],
+          "uull": [
+            96,
+            0
+          ],
+          "luul": [
+            0,
+            32
+          ],
+          "ulll": [
+            32,
+            32
+          ],
+          "llll": [
+            64,
+            32
+          ],
+          "lllu": [
+            96,
+            32
+          ],
+          "uluu": [
+            0,
+            64
+          ],
+          "lluu": [
+            32,
+            64
+          ],
+          "llul": [
+            64,
+            64
+          ],
+          "lulu": [
+            96,
+            64
+          ],
+          "uuuu": [
+            0,
+            96
+          ],
+          "uuul": [
+            32,
+            96
+          ],
+          "ullu": [
+            64,
+            96
+          ],
+          "luuu": [
+            96,
+            96
+          ]
+        }
+      }
+    ]
+  },
+  "objects": {
+    "tree": {
+      "image": "/maps/obj-tree.png"
+    },
+    "bush": {
+      "image": "/maps/obj-bush.png"
+    },
+    "rock": {
+      "image": "/maps/obj-rock.png"
+    },
+    "tallgrass": {
+      "image": "/maps/obj-tallgrass.png",
+      "under_hero": true
+    },
+    "flowers": {
+      "image": "/maps/obj-flowers.png",
+      "under_hero": true
+    },
+    "reeds": {
+      "image": "/maps/obj-reeds.png",
+      "under_hero": true
+    },
+    "streetlamp": {
+      "image": "/maps/obj-streetlamp.png"
+    },
+    "pier": {
+      "image": "/maps/obj-pier.png"
+    },
+    "westgate": {
+      "image": "/maps/obj-westgate.png"
+    },
+    "royalcastle": {
+      "image": "/maps/obj-royalcastle.png"
+    },
+    "fountain": {
+      "image": "/maps/obj-fountain.png"
+    },
+    "ship": {
+      "image": "/maps/obj-ship.png"
+    },
+    "skygate": {
+      "image": "/maps/obj-skygate.png"
+    },
+    "town": {
+      "image": "/maps/obj-town05.png"
+    }
+  },
+  "tiles": {
+    ".": {
+      "ground": "grass",
+      "walk": true,
+      "encounter": 10
+    },
+    ",": {
+      "ground": "grass",
+      "object": "tallgrass",
+      "walk": true,
+      "encounter": 6
+    },
+    "f": {
+      "ground": "grass",
+      "object": "flowers",
+      "walk": true,
+      "encounter": 10
+    },
+    "w": {
+      "ground": "grass",
+      "object": "reeds",
+      "walk": true,
+      "encounter": 8
+    },
+    "T": {
+      "ground": "grass",
+      "object": "tree",
+      "walk": false
+    },
+    "b": {
+      "ground": "grass",
+      "object": "bush",
+      "walk": false
+    },
+    "r": {
+      "ground": "grass",
+      "object": "rock",
+      "walk": false
+    },
+    "x": {
+      "ground": "grass",
+      "walk": false
+    },
+    "C": {
+      "ground": "grass",
+      "object": "royalcastle",
+      "walk": false
+    },
+    "L": {
+      "ground": "stone",
+      "object": "streetlamp",
+      "walk": false
+    },
+    "F": {
+      "ground": "stone",
+      "object": "fountain",
+      "walk": false
+    },
+    "G": {
+      "ground": "grass",
+      "object": "fountain",
+      "walk": false
+    },
+    "Q": {
+      "ground": "grass",
+      "object": "pier",
+      "walk": false
+    },
+    "Y": {
+      "ground": "water",
+      "object": "ship",
+      "walk": false
+    },
+    "=": {
+      "ground": "path",
+      "walk": true,
+      "encounter": 20
+    },
+    "~": {
+      "ground": "water",
+      "walk": false
+    },
+    "s": {
+      "ground": "stone",
+      "walk": true,
+      "encounter": 12
+    },
+    "B": {
+      "ground": "stone",
+      "object": "skygate",
+      "walk": true,
+      "boss": true
+    },
+    "H": {
+      "ground": "grass",
+      "object": "town",
+      "walk": true,
+      "town": true
+    },
+    "E": {
+      "ground": "path",
+      "walk": true,
+      "exit": "town04",
+      "exit_name": "とけいだいの城下町へ",
+      "object": "westgate"
+    }
+  },
+  "start": {
+    "x": 12,
+    "y": 10
+  },
+  "rows": [
+    "TTTTTTTTTTTTTTTTTTTTTTTT",
+    "T.,TT.r..rrsBsrr..TT.,.T",
+    "T,.T..,r..rsssr..,T.,TTT",
+    "T..,.T...r..s.r..T,..f.T",
+    "T.T..,..r..,s,..r..,.T.T",
+    "T.,.xxxT.LsssssLb.,....T",
+    "TT..xxx.,sssFsss.bfffb.T",
+    "T,.fxCxT.LsssssL.bfGfb.T",
+    "T...fff.,..,....,bfffb.T",
+    "T.f..,..fb..H..bf...,TTT",
+    "TT....====..===......TTT",
+    "T..====..====.=...,....T",
+    "TE==.,.....,..====.T,T.T",
+    "T.TT..T,..T.,f..,=..f,.T",
+    "T.ww.ww.ww.ww.w.Q.ww.w.T",
+    "T~~~~~~~~~~~~~~~~~~~~~~T",
+    "T~~~~~Y~~~~~~~~~~~~Y~~~T",
+    "T~~~~~~~~~~~~~~~~~~~~~~T",
+    "T~~~~~~~~~~~~~~~~~~~~~~T",
+    "TTTTTTTTTTTTTTTTTTTTTTTT"
+  ],
+  "areas": [
+    "------------------------",
+    "-kkkkkkkkkkkkkkkkkkkkkk-",
+    "-kkkkkkkkkkkkkkkkkkkkkk-",
+    "-kkkkkkkkkkkkkkkkkkkkkk-",
+    "-kkkkkkkkkkkkkkkkkkkkkk-",
+    "-oooooooogggggggyyyyyyy-",
+    "-oooooooogggggggyyyyyyy-",
+    "-oooooooogggggggyyyyyyy-",
+    "-oooooooogggggggyyyyyyy-",
+    "-oooooooogggggggyyyyyyy-",
+    "-oooooooogggggggyyyyyyy-",
+    "-oooooooogggggggyyyyyyy-",
+    "-eooooooogggggggyyyyyyy-",
+    "-hhhhhhhhhhhhhhhhhhhhhh-",
+    "-hhhhhhhhhhhhhhhhhhhhhh-",
+    "-hhhhhhhhhhhhhhhhhhhhhh-",
+    "-hhhhhhhhhhhhhhhhhhhhhh-",
+    "-hhhhhhhhhhhhhhhhhhhhhh-",
+    "-hhhhhhhhhhhhhhhhhhhhhh-",
+    "------------------------"
+  ],
+  "area_defs": {
+    "g": {
+      "name": "王都の大広場",
+      "skills": {
+        "vocabulary": 2,
+        "grammar": 2,
+        "speaking": 1
+      },
+      "battle_background": "/battle/town05-plaza.png"
+    },
+    "o": {
+      "name": "王城の前庭",
+      "skills": {
+        "writing": 3,
+        "vocabulary": 1
+      },
+      "battle_background": "/battle/town05-castle.png"
+    },
+    "y": {
+      "name": "王家の花園",
+      "skills": {
+        "reading": 3,
+        "grammar": 1
+      },
+      "battle_background": "/battle/town05-garden.png"
+    },
+    "h": {
+      "name": "ほしぞらの港",
+      "skills": {
+        "listening": 3,
+        "speaking": 1
+      },
+      "battle_background": "/battle/town05-harbor.png"
+    },
+    "k": {
+      "name": "そらの関所への石段",
+      "skills": {
+        "reading": 2,
+        "grammar": 1,
+        "listening": 1
+      },
+      "battle_background": "/battle/town05-boss.png"
+    },
+    "e": {
+      "name": "とけいだいの城下町への道",
+      "skills": {}
+    }
+  }
+}

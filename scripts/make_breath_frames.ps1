@@ -80,6 +80,22 @@ $frames = @(
   @{ File = 'monsters/town04-rare-gold.png'; SplitRow = 54 }  # こぜにアナグマ
   @{ File = 'monsters/town04-boss.png';      SplitRow = 82 }  # すれちがいの大クジラ（96×96）
   @{ File = 'monsters/town04-wordbook.png';  SplitRow = 52 }  # てちょうヤギ
+  @{ File = 'monsters/town05-mon-voc.png';   SplitRow = 54 }  # にふだカワウソ
+  @{ File = 'monsters/town05-mon-gra.png';   SplitRow = 52 }  # もしもギツネ
+  @{ File = 'monsters/town05-mon-lis.png';   SplitRow = 52 }  # ほうそうイルカ
+  @{ File = 'monsters/town05-mon-rea.png';   SplitRow = 50 }  # しんぶんアルマジロ
+  @{ File = 'monsters/town05-mon-wri.png';   SplitRow = 53 }  # はねペンクジャク
+  @{ File = 'monsters/town05-mon-spe.png';   SplitRow = 52 }  # えんぜつライオン
+  @{ File = 'monsters/town05-mon-voc-revival.png'; SplitRow = 54 }  # にふだカワウソ（復活・色違い）
+  @{ File = 'monsters/town05-mon-gra-revival.png'; SplitRow = 51 }  # もしもギツネ（復活・色違い）
+  @{ File = 'monsters/town05-mon-lis-revival.png'; SplitRow = 52 }  # ほうそうイルカ（復活・色違い）
+  @{ File = 'monsters/town05-mon-rea-revival.png'; SplitRow = 50 }  # しんぶんアルマジロ（復活・色違い）
+  @{ File = 'monsters/town05-mon-wri-revival.png'; SplitRow = 53 }  # はねペンクジャク（復活・色違い）
+  @{ File = 'monsters/town05-mon-spe-revival.png'; SplitRow = 52 }  # えんぜつライオン（復活・色違い）
+  @{ File = 'monsters/town05-rare-exp.png';  SplitRow = 47 }  # にじいろハチドリ
+  @{ File = 'monsters/town05-rare-gold.png'; SplitRow = 48 }  # きんかコガネムシ
+  @{ File = 'monsters/town05-boss.png';      SplitRow = 83 }  # そらの関所の大グリフォン（96×96）
+  @{ File = 'monsters/town05-wordbook.png';  SplitRow = 53 }  # たびにっきラクダ
 )
 
 foreach ($f in $frames) {
