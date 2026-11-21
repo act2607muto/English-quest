@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { transcribeAudio } from '../lib/grading';
 import { describeRecordingError, isRecordingSupported, startRecording, type RecordingSession } from '../lib/recorder';
+import { MAX_ANSWER_LENGTH, MAX_OPINION_LENGTH } from '../lib/questionFile';
 import { holdBgm } from '../lib/sound';
 
 /**
@@ -9,7 +10,9 @@ import { holdBgm } from '../lib/sound';
  * 録音や文字起こしができないときは onFail を呼び、戦闘画面が自己採点に切り替える。
  */
 
+/** 録音の長さの上限（意見と理由を話す問題は長め） */
 const MAX_SECONDS = 30;
+const MAX_SECONDS_LONG = 60;
 
 type State =
   | { kind: 'idle' }
@@ -20,12 +23,16 @@ type State =
   | { kind: 'error'; message: string };
 
 export function SpeakAnswer({
+  long = false,
   onSubmit,
   onFail,
 }: {
+  /** 意見と理由を話す問題（録音を長めにでき、聞き取った文も長く直せる） */
+  long?: boolean;
   onSubmit: (text: string) => void;
   onFail: (message: string) => void;
 }) {
+  const maxSeconds = long ? MAX_SECONDS_LONG : MAX_SECONDS;
   const [state, setState] = useState<State>({ kind: 'idle' });
   const sessionRef = useRef<RecordingSession | null>(null);
   const startedRef = useRef(0);
@@ -41,12 +48,12 @@ export function SpeakAnswer({
     if (state.kind !== 'recording') return;
     const timer = setInterval(() => {
       const elapsed = Math.floor((Date.now() - startedRef.current) / 1000);
-      if (elapsed >= MAX_SECONDS) void stop();
+      if (elapsed >= maxSeconds) void stop();
       else setState((s) => (s.kind === 'recording' ? { kind: 'recording', elapsed } : s));
     }, 250);
     return () => clearInterval(timer);
     // stop は毎回作り直されるが、録音中の状態だけを見ればよい
-  }, [state.kind]);
+  }, [state.kind, maxSeconds]);
 
   async function start() {
     if (!isRecordingSupported()) {
@@ -102,7 +109,7 @@ export function SpeakAnswer({
       return (
         <div className="speak">
           <button className="command command--recording" type="button" onClick={() => void stop()}>
-            ■ とめる（{state.elapsed}秒 / {MAX_SECONDS}秒）
+            ■ とめる（{state.elapsed}秒 / {maxSeconds}秒）
           </button>
         </div>
       );
@@ -126,8 +133,8 @@ export function SpeakAnswer({
             <textarea
               value={state.text}
               onChange={(e) => setState({ kind: 'review', text: e.target.value })}
-              rows={3}
-              maxLength={300}
+              rows={long ? 5 : 3}
+              maxLength={long ? MAX_OPINION_LENGTH : MAX_ANSWER_LENGTH}
               lang="en"
               autoCapitalize="sentences"
               autoCorrect="off"

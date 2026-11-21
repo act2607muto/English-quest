@@ -11,7 +11,9 @@
 import { CORS_HEADERS, json, requireUser } from '../_shared/http.ts';
 import { defaultProvider, grade, providerModel } from '../_shared/graders.ts';
 
+/** 答えの長さの上限（画面側 src/lib/questionFile.ts と同じ値。意見と理由を答える問題は長め） */
 const MAX_ANSWER_LENGTH = 300;
+const MAX_OPINION_LENGTH = 600;
 
 /** 文中の {{given_en}} などを置き換える（画面側 src/lib/game/battle.ts の fillNames と同じ既定の名前） */
 function fillNames(text: string): string {
@@ -42,16 +44,20 @@ Deno.serve(async (req) => {
 
   const answer = (body.answer ?? '').trim();
   if (!body.questionId || !answer) return json({ error: 'questionId と answer が必要です' }, 400);
-  if (answer.length > MAX_ANSWER_LENGTH) return json({ error: `答えは${MAX_ANSWER_LENGTH}文字までにしてください` }, 400);
+  if (answer.length > MAX_OPINION_LENGTH) return json({ error: `答えは${MAX_OPINION_LENGTH}文字までにしてください` }, 400);
 
   const { data: q, error: qError } = await supabase
     .from('questions')
-    .select('id, format, sentence, sentence_ja, model_answers')
+    .select('id, format, sentence, sentence_ja, model_answers, tags')
     .eq('id', body.questionId)
     .maybeSingle();
   if (qError) return json({ error: `問題を読めませんでした（${qError.message}）` }, 500);
   if (!q) return json({ error: '問題が見つかりません' }, 404);
   if (q.format !== 'translate' && q.format !== 'respond') return json({ error: 'AI採点の問題ではありません' }, 400);
+  const opinion = q.format === 'respond' && ((q.tags ?? []) as string[]).includes('opinion');
+  if (!opinion && answer.length > MAX_ANSWER_LENGTH) {
+    return json({ error: `答えは${MAX_ANSWER_LENGTH}文字までにしてください` }, 400);
+  }
 
   const task = {
     format: q.format as 'translate' | 'respond',
@@ -60,6 +66,7 @@ Deno.serve(async (req) => {
     modelAnswers: ((q.model_answers ?? []) as string[]).map(fillNames),
     answer,
     spoken: body.spoken === true,
+    opinion,
   };
 
   const provider = defaultProvider();

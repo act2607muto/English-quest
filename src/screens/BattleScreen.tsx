@@ -10,12 +10,12 @@ import { attackOf, damageTo, hitsToDefeat } from '../lib/game/attack';
 import { flawlessBonusEach, splitExpReward } from '../lib/game/foes';
 import { isDue } from '../lib/game/growth';
 import { heroNameOf, type Player } from '../lib/game/player';
-import { EXP_CORRECT, EXP_CORRECT_REVIEW, EXP_HALF, EXP_WORDBOOK, EXP_WORDBOOK_REVIEW } from '../lib/game/rules';
+import { EXP_CORRECT, EXP_CORRECT_REVIEW, EXP_HALF, EXP_WORDBOOK, EXP_WORDBOOK_REVIEW, LONG_AUDIO_WORDS } from '../lib/game/rules';
 import { isWordbookMonster, isWordbookQuestion } from '../lib/game/wordbook';
 import { endMarkOf, isOrderCorrect } from '../lib/game/wordOrder';
 import { gradeDictation, markDictation } from '../lib/game/dictation';
 import { gradeAnswer, RATING_LABELS, type Rating } from '../lib/grading';
-import type { MonsterRow, QuestionRow } from '../lib/questionFile';
+import { MAX_ANSWER_LENGTH, MAX_OPINION_LENGTH, OPINION_TAG, type MonsterRow, type QuestionRow } from '../lib/questionFile';
 import { addSkillExp, fetchProgress, finishBattle, markBossDefeated, saveAnswer, type QuestionProgress } from '../lib/records';
 import type { Skill } from '../lib/skills';
 import { canSpeak, speakEnglish, stopSpeaking } from '../lib/speech';
@@ -443,6 +443,10 @@ export function BattleScreen({
   const isSpeaking = !isChoice && !isOrder && !isDictation && skill === 'speaking';
   /** AI採点の問題か（書く・話す。並べかえと書き取りはアプリの中で採点する） */
   const isGraded = !isChoice && !isOrder && !isDictation;
+  /** 意見と理由を答える問題（5つ目の街）。答えは長めに書ける・話せる */
+  const isOpinion = q.format === 'respond' && (q.tags ?? []).includes(OPINION_TAG);
+  /** アナウンスや説明のような長い英文（5つ目の街）は、ゆっくりも聞ける */
+  const isLongAudio = (q.audio_text ?? '').split(/\s+/).filter(Boolean).length >= LONG_AUDIO_WORDS;
 
   return (
     <main className={`screen battle${acting && !hit ? ' battle--hurt' : ''}`}>
@@ -543,8 +547,8 @@ export function BattleScreen({
                   <button className="command command--listen" type="button" onClick={() => speakEnglish(q.audio_text!)}>
                     ▶ 聞く
                   </button>
-                  {/* 書き取りは、ゆっくりも聞ける（何度でも） */}
-                  {isDictation && (
+                  {/* 書き取りと、アナウンスのような長い英文は、ゆっくりも聞ける（何度でも） */}
+                  {(isDictation || isLongAudio) && (
                     <button className="command" type="button" onClick={() => speakEnglish(q.audio_text!, 0.65)}>
                       ▶ ゆっくり聞く
                     </button>
@@ -614,6 +618,7 @@ export function BattleScreen({
           phase === 'question' ? (
             <SpeakAnswer
               key={`${q.id}-${index}`}
+              long={isOpinion}
               onSubmit={(text) => void submitText(text, true)}
               onFail={(message) => {
                 setGradeError(message);
@@ -639,8 +644,8 @@ export function BattleScreen({
                 value={draft}
                 onChange={(e) => setDraft(e.target.value)}
                 disabled={phase !== 'question'}
-                rows={3}
-                maxLength={300}
+                rows={isOpinion ? 5 : 3}
+                maxLength={isOpinion ? MAX_OPINION_LENGTH : MAX_ANSWER_LENGTH}
                 lang="en"
                 autoCapitalize="sentences"
                 autoCorrect="off"

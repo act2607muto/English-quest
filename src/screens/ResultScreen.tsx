@@ -4,6 +4,7 @@ import { playSfx } from '../lib/sound';
 import { heroNameOf, skillOf, type Player } from '../lib/game/player';
 import { SKILLS, SKILL_LABELS } from '../lib/skills';
 import { baseAttackOf } from '../lib/game/attack';
+import { FINAL_TOWN_ID } from '../lib/game/rules';
 import type { BattleResult } from './BattleScreen';
 
 /** 戦闘結果：もらった経験値とお金、レベルアップ、六角形の変化 */
@@ -33,6 +34,8 @@ export function ResultScreen({
   const overallUp = after.overall > before.overall;
   const firstBossWin =
     result.kind === 'boss' && result.won && !before.defeatedBosses.includes(result.monster.id);
+  /** 最後の街のボスを初めて倒した（エンディングのお知らせを出す） */
+  const ending = firstBossWin && result.monster.town_id === FINAL_TOWN_ID;
 
   // 音：勝ったらファンファーレ、負けたら下がっていく音。レベルが上がっていれば、そのあとに上がる音
   const leveledUp = levelUps.length > 0 || overallUp;
@@ -76,7 +79,7 @@ export function ResultScreen({
             {result.monster.name}から、おまけの経験値 {result.rewardExp}！（出た能力値で分けて入りました）
           </p>
         )}
-        {firstBossWin && (
+        {firstBossWin && !ending && (
           <p className="levelup">
             {result.monster.name}を はじめて たおした！ 次の街への道が開けた。ボスのいた場所から、門の先へ進めます。
           </p>
@@ -93,6 +96,22 @@ export function ResultScreen({
           <p className="message message--error">通信できず、記録できなかった答えがあります。経験値が少なく見えるかもしれません。</p>
         )}
       </section>
+
+      {ending && (
+        <section className="window ending" aria-label="エンディング">
+          <h2 className="window__title">～ 旅のおわりに ～</h2>
+          <p>
+            {heroNameOf(after)}は、5つの街をめぐる英語の旅を やりとげた！
+          </p>
+          <p>
+            あいさつから買い物、道案内、電話や雑談、そして旅行と仕事まで。はじめは ぎこちなかった ことばが、いまでは あなたの力になっています。
+          </p>
+          <p className="levelup">総合レベル {after.overall}　—　ここまでの冒険、おつかれさまでした！</p>
+          <p className="note">
+            このあとも、どの街でも練習を続けられます。能力値は練習しないと少しずつ下がるので、ときどき冒険に出て、身につけた英語を守りましょう。
+          </p>
+        </section>
+      )}
 
       <section className="window">
         <Hexagon skills={after.skills} previous={before.skills} />

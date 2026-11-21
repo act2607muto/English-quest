@@ -8,6 +8,11 @@ import { SKILLS, type Skill } from './skills';
 
 /** order は単語の並べかえ（3つ目の街から。lib/game/wordOrder.ts）、dictation は書き取り（4つ目の街から。lib/game/dictation.ts） */
 export const FORMATS = ['choice4', 'translate', 'respond', 'order', 'dictation'] as const;
+/** 意見と理由を答える問題の印（respond の tags。5つ目の街から。AI採点で理由があるかも見て、答えは長めに書ける） */
+export const OPINION_TAG = 'opinion';
+/** AI採点の答えの長さの上限（意見の問題は2〜3文になるので長め）。Edge Function の grade と同じ値にする */
+export const MAX_ANSWER_LENGTH = 300;
+export const MAX_OPINION_LENGTH = 600;
 export type QuestionFormat = (typeof FORMATS)[number];
 
 /** 文中で本人の名前に置き換える印 */
@@ -441,6 +446,8 @@ function parseQuestion(raw: unknown, townId: string | null, problems: string[]):
     if (!isStringArray(raw.tags)) problems.push('tags が文字の並びではありません');
     else tags = raw.tags.map((t) => t.trim()).filter(Boolean);
   }
+  // 意見と理由を答える問題（5つ目の街。tags に opinion）：AI採点で「理由があるか」も見る。英語の質問に答える形（respond）だけ
+  if (tags.includes(OPINION_TAG) && format !== 'respond') problems.push('tags の opinion（意見と理由）は respond の問題だけにつけてください');
 
   const texts = [raw.prompt, sentence, sentenceJa, audioText, explanation, ...(choices ?? []), ...(modelAnswers ?? [])];
   for (const t of texts) {

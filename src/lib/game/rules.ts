@@ -51,3 +51,9 @@ export const REVIVAL_GOLD = 15; // 復活モンスターを倒したときのお
 
 /** 六角形の目盛りの上限。いちばん高いレベルが収まる最小の段を使う */
 export const HEXAGON_SCALE_STEPS = [10, 25, 50, 99] as const;
+
+/** リスニング：この語数以上の英文（アナウンスや説明。5つ目の街から）には「ゆっくり聞く」を出す */
+export const LONG_AUDIO_WORDS = 30;
+
+/** 最後の街（ここのボスを初めて倒したら、エンディングのお知らせを出す。5つの街の計画、2026-11-21） */
+export const FINAL_TOWN_ID = 'town05';

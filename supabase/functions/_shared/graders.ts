@@ -58,6 +58,8 @@ export type GradeTask = {
   answer: string;
   /** 声で答えた（文字起こしの）答えか */
   spoken: boolean;
+  /** 意見と理由を答える問題（respond で tags に opinion。5つ目の街から） */
+  opinion?: boolean;
 };
 
 export function providerModel(p: Provider): string {
@@ -94,6 +96,20 @@ export function buildUserPrompt(task: GradeTask): string {
   const spokenNote = task.spoken
     ? '\nこの答えは、声で言ったものを文字起こしした文です。句読点や大文字の有無は気にしないでください。'
     : '';
+  if (task.format === 'respond' && task.opinion) {
+    return `英語の質問に、自分の意見と理由を英語で答える問題です（2〜3文くらい）。
+質問：${task.sentence}
+質問の意味：${task.sentenceJa ?? ''}
+答えの例：
+${examples}
+意見はどちらの立場でもかまいません。例と違う意見でも、評価を下げないでください。
+- good：自分の意見がはっきりしていて、理由が1つ以上あり（because など）、文法や語の選び方に直すべき誤りがない。
+- close：意見は伝わるが理由がない、または文法・語の選び方に直したほうがよい誤りがある。advice では、理由がなければ理由をつけるように伝える。
+- bad：質問に答えていない、または意見が伝わらない。
+better は、学習者の意見をそのまま生かし、理由をつけた自然な英文（2〜3文）にしてください。${spokenNote}
+
+<answer>${task.answer}</answer>`;
+  }
   if (task.format === 'respond') {
     return `英語の質問に、自分のことを英語で答える問題です。
 質問：${task.sentence}

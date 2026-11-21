@@ -3,7 +3,7 @@ import { MonsterArt } from '../components/MonsterArt';
 import { fetchMonstersOfTown, fetchTowns } from '../lib/content';
 import { bossFor, bossSkills } from '../lib/game/foes';
 import type { Player } from '../lib/game/player';
-import { BOSS_RECOMMEND_RATIO } from '../lib/game/rules';
+import { BOSS_RECOMMEND_RATIO, FINAL_TOWN_ID } from '../lib/game/rules';
 import type { TownStatus } from '../lib/game/town';
 import type { MonsterRow, TownRow } from '../lib/questionFile';
 import { SKILL_LABELS, type Skill } from '../lib/skills';
@@ -71,7 +71,12 @@ export function BossScreen({
             </p>
             {defeated && (
               <p className="levelup">
-                たおした！ {nextTown ? '門の先に、次の街への道が開けています。' : '次の街への道が開けています（次の街は準備中です）。'}
+                たおした！{' '}
+                {player.currentTownId === FINAL_TOWN_ID
+                  ? '5つの街をめぐる英語の旅を やりとげました。'
+                  : nextTown
+                    ? '門の先に、次の街への道が開けています。'
+                    : '次の街への道が開けています（次の街は準備中です）。'}
               </p>
             )}
           </section>
