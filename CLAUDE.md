@@ -56,6 +56,7 @@
 - ボスはいつでも挑める（2026-11-18）。英語が得意な人が待たされて離れないように、「街の問題の8割に1回以上正解」は鍵ではなく、ボスの画面と街の画面に出す「おすすめの目安」にした（数値は rules.ts の BOSS_RECOMMEND_RATIO）。まだ練習していない人は、戦えるすべての能力値の問題で挑む。
 - 公開先は自分のドメイン `https://english-quest.app`（2026-11-21、Vercel で購入。www ともとの vercel.app は 308 で飛ばす。手順は docs/deploy_vercel.md の最後）。
 - OGP（2026-11-21）：index.html に題名・説明文・画像（public/ogp.png、1200×630）を書いた。画像は scripts/make_ogp.ps1 の案 A（街の前に男の子と女の子、本人が3案から選んだ）。説明文は「毎日少しずつ、英語で冒険しよう。…ドット絵のRPGで楽しくきたえる英語アプリ。」
+- 英語の読み上げの声（2026-11-21）：Windows では古い「Microsoft Zira Desktop」が選ばれて機械っぽかったので、src/lib/speech.ts の voiceScore で自然な声（Edge の Natural／Online、Chrome の Google、iPhone・Mac の Enhanced・Premium）を優先し、おもしろ声は使わないようにした。設定の「音」に今の声と「▶ 聞いてみる」。
 - 音（2026-11-20）：Web Audio でその場で合成する（src/lib/sound.ts、音のファイルなし。Pixellab の音楽は Tier 2 からなので使っていない）。BGM は街・街の外・戦闘・ボスの4曲（オリジナルのメロディ、App の bgmFor で画面ごとに選ぶ）、効果音はボタン・出会い・正解・まちがい・倒す・勝ち負け・レベルアップ・買う・街の移動。読み上げ中と録音中は holdBgm で BGM を消す。設定で BGM と効果音をそれぞれオン・オフ（preferences.ts、端末ごと）。
 - 記録の画面（2026-11-18）：ステータスの「▶ 記録を見る」から。集計は src/lib/game/history.ts、画面は screens/RecordsScreen.tsx（グラフは SVG を手で描いている）。にげたときも、1問でも答えていれば戦闘の履歴を負けとして残す（記録で数えるため）。
 - 主人公は男の子か女の子を選べる（2026-11-18）。はじめて名前をつける画面と、設定の「主人公の名前と見た目を変える」で選ぶ。記録は adventure_state.hero_look（SQL は supabase/migrations/20261118000000_hero_look.sql。列がまだなくても男の子として読める）。女の子の絵は public/hero/girl/ に男の子と同じ名前で置く（本人が3案から B：茶色の長い髪の三つ編みとスカートを選んだ。案は art/hero-candidates/。マップ用と歩く絵は男の子の絵を Pixellab の edit_image_pixen で髪だけ変えたもの）。今の見た目は src/lib/heroLook.ts（heroSrc で絵の場所を変える）。

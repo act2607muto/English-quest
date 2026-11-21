@@ -13,6 +13,7 @@ import {
   type DpadSide,
 } from '../lib/preferences';
 import { bgmSettingChanged, playSfx } from '../lib/sound';
+import { canSpeak, englishVoiceName, speakEnglish } from '../lib/speech';
 
 /** 設定。問題文に使う自分の名前・音声の速さは、この後の手順で足す */
 export function SettingsScreen({
@@ -57,6 +58,21 @@ export function SettingsScreen({
     setSfxState(on);
     if (on) playSfx('coin');
   };
+  // 英語の読み上げに使う声（声の一覧はあとから届くことがあるので、届いたら読み直す）
+  const [voiceName, setVoiceName] = useState<string | null>(englishVoiceName);
+  /** 少し待っても声が見つからなかった */
+  const [voiceMissing, setVoiceMissing] = useState(false);
+  useEffect(() => {
+    if (!canSpeak) return;
+    const update = () => window.setTimeout(() => setVoiceName(englishVoiceName()), 0);
+    speechSynthesis.addEventListener?.('voiceschanged', update);
+    update();
+    const timer = window.setTimeout(() => setVoiceMissing(true), 2000);
+    return () => {
+      speechSynthesis.removeEventListener?.('voiceschanged', update);
+      window.clearTimeout(timer);
+    };
+  }, []);
   const [noEncounters, setNoEnc] = useState(getNoEncounters);
   const chooseEncounters = (off: boolean) => {
     setNoEncounters(off);
@@ -126,6 +142,24 @@ export function SettingsScreen({
             </div>
           </div>
         ))}
+        <div className="sound-row">
+          <span className="sound-row__label">英語の読み上げの声</span>
+          <p className="note">
+            {!canSpeak
+              ? 'この端末では読み上げが使えません。'
+              : voiceName
+                ? voiceName
+                : voiceMissing
+                  ? '英語の声が見つかりません（端末の設定で英語の声を入れると使えます）。'
+                  : '声を読み込んでいます…'}
+          </p>
+          <p className="note">Windows のパソコンでは、Edge で開くといちばん自然な声になります（Chrome でも Google の声になります）。</p>
+          {canSpeak && (
+            <button className="command command--listen" type="button" onClick={() => speakEnglish('Hello! Nice to meet you. How much is this jacket?')}>
+              ▶ 聞いてみる
+            </button>
+          )}
+        </div>
       </section>
       <section className="window" aria-labelledby="dpad-side-title">
         <h2 className="window__title" id="dpad-side-title">
