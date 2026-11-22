@@ -1131,16 +1131,29 @@ code {
   padding-bottom: calc(10px + env(safe-area-inset-bottom));
 }
 
+/*
+ * 場所の名前と「出やすい：…」は、いつも別の行に1行ずつ出す（2026-11-22）。
+ * 横に並べていたときは、名前が長いと「出やすい」が折り返して欄が高くなり、下のマップがずれていた。
+ * どの行も折り返さず、入りきらないときは「…」で切るので、場所が変わっても欄の高さは変わらない。
+ */
 .map-place {
-  flex-direction: row;
-  align-items: baseline;
-  flex-wrap: wrap;
-  gap: 2px 12px;
+  flex-direction: column;
+  align-items: stretch;
+  flex-wrap: nowrap;
+  gap: 2px;
   padding: 6px 12px;
 }
 
 .map-place p {
   margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 「出やすい：リーディング・文法・リスニング」（いちばん長い組み合わせ）が iPhone の幅で1行に入る大きさ */
+.map-place .note {
+  font-size: 14px;
 }
 
 .map-place__name {
