@@ -186,3 +186,65 @@ export async function fetchTownQuestionIndex(townId: string): Promise<{ id: stri
       .range(from, to),
   );
 }
+
+/** 管理者用の集計（supabase/migrations/20261122010000_admin_stats.sql の admin_stats）。メールアドレスは入っていない */
+export type AdminStats = {
+  /** 集計した日（日本の日付、YYYY-MM-DD） */
+  today: string;
+  users: {
+    /** 登録した順の番号（1から） */
+    no: number;
+    hero_name: string | null;
+    current_town_id: string | null;
+    defeated_bosses: string[];
+    joined_at: string;
+    last_sign_in_at: string | null;
+    is_admin: boolean;
+    skills: { skill: Skill; exp: number; max_exp: number; last_practiced_at: string | null; unlocked: boolean }[];
+    battles: number;
+    questions: number;
+    correct: number;
+    last_fought_at: string | null;
+    /** 練習した日の数（これまで・この7日） */
+    active_days: number;
+    active_days_7: number;
+  }[];
+  /** この30日の、日ごとの人数・戦闘・問題の数（古い日から） */
+  daily: { day: string; users: number; battles: number; questions: number; correct: number }[];
+  /** 街と能力値ごと（単語の書庫は skill が 'wordbook'） */
+  skills: {
+    town_id: string;
+    skill: Skill | 'wordbook';
+    total_questions: number;
+    answered_questions: number;
+    users: number;
+    correct: number;
+    wrong: number;
+  }[];
+  /** まちがえやすい問題（3回以上答えられたもの、正解の割合が低い順に30問） */
+  hard_questions: {
+    id: string;
+    town_id: string;
+    skill: Skill;
+    format: string;
+    wordbook: boolean;
+    prompt: string;
+    sentence: string | null;
+    audio_text: string | null;
+    choices: string[] | null;
+    answer: number | null;
+    model_answers: string[] | null;
+    correct: number;
+    wrong: number;
+    users: number;
+    rate: number;
+  }[];
+  bosses: { id: string; name: string; town_id: string; users: number }[];
+  towns: { id: string; name: string | null; scene: string }[];
+};
+
+export async function fetchAdminStats(): Promise<AdminStats> {
+  const { data, error } = await requireSupabase().rpc('admin_stats');
+  if (error) throw error;
+  return data as AdminStats;
+}

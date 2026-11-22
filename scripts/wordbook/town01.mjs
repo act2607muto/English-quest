@@ -5,7 +5,7 @@
  * 同じ意味の単語（big と large など）は、意味の文字をそろえておくと、まちがいの選択肢に出ない。
  * 直したら：node scripts/build_wordbook.mjs town01 data/town01_wordbook.json
  */
-export const TOWN = { id: 'town01', scene: 'あいさつと自己紹介', difficulty: '基本', order: 1 };
+export const TOWN = { id: 'town01', name: 'はじまりの街', scene: 'あいさつと自己紹介', difficulty: '基本', order: 1 };
 export const LEVEL = 1;
 export const EXPECTED_COUNT = 400;
 export const MONSTER = {

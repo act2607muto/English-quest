@@ -295,7 +295,7 @@ if __name__ == "__main__":
     per_skill, pos = check(questions)
     data = {
         "format_version": 1,
-        "town": {"id": TOWN, "scene": "あいさつと自己紹介", "difficulty": "基本", "order": 1},
+        "town": {"id": TOWN, "name": "はじまりの街", "scene": "あいさつと自己紹介", "difficulty": "基本", "order": 1},
         "questions": questions,
     }
     with open(sys.argv[1], "w", encoding="utf-8") as f:

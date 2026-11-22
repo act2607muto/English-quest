@@ -12,6 +12,7 @@ import type { Skill } from './lib/skills';
 import type { MonsterRow, TownRow } from './lib/questionFile';
 import { isSupabaseConfigured } from './lib/supabase';
 import { installAudio, playSfx, setBgm, type BgmName } from './lib/sound';
+import { AdminStatsScreen } from './screens/AdminStatsScreen';
 import { BattleScreen, type BattleKind, type BattleResult } from './screens/BattleScreen';
 import { BestiaryScreen } from './screens/BestiaryScreen';
 import { BossScreen } from './screens/BossScreen';
@@ -71,6 +72,8 @@ type Route =
   | { name: 'guide'; first: boolean; back?: 'town' | 'settings' }
   | { name: 'password' }
   | { name: 'import' }
+  /** みんなの記録（管理者だけ）。設定から開く */
+  | { name: 'admin-stats' }
   | { name: 'mic-test' };
 
 // 音：最初のタップで音を使えるようにし、ボタンを押したら「ピッ」と鳴らす（lib/sound.ts）
@@ -378,6 +381,7 @@ function Game() {
         <SettingsScreen
           isAdmin={isAdmin}
           onImport={() => go({ name: 'import' })}
+          onAdminStats={() => go({ name: 'admin-stats' })}
           onMicTest={() => go({ name: 'mic-test' })}
           onHeroName={() => go({ name: 'hero-name' })}
           onPassword={() => go({ name: 'password' })}
@@ -406,6 +410,8 @@ function Game() {
       );
     case 'import':
       return <ImportScreen onBack={() => go({ name: 'settings' })} />;
+    case 'admin-stats':
+      return <AdminStatsScreen onBack={() => go({ name: 'settings' })} />;
     case 'mic-test':
       return <MicTestScreen onBack={() => go({ name: 'settings' })} />;
     default:

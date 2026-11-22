@@ -21,6 +21,7 @@ import { canSpeak, englishVoiceName, speakEnglish } from '../lib/speech';
 export function SettingsScreen({
   isAdmin,
   onImport,
+  onAdminStats,
   onMicTest,
   onHeroName,
   onPassword,
@@ -29,6 +30,7 @@ export function SettingsScreen({
 }: {
   isAdmin: boolean;
   onImport: () => void;
+  onAdminStats: () => void;
   onMicTest: () => void;
   onHeroName: () => void;
   onPassword: () => void;
@@ -98,6 +100,11 @@ export function SettingsScreen({
         {admin && (
           <button className="command command--plain" type="button" onClick={onImport}>
             ▶ 教材の取り込み
+          </button>
+        )}
+        {admin && (
+          <button className="command command--plain" type="button" onClick={onAdminStats}>
+            ▶ みんなの記録
           </button>
         )}
         <button className="command command--plain" type="button" onClick={onHeroName}>

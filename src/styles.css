@@ -2524,3 +2524,119 @@ code {
     opacity: 0;
   }
 }
+
+/* ---------- みんなの記録（管理者だけ） ---------- */
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.admin-table th,
+.admin-table td {
+  padding: 4px 2px;
+  text-align: right;
+  font-weight: normal;
+  white-space: nowrap;
+}
+
+.admin-table th {
+  color: var(--muted);
+  font-size: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.admin-table th:first-child,
+.admin-table td:first-child {
+  text-align: left;
+}
+
+.admin-bar {
+  display: inline-block;
+  height: 8px;
+  margin-right: 6px;
+  background: var(--accent);
+  vertical-align: middle;
+}
+
+.admin-users,
+.admin-questions {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.admin-user,
+.admin-question {
+  padding: 8px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.admin-user:first-child,
+.admin-question:first-child {
+  border-top: none;
+}
+
+.admin-user__name {
+  margin: 0 0 4px;
+  color: var(--accent);
+  overflow-wrap: anywhere;
+}
+
+.admin-user__tag {
+  margin-left: 8px;
+  padding: 0 4px;
+  font-size: 12px;
+  color: var(--muted);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.admin-user .stats {
+  font-size: 14px;
+}
+
+.admin-town + .admin-town {
+  margin-top: 12px;
+}
+
+.admin-town__name {
+  margin: 0 0 4px;
+  font-size: 15px;
+  font-weight: normal;
+  color: var(--accent);
+}
+
+.admin-question__meta {
+  margin: 0;
+  font-size: 12px;
+  color: var(--muted);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 8px;
+}
+
+.admin-question__meta code {
+  font-size: 12px;
+}
+
+.admin-question__text {
+  margin: 4px 0;
+  overflow-wrap: anywhere;
+  white-space: pre-line;
+}
+
+.admin-question__rate {
+  margin: 0;
+  font-size: 14px;
+  color: var(--error);
+}
+
+.admin-table--wrap td:first-child {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.admin-table--wrap td {
+  padding: 6px 2px;
+  vertical-align: top;
+}
