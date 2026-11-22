@@ -25,6 +25,7 @@ export function SettingsScreen({
   onMicTest,
   onHeroName,
   onPassword,
+  onDeleteAccount,
   onGuide,
   onBack,
 }: {
@@ -34,6 +35,7 @@ export function SettingsScreen({
   onMicTest: () => void;
   onHeroName: () => void;
   onPassword: () => void;
+  onDeleteAccount: () => void;
   onGuide: () => void;
   onBack: () => void;
 }) {
@@ -118,6 +120,9 @@ export function SettingsScreen({
         </button>
         <button className="command command--plain" type="button" onClick={() => void signOut()}>
           ▶ ログアウト
+        </button>
+        <button className="command command--plain" type="button" onClick={onDeleteAccount}>
+          ▶ アカウントを消す
         </button>
       </nav>
       <section className="window" aria-labelledby="sound-title">

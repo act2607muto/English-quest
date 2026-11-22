@@ -1755,6 +1755,7 @@ code {
 }
 
 .choice--wrong:disabled,
+.command--danger:not(:disabled),
 .command--record,
 .command--recording {
   border-image-source: url('/ui/frame-red.png');
@@ -2702,4 +2703,14 @@ code {
   width: 100%;
   margin-bottom: 8px;
   text-align: left;
+}
+
+/* ---------- アカウントを消す ---------- */
+.delete-account__list {
+  margin: 0 0 8px;
+  padding-left: 1.2em;
+}
+
+.command--danger:not(:disabled) {
+  color: var(--error);
 }

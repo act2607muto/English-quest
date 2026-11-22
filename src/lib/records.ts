@@ -434,3 +434,13 @@ export async function fetchAnswerNotes(): Promise<AnswerNote[]> {
     if (data.length < PAGE) return notes;
   }
 }
+
+/**
+ * ログインしている本人のアカウントと、すべての記録を消す（元にはもどせない）。
+ * データベースの関数 delete_my_account（supabase/migrations/20261122020000_delete_my_account.sql）。
+ * 管理者のアカウントは消せない。
+ */
+export async function deleteMyAccount(): Promise<void> {
+  const { error } = await requireSupabase().rpc('delete_my_account');
+  if (error) throw new Error(error.message);
+}

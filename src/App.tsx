@@ -16,6 +16,7 @@ import { AdminStatsScreen } from './screens/AdminStatsScreen';
 import { BattleScreen, type BattleKind, type BattleResult } from './screens/BattleScreen';
 import { BestiaryScreen } from './screens/BestiaryScreen';
 import { BossScreen } from './screens/BossScreen';
+import { DeleteAccountScreen } from './screens/DeleteAccountScreen';
 import { FieldScreen } from './screens/FieldScreen';
 import { GuideScreen } from './screens/GuideScreen';
 import { ImportScreen } from './screens/ImportScreen';
@@ -74,6 +75,8 @@ type Route =
   /** あそびかた。first は名前をつけた直後（読み終わると街へ。ほかは設定へもどる） */
   | { name: 'guide'; first: boolean; back?: 'town' | 'settings' }
   | { name: 'password' }
+  /** アカウントを消す（設定から開く） */
+  | { name: 'delete-account' }
   | { name: 'import' }
   /** みんなの記録（管理者だけ）。設定から開く */
   | { name: 'admin-stats' }
@@ -390,6 +393,7 @@ function Game() {
           onMicTest={() => go({ name: 'mic-test' })}
           onHeroName={() => go({ name: 'hero-name' })}
           onPassword={() => go({ name: 'password' })}
+          onDeleteAccount={() => go({ name: 'delete-account' })}
           onGuide={() => go({ name: 'guide', first: false })}
           onBack={() => go({ name: 'town' })}
         />
@@ -404,6 +408,8 @@ function Game() {
       );
     case 'password':
       return <PasswordScreen onDone={() => go({ name: 'settings' })} onBack={() => go({ name: 'settings' })} />;
+    case 'delete-account':
+      return <DeleteAccountScreen isAdmin={isAdmin} onBack={() => go({ name: 'settings' })} />;
     case 'hero-name':
       return (
         <NameScreen
