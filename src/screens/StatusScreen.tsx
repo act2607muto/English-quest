@@ -11,11 +11,14 @@ import { SKILL_LABELS } from '../lib/skills';
 export function StatusScreen({
   player,
   onRecords,
+  onNotes,
   onBack,
 }: {
   player: Player;
   /** 記録（日ごとの練習量と能力値の推移）を開く */
   onRecords: () => void;
+  /** ふりかえりノート（書く・話す問題の答えと AI の助言）を開く */
+  onNotes: () => void;
   onBack: () => void;
 }) {
   return (
@@ -94,6 +97,9 @@ export function StatusScreen({
 
       <button className="command" type="button" onClick={onRecords}>
         ▶ 記録を見る（練習した日・能力値の推移）
+      </button>
+      <button className="command" type="button" onClick={onNotes}>
+        ▶ ふりかえりノート（書く・話す問題の助言）
       </button>
       <button className="command" type="button" onClick={onBack}>
         ▶ 街にもどる

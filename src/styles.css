@@ -2640,3 +2640,66 @@ code {
   padding: 6px 2px;
   vertical-align: top;
 }
+
+/* ---------- ふりかえりノート ---------- */
+.notes__filter {
+  margin-bottom: 8px;
+}
+
+.note-card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.note-card p {
+  margin: 0;
+}
+
+.note-card__meta {
+  font-size: 13px;
+  color: var(--accent);
+}
+
+.note-card__question,
+.note-card__answer,
+.note-card__better {
+  font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+  font-size: 18px;
+  overflow-wrap: anywhere;
+}
+
+.note-card__better {
+  color: var(--accent);
+}
+
+.note-card__rating {
+  font-size: 18px;
+}
+
+.note-card__advice {
+  overflow-wrap: anywhere;
+}
+
+.note-card__footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.notes__filter--three {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.notes__filter .choice-pair__button {
+  font-size: 14px;
+  padding: 8px 4px;
+}
+
+.notes__missed {
+  width: 100%;
+  margin-bottom: 8px;
+  text-align: left;
+}

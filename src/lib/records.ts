@@ -389,3 +389,48 @@ export async function fetchMonsterRecords(): Promise<Map<string, MonsterRecord>>
   }
   return records;
 }
+
+/** 書く・話す問題の、いちばん最近の答えと AI の評価（ふりかえりノートで使う） */
+export type AnswerNote = {
+  questionId: string;
+  answer: string | null;
+  feedback: {
+    rating?: 'good' | 'close' | 'bad';
+    advice?: string | null;
+    better?: string | null;
+    self_graded?: boolean;
+  } | null;
+  answeredAt: string | null;
+  correctCount: number;
+  wrongCount: number;
+};
+
+/**
+ * AI の評価（または自己採点）が残っている答え。新しい順。
+ * 評価が残るのは書く・話す問題だけ（4択などは残さない）。問題ごとに、いちばん最近の1つ。
+ */
+export async function fetchAnswerNotes(): Promise<AnswerNote[]> {
+  const notes: AnswerNote[] = [];
+  const PAGE = 1000;
+  for (let from = 0; ; from += PAGE) {
+    const { data, error } = await requireSupabase()
+      .from('question_progress')
+      .select('question_id, last_answer, last_feedback, last_answered_at, correct_count, wrong_count')
+      .not('last_feedback', 'is', null)
+      .order('last_answered_at', { ascending: false })
+      .order('question_id')
+      .range(from, from + PAGE - 1);
+    if (error) throw error;
+    for (const row of data) {
+      notes.push({
+        questionId: row.question_id,
+        answer: row.last_answer,
+        feedback: row.last_feedback as AnswerNote['feedback'],
+        answeredAt: row.last_answered_at,
+        correctCount: row.correct_count,
+        wrongCount: row.wrong_count,
+      });
+    }
+    if (data.length < PAGE) return notes;
+  }
+}

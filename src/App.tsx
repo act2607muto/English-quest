@@ -23,6 +23,7 @@ import { LoginScreen } from './screens/LoginScreen';
 import { MapScreen, type MapPosition } from './screens/MapScreen';
 import { MicTestScreen } from './screens/MicTestScreen';
 import { NameScreen } from './screens/NameScreen';
+import { NotesScreen } from './screens/NotesScreen';
 import { PasswordScreen } from './screens/PasswordScreen';
 import { RecordsScreen } from './screens/RecordsScreen';
 import { ResultScreen } from './screens/ResultScreen';
@@ -45,6 +46,8 @@ type Route =
   | { name: 'status' }
   /** 記録（日ごとの練習量と能力値の推移）。ステータスから開く */
   | { name: 'records' }
+  /** ふりかえりノート（書く・話す問題の、最近の答えと AI の助言）。ステータスから開く */
+  | { name: 'notes' }
   | { name: 'bestiary' }
   | { name: 'map' }
   /** 旅の地図（点と道の世界地図）。3つ目の街に着くと、街の画面の右上と冒険のマップの下から開ける。back は開いた画面 */
@@ -284,8 +287,10 @@ function Game() {
     case 'status':
       return withNav(
         'status',
-        <StatusScreen player={player} onRecords={() => go({ name: 'records' })} onBack={() => go({ name: 'town' })} />,
+        <StatusScreen player={player} onRecords={() => go({ name: 'records' })} onNotes={() => go({ name: 'notes' })} onBack={() => go({ name: 'town' })} />,
       );
+    case 'notes':
+      return withNav('status', <NotesScreen onBack={() => go({ name: 'status' })} />);
     case 'records':
       return withNav('status', <RecordsScreen player={player} onBack={() => go({ name: 'status' })} />);
     case 'shop':
