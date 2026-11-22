@@ -5497,13 +5497,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "新しいターミナルについて正しいのは？",
+      "prompt": "What is expected to happen at the new terminal?",
       "sentence": "# City Airport to Open New Terminal\nRiverton City Airport will open its new international terminal on April 1. The terminal has 20 new gates, a larger security area, and more than 40 shops and restaurants. Airport officials say waiting times at security should be cut in half. The old terminal will be used only for domestic flights.",
       "choices": [
-        "保安検査の待ち時間が半分ほどになると見られている",
-        "4月1日に閉まる",
-        "国内線だけが使う",
-        "ゲートが40ある"
+        "Waiting times at security will be about half as long.",
+        "It will close on April 1.",
+        "Only domestic flights will use it.",
+        "It will have 40 gates."
       ],
       "answer": 0,
       "explanation": "waiting times at security should be cut in half = 保安検査の待ち時間が半分になる見こみ。",
@@ -5515,13 +5515,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "古いターミナルはどうなる？",
+      "prompt": "What will happen to the old terminal?",
       "sentence": "# City Airport to Open New Terminal\nRiverton City Airport will open its new international terminal on April 1. The terminal has 20 new gates, a larger security area, and more than 40 shops and restaurants. Airport officials say waiting times at security should be cut in half. The old terminal will be used only for domestic flights.",
       "choices": [
-        "取りこわされる",
-        "国内線だけに使われる",
-        "国際線だけに使われる",
-        "店とレストランになる"
+        "It will be torn down.",
+        "It will be used only for domestic flights.",
+        "It will be used only for international flights.",
+        "It will become shops and restaurants."
       ],
       "answer": 1,
       "explanation": "The old terminal will be used only for domestic flights.",
@@ -5533,13 +5533,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "調査でわかったことは？",
+      "prompt": "What did the survey show?",
       "sentence": "# More Companies Allow Remote Work\nA new survey shows that 62 percent of companies in the region now allow employees to work from home at least two days a week. Many workers say they save time and money on commuting. However, some managers worry that it is harder to build strong teams when people rarely meet in person.",
       "choices": [
-        "62%の会社が週2日以上の在宅勤務を認めている",
-        "社員の多くが通勤を楽しんでいる",
-        "62%の社員が毎日在宅で働いている",
-        "2割の会社が在宅勤務をやめた"
+        "62 percent of companies allow remote work at least two days a week.",
+        "Most workers enjoy commuting.",
+        "62 percent of workers work from home every day.",
+        "One in five companies stopped remote work."
       ],
       "answer": 0,
       "explanation": "62 percent of companies ... allow employees to work from home at least two days a week.",
@@ -5551,13 +5551,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "一部の管理職が心配していることは？",
+      "prompt": "What are some managers worried about?",
       "sentence": "# More Companies Allow Remote Work\nA new survey shows that 62 percent of companies in the region now allow employees to work from home at least two days a week. Many workers say they save time and money on commuting. However, some managers worry that it is harder to build strong teams when people rarely meet in person.",
       "choices": [
-        "通勤の費用が増える",
-        "会って話す機会が少ないとチームを作りにくい",
-        "社員が早く帰りすぎる",
-        "家での仕事の時間が長すぎる"
+        "Commuting costs are rising.",
+        "It is harder to build strong teams when people rarely meet.",
+        "Workers go home too early.",
+        "People work too long at home."
       ],
       "answer": 1,
       "explanation": "it is harder to build strong teams when people rarely meet in person.",
@@ -5569,13 +5569,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "観光客が増えた理由として、地元の店があげているのは？",
+      "prompt": "What do local businesses say brought more visitors?",
       "sentence": "# Tourism Returns to Coastal Town\nAfter two quiet years, the small coastal town of Bayford welcomed a record 150,000 visitors last summer. Local businesses credit a new ferry service that connects the town with the capital in just 90 minutes. Hotel owners now hope to attract more visitors in the winter season as well.",
       "choices": [
-        "冬の祭り",
-        "首都と90分で結ぶ新しいフェリー",
-        "新しい空港",
-        "ホテルの値下げ"
+        "A winter festival",
+        "A new ferry that reaches the capital in 90 minutes",
+        "A new airport",
+        "Lower hotel prices"
       ],
       "answer": 1,
       "explanation": "Local businesses credit a new ferry service that connects the town with the capital in just 90 minutes.",
@@ -5587,13 +5587,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "ホテルの持ち主が望んでいることは？",
+      "prompt": "What do hotel owners hope for?",
       "sentence": "# Tourism Returns to Coastal Town\nAfter two quiet years, the small coastal town of Bayford welcomed a record 150,000 visitors last summer. Local businesses credit a new ferry service that connects the town with the capital in just 90 minutes. Hotel owners now hope to attract more visitors in the winter season as well.",
       "choices": [
-        "新しいホテルを建てること",
-        "夏の客を減らすこと",
-        "フェリーの値段を下げること",
-        "冬にももっと客が来ること"
+        "New hotels",
+        "Fewer summer visitors",
+        "Cheaper ferry tickets",
+        "More visitors in the winter too"
       ],
       "answer": 3,
       "explanation": "Hotel owners now hope to attract more visitors in the winter season as well.",
@@ -5605,13 +5605,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "サニー・ブレッドについて正しいのは？",
+      "prompt": "What is true about Sunny Bread?",
       "sentence": "# Local Bakery Expands Overseas\nSunny Bread, a bakery that started in a small shop ten years ago, will open its first store abroad in Singapore this fall. The company now has 35 shops across the country. Its founder, Lisa Grant, says the secret of their success is using only local ingredients and baking everything fresh every morning.",
       "choices": [
-        "外国の材料だけを使っている",
-        "10年前にシンガポールで始まった",
-        "国内に10の店がある",
-        "今年の秋、初めて海外に店を出す"
+        "It uses only foreign ingredients.",
+        "It started in Singapore ten years ago.",
+        "It has ten shops in the country.",
+        "It will open its first overseas store this fall."
       ],
       "answer": 3,
       "explanation": "will open its first store abroad in Singapore this fall.",
@@ -5623,13 +5623,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "創業者が言う成功の理由は？",
+      "prompt": "According to the founder, what is the secret of their success?",
       "sentence": "# Local Bakery Expands Overseas\nSunny Bread, a bakery that started in a small shop ten years ago, will open its first store abroad in Singapore this fall. The company now has 35 shops across the country. Its founder, Lisa Grant, says the secret of their success is using only local ingredients and baking everything fresh every morning.",
       "choices": [
-        "地元の材料を使い、毎朝焼きたてにしていること",
-        "広告をたくさん出していること",
-        "店が大きいこと",
-        "値段が安いこと"
+        "Local ingredients and baking fresh every morning",
+        "A lot of advertising",
+        "Large shops",
+        "Low prices"
       ],
       "answer": 0,
       "explanation": "using only local ingredients and baking everything fresh every morning.",
@@ -5641,13 +5641,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "値上げについて正しいのは？",
+      "prompt": "What is true about the fare increase?",
       "sentence": "# Train Fares to Rise in July\nThe national railway announced that fares will increase by an average of 4 percent from July 1. The company says the extra money will be used to replace old trains and improve station facilities. Monthly passes for students will not be affected.",
       "choices": [
-        "古い電車だけ値上げする",
-        "7月1日から平均4%上がる",
-        "学生の定期券も上がる",
-        "4月1日から7%上がる"
+        "Only old trains will cost more.",
+        "Fares will rise by an average of 4 percent from July 1.",
+        "Student passes will also cost more.",
+        "Fares will rise by 7 percent from April 1."
       ],
       "answer": 1,
       "explanation": "fares will increase by an average of 4 percent from July 1.",
@@ -5659,13 +5659,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "値上げで増えたお金の使い道は？",
+      "prompt": "How will the extra money be used?",
       "sentence": "# Train Fares to Rise in July\nThe national railway announced that fares will increase by an average of 4 percent from July 1. The company says the extra money will be used to replace old trains and improve station facilities. Monthly passes for students will not be affected.",
       "choices": [
-        "学生の定期券を安くする",
-        "新しい路線を作る",
-        "社員の給料を上げる",
-        "古い電車を取りかえ、駅の設備をよくする"
+        "To make student passes cheaper",
+        "To build a new line",
+        "To raise workers' pay",
+        "To replace old trains and improve stations"
       ],
       "answer": 3,
       "explanation": "used to replace old trains and improve station facilities.",
@@ -5677,13 +5677,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "グリーンリーフのホテルでは、水はどうなる？",
+      "prompt": "How will guests get water at Greenleaf hotels?",
       "sentence": "# Hotel Chain Goes Plastic-Free\nThe Greenleaf hotel chain will stop providing single-use plastic items in all of its 80 hotels by the end of the year. Shampoo will come in large refillable bottles, and plastic water bottles will be replaced by free water stations on every floor. The chain expects to cut its plastic waste by 70 percent.",
       "choices": [
-        "フロントでだけもらえる",
-        "各階の無料の給水所で飲める",
-        "部屋で売られる",
-        "ペットボトルが無料になる"
+        "Only at the front desk",
+        "From free water stations on every floor",
+        "By buying it in their rooms",
+        "From free plastic bottles"
       ],
       "answer": 1,
       "explanation": "plastic water bottles will be replaced by free water stations on every floor.",
@@ -5695,13 +5695,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "この取り組みで期待されていることは？",
+      "prompt": "What does the chain expect?",
       "sentence": "# Hotel Chain Goes Plastic-Free\nThe Greenleaf hotel chain will stop providing single-use plastic items in all of its 80 hotels by the end of the year. Shampoo will come in large refillable bottles, and plastic water bottles will be replaced by free water stations on every floor. The chain expects to cut its plastic waste by 70 percent.",
       "choices": [
-        "宿泊料金を下げる",
-        "ホテルを80に増やす",
-        "シャンプーを売る",
-        "プラスチックごみを70%減らす"
+        "To lower its room prices",
+        "To increase its hotels to 80",
+        "To start selling shampoo",
+        "To cut its plastic waste by 70 percent"
       ],
       "answer": 3,
       "explanation": "expects to cut its plastic waste by 70 percent.",
@@ -5713,13 +5713,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "研究によると、20代の人がより多くお金を使うのは？",
+      "prompt": "According to the study, what do people in their twenties spend more on?",
       "sentence": "# Young People Choose Experiences Over Things\nAccording to a recent study, people in their twenties now spend more money on travel and concerts than on clothes or electronics. Researchers say social media plays a big role, since people enjoy sharing photos of their experiences. Travel companies are responding by offering short, low-cost trips for young customers.",
       "choices": [
-        "本や勉強",
-        "家や車",
-        "服や電子機器",
-        "旅行やコンサート"
+        "Books and study",
+        "Houses and cars",
+        "Clothes and electronics",
+        "Travel and concerts"
       ],
       "answer": 3,
       "explanation": "spend more money on travel and concerts than on clothes or electronics.",
@@ -5731,13 +5731,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "旅行会社がしていることは？",
+      "prompt": "How are travel companies responding?",
       "sentence": "# Young People Choose Experiences Over Things\nAccording to a recent study, people in their twenties now spend more money on travel and concerts than on clothes or electronics. Researchers say social media plays a big role, since people enjoy sharing photos of their experiences. Travel companies are responding by offering short, low-cost trips for young customers.",
       "choices": [
-        "長い旅行を値上げしている",
-        "コンサートを開いている",
-        "若い客向けに短くて安い旅行を出している",
-        "ソーシャルメディアをやめている"
+        "By raising prices for long trips",
+        "By holding concerts",
+        "By offering short, low-cost trips for young people",
+        "By leaving social media"
       ],
       "answer": 2,
       "explanation": "offering short, low-cost trips for young customers.",
@@ -5749,13 +5749,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "試しの間、社員の給料はどうだった？",
+      "prompt": "What happened to employees' salaries during the trial?",
       "sentence": "# Four-Day Work Week Trial a Success\nA software company in Dublin tested a four-day work week for six months. Employees worked 32 hours instead of 40 but received the same salary. The company reports that productivity stayed the same, while sick days fell by 25 percent. It has decided to continue the system permanently.",
       "choices": [
-        "上がった",
-        "4日分だけになった",
-        "2割減った",
-        "変わらなかった"
+        "They went up.",
+        "They were paid for four days only.",
+        "They fell by 20 percent.",
+        "They stayed the same."
       ],
       "answer": 3,
       "explanation": "received the same salary.",
@@ -5767,13 +5767,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "会社の決定は？",
+      "prompt": "What did the company decide?",
       "sentence": "# Four-Day Work Week Trial a Success\nA software company in Dublin tested a four-day work week for six months. Employees worked 32 hours instead of 40 but received the same salary. The company reports that productivity stayed the same, while sick days fell by 25 percent. It has decided to continue the system permanently.",
       "choices": [
-        "ほかの会社にすすめる",
-        "5日勤務にもどす",
-        "この働き方をずっと続ける",
-        "もう6か月試す"
+        "To recommend it to other companies",
+        "To return to a five-day week",
+        "To keep the four-day week permanently",
+        "To test it for six more months"
       ],
       "answer": 2,
       "explanation": "It has decided to continue the system permanently.",
@@ -5785,13 +5785,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "アンナがホテルに着くのは何時ごろ？",
+      "prompt": "About what time will Anna arrive at the hotel?",
       "sentence": "From: Anna Ruiz\nTo: Front Desk, Lakeside Inn\nSubject: Late arrival\nHello,\nI have a reservation for May 14. My flight lands at 11 p.m., so I will probably arrive at the hotel around midnight. Will someone be at the front desk?\nAnna Ruiz\n---\nFrom: Front Desk, Lakeside Inn\nTo: Anna Ruiz\nSubject: Re: Late arrival\nDear Ms. Ruiz,\nOur front desk is open until 11 p.m. After that, please use the key box next to the entrance. Your code is 4471. We look forward to your stay.",
       "choices": [
-        "夜の12時ごろ",
-        "朝の4時ごろ",
-        "夕方の5時ごろ",
-        "夜の11時ごろ"
+        "Around midnight",
+        "Around 4 a.m.",
+        "Around 5 p.m.",
+        "Around 11 p.m."
       ],
       "answer": 0,
       "explanation": "I will probably arrive at the hotel around midnight.",
@@ -5803,13 +5803,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "アンナはどうやって部屋のかぎを受け取る？",
+      "prompt": "How will Anna get her room key?",
       "sentence": "From: Anna Ruiz\nTo: Front Desk, Lakeside Inn\nSubject: Late arrival\nHello,\nI have a reservation for May 14. My flight lands at 11 p.m., so I will probably arrive at the hotel around midnight. Will someone be at the front desk?\nAnna Ruiz\n---\nFrom: Front Desk, Lakeside Inn\nTo: Anna Ruiz\nSubject: Re: Late arrival\nDear Ms. Ruiz,\nOur front desk is open until 11 p.m. After that, please use the key box next to the entrance. Your code is 4471. We look forward to your stay.",
       "choices": [
-        "空港で受け取る",
-        "フロントの人から受け取る",
-        "入口の横のキーボックスを使う",
-        "翌朝フロントで受け取る"
+        "At the airport",
+        "From the front desk staff",
+        "From the key box next to the entrance",
+        "At the front desk the next morning"
       ],
       "answer": 2,
       "explanation": "フロントは11時まで。アンナは12時ごろ着くので、After that, please use the key box next to the entrance.",
@@ -5821,13 +5821,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "ケンたちが選んだツアーは1人いくら（割引の前）？",
+      "prompt": "What is the regular price per person for the tour Ken chose?",
       "sentence": "# Summer Tour Prices\nCity Bus Tour: $25 (2 hours)\nCastle and Garden Tour: $40 (half day, lunch not included)\nWine Country Tour: $85 (full day, lunch included)\nAll tours: 10% off for groups of 5 or more.\n---\nKen: Hi Mia! For Saturday, I think the Castle and Garden Tour looks fun.\nMia: Me too. There will be six of us, right?\nKen: Yes. And we can eat lunch in town after the tour.",
       "choices": [
-        "40ドル",
-        "25ドル",
-        "36ドル",
-        "85ドル"
+        "$40",
+        "$25",
+        "$36",
+        "$85"
       ],
       "answer": 0,
       "explanation": "Castle and Garden Tour: $40",
@@ -5839,13 +5839,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "ケンたちのツアーの料金について正しいのは？",
+      "prompt": "What is true about the price of Ken's group tour?",
       "sentence": "# Summer Tour Prices\nCity Bus Tour: $25 (2 hours)\nCastle and Garden Tour: $40 (half day, lunch not included)\nWine Country Tour: $85 (full day, lunch included)\nAll tours: 10% off for groups of 5 or more.\n---\nKen: Hi Mia! For Saturday, I think the Castle and Garden Tour looks fun.\nMia: Me too. There will be six of us, right?\nKen: Yes. And we can eat lunch in town after the tour.",
       "choices": [
-        "5人までなら割引がない",
-        "昼食がついている",
-        "2時間で終わる",
-        "6人なので10%安くなる"
+        "There is no discount for up to five people.",
+        "Lunch is included.",
+        "It finishes in two hours.",
+        "They will get 10% off because there are six people."
       ],
       "answer": 3,
       "explanation": "There will be six of us. 5人以上は10% off なので割引になる。",
@@ -5857,13 +5857,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "営業部の新しい場所は？",
+      "prompt": "Where will the Sales Department be after the move?",
       "sentence": "Notice: Office Move\nFrom Monday, June 3, the Sales Department will move from the 2nd floor to the 5th floor, Room 502. Phone numbers will not change.\n---\nFrom: Tom Reed\nTo: Sales Team\nSubject: Packing\nHi team,\nPlease pack your desks by Friday afternoon. Boxes are in the storage room on the 2nd floor. The movers will come on Saturday morning.\nTom",
       "choices": [
-        "5階の205号室",
-        "2階の502号室",
-        "倉庫のとなり",
-        "5階の502号室"
+        "Room 205 on the 5th floor",
+        "Room 502 on the 2nd floor",
+        "Next to the storage room",
+        "Room 502 on the 5th floor"
       ],
       "answer": 3,
       "explanation": "will move from the 2nd floor to the 5th floor, Room 502.",
@@ -5875,13 +5875,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "机の荷物をまとめる期限は？",
+      "prompt": "By when must the team pack their desks?",
       "sentence": "Notice: Office Move\nFrom Monday, June 3, the Sales Department will move from the 2nd floor to the 5th floor, Room 502. Phone numbers will not change.\n---\nFrom: Tom Reed\nTo: Sales Team\nSubject: Packing\nHi team,\nPlease pack your desks by Friday afternoon. Boxes are in the storage room on the 2nd floor. The movers will come on Saturday morning.\nTom",
       "choices": [
-        "引っこしのあとの金曜日",
-        "6月3日の月曜日",
-        "土曜日の朝",
-        "引っこしの前の金曜日の午後"
+        "By the Friday after the move",
+        "By Monday, June 3",
+        "By Saturday morning",
+        "By Friday afternoon, before the move"
       ],
       "answer": 3,
       "explanation": "Please pack your desks by Friday afternoon. 引っこし業者は土曜日、新しい場所は6月3日の月曜日から。",
@@ -5893,13 +5893,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "この仕事に必ず必要なものは？",
+      "prompt": "What is required for this job?",
       "sentence": "# Job Opening: Hotel Receptionist\nThe Seaview Hotel is looking for a full-time receptionist. Requirements: at least two years of experience in customer service, good English skills. Experience with booking software is a plus. Apply by March 31.\n---\nFrom: Jun Park\nTo: Seaview Hotel\nSubject: Receptionist position\nDear Hiring Manager,\nI am writing to apply for the receptionist position. I have worked at a café for three years, and I am familiar with several booking systems from my previous job at a travel agency.",
       "choices": [
-        "予約ソフトの経験",
-        "ホテルで働いた経験",
-        "3年以上の旅行会社の経験",
-        "2年以上の接客の経験と英語力"
+        "Experience with booking software",
+        "Experience working at a hotel",
+        "Three or more years at a travel agency",
+        "Two or more years of customer service experience and good English"
       ],
       "answer": 3,
       "explanation": "Requirements: at least two years of experience in customer service, good English skills. 予約ソフトは「あればなおよい」（a plus）。",
@@ -5911,13 +5911,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "ジュンについて正しいのは？",
+      "prompt": "What is true about Jun?",
       "sentence": "# Job Opening: Hotel Receptionist\nThe Seaview Hotel is looking for a full-time receptionist. Requirements: at least two years of experience in customer service, good English skills. Experience with booking software is a plus. Apply by March 31.\n---\nFrom: Jun Park\nTo: Seaview Hotel\nSubject: Receptionist position\nDear Hiring Manager,\nI am writing to apply for the receptionist position. I have worked at a café for three years, and I am familiar with several booking systems from my previous job at a travel agency.",
       "choices": [
-        "ホテルで3年働いた",
-        "必要な経験に加えて、予約システムも使ったことがある",
-        "接客の経験が2年に足りない",
-        "応募の締め切りを過ぎている"
+        "He worked at a hotel for three years.",
+        "He has the required experience and has also used booking systems.",
+        "He has less than two years of customer service experience.",
+        "He applied after the deadline."
       ],
       "answer": 1,
       "explanation": "カフェで3年（接客の経験）、旅行会社で予約システムを使った。",
@@ -5929,13 +5929,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "ワークショップは何時に始まる？",
+      "prompt": "What time will the workshop start?",
       "sentence": "Conference Schedule – Day 1\n9:00 Opening speech (Hall A)\n10:00 Workshop: Social Media Marketing (Room 3)\n12:00 Lunch (Cafeteria)\n13:30 Panel: The Future of Travel (Hall A)\n---\nFrom: Conference Office\nTo: All Participants\nSubject: Change\nDue to the speaker's travel delay, the workshop on social media marketing will start one hour later than planned. It will be held in Room 5 instead.",
       "choices": [
-        "9時",
-        "10時",
-        "11時",
-        "13時30分"
+        "9:00",
+        "10:00",
+        "11:00",
+        "13:30"
       ],
       "answer": 2,
       "explanation": "予定は10:00。one hour later than planned なので11時。",
@@ -5947,13 +5947,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "ワークショップの部屋は？",
+      "prompt": "Where will the workshop be held?",
       "sentence": "Conference Schedule – Day 1\n9:00 Opening speech (Hall A)\n10:00 Workshop: Social Media Marketing (Room 3)\n12:00 Lunch (Cafeteria)\n13:30 Panel: The Future of Travel (Hall A)\n---\nFrom: Conference Office\nTo: All Participants\nSubject: Change\nDue to the speaker's travel delay, the workshop on social media marketing will start one hour later than planned. It will be held in Room 5 instead.",
       "choices": [
-        "5号室",
-        "食堂",
-        "3号室",
-        "ホールA"
+        "Room 5",
+        "The cafeteria",
+        "Room 3",
+        "Hall A"
       ],
       "answer": 0,
       "explanation": "It will be held in Room 5 instead.",
@@ -5965,13 +5965,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "ケイトの注文の値段は1冊いくらになる？",
+      "prompt": "What will be the price per notebook for Kate's order?",
       "sentence": "From: Kate Wilson\nTo: Daniel Cho\nSubject: Order #5521\nHi Daniel,\nWe would like to order 300 notebooks. Could you tell us the price? We need them by October 10.\nKate\n---\nFrom: Daniel Cho\nTo: Kate Wilson\nSubject: Re: Order #5521\nHi Kate,\nThe price is $2 per notebook, but orders over 250 get a 10% discount. We can deliver by October 8.\nDaniel",
       "choices": [
-        "1ドル",
-        "1ドル80セント",
-        "2ドル",
-        "2ドル20セント"
+        "$1.00",
+        "$1.80",
+        "$2.00",
+        "$2.20"
       ],
       "answer": 1,
       "explanation": "1冊2ドル。250冊をこえる注文は10%引きなので1ドル80セント。",
@@ -5983,13 +5983,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "配達について正しいのは？",
+      "prompt": "What is true about the delivery?",
       "sentence": "From: Kate Wilson\nTo: Daniel Cho\nSubject: Order #5521\nHi Daniel,\nWe would like to order 300 notebooks. Could you tell us the price? We need them by October 10.\nKate\n---\nFrom: Daniel Cho\nTo: Kate Wilson\nSubject: Re: Order #5521\nHi Kate,\nThe price is $2 per notebook, but orders over 250 get a 10% discount. We can deliver by October 8.\nDaniel",
       "choices": [
-        "まだ決まっていない",
-        "10月10日ちょうどに届く",
-        "必要な日に間に合わない",
-        "必要な日より前に届く"
+        "The date has not been decided.",
+        "It will arrive exactly on October 10.",
+        "It will be too late.",
+        "It will arrive before Kate needs it."
       ],
       "answer": 3,
       "explanation": "ケイトは10月10日までに必要。ダニエルは10月8日までに届けられる。",
@@ -6001,13 +6001,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "リュックサックが見つかった場所は？",
+      "prompt": "Where was the backpack found?",
       "sentence": "Lost & Found Report – Central Station\nItem: Black backpack with a red tag\nFound: Platform 4, June 12, 6:40 p.m.\nNow kept at: Station office (open 7 a.m. – 9 p.m.)\n---\nLisa: Hi! I think they found my backpack at Central Station!\nOmar: Great! Are you going to get it tonight?\nLisa: It's already 9:30, so I'll go tomorrow morning before work.",
       "choices": [
-        "電車の中",
-        "駅の事務所",
-        "駅の入口",
-        "4番線のホーム"
+        "On a train",
+        "In the station office",
+        "At the station entrance",
+        "On Platform 4"
       ],
       "answer": 3,
       "explanation": "Found: Platform 4.",
@@ -6019,13 +6019,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "リサが今夜取りに行かない理由は？",
+      "prompt": "Why will Lisa not get it tonight?",
       "sentence": "Lost & Found Report – Central Station\nItem: Black backpack with a red tag\nFound: Platform 4, June 12, 6:40 p.m.\nNow kept at: Station office (open 7 a.m. – 9 p.m.)\n---\nLisa: Hi! I think they found my backpack at Central Station!\nOmar: Great! Are you going to get it tonight?\nLisa: It's already 9:30, so I'll go tomorrow morning before work.",
       "choices": [
-        "リュックの色がちがうから",
-        "オマールが取りに行くから",
-        "事務所がもう閉まっているから",
-        "仕事があるから"
+        "The backpack is a different color.",
+        "Omar will get it.",
+        "The office is already closed.",
+        "She has to work."
       ],
       "answer": 2,
       "explanation": "事務所は午後9時まで。今はもう9時30分。",
@@ -6037,13 +6037,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "ポールが予約したい部屋の1泊の料金は？",
+      "prompt": "How much is the room Paul wants per night?",
       "sentence": "# Riverside Hotel – Room Rates\nStandard room: $120 per night\nDeluxe room (river view): $160 per night\nBreakfast: $15 per person\nStay 3 nights or more and get breakfast free!\n---\nFrom: Paul Green\nTo: Riverside Hotel\nSubject: Booking\nHello,\nI would like to book a deluxe room for two nights, June 5 to 7, for my wife and me. We would also like breakfast both days.",
       "choices": [
-        "15ドル",
-        "175ドル",
-        "120ドル",
-        "160ドル"
+        "$15",
+        "$175",
+        "$120",
+        "$160"
       ],
       "answer": 3,
       "explanation": "Deluxe room (river view): $160 per night",
@@ -6055,13 +6055,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "ポールの朝食について正しいのは？",
+      "prompt": "What is true about Paul's breakfast?",
       "sentence": "# Riverside Hotel – Room Rates\nStandard room: $120 per night\nDeluxe room (river view): $160 per night\nBreakfast: $15 per person\nStay 3 nights or more and get breakfast free!\n---\nFrom: Paul Green\nTo: Riverside Hotel\nSubject: Booking\nHello,\nI would like to book a deluxe room for two nights, June 5 to 7, for my wife and me. We would also like breakfast both days.",
       "choices": [
-        "朝食はついていない部屋だ",
-        "1人だけ無料になる",
-        "3泊なので無料になる",
-        "2泊なので朝食は無料にならない"
+        "His room does not offer breakfast.",
+        "It is free for one person.",
+        "It is free because he is staying three nights.",
+        "It is not free because he is staying only two nights."
       ],
       "answer": 3,
       "explanation": "3泊以上で無料。ポールは2泊なので、1人15ドルかかる。",
@@ -6073,13 +6073,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "健康診断の申しこみの期限は？",
+      "prompt": "What is the deadline to sign up for the health check?",
       "sentence": "Memo\nTo: All Staff\nFrom: Human Resources\nThe annual health check will take place on September 18 and 19 in Meeting Room B. Please sign up for a time slot online by September 10.\n---\nFrom: Rina Sato\nTo: Human Resources\nSubject: Health check\nHello,\nI will be on a business trip from September 17 to 20. Is it possible to take the health check on another day?\nRina",
       "choices": [
-        "9月18日",
-        "9月17日",
-        "9月10日",
-        "9月20日"
+        "September 18",
+        "September 17",
+        "September 10",
+        "September 20"
       ],
       "answer": 2,
       "explanation": "Please sign up for a time slot online by September 10.",
@@ -6091,13 +6091,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "リナがほかの日を頼んでいる理由は？",
+      "prompt": "Why is Rina asking for another day?",
       "sentence": "Memo\nTo: All Staff\nFrom: Human Resources\nThe annual health check will take place on September 18 and 19 in Meeting Room B. Please sign up for a time slot online by September 10.\n---\nFrom: Rina Sato\nTo: Human Resources\nSubject: Health check\nHello,\nI will be on a business trip from September 17 to 20. Is it possible to take the health check on another day?\nRina",
       "choices": [
-        "申しこみを忘れたから",
-        "会議室Bが使えないから",
-        "健康診断の日に出張しているから",
-        "体の具合が悪いから"
+        "She forgot to sign up.",
+        "Meeting Room B is not available.",
+        "She will be on a business trip during the health check.",
+        "She is not feeling well."
       ],
       "answer": 2,
       "explanation": "健康診断は9月18・19日。リナは17日から20日まで出張。",
@@ -6109,13 +6109,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "マックスがスーツケースを買った日は？",
+      "prompt": "When did Max buy the suitcase?",
       "sentence": "Sale! 20% off all suitcases this weekend only (Saturday and Sunday).\nMembers get an extra 5% off.\n---\nMax: I bought a new suitcase yesterday. It was 20% off!\nYuki: Lucky you! Did you get the member discount too?\nMax: No, I forgot my member card at home.",
       "choices": [
-        "週末の前の金曜日",
-        "週末（土曜日か日曜日）",
-        "月曜日",
-        "セールの前の日"
+        "On the Friday before the weekend",
+        "On the weekend (Saturday or Sunday)",
+        "On Monday",
+        "The day before the sale"
       ],
       "answer": 1,
       "explanation": "「昨日」買って20% offだった。セールは土日だけなので、昨日は週末。",
@@ -6127,10 +6127,10 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "マックスが受けた割引は？",
+      "prompt": "What discount did Max get?",
       "sentence": "Sale! 20% off all suitcases this weekend only (Saturday and Sunday).\nMembers get an extra 5% off.\n---\nMax: I bought a new suitcase yesterday. It was 20% off!\nYuki: Lucky you! Did you get the member discount too?\nMax: No, I forgot my member card at home.",
       "choices": [
-        "なし",
+        "None",
         "20%",
         "25%",
         "5%"
@@ -6145,13 +6145,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "ツアーが長くなる理由は？",
+      "prompt": "Why will the tour take longer?",
       "sentence": "From: Grand Tours\nTo: Customers\nSubject: Tour change\nDue to road construction, our Mountain Lake Tour on July 22 will take a different route. The tour will now take 30 minutes longer and return at 6:30 p.m. instead of 6:00 p.m.\n---\nSue: My train home leaves at 6:45 p.m. from the station near the tour office.\nTim: That will be tight! The office is a ten-minute walk from the station.",
       "choices": [
-        "出発が遅れるから",
-        "道路工事のため別の道を通るから",
-        "参加者が多いから",
-        "湖で長く休むから"
+        "It will start late.",
+        "It will take a different road because of construction.",
+        "There will be many people.",
+        "There will be a long break at the lake."
       ],
       "answer": 1,
       "explanation": "Due to road construction ... will take a different route.",
@@ -6163,13 +6163,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "ティムが「ぎりぎりだ」と言う理由は？",
+      "prompt": "Why does Tim say \"That will be tight\"?",
       "sentence": "From: Grand Tours\nTo: Customers\nSubject: Tour change\nDue to road construction, our Mountain Lake Tour on July 22 will take a different route. The tour will now take 30 minutes longer and return at 6:30 p.m. instead of 6:00 p.m.\n---\nSue: My train home leaves at 6:45 p.m. from the station near the tour office.\nTim: That will be tight! The office is a ten-minute walk from the station.",
       "choices": [
-        "ツアーが6時に終わるから",
-        "駅がツアーの事務所から遠すぎるから",
-        "スーの電車が6時30分に出るから",
-        "ツアーが6時30分に終わり、駅まで10分かかり、電車は6時45分だから"
+        "The tour ends at 6:00.",
+        "The station is too far from the tour office.",
+        "Sue's train leaves at 6:30.",
+        "The tour ends at 6:30, the walk takes ten minutes, and the train leaves at 6:45."
       ],
       "answer": 3,
       "explanation": "6:30に終わって駅まで10分、電車は6:45。",
@@ -6181,13 +6181,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "エマが乗れるいちばん早いバスは？",
+      "prompt": "What is the earliest bus Emma can take?",
       "sentence": "Shuttle Bus Timetable (Airport → City Center)\nDeparts: 7:00, 7:40, 8:20, 9:00 (every 40 minutes until 22:20)\nTravel time: about 35 minutes\nFare: $8 (pay the driver, cash only)\n---\nMessage from Emma: My plane lands at 8:00. After getting my bag, I should be at the bus stop by 8:15.",
       "choices": [
-        "8時20分",
-        "7時40分",
-        "9時",
-        "8時"
+        "The 8:20 bus",
+        "The 7:40 bus",
+        "The 9:00 bus",
+        "The 8:00 bus"
       ],
       "answer": 0,
       "explanation": "8:15にバス停に着くので、次は8:20。",
@@ -6199,13 +6199,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "エマは市の中心に何時ごろ着く？",
+      "prompt": "About what time will Emma arrive in the city center?",
       "sentence": "Shuttle Bus Timetable (Airport → City Center)\nDeparts: 7:00, 7:40, 8:20, 9:00 (every 40 minutes until 22:20)\nTravel time: about 35 minutes\nFare: $8 (pay the driver, cash only)\n---\nMessage from Emma: My plane lands at 8:00. After getting my bag, I should be at the bus stop by 8:15.",
       "choices": [
-        "8時35分ごろ",
-        "9時20分ごろ",
-        "8時20分ごろ",
-        "8時55分ごろ"
+        "Around 8:35",
+        "Around 9:20",
+        "Around 8:20",
+        "Around 8:55"
       ],
       "answer": 3,
       "explanation": "8:20に出て、35分くらいかかる。",
@@ -6217,13 +6217,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "チームの人がすることは？",
+      "prompt": "What should the team members do?",
       "sentence": "From: Laura Kim\nTo: Marketing Team\nSubject: Budget for next year\nHi everyone,\nThank you for sending your ideas for next year's campaigns. Unfortunately, our budget has been cut by 15 percent, so we will not be able to do all of them. Please choose your top two ideas and send them to me by Wednesday. We will discuss them at Friday's meeting.\nLaura",
       "choices": [
-        "金曜日までに15の案を出す",
-        "予算を15%増やす",
-        "案を全部書き直す",
-        "いちばんいい案を2つ選んで水曜日までに送る"
+        "Send fifteen ideas by Friday",
+        "Increase the budget by 15 percent",
+        "Rewrite all their ideas",
+        "Choose their top two ideas and send them by Wednesday"
       ],
       "answer": 3,
       "explanation": "Please choose your top two ideas and send them to me by Wednesday.",
@@ -6235,13 +6235,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "すべての案を実行できない理由は？",
+      "prompt": "Why can they not do all of the ideas?",
       "sentence": "From: Laura Kim\nTo: Marketing Team\nSubject: Budget for next year\nHi everyone,\nThank you for sending your ideas for next year's campaigns. Unfortunately, our budget has been cut by 15 percent, so we will not be able to do all of them. Please choose your top two ideas and send them to me by Wednesday. We will discuss them at Friday's meeting.\nLaura",
       "choices": [
-        "案がよくないから",
-        "予算が15%減らされたから",
-        "時間が足りないから",
-        "人が足りないから"
+        "The ideas are not good.",
+        "The budget has been cut by 15 percent.",
+        "There is not enough time.",
+        "There are not enough people."
       ],
       "answer": 1,
       "explanation": "our budget has been cut by 15 percent.",
@@ -6253,13 +6253,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "全額払いもどしになる理由は？",
+      "prompt": "Why will Mr. Hill get a full refund?",
       "sentence": "From: Customer Service, ShopNow\nTo: Mr. Hill\nSubject: Your return\nDear Mr. Hill,\nWe have received the jacket you returned. Since it was returned within 30 days and has not been worn, you will receive a full refund. The money will be sent to your credit card within 5 to 7 business days.",
       "choices": [
-        "30日以内に返され、着ていないから",
-        "上着がこわれていたから",
-        "会員だから",
-        "店がまちがえて送ったから"
+        "He returned it within 30 days and did not wear it.",
+        "The jacket was broken.",
+        "He is a member.",
+        "The shop sent the wrong item."
       ],
       "answer": 0,
       "explanation": "returned within 30 days and has not been worn.",
@@ -6271,13 +6271,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "お金はどうやってもどる？",
+      "prompt": "How will the money be returned?",
       "sentence": "From: Customer Service, ShopNow\nTo: Mr. Hill\nSubject: Your return\nDear Mr. Hill,\nWe have received the jacket you returned. Since it was returned within 30 days and has not been worn, you will receive a full refund. The money will be sent to your credit card within 5 to 7 business days.",
       "choices": [
-        "すぐに現金で",
-        "5〜7営業日以内にクレジットカードに",
-        "店のポイントで",
-        "30日後に銀行口座に"
+        "In cash right away",
+        "To his credit card within 5 to 7 business days",
+        "As shop points",
+        "To his bank account after 30 days"
       ],
       "answer": 1,
       "explanation": "sent to your credit card within 5 to 7 business days.",
@@ -6289,13 +6289,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "マークがこのメールを書いた目的は？",
+      "prompt": "Why did Mark write this email?",
       "sentence": "From: Mark Evans\nTo: Jenny Lim\nSubject: Thank you\nDear Jenny,\nThank you for showing me around your factory last week. I was very impressed by how clean and efficient it is. I have shared your proposal with my manager, and we would like to discuss a possible contract. Would you be available for a video call next Tuesday?\nBest regards,\nMark",
       "choices": [
-        "工場の案内のお礼と、話し合いの申しこみ",
-        "契約を断るため",
-        "自分の工場を案内するため",
-        "工場の見学を申しこむため"
+        "To thank Jenny for the tour and ask to talk about a contract",
+        "To turn down a contract",
+        "To show Jenny his own factory",
+        "To ask for a factory tour"
       ],
       "answer": 0,
       "explanation": "Thank you for showing me around ... we would like to discuss a possible contract.",
@@ -6307,13 +6307,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "マークが工場について感じたことは？",
+      "prompt": "What did Mark think of the factory?",
       "sentence": "From: Mark Evans\nTo: Jenny Lim\nSubject: Thank you\nDear Jenny,\nThank you for showing me around your factory last week. I was very impressed by how clean and efficient it is. I have shared your proposal with my manager, and we would like to discuss a possible contract. Would you be available for a video call next Tuesday?\nBest regards,\nMark",
       "choices": [
-        "人が多すぎる",
-        "きれいで効率がいい",
-        "遠くて不便",
-        "古くてせまい"
+        "It had too many people.",
+        "It was clean and efficient.",
+        "It was far and inconvenient.",
+        "It was old and small."
       ],
       "answer": 1,
       "explanation": "impressed by how clean and efficient it is.",
@@ -6325,13 +6325,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "メールを受け取った人がすべきことは？",
+      "prompt": "What should the reader do?",
       "sentence": "From: Westside Rail\nTo: Pass Holders\nSubject: Important: Card renewal\nDear Customer,\nYour monthly pass will expire on March 31. To avoid any interruption, please renew it online or at any ticket machine before that date. Renewing online gives you 50 bonus points.",
       "choices": [
-        "定期券をやめる",
-        "3月31日より前に定期券を更新する",
-        "ポイントを使う",
-        "3月31日に新しいカードを受け取る"
+        "Cancel the pass",
+        "Renew the pass before March 31",
+        "Use their points",
+        "Pick up a new card on March 31"
       ],
       "answer": 1,
       "explanation": "please renew it ... before that date.",
@@ -6343,13 +6343,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "オンラインで更新するとどうなる？",
+      "prompt": "What happens if you renew online?",
       "sentence": "From: Westside Rail\nTo: Pass Holders\nSubject: Important: Card renewal\nDear Customer,\nYour monthly pass will expire on March 31. To avoid any interruption, please renew it online or at any ticket machine before that date. Renewing online gives you 50 bonus points.",
       "choices": [
-        "50ポイントもらえる",
-        "早く届く",
-        "1か月無料になる",
-        "50%安くなる"
+        "You get 50 bonus points.",
+        "It arrives faster.",
+        "You get one free month.",
+        "You get 50 percent off."
       ],
       "answer": 0,
       "explanation": "Renewing online gives you 50 bonus points.",
@@ -6361,13 +6361,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "ジェームズについて正しいのは？",
+      "prompt": "What is true about James?",
       "sentence": "From: Olivia Brown\nTo: All Team Members\nSubject: Farewell lunch for James\nHi everyone,\nAs you know, James is retiring at the end of this month after 25 years with the company. We are planning a farewell lunch on Friday, the 28th, at Bella Italia. Please let me know by Monday if you can come. We are also collecting money for a gift – $10 per person.\nOlivia",
       "choices": [
-        "来月入社する",
-        "25年勤めて、今月で退職する",
-        "別の会社に移る",
-        "25歳になる"
+        "He is joining next month.",
+        "He is retiring this month after 25 years.",
+        "He is moving to another company.",
+        "He is turning 25."
       ],
       "answer": 1,
       "explanation": "James is retiring ... after 25 years with the company.",
@@ -6379,13 +6379,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "参加する人がすることは？",
+      "prompt": "What should people who want to come do?",
       "sentence": "From: Olivia Brown\nTo: All Team Members\nSubject: Farewell lunch for James\nHi everyone,\nAs you know, James is retiring at the end of this month after 25 years with the company. We are planning a farewell lunch on Friday, the 28th, at Bella Italia. Please let me know by Monday if you can come. We are also collecting money for a gift – $10 per person.\nOlivia",
       "choices": [
-        "金曜日までに25ドル出す",
-        "自分でレストランを予約する",
-        "プレゼントを1人ずつ買う",
-        "月曜日までに知らせ、プレゼントのために10ドル出す"
+        "Pay $25 by Friday",
+        "Book the restaurant themselves",
+        "Each buy their own gift",
+        "Tell Olivia by Monday and give $10 for a gift"
       ],
       "answer": 3,
       "explanation": "let me know by Monday ... $10 per person.",
@@ -6397,13 +6397,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "タナカさんは何時に着くべき？",
+      "prompt": "What time should Mr. Tanaka arrive?",
       "sentence": "From: Dr. Hassan's Clinic\nTo: Mr. Tanaka\nSubject: Appointment reminder\nThis is a reminder that you have an appointment on Thursday, May 9, at 10:30 a.m. Please arrive 15 minutes early to fill out a form. If you need to cancel, please call us at least one day in advance, or a fee of $20 will be charged.",
       "choices": [
-        "9時30分",
-        "10時45分",
-        "10時15分",
-        "10時30分"
+        "9:30 a.m.",
+        "10:45 a.m.",
+        "10:15 a.m.",
+        "10:30 a.m."
       ],
       "answer": 2,
       "explanation": "10:30の予約で、15分早く来るように。",
@@ -6415,13 +6415,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "料金がかかるのはどんなとき？",
+      "prompt": "When will there be a fee?",
       "sentence": "From: Dr. Hassan's Clinic\nTo: Mr. Tanaka\nSubject: Appointment reminder\nThis is a reminder that you have an appointment on Thursday, May 9, at 10:30 a.m. Please arrive 15 minutes early to fill out a form. If you need to cancel, please call us at least one day in advance, or a fee of $20 will be charged.",
       "choices": [
-        "木曜日に来たとき",
-        "15分遅れたとき",
-        "書類を書かなかったとき",
-        "前日までに連絡せずに取り消したとき"
+        "If he comes on Thursday",
+        "If he is 15 minutes late",
+        "If he does not fill out the form",
+        "If he cancels without calling at least a day before"
       ],
       "answer": 3,
       "explanation": "call us at least one day in advance, or a fee of $20 will be charged.",
@@ -6433,13 +6433,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "クリスが直してほしいところは？",
+      "prompt": "Which part does Chris want Amy to change?",
       "sentence": "From: Chris Wong\nTo: Amy Park\nSubject: Re: Proposal draft\nHi Amy,\nI read your draft. The design section is excellent, but I think the cost estimate is too optimistic. Shipping prices have gone up recently, so please check the latest rates and update the figures. Everything else looks ready.\nChris",
       "choices": [
-        "デザインの部分",
-        "全体",
-        "送り先",
-        "費用の見積もり"
+        "The design section",
+        "The whole draft",
+        "The delivery address",
+        "The cost estimate"
       ],
       "answer": 3,
       "explanation": "the cost estimate is too optimistic ... update the figures.",
@@ -6451,13 +6451,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "見積もりが楽観的すぎる理由は？",
+      "prompt": "Why does Chris think the estimate is too optimistic?",
       "sentence": "From: Chris Wong\nTo: Amy Park\nSubject: Re: Proposal draft\nHi Amy,\nI read your draft. The design section is excellent, but I think the cost estimate is too optimistic. Shipping prices have gone up recently, so please check the latest rates and update the figures. Everything else looks ready.\nChris",
       "choices": [
-        "最近、送料が上がったから",
-        "デザインが高いから",
-        "注文が減ったから",
-        "材料が安くなったから"
+        "Shipping prices have gone up recently.",
+        "The design is expensive.",
+        "There are fewer orders.",
+        "Materials have become cheaper."
       ],
       "answer": 0,
       "explanation": "Shipping prices have gone up recently.",
@@ -6469,13 +6469,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "車で来た客はどこにとめる？",
+      "prompt": "Where should guests with cars park?",
       "sentence": "From: Hotel Belmont\nTo: Guests\nSubject: Your upcoming stay\nDear Guest,\nWe look forward to welcoming you. Please note that our parking lot is under construction until the end of the month. Guests arriving by car can use the public parking garage across the street at a 50% discount by showing their room key.",
       "choices": [
-        "ホテルの駐車場",
-        "ホテルの裏の道",
-        "駅の駐車場",
-        "道の向かいの公共の駐車場"
+        "In the hotel's parking lot",
+        "On the street behind the hotel",
+        "At the station parking lot",
+        "In the public parking garage across the street"
       ],
       "answer": 3,
       "explanation": "can use the public parking garage across the street.",
@@ -6487,13 +6487,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "割引を受けるには？",
+      "prompt": "How can guests get the discount?",
       "sentence": "From: Hotel Belmont\nTo: Guests\nSubject: Your upcoming stay\nDear Guest,\nWe look forward to welcoming you. Please note that our parking lot is under construction until the end of the month. Guests arriving by car can use the public parking garage across the street at a 50% discount by showing their room key.",
       "choices": [
-        "月末まで待つ",
-        "フロントで申しこむ",
-        "部屋のかぎを見せる",
-        "予約のメールを見せる"
+        "By waiting until the end of the month",
+        "By asking at the front desk",
+        "By showing their room key",
+        "By showing their booking email"
       ],
       "answer": 2,
       "explanation": "at a 50% discount by showing their room key.",
@@ -6505,13 +6505,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "システムの更新中にできないことは？",
+      "prompt": "What will people NOT be able to do during the update?",
       "sentence": "From: IT Support\nTo: All Employees\nSubject: System update this weekend\nOur email system will be updated on Saturday from 10 p.m. to Sunday 6 a.m. During this time, you will not be able to send or receive emails. If you have urgent business, please use the phone. No action is needed from you.",
       "choices": [
-        "会社に入ること",
-        "メールの送受信",
-        "電話をかけること",
-        "パソコンを使うこと"
+        "Enter the office",
+        "Send or receive emails",
+        "Make phone calls",
+        "Use their computers"
       ],
       "answer": 1,
       "explanation": "you will not be able to send or receive emails.",
@@ -6523,13 +6523,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "社員がしなければならないことは？",
+      "prompt": "What do employees need to do?",
       "sentence": "From: IT Support\nTo: All Employees\nSubject: System update this weekend\nOur email system will be updated on Saturday from 10 p.m. to Sunday 6 a.m. During this time, you will not be able to send or receive emails. If you have urgent business, please use the phone. No action is needed from you.",
       "choices": [
-        "パソコンの電源を切る",
-        "特にない",
-        "パスワードを変える",
-        "土曜日に出社する"
+        "Turn off their computers",
+        "Nothing in particular",
+        "Change their passwords",
+        "Come to work on Saturday"
       ],
       "answer": 1,
       "explanation": "No action is needed from you.",
@@ -6541,13 +6541,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "ソフィーがクリスタル・ホールをすすめる理由として合うものは？",
+      "prompt": "Why does Sophie recommend the Crystal Hall?",
       "sentence": "From: Sophie Martin\nTo: Event Team\nSubject: Venue for the product launch\nHi all,\nWe have two options for the product launch venue. The Crystal Hall holds 300 people and costs $5,000. The Park Pavilion holds 150 people and costs $2,500, but it is outdoors. Since we expect about 200 guests and the event is in November, I recommend the Crystal Hall.\nSophie",
       "choices": [
-        "外でやりたいから",
-        "客が200人くらいで、11月は外が寒いから",
-        "安いから",
-        "客が150人くらいだから"
+        "She wants an outdoor event.",
+        "About 200 guests are expected and it will be cold outside in November.",
+        "It is cheaper.",
+        "About 150 guests are expected."
       ],
       "answer": 1,
       "explanation": "パーク・パビリオンは150人まで、しかも外。200人の客、11月の行事。",
@@ -6559,13 +6559,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "パーク・パビリオンについて正しいのは？",
+      "prompt": "What is true about the Park Pavilion?",
       "sentence": "From: Sophie Martin\nTo: Event Team\nSubject: Venue for the product launch\nHi all,\nWe have two options for the product launch venue. The Crystal Hall holds 300 people and costs $5,000. The Park Pavilion holds 150 people and costs $2,500, but it is outdoors. Since we expect about 200 guests and the event is in November, I recommend the Crystal Hall.\nSophie",
       "choices": [
-        "費用はクリスタル・ホールの半分",
-        "屋内にある",
-        "5,000ドルかかる",
-        "300人入る"
+        "It costs half as much as the Crystal Hall.",
+        "It is indoors.",
+        "It costs $5,000.",
+        "It holds 300 people."
       ],
       "answer": 0,
       "explanation": "$2,500 は $5,000 の半分。",
@@ -6577,13 +6577,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "ニーナがレオに頼んだことは？",
+      "prompt": "What does Nina ask Leo to do?",
       "sentence": "Nina: Hi Leo, are you still at the office?\nLeo: Yes, I'm finishing the sales report.\nNina: Could you bring the client files to tomorrow's meeting? I left them on my desk.\nLeo: Sure. Which client?\nNina: Greenway Foods. The blue folder.",
       "choices": [
-        "明日の会議に客のファイルを持ってくる",
-        "机をかたづける",
-        "客に電話する",
-        "売り上げの報告書を書く"
+        "Bring the client files to tomorrow's meeting",
+        "Clean her desk",
+        "Call the client",
+        "Write the sales report"
       ],
       "answer": 0,
       "explanation": "Could you bring the client files to tomorrow's meeting?",
@@ -6595,13 +6595,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "ファイルについて正しいのは？",
+      "prompt": "What is true about the files?",
       "sentence": "Nina: Hi Leo, are you still at the office?\nLeo: Yes, I'm finishing the sales report.\nNina: Could you bring the client files to tomorrow's meeting? I left them on my desk.\nLeo: Sure. Which client?\nNina: Greenway Foods. The blue folder.",
       "choices": [
-        "会議室にある",
-        "赤いフォルダー",
-        "レオの机にある",
-        "ニーナの机にある青いフォルダー"
+        "They are in the meeting room.",
+        "They are in a red folder.",
+        "They are on Leo's desk.",
+        "They are in a blue folder on Nina's desk."
       ],
       "answer": 3,
       "explanation": "I left them on my desk ... The blue folder.",
@@ -6613,13 +6613,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "航空会社がしてくれることは？",
+      "prompt": "What will the airline provide?",
       "sentence": "Ben: Our flight to Rome is canceled!\nCara: Oh no. Did they offer another flight?\nBen: Yes, tomorrow at 9 a.m. They'll pay for a hotel near the airport tonight.\nCara: That's not bad. Should I cancel our first night in Rome?\nBen: Yes, please. We'll arrive there around noon tomorrow.",
       "choices": [
-        "全額の払いもどしだけ",
-        "今夜の別の便",
-        "ローマのホテル代",
-        "明日の便と、今夜の空港近くのホテル"
+        "Only a full refund",
+        "Another flight tonight",
+        "A hotel in Rome",
+        "A flight tomorrow and tonight's hotel near the airport"
       ],
       "answer": 3,
       "explanation": "tomorrow at 9 a.m. ... pay for a hotel near the airport tonight.",
@@ -6631,13 +6631,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "カーラがすることは？",
+      "prompt": "What will Cara do?",
       "sentence": "Ben: Our flight to Rome is canceled!\nCara: Oh no. Did they offer another flight?\nBen: Yes, tomorrow at 9 a.m. They'll pay for a hotel near the airport tonight.\nCara: That's not bad. Should I cancel our first night in Rome?\nBen: Yes, please. We'll arrive there around noon tomorrow.",
       "choices": [
-        "明日の便を取り消す",
-        "ローマに先に行く",
-        "空港のホテルを予約する",
-        "ローマでの最初の1泊を取り消す"
+        "Cancel tomorrow's flight",
+        "Go to Rome first",
+        "Book a hotel near the airport",
+        "Cancel their first night in Rome"
       ],
       "answer": 3,
       "explanation": "Should I cancel our first night in Rome? / Yes, please.",
@@ -6649,13 +6649,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "サムが3時に会議に出られない理由は？",
+      "prompt": "Why can't Sam be at the meeting at 3?",
       "sentence": "Manager: Hi Sam, the client wants to move our meeting to 3 p.m. today. Can you make it?\nSam: I have a dentist appointment at 2, but I should be back by 3:30.\nManager: OK. I'll start the meeting, and you can join when you get back.",
       "choices": [
-        "別の会議があるから",
-        "2時に歯医者の予約があるから",
-        "客と会うから",
-        "3時30分に出かけるから"
+        "He has another meeting.",
+        "He has a dentist appointment at 2.",
+        "He is meeting a client.",
+        "He is going out at 3:30."
       ],
       "answer": 1,
       "explanation": "I have a dentist appointment at 2.",
@@ -6667,13 +6667,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "会議はどうなる？",
+      "prompt": "What will happen with the meeting?",
       "sentence": "Manager: Hi Sam, the client wants to move our meeting to 3 p.m. today. Can you make it?\nSam: I have a dentist appointment at 2, but I should be back by 3:30.\nManager: OK. I'll start the meeting, and you can join when you get back.",
       "choices": [
-        "サムが始める",
-        "上司が始めて、サムはもどってから加わる",
-        "3時30分に始まる",
-        "明日に延びる"
+        "Sam will start it.",
+        "The manager will start it, and Sam will join later.",
+        "It will start at 3:30.",
+        "It will be moved to tomorrow."
       ],
       "answer": 1,
       "explanation": "I'll start the meeting, and you can join when you get back.",
@@ -6685,13 +6685,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "2人について正しいのは？",
+      "prompt": "What is true about Ava and Joe?",
       "sentence": "Ava: Are you going to the trade fair next week?\nJoe: Only on Thursday. I have to stay in the office on Friday.\nAva: Me too, Thursday only. Shall we take the 8 o'clock train together?\nJoe: Sounds good. I'll book the tickets.",
       "choices": [
-        "2人とも木曜日だけ見本市に行く",
-        "2人とも両日行く",
-        "2人とも金曜日に行く",
-        "ジョーだけが行く"
+        "Both are going to the fair only on Thursday.",
+        "Both are going on both days.",
+        "Both are going on Friday.",
+        "Only Joe is going."
       ],
       "answer": 0,
       "explanation": "Only on Thursday. / Me too, Thursday only.",
@@ -6703,13 +6703,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "ジョーがすることは？",
+      "prompt": "What will Joe do?",
       "sentence": "Ava: Are you going to the trade fair next week?\nJoe: Only on Thursday. I have to stay in the office on Friday.\nAva: Me too, Thursday only. Shall we take the 8 o'clock train together?\nJoe: Sounds good. I'll book the tickets.",
       "choices": [
-        "見本市を取り消す",
-        "8時に電話する",
-        "事務所に残る",
-        "切符を予約する"
+        "Cancel the fair",
+        "Call at 8",
+        "Stay in the office",
+        "Book the tickets"
       ],
       "answer": 3,
       "explanation": "I'll book the tickets.",
@@ -6721,13 +6721,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "今夜の部屋について正しいのは？",
+      "prompt": "What is true about tonight's room?",
       "sentence": "Hana: The hotel says our room has a view of the old town, not the sea.\nKai: But we paid for a sea view!\nHana: They're full tonight, but they'll move us tomorrow and give us free breakfast.\nKai: OK, that's fair.",
       "choices": [
-        "窓がない",
-        "朝食がつかない",
-        "海が見える",
-        "海ではなく旧市街が見える"
+        "It has no window.",
+        "It does not include breakfast.",
+        "It has a sea view.",
+        "It has a view of the old town, not the sea."
       ],
       "answer": 3,
       "explanation": "our room has a view of the old town, not the sea.",
@@ -6739,13 +6739,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "ホテルが申し出たことは？",
+      "prompt": "What did the hotel offer?",
       "sentence": "Hana: The hotel says our room has a view of the old town, not the sea.\nKai: But we paid for a sea view!\nHana: They're full tonight, but they'll move us tomorrow and give us free breakfast.\nKai: OK, that's fair.",
       "choices": [
-        "今夜すぐに部屋を移す",
-        "料金を全額返す",
-        "明日部屋を移し、朝食を無料にする",
-        "別のホテルを紹介する"
+        "To move them right away tonight",
+        "To give them a full refund",
+        "To move them tomorrow and give them free breakfast",
+        "To find them another hotel"
       ],
       "answer": 2,
       "explanation": "they'll move us tomorrow and give us free breakfast.",
@@ -6757,13 +6757,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "エラが遅れそうな理由は？",
+      "prompt": "Why might Ella be late?",
       "sentence": "Ella: I'm stuck in traffic. I might be 20 minutes late for the interview.\nRyan: Don't worry. I'll let the manager know. Just come straight to the 4th floor when you arrive.\nElla: Thank you so much!",
       "choices": [
-        "書類を忘れたから",
-        "渋滞につかまっているから",
-        "道に迷ったから",
-        "電車が止まったから"
+        "She forgot her papers.",
+        "She is stuck in traffic.",
+        "She got lost.",
+        "Her train stopped."
       ],
       "answer": 1,
       "explanation": "I'm stuck in traffic.",
@@ -6775,13 +6775,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "ライアンがすることは？",
+      "prompt": "What will Ryan do?",
       "sentence": "Ella: I'm stuck in traffic. I might be 20 minutes late for the interview.\nRyan: Don't worry. I'll let the manager know. Just come straight to the 4th floor when you arrive.\nElla: Thank you so much!",
       "choices": [
-        "担当者に知らせる",
-        "面接を明日にする",
-        "面接を中止する",
-        "エラをむかえに行く"
+        "Tell the manager",
+        "Move the interview to tomorrow",
+        "Cancel the interview",
+        "Go and pick Ella up"
       ],
       "answer": 0,
       "explanation": "I'll let the manager know.",
@@ -6793,13 +6793,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "金曜日の閉館時間は？",
+      "prompt": "What time does the museum close on Fridays?",
       "sentence": "Welcome to the National Museum\nOpening hours: 9:00–17:00 (closed Mondays)\nLate opening on Fridays until 20:00\nAdmission: Adults $15, Students $8, Children under 12 free\nAudio guides are available in 8 languages for $3.",
       "choices": [
-        "18時",
-        "20時",
-        "21時",
-        "17時"
+        "6 p.m.",
+        "8 p.m.",
+        "9 p.m.",
+        "5 p.m."
       ],
       "answer": 1,
       "explanation": "Late opening on Fridays until 20:00.",
@@ -6811,13 +6811,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "10歳の子どもの入館料は？",
+      "prompt": "How much is admission for a ten-year-old child?",
       "sentence": "Welcome to the National Museum\nOpening hours: 9:00–17:00 (closed Mondays)\nLate opening on Fridays until 20:00\nAdmission: Adults $15, Students $8, Children under 12 free\nAudio guides are available in 8 languages for $3.",
       "choices": [
-        "3ドル",
-        "15ドル",
-        "無料",
-        "8ドル"
+        "$3",
+        "$15",
+        "It's free.",
+        "$8"
       ],
       "answer": 2,
       "explanation": "Children under 12 free.",
@@ -6829,13 +6829,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "プールが閉まっている間、客はどうできる？",
+      "prompt": "What can guests do while the pool is closed?",
       "sentence": "NOTICE TO GUESTS\nThe hotel swimming pool will be closed from June 1 to June 7 for maintenance. During this period, guests may use the pool at our partner hotel, the Plaza, free of charge. Please show your room key at the Plaza reception.",
       "choices": [
-        "ジムを無料で使える",
-        "料金を返してもらえる",
-        "プールの一部を使える",
-        "提携ホテルのプールを無料で使える"
+        "Use the gym for free",
+        "Get their money back",
+        "Use part of the pool",
+        "Use the partner hotel's pool for free"
       ],
       "answer": 3,
       "explanation": "guests may use the pool at our partner hotel, the Plaza, free of charge.",
@@ -6847,13 +6847,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "プラザで必要なことは？",
+      "prompt": "What must guests do at the Plaza?",
       "sentence": "NOTICE TO GUESTS\nThe hotel swimming pool will be closed from June 1 to June 7 for maintenance. During this period, guests may use the pool at our partner hotel, the Plaza, free of charge. Please show your room key at the Plaza reception.",
       "choices": [
-        "料金を払う",
-        "予約をする",
-        "水着を借りる",
-        "部屋のかぎを見せる"
+        "Pay a fee",
+        "Make a reservation",
+        "Rent a swimsuit",
+        "Show their room key"
       ],
       "answer": 3,
       "explanation": "Please show your room key at the Plaza reception.",
@@ -6865,13 +6865,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "この保険で補償されないのは？",
+      "prompt": "What is NOT covered by this insurance?",
       "sentence": "Careful Travel Insurance\nCovers: medical costs, lost or stolen luggage, flight cancellations\nDoes not cover: injuries from extreme sports, items left unattended in public places\nTo make a claim, contact us within 14 days of returning home.",
       "choices": [
-        "飛行機の欠航",
-        "病院の費用",
-        "公共の場所に置いたままにして取られた物",
-        "盗まれた荷物"
+        "Flight cancellations",
+        "Hospital costs",
+        "Items stolen after being left alone in a public place",
+        "Stolen luggage"
       ],
       "answer": 2,
       "explanation": "Does not cover: items left unattended in public places.",
@@ -6883,13 +6883,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "補償を申し立てる期限は？",
+      "prompt": "By when must you make a claim?",
       "sentence": "Careful Travel Insurance\nCovers: medical costs, lost or stolen luggage, flight cancellations\nDoes not cover: injuries from extreme sports, items left unattended in public places\nTo make a claim, contact us within 14 days of returning home.",
       "choices": [
-        "帰ってから1か月以内",
-        "家に帰ってから14日以内",
-        "旅行の前",
-        "旅行中"
+        "Within a month of coming home",
+        "Within 14 days of coming home",
+        "Before the trip",
+        "During the trip"
       ],
       "answer": 1,
       "explanation": "contact us within 14 days of returning home.",
@@ -6901,13 +6901,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "この仕事について正しいのは？",
+      "prompt": "What is true about these jobs?",
       "sentence": "Staff Wanted – Summer Season\nBlue Bay Resort is hiring tour guides and restaurant staff for July and August.\n- Free accommodation and meals\n- Must speak English; a second language is an advantage\n- Weekend work required\nSend your CV to jobs@bluebay.example by May 15.",
       "choices": [
-        "週末は休み",
-        "1年間の仕事",
-        "住む所と食事が無料",
-        "2か国語を話せないといけない"
+        "Weekends are off.",
+        "They last one year.",
+        "Housing and meals are free.",
+        "You must speak two languages."
       ],
       "answer": 2,
       "explanation": "Free accommodation and meals.",
@@ -6919,13 +6919,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "応募するには？",
+      "prompt": "How do you apply?",
       "sentence": "Staff Wanted – Summer Season\nBlue Bay Resort is hiring tour guides and restaurant staff for July and August.\n- Free accommodation and meals\n- Must speak English; a second language is an advantage\n- Weekend work required\nSend your CV to jobs@bluebay.example by May 15.",
       "choices": [
-        "5月15日に面接を受ける",
-        "5月15日までに履歴書をメールで送る",
-        "7月に直接行く",
-        "電話で申しこむ"
+        "Have an interview on May 15",
+        "Email your CV by May 15",
+        "Visit in person in July",
+        "Apply by phone"
       ],
       "answer": 1,
       "explanation": "Send your CV ... by May 15.",
@@ -6937,13 +6937,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "会議室でしてもよいことは？",
+      "prompt": "What are you allowed to do in the meeting rooms?",
       "sentence": "Meeting Room Rules\n1. Book rooms through the online calendar at least one day in advance.\n2. If you finish early, please cancel the rest of your booking.\n3. Clean the whiteboard and take your trash with you.\n4. Food is not allowed, but drinks are OK.",
       "choices": [
-        "ごみを置いていく",
-        "食べ物を食べる",
-        "飲み物を飲む",
-        "当日に予約する"
+        "Leave your trash",
+        "Eat food",
+        "Have drinks",
+        "Book a room on the same day"
       ],
       "answer": 2,
       "explanation": "Food is not allowed, but drinks are OK.",
@@ -6955,13 +6955,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "早く終わったときにすることは？",
+      "prompt": "What should you do if you finish early?",
       "sentence": "Meeting Room Rules\n1. Book rooms through the online calendar at least one day in advance.\n2. If you finish early, please cancel the rest of your booking.\n3. Clean the whiteboard and take your trash with you.\n4. Food is not allowed, but drinks are OK.",
       "choices": [
-        "受付に電話する",
-        "残りの予約を取り消す",
-        "そのまま使い続ける",
-        "次の人に知らせる"
+        "Call the reception desk",
+        "Cancel the rest of your booking",
+        "Keep using the room",
+        "Tell the next group"
       ],
       "answer": 1,
       "explanation": "If you finish early, please cancel the rest of your booking.",
@@ -6973,13 +6973,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "無料の飲み物をもらうには？",
+      "prompt": "How can you get a free drink?",
       "sentence": "Coffee & Co. Loyalty Card\nGet one stamp for every drink you buy. Collect 10 stamps and get a free drink of any size. Stamps expire after 6 months. Cards cannot be shared or exchanged for cash.",
       "choices": [
-        "カードを2枚集める",
-        "スタンプを10個集める",
-        "大きいサイズを買う",
-        "6か月通う"
+        "Collect two cards",
+        "Collect 10 stamps",
+        "Buy a large size",
+        "Visit for six months"
       ],
       "answer": 1,
       "explanation": "Collect 10 stamps and get a free drink.",
@@ -6991,13 +6991,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "このカードについて正しいのは？",
+      "prompt": "What is true about the card?",
       "sentence": "Coffee & Co. Loyalty Card\nGet one stamp for every drink you buy. Collect 10 stamps and get a free drink of any size. Stamps expire after 6 months. Cards cannot be shared or exchanged for cash.",
       "choices": [
-        "現金にかえられる",
-        "スタンプに期限はない",
-        "ほかの人と分けられる",
-        "スタンプは6か月で使えなくなる"
+        "It can be exchanged for cash.",
+        "Stamps never expire.",
+        "It can be shared with others.",
+        "Stamps expire after six months."
       ],
       "answer": 3,
       "explanation": "Stamps expire after 6 months.",
@@ -7009,13 +7009,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "道路が閉まるのは？",
+      "prompt": "When will the roads be closed?",
       "sentence": "City Marathon – Road Closures\nOn Sunday, October 6, the following roads will be closed from 6 a.m. to 2 p.m.: Main Street, River Road, and Park Avenue. Buses will take different routes. Residents are advised to use the subway, which will run extra trains in the morning.",
       "choices": [
-        "土曜日の一日じゅう",
-        "月曜日の朝",
-        "日曜日の午後2時から",
-        "日曜日の朝6時から午後2時まで"
+        "All day Saturday",
+        "On Monday morning",
+        "From 2 p.m. on Sunday",
+        "From 6 a.m. to 2 p.m. on Sunday"
       ],
       "answer": 3,
       "explanation": "On Sunday, October 6, ... from 6 a.m. to 2 p.m.",
@@ -7027,13 +7027,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "住民にすすめられていることは？",
+      "prompt": "What are residents advised to do?",
       "sentence": "City Marathon – Road Closures\nOn Sunday, October 6, the following roads will be closed from 6 a.m. to 2 p.m.: Main Street, River Road, and Park Avenue. Buses will take different routes. Residents are advised to use the subway, which will run extra trains in the morning.",
       "choices": [
-        "バスを使う",
-        "地下鉄を使う",
-        "車で出かける",
-        "家にいる"
+        "Use the bus",
+        "Use the subway",
+        "Drive their cars",
+        "Stay at home"
       ],
       "answer": 1,
       "explanation": "Residents are advised to use the subway.",
@@ -7045,13 +7045,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "エコノミーの客が2つ目の荷物を預けると？",
+      "prompt": "What happens if an economy passenger checks a second bag?",
       "sentence": "SkyHigh Airlines – Baggage Policy\nEconomy: one checked bag up to 23 kg\nBusiness: two checked bags up to 32 kg each\nExtra bags: $60 each\nBags over the weight limit: $75 each",
       "choices": [
-        "60ドルかかる",
-        "無料",
-        "75ドルかかる",
-        "預けられない"
+        "It costs $60.",
+        "It is free.",
+        "It costs $75.",
+        "It is not allowed."
       ],
       "answer": 0,
       "explanation": "Extra bags: $60 each.",
@@ -7063,13 +7063,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "ビジネスの客が預けられるのは？",
+      "prompt": "What can business class passengers check?",
       "sentence": "SkyHigh Airlines – Baggage Policy\nEconomy: one checked bag up to 23 kg\nBusiness: two checked bags up to 32 kg each\nExtra bags: $60 each\nBags over the weight limit: $75 each",
       "choices": [
-        "1つ32kgまでの荷物を2つ",
-        "何個でも無料",
-        "32kgまでの荷物を1つ",
-        "23kgまでの荷物を1つ"
+        "Two bags of up to 32 kg each",
+        "Any number of bags for free",
+        "One bag of up to 32 kg",
+        "One bag of up to 23 kg"
       ],
       "answer": 0,
       "explanation": "two checked bags up to 32 kg each.",
@@ -7081,13 +7081,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "3月20日に申しこむと、いくらになる？",
+      "prompt": "How much will it cost if you register on March 20?",
       "sentence": "Online Course: Business English for Beginners\nStart date: April 10\nLength: 8 weeks (two 60-minute live lessons per week)\nPrice: $240 ($200 if you register by March 31)\nAll lessons are recorded, so you can watch them later if you miss one.",
       "choices": [
-        "40ドル",
-        "200ドル",
-        "120ドル",
-        "240ドル"
+        "$40",
+        "$200",
+        "$120",
+        "$240"
       ],
       "answer": 1,
       "explanation": "3月31日までに申しこむと200ドル。",
@@ -7099,13 +7099,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "授業を休んだときは？",
+      "prompt": "What can you do if you miss a lesson?",
       "sentence": "Online Course: Business English for Beginners\nStart date: April 10\nLength: 8 weeks (two 60-minute live lessons per week)\nPrice: $240 ($200 if you register by March 31)\nAll lessons are recorded, so you can watch them later if you miss one.",
       "choices": [
-        "録画をあとで見られる",
-        "次の週に2回受ける",
-        "お金が返ってくる",
-        "受けなおせない"
+        "Watch the recording later",
+        "Take two lessons the next week",
+        "Get your money back",
+        "Nothing, because it cannot be retaken"
       ],
       "answer": 0,
       "explanation": "All lessons are recorded, so you can watch them later.",
@@ -7117,13 +7117,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "訪問者がすることは？",
+      "prompt": "What should visitors do?",
       "sentence": "Parking Information – Seaside Office Park\nVisitors: Park in the area marked \"V\" near the main entrance. Parking is free for up to 3 hours. Register your car number at the reception desk on arrival.\nEmployees: Use the underground parking. Monthly fee: $50.",
       "choices": [
-        "3時間ごとに車を動かす",
-        "月50ドル払う",
-        "着いたら受付で車の番号を登録する",
-        "地下にとめる"
+        "Move their car every three hours",
+        "Pay $50 a month",
+        "Register their car number at the reception desk when they arrive",
+        "Park underground"
       ],
       "answer": 2,
       "explanation": "Register your car number at the reception desk on arrival.",
@@ -7135,13 +7135,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "訪問者の駐車について正しいのは？",
+      "prompt": "What is true about visitor parking?",
       "sentence": "Parking Information – Seaside Office Park\nVisitors: Park in the area marked \"V\" near the main entrance. Parking is free for up to 3 hours. Register your car number at the reception desk on arrival.\nEmployees: Use the underground parking. Monthly fee: $50.",
       "choices": [
-        "1時間50ドル",
-        "とめられない",
-        "一日じゅう無料",
-        "3時間まで無料"
+        "It costs $50 an hour.",
+        "Visitors cannot park there.",
+        "It is free all day.",
+        "It is free for up to three hours."
       ],
       "answer": 3,
       "explanation": "Parking is free for up to 3 hours.",
@@ -7153,13 +7153,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "参加するのに必要なことは？",
+      "prompt": "What do you need to do to join?",
       "sentence": "Language Exchange Café\nEvery Wednesday 7–9 p.m. at Library Café\nPractice English, Spanish, or Japanese with native speakers.\nFree for library members; $5 for others (includes one drink).\nNo booking needed – just drop in!",
       "choices": [
-        "図書館の会員になる",
-        "特にない（予約なしで行ける）",
-        "前の日に予約する",
-        "5ドルの飲み物を2つ買う"
+        "Become a library member",
+        "Nothing special — you can just come without booking.",
+        "Book the day before",
+        "Buy two $5 drinks"
       ],
       "answer": 1,
       "explanation": "No booking needed – just drop in!",
@@ -7171,13 +7171,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "会員でない人について正しいのは？",
+      "prompt": "What is true for people who are not members?",
       "sentence": "Language Exchange Café\nEvery Wednesday 7–9 p.m. at Library Café\nPractice English, Spanish, or Japanese with native speakers.\nFree for library members; $5 for others (includes one drink).\nNo booking needed – just drop in!",
       "choices": [
-        "参加できない",
-        "5ドルで、飲み物が1つつく",
-        "7ドルかかる",
-        "無料で参加できる"
+        "They cannot join.",
+        "It costs $5, and one drink is included.",
+        "It costs $7.",
+        "They can join for free."
       ],
       "answer": 1,
       "explanation": "$5 for others (includes one drink).",
@@ -7189,13 +7189,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "キャンプ場で静かにしなければならないのは？",
+      "prompt": "When must campers be quiet?",
       "sentence": "Pine Valley Campsite – Rules\n- Check-in after 2 p.m.; check-out by 11 a.m.\n- Quiet hours: 10 p.m. to 7 a.m.\n- Campfires only in the fire pits provided.\n- Pets are welcome but must be kept on a leash.",
       "choices": [
-        "一日じゅう",
-        "朝7時から夜10時まで",
-        "午後2時から11時まで",
-        "夜10時から朝7時まで"
+        "All day",
+        "From 7 a.m. to 10 p.m.",
+        "From 2 p.m. to 11 p.m.",
+        "From 10 p.m. to 7 a.m."
       ],
       "answer": 3,
       "explanation": "Quiet hours: 10 p.m. to 7 a.m.",
@@ -7207,13 +7207,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "ペットについて正しいのは？",
+      "prompt": "What is true about pets?",
       "sentence": "Pine Valley Campsite – Rules\n- Check-in after 2 p.m.; check-out by 11 a.m.\n- Quiet hours: 10 p.m. to 7 a.m.\n- Campfires only in the fire pits provided.\n- Pets are welcome but must be kept on a leash.",
       "choices": [
-        "つなぎひもをつければ連れてこられる",
-        "別の料金がかかる",
-        "連れてこられない",
-        "自由に放してよい"
+        "They can come if they are kept on a leash.",
+        "There is an extra fee for them.",
+        "They are not allowed.",
+        "They can run freely."
       ],
       "answer": 0,
       "explanation": "Pets are welcome but must be kept on a leash.",
@@ -7225,13 +7225,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "夜行列車を選ぶ理由として書かれているのは？",
+      "prompt": "According to the article, why do travelers choose night trains?",
       "sentence": "# Night Trains Make a Comeback\nAfter years of decline, overnight trains are becoming popular again in Europe. Many travelers say they choose night trains because they produce far less carbon than flights. Others like the fact that they save the cost of one night in a hotel. Several new routes, including Paris to Berlin, started this year.",
       "choices": [
-        "食事が無料だから",
-        "飛行機より二酸化炭素がずっと少ないから",
-        "切符が飛行機の半分の値段だから",
-        "飛行機より速いから"
+        "Meals are free on board.",
+        "They produce much less carbon than flights.",
+        "Tickets are half the price of flights.",
+        "They are faster than flights."
       ],
       "answer": 1,
       "explanation": "they produce far less carbon than flights（飛行機よりずっと炭素が少ない）。ほかに、ホテル1泊分がうくこと。",
@@ -7243,13 +7243,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "今年始まった路線の例は？",
+      "prompt": "Which route is given as an example of a new route?",
       "sentence": "# Night Trains Make a Comeback\nAfter years of decline, overnight trains are becoming popular again in Europe. Many travelers say they choose night trains because they produce far less carbon than flights. Others like the fact that they save the cost of one night in a hotel. Several new routes, including Paris to Berlin, started this year.",
       "choices": [
-        "ロンドンからベルリン",
-        "パリからロンドン",
-        "ベルリンからローマ",
-        "パリからベルリン"
+        "London to Berlin",
+        "Paris to London",
+        "Berlin to Rome",
+        "Paris to Berlin"
       ],
       "answer": 3,
       "explanation": "Several new routes, including Paris to Berlin, started this year.",
@@ -7261,13 +7261,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "新しいコーヒーマシンについて正しいのは？",
+      "prompt": "What is true about the new coffee machine?",
       "sentence": "From: Office Manager\nTo: All Staff\nSubject: New coffee machine\nWe have installed a new coffee machine in the kitchen on the 3rd floor. Coffee is free, but please bring your own cup, as paper cups will no longer be provided.\n---\nLiam: Did you see the new coffee machine?\nZoe: Yes! But I had to buy a cup at the shop downstairs.\nLiam: Me too. I forgot to bring mine from home.",
       "choices": [
-        "紙コップだけ使える",
-        "1階の台所にある",
-        "コーヒーは無料だが、自分のカップが必要",
-        "コーヒーは有料で、紙コップがある"
+        "Only paper cups can be used.",
+        "It is in the kitchen on the 1st floor.",
+        "The coffee is free, but you need your own cup.",
+        "The coffee costs money, and paper cups are provided."
       ],
       "answer": 2,
       "explanation": "Coffee is free, but please bring your own cup.",
@@ -7279,13 +7279,13 @@
       "town": "town05",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "ゾーイとリアムがカップを買った理由は？",
+      "prompt": "Why did Zoe and Liam buy cups?",
       "sentence": "From: Office Manager\nTo: All Staff\nSubject: New coffee machine\nWe have installed a new coffee machine in the kitchen on the 3rd floor. Coffee is free, but please bring your own cup, as paper cups will no longer be provided.\n---\nLiam: Did you see the new coffee machine?\nZoe: Yes! But I had to buy a cup at the shop downstairs.\nLiam: Me too. I forgot to bring mine from home.",
       "choices": [
-        "マシンが新しいカップしか使えないから",
-        "カップがこわれたから",
-        "コーヒーが有料になったから",
-        "紙コップがもう置かれていないから"
+        "The machine only works with new cups.",
+        "Their cups broke.",
+        "The coffee is no longer free.",
+        "Paper cups are no longer provided."
       ],
       "answer": 3,
       "explanation": "paper cups will no longer be provided.",

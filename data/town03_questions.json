@@ -3365,13 +3365,13 @@
       "town": "town03",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "ランチの時間は？",
+      "prompt": "When is lunch served?",
       "sentence": "LUNCH MENU (11 a.m. – 2 p.m.)\nPasta of the day ... $9\nChicken curry ... $10\nGreen salad ... $6\nAll lunches come with free coffee or tea.",
       "choices": [
-        "午前11時から正午",
-        "午後2時から",
-        "午後11時から午前2時",
-        "午前11時から午後2時"
+        "From 11 a.m. to noon",
+        "After 2 p.m.",
+        "From 11 p.m. to 2 a.m.",
+        "From 11 a.m. to 2 p.m."
       ],
       "answer": 3,
       "explanation": "11 a.m. – 2 p.m. = 午前11時から午後2時。",
@@ -3383,13 +3383,13 @@
       "town": "town03",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "ランチに無料でつくものは？",
+      "prompt": "What comes free with every lunch?",
       "sentence": "LUNCH MENU (11 a.m. – 2 p.m.)\nPasta of the day ... $9\nChicken curry ... $10\nGreen salad ... $6\nAll lunches come with free coffee or tea.",
       "choices": [
-        "デザート",
-        "コーヒーか紅茶",
-        "パン",
-        "サラダ"
+        "A dessert",
+        "Coffee or tea",
+        "Some bread",
+        "A salad"
       ],
       "answer": 1,
       "explanation": "come with free coffee or tea = 無料のコーヒーか紅茶がつく。",
@@ -3401,13 +3401,13 @@
       "town": "town03",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "日曜日は？",
+      "prompt": "What happens on Sundays?",
       "sentence": "Café Hours\nMon–Fri: 7 a.m. – 7 p.m.\nSat: 8 a.m. – 5 p.m.\nClosed on Sundays",
       "choices": [
-        "午後5時に閉まる",
-        "午前7時から開く",
-        "午前8時から開く",
-        "休み"
+        "It closes at 5 p.m.",
+        "It opens at 7 a.m.",
+        "It opens at 8 a.m.",
+        "The café is closed."
       ],
       "answer": 3,
       "explanation": "Closed on Sundays = 日曜日は休み。",
@@ -3419,13 +3419,13 @@
       "town": "town03",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "土曜日に閉まる時間は？",
+      "prompt": "What time does the café close on Saturdays?",
       "sentence": "Café Hours\nMon–Fri: 7 a.m. – 7 p.m.\nSat: 8 a.m. – 5 p.m.\nClosed on Sundays",
       "choices": [
-        "午後8時",
-        "午後5時",
-        "午前8時",
-        "午後7時"
+        "At 8 p.m.",
+        "At 5 p.m.",
+        "At 8 a.m.",
+        "At 7 p.m."
       ],
       "answer": 1,
       "explanation": "Sat: 8 a.m. – 5 p.m.",
@@ -3437,13 +3437,13 @@
       "town": "town03",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "本日のおすすめは何食限定？",
+      "prompt": "How many servings of today's special are there?",
       "sentence": "Today's Special\nBeef stew with bread ... $12\n(Only 20 servings!)",
       "choices": [
-        "12食",
-        "限定なし",
-        "20食",
-        "2食"
+        "Twelve",
+        "There is no limit.",
+        "Twenty",
+        "Two"
       ],
       "answer": 2,
       "explanation": "Only 20 servings = 20食だけ。",
@@ -3455,13 +3455,13 @@
       "town": "town03",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "ビーフシチューについてくるものは？",
+      "prompt": "What comes with the beef stew?",
       "sentence": "Today's Special\nBeef stew with bread ... $12\n(Only 20 servings!)",
       "choices": [
-        "パン",
-        "ごはん",
-        "スープ",
-        "サラダ"
+        "Bread",
+        "Rice",
+        "Soup",
+        "A salad"
       ],
       "answer": 0,
       "explanation": "with bread = パンつき。",
@@ -3473,13 +3473,13 @@
       "town": "town03",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "この料理に入っているものは？",
+      "prompt": "What is in this dish?",
       "sentence": "Allergy information:\nThis dish contains nuts and milk.\nPlease ask our staff if you have any allergies.",
       "choices": [
-        "ナッツと牛乳",
-        "小麦と牛乳",
-        "ナッツと卵",
-        "何も入っていない"
+        "Nuts and milk",
+        "Wheat and milk",
+        "Nuts and eggs",
+        "Nothing special"
       ],
       "answer": 0,
       "explanation": "contains nuts and milk = ナッツと牛乳が入っている。",
@@ -3491,13 +3491,13 @@
       "town": "town03",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "アレルギーがある人は、どうするように書いてある？",
+      "prompt": "What should people with allergies do?",
       "sentence": "Allergy information:\nThis dish contains nuts and milk.\nPlease ask our staff if you have any allergies.",
       "choices": [
-        "お店の人にたずねる",
-        "自分でメニューを調べる",
-        "席をかえる",
-        "となりの店に行く"
+        "Ask the staff",
+        "Check the menu by themselves",
+        "Change their seats",
+        "Go to another restaurant"
       ],
       "answer": 0,
       "explanation": "Please ask our staff = 店員にたずねてください。",
@@ -3509,13 +3509,13 @@
       "town": "town03",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "午後3時から5時のあいだは？",
+      "prompt": "What can customers do between 3 p.m. and 5 p.m.?",
       "sentence": "Sorry! The kitchen is closed for cleaning from 3 p.m. to 5 p.m.\nDrinks are still available.",
       "choices": [
-        "料理はないが、飲み物は頼める",
-        "飲み物もない",
-        "料理だけ頼める",
-        "店が全部閉まる"
+        "Order drinks but not food",
+        "Order food but not drinks",
+        "Order both food and drinks",
+        "Nothing, because the whole shop is closed"
       ],
       "answer": 0,
       "explanation": "Drinks are still available. = 飲み物は頼める。",
@@ -3527,13 +3527,13 @@
       "town": "town03",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "キッチンが閉まる理由は？",
+      "prompt": "Why is the kitchen closed?",
       "sentence": "Sorry! The kitchen is closed for cleaning from 3 p.m. to 5 p.m.\nDrinks are still available.",
       "choices": [
-        "そうじのため",
-        "休けいのため",
-        "工事のため",
-        "材料がないため"
+        "For cleaning",
+        "For a break",
+        "For repairs",
+        "Because there is no food"
       ],
       "answer": 0,
       "explanation": "closed for cleaning = そうじのために閉まる。",
@@ -3545,13 +3545,13 @@
       "town": "town03",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "駅のどの出口から出る？",
+      "prompt": "Which exit should Ken use?",
       "sentence": "Hi Ken! From the station, take the south exit. Walk straight for five minutes. My house is the blue one next to the bakery.",
       "choices": [
-        "南口",
-        "北口",
-        "西口",
-        "東口"
+        "The south exit",
+        "The north exit",
+        "The west exit",
+        "The east exit"
       ],
       "answer": 0,
       "explanation": "take the south exit = 南口から出る。",
@@ -3563,13 +3563,13 @@
       "town": "town03",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "家の目印は？",
+      "prompt": "How can Ken find the house?",
       "sentence": "Hi Ken! From the station, take the south exit. Walk straight for five minutes. My house is the blue one next to the bakery.",
       "choices": [
-        "青い看板のパン屋",
-        "パン屋のとなりの青い家",
-        "駅のとなりの家",
-        "パン屋の向かいの青い家"
+        "It's a bakery with a blue sign.",
+        "It's the blue house next to the bakery.",
+        "It's the house next to the station.",
+        "It's the blue house across from the bakery."
       ],
       "answer": 1,
       "explanation": "the blue one next to the bakery = パン屋のとなりの青い家。",
@@ -3581,13 +3581,13 @@
       "town": "town03",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "今週末、パーク駅では？",
+      "prompt": "What will happen at Park Station this weekend?",
       "sentence": "Due to track repairs, trains will not stop at Park Station this weekend.\nPlease use the bus service instead.",
       "choices": [
-        "電車が早く出る",
-        "駅が新しくなる",
-        "電車が止まらない",
-        "電車が無料になる"
+        "Trains will leave early.",
+        "The station will open again.",
+        "Trains will not stop there.",
+        "Trains will be free."
       ],
       "answer": 2,
       "explanation": "trains will not stop at Park Station = パーク駅に電車は止まらない。",
@@ -3599,13 +3599,13 @@
       "town": "town03",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "かわりに何を使うように書いてある？",
+      "prompt": "What should people use instead?",
       "sentence": "Due to track repairs, trains will not stop at Park Station this weekend.\nPlease use the bus service instead.",
       "choices": [
-        "自転車",
-        "バス",
-        "となりの駅の電車",
-        "タクシー"
+        "A bicycle",
+        "The bus",
+        "Trains from the next station",
+        "A taxi"
       ],
       "answer": 1,
       "explanation": "use the bus service instead = かわりにバスを使って。",
@@ -3617,13 +3617,13 @@
       "town": "town03",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "図書館の両どなりにあるのは？",
+      "prompt": "What is on each side of the library?",
       "sentence": "The library is on Oak Street, between the post office and the flower shop.\nIt is across from the city park.",
       "choices": [
-        "郵便局と銀行",
-        "郵便局と花屋",
-        "花屋と公園",
-        "郵便局と公園"
+        "The post office and a bank",
+        "The post office and the flower shop",
+        "The flower shop and the park",
+        "The post office and the park"
       ],
       "answer": 1,
       "explanation": "between the post office and the flower shop = 郵便局と花屋のあいだ。",
@@ -3635,13 +3635,13 @@
       "town": "town03",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "図書館の向かいにあるのは？",
+      "prompt": "What is across from the library?",
       "sentence": "The library is on Oak Street, between the post office and the flower shop.\nIt is across from the city park.",
       "choices": [
-        "市の公園",
-        "オーク通りの駅",
-        "郵便局",
-        "花屋"
+        "The city park",
+        "Oak Street Station",
+        "The post office",
+        "The flower shop"
       ],
       "answer": 0,
       "explanation": "across from the city park = 市の公園の向かい。",
@@ -3653,13 +3653,13 @@
       "town": "town03",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "この人がほめているのは？",
+      "prompt": "What does the writer like?",
       "sentence": "★★★★☆\nGreat pizza and friendly staff! But the place is small, so it gets crowded on weekends. Go early!",
       "choices": [
-        "店の広さ",
-        "ピザと、店員の感じのよさ",
-        "値段の安さ",
-        "週末のすいていること"
+        "The size of the restaurant",
+        "The pizza and the staff",
+        "The low prices",
+        "The quiet weekends"
       ],
       "answer": 1,
       "explanation": "Great pizza and friendly staff = ピザがおいしく、店員が親切。",
@@ -3671,13 +3671,13 @@
       "town": "town03",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "すすめていることは？",
+      "prompt": "What does the writer suggest?",
       "sentence": "★★★★☆\nGreat pizza and friendly staff! But the place is small, so it gets crowded on weekends. Go early!",
       "choices": [
-        "早めに行くこと",
-        "週末に行くこと",
-        "持ち帰りにすること",
-        "予約すること"
+        "Going early",
+        "Going on weekends",
+        "Ordering takeout",
+        "Making a reservation"
       ],
       "answer": 0,
       "explanation": "Go early! = 早めに行こう。",
@@ -3689,13 +3689,13 @@
       "town": "town03",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "材料として書かれていないものは？",
+      "prompt": "Which is NOT in the recipe?",
       "sentence": "Easy Pancakes\n1. Mix flour, milk, and an egg.\n2. Heat a pan.\n3. Cook each side for about two minutes.",
       "choices": [
-        "卵",
-        "牛乳",
-        "砂糖",
-        "小麦粉"
+        "An egg",
+        "Milk",
+        "Sugar",
+        "Flour"
       ],
       "answer": 2,
       "explanation": "flour（小麦粉）、milk（牛乳）、an egg（卵）。砂糖（sugar）はない。",
@@ -3707,13 +3707,13 @@
       "town": "town03",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "片面を焼く時間は？",
+      "prompt": "How long should you cook each side?",
       "sentence": "Easy Pancakes\n1. Mix flour, milk, and an egg.\n2. Heat a pan.\n3. Cook each side for about two minutes.",
       "choices": [
-        "約20分",
-        "約2分",
-        "約12分",
-        "約1分"
+        "About twenty minutes",
+        "About two minutes",
+        "About twelve minutes",
+        "About one minute"
       ],
       "answer": 1,
       "explanation": "Cook each side for about two minutes. = 片面を約2分焼く。",
@@ -3725,13 +3725,13 @@
       "town": "town03",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "トイレについて正しいのは？",
+      "prompt": "What is true about the restrooms?",
       "sentence": "Restrooms are for customers only.\nPlease ask staff for the key.",
       "choices": [
-        "客だけが使え、カギは店員にもらう",
-        "店員だけが使える",
-        "客だけが使え、カギはいらない",
-        "だれでも自由に使える"
+        "Only customers can use them, and staff have the key.",
+        "Only staff can use them.",
+        "Only customers can use them, and no key is needed.",
+        "Anyone can use them freely."
       ],
       "answer": 0,
       "explanation": "for customers only（客だけ）、ask staff for the key（店員にカギをもらう）。",
@@ -3743,13 +3743,13 @@
       "town": "town03",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "午後10時ごろのバスは？",
+      "prompt": "How often does the bus come at around 10 p.m.?",
       "sentence": "Bus 7 to Central Station\nEvery 15 minutes from 6 a.m. to 9 p.m.\nAfter 9 p.m.: every 30 minutes",
       "choices": [
-        "15分ごとに来る",
-        "30分ごとに来る",
-        "走っていない",
-        "1時間ごとに来る"
+        "Every 15 minutes",
+        "Every 30 minutes",
+        "It does not run.",
+        "Every hour"
       ],
       "answer": 1,
       "explanation": "After 9 p.m.: every 30 minutes = 午後9時からは30分ごと。",
@@ -3761,13 +3761,13 @@
       "town": "town03",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "7番のバスの行き先は？",
+      "prompt": "Where does Bus 7 go?",
       "sentence": "Bus 7 to Central Station\nEvery 15 minutes from 6 a.m. to 9 p.m.\nAfter 9 p.m.: every 30 minutes",
       "choices": [
-        "空港",
-        "中央駅",
-        "7番通り",
-        "市役所"
+        "To the airport",
+        "To Central Station",
+        "To Seventh Street",
+        "To City Hall"
       ],
       "answer": 1,
       "explanation": "Bus 7 to Central Station = 中央駅行き。",
@@ -3779,13 +3779,13 @@
       "town": "town03",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "予約の人数は？",
+      "prompt": "How many people is the reservation for?",
       "sentence": "Dear Ms. Brown,\nThank you for your reservation. We will see you on May 3 at 7 p.m. for a party of six.\nRiverside Grill",
       "choices": [
-        "3人",
-        "6人",
-        "7人",
-        "2人"
+        "Three",
+        "Six",
+        "Seven",
+        "Two"
       ],
       "answer": 1,
       "explanation": "a party of six = 6人の一行。",
@@ -3797,13 +3797,13 @@
       "town": "town03",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "予約の日時は？",
+      "prompt": "When is the reservation?",
       "sentence": "Dear Ms. Brown,\nThank you for your reservation. We will see you on May 3 at 7 p.m. for a party of six.\nRiverside Grill",
       "choices": [
-        "3月5日の午後7時",
-        "5月3日の午前7時",
-        "5月7日の午後3時",
-        "5月3日の午後7時"
+        "March 5 at 7 p.m.",
+        "May 3 at 7 a.m.",
+        "May 7 at 3 p.m.",
+        "May 3 at 7 p.m."
       ],
       "answer": 3,
       "explanation": "May 3 at 7 p.m. = 5月3日の午後7時。",
@@ -3815,13 +3815,13 @@
       "town": "town03",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "Wi-Fi のパスワードはどこにある？",
+      "prompt": "Where can you find the Wi-Fi password?",
       "sentence": "Free Wi-Fi\nThe password is on your receipt.",
       "choices": [
-        "レシート",
-        "メニュー",
-        "入口の看板",
-        "テーブルの上"
+        "On the receipt",
+        "On the menu",
+        "On the sign at the entrance",
+        "On the table"
       ],
       "answer": 0,
       "explanation": "on your receipt = レシートに書いてある。",
@@ -3833,13 +3833,13 @@
       "town": "town03",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "大人2人と子ども1人の料金は？",
+      "prompt": "How much is it for two adults and one child?",
       "sentence": "City Tour Bus\nStarts at the Tourist Center at 10 a.m.\nTakes about 2 hours\nTickets: Adults $15, Children $8",
       "choices": [
-        "30ドル",
-        "23ドル",
-        "38ドル",
-        "46ドル"
+        "$30",
+        "$23",
+        "$38",
+        "$46"
       ],
       "answer": 2,
       "explanation": "15 × 2 + 8 = 38 ドル。",
@@ -3851,13 +3851,13 @@
       "town": "town03",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "ツアーが終わるのは何時ごろ？",
+      "prompt": "What time does the tour finish?",
       "sentence": "City Tour Bus\nStarts at the Tourist Center at 10 a.m.\nTakes about 2 hours\nTickets: Adults $15, Children $8",
       "choices": [
-        "午前10時ごろ",
-        "正午ごろ",
-        "午前11時ごろ",
-        "午後2時ごろ"
+        "Around 10 a.m.",
+        "Around noon",
+        "Around 11 a.m.",
+        "Around 2 p.m."
       ],
       "answer": 1,
       "explanation": "10時に出て約2時間なので、12時（正午）ごろ。",
@@ -3869,13 +3869,13 @@
       "town": "town03",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "おくれる理由は？",
+      "prompt": "Why is the writer late?",
       "sentence": "Sorry, I'm going to be 15 minutes late. The bus is stuck in traffic. Please order without me!",
       "choices": [
-        "バスが渋滞につかまっている",
-        "道に迷った",
-        "寝ぼうした",
-        "バスに乗りおくれた"
+        "The bus is stuck in traffic.",
+        "The writer got lost.",
+        "The writer overslept.",
+        "The writer missed the bus."
       ],
       "answer": 0,
       "explanation": "The bus is stuck in traffic. = バスが渋滞で動けない。",
@@ -3887,13 +3887,13 @@
       "town": "town03",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "この人がたのんでいることは？",
+      "prompt": "What does the writer ask?",
       "sentence": "Sorry, I'm going to be 15 minutes late. The bus is stuck in traffic. Please order without me!",
       "choices": [
-        "先に注文していてほしい",
-        "待たずに帰ってほしい",
-        "迎えに来てほしい",
-        "席を予約してほしい"
+        "To order without waiting",
+        "To go home without waiting",
+        "To come and pick them up",
+        "To reserve a table"
       ],
       "answer": 0,
       "explanation": "Please order without me! = 私を待たずに注文して。",
@@ -3905,13 +3905,13 @@
       "town": "town03",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "キッズメニューを頼めるのは？",
+      "prompt": "Who can order from the kids' menu?",
       "sentence": "Kids' Menu\nFor children under 10\nEach meal comes with juice and a small ice cream.",
       "choices": [
-        "10歳以上の子ども",
-        "大人も子どもも",
-        "10歳未満の子ども",
-        "12歳未満の子ども"
+        "Children over 10",
+        "Both adults and children",
+        "Children under 10",
+        "Children under 12"
       ],
       "answer": 2,
       "explanation": "under 10 = 10歳未満。",
@@ -3923,13 +3923,13 @@
       "town": "town03",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "キッズメニューについてくるものは？",
+      "prompt": "What comes with each kids' meal?",
       "sentence": "Kids' Menu\nFor children under 10\nEach meal comes with juice and a small ice cream.",
       "choices": [
-        "おもちゃ",
-        "ジュースと小さいアイスクリーム",
-        "ジュースとケーキ",
-        "牛乳とクッキー"
+        "A toy",
+        "Juice and a small ice cream",
+        "Juice and a cake",
+        "Milk and cookies"
       ],
       "answer": 1,
       "explanation": "comes with juice and a small ice cream。",
@@ -3941,13 +3941,13 @@
       "town": "town03",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "3時間とめると、いくら？",
+      "prompt": "How much does it cost to park for three hours?",
       "sentence": "Parking for Restaurant Guests Only\nFirst 2 hours free\nAfter that: $3 per hour",
       "choices": [
-        "3ドル",
-        "6ドル",
-        "9ドル",
-        "無料"
+        "$3",
+        "$6",
+        "$9",
+        "Nothing"
       ],
       "answer": 0,
       "explanation": "最初の2時間は無料、そのあと1時間3ドルなので、3時間なら3ドル。",
@@ -3959,13 +3959,13 @@
       "town": "town03",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "この駐車場を使えるのは？",
+      "prompt": "Who can use this parking lot?",
       "sentence": "Parking for Restaurant Guests Only\nFirst 2 hours free\nAfter that: $3 per hour",
       "choices": [
-        "レストランの客",
-        "駅を使う人",
-        "近所の人",
-        "だれでも"
+        "Restaurant guests",
+        "People using the station",
+        "People who live nearby",
+        "Anyone"
       ],
       "answer": 0,
       "explanation": "for Restaurant Guests Only = レストランの客だけ。",
@@ -3977,13 +3977,13 @@
       "town": "town03",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "駅を出てからどうする？",
+      "prompt": "What should you do after leaving the station?",
       "sentence": "Getting here:\nFrom Green Station, take Exit 2. Turn left and walk along the river. We are next to the bridge.",
       "choices": [
-        "橋を渡って左に曲がる",
-        "まっすぐ橋まで歩く",
-        "左に曲がって、川沿いを歩く",
-        "右に曲がって、川を渡る"
+        "Cross the bridge and turn left.",
+        "Walk straight to the bridge.",
+        "Turn left and walk along the river.",
+        "Turn right and cross the river."
       ],
       "answer": 2,
       "explanation": "Turn left and walk along the river. = 左に曲がって川沿いを歩く。",
@@ -3995,13 +3995,13 @@
       "town": "town03",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "店の場所は？",
+      "prompt": "Where is the restaurant?",
       "sentence": "Getting here:\nFrom Green Station, take Exit 2. Turn left and walk along the river. We are next to the bridge.",
       "choices": [
-        "川の中の島",
-        "駅のとなり",
-        "橋の向こう側",
-        "橋のとなり"
+        "On an island in the river",
+        "Next to the station",
+        "On the other side of the bridge",
+        "Next to the bridge"
       ],
       "answer": 3,
       "explanation": "next to the bridge = 橋のとなり。",
@@ -4013,13 +4013,13 @@
       "town": "town03",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "8月17日は？",
+      "prompt": "What will happen on August 17?",
       "sentence": "Our restaurant will be closed from August 10 to 16 for summer holidays.\nWe will open again on August 17.",
       "choices": [
-        "特別メニューがある",
-        "店が閉まる",
-        "夏休みが始まる",
-        "店がまた開く"
+        "There will be a special menu.",
+        "The restaurant will close.",
+        "The summer holidays will start.",
+        "The restaurant will open again."
       ],
       "answer": 3,
       "explanation": "We will open again on August 17. = 8月17日にまた開く。",
@@ -4031,13 +4031,13 @@
       "town": "town03",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "休みは何日間？",
+      "prompt": "How many days will the restaurant be closed?",
       "sentence": "Our restaurant will be closed from August 10 to 16 for summer holidays.\nWe will open again on August 17.",
       "choices": [
-        "7日間",
-        "10日間",
-        "6日間",
-        "16日間"
+        "Seven days",
+        "Ten days",
+        "Six days",
+        "Sixteen days"
       ],
       "answer": 0,
       "explanation": "10日から16日まで（両方ふくむ）で7日間。",
@@ -4049,13 +4049,13 @@
       "town": "town03",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "無料の1杯をもらうには、あと何杯買えばいい？",
+      "prompt": "How many more coffees do you need to buy to get a free one?",
       "sentence": "Coffee Card\nBuy 9 coffees, get the 10th free!\nStamps: ● ● ● ● ● ● ●",
       "choices": [
-        "あと3杯",
-        "あと2杯",
-        "あと1杯",
-        "あと10杯"
+        "Three more",
+        "Two more",
+        "One more",
+        "Ten more"
       ],
       "answer": 1,
       "explanation": "スタンプは7つ。9杯買うと10杯目が無料なので、あと2杯。",
@@ -4067,13 +4067,13 @@
       "town": "town03",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "電車に乗るには？",
+      "prompt": "How do you get to the trains?",
       "sentence": "Taxi →\nBus ←\nTrain: go down one floor",
       "choices": [
-        "1つ下の階へ行く",
-        "右へ行く",
-        "左へ行く",
-        "1つ上の階へ行く"
+        "Go down one floor.",
+        "Go to the right.",
+        "Go to the left.",
+        "Go up one floor."
       ],
       "answer": 0,
       "explanation": "go down one floor = 1つ下の階へ行く。",
@@ -4085,13 +4085,13 @@
       "town": "town03",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "バス乗り場は？",
+      "prompt": "Where are the buses?",
       "sentence": "Taxi →\nBus ←\nTrain: go down one floor",
       "choices": [
-        "下の階",
-        "右",
-        "上の階",
-        "左"
+        "On the floor below",
+        "To the right",
+        "On the floor above",
+        "To the left"
       ],
       "answer": 3,
       "explanation": "Bus ← = バスは左。",
@@ -4103,13 +4103,13 @@
       "town": "town03",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "テーブル5の客は、何人だと考えられる？",
+      "prompt": "How many people are probably at Table 5?",
       "sentence": "Table 5\n2 x Hamburger\n1 x Fish and chips\n3 x Lemonade",
       "choices": [
-        "6人",
-        "2人",
-        "5人",
-        "3人"
+        "Six",
+        "Two",
+        "Five",
+        "Three"
       ],
       "answer": 3,
       "explanation": "料理が3つ（ハンバーガー2つとフィッシュアンドチップス1つ）、レモネードが3つなので3人。",
@@ -4121,13 +4121,13 @@
       "town": "town03",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "ハンバーガーはいくつ？",
+      "prompt": "How many hamburgers did Table 5 order?",
       "sentence": "Table 5\n2 x Hamburger\n1 x Fish and chips\n3 x Lemonade",
       "choices": [
-        "3つ",
-        "2つ",
-        "5つ",
-        "1つ"
+        "Three",
+        "Two",
+        "Five",
+        "One"
       ],
       "answer": 1,
       "explanation": "2 x Hamburger = ハンバーガー2つ。",
@@ -4139,13 +4139,13 @@
       "town": "town03",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "この入口について正しいのは？",
+      "prompt": "What does the sign say?",
       "sentence": "Wet Floor\nPlease use the other entrance.",
       "choices": [
-        "傘を置いてから入る",
-        "床がぬれているので、別の入口を使う",
-        "足をふいてから入る",
-        "入口は工事中で使えない"
+        "Leave your umbrella before you come in.",
+        "The floor is wet, so use the other entrance.",
+        "Clean your shoes before you come in.",
+        "The entrance is closed for repairs."
       ],
       "answer": 1,
       "explanation": "Wet Floor = 床がぬれている。use the other entrance = 別の入口を使う。",
@@ -4157,13 +4157,13 @@
       "town": "town03",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "市場について正しいのは？",
+      "prompt": "What is true about the market?",
       "sentence": "The new food market opened last Saturday near Central Park. It has more than 30 food stalls from around the world. It is open every day until 10 p.m.",
       "choices": [
-        "世界中の料理の屋台が30より多くある",
-        "夜10時に開く",
-        "30か国の料理がある",
-        "先週の日曜日に開いた"
+        "It has over 30 food stalls from around the world.",
+        "It opens at 10 p.m.",
+        "It has food from exactly 30 countries.",
+        "It opened last Sunday."
       ],
       "answer": 0,
       "explanation": "more than 30 food stalls from around the world = 世界中の屋台が30より多い。",
@@ -4175,13 +4175,13 @@
       "town": "town03",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "市場が開いているのは？",
+      "prompt": "When is the market open?",
       "sentence": "The new food market opened last Saturday near Central Park. It has more than 30 food stalls from around the world. It is open every day until 10 p.m.",
       "choices": [
-        "毎日、夜10時から",
-        "毎日、夜10時まで",
-        "週末だけ",
-        "平日の夜10時から"
+        "Every day from 10 p.m.",
+        "Every day until 10 p.m.",
+        "Only on weekends",
+        "On weekdays from 10 p.m."
       ],
       "answer": 1,
       "explanation": "open every day until 10 p.m. = 毎日、夜10時まで。",
@@ -4193,13 +4193,13 @@
       "town": "town03",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "朝食の場所は？",
+      "prompt": "Where is breakfast served?",
       "sentence": "Breakfast is served in the restaurant on the 2nd floor from 6:30 to 9:30 a.m.",
       "choices": [
-        "部屋",
-        "9階のレストラン",
-        "1階のロビー",
-        "2階のレストラン"
+        "In the guest rooms",
+        "In the restaurant on the ninth floor",
+        "In the lobby on the first floor",
+        "In the restaurant on the second floor"
       ],
       "answer": 3,
       "explanation": "in the restaurant on the 2nd floor = 2階のレストランで。",
@@ -4211,13 +4211,13 @@
       "town": "town03",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "朝食が終わる時間は？",
+      "prompt": "What time does breakfast end?",
       "sentence": "Breakfast is served in the restaurant on the 2nd floor from 6:30 to 9:30 a.m.",
       "choices": [
-        "午前6時30分",
-        "午前9時30分",
-        "午前10時",
-        "午前9時"
+        "At 6:30 a.m.",
+        "At 9:30 a.m.",
+        "At 10 a.m.",
+        "At 9 a.m."
       ],
       "answer": 1,
       "explanation": "from 6:30 to 9:30 a.m. = 午前6時30分から9時30分まで。",
@@ -4229,13 +4229,13 @@
       "town": "town03",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "カフェの場所は？",
+      "prompt": "Where is the café?",
       "sentence": "Let's meet at the café across from the bookstore. I'll wait inside by the window.",
       "choices": [
-        "本屋の中",
-        "本屋の向かい",
-        "本屋の2階",
-        "本屋のとなり"
+        "Inside the bookstore",
+        "Across from the bookstore",
+        "Above the bookstore",
+        "Next to the bookstore"
       ],
       "answer": 1,
       "explanation": "across from the bookstore = 本屋の向かい。",
@@ -4247,13 +4247,13 @@
       "town": "town03",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "この人が待っている場所は？",
+      "prompt": "Where will the writer wait?",
       "sentence": "Let's meet at the café across from the bookstore. I'll wait inside by the window.",
       "choices": [
-        "カフェの入口",
-        "本屋の窓ぎわ",
-        "カフェの中の窓ぎわ",
-        "カフェの外"
+        "At the café entrance",
+        "By the window of the bookstore",
+        "Inside the café, by the window",
+        "Outside the café"
       ],
       "answer": 2,
       "explanation": "inside by the window = 中の窓ぎわで。",
@@ -4265,13 +4265,13 @@
       "town": "town03",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "午後9時45分に店に入ると？",
+      "prompt": "What happens if you come in at 9:45 p.m.?",
       "sentence": "Last Order 9:30 p.m.\nWe close at 10 p.m.",
       "choices": [
-        "もう料理を注文できない",
-        "10時まで外で待つ",
-        "店はもう閉まっている",
-        "まだ料理を注文できる"
+        "You can no longer order food.",
+        "You have to wait outside until 10.",
+        "The restaurant is already closed.",
+        "You can still order food."
       ],
       "answer": 0,
       "explanation": "Last Order 9:30 p.m. = 最後の注文は午後9時30分まで。店は10時まで開いている。",
@@ -4283,13 +4283,13 @@
       "town": "town03",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "雨が降ったら？",
+      "prompt": "What will happen if it rains?",
       "sentence": "Food Festival\nSaturday, June 8\nCity Square, 11 a.m. – 8 p.m.\nIf it rains, the event will be held on Sunday.",
       "choices": [
-        "次の週の土曜日に行う",
-        "日曜日に行う",
-        "中止になる",
-        "屋内で行う"
+        "The festival will be held next Saturday.",
+        "The festival will be held on Sunday.",
+        "The festival will be canceled.",
+        "The festival will be held indoors."
       ],
       "answer": 1,
       "explanation": "If it rains, … on Sunday. = 雨なら日曜日に行う。",
@@ -4301,13 +4301,13 @@
       "town": "town03",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "どこで行う？",
+      "prompt": "Where is the festival?",
       "sentence": "Food Festival\nSaturday, June 8\nCity Square, 11 a.m. – 8 p.m.\nIf it rains, the event will be held on Sunday.",
       "choices": [
-        "市の広場",
-        "市役所の中",
-        "学校",
-        "公園"
+        "In City Square",
+        "Inside City Hall",
+        "At a school",
+        "In a park"
       ],
       "answer": 0,
       "explanation": "City Square = 市の広場。",
@@ -4319,13 +4319,13 @@
       "town": "town03",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "城に入れる最後の時間は？",
+      "prompt": "What is the latest time you can enter the castle?",
       "sentence": "How to get to the castle:\nTake the Red Line to Castle Hill. It's a 5-minute walk from the station.\nOpen 9 a.m. – 5 p.m. (last entry 4:30 p.m.)",
       "choices": [
-        "午後4時",
-        "午後5時",
-        "午前9時",
-        "午後4時30分"
+        "4 p.m.",
+        "5 p.m.",
+        "9 a.m.",
+        "4:30 p.m."
       ],
       "answer": 3,
       "explanation": "last entry 4:30 p.m. = 最後の入場は午後4時30分。",
@@ -4337,13 +4337,13 @@
       "town": "town03",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "城へ行くには？",
+      "prompt": "How do you get to the castle?",
       "sentence": "How to get to the castle:\nTake the Red Line to Castle Hill. It's a 5-minute walk from the station.\nOpen 9 a.m. – 5 p.m. (last entry 4:30 p.m.)",
       "choices": [
-        "駅から50分歩く",
-        "レッドラインに5駅乗る",
-        "キャッスルヒル駅からバスに乗る",
-        "レッドラインでキャッスルヒル駅へ行き、5分歩く"
+        "Walk fifty minutes from the station.",
+        "Ride the Red Line for five stops.",
+        "Take a bus from Castle Hill Station.",
+        "Take the Red Line to Castle Hill and walk five minutes."
       ],
       "answer": 3,
       "explanation": "Take the Red Line to Castle Hill. It's a 5-minute walk from the station.",
@@ -4355,13 +4355,13 @@
       "town": "town03",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "お金を払うのはいつ？",
+      "prompt": "When do you pay?",
       "sentence": "Self-service\n1. Take a tray.\n2. Choose your food.\n3. Pay at the end of the line.",
       "choices": [
-        "席についてから",
-        "料理を選んだあと、列の最後で",
-        "トレーを取る前に",
-        "食べ終わってから"
+        "After you sit down",
+        "At the end of the line, after choosing your food",
+        "Before you take a tray",
+        "After you finish eating"
       ],
       "answer": 1,
       "explanation": "Pay at the end of the line. = 列の最後で払う。",
@@ -4373,13 +4373,13 @@
       "town": "town03",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "最初にすることは？",
+      "prompt": "What do you do first?",
       "sentence": "Self-service\n1. Take a tray.\n2. Choose your food.\n3. Pay at the end of the line.",
       "choices": [
-        "料理を選ぶ",
-        "お金を払う",
-        "席を取る",
-        "トレーを取る"
+        "Choose your food.",
+        "Pay.",
+        "Find a seat.",
+        "Take a tray."
       ],
       "answer": 3,
       "explanation": "1. Take a tray. = まずトレーを取る。",
@@ -4391,13 +4391,13 @@
       "town": "town03",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "1日借りるといくら？",
+      "prompt": "How much is it to rent a bike for the whole day?",
       "sentence": "Bike Rental\n$5 for 1 hour, $15 for the whole day\nPlease return bikes by 6 p.m.",
       "choices": [
-        "15ドル",
-        "30ドル",
-        "6ドル",
-        "5ドル"
+        "$15",
+        "$30",
+        "$6",
+        "$5"
       ],
       "answer": 0,
       "explanation": "$15 for the whole day = 1日15ドル。",
@@ -4409,13 +4409,13 @@
       "town": "town03",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "自転車を返す時間は？",
+      "prompt": "When must you return the bike?",
       "sentence": "Bike Rental\n$5 for 1 hour, $15 for the whole day\nPlease return bikes by 6 p.m.",
       "choices": [
-        "次の日の朝まで",
-        "午後6時まで",
-        "1時間後",
-        "午後5時まで"
+        "By the next morning",
+        "By 6 p.m.",
+        "After one hour",
+        "By 5 p.m."
       ],
       "answer": 1,
       "explanation": "return bikes by 6 p.m. = 午後6時までに返す。",
@@ -4427,13 +4427,13 @@
       "town": "town03",
       "skill": "reading",
       "format": "choice4",
-      "prompt": "今日は、どうやって上の階へ行く？",
+      "prompt": "How can you go upstairs today?",
       "sentence": "Notice: The elevator is not working today.\nPlease use the stairs on your right.",
       "choices": [
-        "エスカレーターを使う",
-        "エレベーターを使う",
-        "左側の階段を使う",
-        "右側の階段を使う"
+        "Use the escalator.",
+        "Use the elevator.",
+        "Use the stairs on the left.",
+        "Use the stairs on the right."
       ],
       "answer": 3,
       "explanation": "use the stairs on your right = 右側の階段を使う。",
