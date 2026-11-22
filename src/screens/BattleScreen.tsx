@@ -30,6 +30,11 @@ import { playSfx } from '../lib/sound';
 const DEFEAT_MS = { normal: 2000, boss: 2600, reduced: 600 };
 /** 倒れたあと・ちからつきたあとに、結果へ移る前におく間 */
 const AFTER_END_PAUSE_MS = 600;
+/**
+ * 最後の一撃（倒したとき）のスローモーション（2026-11-22 本人の希望）。
+ * 斬る動きをゆっくり見せてから倒れはじめるので、倒れる動きをこの長さだけ遅らせる（styles.css の battle--finisher と同じ）。
+ */
+const FINISHER_DELAY_MS = 1400;
 /** ボスが第二形態へ変身する長さ（styles.css の monster-transform と同じ。半分のところで絵が入れかわる） */
 const TRANSFORM_MS = { normal: 3000, reduced: 800 };
 
@@ -247,7 +252,8 @@ export function BattleScreen({
     if (knockedOut || (!hit && playerHp - 1 <= 0)) endedAtRef.current = Date.now();
     // 音：正解は斬る音（倒したら倒れる音も）、まちがいはダメージの音
     playSfx(hit ? 'hit' : 'hurt');
-    if (knockedOut) window.setTimeout(() => playSfx('defeat'), 350);
+    // 最後の一撃はスローモーションなので、倒れる音も斬り終わってから
+    if (knockedOut) window.setTimeout(() => playSfx('defeat'), prefersReducedMotion() ? 350 : FINISHER_DELAY_MS + 100);
     if (hit) {
       setMonsterHp((hp) => hp - damage);
       setCorrectCount((n) => n + 1);
@@ -398,7 +404,10 @@ export function BattleScreen({
     await saveChain.current;
     // 倒れる動きが終わるまで待つ（記録の保存と同時に進むので、保存が遅いときは待ち足さない）
     // 負けたときは主人公が倒れる（ふつうのモンスターと同じ長さ）
-    const animMs = prefersReducedMotion() ? DEFEAT_MS.reduced : won && kind === 'boss' ? DEFEAT_MS.boss : DEFEAT_MS.normal;
+    // 勝ったときは、最後の一撃のスローモーションの分だけ倒れはじめるのが遅い
+    const animMs = prefersReducedMotion()
+      ? DEFEAT_MS.reduced
+      : (won && kind === 'boss' ? DEFEAT_MS.boss : DEFEAT_MS.normal) + (won ? FINISHER_DELAY_MS : 0);
     const elapsed = Date.now() - (endedAtRef.current ?? Date.now());
     const rest = animMs + AFTER_END_PAUSE_MS - elapsed;
     if (rest > 0) await sleep(rest);
@@ -483,6 +492,8 @@ export function BattleScreen({
   /** 答えたあと（結果を見ているところと、決着して結果の画面へ進むまで） */
   const showResult = acting;
   const hit = outcome ? outcome.rating !== 'bad' : false;
+  /** 最後の一撃を見せているところ（スローモーションにする。styles.css の battle--finisher） */
+  const finisher = acting && hit && monsterHp <= 0 && !willTransform;
   const models = (q.model_answers ?? []).map((m) => fillNames(m));
   const isSpeaking = !isChoice && !isOrder && !isDictation && skill === 'speaking';
   /** AI採点の問題か（書く・話す。並べかえと書き取りはアプリの中で採点する） */
@@ -493,7 +504,7 @@ export function BattleScreen({
   const isLongAudio = (q.audio_text ?? '').split(/\s+/).filter(Boolean).length >= LONG_AUDIO_WORDS;
 
   return (
-    <main className={`screen battle${acting && !hit ? ' battle--hurt' : ''}`}>
+    <main className={`screen battle${acting && !hit ? ' battle--hurt' : ''}${finisher ? ' battle--finisher' : ''}`}>
       <section
         className={`battle__enemy${!bgBroken ? ' battle__enemy--scene' : ''}${kind === 'boss' ? ' battle__enemy--boss' : ''}`}
       >
@@ -754,7 +765,7 @@ export function BattleScreen({
           )}
           <p>
             {hit
-              ? `${outcome.rating === 'close' ? 'おしい！ ' : 'せいかい！ '}${monster.name}に ${outcome.damage} のダメージ！${shown!.due && outcome.rating === 'good' ? '（復習ボーナス）' : ''}`
+              ? `${outcome.rating === 'close' ? 'おしい！ ' : 'せいかい！ '}${foe.name}に ${outcome.damage} のダメージ！${shown!.due && outcome.rating === 'good' ? '（復習ボーナス）' : ''}`
               : `ざんねん… ${heroNameOf(player)}は 1 のダメージを うけた！`}
           </p>
           {/* 何を選んだか・正解はどれか（4択） */}

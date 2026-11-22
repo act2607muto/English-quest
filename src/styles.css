@@ -2459,3 +2459,68 @@ code {
     transform: none;
   }
 }
+
+/*
+ * 最後の一撃のスローモーション（2026-11-22 本人の希望。BattleScreen の battle--finisher）。
+ * 主人公のとびだし・斬る光・ダメージの数を約3倍ゆっくりにし、画面を白く光らせて少し寄る。
+ * モンスターは斬り終わってから倒れはじめる（BattleScreen の FINISHER_DELAY_MS と同じ 1.4秒 遅らせる）。
+ */
+@media (prefers-reduced-motion: no-preference) {
+  .battle--finisher .hero-art--attack {
+    animation-duration: 1.1s;
+  }
+
+  .battle--finisher .battle-fx--slash {
+    animation-duration: 1.5s;
+    animation-timing-function: steps(18, end);
+  }
+
+  .battle--finisher .damage-pop {
+    font-size: 42px;
+    animation-duration: 2.6s;
+  }
+
+  .battle--finisher .monster-art--hurt {
+    animation: hurt 0.6s steps(2) 2;
+  }
+
+  .battle--finisher .monster-art--defeated {
+    animation-delay: 1.4s;
+    animation-fill-mode: both;
+  }
+
+  .battle--finisher .battle__stage {
+    animation: finisher-zoom 1.6s ease-out;
+  }
+
+  .battle--finisher .battle__stage::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    background: #fff;
+    pointer-events: none;
+    animation: finisher-flash 1.2s ease-out forwards;
+  }
+}
+
+@keyframes finisher-zoom {
+  0% {
+    transform: none;
+  }
+  35% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: none;
+  }
+}
+
+@keyframes finisher-flash {
+  0% {
+    opacity: 0.85;
+  }
+  100% {
+    opacity: 0;
+  }
+}
