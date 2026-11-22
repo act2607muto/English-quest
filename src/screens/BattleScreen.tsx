@@ -4,7 +4,8 @@ import { MonsterArt } from '../components/MonsterArt';
 import { OrderAnswer } from '../components/OrderAnswer';
 import { Passage } from '../components/Passage';
 import { SpeakAnswer } from '../components/SpeakAnswer';
-import { fetchPlayableQuestions, flagQuestion } from '../lib/content';
+import { fetchMonstersByIds, fetchPlayableQuestions, flagQuestion } from '../lib/content';
+import { secondFormIdOf } from '../lib/game/secondForm';
 import { fillNames, pickQuestions, shuffle, shuffleChoices } from '../lib/game/battle';
 import { attackOf, damageTo, hitsToDefeat } from '../lib/game/attack';
 import { flawlessBonusEach, splitExpReward } from '../lib/game/foes';
@@ -29,6 +30,8 @@ import { playSfx } from '../lib/sound';
 const DEFEAT_MS = { normal: 2000, boss: 2600, reduced: 600 };
 /** 倒れたあと・ちからつきたあとに、結果へ移る前におく間 */
 const AFTER_END_PAUSE_MS = 600;
+/** ボスが第二形態へ変身する長さ（styles.css の monster-transform と同じ。半分のところで絵が入れかわる） */
+const TRANSFORM_MS = { normal: 3000, reduced: 800 };
 
 function prefersReducedMotion(): boolean {
   return typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -85,7 +88,8 @@ type Outcome = {
   damage?: number;
 };
 
-type Phase = 'loading' | 'error' | 'question' | 'grading' | 'self-grade' | 'feedback' | 'finishing';
+/** transforming：ボスが第二形態へ変身しているところ（lib/game/secondForm.ts） */
+type Phase = 'loading' | 'error' | 'question' | 'grading' | 'self-grade' | 'feedback' | 'transforming' | 'finishing';
 
 export function BattleScreen({
   monster,
@@ -132,6 +136,13 @@ export function BattleScreen({
   const [askedSkills, setAskedSkills] = useState<Set<Skill>>(new Set());
   const [saveFailed, setSaveFailed] = useState(false);
   const [flagged, setFlagged] = useState<Set<string>>(new Set());
+  /** ボスの第二形態（ファイルに「ボスのID-form2」があるときだけ）と、もう変身したか */
+  const [secondForm, setSecondForm] = useState<MonsterRow | null>(null);
+  const [inSecondForm, setInSecondForm] = useState(false);
+  /** いま戦っている姿（第二形態に変身したあとは第二形態） */
+  const foe = inSecondForm && secondForm ? secondForm : monster;
+  /** 今の HP を0にしても倒れずに変身するか */
+  const willTransform = !inSecondForm && secondForm !== null;
 
   const progressRef = useRef(new Map<string, QuestionProgress>());
   /** 決着がついた時刻（倒れる動きを最後まで見せてから結果へ移るため） */
@@ -152,10 +163,14 @@ export function BattleScreen({
         const questions = bySkill.flat();
         if (questions.length === 0) throw new Error('この能力値の問題がありません。教材を取り込んでください。');
         const progress = await fetchProgress(questions.map((q) => q.id));
+        // ボスに第二形態があれば、いっしょに読んでおく（なければ今までどおり1回で決着）
+        const [form2] = kind === 'boss' ? await fetchMonstersByIds([secondFormIdOf(monster.id)]) : [];
         if (cancelled) return;
         progressRef.current = progress;
-        // いちばん長く続いても「倒すのに必要な正解の数 + 自分のHP - 1」問で終わる
-        const count = hitsToDefeat(monster, player, skills) + player.maxHp - 1;
+        setSecondForm(form2 ?? null);
+        // いちばん長く続いても「倒すのに必要な正解の数（第二形態の分も） + 自分のHP - 1」問で終わる
+        const count =
+          hitsToDefeat(monster, player, skills) + (form2 ? hitsToDefeat(form2, player, skills) : 0) + player.maxHp - 1;
         let picked: QuestionRow[];
         if (bySkill.length === 1) {
           picked = pickQuestions(questions, progress, count);
@@ -222,15 +237,17 @@ export function BattleScreen({
           ? EXP_HALF
           : 0;
     const gained = base;
-    const damage = hit ? damageTo(monster, attackOf(player, skill)) : 0;
+    const damage = hit ? damageTo(foe, attackOf(player, skill)) : 0;
     setOutcome({ ...o, damage });
     setPhase('feedback');
     setAnswered((n) => n + 1);
     setAskedSkills((set) => new Set(set).add(skill));
-    if ((hit && monsterHp - damage <= 0) || (!hit && playerHp - 1 <= 0)) endedAtRef.current = Date.now();
+    // 第二形態へ変身するときは、まだ決着ではない
+    const knockedOut = hit && monsterHp - damage <= 0 && !willTransform;
+    if (knockedOut || (!hit && playerHp - 1 <= 0)) endedAtRef.current = Date.now();
     // 音：正解は斬る音（倒したら倒れる音も）、まちがいはダメージの音
     playSfx(hit ? 'hit' : 'hurt');
-    if (hit && monsterHp - damage <= 0) window.setTimeout(() => playSfx('defeat'), 350);
+    if (knockedOut) window.setTimeout(() => playSfx('defeat'), 350);
     if (hit) {
       setMonsterHp((hp) => hp - damage);
       setCorrectCount((n) => n + 1);
@@ -303,10 +320,34 @@ export function BattleScreen({
   }
 
   function handleNext() {
+    // ボスの1回目の姿を倒したら、倒れずに第二形態へ変身して戦いが続く
+    if (monsterHp <= 0 && willTransform) {
+      void transform();
+      return;
+    }
     if (monsterHp <= 0 || playerHp <= 0) {
       void finish(monsterHp <= 0);
       return;
     }
+    showNextQuestion();
+  }
+
+  /** 第二形態への変身：光って姿が入れかわり（半分のところで絵とHPが変わる）、そのあと次の問題へ */
+  async function transform() {
+    if (!secondForm) return;
+    setPhase('transforming');
+    stopSpeaking();
+    window.scrollTo(0, 0);
+    playSfx('warp');
+    const half = (prefersReducedMotion() ? TRANSFORM_MS.reduced : TRANSFORM_MS.normal) / 2;
+    await sleep(half);
+    setInSecondForm(true);
+    setMonsterHp(secondForm.hp);
+    await sleep(half);
+    showNextQuestion();
+  }
+
+  function showNextQuestion() {
     const nextIndex = index + 1;
     const q = queue[nextIndex % queue.length];
     setIndex(nextIndex);
@@ -362,7 +403,8 @@ export function BattleScreen({
     const rest = animMs + AFTER_END_PAUSE_MS - elapsed;
     if (rest > 0) await sleep(rest);
     onEnd({
-      monster,
+      // 第二形態を倒したときは、結果の画面に第二形態の名前を出す（記録・エンディングは、もとのボスの ID で数える）
+      monster: inSecondForm && secondForm ? { ...monster, name: secondForm.name, image: secondForm.image } : monster,
       kind,
       won,
       correct: correctCount,
@@ -433,7 +475,9 @@ export function BattleScreen({
   const isOrder = q.format === 'order';
   /** 書き取り（聞いた英文を書く。答え合わせはアプリの中でする） */
   const isDictation = q.format === 'dictation';
-  const over = monsterHp <= 0 || playerHp <= 0;
+  /** 決着したか（ボスの1回目の姿を倒しただけなら、まだ変身して続く） */
+  const over = (monsterHp <= 0 && !willTransform) || playerHp <= 0;
+  const transforming = phase === 'transforming';
   // 攻撃の動きを見せている間（答えた直後と、決着して結果の画面へ進むまで）
   const acting = (phase === 'feedback' || phase === 'finishing') && !!outcome;
   /** 答えたあと（結果を見ているところと、決着して結果の画面へ進むまで） */
@@ -488,12 +532,15 @@ export function BattleScreen({
             )}
           </span>
           {/* 攻撃の動き：正解なら斬る光とダメージの数、まちがいならモンスターが飛びかかる */}
-          <span className={`battle__target${acting && !hit ? ' battle__target--attack' : ''}`}>
+          <span
+            className={`battle__target${acting && !hit ? ' battle__target--attack' : ''}${transforming ? ' battle__target--transform' : ''}`}
+          >
             <MonsterArt
-              skill={monster.skill}
-              image={monster.image}
+              key={foe.id}
+              skill={foe.skill}
+              image={foe.image}
               hurt={acting && hit}
-              defeated={monsterHp <= 0}
+              defeated={monsterHp <= 0 && !willTransform}
               revival={kind === 'revival'}
               size={kind === 'boss' ? 'huge' : 'large'}
             />
@@ -514,15 +561,24 @@ export function BattleScreen({
             <HpBar label="HP" value={playerHp} max={player.maxHp} />
           </div>
           <div className="battle__status-side">
-            <p className="battle__status-name">{monster.name}</p>
-            <HpBar label="HP" value={monsterHp} max={monster.hp} />
+            <p className="battle__status-name">{foe.name}</p>
+            <HpBar label="HP" value={monsterHp} max={foe.hp} />
           </div>
         </div>
         {saveFailed && <p className="message message--error">通信できず、記録できなかった答えがあります。</p>}
       </section>
 
       {/* 答えたあとは、問題と答えの欄を消して、下の「結果」のウインドウにまとめる（画面を下へ動かさずにすむように） */}
-      {!showResult && (
+      {/* 第二形態への変身（光って姿が入れかわる） */}
+      {transforming && secondForm && (
+        <section className="window battle__message" aria-live="polite">
+          <p className="levelup">
+            {inSecondForm ? `${secondForm.name}が すがたを あらわした！` : `${monster.name}の すがたが かわっていく…！`}
+          </p>
+        </section>
+      )}
+
+      {!showResult && !transforming && (
         <>
         <section className="window battle__question">
           <p className="battle__prompt">{fillNames(q.prompt)}</p>
@@ -764,9 +820,11 @@ export function BattleScreen({
           {/* 最後の答えで決着がついたとき（解説を読んでから「戦闘を終える」で結果の画面へ。2026-11-18 本人の希望） */}
           {over && (
             <p className="levelup">
-              {monsterHp <= 0 ? `${heroNameOf(player)}は ${monster.name}を たおした！` : `${heroNameOf(player)}は ちからつきた…`}
+              {monsterHp <= 0 ? `${heroNameOf(player)}は ${foe.name}を たおした！` : `${heroNameOf(player)}は ちからつきた…`}
             </p>
           )}
+          {/* ボスの1回目の姿を倒したとき（「つぎへ」で第二形態へ変身する） */}
+          {monsterHp <= 0 && willTransform && <p className="levelup">{monster.name}は まだ たおれない…！</p>}
           {outcome.advice && <p>{outcome.advice}</p>}
           {outcome.better && outcome.better.trim() !== outcome.answer.trim() && (
             <div>
@@ -804,7 +862,7 @@ export function BattleScreen({
         <section className="window battle__message" aria-live="polite">
           <p className="levelup">
             {monsterHp <= 0
-              ? `${heroNameOf(player)}は ${monster.name}を たおした！`
+              ? `${heroNameOf(player)}は ${foe.name}を たおした！`
               : `${heroNameOf(player)}は ちからつきた…`}
           </p>
           {outcome && q.explanation && <p className="note">{fillNames(q.explanation)}</p>}

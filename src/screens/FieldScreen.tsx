@@ -3,6 +3,7 @@ import { MonsterArt } from '../components/MonsterArt';
 import { fetchMonstersOfTown } from '../lib/content';
 import { PLAYABLE_SKILLS } from '../lib/game/battle';
 import { isRare, revivalOf } from '../lib/game/foes';
+import { isSecondForm } from '../lib/game/secondForm';
 import { isWordbookMonster } from '../lib/game/wordbook';
 import type { Player } from '../lib/game/player';
 import type { TownStatus } from '../lib/game/town';
@@ -32,7 +33,7 @@ export function FieldScreen({
 
   useEffect(() => {
     fetchMonstersOfTown(player.currentTownId)
-      .then((m) => setMonsters(m.filter((x) => !x.is_boss && !isRare(x))))
+      .then((m) => setMonsters(m.filter((x) => !x.is_boss && !isRare(x) && !isSecondForm(x))))
       .catch((err) => setError(err instanceof Error ? err.message : String(err)));
   }, [player.currentTownId]);
 

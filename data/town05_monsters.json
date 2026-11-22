@@ -101,6 +101,16 @@
       "is_boss": true,
       "image": "/monsters/town05-boss.png",
       "description": "王城の上にある、旅のさいごの関所を守る大きなグリフォン。世界じゅうのことばで問いかけ、答えられた旅人だけを星空の向こうへ通す。"
+    },
+    {
+      "id": "town05-boss-form2",
+      "name": "ほしぞらの大グリフォン",
+      "skill": null,
+      "hp": 300,
+      "gold": 0,
+      "is_boss": false,
+      "image": "/monsters/town05-boss-form2.png",
+      "description": "そらの関所の大グリフォンが、星空の力を呼び起こした姿。体じゅうに星座の線が走り、旅人がこれまでに覚えたすべてのことばを試してくる。"
     }
   ]
 }

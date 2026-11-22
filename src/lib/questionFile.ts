@@ -3,6 +3,7 @@
  * データベースには触らない。おかしいところは、問題ごとに日本語で返す。
  */
 import { dialogueLines } from './dialogue';
+import { isSecondFormId } from './game/secondForm';
 import { sameWords } from './game/wordOrder';
 import { SKILLS, type Skill } from './skills';
 
@@ -273,7 +274,8 @@ function parseMonster(raw: unknown, townId: string | null, problems: string[]): 
   if (rate !== null && (isBoss || skill !== null)) {
     problems.push('encounter_rate は、skill のないめずらしいモンスター（ボスではない）だけに書けます');
   }
-  if (!isBoss && skill === null && rate === null) {
+  // ボスの第二形態（ID の最後が -form2）は、skill も encounter_rate もなくてよい（lib/game/secondForm.ts）
+  if (!isBoss && skill === null && rate === null && !isSecondFormId(raw.id)) {
     problems.push('ボスでないモンスターには skill が必要です（めずらしいモンスターなら encounter_rate を書いてください）');
   }
   const expReward = raw.exp_reward ?? 0;

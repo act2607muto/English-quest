@@ -95,6 +95,7 @@ $frames = @(
   @{ File = 'monsters/town05-rare-exp.png';  SplitRow = 47 }  # にじいろハチドリ
   @{ File = 'monsters/town05-rare-gold.png'; SplitRow = 48 }  # きんかコガネムシ
   @{ File = 'monsters/town05-boss.png';      SplitRow = 83 }  # そらの関所の大グリフォン（96×96）
+  @{ File = 'monsters/town05-boss-form2.png'; SplitRow = 85 }  # ほしぞらの大グリフォン（第二形態、96×96）
   @{ File = 'monsters/town05-wordbook.png';  SplitRow = 53 }  # たびにっきラクダ
 )
 

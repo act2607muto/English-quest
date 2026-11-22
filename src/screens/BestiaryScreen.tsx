@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { MonsterArt } from '../components/MonsterArt';
 import { fetchMonstersOfTown } from '../lib/content';
 import { isRare } from '../lib/game/foes';
+import { baseBossIdOf, isSecondForm } from '../lib/game/secondForm';
 import { isWordbookMonster } from '../lib/game/wordbook';
 import type { Player } from '../lib/game/player';
 import type { MonsterRow } from '../lib/questionFile';
@@ -12,6 +13,7 @@ import { SKILLS, SKILL_LABELS } from '../lib/skills';
  * モンスター図鑑：この街のモンスターを並べる。
  * 戦ったことのあるモンスターは、絵・名前・説明・記録を出す。まだ出会っていないモンスターは、影と「？？？」だけ。
  * 復活モンスターは、もとのモンスターの記録に数える。
+ * ボスの第二形態は、もとのボスを倒すと（＝第二形態まで倒すと）出る。戦った回数・倒した回数は、もとのボスを倒した回数。
  */
 export function BestiaryScreen({ player, onBack }: { player: Player; onBack: () => void }) {
   const [monsters, setMonsters] = useState<MonsterRow[] | null>(null);
@@ -27,7 +29,14 @@ export function BestiaryScreen({ player, onBack }: { player: Player; onBack: () 
       .catch((err) => setError(err instanceof Error ? err.message : String(err)));
   }, [player.currentTownId]);
 
-  const found = monsters && records ? monsters.filter((m) => (records.get(m.id)?.fought ?? 0) > 0).length : 0;
+  /** 図鑑に出す記録（ボスの第二形態は、もとのボスを倒した記録から作る） */
+  const recordOf = (m: MonsterRow): MonsterRecord | undefined => {
+    if (!records) return undefined;
+    if (!isSecondForm(m)) return records.get(m.id);
+    const base = records.get(baseBossIdOf(m.id));
+    return base && base.defeated > 0 ? { fought: base.defeated, defeated: base.defeated, firstDefeatedAt: base.firstDefeatedAt } : undefined;
+  };
+  const found = monsters && records ? monsters.filter((m) => (recordOf(m)?.fought ?? 0) > 0).length : 0;
 
   return (
     <main className="screen">
@@ -47,7 +56,7 @@ export function BestiaryScreen({ player, onBack }: { player: Player; onBack: () 
       {monsters &&
         records &&
         monsters.map((m, i) => {
-          const r = records.get(m.id);
+          const r = recordOf(m);
           const met = (r?.fought ?? 0) > 0;
           return (
             <section key={m.id} className={`window bestiary-entry${met ? '' : ' bestiary-entry--unknown'}`}>
@@ -110,12 +119,13 @@ export function BestiaryScreen({ player, onBack }: { player: Player; onBack: () 
 /** 図鑑の並び：能力値の順のモンスター → めずらしいモンスター → ボス */
 function sortForBook(list: MonsterRow[]): MonsterRow[] {
   const rank = (m: MonsterRow) =>
-    m.is_boss ? 2000 : isRare(m) ? 1000 + (m.encounter_rate ?? 0) * -100 : isWordbookMonster(m) ? 900 : SKILLS.indexOf(m.skill!);
+    m.is_boss ? 2000 : isSecondForm(m) ? 2001 : isRare(m) ? 1000 + (m.encounter_rate ?? 0) * -100 : isWordbookMonster(m) ? 900 : SKILLS.indexOf(m.skill!);
   return [...list].sort((a, b) => rank(a) - rank(b) || a.id.localeCompare(b.id));
 }
 
 function kindOf(m: MonsterRow): string {
   if (m.is_boss) return 'この街のボス';
+  if (isSecondForm(m)) return 'この街のボス（第二形態）';
   if (isRare(m)) return 'めずらしいモンスター';
   if (isWordbookMonster(m)) return '単語の書庫のモンスター';
   return m.skill ? `${SKILL_LABELS[m.skill]}のモンスター` : '';

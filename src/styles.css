@@ -2412,3 +2412,50 @@ code {
 .ending p {
   line-height: 1.7;
 }
+
+/*
+ * ボスの第二形態への変身（2026-11-22。BattleScreen の TRANSFORM_MS と同じ3秒）。
+ * ふるえて、まぶしく白く光り、半分のところで絵が第二形態に入れかわって、金色の光をまといながら落ち着く。
+ */
+@media (prefers-reduced-motion: no-preference) {
+  .battle__target--transform {
+    animation: monster-transform 3s ease-in-out;
+  }
+}
+
+@keyframes monster-transform {
+  0% {
+    filter: none;
+    transform: none;
+  }
+  12% {
+    filter: brightness(1.5);
+    transform: translateX(-4px);
+  }
+  20% {
+    transform: translateX(4px);
+  }
+  28% {
+    transform: translateX(-4px);
+  }
+  36% {
+    filter: brightness(2.5);
+    transform: translateX(4px);
+  }
+  46% {
+    filter: brightness(5) saturate(0);
+    transform: scale(1.1);
+  }
+  54% {
+    filter: brightness(5) saturate(0);
+    transform: scale(1.12);
+  }
+  70% {
+    filter: brightness(1.8) drop-shadow(0 0 14px #f2c94c);
+    transform: scale(1.04);
+  }
+  100% {
+    filter: none;
+    transform: none;
+  }
+}
