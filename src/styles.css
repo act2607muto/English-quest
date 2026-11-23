@@ -2729,3 +2729,14 @@ code {
 .guest-signout .message {
   margin: 0;
 }
+
+/* 図鑑：街を選ぶボタン */
+.bestiary-towns {
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  margin-top: 8px;
+}
+
+.bestiary-towns .choice-pair__button {
+  font-size: 14px;
+  padding: 8px 4px;
+}

@@ -1,33 +1,48 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { MonsterArt } from '../components/MonsterArt';
-import { fetchMonstersOfTown } from '../lib/content';
+import { fetchAllMonsters, fetchTowns } from '../lib/content';
 import { isRare } from '../lib/game/foes';
 import { baseBossIdOf, isSecondForm } from '../lib/game/secondForm';
 import { isWordbookMonster } from '../lib/game/wordbook';
 import type { Player } from '../lib/game/player';
-import type { MonsterRow } from '../lib/questionFile';
+import type { MonsterRow, TownRow } from '../lib/questionFile';
 import { fetchMonsterRecords, type MonsterRecord } from '../lib/records';
 import { SKILLS, SKILL_LABELS } from '../lib/skills';
 
 /**
- * モンスター図鑑：この街のモンスターを並べる。
+ * モンスター図鑑：街ごとにモンスターを並べる。上のボタンで、どの街のモンスターもいつでも見られる（最初は今いる街）。
  * 戦ったことのあるモンスターは、絵・名前・説明・記録を出す。まだ出会っていないモンスターは、影と「？？？」だけ。
  * 復活モンスターは、もとのモンスターの記録に数える。
  * ボスの第二形態は、もとのボスを倒すと（＝第二形態まで倒すと）出る。戦った回数・倒した回数は、もとのボスを倒した回数。
  */
 export function BestiaryScreen({ player, onBack }: { player: Player; onBack: () => void }) {
-  const [monsters, setMonsters] = useState<MonsterRow[] | null>(null);
+  const [allMonsters, setAllMonsters] = useState<MonsterRow[] | null>(null);
+  const [towns, setTowns] = useState<TownRow[]>([]);
   const [records, setRecords] = useState<Map<string, MonsterRecord> | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [townId, setTownId] = useState(player.currentTownId);
 
   useEffect(() => {
-    Promise.all([fetchMonstersOfTown(player.currentTownId), fetchMonsterRecords()])
-      .then(([m, r]) => {
-        setMonsters(sortForBook(m));
+    Promise.all([fetchAllMonsters(), fetchTowns(), fetchMonsterRecords()])
+      .then(([m, t, r]) => {
+        setAllMonsters(m);
+        // モンスターのいる街だけ（まだ取り込んでいない街は出さない）
+        setTowns(t.filter((town) => m.some((x) => x.town_id === town.id)));
         setRecords(r);
       })
       .catch((err) => setError(err instanceof Error ? err.message : String(err)));
-  }, [player.currentTownId]);
+  }, []);
+
+  const monsters = useMemo(
+    () => (allMonsters ? sortForBook(allMonsters.filter((m) => m.town_id === townId)) : null),
+    [allMonsters, townId],
+  );
+  /** 番号は街をまたいで通しにする（前の街のモンスターの数だけ先から数える） */
+  const firstNo = useMemo(() => {
+    if (!allMonsters) return 1;
+    const before = towns.slice(0, Math.max(0, towns.findIndex((t) => t.id === townId)));
+    return 1 + allMonsters.filter((m) => before.some((t) => t.id === m.town_id)).length;
+  }, [allMonsters, towns, townId]);
 
   /** 図鑑に出す記録（ボスの第二形態は、もとのボスを倒した記録から作る） */
   const recordOf = (m: MonsterRow): MonsterRecord | undefined => {
@@ -43,6 +58,21 @@ export function BestiaryScreen({ player, onBack }: { player: Player; onBack: () 
       <section className="window">
         <h2 className="window__title">モンスター図鑑</h2>
         <p>出会ったモンスターが、ここに記録されていきます。</p>
+        {towns.length > 1 && (
+          <div className="choice-pair bestiary-towns" role="group" aria-label="街">
+            {towns.map((t) => (
+              <button
+                key={t.id}
+                type="button"
+                className={`command choice-pair__button${townId === t.id ? ' choice-pair__button--on' : ''}`}
+                aria-pressed={townId === t.id}
+                onClick={() => setTownId(t.id)}
+              >
+                {t.name ?? t.scene}
+              </button>
+            ))}
+          </div>
+        )}
         {monsters && records && (
           <p className="levelup">
             見つけた数 {found} / {monsters.length}
@@ -60,7 +90,7 @@ export function BestiaryScreen({ player, onBack }: { player: Player; onBack: () 
           const met = (r?.fought ?? 0) > 0;
           return (
             <section key={m.id} className={`window bestiary-entry${met ? '' : ' bestiary-entry--unknown'}`}>
-              <p className="bestiary-entry__no">No.{String(i + 1).padStart(3, '0')}</p>
+              <p className="bestiary-entry__no">No.{String(firstNo + i).padStart(3, '0')}</p>
               <div className="bestiary-entry__head">
                 <span className="bestiary-entry__art">
                   <MonsterArt skill={m.skill} image={m.image} size="large" />

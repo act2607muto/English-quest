@@ -107,6 +107,13 @@ export async function fetchMonstersOfTown(townId: string): Promise<MonsterRow[]>
   return data as MonsterRow[];
 }
 
+/** すべての街のモンスター（図鑑で、どの街のモンスターも見られるようにする） */
+export async function fetchAllMonsters(): Promise<MonsterRow[]> {
+  const { data, error } = await requireSupabase().from('monsters').select(MONSTER_COLUMNS).order('id');
+  if (error) throw error;
+  return data as MonsterRow[];
+}
+
 /** すべての街のボス（旅の地図で、どの街まで行けるかを調べるのに使う） */
 export async function fetchBosses(): Promise<MonsterRow[]> {
   const { data, error } = await requireSupabase().from('monsters').select(MONSTER_COLUMNS).eq('is_boss', true);
