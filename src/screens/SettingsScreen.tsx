@@ -39,7 +39,24 @@ export function SettingsScreen({
   onGuide: () => void;
   onBack: () => void;
 }) {
-  const { session, signOut } = useAuth();
+  const { session, signOut, isGuest, linkGoogle, linkResult, clearLinkResult } = useAuth();
+  const [linking, setLinking] = useState(false);
+  const [linkError, setLinkError] = useState<string | null>(null);
+  /** ゲストのログアウトは記録にもどれなくなるので、もう一度押してもらう */
+  const [confirmGuestSignOut, setConfirmGuestSignOut] = useState(false);
+  async function handleLink() {
+    setLinking(true);
+    setLinkError(null);
+    clearLinkResult();
+    try {
+      // うまくいけば Google の画面へ移るので、ここには戻らない
+      await linkGoogle();
+    } catch (err) {
+      setLinkError(err instanceof Error ? err.message : String(err));
+      setLinking(false);
+    }
+  }
+  const linkMessage = linkError ?? (linkResult !== 'ok' ? linkResult : null);
   // 起動直後の確認に失敗していることがあるので、開くたびに確かめ直す
   const [admin, setAdmin] = useState(isAdmin);
   useEffect(() => {
@@ -93,7 +110,32 @@ export function SettingsScreen({
     <main className="screen">
       <section className="window">
         <h2 className="window__title">設定</h2>
-        <p>ログイン中：{session?.user.email}</p>
+        {isGuest ? (
+          <>
+            <p>ゲストで遊んでいます。</p>
+            <p className="note">
+              記録はこの端末のこのブラウザだけにつながっています。ログアウトしたり、ブラウザの記録を消したりすると、もどれなくなります。
+            </p>
+            <p className="note">Google につなぐと、今の記録をそのまま引き継いで、ほかの端末からも続けられます。</p>
+            {linkMessage && (
+              <p className="message message--error" role="alert">
+                {linkMessage}
+              </p>
+            )}
+            <button className="command" type="button" onClick={() => void handleLink()} disabled={linking}>
+              {linking ? 'Google の画面へ移っています…' : '▶ Google につなぐ'}
+            </button>
+          </>
+        ) : (
+          <>
+            {linkResult === 'ok' && (
+              <p className="message message--ok" role="status">
+                Google につなぎました。これからは、ほかの端末でも「Google でログイン」で続けられます。
+              </p>
+            )}
+            <p>ログイン中：{session?.user.email}</p>
+          </>
+        )}
       </section>
       <nav className="window commands" aria-label="設定の項目">
         <button className="command command--plain" type="button" onClick={onGuide}>
@@ -112,15 +154,35 @@ export function SettingsScreen({
         <button className="command command--plain" type="button" onClick={onHeroName}>
           ▶ 主人公の名前と見た目を変える
         </button>
-        <button className="command command--plain" type="button" onClick={onPassword}>
-          ▶ パスワードを変える
-        </button>
+        {!isGuest && (
+          <button className="command command--plain" type="button" onClick={onPassword}>
+            ▶ パスワードを変える
+          </button>
+        )}
         <button className="command command--plain" type="button" onClick={onMicTest}>
           ▶ マイクのテスト
         </button>
-        <button className="command command--plain" type="button" onClick={() => void signOut()}>
-          ▶ ログアウト
-        </button>
+        {isGuest && confirmGuestSignOut ? (
+          <div className="guest-signout">
+            <p className="message message--error">
+              ゲストのままログアウトすると、今の記録には二度ともどれません。続けたいときは、先に「Google につなぐ」を押してください。
+            </p>
+            <button className="command command--danger" type="button" onClick={() => void signOut()}>
+              ▶ それでもログアウトする
+            </button>
+            <button className="command command--quiet" type="button" onClick={() => setConfirmGuestSignOut(false)}>
+              ▶ やめる
+            </button>
+          </div>
+        ) : (
+          <button
+            className="command command--plain"
+            type="button"
+            onClick={() => (isGuest ? setConfirmGuestSignOut(true) : void signOut())}
+          >
+            ▶ ログアウト
+          </button>
+        )}
         <button className="command command--plain" type="button" onClick={onDeleteAccount}>
           ▶ アカウントを消す
         </button>

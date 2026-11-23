@@ -13,6 +13,15 @@ type AuthState = {
   oauthError: string | null;
   clearOAuthError: () => void;
   signOut: () => Promise<void>;
+  /** ゲスト（匿名ログイン）で始める。記録はこの端末のこのブラウザだけにつながる */
+  signInAsGuest: () => Promise<void>;
+  /** 今ゲストで遊んでいるか */
+  isGuest: boolean;
+  /** ゲストの記録のまま、Google のアカウントにつなぐ（Google の画面へ移り、戻ってくると終わる） */
+  linkGoogle: () => Promise<void>;
+  /** Google につないで戻ってきたときの結果（'ok' か、失敗の理由）。設定の画面で出す */
+  linkResult: string | null;
+  clearLinkResult: () => void;
   /** 今のパスワードを確かめてから、新しいパスワードに変える */
   changePassword: (current: string, next: string) => Promise<void>;
 };
@@ -24,10 +33,31 @@ const LOGIN_TIMEOUT_MS = 20_000;
 /** Google から戻ってきたところで開かれたか（?code=... つき） */
 const STARTED_WITH_CODE = typeof window !== 'undefined' && new URLSearchParams(window.location.search).has('code');
 
+/** Google につなぎに行く前に置いておく印（戻ってきたら、設定の画面を開いて結果を出す） */
+const LINKING_KEY = 'eq-linking-google';
+
+/** Google につなぎに行って、戻ってきたところか（一度読んだら印を消す） */
+function takeLinkingMark(): boolean {
+  try {
+    const marked = sessionStorage.getItem(LINKING_KEY) === '1';
+    sessionStorage.removeItem(LINKING_KEY);
+    return marked;
+  } catch {
+    return false;
+  }
+}
+const RETURNED_FROM_LINK = typeof window !== 'undefined' && takeLinkingMark();
+
+/** 起動したのが、Google につないで戻ってきたところか（App が設定の画面から始めるのに使う） */
+export function returnedFromLink(): boolean {
+  return RETURNED_FROM_LINK;
+}
+
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [session, setSession] = useState<Session | null>(null);
   const [loading, setLoading] = useState(true);
-  const [oauthError, setOAuthError] = useState<string | null>(() => readOAuthError());
+  const [oauthError, setOAuthError] = useState<string | null>(() => (RETURNED_FROM_LINK ? null : readOAuthError()));
+  const [linkResult, setLinkResult] = useState<string | null>(null);
 
   useEffect(() => {
     if (!supabase) {
@@ -37,7 +67,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     supabase.auth.getSession().then(({ data, error }) => {
       setSession(data.session);
       setLoading(false);
-      if (error && hasOAuthParams()) setOAuthError(toOAuthMessage(error.message));
+      if (RETURNED_FROM_LINK) {
+        const linkError = readOAuthError(toLinkMessage) ?? (error ? toLinkMessage(error.message) : null);
+        if (linkError) setLinkResult(linkError);
+        else if (data.session && !data.session.user.is_anonymous) setLinkResult('ok');
+        else setLinkResult(toLinkMessage(''));
+      } else if (error && hasOAuthParams()) setOAuthError(toOAuthMessage(error.message));
       else if (!data.session && STARTED_WITH_CODE) setOAuthError(toOAuthMessage('pkce'));
       // Google から戻ってきたときの ?code=... などを、アドレスから消す
       cleanOAuthParams();
@@ -95,6 +130,40 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     if (error) throw new Error(toOAuthMessage(error.message));
   }
 
+  async function signInAsGuest() {
+    if (!supabase) throw new Error('Supabase の設定がありません');
+    setOAuthError(null);
+    const timeout = new Promise<never>((_, reject) =>
+      setTimeout(() => reject(new Error('timeout')), LOGIN_TIMEOUT_MS),
+    );
+    const { error } = await Promise.race([supabase.auth.signInAnonymously(), timeout]).catch((err: unknown) => {
+      throw new Error(toGuestMessage(err instanceof Error ? err.message : String(err)));
+    });
+    if (error) throw new Error(toGuestMessage(error.message));
+  }
+
+  async function linkGoogle() {
+    if (!supabase) throw new Error('Supabase の設定がありません');
+    setLinkResult(null);
+    try {
+      sessionStorage.setItem(LINKING_KEY, '1');
+    } catch {
+      // 印を置けなくても、つなぐことはできる（結果が出ないだけ）
+    }
+    const { error } = await supabase.auth.linkIdentity({
+      provider: 'google',
+      options: { redirectTo: `${window.location.origin}/` },
+    });
+    if (error) {
+      try {
+        sessionStorage.removeItem(LINKING_KEY);
+      } catch {
+        // そのまま
+      }
+      throw new Error(toLinkMessage(error.message));
+    }
+  }
+
   async function signOut() {
     if (!supabase) return;
     await supabase.auth.signOut();
@@ -110,6 +179,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         clearOAuthError: () => setOAuthError(null),
         signOut,
         changePassword,
+        signInAsGuest,
+        isGuest: session?.user.is_anonymous === true,
+        linkGoogle,
+        linkResult,
+        clearLinkResult: () => setLinkResult(null),
       }}>
       {children}
     </AuthContext.Provider>
@@ -150,14 +224,14 @@ function hasOAuthParams(): boolean {
 }
 
 /** Google から戻ってきたアドレスに、失敗の理由がついていれば読む */
-function readOAuthError(): string | null {
+function readOAuthError(toMessage: (m: string) => string = toOAuthMessage): string | null {
   if (typeof window === 'undefined') return null;
   const q = new URLSearchParams(window.location.search);
   const h = new URLSearchParams(window.location.hash.replace(/^#/, ''));
   const description = q.get('error_description') ?? h.get('error_description');
   const error = q.get('error') ?? h.get('error');
   if (!description && !error) return null;
-  return toOAuthMessage(description ?? error ?? '');
+  return toMessage(description ?? error ?? '');
 }
 
 function cleanOAuthParams() {
@@ -181,4 +255,33 @@ function toOAuthMessage(message: string): string {
     return 'ログインの途中で画面が切り替わったため、完了できませんでした。もう一度「Google でログイン」を押してください。';
   }
   return `Google でログインできませんでした（${message}）`;
+}
+
+function toGuestMessage(message: string): string {
+  if (/anonymous sign-?ins? (are|is) disabled|anonymous.*disabled/i.test(message)) {
+    return 'ゲストで遊ぶ仕組みが、まだ Supabase でオンになっていません（Allow anonymous sign-ins）。';
+  }
+  if (/rate limit|too many/i.test(message)) {
+    return 'ゲストを始める人が多すぎるため、少し時間をおいてから試してください。';
+  }
+  if (/failed to fetch|network|load failed|timeout/i.test(message)) {
+    return '通信できませんでした。電波の届く場所でもう一度試してください。';
+  }
+  return `ゲストで始められませんでした（${message}）`;
+}
+
+function toLinkMessage(message: string): string {
+  if (/already (linked|exists|registered)|identity_already_exists|in use/i.test(message)) {
+    return 'この Google アカウントは、もう別のアカウントで使われています。ほかの Google アカウントを選んでください。';
+  }
+  if (/manual linking.*disabled|linking.*not enabled/i.test(message)) {
+    return 'Google につなぐ仕組みが、まだ Supabase でオンになっていません（Allow manual linking）。';
+  }
+  if (/access_denied|denied|cancel/i.test(message)) return 'Google につなぐのが取り消されました。記録はゲストのまま残っています。';
+  if (/code verifier|flow state|pkce/i.test(message)) {
+    return 'つなぐ途中で画面が切り替わったため、完了できませんでした。もう一度「Google につなぐ」を押してください。';
+  }
+  return message
+    ? `Google につなげませんでした（${message}）。記録はゲストのまま残っています。`
+    : 'Google につなげませんでした。記録はゲストのまま残っています。';
 }

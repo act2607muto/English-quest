@@ -200,6 +200,8 @@ export type AdminStats = {
     joined_at: string;
     last_sign_in_at: string | null;
     is_admin: boolean;
+    /** ゲスト（匿名ログイン）か。SQL を入れる前の関数では返ってこない */
+    is_guest?: boolean;
     skills: { skill: Skill; exp: number; max_exp: number; last_practiced_at: string | null; unlocked: boolean }[];
     battles: number;
     questions: number;

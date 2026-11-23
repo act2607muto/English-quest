@@ -98,6 +98,7 @@ function Summary({ stats }: { stats: AdminStats }) {
   const weekCorrect = week.reduce((s, d) => s + d.correct, 0);
   const weekUsers = stats.users.filter((u) => u.active_days_7 > 0).length;
   const everUsers = stats.users.filter((u) => u.battles > 0).length;
+  const guests = stats.users.filter((u) => u.is_guest).length;
   const tiles: [string, string][] = [
     ['登録した人', `${stats.users.length} 人`],
     ['今日練習した人', `${today?.users ?? 0} 人`],
@@ -115,7 +116,8 @@ function Summary({ stats }: { stats: AdminStats }) {
         ))}
       </dl>
       <p className="note">
-        一度でも練習した人：{everUsers} 人／この7日の正解率：{percent(weekCorrect, weekQuestions)}
+        一度でも練習した人：{everUsers} 人／登録した人のうちゲスト：{guests} 人／この7日の正解率：
+        {percent(weekCorrect, weekQuestions)}
       </p>
     </>
   );
@@ -173,6 +175,7 @@ function Users({ stats, townName }: { stats: AdminStats; townName: (id: string |
             <p className="admin-user__name">
               No.{u.no}　{u.hero_name ?? '（名前をまだつけていない）'}
               {u.is_admin && <span className="admin-user__tag">管理者</span>}
+              {u.is_guest && <span className="admin-user__tag">ゲスト</span>}
             </p>
             <table className="stats">
               <tbody>

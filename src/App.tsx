@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState, type ReactNode } from 'react';
-import { AuthProvider, useAuth } from './auth/AuthProvider';
+import { AuthProvider, returnedFromLink, useAuth } from './auth/AuthProvider';
 import { BottomNav, type NavTab } from './components/BottomNav';
 import { fetchIsAdmin, fetchTown, fetchTownQuestionIndex } from './lib/content';
 import { moveToTown } from './lib/records';
@@ -118,7 +118,8 @@ function Gate() {
 }
 
 function Game() {
-  const [route, setRoute] = useState<Route>({ name: 'town' });
+  // Google につないで戻ってきたときは、結果を見せるために設定の画面から始める
+  const [route, setRoute] = useState<Route>(() => (returnedFromLink() ? { name: 'settings' } : { name: 'town' }));
   const [player, setPlayer] = useState<Player | null>(null);
   const [town, setTown] = useState<TownRow | null>(null);
   const [townStatus, setTownStatus] = useState<TownStatus | null>(null);

@@ -2714,3 +2714,18 @@ code {
 .command--danger:not(:disabled) {
   color: var(--error);
 }
+
+/* ---------- ゲスト ---------- */
+.message--ok {
+  color: #8ff0a4;
+}
+
+/* ゲストのログアウトの確かめ（設定のボタンの並びの中） */
+.guest-signout {
+  display: grid;
+  gap: 8px;
+}
+
+.guest-signout .message {
+  margin: 0;
+}
