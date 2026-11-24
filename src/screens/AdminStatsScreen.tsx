@@ -17,6 +17,16 @@ const FORMAT_LABELS: Record<string, string> = {
   dictation: '書き取り',
 };
 
+/** 項目ごとのタブ（長くなりすぎないよう、1つずつ見せる） */
+type Tab = 'daily' | 'users' | 'skills' | 'bosses' | 'hard';
+const TABS: [Tab, string][] = [
+  ['daily', '日ごと'],
+  ['users', '一人ずつ'],
+  ['skills', '正解率'],
+  ['bosses', 'ボス'],
+  ['hard', '難しい問題'],
+];
+
 /** 「11/17（月）」の形 */
 function dayLabel(date: string): string {
   const [y, m, d] = date.split('-').map(Number);
@@ -50,11 +60,13 @@ function overallOf(user: User, today: string): number {
 /**
  * みんなの記録（管理者だけ）。登録した人の数、日ごとに練習した人の数、一人ずつの進み具合、
  * 街と能力値ごとの正解率、まちがえやすい問題、ボスを倒した人の数。設定から開く。
+ * 数字のまとめはいつも上に出し、ほかの項目はタブで1つずつ見せる。
  * メールアドレスは出さない（登録した順の番号と主人公の名前で見分ける）。
  */
 export function AdminStatsScreen({ onBack }: { onBack: () => void }) {
   const [stats, setStats] = useState<AdminStats | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [tab, setTab] = useState<Tab>('daily');
 
   useEffect(() => {
     fetchAdminStats()
@@ -75,13 +87,28 @@ export function AdminStatsScreen({ onBack }: { onBack: () => void }) {
         {error && <p className="message message--error">読み込めませんでした（{error}）</p>}
         {!stats && !error && <p>読み込み中…</p>}
         {stats && <Summary stats={stats} />}
+        {stats && (
+          <div className="choice-pair admin-tabs" role="group" aria-label="見る項目">
+            {TABS.map(([id, label]) => (
+              <button
+                key={id}
+                type="button"
+                className={`command choice-pair__button${tab === id ? ' choice-pair__button--on' : ''}`}
+                aria-pressed={tab === id}
+                onClick={() => setTab(id)}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+        )}
       </section>
 
-      {stats && <Daily stats={stats} />}
-      {stats && <Users stats={stats} townName={townName} />}
-      {stats && <TownSkills stats={stats} townName={townName} />}
-      {stats && <Bosses stats={stats} townName={townName} />}
-      {stats && <HardQuestions stats={stats} townName={townName} />}
+      {stats && tab === 'daily' && <Daily stats={stats} />}
+      {stats && tab === 'users' && <Users stats={stats} townName={townName} />}
+      {stats && tab === 'skills' && <TownSkills stats={stats} townName={townName} />}
+      {stats && tab === 'bosses' && <Bosses stats={stats} townName={townName} />}
+      {stats && tab === 'hard' && <HardQuestions stats={stats} townName={townName} />}
 
       <button className="command" type="button" onClick={onBack}>
         ▶ 設定にもどる

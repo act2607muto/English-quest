@@ -2740,3 +2740,15 @@ code {
   font-size: 14px;
   padding: 8px 4px;
 }
+
+/* みんなの記録：項目のタブ */
+.admin-tabs {
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 12px;
+}
+.admin-tabs .choice-pair__button {
+  font-size: 13px;
+  padding: 8px 2px;
+  text-align: center;
+  white-space: nowrap;
+}
