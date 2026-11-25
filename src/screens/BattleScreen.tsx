@@ -578,6 +578,8 @@ export function BattleScreen({
         </div>
         {saveFailed && <p className="message message--error">通信できず、記録できなかった答えがあります。</p>}
       </section>
+      {/* 画面の下が空いているときに、問題と答えの欄を少し下げるためのすき間 */}
+      <div className="battle__spacer" aria-hidden="true" />
 
       {/* 答えたあとは、問題と答えの欄を消して、下の「結果」のウインドウにまとめる（画面を下へ動かさずにすむように） */}
       {/* 第二形態への変身（光って姿が入れかわる） */}
@@ -881,7 +883,7 @@ export function BattleScreen({
       )}
 
       {phase === 'question' && (
-        <button className="command command--quiet" type="button" onClick={() => void handleRunAway()}>
+        <button className="command command--quiet battle__run" type="button" onClick={() => void handleRunAway()}>
           ▶ にげる（ここまでの正解は残ります）
         </button>
       )}
