@@ -571,17 +571,6 @@ export function BattleScreen({
               </>
             )}
           </span>
-          {/* にげる（場面の右上に小さく。答えのボタンから離して、まちがって押さないように。2026-11-26 本人が案3を選んだ） */}
-          {phase === 'question' && (
-            <button
-              className="command command--quiet battle__run"
-              type="button"
-              title="ここまでの正解は残ります"
-              onClick={() => void handleRunAway()}
-            >
-              ▶ にげる
-            </button>
-          )}
         </div>
         {/* 自分とモンスターの HP を1列に（画面を下へ動かしても、背景といっしょに上に残る） */}
         <div className="battle__status">
@@ -898,6 +887,17 @@ export function BattleScreen({
         </section>
       )}
 
+      {/* にげる（画面の右下に小さく。2026-11-26 本人の希望） */}
+      {phase === 'question' && (
+        <button
+          className="command command--quiet battle__run"
+          type="button"
+          title="ここまでの正解は残ります"
+          onClick={() => void handleRunAway()}
+        >
+          ▶ にげる
+        </button>
+      )}
     </main>
   );
 }

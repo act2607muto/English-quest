@@ -476,14 +476,14 @@ code {
 /* ---------- 戦闘 ---------- */
 /*
  * 戦闘の並び方（2026-11-26 本人が3案から案3を選んだ）：
- * 場面・問題・答えのボタンをすき間なく1つのかたまりにして画面の下に寄せ、片手で持ったとき親指が答えに届くようにする。
- * 場面と答えのボタンは画面の高さに合わせて大きくし、空きを埋める。「にげる」は場面の右上に小さく置く。
+ * 場面・問題・答えのボタンをすき間なく1つのかたまりにする。場面と答えのボタンは画面の高さに合わせて大きくする。
  * 中身が画面より長いときは、今までどおり下へ動かして読む。
+ * 一度かたまりを画面の下に寄せたが、場面を低くしたら上に黒いすき間ができたので、上詰めにした（2026-11-26 本人の希望）。
+ * 「にげる」は画面の右下に小さく置く（中身が長いときは、いちばん下に続く）。
  */
 .battle {
   gap: 12px;
   min-height: 100dvh;
-  justify-content: flex-end;
 }
 
 .battle .choice {
@@ -495,17 +495,13 @@ code {
 }
 
 .battle__run {
-  position: absolute;
-  top: 4px;
-  right: 4px;
-  z-index: 3;
+  align-self: flex-end;
   width: auto;
   min-height: 0;
-  margin: 0;
+  margin-top: auto;
   padding: 2px 10px;
   font-size: 14px;
   line-height: 1.4;
-  background: rgba(0, 0, 0, 0.6);
 }
 
 .battle__enemy {
@@ -1464,12 +1460,13 @@ code {
 
 /*
  * 場面の高さは画面の高さに合わせる（2026-11-26 本人の希望。ボタンを下に寄せて空いた分、場面を大きく）。
- * 背の高い iPhone（高さ 852）でおよそ 392px、小さい iPhone（667）で 307px。背景の絵（横長）は左右が少し切れる。
+ * 一度 46dvh にしたが、実機で高すぎたので、その 65% くらい（30dvh）にした（2026-11-26 本人の希望）。
+ * 背の高い iPhone（高さ 852）でおよそ 256px、小さい iPhone（667）で 200px。背景の絵（横長）は左右が少し切れる。
  * 中身が長くなりやすい問題（battle--long）は、文章を読む場所を残すため、今までの 2:1 に近い高さにする
  */
 .battle__enemy--scene .battle__stage {
   aspect-ratio: auto;
-  height: clamp(180px, 46dvh, 400px);
+  height: clamp(180px, 30dvh, 260px);
 }
 
 .battle--long .battle__enemy--scene .battle__stage {
@@ -1664,20 +1661,20 @@ code {
 }
 
 /* 戦闘では、主人公とモンスター（ボスはもっと大きく）の大きさを近づける。
-   場面といっしょに画面の高さで大きくする（2026-11-26。背の高い iPhone で主人公 約153・モンスター 約162・ボス 約230）。
+   場面といっしょに画面の高さで大きくする（2026-11-26。背の高い iPhone で主人公 約119・モンスター 約128・ボス 約187）。
    中身が長くなりやすい問題では、今までの大きさ（主人公 96・モンスター 104・ボス 160） */
 .battle__stage .hero-art {
-  width: clamp(96px, 18dvh, 160px);
+  width: clamp(96px, 14dvh, 136px);
 }
 
 .battle__stage .monster-art--large.monster-art--sprite {
-  width: clamp(104px, 19dvh, 170px);
-  height: clamp(104px, 19dvh, 170px);
+  width: clamp(104px, 15dvh, 144px);
+  height: clamp(104px, 15dvh, 144px);
 }
 
 .battle__stage .monster-art--huge.monster-art--sprite {
-  width: clamp(160px, 27dvh, 240px);
-  height: clamp(160px, 27dvh, 240px);
+  width: clamp(160px, 22dvh, 200px);
+  height: clamp(160px, 22dvh, 200px);
 }
 
 .battle--long .battle__stage .hero-art {
