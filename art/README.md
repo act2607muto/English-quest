@@ -8,6 +8,7 @@
 ほかの Pixellab の絵は、作ったままのものが `public/` に入っている。
 - `pixellab-original/town01-boss-armored.png`：最初の Pixellab のボス（よろいの騎士）。2026-11-17 に「最初の街には強そうすぎる」ため、狼のボスに差し替えた。戻すときは `public/monsters/town01-boss.png` にコピーし、`scripts/make_breath_frames.ps1` のボスの SplitRow を 73 に戻して動かす。
 - `pixellab-original/hero-map-three-quarter.png`：マップ用の主人公の、最初の絵（ななめ前向き）。2026-11-17 に、横へ歩くときは真横を向いた絵（`public/hero/hero-map.png`、左向き）に差し替えた。
+- `monster-facing-originals/`：右を向いていたモンスターの、反転する前の絵。2026-11-26 に、戦闘で主人公（左）のほうを向くよう、`public/monsters/` の同じ名前の絵を左右反転した（つみきゴーレム town01-mon-gra と、その呼吸・復活の絵）。戻すときは同じ名前で `public/monsters/` にコピーする。
 - `icon-candidates/`：アプリのアイコンの案（2026-11-17）。本人が選んだのは A（`icon-A.png` に文字を入れた `icon-A-title.png`）。ほかは見比べた案。
 - `old-map/`：2026-11-17 に作り直す前の街の外のマップ（20×16 の town01.json と、地面の絵 terrain-water.png・terrain-path.png）。戻すときは public/maps/ に上書きする。
 - `pixellab-original/town01-wpn-all-rainbow.png`：はじまりの街の「すべてに効く剣」の最初の絵（にじいろのつるぎ）。2026-11-18 に「2つ目の街の剣より強そうに見える」ため、たびだちのつるぎ（地味な鉄の剣）に差し替えた。
