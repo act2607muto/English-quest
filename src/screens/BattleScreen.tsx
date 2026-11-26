@@ -502,9 +502,16 @@ export function BattleScreen({
   const isOpinion = q.format === 'respond' && (q.tags ?? []).includes(OPINION_TAG);
   /** アナウンスや説明のような長い英文（5つ目の街）は、ゆっくりも聞ける */
   const isLongAudio = (q.audio_text ?? '').split(/\s+/).filter(Boolean).length >= LONG_AUDIO_WORDS;
+  /**
+   * 中身が長くなりやすい問題（リーディングの文章・書く・話す・書き取り）。
+   * 場面は画面を下へ動かしても上に残るので、大きいままだと文章を読む場所がせまくなる。こういう問題では場面を小さめにする
+   */
+  const isLong = (skill === 'reading' && !!q.sentence) || isGraded || isDictation;
 
   return (
-    <main className={`screen battle${acting && !hit ? ' battle--hurt' : ''}${finisher ? ' battle--finisher' : ''}`}>
+    <main
+      className={`screen battle${isLong ? ' battle--long' : ''}${acting && !hit ? ' battle--hurt' : ''}${finisher ? ' battle--finisher' : ''}`}
+    >
       <section
         className={`battle__enemy${!bgBroken ? ' battle__enemy--scene' : ''}${kind === 'boss' ? ' battle__enemy--boss' : ''}`}
       >
@@ -564,6 +571,17 @@ export function BattleScreen({
               </>
             )}
           </span>
+          {/* にげる（場面の右上に小さく。答えのボタンから離して、まちがって押さないように。2026-11-26 本人が案3を選んだ） */}
+          {phase === 'question' && (
+            <button
+              className="command command--quiet battle__run"
+              type="button"
+              title="ここまでの正解は残ります"
+              onClick={() => void handleRunAway()}
+            >
+              ▶ にげる
+            </button>
+          )}
         </div>
         {/* 自分とモンスターの HP を1列に（画面を下へ動かしても、背景といっしょに上に残る） */}
         <div className="battle__status">
@@ -578,8 +596,6 @@ export function BattleScreen({
         </div>
         {saveFailed && <p className="message message--error">通信できず、記録できなかった答えがあります。</p>}
       </section>
-      {/* 画面の下が空いているときに、問題と答えの欄を少し下げるためのすき間 */}
-      <div className="battle__spacer" aria-hidden="true" />
 
       {/* 答えたあとは、問題と答えの欄を消して、下の「結果」のウインドウにまとめる（画面を下へ動かさずにすむように） */}
       {/* 第二形態への変身（光って姿が入れかわる） */}
@@ -882,11 +898,6 @@ export function BattleScreen({
         </section>
       )}
 
-      {phase === 'question' && (
-        <button className="command command--quiet battle__run" type="button" onClick={() => void handleRunAway()}>
-          ▶ にげる（ここまでの正解は残ります）
-        </button>
-      )}
     </main>
   );
 }
